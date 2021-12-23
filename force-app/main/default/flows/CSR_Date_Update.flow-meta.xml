@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>Updates CSR date to today plus three when triggered by process builder, process builder is fired when orders are changed to released status
+
+ADDED: Update for CSR owner field based on passed primary from process builder
+
+REMOVED: Update for CSR Owner</description>
+    <formulas>
+        <description>plus three business days</description>
+        <name>PlusThreeBusinessdays</name>
+        <dataType>Date</dataType>
+        <expression>CASE(
+MOD(TODAY() - DATE(1900, 1, 7), 7), 
+0, TODAY()+3, 
+1, TODAY()+3, 
+2, TODAY()+3,
+3, TODAY()+5,
+4, TODAY()+5, 
+5, TODAY()+5, 
+6, TODAY()+4,null)</expression>
+    </formulas>
+    <interviewLabel>CSR Date Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CSR Date Update</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UpdateContactNextAction</name>
+        <label>UpdateContactNextAction</label>
+        <locationX>320</locationX>
+        <locationY>106</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>OrderPrimaryContactID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Auto_CSR_Advance_Completed__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CSR_Next_Action_Date__c</field>
+            <value>
+                <elementReference>PlusThreeBusinessdays</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <startElementReference>UpdateContactNextAction</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>ID of the order&apos;s primary contact</description>
+        <name>OrderPrimaryContactID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Stored by process builder, primary of the AM of the contact buying</description>
+        <name>SalesPrimary</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

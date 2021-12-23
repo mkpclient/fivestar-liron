@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <description>CSR experience status</description>
+    <externalId>false</externalId>
+    <inlineHelpText>CSR experience status</inlineHelpText>
+    <label>Status</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>1st Appt Request</fullName>
+                <default>false</default>
+                <label>1st Appt Request</label>
+            </value>
+            <value>
+                <fullName>2nd Appt Request</fullName>
+                <default>false</default>
+                <label>2nd Appt Request</label>
+            </value>
+            <value>
+                <fullName>3rd Appt Request</fullName>
+                <default>false</default>
+                <label>3rd Appt Request</label>
+            </value>
+            <value>
+                <fullName>4th Appt Request</fullName>
+                <default>false</default>
+                <label>4th Appt Request</label>
+            </value>
+            <value>
+                <fullName>Appt Scheduled</fullName>
+                <default>false</default>
+                <label>Appt Scheduled</label>
+            </value>
+            <value>
+                <fullName>Appt Complete - Follow Up Needed</fullName>
+                <default>false</default>
+                <label>Appt Complete - Follow Up Needed</label>
+            </value>
+            <value>
+                <fullName>Appt Incomplete - Follow Up Needed</fullName>
+                <default>false</default>
+                <label>Appt Incomplete - Follow Up Needed</label>
+            </value>
+            <value>
+                <fullName>Client_Experience_Complete</fullName>
+                <default>false</default>
+                <label>Client Experience Complete</label>
+            </value>
+            <value>
+                <fullName>Closed - NOT complete</fullName>
+                <default>false</default>
+                <label>Closed - NOT complete</label>
+            </value>
+            <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                <label>Cancelled</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

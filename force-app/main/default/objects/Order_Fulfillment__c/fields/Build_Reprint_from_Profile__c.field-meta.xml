@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Build_Reprint_from_Profile__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Reprint checklist field</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Once the template is approved, build the reprint from the existing profile</inlineHelpText>
+    <label>Build Reprint from Profile</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

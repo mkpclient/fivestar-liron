@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Finance_Work_In_Progress__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used as a stop for the Kugamon auto release apex</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Should not be visible to sales, contact admin if you are a salesperson and you can read this.
+Used to hold orders so that Kugamon release automation does not fire.</inlineHelpText>
+    <label>Finance Work In Progress</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

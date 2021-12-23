@@ -1,0 +1,18 @@
+<apex:page standardController="SalesOrder__c" sidebar="false">
+    <apex:includeLightning />    
+    <div id="LightningComponentid" />   
+<!-- the Id of div tag which will be used to render your LWC component  -->
+    <script>
+        $Lightning.use("c:manageLinesAuraApp", function() {
+            $Lightning.createComponent("c:manageLinesComponent",
+            { 
+                recordId : '{!$CurrentPage.parameters.id}',
+                isVFPage : true
+            },
+            "LightningComponentid", // the Id of div tag where your component will be rendered
+            function(cmp) {
+                console.log('Calling the LWC Component');
+            });
+        });
+    </script>
+</apex:page>

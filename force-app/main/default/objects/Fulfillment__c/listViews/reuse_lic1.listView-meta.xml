@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>reuse_lic1</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Production_Owner__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>CSR_Follow_Up_1_Date__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>contains</operation>
+        <value>Collect,Collect Urgent,Create,Fulfill</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>reuse</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>package,E-reprint,Digital spotlight reprints,electronic</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>,Closed,Cancelled,Shipped,Closde,Product Created,On Hold</value>
+    </filters>
+    <filters>
+        <field>Upload_Date__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>reuse lic</label>
+</ListView>

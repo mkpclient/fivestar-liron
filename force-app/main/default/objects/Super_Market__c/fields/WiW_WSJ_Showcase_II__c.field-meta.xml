@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WiW_WSJ_Showcase_II__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>WiW WSJ Showcase II</label>
+    <referenceTo>Market__c</referenceTo>
+    <relationshipLabel>Super Markets (WiW WSJ Showcase II)</relationshipLabel>
+    <relationshipName>WiW_WSJ_Showcase_II</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

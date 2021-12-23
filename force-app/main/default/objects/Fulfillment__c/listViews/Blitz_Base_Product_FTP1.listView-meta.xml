@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Blitz_Base_Product_FTP1</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Market__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Graphics_Owner__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>Profile</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Closed,Closed No Response,Write copy,Cancelled,Approved,Product Created,New</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Ready for FTP</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>Award Winner Profile</value>
+    </filters>
+    <label>Rachel - Profiles FTP</label>
+</ListView>

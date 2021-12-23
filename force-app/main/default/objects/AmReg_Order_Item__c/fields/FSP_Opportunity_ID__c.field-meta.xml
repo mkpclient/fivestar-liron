@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FSP_Opportunity_ID__c</fullName>
+    <description>Five Star Opportunity Id coming from American Registry</description>
+    <externalId>false</externalId>
+    <label>FSP Opportunity ID</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

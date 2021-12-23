@@ -1,0 +1,235 @@
+<template>
+  <template if:true={showtoast}>
+    <c-slds-toast
+      onclose={handleCloseToast}
+      variant={toast.variant}
+      title={toast.title}
+      message={toast.message}
+    ></c-slds-toast>
+  </template>
+  <lightning-record-edit-form
+    onsubmit={handleSubmit}
+    onsuccess={handleSuccess}
+    object-api-name="Payment_Method__c"
+    record-id={paymentMethodId}
+  >
+  <lightning-messages></lightning-messages>
+
+    <lightning-card title={pageTitle} if:true={showForm}>
+      <lightning-button
+        variant="brand"
+        label="Save Payment Method"
+        slot="actions"
+        type="submit"
+        disabled={disableButton}
+      ></lightning-button>
+      <lightning-button
+        variant="brand-outline"
+        label="Back"
+        slot="actions"
+        onclick={handleBack}
+      ></lightning-button>
+      <div class="slds-var-p-horizontal_small">
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Card_Type__c"
+                data-name="required"
+                required={isNew}
+              >
+              </lightning-input-field>
+            </template>
+          </div>
+          <div class="slds-col slds-size_2-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input
+                type="text"
+                label="Card Number"
+                data-field="cardNumber"
+                data-type="customInput"
+                data-name="required"
+                required
+              ></lightning-input>
+            </template>
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-var-p-horizontal_medium">
+            <lightning-combobox
+              placeholder="MM"
+              name="expiryMonth"
+              label="Exp Month"
+              options={monthOptions}
+              data-field="expiryMonth"
+              data-type="customInput"
+              data-name="required"
+              value={defaultMonth}
+              required={isNew}
+            ></lightning-combobox>
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-var-p-horizontal_medium">
+            <lightning-combobox
+              placeholder="YYYY"
+              data-field="expiryYear"
+              data-type="customInput"
+              data-name="required"
+              label="Exp Year"
+              options={yearOptions}
+              value={defaultYear}
+              required={isNew}
+            ></lightning-combobox>
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-var-p-horizontal_medium">
+            <lightning-input
+              type="number"
+              step="1"
+              data-name="required"
+              data-field="cvv"
+              data-type="customInput"
+              label="CVV"
+              maxlength="3"
+              minlength="3"
+              required={isNew}
+            ></lightning-input>
+          </div>
+          <div class="slds-col slds-size_3-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Contact__c"
+                value={recordId}
+                disabled
+              ></lightning-input-field>
+            </template>
+            <template if:false={isNew}>
+              <lightning-output-field
+                variant="label-stacked"
+                field-name="Contact__c"
+              ></lightning-output-field>
+            </template>
+          </div>
+          <div class="slds-col slds-size_3-of-3 slds-var-p-horizontal_medium">
+            <lightning-input-field
+              variant="label-stacked"
+              field-name="Default__c"
+            ></lightning-input-field>
+          </div>
+          <div class="slds-col slds-size_2-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_First_Name__c"
+                data-name="required"
+                value={record.FirstName}
+                required
+              ></lightning-input-field>
+            </template>
+            <template if:false={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_First_Name__c"
+              ></lightning-input-field>
+            </template>
+          </div>
+          <div class="slds-col slds-size_2-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_Last_Name__c"
+                data-name="required"
+                value={record.LastName}
+                required
+              ></lightning-input-field>
+            </template>
+            <template if:false={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_Last_Name__c"
+              ></lightning-input-field>
+            </template>
+          </div>
+          <div class="slds-col slds-size_2-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_Street__c"
+                data-name="required"
+                value={record.MailingStreet}
+                required
+              ></lightning-input-field>
+            </template>
+            <template if:false={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_Street__c"
+              ></lightning-input-field>
+            </template>
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_City__c"
+                data-name="required"
+                value={record.MailingCity}
+                required
+              ></lightning-input-field>
+            </template>
+            <template if:false={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_City__c"
+              ></lightning-input-field>
+            </template>
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-var-p-horizontal_medium">
+            <lightning-combobox
+              label="Billing State"
+              data-name="required"
+              data-field="billingState"
+              data-type="customInput"
+              value={defaultState}
+              options={stateOptions}
+              dropdown-alignment="bottom-left"
+              required={isNew}
+            ></lightning-combobox>
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_Country__c"
+                data-name="required"
+                value={record.MailingCountry}
+                required
+              ></lightning-input-field>
+            </template>
+            <template if:false={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_Country__c"
+              ></lightning-input-field>
+            </template>
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-var-p-horizontal_medium">
+            <template if:true={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_Postal_Code__c"
+                data-name="required"
+                value={record.MailingPostalCode}
+                required
+              ></lightning-input-field>
+            </template>
+            <template if:false={isNew}>
+              <lightning-input-field
+                variant="label-stacked"
+                field-name="Billing_Postal_Code__c"
+              ></lightning-input-field>
+            </template>
+          </div>
+        </div>
+      </div>
+    </lightning-card>
+  </lightning-record-edit-form>
+</template>

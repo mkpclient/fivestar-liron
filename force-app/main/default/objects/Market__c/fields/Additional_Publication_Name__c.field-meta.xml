@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Publication_Name__c</fullName>
+    <description>Name of non-core/non-WSJ/non-Forbes publication</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Name of non-core/non-WSJ/non-Forbes publication</inlineHelpText>
+    <label>Additional Publication Name</label>
+    <length>250</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

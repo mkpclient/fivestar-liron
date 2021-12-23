@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>First_Testimonial__c</fullName>
+    <description>Date of first Testimonial</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date of first Testimonial</inlineHelpText>
+    <label>First Testimonial</label>
+    <summarizedField>Testimonial__c.Publish_Date__c</summarizedField>
+    <summaryFilterItems>
+        <field>Testimonial__c.Status__c</field>
+        <operation>equals</operation>
+        <value>Published</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Testimonial__c.Fulfillment__c</summaryForeignKey>
+    <summaryOperation>min</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

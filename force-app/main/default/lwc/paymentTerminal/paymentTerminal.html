@@ -1,0 +1,417 @@
+<template>
+  <template if:true={unhideToast}>
+    <c-slds-toast
+      onclose={handleCloseToast}
+      variant={toastVariant}
+      title={toastTitle}
+      message={toastMessage}
+    ></c-slds-toast>
+  </template>
+  <lightning-card title="Payment Terminal">
+    <template if:false={enablePayments}> </template>
+    <template if:true={enablePayments}>
+      <lightning-button-group slot="actions">
+        <lightning-button
+          label="Return to Order"
+          onclick={handleOnClick}
+          variant="brand"
+        >
+        </lightning-button>
+        <template if:true={showAmountScreen}>
+          <lightning-button
+            label="Submit Transaction"
+            onclick={handleOnClick}
+            variant="brand"
+            disabled={isSubmittingTransaction}
+          ></lightning-button>
+        </template>
+        <template if:true={showNewPaymentMethod}>
+          <lightning-button
+            label="New Payment Method"
+            onclick={handleOnClick}
+            variant="brand-outline"
+          ></lightning-button>
+        </template>
+        <template if:true={showNewCardScreen}>
+          <lightning-button
+            label="Save Payment Method"
+            onclick={handleOnClick}
+            variant="brand-outline"
+          ></lightning-button>
+          <lightning-button
+            label="Cancel"
+            onclick={handleOnClick}
+            variant="brand-outline"
+          ></lightning-button>
+        </template>
+      </lightning-button-group>
+      <template if:true={showSpinner}>
+        <lightning-spinner></lightning-spinner>
+      </template>
+
+      <template if:true={showPaymentSuccess}>
+        <div class="slds-notify_container slds-is-relative">
+          <div
+            class="slds-notify slds-notify_toast slds-theme_success"
+            role="status"
+          >
+            <span class="slds-assistive-text">success</span>
+            <span
+              class="
+                slds-icon_container
+                slds-icon-utility-success
+                slds-m-right_small
+                slds-no-flex slds-align-top
+              "
+              title="Description of icon when needed"
+            >
+              <lightning-icon
+                variant="inverse"
+                icon-name="utiltity:success"
+                alternative-text="Approved"
+                title="Approved"
+              ></lightning-icon>
+            </span>
+            <div class="slds-notify__content">
+              <h2 class="slds-text-heading_small">
+                <a href={payment.url}>Payment</a> was created.
+              </h2>
+            </div>
+            <div class="slds-notify__close">
+              <lightning-button-icon
+                variant="bare-inverse"
+                icon-name="utiltity:close"
+                alternative-text="Close"
+                title="Close"
+              ></lightning-button-icon>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <lightning-datatable
+        key-field="Id"
+        data={paymentMethods}
+        columns={paymentMethodColumns}
+        onrowselection={handleRowSelection}
+        onrowaction={handleRowAction}
+      ></lightning-datatable>
+
+      <template if:true={showNewCardScreen}>
+        <lightning-layout multiple-rows="true">
+          <lightning-layout-item padding="around-small" size="4">
+            <lightning-combobox
+              class="halfColumn"
+              name="cardType"
+              label="Card Type"
+              value={payment.cardType}
+              options={cardTypeOptions}
+              onchange={handleOnChange}
+              data-objectname="paymentMethod"
+              required
+            ></lightning-combobox>
+          </lightning-layout-item>
+
+          <lightning-layout-item padding="around-small" size="6">
+            <lightning-input
+              type="text"
+              label="Card Number"
+              name="cardNumber"
+              data-objectname="paymentMethod"
+              onchange={handleOnChange}
+              required
+            ></lightning-input>
+          </lightning-layout-item>
+
+          <lightning-layout-item padding="around-small" size="4">
+            <lightning-combobox
+              data-objectname="paymentMethod"
+              placeholder="MM"
+              class="halfColumn"
+              name="expiryMonth"
+              label="Exp Month"
+              value={payment.expiryMonth}
+              options={monthOptions}
+              onchange={handleOnChange}
+              required
+            ></lightning-combobox>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="4">
+            <lightning-combobox
+              data-objectname="paymentMethod"
+              placeholder="YYYY"
+              class="halfColumn"
+              name="expiryYear"
+              label="Exp Year"
+              value={payment.expiryYear}
+              options={yearOptions}
+              onchange={handleOnChange}
+              required
+            ></lightning-combobox>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="3">
+            <lightning-input
+              type="text"
+              label="cvv"
+              name="cvv"
+              data-objectname="paymentMethod"
+              onchange={handleOnChange}
+              required
+            ></lightning-input>
+          </lightning-layout-item>
+          <template if:true={contactOptions.length}>
+            <lightning-layout-item padding="around-small" size="6">
+              <lightning-combobox
+                name="Contact__c"
+                label="Contact"
+                value={selectedPaymentMethod.Contact__c}
+                placeholder="Select user"
+                data-objectname="paymentMethod"
+                options={contactOptions}
+                onchange={handleOnChange}
+              ></lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+              <lightning-input
+                type="checkbox"
+                label="Set this Card as this person's Default"
+                name="isDefault"
+                value={selectedPaymentMethod.isDefault}
+                data-objectname="paymentMethod"
+                onchange={handleOnChange}
+              >
+              </lightning-input>
+            </lightning-layout-item>
+          </template>
+          <lightning-layout-item padding="around-small" size="4">
+            <lightning-input
+              type="text"
+              name="firstName"
+              value={selectedPaymentMethod.firstName}
+              label="First Name"
+              data-objectname="paymentMethod"
+              onchange={handleOnChange}
+              required
+            ></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="8">
+            <lightning-input
+              type="text"
+              name="lastName"
+              value={selectedPaymentMethod.lastName}
+              label="Last Name"
+              data-objectname="paymentMethod"
+              onchange={handleOnChange}
+              required
+            ></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="6">
+            <lightning-input
+              type="text"
+              name="billingStreet"
+              value={selectedPaymentMethod.billingStreet}
+              label="Billing Street"
+              data-objectname="paymentMethod"
+              onchange={handleOnChange}
+              required
+            ></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="6">
+            <lightning-input
+              type="text"
+              name="billingCity"
+              value={selectedPaymentMethod.billingCity}
+              label="Billing City"
+              data-objectname="paymentMethod"
+              onchange={handleOnChange}
+              required
+            ></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="4">
+            <lightning-combobox
+              name="billingState"
+              label="Billing State"
+              value={selectedPaymentMethod.billingState}
+              placeholder="Select State"
+              data-objectname="paymentMethod"
+              options={stateOptions}
+              onchange={handleOnChange}
+              required
+            ></lightning-combobox>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="4">
+            <lightning-input
+              type="text"
+              name="billingCountry"
+              value={selectedPaymentMethod.billingCountry}
+              label="Billing Country"
+              data-objectname="paymentMethod"
+              onchange={handleOnChange}
+              required
+            ></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="4">
+            <lightning-input
+              type="text"
+              name="billingPostalCode"
+              value={selectedPaymentMethod.billingPostalCode}
+              label="Billing Postal Code"
+              data-objectname="paymentMethod"
+              onchange={handleOnChange}
+              required
+            ></lightning-input>
+          </lightning-layout-item>
+        </lightning-layout>
+      </template>
+
+      <template if:true={showAmountScreen}>
+        <lightning-layout multiple-rows="true">
+          <lightning-layout-item padding="around-small" size="2">
+            <lightning-layout-item padding="around-small" size="4">
+              <p>
+                Order Total:
+                <lightning-formatted-number
+                  if:true={totalAmount}
+                  value={totalAmount}
+                  format-style="currency"
+                  currency-code="USD"
+                ></lightning-formatted-number>
+                <lightning-formatted-number
+                  if:false={totalAmount}
+                  value="0.00"
+                  format-style="currency"
+                  currency-code="USD"
+                ></lightning-formatted-number>
+              </p>
+              <p>
+                Paid / Scheduled:
+                <lightning-formatted-number
+                  if:true={existingPayments}
+                  value={existingPayments}
+                  format-style="currency"
+                  currency-code="USD"
+                ></lightning-formatted-number>
+                <lightning-formatted-number
+                  if:false={existingPayments}
+                  value="0.00"
+                  format-style="currency"
+                  currency-code="USD"
+                ></lightning-formatted-number>
+              </p>
+              <p style="font-weight: bold;">
+                Net Due:
+                <lightning-formatted-number
+                  if:true={salesOrder.Net_Due__c}
+                  value={salesOrder.Net_Due__c}
+                  format-style="currency"
+                  currency-code="USD"
+                ></lightning-formatted-number>
+                <lightning-formatted-number
+                  if:false={salesOrder.Net_Due__c}
+                  value="0.00"
+                  format-style="currency"
+                  currency-code="USD"
+                ></lightning-formatted-number>
+              </p>
+            </lightning-layout-item>
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="2">
+            <template if:false={disableForUser}>
+              <template if:true={showScheduledPayment}>
+                <lightning-input
+                  name="amount"
+                  value={payment.amount}
+                  type="number"
+                  formatter="currency"
+                  step="0.01"
+                  label="First Payment Amount"
+                  data-objectname="payment"
+                  onchange={handleOnChange}
+                  max={salesOrder.Net_Due__c}
+                  data-name="amount"
+                  required={shouldRequireAmount}
+                ></lightning-input>
+                <lightning-input
+                  name="totalScheduledPayment"
+                  value={totalScheduledPayment}
+                  data-objectname="payment"
+                  type="number"
+                  formatter="currency"
+                  step="0.01"
+                  label="Total Amount to Schedule"
+                  data-name="totalScheduledPayment"
+                  onchange={handleOnChange}
+                  max={allowedTotalScheduled}
+                ></lightning-input>
+                <lightning-input
+                  name="scheduledPayment"
+                  value={scheduledPayment}
+                  data-objectname="payment"
+                  type="number"
+                  formatter="currency"
+                  step="0.01"
+                  label="Scheduled Payment Amount"
+                  data-name="scheduledPayment"
+                  disabled
+                ></lightning-input>
+              </template>
+            </template>
+            <template if:false={showScheduledPayment}>
+              <lightning-input
+                name="amount"
+                value={payment.amount}
+                type="number"
+                formatter="currency"
+                step="0.01"
+                label="Amount"
+                data-objectname="payment"
+                data-name="amount"
+                onchange={handleOnChange}
+                max={salesOrder.Net_Due__c}
+                disabled={disableForUser}
+                required
+              ></lightning-input>
+            </template>
+            <template if:false={disableForUser}>
+              <lightning-input
+                type="checkbox"
+                label="Set multiple payments for this order"
+                name="isMultiple"
+                value={payment.isMultiple}
+                data-objectname="payment"
+                onchange={handleOnChange}
+              ></lightning-input>
+            </template>
+          </lightning-layout-item>
+          <template if:true={showScheduledPayment}>
+            <lightning-layout-item padding="around-small" size="4">
+              <lightning-input
+                type="date"
+                name="scheduledDate"
+                label="Date of First Scheduled Payment"
+                value={payment.scheduledDate}
+                data-objectname="payment"
+                onchange={handleOnChange}
+                min={minDate}
+                required
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="2">
+              <lightning-input
+                name="numberOfPayments"
+                value={payment.numberOfPayments}
+                type="number"
+                step="1"
+                label="Number of Scheduled Payments (Monthly Frequency)"
+                data-objectname="payment"
+                onchange={handleOnChange}
+                required
+              ></lightning-input>
+            </lightning-layout-item>
+          </template>
+        </lightning-layout>
+        <!--? amount screen ends-->
+      </template>
+    </template>
+  </lightning-card>
+</template>

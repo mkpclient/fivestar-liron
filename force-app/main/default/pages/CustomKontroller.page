@@ -1,0 +1,9 @@
+<!------------------------------------------->
+<!--   CustomKontroller VF Page by Kugamon -->
+<!--   Copyright: Kugamon LLC              -->
+<!--   http://www.kugamon.com              -->
+<!--   NO SUPPORT PROVIDED                 -->
+<!--   DO NOT COPY, STEAL, SELL THIS CODE  -->
+<!------------------------------------------->
+
+<apex:page controller="CustomKontroller" action="{!Director}"><apex:pageMessages /></apex:page>

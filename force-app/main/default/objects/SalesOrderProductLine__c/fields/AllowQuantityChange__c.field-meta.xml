@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllowQuantityChange__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <defaultValue>true</defaultValue>
+    <description>For Kit/Bundle Member Lines only. Allows Quantity to be editable in Quote and Order configurator page. Does not lock the Quantity at the record level. Checked by default</description>
+    <externalId>false</externalId>
+    <label>Edit Quantity (Kit/Bundle Member)</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

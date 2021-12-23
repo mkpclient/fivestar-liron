@@ -1,0 +1,16 @@
+<apex:page controller="CustomObjectGetter" tabstyle="account" sidebar="false" showHeader="false">
+    <apex:stylesheet value="{!$Resource.newStyles}"/>
+    <apex:pageBlock >
+        <apex:outputText value="Research Calls" styleClass="title"></apex:outputText>
+        <apex:pageBlockTable value="{!Research_Call}" var="a">
+            <apex:column headerValue="Research Call: Call ID">
+              <apex:outputLink value="/{!a.Id}">{!a.Name}</apex:outputLink>
+            </apex:column>
+            <apex:column value="{!a.Due_Date__c}" headerValue="Due Date" ondblclick="window.open('/{!a.Id}');"/>
+            <apex:column value="{!a.Research_Rep__c}" headerValue="Research Rep" ondblclick="window.open('/{!a.Id}');"/>
+            <apex:column value="{!a.Call_Type__c}" headerValue="Call Type" ondblclick="window.open('/{!a.Id}');"/>
+            <apex:column value="{!a.Call_Result__c}" headerValue="Call Result" ondblclick="window.open('/{!a.Id}');"/>
+            <apex:column value="{!a.Comments__c}" headerValue="Comments" ondblclick="window.open('/{!a.Id}');"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

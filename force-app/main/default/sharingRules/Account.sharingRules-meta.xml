@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingGuestRules>
+        <fullName>Guest_User_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Created by FSP for Kugamon</description>
+        <label>Guest User Sharing</label>
+        <sharedTo>
+            <guestUser>default</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>!</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+    <sharingGuestRules>
+        <fullName>SUMO</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>SUMO</label>
+        <sharedTo>
+            <guestUser>Invite_Manager</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+    <sharingGuestRules>
+        <fullName>SUMO_Guest_User</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>SUMO Guest User</label>
+        <sharedTo>
+            <guestUser>SelfScheduling</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+</SharingRules>

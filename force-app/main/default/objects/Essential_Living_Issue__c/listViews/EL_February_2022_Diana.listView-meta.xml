@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EL_February_2022_Diana</fullName>
+    <columns>NAME</columns>
+    <columns>Fulfillment_Market_Project__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Status__c</columns>
+    <columns>Fulfillment_Total_EL_Issues__c</columns>
+    <columns>Fulfillment_Owner_Name__c</columns>
+    <columns>Last_day_to_submit_changes__c</columns>
+    <columns>Back_cover_inside_ad__c</columns>
+    <columns>Back_cover_ad__c</columns>
+    <columns>Contact_Block_Photo__c</columns>
+    <columns>Contact_Block_Logo__c</columns>
+    <columns>Fulfillment_Contact_Block_Photo__c</columns>
+    <columns>Fulfillment_Contact_Block_Logo__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Fulfillment_EL_Quantity__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>February</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Draft</value>
+    </filters>
+    <filters>
+        <field>Fulfillment_Owner_Name__c</field>
+        <operation>contains</operation>
+        <value>Diana,Julie</value>
+    </filters>
+    <label>EL February 2022 - Diana</label>
+</ListView>

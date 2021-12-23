@@ -1,0 +1,117 @@
+<template>
+  <template if:true={showtoast}>
+    <c-slds-toast
+      onclose={handleCloseToast}
+      variant={toast.variant}
+      title={toast.title}
+      message={toast.message}
+    ></c-slds-toast>
+  </template>
+  <template if:true={showForm}>
+    <lightning-card title="Manual Payment Form" if:true={recordId}>
+      <lightning-button
+        variant="brand"
+        label="Submit"
+        slot="actions"
+        onclick={handleSubmit}
+      ></lightning-button>
+      <lightning-button
+        variant="brand-outline"
+        label="Back to Record"
+        slot="actions"
+        onclick={handleBack}
+      ></lightning-button>
+      <div class="slds-var-p-horizontal_small">
+        <div class="slds-box slds-theme_shade slds-var-m-vertical_small">
+          <p><strong>Information</strong></p>
+        </div>
+        <lightning-record-edit-form
+          onsuccess={handleSuccess}
+          object-api-name="Payment__c"
+        >
+          <lightning-messages> </lightning-messages>
+          <div class="slds-grid">
+            <div class="slds-col slds-var-p-horizontal_medium">
+              <lightning-input-field
+                field-name="Name"
+                value={defaultPaymentName}
+                data-name="required" required
+              >
+              </lightning-input-field>
+              <lightning-input-field field-name="Transaction_Type__c">
+              </lightning-input-field>
+              <lightning-input-field field-name="Billing_Name__c" data-name="required" required>
+              </lightning-input-field>
+              <lightning-input-field field-name="Payment_Type__c">
+              </lightning-input-field>
+              <lightning-input-field field-name="Amount__c" value={netDue} data-name="required" required>
+              </lightning-input-field>
+              <lightning-input-field field-name="Status__c" data-name="required" required>
+              </lightning-input-field>
+              <lightning-input-field field-name="Transaction_Id__c">
+              </lightning-input-field>
+              <lightning-input-field field-name="Transaction_Fee__c">
+              </lightning-input-field>
+              <lightning-input-field field-name="Deposit_Date__c">
+              </lightning-input-field>
+              <lightning-input-field
+                field-name="Sales_Order__c"
+                value={recordId}
+              >
+              </lightning-input-field>
+              <lightning-input-field field-name="Intacct_Sync_Complete__c">
+              </lightning-input-field>
+            </div>
+            <div class="slds-col slds-var-p-horizontal_medium">
+              <lightning-input-field field-name="Account__c" value={accountId}>
+              </lightning-input-field>
+              <lightning-input-field field-name="Contact__c" value={contactId}>
+              </lightning-input-field>
+              <lightning-input-field field-name="Check_Number__c">
+              </lightning-input-field>
+              <lightning-input-field field-name="Date__c">
+              </lightning-input-field>
+              <lightning-input-field field-name="Payment_Method__c">
+              </lightning-input-field>
+              <lightning-input-field
+                field-name="Authorization_Id__c"
+              ></lightning-input-field>
+            </div>
+          </div>
+          <div class="slds-box slds-theme_shade slds-var-m-vertical_small">
+            <p><strong>Additional Information</strong></p>
+          </div>
+          <div class="slds-grid">
+            <div class="slds-col slds-var-p-horizontal_medium">
+              <lightning-input-field field-name="Payment_Processor__c">
+              </lightning-input-field>
+              <lightning-input-field field-name="Memo__c">
+              </lightning-input-field>
+            </div>
+            <div class="slds-col slds-var-p-horizontal_medium"></div>
+          </div>
+        </lightning-record-edit-form>
+      </div>
+      <div slot="footer">
+        <lightning-button
+        variant="brand"
+        label="Submit"
+        onclick={handleSubmit}
+      ></lightning-button>
+      <lightning-button
+        variant="brand-outline"
+        label="Back to Record"
+        onclick={handleBack}
+      ></lightning-button>
+      </div>
+    </lightning-card>
+  </template>
+  <template if:false={showForm}>
+    <div>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="large"
+      ></lightning-spinner>
+    </div>
+  </template>
+</template>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <tabs>standard-Chatter</tabs>
+    <tabs>standard-UserProfile</tabs>
+    <tabs>standard-OtherUserProfile</tabs>
+    <tabs>standard-CollaborationGroup</tabs>
+    <tabs>standard-File</tabs>
+    <tabs>Fulfillment__c</tabs>
+    <tabs>forcebrain__EventParticipant__c</tabs>
+    <tabs>Media_Partner__c</tabs>
+    <tabs>Testimonial__c</tabs>
+    <tabs>Special_Order_Form__c</tabs>
+    <tabs>Product_Delivery_Summary__c</tabs>
+    <tabs>Essential_Living_Issue__c</tabs>
+    <tabs>Essential_Living_Publication__c</tabs>
+    <tabs>Client_Experience__c</tabs>
+</CustomApplication>

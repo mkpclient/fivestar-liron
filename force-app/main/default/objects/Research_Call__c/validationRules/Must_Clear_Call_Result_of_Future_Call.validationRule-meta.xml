@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Must_Clear_Call_Result_of_Future_Call</fullName>
+    <active>false</active>
+    <description>You must clear the Call Result of this future call or change the Due Date to today.</description>
+    <errorConditionFormula>AND( NOT(ISPICKVAL( Call_Result__c , &quot;&quot;)), Due_Date__c &gt;TODAY())</errorConditionFormula>
+    <errorMessage>You must clear the Call Result of this future call or change the Due Date to today.</errorMessage>
+</ValidationRule>

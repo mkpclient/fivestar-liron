@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSAddress2__c</fullName>
+    <description>Address 2 for gift subscription</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Address 2 for gift subscription</inlineHelpText>
+    <label>GSAddress2</label>
+    <length>155</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

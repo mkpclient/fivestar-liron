@@ -1,0 +1,22 @@
+<apex:page standardController="SalesOrder__c" sidebar="false">
+    <apex:includeLightning />    
+    <div id="LightningComponentid" />   
+<!-- the Id of div tag which will be used to render your LWC component  -->
+    <script>
+        $Lightning.use("c:manualPaymentAuraApp", function() {
+            $Lightning.createComponent("c:manualPaymentForm",
+            { 
+                recordId : '{!$CurrentPage.parameters.id}',
+                soName : "{!SalesOrder__c.Name}",
+                accountId: "{!SalesOrder__c.Account__c}",
+                contactId: "{!SalesOrder__c.ContactBilling__c}",
+                netDue: "{!SalesOrder__c.Net_Due__c}",
+                soStatus: "{!SalesOrder__c.Status_Picklist__c}",
+            },
+            "LightningComponentid", // the Id of div tag where your component will be rendered
+            function(cmp) {
+                console.log('Calling the LWC Component');
+            });
+        });
+    </script>
+</apex:page>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LockLineDescription__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Prevents Line Description to be editable in Quote and Order configurator page. Does not lock the Line Description at the record level.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Prevents Line Description to be editable in Quote and Order configurator page. Does not lock the Line Description at the record level</inlineHelpText>
+    <label>Lock Line Description</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_Compensation_Amount__c</fullName>
+    <description>Estimated amount of $ spent on compensation for incorrect product</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Estimated Amount to Compensate Client</inlineHelpText>
+    <label>Estimated Compensation Amount</label>
+    <precision>8</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

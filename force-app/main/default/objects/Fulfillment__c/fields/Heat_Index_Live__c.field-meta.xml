@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Heat_Index_Live__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked by webapp, action added via patch by Lee, on the go live date of the market, used to fire auto email</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Should be checked automatically on the go live date for listings</inlineHelpText>
+    <label>Heat Index Live</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

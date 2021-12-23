@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Package_ContainerAdditional_Product_Info__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Package ContainerAdditional Product Info</label>
+    <referenceTo>kugo2p__AdditionalProductDetail__c</referenceTo>
+    <relationshipLabel>Package Members</relationshipLabel>
+    <relationshipName>Package_Members</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

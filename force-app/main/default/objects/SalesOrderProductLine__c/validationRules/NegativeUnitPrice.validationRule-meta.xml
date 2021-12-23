@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NegativeUnitPrice</fullName>
+    <active>false</active>
+    <description>Not Active</description>
+    <errorConditionFormula>AND(SalesPrice__c &lt; 0, 1=2)</errorConditionFormula>
+    <errorDisplayField>SalesPrice__c</errorDisplayField>
+    <errorMessage>Unit Price Cannot Be Less Than $0</errorMessage>
+</ValidationRule>

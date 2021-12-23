@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RHB_Survey_Time_Frame__c</fullName>
+    <description>Time period during which recent homebuyers were surveyed.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Time period during which recent homebuyers were surveyed.</inlineHelpText>
+    <label>RHB Survey Time Frame</label>
+    <length>50</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

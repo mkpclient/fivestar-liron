@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <description>Lookup to the Account Name, which is required. 
+
+To change the required Account name, please update the Additional Account Info field on this Order. If the field is not visible, please contact your Administrator. For Released or Paid Orders, please also update the Invoice and Payment records.</description>
+    <externalId>false</externalId>
+    <label>Account Name</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipName>Sales_Orders</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

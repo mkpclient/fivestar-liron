@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Updated_Finance_Discounts__c</fullName>
+    <externalId>false</externalId>
+    <label>Updated Finance Discounts</label>
+    <summarizedField>SalesOrderAdditionalChargeCredit__c.SalesPrice__c</summarizedField>
+    <summaryFilterItems>
+        <field>SalesOrderAdditionalChargeCredit__c.Quantity__c</field>
+        <operation>lessThan</operation>
+        <value>0</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>SalesOrderAdditionalChargeCredit__c.Id</field>
+        <operation>equals</operation>
+        <value>a0vd0000007weTL</value>
+    </summaryFilterItems>
+    <summaryForeignKey>SalesOrderAdditionalChargeCredit__c.SalesOrder__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

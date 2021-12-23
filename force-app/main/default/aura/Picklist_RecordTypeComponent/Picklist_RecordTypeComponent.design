@@ -1,0 +1,7 @@
+<design:component>
+    <design:attribute name="objectApiName" label="Object Api Name"/>
+    <design:attribute name="fieldApiName" label="Picklist Api Name"/>
+    <design:attribute name="selectedRecordTypeId" label="Selected RecordType Id"/>
+    <design:attribute name="selectedpicklistValue" label="Selected Picklist value"/>
+    <design:attribute name='picklistLabel' label='Field Label'/>
+</design:component>

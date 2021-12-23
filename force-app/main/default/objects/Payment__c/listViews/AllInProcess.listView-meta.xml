@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllInProcess</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Date__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Transaction_Type__c</columns>
+    <columns>Payment_Type__c</columns>
+    <columns>Check_Number__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Payment_Type__c</field>
+        <operation>contains</operation>
+        <value>Check</value>
+    </filters>
+    <label>Checks</label>
+</ListView>

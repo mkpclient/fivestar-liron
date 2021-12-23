@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Number__c</fullName>
+    <description>Complaint Number</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Given to the customer as a reference number</inlineHelpText>
+    <label>Complaint Number</label>
+    <trackTrending>false</trackTrending>
+    <type>AutoNumber</type>
+</CustomField>

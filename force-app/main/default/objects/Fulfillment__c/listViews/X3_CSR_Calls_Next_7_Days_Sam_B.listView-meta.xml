@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X3_CSR_Calls_Next_7_Days_Sam_B</fullName>
+    <booleanFilter>1 AND 6 AND (2 OR (3 AND 4) OR (3 AND 5))</booleanFilter>
+    <columns>Status__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Last_Contact__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>NAME</columns>
+    <columns>Phone__c</columns>
+    <columns>Mobile__c</columns>
+    <columns>Email__c</columns>
+    <columns>Web_Account_URL__c</columns>
+    <columns>Market_Final_Upload__c</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>Market__c</columns>
+    <columns>Upload_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Client Success</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>New</value>
+    </filters>
+    <filters>
+        <field>Next_Action_Date__c</field>
+        <operation>equals</operation>
+        <value>NEXT_N_DAYS:7</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>Request</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>Needed,Open</value>
+    </filters>
+    <filters>
+        <field>Fulfillment_Owner__c</field>
+        <operation>contains</operation>
+        <value>Samantha B</value>
+    </filters>
+    <label>__3. CSR Calls Next 7 Days - Sam B</label>
+    <sharedTo>
+        <group>Allen_Wardell</group>
+        <group>Jonathan_Wesser</group>
+        <group>Samantha_Burton</group>
+        <group>Teresa_Hemingson</group>
+    </sharedTo>
+</ListView>

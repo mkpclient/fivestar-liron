@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>What type of complaint is it?</inlineHelpText>
+    <label>Complaint Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cancellation</fullName>
+                <default>false</default>
+                <label>Cancellation</label>
+            </value>
+            <value>
+                <fullName>Billing</fullName>
+                <default>false</default>
+                <label>Billing</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Product quality</fullName>
+                <default>false</default>
+                <label>Product quality</label>
+            </value>
+            <value>
+                <fullName>Poor communication</fullName>
+                <default>false</default>
+                <label>Poor communication</label>
+            </value>
+            <value>
+                <fullName>Product Feedback</fullName>
+                <default>false</default>
+                <label>Product Feedback</label>
+            </value>
+            <value>
+                <fullName>Product Delivery</fullName>
+                <default>false</default>
+                <label>Product Delivery</label>
+            </value>
+            <value>
+                <fullName>Shipping</fullName>
+                <default>false</default>
+                <label>Shipping</label>
+            </value>
+            <value>
+                <fullName>Unmet expectations</fullName>
+                <default>false</default>
+                <label>Unmet expectations</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

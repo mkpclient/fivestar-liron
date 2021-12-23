@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfillment_Custom_Back_Cover_Inside__c</fullName>
+    <description>As seen on fulfillment</description>
+    <externalId>false</externalId>
+    <formula>Fulfillment__r.Custom_Back_Cover_Inside_Ad__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>As seen on fulfillment</inlineHelpText>
+    <label>Fulfillment Custom Back Cover (Inside)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

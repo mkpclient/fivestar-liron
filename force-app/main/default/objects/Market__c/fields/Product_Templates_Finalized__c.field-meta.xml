@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Templates_Finalized__c</fullName>
+    <description>Date that market specific fulfillment product templates are created and finalized for a market. To be filled in ONLY after all are complete and finalized.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date that market specific fulfillment product templates are created and finalized for a market. To be filled in ONLY after all are complete and finalized.</inlineHelpText>
+    <label>Product Templates Finalized</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

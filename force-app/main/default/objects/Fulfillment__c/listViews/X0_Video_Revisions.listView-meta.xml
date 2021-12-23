@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X0_Video_Revisions</fullName>
+    <columns>NAME</columns>
+    <columns>Fulfillment_Owner_Fullname__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Base_Product__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Market_Project__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Award_Year__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>Video</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>Product Created,In Revision,In Revision - Urgent,Ready for AE,Ready to Publi,Pr</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>equals</operation>
+        <value>Collect Revisions,Make Revisions</value>
+    </filters>
+    <label>__0. Video Revisions</label>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>CSRs</group>
+        <group>Fulfillment_Team</group>
+    </sharedTo>
+</ListView>

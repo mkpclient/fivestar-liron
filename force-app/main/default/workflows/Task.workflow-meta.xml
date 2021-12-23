@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>silent_post_error</fullName>
+        <description>silent post error</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>greg.thatcher@fivestarprofessional.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Helpdesk/silent_post_error</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Shorten_Comments</fullName>
+        <description>Shorten the comments to the first 255 characters</description>
+        <field>Comments__c</field>
+        <formula>LEFT(Description, 255)</formula>
+        <name>Shorten Comments</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Custom_Comments</fullName>
+        <description>We will shorten the comments to just 255 characters if it exceeds.</description>
+        <field>Description</field>
+        <formula>LEFT(Description , 255)</formula>
+        <name>Update Custom Comments</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Short Description Comment</fullName>
+        <actions>
+            <name>Shorten_Comments</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Task.Subject</field>
+            <operation>equals</operation>
+            <value>Call</value>
+        </criteriaItems>
+        <description>When a task is created of type CALL and the comments are filled in, we create a short description in the custom comments field</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Customer_Requests_Contact</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>0</dueDateOffset>
+        <notifyAssignee>true</notifyAssignee>
+        <priority>10</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Customer Requests Contact</subject>
+    </tasks>
+</Workflow>

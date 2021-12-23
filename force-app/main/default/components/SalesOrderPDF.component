@@ -1,0 +1,742 @@
+<apex:component access="global" Controller="SalesOrderPDFExtension" allowDml="true" id="orderCompId">
+  <apex:attribute name="recId" type="Id" assignTo="{!orderId}" description="Id of the Order" access="global" />
+  <apex:attribute name="renderAs" type="string" description="The format this component will be rendered to." access="global"
+  />
+  <apex:attribute name="isOnlineOrder" type="boolean" default="false" description="Indicates if this should show the online order format"
+    access="global" />
+
+  <apex:stylesheet value="{!$Resource.CustomPdfCss}" />
+
+  <!-- Header -->
+  <table cellpadding="3" cellspacing="0" class="noborder">
+    <tr>
+      <td>
+        <apex:outputPanel rendered="{!IF(LogoUrl!=null && NOT(isOnlineOrder),true,false)}">
+          <img src="{!LogoUrl}" alt="{!$Organization.Name}" />
+        </apex:outputPanel>
+        <h1>
+          <apex:outputText rendered="{!isOnlineOrder}" value="{!Order.Account__r.Name}" />
+        </h1>
+      </td>
+      <td>
+        <apex:outputPanel rendered="{!NOT(isOnlineOrder)}">
+          <apex:outputText value="{!$Organization.Name}" />
+          <br/>
+          <apex:outputText value="{!$Organization.Street}" />
+          <br/>
+          <apex:outputText value="{!$Organization.City}" />,&nbsp;
+          <apex:outputText value="{!$Organization.State}" />&nbsp;
+          <apex:outputText value="{!$Organization.PostalCode}" />
+          <br/>
+          <apex:outputText value="{!$Organization.Country}" />
+          <br/>
+          <apex:outputText rendered="{!IF($Organization.Phone!='',true,false)}" escape="false">Phone: </apex:outputText>&nbsp;
+          <apex:outputText value="{!$Organization.Phone}" />
+          <br/>
+          <apex:outputText rendered="{!IF($Organization.Fax!='',true,false)}" escape="false">Fax: </apex:outputText>&nbsp;
+          <apex:outputText value="{!$Organization.Fax}" />
+          <br/>
+        </apex:outputPanel>
+      </td>
+      <td width="34%">
+        <div align="right">
+          <apex:outputPanel rendered="{!NOT(isOnlineOrder)}">
+            <b>ORDER for&nbsp;
+              <apex:outputText value="{!Order.Account__r.Name}" />
+            </b>
+            <br/>
+          </apex:outputPanel>
+          Order:&nbsp;
+          <apex:outputText value="{!Order.Name}" />
+          <br/> Date:&nbsp;
+          <apex:outputText value="{0,date,M/d/yyyy}">
+            <apex:param value="{!Order.OrderDate__c}" /></apex:outputText>
+          <br/>
+          <apex:outputPanel rendered="{!NOT(ISBLANK(order.owner.Name))}">Prepared by:&nbsp;
+            <apex:outputText value="{!order.owner.Name}" /></apex:outputPanel>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <br/>
+
+  <apex:outputPanel rendered="{!isOnlineOrder}">
+    <br/>
+    <h0>
+      <font color="#000080">Order</font>
+    </h0>
+  </apex:outputPanel>
+  <apex:outputPanel rendered="{!NOT(isOnlineOrder)}">
+    <h0>Order</h0>
+  </apex:outputPanel>
+  <!-- <apex:outputPanel rendered="{!isOnlineOrder}"><br/><br/></apex:outputPanel> -->
+  <div class="hr">
+    <hr />
+  </div>
+  <apex:outputPanel rendered="{!isOnlineOrder}">
+    <br/>
+  </apex:outputPanel>
+  <h2>Address Information</h2>
+  <!-- <apex:outputPanel rendered="{!isOnlineOrder}"><br/><br/></apex:outputPanel> -->
+  <table cellpadding="3" cellspacing="0" class="noborder">
+    <tr>
+      <td width="50%">
+        <apex:outputPanel >
+          <b>Bill To:</b>
+          <br/>
+          <apex:outputPanel rendered="{!Order.BillToName__c != null}">
+            <apex:outputField value="{!Order.BillToName__c}" />
+            <br/>
+          </apex:outputPanel>
+          <apex:outputField value="{!Order.BillToStreetLong__c}" />
+          <br/>
+          <apex:outputText value="{!Order.BillToCity__c}" />,&nbsp;
+          <apex:outputText value="{!Order.BillToStateProvince__c}" />&nbsp;
+          <apex:outputText value="{!Order.BillToZipPostalCode__c}" />
+          <br/>
+          <apex:outputText value="{!Order.BillToCountry__c}" />
+        </apex:outputPanel>
+      </td>
+      <td width="50%">
+        <apex:outputPanel rendered="{!displayShipToInfo}">
+          <b>Ship To:</b>
+          <br/>
+          <apex:outputPanel rendered="{!Order.ShipToName__c != null}">
+            <apex:outputField value="{!Order.ShipToName__c}" />
+            <br/>
+          </apex:outputPanel>
+          <apex:outputField value="{!Order.ShipToStreetLong__c}" />
+          <br/>
+          <apex:outputText value="{!Order.ShipToCity__c}" />,&nbsp;
+          <apex:outputText value="{!Order.ShipToStateProvince__c}" />&nbsp;
+          <apex:outputText value="{!Order.ShipToZipPostalCode__c}" />
+          <br/>
+          <apex:outputText value="{!Order.ShipToCountry__c}" />
+        </apex:outputPanel>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        <b>Account Name:</b>&nbsp;
+        <apex:outputText value="{!Order.Account__r.Name}" />
+        <br/>
+        <b>Billing Contact:</b>&nbsp;
+        <apex:outputText value="{!Order.ContactBilling__r.Name}" />
+        <br/>
+        <apex:outputText rendered="{!IF(Order.ContactBilling__r.Email!='',true,false)}" escape="false">
+          <b>Billing Email:</b>&nbsp;
+          <apex:outputText value="{!Order.ContactBilling__r.Email}" />
+          <br/>
+        </apex:outputText>
+      </td>
+      <td>
+        <br/>
+        <apex:outputText rendered="{!IF(Order.ContactBilling__r.Phone!='',true,false)}" escape="false">
+          <b>Billing Phone:</b>&nbsp;
+          <apex:outputText value="{!Order.ContactBilling__r.Phone}" />
+          <br/>
+        </apex:outputText>
+        <apex:outputText rendered="{!IF(Order.ContactBilling__r.Fax!='',true,false)}" escape="false">
+          <b>Billing Fax:</b>&nbsp;
+          <apex:outputText value="{!Order.ContactBilling__r.Fax}" />
+          <br/>
+        </apex:outputText>
+      </td>
+    </tr>
+  </table>
+
+  <!-- <apex:outputPanel rendered="{!NOT(isOnlineOrder) || Order.PaymentMethod__c=='Invoice'}">
+    <div class="hr">
+      <hr />
+    </div>
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <h2>Terms and Conditions</h2>
+    <table cellpadding="3" cellspacing="0" class="noborder">
+      <tr>
+        <td width="50%">
+          <apex:outputText rendered="{!IF(Order.CustomerPONumber__c!='',true,false)}" escape="false">
+            <b>PO Number:</b>&nbsp;
+            <apex:outputText value="{!Order.CustomerPONumber__c}" />
+            <br/>
+          </apex:outputText>
+          <b>Payment Method:</b>&nbsp;
+          <apex:outputText value="{!Order.PaymentMethod__c}" />
+          <br/>
+          <b>Payment Terms:</b>&nbsp;
+          <apex:outputText value="{!Order.PaymentTerms__c}" />
+        </td>
+        <td>
+          <b>Delivery Terms:</b>&nbsp;
+          <apex:outputText value="{!Order.DeliveryTerms__c}" />
+          <br/>
+          <b>Billing Method:</b>&nbsp;
+          <apex:outputText value="{!Order.BillingMethod__c}" />
+          <br/>
+        </td>
+      </tr>
+    </table>
+  </apex:outputPanel> -->
+
+  <apex:outputPanel rendered="{!AND(NOT(isOnlineOrder), Order.BalanceDueAmount__c!=0.00, OR(Order.AddOnlinePaymentDetailsinPDF__c==true, settings.RemitToName!=''))}">
+    <div class="hr">
+      <hr />
+    </div>
+    <h2>Remittance Information</h2>
+    <table cellpadding="3" cellspacing="0" class="noborder">
+      <tr valign="top">
+        <td width="50%" style="display:{!IF(settings.RemitToName!='','Block','none')}">
+          <b>Remit To:</b>
+          <br/>
+          <apex:outputText value="{!settings.RemitToName}" />
+          <br/>
+          <apex:outputText value="{!settings.RemitToStreet}" />
+          <br/>
+          <apex:outputText value="{!settings.RemitToCity}" />,&nbsp;
+          <apex:outputText value="{!settings.RemitToStateProvince}" />&nbsp;
+          <apex:outputText value="{!settings.RemitToZipPostalCode}" />
+          <br/>
+          <apex:outputText value="{!settings.RemitToCountry}" />
+          <br/>
+        </td>
+        <td width="50%">
+          <apex:outputPanel rendered="{!renderPaymentButton}">
+            <b>Click To:</b>
+            <br/>
+            <a href="{!PaymentURL}">
+              <br/>
+              <img src="{!settings.OnlinePaymentLogoinPDFSourceURL}" alt="Payment Logo" border="0" />
+            </a>
+          </apex:outputPanel>
+        </td>
+      </tr>
+    </table>
+
+    <apex:outputPanel rendered="{!IF(settings.BankName!='',true,false)}">
+      <table>
+        <tr>
+          <td>
+            <br/>
+            <b>Wire Transfer To:</b>
+            <br/>
+            <b>Bank Name:</b>&nbsp;
+            <apex:outputText value="{!settings.BankName}" />
+            <br/>
+            <b>Account Name:</b>&nbsp;
+            <apex:outputText value="{!settings.ACName}" />
+            <br/>
+            <b>A/C Number:</b>&nbsp;
+            <apex:outputText value="{!settings.ACNumber}" />
+            <br/>
+            <b>ABA Number:</b>&nbsp;
+            <apex:outputText value="{!settings.ABANumber}" />
+            <br/>
+            <apex:outputText rendered="{!if(settings.SWIFT_Code!=null, true, false)}">
+              <b>SWIFT Code:</b>
+            </apex:outputText>&nbsp;
+            <apex:outputText value="{!settings.SWIFT_Code}" />
+            <br/>
+          </td>
+        </tr>
+      </table>
+    </apex:outputPanel>
+
+    <p>Please reference order number&nbsp;
+      <apex:outputText value="{!Order.Name}" />&nbsp;with your payment.</p>
+  </apex:outputPanel>
+
+
+  <div class="hr">
+    <hr />
+  </div>
+  <apex:outputPanel rendered="{!IF(ProductLineCount==0, false, true)}">
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <h2 style="display:block">
+      <font color="#999999">Product Lines</font>
+    </h2>
+    <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!ProductLines}" var="line">
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Product</apex:facet>
+        <apex:outputText value="{!line.Product__r.Name}" />
+      </apex:column>
+      <apex:column headerClass="colheader" rendered="{!productsHaveDescriptions}">
+        <apex:facet name="header">Description</apex:facet>
+        <apex:outputText value="{!line.LineDescription__c}" />
+      </apex:column>
+      <!--
+	  <apex:column headerClass="colheader" rendered="{!IF(Order.ProductTaxAmount__c > 0 || Order.ProductVATAmount__c > 0,true,false)}">
+        <apex:facet name="header">Tax</apex:facet>
+        <apex:outputText value="{!line.TaxVAT__c}" />
+      </apex:column>
+-->
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Date
+          <br/>Available</apex:facet>
+        <apex:outputField value="{!line.DateAvailableToPromise__c}" />
+      </apex:column>
+      <apex:column headerClass="colheader alignRight" style="text-align: right">
+        <apex:facet name="header">Quantity</apex:facet>
+        <apex:outputText value="{0, number, ###,##0.00}">
+          <apex:param value="{!line.Quantity__c}" />
+        </apex:outputText>
+        &nbsp;
+        <!--        <apex:outputField value="{!line.UnitofMeasure__c}" /> -->
+      </apex:column>
+      <apex:column headerClass="colheader alignRight" style="text-align: right" rendered="{!settings.ListPriceColumnonPDF==true}">
+        <apex:facet name="header">List Price</apex:facet>
+        <apex:outputField value="{!line.ListPrice__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!line.ListPrice__c}" />
+        </apex:outputText>
+      </apex:column>
+      <apex:column headerClass="colheader alignRight" style="text-align: right">
+        <apex:facet name="header">Sales Price</apex:facet>
+        <apex:outputField value="{!line.DiscountSalesPrice__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!line.DiscountSalesPrice__c}" />
+        </apex:outputText>
+      </apex:column>
+      <apex:column headerClass="colheader alignRight" style="text-align: right">
+        <apex:facet name="header">Amount</apex:facet>
+        <apex:outputField value="{!line.TotalAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!line.TotalAmount__c}" />
+        </apex:outputText>
+      </apex:column>
+    </apex:dataTable>
+  </apex:outputPanel>
+
+  <apex:outputPanel rendered="{!IF(ChargeCreditLineCount==0, false, true)}">
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <h2 style="display:block">
+      <font color="#999999">Additional Charges/Credits</font>
+    </h2>
+    <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!ACCLines}" var="ChargeCreditLine">
+      <!-- 
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Additional Charge/Credit</apex:facet>
+        <apex:outputText value="{!ChargeCreditLine.AdditionalChargeCredit__r.Name}" />
+      </apex:column> 
+      -->
+      <apex:column headerClass="colheader" rendered="{!accsHaveDescriptions}">
+        <apex:facet name="header">Description</apex:facet>
+        <apex:outputText value="{!ChargeCreditLine.Additional_Charge_Credit__r.Name}" />
+      </apex:column>
+      <!--
+        <apex:column headerClass="colheader" rendered="{!IF(Order.AdditionalChargeCreditTaxAmount__c > 0 || Order.AdditionalChargeCreditVATAmount__c > 0,true,false)}">
+        <apex:facet name="header">Tax</apex:facet>
+        <apex:outputText>{!IF(ChargeCreditLine.TaxableExcise__c==true||ChargeCreditLine.TaxableUsage__c==true||ChargeCreditLine.TaxableSales__c==true,'Yes','No')}</apex:outputText>
+      </apex:column>
+-->
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Date</apex:facet>
+        <apex:outputField value="{!ChargeCreditLine.Date__c}" />
+      </apex:column>
+      <apex:column headerClass="colheader alignRight" style="text-align: right">
+        <apex:facet name="header">Quantity</apex:facet>
+        <apex:outputText value="{0, number, ###,##0.00}">
+          <apex:param value="{!ChargeCreditLine.Quantity__c}" />
+        </apex:outputText>
+      </apex:column>
+      <apex:column headerClass="colheader alignRight" style="text-align: right">
+        <apex:facet name="header">Unit Price</apex:facet>
+        <apex:outputField value="{!ChargeCreditLine.SalesPrice__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!ChargeCreditLine.SalesPrice__c}" />
+        </apex:outputText>
+      </apex:column>
+      <apex:column headerClass="colheader alignRight" style="text-align: right">
+        <apex:facet name="header">Amount</apex:facet>
+        <apex:outputField value="{!ChargeCreditLine.AdditionalChargeCreditAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!ChargeCreditLine.AdditionalChargeCreditAmount__c}" />
+        </apex:outputText>
+      </apex:column>
+    </apex:dataTable>
+  </apex:outputPanel>
+
+  <table border="0" cellpadding="2" cellspacing="0" class="noborder totals">
+    <tr>
+      <td class="productFooter">{!IF(ProductLineCount>0, 'Products', '')} Total:</td>
+      <td class="productFooter">
+        <apex:outputField value="{!Order.TotalAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!Order.TotalAmount__c}" />
+        </apex:outputText>
+      </td>
+    </tr>
+    <!--
+      <tr style="{!IF(ChargeCreditLineCount==0, 'display:none', '')}">
+      <td class="productFooter">Additional Charges/Credits Total:</td>
+      <td class="productFooter">
+        <apex:outputField value="{!Order.AdditionalChargeCreditAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+          <apex:param value="{!Order.AdditionalChargeCreditAmount__c}" />
+        </apex:outputText>
+      </td>
+    </tr>
+-->
+    <tr style="{!IF(Order.TotalTaxAmount__c == 0, 'display: none','')}">
+      <td class="productFooter">Tax Amount:</td>
+      <td class="productFooter">
+        <apex:outputField value="{!Order.TotalTaxAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!Order.TotalTaxAmount__c}" />
+        </apex:outputText>
+      </td>
+    </tr>
+    <tr style="{!IF(Order.TotalVATAmount__c == 0, 'display: none','')}">
+      <td class="productFooter">VAT/GST Amount:</td>
+      <td class="productFooter">
+        <apex:outputField value="{!Order.TotalVATAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!Order.TotalVATAmount__c}" />
+        </apex:outputText>
+      </td>
+    </tr>
+    <tr>
+      <td class="productFooter">Net Amount:</td>
+      <td class="productFooter">
+        <apex:outputField value="{!Order.NetAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!Order.NetAmount__c}" />
+        </apex:outputText>
+      </td>
+    </tr>
+    <tr>
+      <td class="productFooter">Total Applied Payments:</td>
+      <td class="productFooter">
+        <apex:outputField value="{!Order.CompletedPayments__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!Order.CompletedPayments__c}" />
+        </apex:outputText>
+      </td>
+    </tr>
+    <tr>
+      <td class="productFooter">
+        <b>Balance Due Amount:</b>
+      </td>
+      <td class="productFooter">
+        <b>
+          <apex:outputField value="{!Order.BalanceDueAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+          <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+            <apex:param value="{!Order.BalanceDueAmount__c}" />
+          </apex:outputText>
+        </b>
+      </td>
+    </tr>
+  </table>
+
+  <br/>
+  <br/>
+  <p class="caption">
+    <br/>+ The unit price shown above has been rounded to two decimal places for display purposes.</p>
+
+  <apex:outputPanel rendered="{!PaymentSchedules.size > 0}">
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <h2 style="display:block"><font color ="#999999">Payment Schedule</font></h2>
+    <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!PaymentSchedules}" var="ps">
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Billing Name</apex:facet>
+        <apex:outputField value="{!ps.Billing_Name__c}" />
+      </apex:column>  
+    <apex:column headerClass="colheader">
+        <apex:facet name="header">Due Date</apex:facet>
+        <apex:outputField value="{!ps.Scheduled_Payment_Date__c}" />
+      </apex:column>
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Card Type</apex:facet>
+        <apex:outputField value="{!ps.CardType__c}" />
+      </apex:column>
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Last 4</apex:facet>
+        <apex:outputField value="{!ps.Last_Four_Digits__c}" />
+      </apex:column>
+      <apex:column headerClass="colheader alignRight" style="text-align: right">
+        <apex:facet name="header">Amount</apex:facet>
+        <apex:outputField value="{!ps.Amount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+        <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+          <apex:param value="{!ps.Amount__c}" />
+        </apex:outputText>
+      </apex:column>
+    </apex:dataTable>
+  </apex:outputPanel>
+  <br />
+
+  <!--  Line Recipients -->
+  <apex:outputPanel layout="block" rendered="{!LineRecipients.size>0}" style="page-break-inside: avoid;">
+    <br/>
+    <div class="hr">
+      <hr />
+    </div>
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <h2>Line Recipients</h2>
+    <table cellpadding="2" cellspacing="0" class="noborder">
+      <thead>
+        <tr>
+          <th>
+            <b>Order Line</b>
+          </th>
+          <th>
+            <b>Recipient Name</b>
+          </th>
+          <th class="alignCenter">
+            <b>Primary</b>
+          </th>
+        </tr>
+      </thead>
+      <apex:repeat value="{!LineRecipients}" var="lr" id="repeatBlock1">
+        <tr>
+          <td valign="top">
+            <!-- <apex:outputField value="{!if(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Name, lr.OrderServiceLine__r.Name)}" /> -->
+            <apex:outputField value="{!lr.OrderProductLine__r.Product__r.Name}" rendered="{!lr.OrderProductLine__c != null}" />
+          </td>
+          <td valign="top">
+            <apex:outputField value="{!lr.Recipient__r.Name}" />
+          </td>
+          <td valign="top" align="center" class="alignCenter">
+            <apex:outputField value="{!lr.Primary__c}" />
+          </td>
+        </tr>
+      </apex:repeat>
+    </table>
+  </apex:outputPanel>
+
+  <!-- adding payment information -->
+  <apex:outputPanel layout="block" rendered="{!Payments.size>0}" style="page-break-inside: avoid;">
+    <br/>
+    <div class="hr">
+      <hr />
+    </div>
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <h2>Payment Information</h2>
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+      <br/>
+    </apex:outputPanel>
+    <table cellpadding="2" cellspacing="0" class="noborder">
+      <apex:repeat value="{!Payments}" var="payment" id="repeatBlock">
+        <tr>
+          <td valign="top" width="100px">
+            <apex:outputField value="{!payment.Date__c}" id="DateValue" />
+          </td>
+          <td valign="top" width="150px">
+            <apex:outputField value="{!payment.Payment_Type__c}" id="TypeValue" />
+          </td>
+          <td valign="top">
+            <apex:outputField value="{!payment.Memo__c}" id="MemoValue" />
+          </td>
+          <td valign="top" align="right">
+            <apex:outputField value="{!payment.Amount__c}" rendered="{!(!isMultiCurrencyEnabled)}" id="AmountValue" />
+            <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+              <apex:param value="{!payment.Amount__c}" />
+            </apex:outputText>
+          </td>
+        </tr>
+      </apex:repeat>
+    </table>
+  </apex:outputPanel>
+
+  <apex:outputPanel rendered="{!Order.PrintSpecificTextandTerms__c==true}" id="splTextandTermsId">
+    <br/>
+    <div class="hr">
+      <hr />
+    </div>
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <h2>Specific Terms</h2>
+
+    <p>
+      <apex:outputField value="{!Order.SpecificTextandTerms__c}" />
+    </p>
+
+    <apex:outputPanel rendered="{!(Order.RecordStatus__c == 'Draft' || Order.RecordStatus__c == 'Sent') && (isOnlineOrder) && Order.PaymentStatus2__c != 'Paid'}">
+      <table cellpadding="2" cellspacing="0" class="noborder">
+        <tr>
+
+          <td width="90">
+            <apex:outputLabel for="initialBy">
+              <font color="#000080">
+                <h3>Please Initial</h3>
+              </font>
+            </apex:outputLabel>
+          </td>
+          <td align="left">
+            <input type="text" id="initialBy" value="{!initialedBy}" style="width: 50px;" onchange="setInitialByErrorText(this);" maxlength="4"
+            />
+          </td>
+          <td>
+            <apex:outputPanel id="initialByErrorBlock" style="vertical-align: top; color: red;">
+              <apex:outputPanel >
+                <b>
+                  <apex:outputText id="initialbyErrorText" value="* You must initial terms before proceeding." style="display:none;" />
+                </b>
+                <!-- rendered="{!showInitialByErrorBlock}" -->
+              </apex:outputPanel>
+            </apex:outputPanel>
+          </td>
+        </tr>
+      </table>
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!InitialedBy != ''}">
+      <!-- Order.RecordStatus__c == 'Approved' &&  -->
+      <!-- <br></br> style="font-size:10.0px;"-->
+      <table cellpadding="2" cellspacing="0" class="noborder">
+        <tr>
+
+          <td width="80">
+            <br></br>
+            <apex:outputText >
+              <b>Initialed By:&nbsp;</b>{!InitialedBy}</apex:outputText>
+          </td>
+        </tr>
+      </table>
+    </apex:outputPanel>
+
+    <script type="text/javascript">
+      function setInitialByErrorText(control) {
+
+        //objErrorText = document.getElementById("orderCompId:orderCompFormId:initialbyErrorText");
+        objErrorText = document.getElementById("orderCompId:initialbyErrorText");
+        if (objErrorText == null)   // get the online pdf id
+          //objErrorText = document.getElementById("onlineOrderPageId:SiteTemplate:onlineOrderCompId:orderCompId:orderCompFormId:initialbyErrorText");
+          objErrorText = document.getElementById("onlineOrderPageId:SiteTemplate:onlineOrderCompId:orderCompId:initialbyErrorText");
+
+        if (control.value.length > 0)
+          objErrorText.style.display = 'none';
+        else {
+          objErrorText.style.display = 'inline';
+        }
+      }
+    </script>
+
+  </apex:outputPanel>
+
+  <apex:outputPanel rendered="{!hasProductTextandTerms==true}">
+    <br/>
+    <div class="hr">
+      <hr />
+    </div>
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <h2>Additional Terms</h2>
+    <div style="font-size: 11px; font-weight: normal;">
+      <apex:variable value="{!0}" var="counter" />
+      <apex:repeat var="product" value="{!Products}">
+        <apex:variable value="{!counter + 1}" var="counter" />
+        <!--
+          <apex:outputPanel rendered="{!product.PrintProductTextandTerms__c == true}">
+          <apex:outputPanel rendered="{!isOnlineOrder}">
+            <br/>
+          </apex:outputPanel>
+          <b>
+            <apex:outputText value="{!product.Name}" /> </b>
+          <br/>
+          <apex:outputField value="{!product.ProductTextandTerms__c}" />
+          <br/>
+          <apex:outputPanel rendered="{!(NOT(isOnlineOrder))}">
+            <br/>
+          </apex:outputPanel>
+        </apex:outputPanel>
+-->
+      </apex:repeat>
+    </div>
+  </apex:outputPanel>
+
+  <apex:outputPanel rendered="{!settings.PrintCompanyTextandTerms && settings.CompanyTextandTerms != null}">
+    <apex:outputPanel rendered="{!isOnlineOrder}">
+      <br/>
+    </apex:outputPanel>
+    <div style="font-size: 11px; font-weight: normal;">
+      <apex:outputText escape="false" value="{!settings.CompanyTextandTerms}" />
+    </div>
+
+    <br/>
+    <div class="hr">
+      <hr />
+    </div>
+  </apex:outputPanel>
+
+  <!-- <apex:outputPanel rendered="{!settings.SignatureLinestoPDF==true && NOT(isOnlineOrder) && (Order.RecordStatus__c == 'Draft' || Order.RecordStatus__c == 'Sent')}">
+    <div style="width: 50%; page-break-inside: avoid;">
+      <table cellpadding="1" cellspacing="3" class="noborder">
+        <tr>
+          <td>
+            <h3>Customer:&nbsp;
+              <apex:outputText value="{!Order.Account__r.Name}" />
+            </h3>
+          </td>
+        </tr>
+        <tr>
+          <td class="form">Signature</td>
+        </tr>
+        <tr>
+          <td class="form">Name</td>
+        </tr>
+        <tr>
+          <td class="form">Title</td>
+        </tr>
+        <tr>
+          <td class="form">Date</td>
+        </tr>
+      </table>
+    </div>
+    <br/>
+    <br/>
+  </apex:outputPanel> -->
+
+  <apex:outputPanel layout="block" rendered="{!Order.RecordStatus__c != 'Draft' && Order.RecordStatus__c != 'Sent' && TermsAcceptedBy != '' && NOT(isOnlineOrder)}"
+    style="page-break-inside: avoid;">
+    <h2>Order Approval Information</h2>
+    <table cellpadding="2" cellspacing="0" class="noborder">
+      <tr style="display:{!IF(attachmentId != null,'','none')}">
+        <td>
+          <img src="{!URLFOR($Action.Attachment.Download, attachmentId)}" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <apex:outputText >
+            <b>Terms Accepted By:&nbsp;</b>{!TermsAcceptedBy}</apex:outputText>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <apex:outputText >
+            <b>On Date:&nbsp;</b>{!TermsAcceptedDate}</apex:outputText>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <apex:outputText >
+            <b>From IP Address:&nbsp;</b>{!TermsAcceptedFromIPAddress}</apex:outputText>
+        </td>
+      </tr>
+    </table>
+    <br />
+  </apex:outputPanel>
+
+  <apex:outputPanel rendered="{!NOT(isOnlineOrder)}">
+    <p class="footer">All rights reserved. Copyright&nbsp;
+      <apex:outputText value="{!$Organization.Name}" /> </p>
+  </apex:outputPanel>
+</apex:component>

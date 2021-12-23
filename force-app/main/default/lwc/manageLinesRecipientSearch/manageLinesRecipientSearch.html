@@ -1,0 +1,74 @@
+<template>
+  <template if:false={isReady}>
+    <lightning-spinner
+      alternative-text="Loading"
+      size="medium"
+    ></lightning-spinner>
+  </template>
+  <article class="slds-card slds-card_boundary" if:true={isReady}>
+    <div class="slds-card__header">
+      <h2 class="slds-card__header-title">
+        <span>Add Recipients</span>
+      </h2>
+    </div>
+    <div
+      class="slds-card__body slds-card__body_inner slds-scrollable_y"
+      style="height: 20rem"
+    >
+      <div class="slds-grid">
+        <lightning-input
+          name="filter-contact"
+          label="Filter Contact"
+          type="search"
+          class="slds-col slds-size_1-of-2"
+          placeholder="Search by Name or Account"
+          onchange={handleSearch}
+          value={searchTerm}
+        ></lightning-input>
+        <lightning-combobox
+          name="primary-recipient"
+          label="Primary Recipient"
+          value={selectedPrimary}
+          class="slds-col slds-size_1-of-2"
+          placeholder="Select Primary Recipient"
+          options={primaryOptions}
+          onchange={handlePrimarySelect}
+        >
+        </lightning-combobox>
+      </div>
+      <div class="slds-scrollable_y" style="height: 15rem" if:true={data}>
+        <lightning-datatable
+          key-field="value"
+          data={data}
+          data-id="datarow"
+          columns={columns}
+          enable-infinite-loading={enableInfiniteLoading}
+          load-more-offset={rowLimit}
+          onloadmore={handleLoadMore}
+          hide-checkbox-column
+          onrowaction={handleRowAction}
+          column-widths-mode="auto"
+        >
+        </lightning-datatable>
+      </div>
+      {loadMoreStatus}
+    </div>
+    <footer class="slds-card__footer">
+      <lightning-button
+        class="slds-var-m-top_small"
+        name="cancel"
+        label="Cancel"
+        onclick={handleCancel}
+      >
+      </lightning-button>
+      <lightning-button
+        class="slds-var-m-top_small"
+        variant="brand"
+        name="update"
+        label="Add Recipients"
+        onclick={handleSubmit}
+      >
+      </lightning-button>
+    </footer>
+  </article>
+</template>

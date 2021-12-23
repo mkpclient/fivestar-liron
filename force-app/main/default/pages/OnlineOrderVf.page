@@ -1,0 +1,519 @@
+<apex:page standardController="SalesOrder__c" extensions="SalesOrderPDFExtension" showHeader="false" sidebar="false" standardStylesheets="false"
+ cache="false" id="onlineOrderPageId">
+	<!--action="{!orderPDFExt.initOnlineOrder}"  -->
+
+	<style>
+		.wrapper {
+			position: relative;
+			width: 400px;
+			height: 200px;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		.signature-pad {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 400px;
+			height: 200px;
+			background-color: white;
+		}
+
+		.lds-ellipsis {
+			display: inline-block;
+			position: relative;
+			width: 80px;
+			height: 80px;
+		}
+
+		.lds-ellipsis div {
+			position: absolute;
+			top: 33px;
+			width: 13px;
+			height: 13px;
+			border-radius: 50%;
+			background: #fff;
+			animation-timing-function: cubic-bezier(0, 1, 1, 0);
+		}
+
+		.lds-ellipsis div:nth-child(1) {
+			left: 8px;
+			animation: lds-ellipsis1 0.6s infinite;
+		}
+
+		.lds-ellipsis div:nth-child(2) {
+			left: 8px;
+			animation: lds-ellipsis2 0.6s infinite;
+		}
+
+		.lds-ellipsis div:nth-child(3) {
+			left: 32px;
+			animation: lds-ellipsis2 0.6s infinite;
+		}
+
+		.lds-ellipsis div:nth-child(4) {
+			left: 56px;
+			animation: lds-ellipsis3 0.6s infinite;
+		}
+
+		@keyframes lds-ellipsis1 {
+			0% {
+				transform: scale(0);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		@keyframes lds-ellipsis3 {
+			0% {
+				transform: scale(1);
+			}
+			100% {
+				transform: scale(0);
+			}
+		}
+
+		@keyframes lds-ellipsis2 {
+			0% {
+				transform: translate(0, 0);
+			}
+			100% {
+				transform: translate(24px, 0);
+			}
+		}
+
+		.btnImportant {
+			font-family: 'Verdana', 'Geneva', sans-serif;
+			background-image: url("/img/bgButtonImportant.gif");
+			background-repeat: repeat-x;
+			background-position: left top;
+			border-right: 1px solid #5C5D61;
+			border-bottom: 1px solid #5C5D61;
+			border-top: none;
+			border-left: none;
+			font-size: 80%;
+			color: #FFFFFF;
+			padding: 1px 3px 1px 3px;
+			cursor: pointer;
+			font-weight: bold
+		}
+
+		.navigationStyle {
+			font-size: 11px;
+		}
+	</style>
+
+	<head>
+		<!-- <link href="{!URLFOR($Resource.FivestarAssets, '/Signaturepad/css/jquery.signaturepad.css')}" rel="stylesheet"></link> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+		<script src="{!URLFOR($Resource.signaturepadUmd)}"></script>
+		<!-- <script src="{!URLFOR($Resource.FivestarAssets, '/Signaturepad/js/json2.min.js')}"></script> -->
+		<!-- <script src="{!URLFOR($Resource.FivestarAssets, '/Signaturepad/js/jquery.signaturepad.js')}"></script> -->
+		<!-- <script src="{!URLFOR($Resource.FivestarAssets, '/Signaturepad/js/modernizer.js')}"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js" integrity="sha512-uWk2ZXl3GVrq6DZsrL5dSg1S/F3MNQ9VaDFigqXOoKUnWG58UxOuJGfTrzh5KjpoBvPiFniL2PahU2HUTFMJXw=="
+		 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js" integrity="sha512-lOtDAY9KMT1WH9Fx6JSuZLHxjC8wmIBxsNFL6gJPaG7sLIVoSO9yCraWOwqLLX+txsOw0h2cHvcUJlJPvMlotw=="
+		 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+	</head>
+
+	<apex:composition template="SiteTemplate">
+		<apex:define name="body">
+			<div id="body">
+				<div class="pageMessage">
+					<apex:outputPanel id="pageMessage">
+						<apex:pageMessages id="msg" />
+					</apex:outputPanel>
+				</div>
+				<apex:outputPanel id="onlineOrderOP">
+					<c:SalesOrderPDF recId="{!salesOrder.Id}" isOnlineOrder="true" id="onlineOrderCompId" />
+					<br/>
+					<apex:form rendered="{!and(salesOrder.PaymentStatus2__c != 'Paid', TermsAcceptedBy != '')}" id="onlineOrderformId">
+						<apex:outputPanel rendered="{!salesOrder.PaymentStatus2__c != 'Paid'}">
+							<table cellpadding="2" cellspacing="0" class="noborder">
+								<tr style="display:{!IF(attachmentId == null,'','none')}">
+									<td colspan="2">
+										<apex:actionFunction name="termsChanged" action="{!toggleAcceptTerms}" rerender="acceptAndPayButton, termsErrorBlock, acceptAndPayButtonCheckout"
+										/>
+										<apex:inputCheckbox id="acceptTermsCheckbox" value="{!acceptTerms}" onChange="termsChanged()" />
+										<apex:outputLabel for="acceptTermsCheckbox">
+											<h3>
+												<font color="#000080">I hereby agree to the above order terms and conditions, and certify that I have authority to enter into this
+													agreement.
+												</font>
+											</h3>
+											<br/>
+											<br/>
+										</apex:outputLabel>
+									</td>
+									<td>
+										<apex:outputPanel id="termsErrorBlock" style="vertical-align: top; color: red;">
+											<apex:outputPanel rendered="{!showTermsErrorBlock}">
+												<b>* You must accept the terms before proceeding.</b>
+												<br/>
+												<br/>
+											</apex:outputPanel>
+										</apex:outputPanel>
+
+										<apex:outputPanel id="initialByErrorBlock">
+
+											<apex:inputhidden id="hidinitialBy" value="{!InitialedBy}" />
+
+											<script>
+												objSelectedIds = document.getElementById("{!$Component.hidinitialBy}");
+												var objInitialBy = document.getElementById("initialBy");
+												if (objInitialBy != null) {
+													objSelectedIds.value = objInitialBy.value;
+
+													if ({!showInitialByErrorBlock
+												} == true) {
+													if (objInitialBy.value.length > 0)
+														document.getElementById("onlineOrderPageId:SiteTemplate:onlineOrderCompId:orderCompId:initialbyErrorText").style.display = 'none';
+													else
+														document.getElementById("onlineOrderPageId:SiteTemplate:onlineOrderCompId:orderCompId:initialbyErrorText").style.display = 'inline';
+												}
+		                                }
+											</script>
+										</apex:outputPanel>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+
+										<div class="sigPad" style="display:{!IF(attachmentId == null,'','none')}">
+											<apex:outputLabel for="acceptedByName">
+												<font color="#000080">
+													<h3>Enter Your Name</h3>
+												</font>
+											</apex:outputLabel>
+											<apex:actionFunction name="handleAcceptedByChange" action="{!captureAcceptedByInput}" rerender="acceptAndPayButton, displayAcceptedBy, acceptAndPayButtonCheckout">
+												<apex:param value="" name="acceptedByName" />
+											</apex:actionFunction>
+											<input id="acceptedByName" value="{!acceptedBy}" maxlength="30" styleclass="name" />
+											<div style="vertical-align: top; color: red;">
+												<b id="acceptedByNameErrorBlock">* You must enter your name before proceeding.</b>
+											</div>
+											<div class="wrapper">
+												<canvas id="signature-pad" class="signature-pad" width="400" height="200">
+
+												</canvas>
+											</div>
+											<!-- <button id="save-png">Save as PNG</button>
+											<button id="save-jpeg">Save as JPEG</button>
+											<button id="save-svg">Save as SVG</button> -->
+											<button id="undo">Undo</button>
+											<button id="clear">Clear</button>
+
+
+											<div id="canvasDiv" style="display:none;">
+												<p class="typeItDesc">Review Your Signature</p>
+												<p class="drawItDesc">Draw Your Signature</p>
+												<ul class="sigNav">
+													<li class="typeIt navigationStyle">
+														<a href="#type-it" class="current">Type It</a>
+													</li>
+													<li class="drawIt navigationStyle">
+														<a href="#draw-it">Draw It</a>
+													</li>
+													<li class="clearButton">
+														<a href="#clear" style="font-weight:normal;">Clear</a>
+													</li>
+												</ul>
+												<div class="sig sigWrapper">
+													<div class="typed"></div>
+													<canvas id="mainCanvas" class="pad" width="298" height="55"></canvas>
+													<apex:inputHidden value="{!encodedSignature}" id="hiddenInput" />
+													<input type="hidden" name="output" class="output" style="margin-left: 200px;width: 500px;" />
+												</div>
+											</div>
+										</div>
+										<div style="display:{!IF(attachmentId == null,'none','')}">
+											<apex:outputPanel rendered="{!attachmentId != null}">
+												<img style="width: 70%;" src="{!URLFOR($Action.Attachment.Download, attachmentId)}" />
+											</apex:outputPanel>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</apex:outputPanel>
+
+						<apex:outputPanel rendered="{!salesOrder.Status_Picklist__c != 'Draft' && salesOrder.Status_Picklist__c != 'Sent' && TermsAcceptedBy != ''}">
+							<h2>Order Approval Information</h2>
+							<br></br>
+							<br></br>
+							<table cellpadding="2" cellspacing="0" class="noborder">
+
+								<tr>
+									<td>
+										<apex:outputText >
+											<b>Terms Accepted By:&nbsp;</b>
+											<span id="defaultAcceptdByDisplay">{!TermsAcceptedBy}</span>
+											<span id="acceptedByDisplay" style="display: none;"></span>
+										</apex:outputText>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<apex:outputText >
+											<b>On Date:&nbsp;</b>{!TermsAcceptedDate}</apex:outputText>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<apex:outputText >
+											<b>From IP Address:&nbsp;</b>{!TermsAcceptedFromIPAddress}</apex:outputText>
+									</td>
+								</tr>
+							</table>
+						</apex:outputPanel>
+
+						<apex:outputPanel rendered="{!(salesOrder.PaymentStatus2__c != 'Paid' || salesOrder.Status_Picklist__c == 'Approved' || salesOrder.Status_Picklist__c == 'Released')}">
+							<table>
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>
+										<apex:actionFunction name="afAcceptAndPayOnline" action="{!acceptAndPayOnline}" reRender="termsErrorBlock,acceptedByTitleErrorBlock,initialByErrorBlock"
+										 status="status">
+											<apex:param value="" name="signature" />
+										</apex:actionFunction>
+										<apex:actionFunction name="afCheckout" action="{!Checkout}" reRender="termsErrorBlock,acceptedByTitleErrorBlock,initialByErrorBlock"
+										 status="status"></apex:actionFunction>
+
+										<apex:outputPanel id="acceptAndPayButton" rendered="{!salesOrder.PaymentStatus2__c != 'Paid'}">
+											<apex:commandLink value="Accept and Pay" onclick="afAcceptAndPayOnline();" rerender="initialByErrorBlock" status="status"
+											 style="text-decoration:none;" styleClass="pay unlocked button1" />&nbsp;
+											<!-- <apex:commandLink id="acceptAndPayButtonCheckout" value="Checkout" rendered="{!orderPDFExt.button2 != ''}" onclick="checkout();" rerender="initialByErrorBlock" status="status" style="text-decoration:none;" styleClass="pay unlocked button2"/> -->
+										</apex:outputPanel>
+
+										<apex:outputPanel rendered="{!(salesOrder.Status_Picklist__c == 'Approved' || salesOrder.Status_Picklist__c == 'Released')}">
+											&nbsp;&nbsp;
+											<apex:commandLink value="Download PDF" onclick="downloadOrderPDF();" style="text-decoration:none;text-align: left;" styleClass="stdAction"
+											 rerender="initialByErrorBlock" />
+										</apex:outputPanel>
+
+										&nbsp;
+										<apex:actionStatus id="status">
+											<apex:facet name="start">
+												<div class="lds-ellipsis">
+													<div></div>
+													<div></div>
+													<div></div>
+													<div></div>
+												</div>
+											</apex:facet>
+										</apex:actionStatus>
+									</td>
+								</tr>
+							</table>
+							<script>
+								document.getElementById("acceptedByName").addEventListener("input", (event) => {
+									if (event.target.value) {
+										document.getElementById("defaultAcceptdByDisplay").style.display = "none";
+										document.getElementById("acceptedByDisplay").style.display = "block";
+										document.getElementById("acceptedByDisplay").innerHTML = event.target.value;
+										document.getElementById("acceptedByNameErrorBlock").style.display = "none";
+									} else {
+										document.getElementById("defaultAcceptdByDisplay").style.display = "block";
+										document.getElementById("acceptedByDisplay").style.display = "none";
+										document.getElementById("acceptedByNameErrorBlock").style.display = "block";
+									}
+								});
+
+								var canvas = document.getElementById('signature-pad');
+								function resizeCanvas() {
+									// When zoomed out to less than 100%, for some very strange reason,
+									// some browsers report devicePixelRatio as less than 1
+									// and only part of the canvas is cleared then.
+									var ratio = Math.max(window.devicePixelRatio || 1, 1);
+									canvas.width = canvas.offsetWidth * ratio;
+									canvas.height = canvas.offsetHeight * ratio;
+									canvas.getContext("2d").scale(ratio, ratio);
+								}
+								window.onresize = resizeCanvas;
+								resizeCanvas();
+
+								var signaturePad = new SignaturePad(canvas, {
+									backgroundColor: 'rgb(255, 255, 255)' // necessary for saving image as JPEG; can be removed is only saving as PNG or SVG
+								});
+
+								function acceptAndPayOnline() {
+
+									//console.log('button1 disabled');{
+									const isChecked = document.getElementById("{!$Component.acceptTermsCheckbox}").checked;
+									if (!isChecked) {
+										alert("You must accept the terms before proceeding.");
+										return;
+									}
+									const acceptedBy = document.getElementById("acceptedByName").value;
+									if (!acceptedBy) {
+										alert("You must enter your name before proceeding.");
+										return;
+									}
+									handleAcceptedByChange(acceptedBy);
+									var objInitialBy = document.getElementById("initialBy");
+									if (objInitialBy != null && objSelectedIds != null) objSelectedIds.value = objInitialBy.value;
+									if (signaturePad.isEmpty()) {
+										return alert("Please provide a signature first.");
+									}
+
+									var data = signaturePad.toDataURL().replace(/^data:image\/(png|jpg);base64,/, "");
+
+									afAcceptAndPayOnline(data);
+
+								}
+
+								function checkout() {
+									if (j$(".button2").hasClass("unlocked")) {
+										j$(".button2").removeClass('unlocked');
+										//console.log('button2 disabled');
+										var objInitialBy = document.getElementById("initialBy");
+										if (objInitialBy != null && objSelectedIds != null) objSelectedIds.value = objInitialBy.value;
+										afCheckout();
+									}
+								}
+
+								function downloadOrderPDF() {
+									url = "{!downloadPDFURL}";
+									window.open(url);
+								}
+							</script>
+
+						</apex:outputPanel>
+					</apex:form>
+					<!-- <canvas style="display:none;" id="shadowCanvas"></canvas> -->
+					<br/>
+
+					<script>
+
+						// document.getElementById('save-png').addEventListener('click', function () {
+
+						// });
+
+						// document.getElementById('save-jpeg').addEventListener('click', function () {
+						// 	if (signaturePad.isEmpty()) {
+						// 		return alert("Please provide a signature first.");
+						// 	}
+
+						// 	var data = signaturePad.toDataURL('image/jpeg');
+						// 	console.log(data);
+						// 	window.open(data);
+						// });
+
+						// document.getElementById('save-svg').addEventListener('click', function () {
+						// 	if (signaturePad.isEmpty()) {
+						// 		return alert("Please provide a signature first.");
+						// 	}
+
+						// 	var data = signaturePad.toDataURL('image/svg+xml');
+						// 	console.log(data);
+						// 	console.log(atob(data.split(',')[1]));
+						// 	window.open(data);
+						// });
+
+						document.getElementById('clear').addEventListener('click', function () {
+							signaturePad.clear();
+							return;
+						});
+
+						document.getElementById('undo').addEventListener('click', function () {
+							var data = signaturePad.toData();
+							if (data) {
+								data.pop(); // remove the last dot or line
+								signaturePad.fromData(data);
+								return;
+							}
+						});
+
+
+
+		        // var j$ = jQuery.noConflict();
+		        // j$(function() {
+		        //     /*Check if the browser supports canvas*/
+
+		        //     // if (Modernizr.canvas) {
+		        //     //     j$("#canvasDiv").show();
+		        //     //     j$("#shadowCanvas").attr('width', 300);
+		        //     //     j$("#shadowCanvas").attr('height', 55);
+		        //     //     /*Initiate the Thomas Bradley Signature pad, this will load the initial form template.*/
+		        //     //     var api = j$('.sigPad').signaturePad();
+		        //     //     var signPad;
+		        //     //     var canvasClearTimer;
+
+		        //     //     j$("#mainCanvas").hover(function() {
+		        //     //         if(signPad != undefined && j$("a.current").text()=='Type It') {
+		        //     //             canvasClearTimer = setInterval(function() {
+		        //     //                 signPad.clear();
+		        //     //                 var canvas = document.getElementById("mainCanvas"); 
+		        //     //                 drawSignatureLine(canvas);
+		        //     //             },1);
+		        //     //         }
+
+		        //     //     },function() {
+		        //     //         if(canvasClearTimer != undefined) {
+		        //     //             clearInterval(canvasClearTimer);
+		        //     //         }
+		        //     //     });
+
+		        //     //     /* Initialize the Szimek Signature pad for the draw it functionality, this will make sure that the signature is smooth */
+		        //     //     j$(".drawIt").click(function() {
+		        //     //         var canvas = document.getElementById("mainCanvas"); 
+		        //     //         signPad = new SignaturePad(canvas, {
+		        //     //             maxWidth : 1.2,
+		        //     //             penColor : '#145394'
+		        //     //         });
+		        //     //     });
+		        //     //     /*Capture the base64encoded string of the cavnas element. If the Draw It section is selected then the image is constructed from the
+		        //     //       signature which the user has drawn else the image is constructed from the Text in he inputbox. 
+		        //     //     */
+		        //     //     j$(".sigPad").mouseout(function() {
+		        //     //         if (j$("a.current").text() == 'Draw It') {
+		        //     //             var encodedImageUrl = signPad.toDataURL();
+		        //     //             var encodedImage = encodedImageUrl.split(',');
+		        //     //             j$("[id$=hiddenInput]").val(encodedImage[1]);
+		        //     //         } else {
+		        //     //             var shadowCanvas = document.getElementById("shadowCanvas");
+		        //     //             var ctx = shadowCanvas.getContext("2d");
+		        //     //             ctx.clearRect(0, 0, shadowCanvas.width, shadowCanvas.height);
+		        //     //             //ctx.font = "3.875em/50px Journal";
+		        //     //             ctx.font = "3.0em/50px Journal";
+		        //     //             ctx.fillStyle = '#145394';
+		        //     //             ctx.lineWidth = 2;
+		        //     //             //ctx.fillText(j$("div.typed").text(), 10, 34);
+		        //     //             ctx.fillText(j$("div.typed").text(), 5, 34);
+		        //     //             var encodedImage = shadowCanvas.toDataURL().split(',');
+		        //     //             j$("[id$=hiddenInput]").val(encodedImage[1]);
+		        //     //         }
+		        //     //     });
+		        //     // }
+		        // });
+
+		        // /*This function loads standard canvas template*/
+		        // function drawSignatureLine(canvas) {
+		        //     var canvasContext = canvas.getContext("2d");
+		        //     canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+		        //     canvasContext.fillStyle = '#ffffff';
+		        //     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+		        //     canvasContext.beginPath()
+		        //     canvasContext.lineWidth = 2;
+		        //     canvasContext.strokeStyle = '#ccc';
+		        //     canvasContext.moveTo(5, 35);
+		        //     canvasContext.lineTo(canvas.width - 5, 35);
+		        //     canvasContext.stroke();
+		        //     canvasContext.closePath();
+		        // }
+					</script>
+
+				</apex:outputPanel>
+			</div>
+		</apex:define>
+	</apex:composition>
+</apex:page>

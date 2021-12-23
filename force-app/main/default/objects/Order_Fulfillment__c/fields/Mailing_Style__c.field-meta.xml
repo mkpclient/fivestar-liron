@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mailing_Style__c</fullName>
+    <description>How to handle the mailing of a product (Used for Essential Living, now)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>How to handle the mailing of a product (Used for Essential Living, now)</inlineHelpText>
+    <label>Mailing Style</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Direct to Client - Pre Stamped</fullName>
+                <default>false</default>
+                <label>Direct to Client - Pre Stamped</label>
+            </value>
+            <value>
+                <fullName>Direct to Client - Print Only</fullName>
+                <default>false</default>
+                <label>Direct to Client - Print Only</label>
+            </value>
+            <value>
+                <fullName>Direct Mail - Flexmail</fullName>
+                <default>false</default>
+                <label>Direct Mail - Flexmail</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

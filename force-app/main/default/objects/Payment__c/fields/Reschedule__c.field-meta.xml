@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reschedule__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Setup the next scheduled native subscription payment when this payment is completed.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Setup the next scheduled native subscription payment when this payment is completed.</inlineHelpText>
+    <label>Reschedule</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

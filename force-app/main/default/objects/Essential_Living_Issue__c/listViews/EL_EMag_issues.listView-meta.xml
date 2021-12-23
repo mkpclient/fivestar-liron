@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EL_EMag_issues</fullName>
+    <columns>NAME</columns>
+    <columns>Fulfillment_Market_Project__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Status__c</columns>
+    <columns>Fulfillment_Total_EL_Issues__c</columns>
+    <columns>Fulfillment_Owner_Name__c</columns>
+    <columns>Last_day_to_submit_changes__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Fulfillment_EL_Quantity__c</columns>
+    <columns>Issue_Proof__c</columns>
+    <columns>E_Magazine_URL__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>EL_E_Magazine_Purchaser__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Draft,Cancelled</value>
+    </filters>
+    <label>EL E-Mag - All</label>
+    <sharedTo>
+        <group>Fulfillment_Team</group>
+    </sharedTo>
+</ListView>

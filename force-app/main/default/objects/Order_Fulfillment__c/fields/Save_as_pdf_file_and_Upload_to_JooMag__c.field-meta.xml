@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Save_as_pdf_file_and_Upload_to_JooMag__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>E reprint checklist field</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Has the reprint been saved as a pdf and uploaded?</inlineHelpText>
+    <label>Save as pdf file and Upload to JooMag</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancelled_Date__c</fullName>
+    <description>This field is used when a Special Order is cancelled. It is set to the day/time when the cancellation was finalized.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is used when a Special Order is cancelled. It is set to the day/time when the cancellation was finalized.</inlineHelpText>
+    <label>Cancelled Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

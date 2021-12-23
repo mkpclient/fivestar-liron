@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Complaint Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New Complaint</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Refund requested (Mark Douglass)</fullName>
+                <default>false</default>
+                <label>Refund requested (Mark Douglass)</label>
+            </value>
+            <value>
+                <fullName>No response from customer(closed)</fullName>
+                <default>false</default>
+                <label>No response from customer(closed)</label>
+            </value>
+            <value>
+                <fullName>Resolved</fullName>
+                <default>false</default>
+                <label>Resolved(Closed)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

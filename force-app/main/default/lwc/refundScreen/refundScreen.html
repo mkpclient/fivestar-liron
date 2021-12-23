@@ -1,0 +1,126 @@
+<template>
+  <template if:true={showScreen}>
+    <template if:true={showNotification}>
+      <c-slds-toast
+        onclose={handleCloseToast}
+        variant={toastVariant}
+        title={toastTitle}
+        message={toastMessage}
+      ></c-slds-toast>
+    </template>
+    <template if:false={isLoading}>
+      <div class="slds-p-around_medium">
+        <div class="slds-align_absolute-center" style="height: 1rem">
+          <template if:true={sectionDisabled}>
+            <lightning-button
+              label="Update Payment Method"
+              title="paymentMethod"
+              onclick={handleClick}
+              class="slds-m-left_x-small"
+              variant="brand-outline"
+              disabled={disallowUpdatePaymentMethod}
+            ></lightning-button>
+          </template>
+          <template if:false={sectionDisabled}>
+            <template if:true={allowRefund}>
+            <lightning-button
+              label="Refund"
+              title="refund"
+              onclick={handleClick}
+              class="slds-m-left_x-small"
+              variant="brand-outline"
+              disabled={isRefund}
+            ></lightning-button>
+          </template>
+          <template if:false={allowRefund}>
+            <lightning-button
+              variant="brand-outline"
+              label="Void Payment"
+              title="void"
+              onclick={handleClick}
+              class="slds-m-left_x-small"
+              disabled={isVoid}
+            ></lightning-button>
+          </template>
+          </template>
+        </div>
+      </div>
+    </template>
+    <template if:true={isLoading}>
+      <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <template if:false={isLoading}>
+      <div class="slds-scrollable">
+        <template if:false={sectionDisabled}>
+          <template if:true={isRefund}>
+            <div class="slds-align_absolute-center" style="height: 1rem">
+              The refund will be applied on the payment method associated with
+              this account.
+            </div>
+            <lightning-layout>
+              <lightning-layout-item padding="around-small" size="6">
+                <lightning-input
+                  type="number"
+                  name="refundAmount"
+                  data-name="refund"
+                  data-record="refund"
+                  label="Refund Amount"
+                  value={refundAmount}
+                  formatter="currency"
+                  onchange={handleChange}
+                  max={paymentInfo.Amount__c}
+                  step="0.01"
+                  required
+                ></lightning-input>
+              </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout>
+              <lightning-layout-item padding="around-small" size="4">
+                <lightning-button
+                  label="Process Refund"
+                  title="completeRefund"
+                  variant="brand"
+                  onclick={handleClick}
+                  class="slds-m-left_x-small"
+                  disabled={disableRefundButton}
+                ></lightning-button>
+              </lightning-layout-item>
+            </lightning-layout>
+            <div class="slds-align_absolute-center" style="height: 1rem">
+              <div class="slds-text-color_error">{errorMessage}</div>
+            </div>
+          </template>
+          <template if:true={isVoid}>
+            <div class="slds-align_absolute-center" style="height: 1rem">
+              Voiding this payment will void the entire amount. If a payment is
+              already settled, it will do a full refund instead.
+            </div>
+            <div class="slds-align_absolute-center" style="height: 3rem">
+              <lightning-button
+                label="Void this Payment"
+                title="voidPayment"
+                variant="brand"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+                disabled={disableVoidButton}
+              ></lightning-button>
+            </div>
+          </template>
+          <template if:true={showLink}>
+            <div class="slds-align_absolute-center" style="height: 1rem">
+              <div class="slds-align_absolute-center" style="height: 1rem">
+                Refund success.
+                <a href={recordLink} target="_blank">Visit refund record.</a>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
+    </template>
+  </template>
+  <template if:false={showScreen}>
+    <div class="slds-align_absolute-center" style="height: 3rem">
+      {restrictedMessage}
+    </div>
+  </template>
+</template>

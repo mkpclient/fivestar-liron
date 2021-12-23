@@ -1,0 +1,271 @@
+<!--<apex:page Controller="FSPSO" showHeader="false" renderAs="PDF" extensions="OrderedProducts">-->
+<apex:page Controller="FSPSO" showHeader="false" renderAs="PDF" >
+    <!--<apex:stylesheet value="{!$Resource.customCSS}" />-->
+    <div class="container" width="900">
+        <body>
+            <table width="100%">
+                <tr>
+                    <td rowspan="5" align="left">
+                        <apex:image url="{!$Resource.Logo}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24">
+                        2900 Lone Oak Parkway, Suite 120
+                    </td>
+                    <td align="right" style="font-size: 30px;"> 
+                        <strong>Invoice</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24"> 
+                        Eagan, MN 55121
+                    </td>
+                    <td align="right">
+                        {!SalesOrder.name}
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24">
+                        Phone: 888-438-5782
+                    </td>
+                    <td align="right">
+                        Order Date: <apex:outputText value="{0, date, MM/dd/YY}">
+                        <apex:param value="{!SalesOrder.Released__c}" /> 
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">
+                    </td>
+                    <td align="right" height="24">
+                        Account Manager: {!SalesOrder.kugo2p__Opportunity__r.Account_Manager_Name__c}
+                    </td>
+                    <hr/>
+                </tr>
+            </table>
+        </body>
+        <table width="100%">
+            <tr>
+                <td>
+                    <strong>Bill to:</strong>
+                </td>
+                <td style="text-align:right;">
+                    <strong>Ship to:</strong>
+                </td>
+            </tr>
+            <tr width="100%">
+                <td>
+                    {!SalesOrder.kugo2p__ContactBilling__r.name}
+                </td>
+                <td style="text-align:right;">
+                    {!SalesOrder.kugo2p__ContactShipping__r.name}
+                </td>
+            </tr>
+            <tr width="100%">
+                <td>
+                    <apex:outputText value="{!SalesOrder.kugo2p__ContactBuying__r.ACDF_Branch_Office__c}"></apex:outputText>
+                </td>
+                <td style="text-align:right;">
+                    <apex:outputText value="{!SalesOrder.kugo2p__ContactBuying__r.ACDF_Branch_Office__c}"></apex:outputText>
+                </td>
+            </tr>
+            <tr width="100%">
+                <td>
+                    {!SalesOrder.kugo2p__BillToStreetLong__c}
+                </td>
+                <td style="text-align:right;">
+                    {!SalesOrder.kugo2p__ShipToStreetLong__c}
+                </td>
+            </tr>
+            <tr width="100%">
+                <td>
+                    <apex:outputText value="{!SalesOrder.kugo2p__BillToCity__c}, {!SalesOrder.kugo2p__billToStateProvince__c} {!SalesOrder.kugo2p__billToZipPostalCode__c }"></apex:outputText>
+                </td>
+                <td style="text-align:right;">
+                    <apex:outputText value="{!SalesOrder.kugo2p__ShipToCity__c}, {!SalesOrder.kugo2p__ShipToStateProvince__c} {!SalesOrder.kugo2p__ShipToZipPostalCode__c }"></apex:outputText>
+                </td>
+            </tr>
+            <tr width="100%">
+                <td>
+                    
+                </td>
+                <td style="text-align:right;">
+                    <apex:outputText value="{!SalesOrder.Billing_Email__c}"></apex:outputText>
+                </td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+        
+        <table width="100%">
+            <tr>
+                <td><strong>Products:</strong></td>
+                <td align="right"><strong>Quantity</strong></td>
+                <td align="right"><strong>List Price</strong></td>
+                <td align="right"><strong>Sales Price</strong></td>
+                <td align="right"><strong>Amount</strong></td>
+            </tr>
+            <apex:repeat value="{!OrderProducts}" var="o">
+                <tr>
+                    <td>
+                        {!o.Product_Name__c}
+                    </td>
+                    <td align="right">
+                        <apex:outputText value="{0, number, integer}">
+                            <apex:param value="{!o.kugo2p__Quantity__c}" />
+                        </apex:outputText>
+                    </td>
+                    <td align="right">
+                        {!o.kugo2p__ListPrice__c}
+                    </td>
+                    <td align="right">
+                        {!o.kugo2p__DiscountSalesPrice__c}
+                    </td>
+                    <td align="right">
+                        {!o.Actual_Price__c}
+                    </td>
+                </tr>
+            </apex:repeat>
+        </table>
+        <div class="col-md-12">
+           <br/>
+        </div>
+        <div class="row">
+            <div align="right">
+                 <apex:repeat value="{!TotalProducts}" var="t">
+                     Products Total:<apex:outputText value="{0, number, ##0.00}">
+                            <apex:param value="{!t}" />
+                     </apex:outputText>
+                </apex:repeat>
+            </div> 
+            <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+           <table width="100%" class="{!if(AdditionalCharges != null,"slds-visibly","slds-hidden")}">
+                 <tr>
+                    <td><strong>Additional Charges/Credits:</strong></td>                    
+                    <td align="right"><strong>Quantity</strong></td>
+                    <td align="right"><strong>Amount</strong></td>
+                </tr>
+                <apex:repeat value="{!AdditionalCharges}" var="a" rendered="true">
+                    <tr>
+                        <td>{!a.kugo2p__AdditionalChargeCredit__r.Name}</td>
+                        <td align="right"><apex:outputText value="{0, number, integer}">
+                            <apex:param value="{!a.kugo2p__Quantity__c}" />
+                        </apex:outputText></td>
+                        <td align="right">{!a.kugo2p__SalesPrice__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            
+            <div class="col-md-12">
+                <br/>
+            </div>
+            <div align="right" >
+                Additional Charges/Credits Total: {!SalesOrder.kugo2p__AdditionalChargeCreditAmount__c  }
+            </div>
+           
+            <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+            <div align="right">
+                Net Amount: {!SalesOrder.kugo2p__NetAmount__c}
+            </div>
+            <div align="right">
+                Sales Tax: {!SalesOrder.kugo2p__TotalTaxAmount__c}
+            </div>
+            <div align="right">
+                Total Applied Payments: {!SalesOrder.kugo2p__AppliedPaymentAmount__c}
+            </div>
+            <div align="right">
+                Balance Due Amount: {!SalesOrder.kugo2p__BalanceDueAmount__c}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+        <table width="100%">
+            <tr>
+                <td><strong>Payments:</strong></td>
+                <td align="right"><strong>Date</strong></td>
+                <td align="right"><strong>Type</strong></td>
+                <td align="right"><strong>Last 4 digits</strong></td>
+                <td align="right"><strong>Status</strong></td>
+                <td align="right"><strong>Amount</strong></td>
+            </tr>
+            <apex:repeat value="{!OrderPayments}" var="p" rendered="true">
+                <tr>
+                    <td>
+                        {!p.name}
+                    </td>
+                    <td align="right">
+                        <apex:outputText value="{0, date, MM/dd/YY}">
+                            <apex:param value="{!p.kugo2p__Date__c}" /> 
+                        </apex:outputText>
+                    </td>
+                    <td align="right">
+                        {!p.kugo2p__Card_Type__c}
+                    </td>
+                    <td align="right">
+                        {!p.kugo2p__Last_4_Digits__c}
+                    </td>
+                    <td align="right">
+                        {!p.kugo2p__Status__c}
+                    </td>
+                    <td align="right">
+                        {!p.kugo2p__Amount__c}
+                    </td>
+                </tr>   
+                
+            </apex:repeat>  
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+        <div class="row-head">
+            <div class="col-md-12">
+                <strong>For questions about:</strong>
+                <ul>
+                    <li>
+                        Billing (including invoices and payment information), contact <apex:outputLink value="mailto:lisa.campbell@fivestarprofessional.com"> billing@fivestarprofessional.com</apex:outputlink>
+                    </li>
+                    <li>
+                        Your Order, or to order more tools, contact your Account Manager {!SalesOrder.kugo2p__Opportunity__r.Account_Manager_Name__c} by email <apex:outputlink value="{!SalesOrder.kugo2p__Opportunity__r.Account_Manager_Email__c}">{!SalesOrder.kugo2p__Opportunity__r.Account_Manager_Email__c}</apex:outputlink>  or phone {!SalesOrder.kugo2p__Opportunity__r.FSP_Sales_Rep__r.phone}.
+                    </li>
+                    <li>
+                        Delivery of your marketing tools, contact <apex:outputLink value="mailto:delivery@fivestarprofessional.com"> delivery@fivestarprofessional.com</apex:outputlink>
+                    </li>
+                    <li>
+                        Your magazine profile, contact <apex:outputLink value="mailto:production@fivestarprofessional.com"> production@fivestarprofessional.com</apex:outputlink>
+                    </li>
+                    <li>
+                        <strong>Purchaser may cancel with full refund within five business days of purchase after which this is a non-cancellable contract. Showcases can not be canceled at anytime.</strong>
+                    </li>
+                    
+                    <li>
+                        <strong>If you elected a payment plan the entire amount must be paid within the term of the payment plan, it is not a cancellable subscription.</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <strong>Guaranteed Shipment Dates for Marketing Products:</strong>
+                <br/>
+                Marketing products ordered more than two weeks prior to the publication date are guaranteed to ship by the 5th of the publication month.
+                <br/>
+                All other marketing products ordered after the publication date will be shipped within 3-4 weeks from the order date. 
+            </div>
+        </div>    
+    </div>
+</apex:page>

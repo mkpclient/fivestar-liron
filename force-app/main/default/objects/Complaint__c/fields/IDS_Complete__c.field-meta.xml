@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IDS_Complete__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Did we review and make any necessary process changes to avoid future complaints?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Did we review and make any necessary process changes to avoid future complaints?</inlineHelpText>
+    <label>IDS Complete</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

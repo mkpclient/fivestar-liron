@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Digital_Ad_Campaign_Redirect_URL__c</fullName>
+    <description>URL digital ads link to</description>
+    <externalId>false</externalId>
+    <inlineHelpText>URL digital ads link to</inlineHelpText>
+    <label>Digital Ad Campaign Redirect URL</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

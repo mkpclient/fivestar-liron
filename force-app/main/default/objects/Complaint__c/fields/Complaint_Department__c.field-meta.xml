@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Department__c</fullName>
+    <description>Which part of our end to end process the complaint is for</description>
+    <externalId>false</externalId>
+    <inlineHelpText>What department does this complaint pertain to?</inlineHelpText>
+    <label>Complaint Department</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CSR - Allen</fullName>
+                <default>true</default>
+                <label>CSR - Teresa</label>
+            </value>
+            <value>
+                <fullName>Fulfillment Digital - Brianna</fullName>
+                <default>false</default>
+                <label>Fulfillment Digital - Brianna</label>
+            </value>
+            <value>
+                <fullName>Fulfillment Print – Brianna</fullName>
+                <default>false</default>
+                <label>Fulfillment Print – Brianna</label>
+            </value>
+            <value>
+                <fullName>Fulfillment Vendor – Brianna</fullName>
+                <default>false</default>
+                <label>Fulfillment Vendor – Brianna</label>
+            </value>
+            <value>
+                <fullName>Digital Marketing Tools - Mindy</fullName>
+                <default>false</default>
+                <label>Digital Marketing Tools - Mindy</label>
+            </value>
+            <value>
+                <fullName>Graphics</fullName>
+                <default>false</default>
+                <label>Graphics - Mindy</label>
+            </value>
+            <value>
+                <fullName>In-House Production - Mindy</fullName>
+                <default>false</default>
+                <label>In-House Production - Mindy</label>
+            </value>
+            <value>
+                <fullName>Outside Vendor - Mindy</fullName>
+                <default>false</default>
+                <label>Outside Vendor - Mindy</label>
+            </value>
+            <value>
+                <fullName>Print Marketing Tools - Mindy</fullName>
+                <default>false</default>
+                <label>Print Marketing Tools - Mindy</label>
+            </value>
+            <value>
+                <fullName>Marketing - Emily</fullName>
+                <default>false</default>
+                <label>Marketing - Emily</label>
+            </value>
+            <value>
+                <fullName>Research</fullName>
+                <default>false</default>
+                <label>Research - Debbie</label>
+            </value>
+            <value>
+                <fullName>Finance - Shelly</fullName>
+                <default>false</default>
+                <label>Finance - Shelly</label>
+            </value>
+            <value>
+                <fullName>Sales</fullName>
+                <default>false</default>
+                <label>Sales</label>
+            </value>
+            <value>
+                <fullName>Technology – Greg</fullName>
+                <default>false</default>
+                <label>Technology – Greg</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

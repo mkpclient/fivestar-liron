@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Price_must_be_greater_than_0</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(AdditionalChargeCreditAmount__c &lt; 0,OR($Profile.Name = &quot;FSP - SAM + RC&quot;,$Profile.Name = &quot;FSP - Sam Lead&quot;,$Profile.Name = &quot;FSP - SAM+&quot;,$Profile.Name = &quot;FSP - SAM++&quot;,$Profile.Name = &quot;FSP - SAMs&quot;))</errorConditionFormula>
+    <errorMessage>The price must be greater than or equal to 0</errorMessage>
+</ValidationRule>

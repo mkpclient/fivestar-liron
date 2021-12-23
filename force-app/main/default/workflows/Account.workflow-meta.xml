@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Blank_Out_Asst_Email_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Asst. Email field is BLANKED OUT.</description>
+        <field>Asst_Email__c</field>
+        <name>Blank Out Asst. Email field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Blank_Out_Asst_Phone_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Asst. Phone field is BLANKED OUT.</description>
+        <field>PersonAssistantPhone</field>
+        <name>Blank Out Asst. Phone field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Blank_Out_Email_2_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Email 2 field is BLANKED OUT.</description>
+        <field>Email_2__c</field>
+        <name>Blank Out Email 2 field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Blank_Out_Email_Field</fullName>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Email field is BLANKED OUT.</description>
+        <field>PersonEmail</field>
+        <name>Blank Out Email Field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Blank_Out_Fax_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Fax field is BLANKED OUT.</description>
+        <field>Fax</field>
+        <name>Blank Out Fax field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Blank_Out_Mobile_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Mobile field is BLANKED OUT.</description>
+        <field>PersonMobilePhone</field>
+        <name>Blank Out Mobile field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Blank_Out_Phone_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Phone field is BLANKED OUT.</description>
+        <field>Phone</field>
+        <name>Blank Out Phone field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Blank_Out_ext_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, ext. field is BLANKED OUT.</description>
+        <field>ext__c</field>
+        <name>Blank Out ext. field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Credit_Risk_is_CHECKED</fullName>
+        <field>FORMULA_Credit_Risk__c</field>
+        <literalValue>1</literalValue>
+        <name>Credit Risk is CHECKED</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Call_is_CHECKED</fullName>
+        <field>FORMULA_Do_Not_Call__c</field>
+        <literalValue>1</literalValue>
+        <name>Do Not Call is CHECKED</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Email_is_CHECKED</fullName>
+        <field>FORMULA_Do_Not_Email__c</field>
+        <literalValue>1</literalValue>
+        <name>Do Not Email is CHECKED</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Asst_Email_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Asst. Email is populated with the value from &quot;Hidden Asst. Email&quot;</description>
+        <field>Asst_Email__c</field>
+        <formula>HIDDEN_Asst_Email__c</formula>
+        <name>Populate Asst. Email field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Asst_Phone_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Asst. Phone is populated with the value from &quot;Hidden Asst. Phone&quot;</description>
+        <field>PersonAssistantPhone</field>
+        <formula>HIDDEN_Asst_Phone__c</formula>
+        <name>Populate Asst. Phone field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Email_2_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Email 2 is populated with the value from &quot;Hidden Email 2&quot;</description>
+        <field>Email_2__c</field>
+        <formula>HIDDEN_Email_2__c</formula>
+        <name>Populate Email 2 field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Email_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Email is populated with the value from &quot;Hidden Email&quot;</description>
+        <field>PersonEmail</field>
+        <formula>HIDDEN_Email__c</formula>
+        <name>Populate Email field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Fax_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Fax is populated with the value from &quot;Hidden Fax&quot;</description>
+        <field>Fax</field>
+        <formula>HIDDEN_Fax__c</formula>
+        <name>Populate Fax field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Mobile_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Mobile is populated with the value from &quot;Hidden Mobile&quot;</description>
+        <field>PersonMobilePhone</field>
+        <formula>HIDDEN_Mobile__c</formula>
+        <name>Populate Mobile field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Phone_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Phone is populated with the value from &quot;Hidden Phone&quot;</description>
+        <field>Phone</field>
+        <formula>HIDDEN_Phone__c</formula>
+        <name>Populate Phone field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_ext_field</fullName>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, ext. is populated with the value from &quot;Hidden ext.&quot;</description>
+        <field>ext__c</field>
+        <formula>HIDDEN_ext__c</formula>
+        <name>Populate ext. field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Do Not Contact is CHECKED%3A Asst%2E Email</fullName>
+        <actions>
+            <name>Blank_Out_Asst_Email_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Do_Not_Email__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Asst. Email field is BLANKED OUT.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is CHECKED%3A Asst%2E Phone</fullName>
+        <actions>
+            <name>Blank_Out_Asst_Phone_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Asst. Phone field is BLANKED OUT.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is CHECKED%3A Email</fullName>
+        <actions>
+            <name>Blank_Out_Email_Field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Do_Not_Email__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Email field is BLANKED OUT.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is CHECKED%3A Email 2</fullName>
+        <actions>
+            <name>Blank_Out_Email_2_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Do_Not_Email__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Email 2 field is BLANKED OUT.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is CHECKED%3A Fax</fullName>
+        <actions>
+            <name>Blank_Out_Fax_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Fax field is BLANKED OUT.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is CHECKED%3A Mobile</fullName>
+        <actions>
+            <name>Blank_Out_Mobile_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Mobile field is BLANKED OUT.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is CHECKED%3A Phone</fullName>
+        <actions>
+            <name>Blank_Out_Phone_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, Phone field is BLANKED OUT.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is CHECKED%3A ext%2E</fullName>
+        <actions>
+            <name>Blank_Out_ext_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 2 OR 4) AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is CHECKED, ext. field is BLANKED OUT.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is UNCHECKED%3A Mobile</fullName>
+        <actions>
+            <name>Populate_Mobile_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Mobile is populated with the value from &quot;Hidden Mobile&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is UNChecked%3A Asst Email</fullName>
+        <actions>
+            <name>Populate_Asst_Email_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Do_Not_Email__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Asst. Email is populated with the value from &quot;Hidden Asst. Email&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is UNChecked%3A Asst%2E Phone</fullName>
+        <actions>
+            <name>Populate_Asst_Phone_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Asst. Phone is populated with the value from &quot;Hidden Asst. Phone&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is UNChecked%3A Email</fullName>
+        <actions>
+            <name>Populate_Email_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Do_Not_Email__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Email is populated with the value from &quot;Hidden Email&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is UNChecked%3A Email 2</fullName>
+        <actions>
+            <name>Populate_Email_2_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Do_Not_Email__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Email 2 is populated with the value from &quot;Hidden Email 2&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is UNChecked%3A Fax</fullName>
+        <actions>
+            <name>Populate_Fax_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Fax is populated with the value from &quot;Hidden Fax&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is UNChecked%3A Phone</fullName>
+        <actions>
+            <name>Populate_Phone_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, Phone is populated with the value from &quot;Hidden Phone&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Contact is UNChecked%3A ext%2E</fullName>
+        <actions>
+            <name>Populate_ext_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Do_Not_Contact__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Business Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>When &quot;Do Not Contact&quot; is UNchecked, ext. is populated with the value from &quot;Hidden ext.&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PA - Credit Risk is CHECKED</fullName>
+        <actions>
+            <name>Credit_Risk_is_CHECKED</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Credit_Risk__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PA - Do Not Call is CHECKED</fullName>
+        <actions>
+            <name>Do_Not_Call_is_CHECKED</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.PersonDoNotCall</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PA - Do Not Email is CHECKED</fullName>
+        <actions>
+            <name>Do_Not_Email_is_CHECKED</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Do_Not_Email__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

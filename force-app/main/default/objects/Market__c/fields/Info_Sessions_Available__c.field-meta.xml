@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Info_Sessions_Available__c</fullName>
+    <description>Info sessions available should me added in a Comma Separated List: Session 1, Session 2...  if none, leave this field blank.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Info sessions available should me added in a Comma Separated List: Session 1, Session 2...  if none, leave this field blank.</inlineHelpText>
+    <label>Info Sessions Available</label>
+    <length>75</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

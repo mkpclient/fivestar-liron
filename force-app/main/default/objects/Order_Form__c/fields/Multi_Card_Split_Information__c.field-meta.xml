@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Multi_Card_Split_Information__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This is where you enter information on how each card in a split will be charged</inlineHelpText>
+    <label>Multi-Card Split Information</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

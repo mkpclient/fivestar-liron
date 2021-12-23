@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>October__c</fullName>
+    <description>October choice for e-newsletter</description>
+    <externalId>false</externalId>
+    <inlineHelpText>October choice for e-newsletter</inlineHelpText>
+    <label>October</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

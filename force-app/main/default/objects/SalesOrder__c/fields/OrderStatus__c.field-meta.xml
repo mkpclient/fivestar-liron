@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderStatus__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(RecordStatus__c = &apos;Draft&apos;,
+RecordStatus__c &amp; &quot; [&quot; &amp; HYPERLINK(&apos;/apex/kontroller?action=updateOrderStatus&amp;status=Approved&amp;ordId=&apos;&amp;Id, &apos;Approve&apos;, &quot;_self&quot;) &amp; &quot;] &quot; &amp; &quot; [&quot; &amp; HYPERLINK(&apos;/apex/kontroller?action=updateOrderStatus&amp;status=Released&amp;ordId=&apos;&amp;Id, &apos;Release&apos;, &quot;_self&quot;) &amp; &quot;] &quot;,
+IF(RecordStatus__c = &apos;Approved&apos;,
+RecordStatus__c &amp; &quot; [&quot; &amp; HYPERLINK(&apos;/apex/kontroller?action=updateOrderStatus&amp;status=Released&amp;ordId=&apos;&amp;Id, &apos;Release&apos;, &quot;_self&quot;) &amp; &quot;] &quot;, RecordStatus__c
+))</formula>
+    <label>Deprecated</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

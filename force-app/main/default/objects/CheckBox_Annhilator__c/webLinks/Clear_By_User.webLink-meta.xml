@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clear_By_User</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Clear By User</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/25.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/25.0/apex.js&quot;)} 
+
+var records = {!GETRECORDIDS($ObjectType.CheckBox_Annhilator__c)}; 
+var type = &quot;CheckBox_Annhilator__c&quot;; 
+var csvContactIds = &quot;&quot;; 
+//fetch csv format Ids 
+for(var rowNum in records) 
+{ 
+csvContactIds += &quot;&apos;&quot;+ records[rowNum] + &quot;&apos;,&quot;; 
+} 
+
+//remove last comma 
+csvContactIds = csvContactIds.slice(0, csvContactIds.length - 1); 
+
+//Enclose the ids in round brackets 
+if(csvContactIds.length &gt; 1) 
+{ 
+csvContactIds = &quot;(&quot; + csvContactIds + &quot;)&quot;; 
+} 
+
+if (records[0] == null) 
+{ 
+alert(&quot;Please select at least one annhilator to Submit.&quot;); 
+} 
+else 
+{ 
+
+var soql1 = &quot;SELECT User_to_Clear__c FROM CheckBox_Annhilator__c WHERE Id IN &quot; + csvContactIds; 
+
+var cc = sforce.connection.query(soql1); 
+
+/*var result = sforce.apex.execute(&quot;DSClearCallList&quot;,&quot;uncheckBox&quot;, 
+{sfdcObjectidList:list, objectType:type}); 
+window.alert(&quot;Opportunity was Queued for DS Call.&quot;);*/ 
+if(cc.size &gt; 0) 
+{ 
+var oppsToUpdate = []; 
+for (var i = 0 ; i&lt;cc.size ; i++) 
+{ 
+var uid = cc.getArray(&quot;records&quot;)[i].User_to_Clear__c; 
+var soql2 = &quot;SELECT Id FROM Opportunity WHERE Has_been_called__c = true AND OwnerId = &apos;&quot; +uid+ &quot;&apos;&quot;; 
+var cc2 = sforce.connection.query(soql2); 
+for(var j = 0 ; j&lt;cc2.size ; j++) 
+{ 
+//alert(cc2); 
+
+//create optty 
+var o = new sforce.SObject(&quot;Opportunity&quot;); 
+o.id = cc2.getArray(&quot;records&quot;)[j].Id; 
+
+//uncheck box 
+o.Has_been_called__c = false; 
+
+//add to list 
+oppsToUpdate.push(o); 
+} 
+} 
+result = sforce.connection.update(oppsToUpdate); 
+alert(i + &quot; Call List(s) were annihilated.&quot;); 
+window.location.reload(); 
+} 
+}</url>
+</WebLink>

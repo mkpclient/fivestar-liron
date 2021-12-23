@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Clear_Assistant_Email</fullName>
+        <field>Assistant_Email__c</field>
+        <name>Clear Assistant Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_Assistant_Phone</fullName>
+        <field>Assistant_Phone__c</field>
+        <name>Clear Assistant Phone</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Proof_Sent_Automatically</fullName>
+        <description>Sets to &quot;False&quot; when a CSR has updated the next action date</description>
+        <field>Proof_Sent_Automatically__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Proof Sent Automatically</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Hidden_Assistant_Email</fullName>
+        <field>Hidden_asst_email__c</field>
+        <formula>Assistant_Email__c</formula>
+        <name>Update Hidden Assistant Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Hidden_Asst_Phone</fullName>
+        <field>Hidden_asst_phone__c</field>
+        <formula>Assistant_Phone__c</formula>
+        <name>Update Hidden Asst Phone</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Hidden_Email</fullName>
+        <field>Hidden_email__c</field>
+        <formula>Email</formula>
+        <name>Update Hidden Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Hidden_Email_2</fullName>
+        <field>Hidden_email_2__c</field>
+        <formula>Email_2__c</formula>
+        <name>Update Hidden Email 2</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Hidden_Extension</fullName>
+        <field>Hidden_Extension__c</field>
+        <formula>Extension__c</formula>
+        <name>Update Hidden Extension</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Hidden_Fax</fullName>
+        <field>Hidden_fax__c</field>
+        <formula>Fax</formula>
+        <name>Update Hidden Fax</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Hidden_Mobile</fullName>
+        <field>Hidden_mobile__c</field>
+        <formula>MobilePhone</formula>
+        <name>Update Hidden Mobile</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Hidden_phone</fullName>
+        <field>Hidden_phone__c</field>
+        <formula>Phone</formula>
+        <name>Update Hidden phone</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>forcebrain__Set_Lattitude_Blank</fullName>
+        <field>forcebrain__Latitude__c</field>
+        <name>Set Lattitude Blank</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>forcebrain__Set_Longitude_Blank</fullName>
+        <field>forcebrain__Longitude__c</field>
+        <name>Set Longitude Blank</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>forcebrain__UpdateUserId</fullName>
+        <field>forcebrain__UserId__c</field>
+        <formula>IF( ISNULL(forcebrain__User__r.Id), &apos;&apos;, forcebrain__User__r.Id )</formula>
+        <name>UpdateUserId</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>true</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>forcebrain__Contact - Update Longitude and Latitude</fullName>
+        <actions>
+            <name>forcebrain__Set_Lattitude_Blank</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>forcebrain__Set_Longitude_Blank</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>OR( PRIORVALUE( MailingStreet ) &lt;&gt; MailingStreet, PRIORVALUE(MailingPostalCode) &lt;&gt; MailingPostalCode, PRIORVALUE( MailingState ) &lt;&gt;MailingState, PRIORVALUE( MailingCountry )&lt;&gt; MailingCountry , PRIORVALUE( MailingCity ) &lt;&gt; MailingCity )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>forcebrain__Provider - Update User ID Text</fullName>
+        <actions>
+            <name>forcebrain__UpdateUserId</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>true</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>forcebrain__Update Contact Latitude and Logitude</fullName>
+        <actions>
+            <name>forcebrain__Set_Lattitude_Blank</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>forcebrain__Set_Longitude_Blank</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>OR( PRIORVALUE( MailingStreet ) &lt;&gt; MailingStreet, PRIORVALUE(MailingPostalCode) &lt;&gt; MailingPostalCode, PRIORVALUE( MailingState ) &lt;&gt;MailingState,  PRIORVALUE( MailingCountry )&lt;&gt; MailingCountry ,  PRIORVALUE( MailingCity ) &lt;&gt; MailingCity )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>forcebrain__UpdateUserId</fullName>
+        <actions>
+            <name>forcebrain__UpdateUserId</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>true</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,19 @@
+<apex:page showHeader="false" standardStylesheets="false">
+    <apex:includeLightning />
+    <div id="lwcContainer" />
+
+    <script src="https://fivestarprofessional-experience.force.com/lightning/lightning.out.js"></script>
+    <script>
+        $Lightning.use("c:publicPaymentApp", function() {
+            $Lightning.createComponent(
+                "c:publicPaymentTerminal",
+                {orderId: '{!$CurrentPage.parameters.id}'},
+                "lwcContainer",
+                function(cmp) {
+                    console.log('LWC Component Created. {!$User.UserName}');
+                }
+            );
+        }, 'https://fivestarprofessional-experience.force.com/');
+    </script>
+
+</apex:page>

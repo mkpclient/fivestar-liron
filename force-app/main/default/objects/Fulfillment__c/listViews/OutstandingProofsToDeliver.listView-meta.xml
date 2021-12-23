@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OutstandingProofsToDeliver</fullName>
+    <columns>NAME</columns>
+    <columns>Full_Name__c</columns>
+    <columns>Customer_ID__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Notes_for_Ad_Prod__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Official_Order_Date__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Market__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>equals</operation>
+        <value>Send Proof</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>-page Profile</value>
+    </filters>
+    <label>Outstanding Proofs to Deliver</label>
+    <sharedTo>
+        <group>Allen_Wardell</group>
+        <group>Mindy_Stansbarger</group>
+        <group>Teresa_Hemingson</group>
+    </sharedTo>
+</ListView>

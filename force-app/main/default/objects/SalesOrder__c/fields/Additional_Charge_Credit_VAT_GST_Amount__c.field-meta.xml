@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Charge_Credit_VAT_GST_Amount__c</fullName>
+    <externalId>false</externalId>
+    <label>Additional Charge/Credit VAT/GST Amount</label>
+    <summarizedField>SalesOrderAdditionalChargeCredit__c.VATAmount__c</summarizedField>
+    <summaryForeignKey>SalesOrderAdditionalChargeCredit__c.SalesOrder__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

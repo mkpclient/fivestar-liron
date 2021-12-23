@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Proof_Location__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Preloaded with &quot;http://fivestarprofessional.com/Content/Images/&quot;
+Enter the YEAR/MARKETCODE/CLIENTFOLDER/FILENAME (Ex: 2020/MSPWM20/MarcusWaterbury/MSPWM20_MarcusRaymondWaterbury_DWP_P1.pdf)</inlineHelpText>
+    <label>Proof Location</label>
+    <length>250</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

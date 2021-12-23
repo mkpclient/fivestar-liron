@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>Launched by process &quot;show all versions set opp stg upon appointment creation&quot;, updates contact page when a CSR appointment is scheduled</description>
+    <formulas>
+        <description>today plus three business days</description>
+        <name>todayplusthreeibzdays</name>
+        <dataType>Date</dataType>
+        <expression>CASE(
+MOD(TODAY() - DATE(1900, 1, 7), 7), 
+0, TODAY()+3, 
+1, TODAY()+3, 
+2, TODAY()+3,
+3, TODAY()+5,
+4, TODAY()+5, 
+5, TODAY()+5, 
+6, TODAY()+4,null)</expression>
+    </formulas>
+    <interviewLabel>CSR appointment staging {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CSR appointment staging</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UpdateContactCSRStage</name>
+        <label>UpdateContactCSRStage</label>
+        <locationX>268</locationX>
+        <locationY>221</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ParticipantContactID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CSR_Next_Action_Date__c</field>
+            <value>
+                <elementReference>todayplusthreeibzdays</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CSR_Status__c</field>
+            <value>
+                <stringValue>CS Appointment Scheduled on Sumo</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <startElementReference>UpdateContactCSRStage</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>passed contact ID of participant</description>
+        <name>ParticipantContactID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

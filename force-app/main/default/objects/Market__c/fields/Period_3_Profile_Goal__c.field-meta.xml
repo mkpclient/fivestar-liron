@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Period_3_Profile_Goal__c</fullName>
+    <externalId>false</externalId>
+    <label>Period 3 Profile Goal</label>
+    <summarizedField>Market_Goal__c.Period_3_Profile_Goal__c</summarizedField>
+    <summaryForeignKey>Market_Goal__c.Market_Project__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

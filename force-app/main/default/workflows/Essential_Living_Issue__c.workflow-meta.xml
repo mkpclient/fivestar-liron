@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>New_Essential_Living_Magazine_Issue_Alert</fullName>
+        <description>New Essential Living Magazine Issue Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contact__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>customerservice@fivestarprofessional.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/New_Essential_Living_Issue_Email_Alert</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Update_EL_status_change_date</fullName>
+        <description>Update the Status Change date on the Essential Living Issue object WHEN the status changes.</description>
+        <field>Status_Change_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Update EL status change date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Email_Alert_Sent</fullName>
+        <description>Update Email Alert Field on Essential Living Issue Object</description>
+        <field>Received_Email_Alert__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Email Alert Sent</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>EL Status Check</fullName>
+        <actions>
+            <name>Update_EL_status_change_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Check if Status has changed and Update the Status Change Date field if changed.</description>
+        <formula>ISCHANGED( Status__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Essential Living Issue Email Alert</fullName>
+        <actions>
+            <name>New_Essential_Living_Magazine_Issue_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Update_Email_Alert_Sent</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Essential_Living_Issue__c.Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Essential_Living_Issue__c.Received_Email_Alert__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Essential_Living_Issue__c.CreatedDate</field>
+            <operation>lessThan</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

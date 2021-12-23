@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pick_One_Ala_Cart_Product_1__c</fullName>
+    <externalId>false</externalId>
+    <label>Pick One Ala Cart Product (1)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Postcards</fullName>
+                <default>false</default>
+                <label>Postcards</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2019_October_Pub</fullName>
+    <columns>SF_ID__c</columns>
+    <columns>NAME</columns>
+    <columns>Publication_Month__c</columns>
+    <columns>Profession__c</columns>
+    <columns>Candidates_in_Market__c</columns>
+    <columns>Winners_in_Market__c</columns>
+    <columns>Consumers_Surveyed__c</columns>
+    <columns>Percent_Winners_in_Market__c</columns>
+    <columns>Percent_Candidates_Awarded__c</columns>
+    <columns>Percent_of_Market_actual__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Publication_Month__c</field>
+        <operation>equals</operation>
+        <value>October</value>
+    </filters>
+    <filters>
+        <field>Publication_Year__c</field>
+        <operation>equals</operation>
+        <value>2019</value>
+    </filters>
+    <filters>
+        <field>New_Final_Upload__c</field>
+        <operation>lessOrEqual</operation>
+        <value>11/1/2019</value>
+    </filters>
+    <label>CONWM20</label>
+</ListView>

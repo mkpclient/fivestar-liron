@@ -1,0 +1,115 @@
+<apex:page StandardController="kugo2p__SalesOrder__c" extensions="OrderPaymentScheduleExt" action="{!redirect}">
+
+<style>
+	.pbsiStyle {
+		text-align: right !important;
+		padding-right: 73% !important;
+	}
+</style>
+
+<apex:form id="form">
+
+    <apex:sectionHeader title="Payment Schedule" subtitle="Create Order Payment Schedule" rendered="{!NOT(isError)}"/>
+
+    <apex:outputPanel rendered="false">
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.Name}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__Account__c}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__ContactBilling__c}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__RecordStatus__c}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__PaymentStatus2__c}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__BalanceDueAmount__c}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.FinanceOverride__c}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.FinanceTerm__c}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__NetAmount__c}" />
+    	<apex:outputField value="{!kugo2p__SalesOrder__c.FreeFinancingApproved__c}" />
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!NOT(isError)}">
+	    <div class="bOverviewSearch">
+	        <div class="view">
+	        Select the Finance Term, Initial Amount to create a Payment Schedule.
+	        </div>
+	    </div>
+	 </apex:outputPanel>
+	 
+	 <apex:outputPanel id="msgOpId" >
+    	<apex:pageMessages escape="false" />
+    </apex:outputPanel>	
+
+	<apex:outputPanel layout="block" style="text-align:center;" rendered="{!isError}" >
+		<br></br>
+        <apex:commandButton value="Back" action="{!cancel}" />
+	</apex:outputPanel>
+
+	<apex:outputPanel id="pbOpId" styleClass="pbOPId" layout="block" >
+	    <apex:pageBlock id="pBlock" mode="edit" rendered="{!NOT(isError)}" >
+	        <apex:pageBlockButtons >
+	            <apex:commandButton value="Close" action="{!cancel}" />
+	            <apex:commandButton value="Save Schedule" action="{!savePaymentSchedule}" status="busyStatus" rerender="msgOpId,pbOpId" />
+	            <apex:commandButton value="Delete Schedule" action="{!deletePaymentSchedule}" status="busyStatus" rerender="msgOpId,pbOpId" />
+	            <apex:commandButton value="Save & Charge" action="{!saveAndCharge}" styleClass="btnImportant" status="busyStatus" rerender="msgOpId,pbOpId" />
+	             &nbsp;&nbsp;
+	             <apex:actionStatus id="busyStatus">
+	                 <apex:facet name="start">
+	                     <apex:outputPanel >
+	                         <apex:image value="/img/loading32.gif" style="vertical-align:middle;height:20px;" alt="refreshing..." />
+	                         &nbsp;<b>Processing...</b></apex:outputPanel>
+	                 </apex:facet>
+	                 <apex:facet name="stop">
+	                     <apex:image value="{!URLFOR('/s.gif')}" alt="" style="height:17px;" />
+	                 </apex:facet>
+	             </apex:actionStatus>
+	        </apex:pageBlockButtons>
+	
+	        <apex:pageBlockSection columns="1" id="pBlockSectionAmount">
+
+	            <apex:pageBlockSectionItem dataStyleClass="pbsiStyle">
+	                <apex:outputLabel for="financeTerm">Finance Term</apex:outputLabel>
+	                <apex:selectList size="1" value="{!selectedFinanceTerm}" id="financeTerm" >
+						<apex:actionSupport event="onchange" action="{!recalcInitialAmount}" status="busyStatus" rerender="msgOpId,pbOpId" />
+	                    <apex:selectOptions value="{!FinanceTermOptions}" />
+	                </apex:selectList>
+	            </apex:pageBlockSectionItem>
+
+	            <apex:pageBlockSectionItem dataStyleClass="pbsiStyle">
+	                   	<apex:outputLabel >Finance Charge</apex:outputLabel>
+	                   	<apex:outputText value="{0, number, $###,##0.00}" >
+	                   		<apex:param value="{!financeCharges}" />
+	                   	</apex:outputText>
+	            </apex:pageBlockSectionItem>
+
+	            <apex:pageBlockSectionItem dataStyleClass="pbsiStyle" rendered="{!kugo2p__SalesOrder__c.FreeFinancingApproved__c}">
+	                   	<apex:outputLabel >Promotion</apex:outputLabel>
+	                   	<apex:outputText value="{0, number, $###,##0.00}" >
+	                   		<apex:param value="{!promotionCharges}" />
+	                   	</apex:outputText>
+	            </apex:pageBlockSectionItem>
+
+	            <apex:pageBlockSectionItem dataStyleClass="pbsiStyle">
+	                   	<apex:outputLabel >Total Amount</apex:outputLabel>
+	                   	<apex:outputText value="{0, number, $###,##0.00}" style="font-weight:bold;">
+	                   		<apex:param value="{!totalAmount}" />
+	                   	</apex:outputText>
+	            </apex:pageBlockSectionItem>
+
+	            <apex:pageBlockSectionItem >&nbsp;</apex:pageBlockSectionItem>
+
+	            <apex:pageBlockSectionItem id="amount" dataStyleClass="pbsiStyle">
+						<apex:outputLabel >Initial Amount</apex:outputLabel>
+	                   	<apex:inputText id="amountField" value="{!dummySO.kugo2p__ProductDiscountAmount__c}" style="width: 80px; text-align: right;">
+	                   		<apex:actionSupport event="onchange" action="{!recalcRecurringAmount}" status="busyStatus" rerender="msgOpId,pbOpId" />
+	                   	</apex:inputText>
+	            </apex:pageBlockSectionItem>
+
+	            <apex:pageBlockSectionItem dataStyleClass="pbsiStyle">
+						<apex:outputLabel >Remaining Recurring Amount</apex:outputLabel>
+	                   	<apex:outputText value="{0, number, $###,##0.00}" >
+	                   		<apex:param value="{!recurringAmount}" />
+	                   	</apex:outputText>
+	            </apex:pageBlockSectionItem>
+	
+	    	</apex:pageBlockSection>
+	    </apex:pageBlock>
+	</apex:outputPanel>
+</apex:form>
+</apex:page>

@@ -1,0 +1,75 @@
+<template>
+  <div class="slds-card__body slds-card__body_inner" if:true={data.length}>
+    <template if:true={addRecipientsActive}>
+      <template if:true={existingOrderLineRecipients}>
+        <template if:true={recipientLimit}>
+          <c-manage-lines-recipient-search
+            oncancel={toggleAddRecipient}
+            current-order-line-id={activeOrderLineId}
+            existing-recipients={existingOrderLineRecipients}
+            onaddrecipient={handleAddRecipient}
+            recipients-limit={recipientLimit}
+            query-items={searchRecipientQueryItems}
+          ></c-manage-lines-recipient-search>
+        </template>
+      </template>
+    </template>
+    <template if:false={isRendered}>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="medium"
+      ></lightning-spinner>
+    </template>
+    <template if:true={isRendered}>
+      <article
+        class="slds-card slds-card_boundary"
+        if:false={addRecipientsActive}
+      >
+        <div class="slds-card__header slds-grid">
+          <div class="slds-col slds-size_3-of-4">
+            <h2 class="slds-card__header-title">
+              <span>Selected Products</span>
+            </h2>
+          </div>
+          <!--div class="slds-col slds-size_1-of-4">
+            <lightning-input
+              type="date"
+              name="main-date"
+              label="Start Date"
+              onchange={handleDateChange}
+            ></lightning-input>
+          </div-->
+          <div class="slds-col slds-size_1-of-4">
+            <lightning-input
+              type="number"
+              name="main-so-discount"
+              label="Order Discount (%)"
+              value={discountPercent}
+              oncommit={handleDiscountUpdate}
+              formatter="percent-fixed"
+              step=".01"
+              disabled={disableDiscount}
+            ></lightning-input>
+          </div>
+        </div>
+        <div
+          class="slds-card__body slds-card__body_inner slds-scrollable_y"
+          style="height: 30rem"
+        >
+          <lightning-datatable
+            key-field="Id"
+            data={data}
+            columns={columns}
+            column-widths-mode="fixed"
+            onrowaction={handleRowAction}
+            oncellchange={handleSave}
+            suppress-bottom-bar
+            hide-checkbox-column
+            min-column-width="10"
+          >
+          </lightning-datatable>
+        </div>
+      </article>
+    </template>
+  </div>
+</template>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Managed_Social_Media_Platform__c</fullName>
+    <description>Managed social media platform from fulfillment</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Fulfillment__r.Managed_Social_Media_Platform__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Managed social media platform from fulfillment</inlineHelpText>
+    <label>Managed Social Media Platform</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

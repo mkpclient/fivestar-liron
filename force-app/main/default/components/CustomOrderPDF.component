@@ -1,0 +1,581 @@
+<!---------------------------------------------->
+<!--   CustomOrderPDF Component by Kugamon    -->
+<!--   Copyright: Kugamon LLC                 -->
+<!--   http://www.kugamon.com                 -->
+<!--   Author: Kiran Kurella                  -->
+<!--   NO SUPPORT PROVIDED                    -->
+<!--   DO NOT COPY, STEAL, SELL THIS CODE     -->
+<!---------------------------------------------->
+
+<apex:component access="global" Controller="CustomOrderPDFExt" allowDml="true" id="orderCompId">
+<apex:attribute name="orderId" type="Id" assignTo="{!orderIdValue}" description="Id of the Order" access="global" />
+<apex:attribute name="renderAs" type="string" description="The format this component will be rendered to." access="global" />
+<apex:attribute name="isOnlineOrder" type="boolean" default="false" description="Indicates if this should show the online order format" access="global" />
+
+<apex:stylesheet value="{!$Resource.CustomPdfCss}" />
+
+<!-- Header -->
+<table cellpadding="3" cellspacing="0" class="noborder">
+<tr>
+    <td><apex:outputPanel rendered="{!IF(orderPDFExt.LogoUrl!=null && NOT(isOnlineOrder),true,false)}"><img src="{!orderPDFExt.LogoUrl}" alt="{!$Organization.Name}" /></apex:outputPanel>
+        <h1><apex:outputText rendered="{!isOnlineOrder}" value="{!Order.kugo2p__Account__r.Name}" /></h1></td>
+    <td>
+        <apex:outputPanel rendered="{!NOT(isOnlineOrder)}">
+            <apex:outputText value="{!$Organization.Name}" /><br/>
+            <apex:outputText value="{!$Organization.Street}" /><br/>
+            <apex:outputText value="{!$Organization.City}" />,&nbsp;<apex:outputText value="{!$Organization.State}" />&nbsp;<apex:outputText value="{!$Organization.PostalCode}" /><br/>
+            <apex:outputText value="{!$Organization.Country}" /><br/>
+            <apex:outputText rendered="{!IF($Organization.Phone!='',true,false)}" escape="false">Phone: </apex:outputText>&nbsp;<apex:outputText value="{!$Organization.Phone}" /><br/>
+            <apex:outputText rendered="{!IF($Organization.Fax!='',true,false)}" escape="false">Fax: </apex:outputText>&nbsp;<apex:outputText value="{!$Organization.Fax}" /><br/>
+        </apex:outputPanel>
+    </td>
+    <td width="34%">
+        <div align="right">
+        <apex:outputPanel rendered="{!NOT(isOnlineOrder)}"><b>ORDER for&nbsp;<apex:outputText value="{!Order.kugo2p__Account__r.Name}" /></b><br/></apex:outputPanel>
+        Order:&nbsp;<apex:outputText value="{!Order.Name}" /><br/>
+        Date:&nbsp;<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!Order.kugo2p__OrderDate__c}" /></apex:outputText><br/>
+        <apex:outputPanel rendered="{!NOT(ISBLANK(orderPDFExt.owner.Name))}">Prepared by:&nbsp;<apex:outputText value="{!orderPDFExt.owner.Name}" /></apex:outputPanel>
+        </div>
+    </td>   
+</tr>
+</table>
+
+<br/>
+
+<apex:outputPanel rendered="{!isOnlineOrder}"><br/><h0><font color ="#000080">Order</font></h0></apex:outputPanel>
+<apex:outputPanel rendered="{!NOT(isOnlineOrder)}"><h0>Order</h0></apex:outputPanel>
+<!-- <apex:outputPanel rendered="{!isOnlineOrder}"><br/><br/></apex:outputPanel> -->
+<div class="hr"><hr /></div>
+<apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+<h2>Address Information</h2>
+<!-- <apex:outputPanel rendered="{!isOnlineOrder}"><br/><br/></apex:outputPanel> -->
+<table cellpadding="3" cellspacing="0" class="noborder">
+<tr>
+    <td width="50%">
+        <apex:outputPanel >
+            <b>Bill To:</b><br/>
+            <apex:outputPanel rendered="{!Order.kugo2p__BillToName__c != null}"><apex:outputField value="{!Order.kugo2p__BillToName__c}" /><br/></apex:outputPanel>
+            <apex:outputField value="{!Order.kugo2p__BillToStreetLong__c}" /><br/>
+            <apex:outputText value="{!Order.kugo2p__BillToCity__c}" />,&nbsp;<apex:outputText value="{!Order.kugo2p__BillToStateProvince__c}" />&nbsp;<apex:outputText value="{!Order.kugo2p__BillToZipPostalCode__c}" /><br/>
+            <apex:outputText value="{!Order.kugo2p__BillToCountry__c}" />
+        </apex:outputPanel>    
+    </td>
+    <td width="50%">
+        <apex:outputPanel rendered="{!orderPDFExt.displayShipToInfo}">
+            <b>Ship To:</b><br/>
+            <apex:outputPanel rendered="{!Order.kugo2p__ShipToName__c != null}"><apex:outputField value="{!Order.kugo2p__ShipToName__c}" /><br/></apex:outputPanel>
+            <apex:outputField value="{!Order.kugo2p__ShipToStreetLong__c}" /><br/>
+            <apex:outputText value="{!Order.kugo2p__ShipToCity__c}" />,&nbsp;<apex:outputText value="{!Order.kugo2p__ShipToStateProvince__c}" />&nbsp;<apex:outputText value="{!Order.kugo2p__ShipToZipPostalCode__c}" /><br/>
+            <apex:outputText value="{!Order.kugo2p__ShipToCountry__c}" />
+        </apex:outputPanel> 
+    </td>
+</tr>
+<tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <td>
+        <b>Account Name:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__Account__r.Name}" /><br/>
+        <b>Billing Contact:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__ContactBilling__r.Name}" /><br/>
+        <apex:outputText rendered="{!IF(Order.kugo2p__ContactBilling__r.Email!='',true,false)}" escape="false"><b>Billing Email:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__ContactBilling__r.Email}" /><br/></apex:outputText>
+    </td>
+    <td>
+        <br/>
+        <apex:outputText rendered="{!IF(Order.kugo2p__ContactBilling__r.Phone!='',true,false)}" escape="false"><b>Billing Phone:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__ContactBilling__r.Phone}" /><br/></apex:outputText>
+        <apex:outputText rendered="{!IF(Order.kugo2p__ContactBilling__r.Fax!='',true,false)}" escape="false"><b>Billing Fax:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__ContactBilling__r.Fax}" /><br/></apex:outputText>
+    </td>
+</tr>
+</table>
+
+<apex:outputPanel rendered="{!NOT(isOnlineOrder) || Order.kugo2p__PaymentMethod__c=='Invoice'}">
+<div class="hr"><hr /></div>
+<apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+<h2>Terms and Conditions</h2>
+<table cellpadding="3" cellspacing="0" class="noborder">
+<tr>
+    <td width="50%">
+        <apex:outputText rendered="{!IF(Order.kugo2p__CustomerPONumber__c!='',true,false)}" escape="false"><b>PO Number:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__CustomerPONumber__c}" /><br/></apex:outputText>
+        <b>Payment Method:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__PaymentMethod__c}" /><br/>
+        <b>Payment Terms:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__PaymentTerms__c}" />
+    </td>
+    <td>
+        <b>Delivery Terms:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__DeliveryTerms__c}" /><br/>
+        <b>Billing Method:</b>&nbsp;<apex:outputText value="{!Order.kugo2p__BillingMethod__c}" /><br/>
+    </td>
+</tr>
+</table>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!AND(NOT(isOnlineOrder), Order.kugo2p__BalanceDueAmount__c!=0.00, OR(Order.kugo2p__AddOnlinePaymentDetailsinPDF__c==true, settings.kugo2p__RemitToName__c!=''))}">
+<div class="hr"><hr /></div>
+<h2>Remittance Information</h2>
+<table cellpadding="3" cellspacing="0" class="noborder">
+    <tr valign="top">
+        <td width="50%" style="display:{!IF(settings.kugo2p__RemitToName__c!='','Block','none')}">
+            <b>Remit To:</b><br/>
+            <apex:outputText value="{!settings.kugo2p__RemitToName__c}" /><br/>
+            <apex:outputText value="{!settings.kugo2p__RemitToStreet__c}" /><br/>
+            <apex:outputText value="{!settings.kugo2p__RemitToCity__c}" />,&nbsp;<apex:outputText value="{!settings.kugo2p__RemitToStateProvince__c}" />&nbsp;<apex:outputText value="{!settings.kugo2p__RemitToZipPostalCode__c}" /><br/>
+            <apex:outputText value="{!settings.kugo2p__RemitToCountry__c}" /><br/>
+        </td>
+        <td width="50%">
+            <apex:outputPanel rendered="{!orderPDFExt.renderPaymentButton}">
+                <b>Click To:</b><br/>
+                <a href="{!PaymentURL}"><br/><img src="{!settings.kugo2p__OnlinePaymentLogoinPDFSourceURL__c}" alt="Payment Logo" border="0" /></a>      
+            </apex:outputPanel>
+        </td>
+    </tr>
+</table>
+
+<apex:outputPanel rendered="{!IF(settings.kugo2p__BankName__c!='',true,false)}">
+    <table>
+        <tr>
+            <td><br/>
+                <b>Wire Transfer To:</b><br/>
+                <b>Bank Name:</b>&nbsp;<apex:outputText value="{!settings.kugo2p__BankName__c}" /><br/>
+                <b>Account Name:</b>&nbsp;<apex:outputText value="{!settings.kugo2p__ACName__c}" /><br/>
+                <b>A/C Number:</b>&nbsp;<apex:outputText value="{!settings.kugo2p__ACNumber__c}" /><br/>
+                <b>ABA Number:</b>&nbsp;<apex:outputText value="{!settings.kugo2p__ABANumber__c}" /><br/>
+                <apex:outputText rendered="{!if(settings.kugo2p__SWIFT_Code__c!=null, true, false)}"><b>SWIFT Code:</b></apex:outputText>&nbsp;<apex:outputText value="{!settings.kugo2p__SWIFT_Code__c}"/><br/>
+            </td>
+        </tr>
+    </table>
+</apex:outputPanel>
+
+<p>Please reference order number&nbsp;<apex:outputText value="{!Order.Name}" />&nbsp;with your payment.</p>
+</apex:outputPanel>
+
+
+<div class="hr"><hr /></div>
+<apex:outputPanel rendered="{!IF(orderPDFExt.ProductLineCount==0, false, true)}">
+<apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <h2 style="display:block"><font color ="#999999">Product Lines</font></h2>
+    <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!ProductLines}" var="line">
+        <apex:column headerClass="colheader">
+            <apex:facet name="header">Product</apex:facet>
+            <apex:outputText value="{!line.Product.Name}" />
+        </apex:column>
+        <apex:column headerClass="colheader" rendered="{!orderPDFExt.productsHaveDescriptions}">
+            <apex:facet name="header">Description</apex:facet>
+            <apex:outputText value="{!line.ProductLine.kugo2p__LineDescription__c}" />
+        </apex:column>
+        <apex:column headerClass="colheader" rendered="{!IF(Order.kugo2p__ProductTaxAmount__c > 0 || Order.kugo2p__ProductVATAmount__c > 0,true,false)}">
+            <apex:facet name="header">Tax</apex:facet>
+            <apex:outputText value="{!line.ProductLine.kugo2p__TaxVAT__c}" />
+        </apex:column>
+        <apex:column headerClass="colheader">
+            <apex:facet name="header">Date <br/>Available</apex:facet>
+            <apex:outputField value="{!line.ProductLine.kugo2p__DateAvailableToPromise__c}" />
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right" >
+            <apex:facet name="header">Quantity</apex:facet>
+            <apex:outputText value="{0, number, ###,##0.00}">
+                <apex:param value="{!line.ProductLine.kugo2p__Quantity__c}" />
+            </apex:outputText>
+            &nbsp;<apex:outputField value="{!line.ProductLine.kugo2p__UnitofMeasure__c}" />
+        </apex:column>
+    <apex:column headerClass="colheader alignRight" style="text-align: right" rendered="{!settings.kugo2p__ListPriceColumnonPDF__c==true}">
+            <apex:facet name="header">List Price</apex:facet>
+            <apex:outputField value="{!line.ProductLine.kugo2p__ListPrice__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!line.ProductLine.kugo2p__ListPrice__c}" />
+            </apex:outputText>
+        </apex:column>
+    <apex:column headerClass="colheader alignRight" style="text-align: right">
+            <apex:facet name="header">Sales Price</apex:facet>
+            <apex:outputField value="{!line.ProductLine.kugo2p__DiscountSalesPrice__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!line.ProductLine.kugo2p__DiscountSalesPrice__c}" />
+            </apex:outputText>
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right">
+            <apex:facet name="header">Amount</apex:facet>
+            <apex:outputField value="{!line.ProductLine.kugo2p__TotalAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!line.ProductLine.kugo2p__TotalAmount__c}" />
+            </apex:outputText>
+        </apex:column>
+    </apex:dataTable>   
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!IF(orderPDFExt.ServiceLineCount==0, false, true)}">
+<apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <h2 style="display:block"><font color ="#999999">Service Lines</font></h2>
+    <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!ServiceLines}" var="line">
+        <apex:column headerClass="colheader">
+            <apex:facet name="header">Service</apex:facet>
+            <apex:outputText value="{!line.Product.Name}" />
+        </apex:column>
+        <apex:column headerClass="colheader" rendered="{!orderPDFExt.servicesHaveDescriptions}" >
+            <apex:facet name="header">Description</apex:facet>
+            <apex:outputText value="{!line.ServiceLine.kugo2p__LineDescription__c}" />
+        </apex:column>
+        <apex:column headerClass="colheader" rendered="{!IF(Order.kugo2p__ServiceTaxAmount__c > 0 || Order.kugo2p__ServiceVATAmount__c > 0,true,false)}">
+            <apex:facet name="header">Tax</apex:facet>
+            <apex:outputText value="{!line.ServiceLine.kugo2p__TaxVAT__c}" />
+        </apex:column>
+        <apex:column headerClass="colheader" width="120px">
+            <apex:facet name="header">Date Start - Date End</apex:facet>
+            <apex:outputField value="{!line.ServiceLine.kugo2p__DateServiceStart__c}" />&nbsp;-&nbsp;<apex:outputField value="{!line.ServiceLine.kugo2p__DateServiceEnd__c}" />
+        </apex:column>        
+        <apex:column headerClass="colheader alignRight" style="text-align: right" width="25px">
+            <apex:facet name="header">Quantity</apex:facet>
+            <apex:outputText value="{0, number, ###,##0.00}">
+                <apex:param value="{!line.ServiceLine.kugo2p__Quantity__c}" />
+            </apex:outputText>
+        </apex:column>
+        <apex:column headerClass="colheader" width="35px">
+            <apex:facet name="header">Term</apex:facet>
+            <apex:outputField value="{!line.ServiceLine.kugo2p__ServiceTerm__c}" />&nbsp;<apex:outputText value="{!line.UnitTermAbbr}" />
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right" rendered="{!settings.kugo2p__ListPriceColumnonPDF__c==true}">
+            <apex:facet name="header">List Price</apex:facet>
+            <apex:outputPanel rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:outputField value="{!line.ServiceLine.kugo2p__ListPrice__c}" />/<apex:outputText value="{!line.UnitTermAbbr}" />
+            </apex:outputPanel> 
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}/{!line.UnitTermAbbr}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!line.ServiceLine.kugo2p__ListPrice__c}" />
+            </apex:outputText>
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right">
+            <apex:facet name="header">Sales Price</apex:facet>
+            <apex:outputPanel rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:outputField value="{!line.ServiceLine.kugo2p__DiscountSalesPrice__c}" />/<apex:outputText value="{!line.UnitTermAbbr}" />
+            </apex:outputPanel>            
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}/{!line.UnitTermAbbr}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!line.ServiceLine.kugo2p__DiscountSalesPrice__c}" />
+            </apex:outputText>
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right">
+            <apex:facet name="header">Amount</apex:facet>
+            <apex:outputField value="{!line.ServiceLine.kugo2p__TotalAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!line.ServiceLine.kugo2p__TotalAmount__c}" />
+            </apex:outputText>
+        </apex:column>
+    </apex:dataTable>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!IF(orderPDFExt.ChargeCreditLineCount==0, false, true)}">
+<apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <h2 style="display:block"><font color ="#999999">Additional Charges/Credits</font></h2>
+    <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!ACCLines}" var="ChargeCreditLine">
+        <apex:column headerClass="colheader">
+                <apex:facet name="header">Additional Charge/Credit</apex:facet>
+                <apex:outputText value="{!ChargeCreditLine.kugo2p__AdditionalChargeCredit__r.Name}" />
+        </apex:column>
+        <apex:column headerClass="colheader" rendered="{!orderPDFExt.accsHaveDescriptions}">
+            <apex:facet name="header">Description</apex:facet>
+            <apex:outputText value="{!ChargeCreditLine.kugo2p__LineDescription__c}" />
+        </apex:column>
+        <apex:column headerClass="colheader" rendered="{!IF(Order.kugo2p__AdditionalChargeCreditTaxAmount__c > 0 || Order.kugo2p__AdditionalChargeCreditVATAmount__c > 0,true,false)}">
+                <apex:facet name="header">Tax</apex:facet>
+                <apex:outputText >{!IF(ChargeCreditLine.kugo2p__TaxableExcise__c==true||ChargeCreditLine.kugo2p__TaxableUsage__c==true||ChargeCreditLine.kugo2p__TaxableSales__c==true,'Yes','No')}</apex:outputText>
+        </apex:column>
+        <apex:column headerClass="colheader">
+            <apex:facet name="header">Date</apex:facet>
+            <apex:outputField value="{!ChargeCreditLine.kugo2p__Date__c}" />
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right">
+            <apex:facet name="header">Quantity</apex:facet>
+            <apex:outputText value="{0, number, ###,##0.00}">
+                <apex:param value="{!ChargeCreditLine.kugo2p__Quantity__c}" />
+            </apex:outputText>
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right">
+            <apex:facet name="header">Unit Price</apex:facet>
+            <apex:outputField value="{!ChargeCreditLine.kugo2p__SalesPrice__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!ChargeCreditLine.kugo2p__SalesPrice__c}" />
+            </apex:outputText>
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right">
+            <apex:facet name="header">Amount</apex:facet>
+            <apex:outputField value="{!ChargeCreditLine.kugo2p__AdditionalChargeCreditAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!ChargeCreditLine.kugo2p__AdditionalChargeCreditAmount__c}" />
+            </apex:outputText>
+        </apex:column>
+    </apex:dataTable>
+</apex:outputPanel>
+
+<table border="0" cellpadding="2" cellspacing="0" class="noborder totals">
+    <tr>
+        <td class="productFooter">{!IF(orderPDFExt.ProductLineCount>0, 'Products', '')} {!IF(orderPDFExt.ProductLineCount>0&&orderPDFExt.ServiceLineCount>0, 'and', '')} {!IF(orderPDFExt.ServiceLineCount>0, 'Services', '')} Total:</td>
+        <td class="productFooter">
+            <apex:outputField value="{!Order.kugo2p__TotalAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!Order.kugo2p__TotalAmount__c}" />
+            </apex:outputText>          
+        </td>
+    </tr>
+    <tr style="{!IF(orderPDFExt.ChargeCreditLineCount==0, 'display:none', '')}">
+        <td class="productFooter">Additional Charges/Credits Total:</td>
+        <td class="productFooter">
+            <apex:outputField value="{!Order.kugo2p__AdditionalChargeCreditAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!Order.kugo2p__AdditionalChargeCreditAmount__c}" />
+            </apex:outputText>          
+        </td>
+    </tr>
+    <tr style="{!IF(Order.kugo2p__TotalTaxAmount__c == 0, 'display: none','')}">
+        <td class="productFooter">Tax Amount:</td>
+        <td class="productFooter">
+            <apex:outputField value="{!Order.kugo2p__TotalTaxAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!Order.kugo2p__TotalTaxAmount__c}" />
+            </apex:outputText>          
+        </td>
+    </tr>
+    <tr style="{!IF(Order.kugo2p__TotalVATAmount__c == 0, 'display: none','')}">
+        <td class="productFooter">VAT/GST Amount:</td>
+        <td class="productFooter">
+            <apex:outputField value="{!Order.kugo2p__TotalVATAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!Order.kugo2p__TotalVATAmount__c}" />
+            </apex:outputText>          
+        </td>
+    </tr>
+    <tr>
+        <td class="productFooter">Net Amount:</td>
+        <td class="productFooter">
+            <apex:outputField value="{!Order.kugo2p__NetAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!Order.kugo2p__NetAmount__c}" />
+            </apex:outputText>          
+        </td>
+    </tr>
+        <tr>
+        <td class="productFooter">Total Applied Payments:</td>
+        <td class="productFooter">
+            <apex:outputField value="{!Order.kugo2p__AppliedPaymentAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}"/>
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!Order.kugo2p__AppliedPaymentAmount__c}" />
+            </apex:outputText>          
+        </td>
+    </tr>
+    <tr>
+        <td class="productFooter"><b>Balance Due Amount:</b></td>
+        <td class="productFooter">
+            <b>
+            <apex:outputField value="{!Order.kugo2p__BalanceDueAmount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!Order.kugo2p__BalanceDueAmount__c}" />
+            </apex:outputText>
+            </b>
+        </td>
+    </tr>
+</table>
+
+<br/><br/>
+<p class="caption"><br/>+ The unit price shown above has been rounded to two decimal places for display purposes.</p>
+
+<apex:outputPanel rendered="{!PaymentSchedules.size > 0}">
+	<apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <!-- <h2 style="display:block"><font color ="#999999">Payment Schedule</font></h2> -->
+    <h2>Payment Schedule</h2>
+    <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!PaymentSchedules}" var="ps">
+        <apex:column headerClass="colheader">
+            <apex:facet name="header">Due Date</apex:facet>
+            <apex:outputField value="{!ps.DueDate__c}" />
+        </apex:column>
+        <apex:column headerClass="colheader alignRight" style="text-align: right">
+            <apex:facet name="header">Amount</apex:facet>
+            <apex:outputField value="{!ps.Amount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                <apex:param value="{!ps.Amount__c}" />
+            </apex:outputText>
+        </apex:column>
+    </apex:dataTable>
+</apex:outputPanel>
+<br />
+
+<!--  Line Recipients -->
+<apex:outputPanel layout="block" rendered="{!LineRecipients.size>0}" style="page-break-inside: avoid;" >
+    <br/>
+    <div class="hr"><hr /></div>
+    <apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <h2>Line Recipients</h2>
+    <table cellpadding="2" cellspacing="0" class="noborder">
+    	<thead>
+       		<tr >
+       			<th ><b>Order Line</b></th>
+       			<th ><b>Recipient Name</b></th>
+       			<th class="alignCenter"><b>Primary</b></th>
+       		</tr>
+    	</thead>
+        <apex:repeat value="{!LineRecipients}" var="lr" id="repeatBlock1">
+        <tr>
+            <td valign="top" >
+            	<!-- <apex:outputField value="{!if(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Name, lr.OrderServiceLine__r.Name)}" /> -->
+            	<apex:outputField value="{!lr.OrderProductLine__r.kugo2p__Product__r.Name}" rendered="{!lr.OrderProductLine__c != null}" />
+            	<apex:outputField value="{!lr.OrderServiceLine__r.kugo2p__Service__r.Name}" rendered="{!lr.OrderServiceLine__r != null}" />
+            </td>
+            <td valign="top"><apex:outputField value="{!lr.Recipient__r.Name}" /></td>
+            <td valign="top" align="center" class="alignCenter"><apex:outputField value="{!lr.Primary__c}" /></td>
+        </tr>
+        </apex:repeat>
+    </table>
+</apex:outputPanel>
+
+<!-- adding payment information -->
+<apex:outputPanel layout="block" rendered="{!orderPDFExt.payments.size>0}" style="page-break-inside: avoid;" >
+    <br/>
+    <div class="hr"><hr /></div>
+    <apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <h2>Payment Information</h2>
+    <apex:outputPanel rendered="{!isOnlineOrder}"><br/><br/></apex:outputPanel>
+    <table cellpadding="2" cellspacing="0" class="noborder">
+        <apex:repeat value="{!orderPDFExt.payments}" var="payment" id="repeatBlock">
+            <tr>
+                <td valign="top" width="100px"><apex:outputField value="{!payment.kugo2p__Date__c}" id="DateValue"/></td>
+                <td valign="top" width="150px"><apex:outputField value="{!payment.kugo2p__Payment_Type__c}" id="TypeValue"/></td>
+                <td valign="top"><apex:outputField value="{!payment.kugo2p__Memo__c}" id="MemoValue"/></td>
+                <td valign="top" align="right">
+                    <apex:outputField value="{!payment.kugo2p__Amount__c}" rendered="{!(!orderPDFExt.isMultiCurrencyEnabled)}" id="AmountValue"/>
+                    <apex:outputText value="{!orderPDFExt.ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(orderPDFExt.isMultiCurrencyEnabled)}">
+                        <apex:param value="{!payment.kugo2p__Amount__c}" />
+                    </apex:outputText>
+                </td>
+            </tr>
+        </apex:repeat>
+    </table>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!Order.kugo2p__PrintSpecificTextandTerms__c==true}" id="splTextandTermsId">
+    <br/>
+    <div class="hr"><hr /></div>
+    <apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <h2>Specific Terms</h2>
+    
+    <p ><apex:outputField value="{!Order.kugo2p__SpecificTextandTerms__c}" /></p>
+    
+       <apex:outputPanel rendered="{!(Order.kugo2p__RecordStatus__c == 'Draft' || Order.kugo2p__RecordStatus__c == 'Sent') && (isOnlineOrder) && Order.kugo2p__PaymentStatus2__c != 'Paid'}">
+            <table cellpadding="2" cellspacing="0" class="noborder">
+            <tr>
+            
+            <td width="90">
+                <apex:outputLabel for="initialBy" ><font color="#000080"><h3>Please Initial</h3></font></apex:outputLabel>
+            </td>
+            <td align="left">
+                <input type="text" id="initialBy" value="{!orderPDFExt.initialBy}" style="width: 50px;" onchange="setInitialByErrorText(this);" maxlength="4" />    
+            </td>
+            <td>
+                <apex:outputPanel id="initialByErrorBlock" style="vertical-align: top; color: red;">
+                    <apex:outputPanel ><b><apex:outputText id="initialbyErrorText" value="* You must initial terms before proceeding." style="display:none;"/></b> <!-- rendered="{!showInitialByErrorBlock}" -->
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </td>
+            </tr>
+            </table>
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!orderPDFExt.InitialedBy != ''}" > <!-- Order.kugo2p__RecordStatus__c == 'Approved' &&  -->
+            <!-- <br></br> style="font-size:10.0px;"-->
+            <table cellpadding="2" cellspacing="0" class="noborder">
+            <tr>
+            
+            <td width="80">
+                <br></br>
+                <apex:outputText ><b>Initialed By:&nbsp;</b>{!orderPDFExt.InitialedBy}</apex:outputText>
+            </td>
+            </tr>
+            </table>            
+        </apex:outputPanel>
+        
+        <script  type="text/javascript">
+            function setInitialByErrorText(control) {
+                
+                //objErrorText = document.getElementById("orderCompId:orderCompFormId:initialbyErrorText");
+                objErrorText = document.getElementById("orderCompId:initialbyErrorText");
+                if (objErrorText == null)   // get the online pdf id
+                    //objErrorText = document.getElementById("onlineOrderPageId:SiteTemplate:onlineOrderCompId:orderCompId:orderCompFormId:initialbyErrorText");
+                    objErrorText = document.getElementById("onlineOrderPageId:SiteTemplate:onlineOrderCompId:orderCompId:initialbyErrorText");
+                
+                if (control.value.length > 0)
+                    objErrorText.style.display = 'none';
+                else {
+                    objErrorText.style.display = 'inline';
+                }
+            }
+        </script>
+
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!orderPDFExt.hasProductTextandTerms==true}">
+    <br/>
+    <div class="hr"><hr /></div>
+    <apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <h2>Additional Terms</h2>
+    <div style="font-size: 11px; font-weight: normal;">
+        <apex:variable value="{!0}" var="counter"/>
+        <apex:repeat var="product" value="{!orderPDFExt.Products}">
+            <apex:variable value="{!counter + 1}" var="counter"/>
+            <apex:outputPanel rendered="{!product.kugo2p__PrintProductTextandTerms__c == true}">
+                <apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>          
+                <b> <apex:outputText value="{!product.Name}" /> </b> <br/>
+                <apex:outputField value="{!product.kugo2p__ProductTextandTerms__c}" /><br/>
+                <apex:outputPanel rendered="{!(NOT(isOnlineOrder))}"><br/></apex:outputPanel>
+            </apex:outputPanel>         
+        </apex:repeat>
+    </div>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!settings.kugo2p__PrintCompanyTextandTerms__c && settings.kugo2p__CompanyTextandTerms__c != null}">
+    <apex:outputPanel rendered="{!isOnlineOrder}"><br/></apex:outputPanel>
+    <div style="font-size: 11px; font-weight: normal;"><apex:outputField value="{!settings.kugo2p__CompanyTextandTerms__c}" /></div>
+
+    <br/>
+    <div class="hr"><hr /></div>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!settings.kugo2p__SignatureLinestoPDF__c==true && NOT(isOnlineOrder) && (Order.kugo2p__RecordStatus__c == 'Draft' || Order.kugo2p__RecordStatus__c == 'Sent')}">
+<div style="width: 50%; page-break-inside: avoid;">
+    <table cellpadding="1" cellspacing="3" class="noborder">
+    <tr>
+        <td><h3>Customer:&nbsp;<apex:outputText value="{!Order.kugo2p__Account__r.Name}" /></h3></td>
+    </tr>
+    <tr>
+        <td class="form">Signature</td>
+    </tr>
+    <tr>
+        <td class="form">Name</td>
+    </tr>
+    <tr>
+        <td class="form">Title</td>
+    </tr>
+    <tr>
+        <td class="form">Date</td>
+    </tr>
+    </table>
+</div>
+<br/>
+<br/>
+</apex:outputPanel>
+
+<apex:outputPanel layout="block" rendered="{!Order.kugo2p__RecordStatus__c != 'Draft' && Order.kugo2p__RecordStatus__c != 'Sent' && orderPDFExt.TermsAcceptedBy != '' && NOT(isOnlineOrder)}" style="page-break-inside: avoid;">
+    <h2>Order Approval Information</h2>    
+    <table cellpadding="2" cellspacing="0" class="noborder">
+        <tr style="display:{!IF(SignatureUrl!='','','none')}">
+            <td >
+                <img src="{!SignatureUrl}"/>
+            </td>
+        </tr>
+        <tr>
+            <td><apex:outputText ><b>Terms Accepted By:&nbsp;</b>{!orderPDFExt.TermsAcceptedBy}</apex:outputText></td>
+        </tr>
+        <tr>
+            <td><apex:outputText ><b>On Date:&nbsp;</b>{!orderPDFExt.TermsAcceptedDate}</apex:outputText></td>
+        </tr>
+        <tr>
+            <td><apex:outputText ><b>From IP Address:&nbsp;</b>{!orderPDFExt.TermsAcceptedFromIPAddress}</apex:outputText></td>
+        </tr>
+    </table>
+    <br></br>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!NOT(isOnlineOrder)}">
+<p class="footer">All rights reserved. Copyright&nbsp;<apex:outputText value="{!$Organization.Name}" /> </p>
+</apex:outputPanel>
+</apex:component>

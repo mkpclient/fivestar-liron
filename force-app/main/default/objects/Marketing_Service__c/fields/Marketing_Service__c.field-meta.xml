@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Marketing_Service__c</fullName>
+    <externalId>false</externalId>
+    <label>Marketing Service</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Social Media Campaigns - Interested</fullName>
+                <default>false</default>
+                <label>Social Media Campaigns - Interested</label>
+            </value>
+            <value>
+                <fullName>Social Media Campaigns - Not Interested</fullName>
+                <default>false</default>
+                <label>Social Media Campaigns - Not Interested</label>
+            </value>
+            <value>
+                <fullName>Postcard / Direct Mail Campaigns - Interested</fullName>
+                <default>false</default>
+                <label>Postcard / Direct Mail Campaigns - Interested</label>
+            </value>
+            <value>
+                <fullName>Postcard / Direct Mail Campaigns - Not Interested</fullName>
+                <default>false</default>
+                <label>Postcard / Direct Mail Campaigns - Not Interested</label>
+            </value>
+            <value>
+                <fullName>Celebrity Endorsement Campaigns - Interested</fullName>
+                <default>false</default>
+                <label>Celebrity Endorsement Campaigns - Interested</label>
+            </value>
+            <value>
+                <fullName>Celebrity Endorsement Campaigns - Not Interested</fullName>
+                <default>false</default>
+                <label>Celebrity Endorsement Campaigns - Not Interested</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

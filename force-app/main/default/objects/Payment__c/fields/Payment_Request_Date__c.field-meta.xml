@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Request_Date__c</fullName>
+    <description>The date scheduled payment requests should be sent out.  N days before the Scheduled Payment Date, where  N = Processing Action Lead Time, or the record creation date (whichever is later).</description>
+    <externalId>false</externalId>
+    <formula>IF( ISNULL( Scheduled_Payment_Date__c ) , NULL, IF( DATEVALUE(CreatedDate) &gt;Scheduled_Payment_Date__c -  NULLVALUE( Processing_Action_Lead_Time__c  ,0), DATEVALUE(CreatedDate), Scheduled_Payment_Date__c -  NULLVALUE( Processing_Action_Lead_Time__c  ,0)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The date scheduled payment requests should be sent out.  N days before the Scheduled Payment Date, where  N = Processing Action Lead Time, or the record creation date (whichever is later).</inlineHelpText>
+    <label>Payment Request Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

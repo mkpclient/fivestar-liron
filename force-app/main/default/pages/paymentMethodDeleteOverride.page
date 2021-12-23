@@ -1,0 +1,7 @@
+<apex:page standardcontroller="Payment_Method__c" extensions="DeleteBoomPaymentMethodController" action="{!doDelete}">
+
+  <apex:outputText value="{!Payment_Method__c.ExternalId__c} 
+  {!Payment_Method__c.MX_Customer_Id__c}
+  {!Payment_Method__c.Contact__c}"
+  rendered="false"/>
+</apex:page>

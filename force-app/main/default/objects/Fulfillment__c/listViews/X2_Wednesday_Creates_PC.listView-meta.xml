@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2_Wednesday_Creates_PC</fullName>
+    <booleanFilter>(1 AND 2 AND 3) OR (2 AND 4 and 5 and 7) OR (4 AND 2 AND 6) OR (2 AND 4 and 8 and 7 and 3)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Style__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Customization__c</columns>
+    <columns>Complaint_Order__c</columns>
+    <columns>Proof_Location__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Market_Final_Upload_Date__c</columns>
+    <columns>Postcard_Delivery_Month__c</columns>
+    <columns>CFP__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>Postcards</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>New,In Revision,Approved,To Print,Created,Closed,Cancelled,Hold,FTP,Web</value>
+    </filters>
+    <filters>
+        <field>Product_Templates_Finalized__c</field>
+        <operation>lessOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Postcard Service</value>
+    </filters>
+    <filters>
+        <field>Product_Style__c</field>
+        <operation>notContain</operation>
+        <value>Announcement</value>
+    </filters>
+    <filters>
+        <field>Market__c</field>
+        <operation>contains</operation>
+        <value>NAMS Extended</value>
+    </filters>
+    <filters>
+        <field>Market__c</field>
+        <operation>notContain</operation>
+        <value>NAMS Extended</value>
+    </filters>
+    <filters>
+        <field>Product_Style__c</field>
+        <operation>contains</operation>
+        <value>Announcement</value>
+    </filters>
+    <label>__2. Create - Postcards</label>
+    <sharedTo>
+        <group>Fulfillment_Team</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

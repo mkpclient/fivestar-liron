@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X4_Thursday_Video_Ready_for_AE</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Market__c</columns>
+    <columns>Market_Award_Year__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Go_Live_Date__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Website__c</columns>
+    <columns>Profession__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Video_URL__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Video</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Ready to Publish</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>notEqual</operation>
+        <value>Make Revisions</value>
+    </filters>
+    <label>__4. Thursday - Video Ready to Publish</label>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>Brianna_Jahangir</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+        <group>Olivia_Snyder</group>
+    </sharedTo>
+</ListView>

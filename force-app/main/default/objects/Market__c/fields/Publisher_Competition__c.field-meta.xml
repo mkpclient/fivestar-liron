@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Publisher_Competition__c</fullName>
+    <description>Marketing uses this field to describe the publishing competitive landscape in the market</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Marketing uses this field to describe the publishing competitive landscape in the market</inlineHelpText>
+    <label>Publisher Competition</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Template__c</fullName>
+    <description>This field is used by rules and email alerts to select which email template to send to the client (e.g. social post product delivery email alerts)</description>
+    <externalId>false</externalId>
+    <label>Email Template</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Social Post - Announcement</fullName>
+                <default>false</default>
+                <label>Social Post - Announcement</label>
+            </value>
+            <value>
+                <fullName>Social Post - Mag pub</fullName>
+                <default>false</default>
+                <label>Social Post - Mag pub</label>
+            </value>
+            <value>
+                <fullName>Social Post - Find me on FSP</fullName>
+                <default>false</default>
+                <label>Social Post - Find me on FSP</label>
+            </value>
+            <value>
+                <fullName>Social Post - Call for noms</fullName>
+                <default>false</default>
+                <label>Social Post - Call for noms</label>
+            </value>
+            <value>
+                <fullName>Social Post - Client sat</fullName>
+                <default>false</default>
+                <label>Social Post - Client sat</label>
+            </value>
+            <value>
+                <fullName>Social Post - Client website</fullName>
+                <default>false</default>
+                <label>Social Post - Client website</label>
+            </value>
+            <value>
+                <fullName>Social Post - Heat</fullName>
+                <default>false</default>
+                <label>Social Post - Heat</label>
+            </value>
+            <value>
+                <fullName>Social Post - Share your story</fullName>
+                <default>false</default>
+                <label>Social Post - Share your story</label>
+            </value>
+            <value>
+                <fullName>Social Post - Testimonials</fullName>
+                <default>false</default>
+                <label>Social Post - Testimonials</label>
+            </value>
+            <value>
+                <fullName>Social Post - Working with winner</fullName>
+                <default>false</default>
+                <label>Social Post - Working with winner</label>
+            </value>
+            <value>
+                <fullName>Social Post - Video</fullName>
+                <default>false</default>
+                <label>Social Post - Video</label>
+            </value>
+            <value>
+                <fullName>Send Product Delivered Link</fullName>
+                <default>false</default>
+                <label>Send Product Delivered Link</label>
+            </value>
+            <value>
+                <fullName>Send CST</fullName>
+                <default>false</default>
+                <label>Send CST</label>
+            </value>
+            <value>
+                <fullName>Social Post - 5 Point</fullName>
+                <default>false</default>
+                <label>Social Post - 5 Point</label>
+            </value>
+            <value>
+                <fullName>Social Post - HGTV</fullName>
+                <default>false</default>
+                <label>Social Post - HGTV</label>
+            </value>
+            <value>
+                <fullName>Social Post - FML</fullName>
+                <default>false</default>
+                <label>Social Post - FML</label>
+            </value>
+            <value>
+                <fullName>Social Post - Client Thank You</fullName>
+                <default>false</default>
+                <label>Social Post - Client Thank You</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

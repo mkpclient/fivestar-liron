@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X1_Monday_EReprints_Expanded</fullName>
+    <columns>NAME</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Base_Product__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Publication_month__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Complaint_Order__c</columns>
+    <columns>Customization__c</columns>
+    <columns>Fortune_Upload_Date__c</columns>
+    <columns>WSJ_Upload__c</columns>
+    <columns>Notes_for_Ad_Prod__c</columns>
+    <columns>Actual_Upload_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>E-reprint expanded</value>
+    </filters>
+    <filters>
+        <field>Upload_Date__c</field>
+        <operation>lessThan</operation>
+        <value>NEXT_N_DAYS:15</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Closed,Subscription Cancelled,Cancelled,Product Created,On Hold</value>
+    </filters>
+    <label>__1. Monday - E-Reprints Expanded</label>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>Brianna_Jahangir</group>
+        <group>Jonathan_Wesser</group>
+        <group>Olivia_Snyder</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>2</activeVersionNumber>
+    <description>When Research Opportunity stage = Closed - Do not call or Closed - Retiring (no longer practicing), check the Do not call, Do not email and Email opt-out boxes on the contact in the contact info area.</description>
+    <masterLabel>Update Do not call on contact</masterLabel>
+</FlowDefinition>

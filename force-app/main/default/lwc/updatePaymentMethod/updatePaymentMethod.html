@@ -1,0 +1,286 @@
+<template>
+  <template if:true={recordId}>
+    <template if:true={showNotification}>
+      <c-slds-toast
+        onclose={handleCloseToast}
+        variant={toastVariant}
+        title={toastTitle}
+        message={toastMessage}
+      ></c-slds-toast>
+    </template>
+    <template if:true={chooseExisting}>
+      <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="8">
+          <lightning-combobox
+            name="existingPaymentMethod"
+            label="Payment Method"
+            data-name="current-method"
+            data-record="current-method"
+            value={currentPaymentMethod}
+            options={paymentMethodOptions}
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-combobox>
+        </lightning-layout-item>
+      </lightning-layout>
+
+      <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="4">
+          <lightning-button
+            label="Save"
+            title="saveExisting"
+            variant="brand"
+            onclick={handleClick}
+            class="slds-m-left_x-small"
+            disabled={disableSave}
+          ></lightning-button>
+          <lightning-button
+            label="Save All"
+            title="saveAll"
+            variant="brand"
+            onclick={handleClick}
+            class="slds-m-left_x-small"
+            disabled={disableSave}
+          ></lightning-button>
+          <lightning-button
+            label="Cancel"
+            title="fromExisting"
+            variant="brand-outline"
+            onclick={handleClick}
+            class="slds-m-left_x-small"
+          ></lightning-button>
+        </lightning-layout-item>
+      </lightning-layout>
+    </template>
+    <lightning-layout if:false={chooseExisting} multiple-rows="true">
+      <lightning-layout-item padding="around-small" size="12">
+        <lightning-button
+          label="Choose from Existing"
+          title="fromExisting"
+          variant="brand"
+          onclick={handleClick}
+          class="slds-m-left_x-small"
+        ></lightning-button>
+        <lightning-button
+          label="Update Existing Payment Method"
+          title="updateExistingPaymentMethod"
+          variant="brand"
+          onclick={handleClick}
+          class="slds-m-left_x-small"
+          disabled={isUpdateExisting}
+        ></lightning-button>
+        <lightning-button
+          label="Create New"
+          title="createNewPaymentMethod"
+          variant="brand"
+          onclick={handleClick}
+          class="slds-m-left_x-small"
+          disabled={isCreateNew}
+        ></lightning-button>
+        <lightning-button
+          label="Back to Record"
+          title="returnToRecord"
+          variant="brand-outline"
+          onclick={handleClick}
+          class="slds-m-left_x-small"
+        ></lightning-button>
+      </lightning-layout-item>
+
+      <template if:true={showForm}>
+        <lightning-layout-item
+          padding="around-small"
+          size="4"
+          if:false={isUpdateExisting}
+        >
+          <lightning-combobox
+            name="cardType"
+            label="Card Type"
+            data-name="Card_Type__c"
+            data-record="paymentMethod"
+            value={paymentMethodData.Card_Type__c}
+            options={cardTypeOptions}
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item
+          padding="around-small"
+          size="6"
+          if:false={isUpdateExisting}
+        >
+          <lightning-input
+            type="text"
+            label="Card Number"
+            name="cardNumber"
+            data-name="_cardNumber"
+            data-record="paymentMethod"
+            value={paymentMethodData._cardNumber}
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-input>
+        </lightning-layout-item>
+
+        <lightning-layout-item padding="around-small" size="4">
+          <lightning-combobox
+            data-name="_expiryMonth"
+            data-record="paymentMethod"
+            placeholder="MM"
+            name="expiryMonth"
+            label="Exp Month"
+            value={paymentMethodData._expiryMonth}
+            options={monthOptions}
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="4">
+          <lightning-combobox
+            data-name="_expiryYear"
+            data-record="paymentMethod"
+            placeholder="YYYY"
+            name="expiryYear"
+            label="Exp Year"
+            value={paymentMethodData._expiryYear}
+            options={yearOptions}
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="3">
+          <lightning-input
+            type="number"
+            step="1"
+            data-name="_cvv"
+            data-record="paymentMethod"
+            label="cvv"
+            value={paymentMethodData._cvv}
+            name="cvv"
+            data-objectname="paymentMethod"
+            onchange={handleChange}
+            maxlength="3"
+            minlength="3"
+            required={isCreateNew}
+          ></lightning-input>
+        </lightning-layout-item>
+
+        <lightning-layout-item padding="around-small" size="4">
+          <lightning-input
+            type="text"
+            name="firstName"
+            data-name="Billing_First_Name__c"
+            data-record="paymentMethod"
+            value={paymentMethodData.Billing_First_Name__c}
+            label="First Name"
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="8">
+          <lightning-input
+            type="text"
+            name="lastName"
+            data-name="Billing_Last_Name__c"
+            data-record="paymentMethod"
+            value={paymentMethodData.Billing_Last_Name__c}
+            label="Last Name"
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6">
+          <lightning-input
+            type="text"
+            name="billingStreet"
+            data-name="Billing_Street__c"
+            data-record="paymentMethod"
+            value={paymentMethodData.Billing_Street__c}
+            label="Billing Street"
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6">
+          <lightning-input
+            type="text"
+            name="billingCity"
+            data-name="Billing_City__c"
+            data-record="paymentMethod"
+            value={paymentMethodData.Billing_City__c}
+            label="Billing City"
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="4">
+          <lightning-combobox
+            name="billingState"
+            label="Billing State"
+            data-name="Billing_State__c"
+            data-record="paymentMethod"
+            value={paymentMethodData.Billing_State__c}
+            onchange={handleChange}
+            options={stateOptions}
+            required={isCreateNew}
+          ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="4">
+          <lightning-input
+            type="text"
+            name="billingCountry"
+            label="Billing Country"
+            data-name="Billing_Country__c"
+            data-record="paymentMethod"
+            value={paymentMethodData.Billing_Country__c}
+            onchange={handleChange}
+            required={isCreateNew}
+          ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="3">
+          <lightning-input
+            type="text"
+            name="billingPostalCode"
+            label="Billing Postal Code"
+            data-name="Billing_Postal_Code__c"
+            data-record="paymentMethod"
+            value={paymentMethodData.Billing_Postal_Code__c}
+            onchange={handleChange}
+            required={isCreateNew}
+          >
+          </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout>
+          <lightning-layout-item padding="around-small" size="12">
+            <template if:true={isCreateNew}>
+              <lightning-button
+                label="Save and Apply to this Payment Only"
+                title="createPaymentMethod"
+                variant="brand"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+                disabled={disableSave}
+              ></lightning-button>
+              <lightning-button
+                label="Save and Apply to All Scheduled Payments"
+                title="createPaymentMethodAll"
+                variant="brand"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+                disabled={disableSave}
+              ></lightning-button>
+            </template>
+            <template if:true={isUpdateExisting}>
+              <lightning-button
+                label="Update Payment Method"
+                title="updatePaymentMethod"
+                variant="brand"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+                disabled={disableSave}
+              ></lightning-button>
+            </template>
+          </lightning-layout-item>
+        </lightning-layout>
+      </template>
+    </lightning-layout>
+  </template>
+</template>

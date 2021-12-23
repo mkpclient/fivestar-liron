@@ -1,0 +1,32 @@
+<aura:component controller="FlowHelper"
+  implements="flexipage:availableForRecordHome,lightning:availableForFlowScreens">
+
+  <aura:attribute name="recordtypeList" type="Object[]" />
+  <aura:attribute name="selectedRecordTypeId" type="string" />
+
+  <aura:attribute name="objectApiName" type="string" required="true" default="Account" />
+  <aura:attribute name="fieldApiName" type="string" required="true" default="Session_Category__c" />
+
+  <aura:attribute name="invalidApiName" type="Boolean" default="false" />
+
+  <aura:attribute name="picklistValues" type="string[]" />
+  <aura:attribute name="selectedpicklistValue" type="string" />
+  <aura:attribute name="picklistLabel" type="string" />
+
+  <aura:attribute name="showSpinner" type="boolean" default="false" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:if isTrue="{!v.showSpinner}">
+    Loading
+  </aura:if>
+
+  <aura:if isTrue="{! not(empty(v.selectedRecordTypeId))}">
+    <lightning:select name="Session On" label="Stage" value="{!v.selectedpicklistValue}">
+      <option value="" text=" ---None--- " />
+      <aura:iteration items="{!v.picklistValues}" var="p">
+        <option value="{!p}" text="{!p}" />
+      </aura:iteration>
+    </lightning:select>
+  </aura:if>
+</aura:component>

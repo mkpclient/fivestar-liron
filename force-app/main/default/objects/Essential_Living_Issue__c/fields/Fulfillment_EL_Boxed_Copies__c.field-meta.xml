@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfillment_EL_Boxed_Copies__c</fullName>
+    <description># of boxed copies to ship directly to the client, workaround so we don&apos;t have to manage multiple subscriptions</description>
+    <externalId>false</externalId>
+    <formula>Fulfillment__r.EL_Boxed_Copies__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText># of boxed copies to ship directly to the client</inlineHelpText>
+    <label>Fulfillment EL Boxed Copies</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

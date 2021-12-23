@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Round_One_Date__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Auto_Round_One1__c = &quot;Saturday&quot; ,  Auto_Round_One__c + 2 ,  IF(Auto_Round_One1__c = &quot;Sunday&quot;, Auto_Round_One__c + 1,  Auto_Round_One__c ) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Auto Round One Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

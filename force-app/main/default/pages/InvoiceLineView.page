@@ -1,0 +1,33 @@
+<apex:page standardController="kugo2p__KugamonInvoiceLine__c" extensions="InvoiceLineViewExt" showHeader="true" sidebar="true" tabStyle="kugo2p__KugamonInvoiceLine__c">
+
+	<style>
+		.rightalign {
+			text-align:right !important;
+		}
+
+		.centeralign {
+			text-align:center !important;
+		}
+	</style>
+
+	<apex:outputPanel rendered="false">
+		<apex:outputField value="{!kugo2p__KugamonInvoiceLine__c.kugo2p__SalesOrderProductLine__c}" />
+		<apex:outputField value="{!kugo2p__KugamonInvoiceLine__c.kugo2p__SalesOrderServiceLine__c}" />		
+	</apex:outputPanel>
+
+	<apex:detail subject="{!kugo2p__KugamonInvoiceLine__c.Id}" inlineEdit="true" relatedList="true" relatedListHover="true" showChatter="false" />
+
+    <apex:pageBlock rendered="{!NOT(ISBLANK(lineRecipients))}" title="Order Line Recipients">
+        <apex:pageBlockTable value="{!lineRecipients}" var="lr" title="Order Line Recipients" >
+
+            <apex:column headerValue="{!$ObjectType.LineRecipient__c.fields.Name.label}" >
+                <apex:outputLink value="/{!lr.Id}" >{!lr.Name}</apex:outputLink>	<!-- target="_blank" -->
+            </apex:column>
+            <apex:column value="{!lr.Order__c}" />
+            <!-- <apex:column value="{!lr.OrderLine__c}" /> -->
+            <apex:column value="{!lr.Recipient__c}" />
+            <apex:column value="{!lr.Primary__c}" />
+
+        </apex:pageBlockTable>
+	</apex:pageBlock>
+</apex:page>

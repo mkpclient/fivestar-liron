@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Rollup field on the client experience object. Active Subscriptions - subscriptions not closed or cancelled</description>
+    <disableProtocolSecurity>false</disableProtocolSecurity>
+    <isActive>true</isActive>
+    <url>https://fivestarprofessional--rh2.na169.visual.force.com</url>
+</RemoteSiteSetting>

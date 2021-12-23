@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Digital_Ad_Service</fullName>
+    <columns>NAME</columns>
+    <columns>Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>ACDF_Company__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Base_Product__c</columns>
+    <columns>Quantity__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Digital Ad Service</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>equals</operation>
+        <value>Create</value>
+    </filters>
+    <label>_Digital Ads - Create</label>
+    <sharedTo>
+        <group>Allen_Wardell</group>
+        <group>Fulfillment_Team</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

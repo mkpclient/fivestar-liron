@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Video_URL__c</fullName>
+    <description>URL for video to be used for Digital Spotlight Award Product.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>URL for video to be used for Digital Spotlight Award Product.</inlineHelpText>
+    <label>Video URL</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

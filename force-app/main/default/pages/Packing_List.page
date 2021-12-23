@@ -1,0 +1,120 @@
+<!--<apex:page Controller="FSPSO" showHeader="false" renderAs="PDF" extensions="OrderedProducts">-->
+<apex:page Controller="FSPSO" showHeader="false" renderAs="PDF" >
+<!--<apex:stylesheet value="{!$Resource.customCSS}" />-->
+<div class="container" width="900">
+    <body>
+<table width="100%">
+    <tr>
+        <td rowspan="4" align="left">
+            <apex:image url="{!$Resource.Logo}"/>
+        </td>
+    </tr>
+    <tr>
+        <td align="right" height="24">
+        Five Star Professional
+        </td>
+    </tr>
+    <tr>
+        <td align="right" height="24">
+        2900 Lone Oak Parkway, Suite 120
+        </td>
+    </tr>
+    <tr>
+        <td align="right" height="24"> 
+        Eagan, MN 55121
+        </td>
+    </tr>
+  </table>
+ </body>
+
+    <div class="row">
+    <div class="col-md-12">
+        <p>
+        <h3>ORDER</h3>
+        <hr/>
+        </p>
+    </div>
+</div>
+  <table width="100%">
+  <tr>
+  <td>
+        Ship to:
+        </td>
+        <td align="right">
+    Order Number: {!SalesOrder.name}
+  </td>
+        </tr>
+        <br/>
+        <tr>
+        <td>
+  <apex:outputText value="{!SalesOrder.Shipping_Contact__c}"></apex:outputText>
+  </td>
+  
+  </tr>
+  <tr>
+  <td>
+  <apex:outputText value="{!SalesOrder.Customer_ACDF_Company__c}"></apex:outputText>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <apex:outputText value="{!SalesOrder.kugo2p__ShipToStreetLong__c}"></apex:outputText>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <apex:outputText value="{!SalesOrder.kugo2p__ShipToCity__c}, {!SalesOrder.kugo2p__ShipToStateProvince__c} {!SalesOrder.kugo2p__ShipToZipPostalCode__c }"></apex:outputText>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <apex:outputText value="{!SalesOrder.Shipping_Phone__c}"></apex:outputText>
+  </td>
+  </tr>
+  </table>
+  <div class="row">
+    <div class="col-md-12">
+        <hr/>
+    </div>
+</div>
+  <div class="row">
+    <div class="col-md-12">
+        <p>
+        <h4>PRODUCTS INCLUDED</h4>
+        </p>
+    </div>
+</div>
+ <table width="100%">
+ <tr>
+ <td>Product Name:</td>
+ <td align="right">Quantity:</td>
+ </tr>
+  <apex:repeat value="{!OrderProducts}" var="o">
+         <tr>
+        <td>
+      {!o.Product_Name__c}
+      </td>
+      <td align="right">
+      {!o.Quantity__c}
+      </td>
+      <td align="right">
+      Packaged by:_________ 
+      </td>
+      </tr>
+
+</apex:repeat>
+</table>
+  <div class="row">
+    <div class="col-md-12">
+    <hr/>
+    </div>
+</div>
+<div class="row-head">
+    <div class="col-md-12">
+        <p>
+        If you have any questions, please contact <apex:outputLink value="mailto:clientservices@fivestarprofessional.com"> clientservices@fivestarprofessional.com</apex:outputlink>
+        </p>
+    </div>
+</div>    
+  </div>
+</apex:page>

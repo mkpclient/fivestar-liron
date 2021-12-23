@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllMNOrders</fullName>
+    <columns>NAME</columns>
+    <columns>OrderName__c</columns>
+    <columns>Account__c</columns>
+    <columns>ContactBuying__c</columns>
+    <columns>OrderDate__c</columns>
+    <columns>TaxableSales__c</columns>
+    <columns>TotalTaxAmount__c</columns>
+    <columns>NetAmount__c</columns>
+    <columns>BalanceDueAmount__c</columns>
+    <columns>RecordStatus__c</columns>
+    <columns>PaymentStatus2__c</columns>
+    <columns>Payments_Made__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ShipToStateProvince__c</field>
+        <operation>equals</operation>
+        <value>MN,Minn</value>
+    </filters>
+    <label>All MN Orders</label>
+</ListView>

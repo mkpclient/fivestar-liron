@@ -1,0 +1,194 @@
+<template>
+  <div style="length: 100vh; width: 100vw; background: gray;" if:true={orderId}>
+    <div
+      style="
+        length: 80vh;
+        width: 60vw;
+        padding: 20px;
+        margin: auto;
+        background: white;
+        -moz-box-shadow: 3px 3px 5px 6px #ccc;
+        -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+        box-shadow: 3px 3px 5px 6px #ccc;
+      "
+    >
+      <img src={logoUrl} alt="Fivestar Logo" />
+      <template if:true={isSuccess}>
+        <p style="font-weight: bold; font-size: 21pt;">Your payment has been processed. You may now close this window. Thank you.</p>
+      </template>
+      <template if:false={isSuccess}>
+        <p style="font-weight: bold; font-size: 21pt;">Checkout</p>
+        <br />
+        <p style="font-weight: bold; font-size: 16pt;color: rgb(3, 3, 105)">
+          Payment Amount:
+          <lightning-formatted-number
+            value={paymentAmount}
+            format-style="currency"
+            currency-code="USD"
+          ></lightning-formatted-number>
+        </p>
+        <hr />
+        <p style="font-weight: bold">Billing Information</p>
+        <br />
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_3-of-4">
+            <lightning-input
+              label="First Name"
+              value={paymentEntry.FirstName}
+              data-name="FirstName"
+              variant="label-inline"
+              onchange={handleChange}
+              disabled={isReview}
+            ></lightning-input>
+            <lightning-input
+              label="Last Name"
+              value={paymentEntry.LastName}
+              data-name="LastName"
+              variant="label-inline"
+              onchange={handleChange}
+              disabled={isReview}
+            ></lightning-input>
+            <lightning-input
+              label="Street Address"
+              value={paymentEntry.MailingStreet}
+              data-name="MailingStreet"
+              variant="label-inline"
+              onchange={handleChange}
+              disabled={isReview}
+            ></lightning-input>
+            <lightning-input
+              label="City"
+              value={paymentEntry.MailingCity}
+              data-name="MailingCity"
+              variant="label-inline"
+              onchange={handleChange}
+              disabled={isReview}
+            ></lightning-input>
+            <lightning-combobox
+              name="state"
+              label="State"
+              placeholder="Choose State"
+              value={paymentEntry.MailingState}
+              onchange={handleChange}
+              data-name="MailingState"
+              variant="label-inline"
+              options={stateOptions}
+              disabled={isReview}
+            ></lightning-combobox>
+            <lightning-input
+              label="Zip/Postal Code"
+              value={paymentEntry.MailingPostalCode}
+              data-name="FirstName"
+              variant="label-inline"
+              onchange={handleChange}
+              disabled={isReview}
+            ></lightning-input>
+            <lightning-input
+              label="Country"
+              value={paymentEntry.MailingCountry}
+              data-name="MailingCountry"
+              variant="label-inline"
+              onchange={handleChange}
+              disabled={isReview}
+            ></lightning-input>
+          </div>
+        </div>
+        <div class="slds-grid slds-wrap" style="background: LightBlue">
+          <div class="slds-col slds-size_3-of-4">
+            <lightning-combobox
+              name="CardType"
+              label="Card Type"
+              placeholder="Choose Card Type"
+              value={paymentEntry.CardType}
+              onchange={handleChange}
+              data-name="CardType"
+              variant="label-inline"
+              options={cardOptions}
+              disabled={isReview}
+            ></lightning-combobox>
+            <lightning-input
+              label="Credit Card Number"
+              value={paymentEntry.CardNumber}
+              data-name="CardNumber"
+              variant="label-inline"
+              onchange={handleChange}
+              disabled={isReview}
+            ></lightning-input>
+            <lightning-input
+              label="Security Code"
+              value={paymentEntry.SecurityCode}
+              data-name="SecurityCode"
+              variant="label-inline"
+              onchange={handleChange}
+              disabled={isReview}
+            ></lightning-input>
+            <lightning-combobox
+              name="Expiry Month"
+              label="ExpiryMonth"
+              placeholder="Choose Month"
+              value={paymentEntry.ExpiryMonth}
+              onchange={handleChange}
+              data-name="ExpiryMonth"
+              variant="label-inline"
+              options={monthOptions}
+              disabled={isReview}
+            ></lightning-combobox>
+            <lightning-combobox
+              name="Expiry Year"
+              label="ExpiryYear"
+              placeholder="Choose Year"
+              value={paymentEntry.ExpiryYear}
+              onchange={handleChange}
+              data-name="ExpiryYear"
+              variant="label-inline"
+              options={yearOptions}
+              disabled={isReview}
+            ></lightning-combobox>
+          </div>
+        </div>
+        <div>
+          <template if:true={isReview}>
+            <template if:false={isProcessing}>
+              <lightning-button
+                variant="brand"
+                label="Submit Payment"
+                title="SubmitPayment"
+                onclick={handleClick}
+              ></lightning-button>
+              <lightning-button
+                label="Back"
+                title="Back"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+              ></lightning-button>
+            </template>
+            <template if:true={isProcessing}>
+              <div class="spinnerHolder">
+                <lightning-spinner
+                  alternative-text="Loading"
+                  size="small"
+                ></lightning-spinner>
+              </div>
+            </template>
+          </template>
+          <div if:false={isReview} class="slds-var-p-top_medium">
+            <lightning-button
+              variant="brand"
+              label="Review Transaction"
+              title="ReviewTransaction"
+              onclick={handleClick}
+            ></lightning-button>
+            <lightning-button
+              label="Cancel"
+              title="Cancel"
+              onclick={handleClick}
+              class="slds-m-left_x-small"
+            ></lightning-button>
+          </div>
+        </div>
+        <br />
+        <p style="color: red">{errorMessage}</p>
+      </template>
+    </div>
+  </div>
+</template>

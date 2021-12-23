@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Open</fullName>
+                <default>true</default>
+                <label>Open</label>
+            </value>
+            <value>
+                <fullName>Declined Credit Card</fullName>
+                <default>false</default>
+                <label>Declined Credit Card</label>
+            </value>
+            <value>
+                <fullName>Waiting on Information</fullName>
+                <default>false</default>
+                <label>Waiting on Information</label>
+            </value>
+            <value>
+                <fullName>Date Driven:</fullName>
+                <default>false</default>
+                <label>Date Driven:</label>
+            </value>
+            <value>
+                <fullName>Waiting on Check</fullName>
+                <default>false</default>
+                <label>Waiting on Check</label>
+            </value>
+            <value>
+                <fullName>MX Merchant Refund</fullName>
+                <default>false</default>
+                <label>MX Merchant Refund</label>
+            </value>
+            <value>
+                <fullName>Subscription Management</fullName>
+                <default>false</default>
+                <label>Subscription Management</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>ERROR</fullName>
+                <color>#990000</color>
+                <default>false</default>
+                <label>ERROR</label>
+            </value>
+            <value>
+                <fullName>DECLINE: PAYMENT PLAN</fullName>
+                <color>#DDDDDD</color>
+                <default>false</default>
+                <label>DECLINE: PAYMENT PLAN</label>
+            </value>
+            <value>
+                <fullName>COLLECTIONS-1ST NOTICE</fullName>
+                <color>#BBBBBB</color>
+                <default>false</default>
+                <label>COLLECTIONS-1ST NOTICE</label>
+            </value>
+            <value>
+                <fullName>COLLECTIONS-2ND NOTICE</fullName>
+                <color>#999999</color>
+                <default>false</default>
+                <label>COLLECTIONS-2ND NOTICE</label>
+            </value>
+            <value>
+                <fullName>COLLECTIONS-FINAL NOTICE</fullName>
+                <color>#666666</color>
+                <default>false</default>
+                <label>COLLECTIONS-FINAL NOTICE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

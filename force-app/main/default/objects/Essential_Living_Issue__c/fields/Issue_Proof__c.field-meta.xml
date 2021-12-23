@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Proof__c</fullName>
+    <description>This field will house a url to the magazine issue proof for the month</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field will house a partial URL to the magazine issue proof for the month. Preloaded with http://fivestarprofessional.com. Enter the FTP location of the PDF (Ex: /content/images/EssentialLivingMag/Issue102April/JohnGardner_BIC_BC_April_Proof1.pdf)</inlineHelpText>
+    <label>Issue Proof</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

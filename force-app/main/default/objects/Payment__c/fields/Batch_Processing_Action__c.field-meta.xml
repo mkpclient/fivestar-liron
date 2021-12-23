@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Batch_Processing_Action__c</fullName>
+    <description>For Scheduled payments.  Type of action to perform when batch processing the scheduled payment.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>For Scheduled payments.  Type of action to perform when batch processing the scheduled payment.</inlineHelpText>
+    <label>Batch Processing Action</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Process using assigned Payment Method</fullName>
+                <default>false</default>
+                <label>Process using assigned Payment Method</label>
+            </value>
+            <value>
+                <fullName>Process using default Payment Method on Contact</fullName>
+                <default>false</default>
+                <label>Process using default Payment Method on Contact</label>
+            </value>
+            <value>
+                <fullName>Send payment request</fullName>
+                <default>false</default>
+                <label>Send payment request</label>
+            </value>
+            <value>
+                <fullName>Capture</fullName>
+                <default>false</default>
+                <label>Capture</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

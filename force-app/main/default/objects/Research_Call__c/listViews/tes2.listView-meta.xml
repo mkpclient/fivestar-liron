@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>tes2</fullName>
+    <columns>Call_Counter__c</columns>
+    <columns>Call_Result__c</columns>
+    <columns>Research_Rep__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Research_Rep__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>tes2</label>
+</ListView>

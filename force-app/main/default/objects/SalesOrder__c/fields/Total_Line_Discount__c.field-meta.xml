@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Line_Discount__c</fullName>
+    <externalId>false</externalId>
+    <label>Total Line Discount</label>
+    <summarizedField>SalesOrderProductLine__c.LineDiscountAmount__c</summarizedField>
+    <summaryForeignKey>SalesOrderProductLine__c.SalesOrder__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

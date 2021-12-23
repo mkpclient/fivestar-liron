@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSR_Sumo_Link__c</fullName>
+    <description>Client Experience Owner SUMO Link</description>
+    <externalId>false</externalId>
+    <formula>&quot;http://fivestarprofessional.force.com/SelfScheduling/forcebrain__LeadRegistration?ProcessId=a2Z0W000001hknrUAA&amp;ContactID=&quot;+ Related_Contact_SF_ID__c +&quot;&amp;PID=&quot;+ Client_Experience_Owner__r.Provider_ID__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CSR Sumo Link</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

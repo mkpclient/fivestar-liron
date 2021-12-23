@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>SF_ID__c</columns>
+    <columns>NAME</columns>
+    <columns>Profession__c</columns>
+    <columns>Candidates_in_Market__c</columns>
+    <columns>Winners_in_Market__c</columns>
+    <columns>Consumers_Surveyed__c</columns>
+    <columns>Percent_Winners_in_Market__c</columns>
+    <columns>RHB_Months_Surveyed__c</columns>
+    <columns>RHB_Survey_Home_Value__c</columns>
+    <columns>RHB_Survey_Time_Frame__c</columns>
+    <columns>Publication_Month__c</columns>
+    <columns>Percent_Candidates_Awarded__c</columns>
+    <columns>Percent_of_Market_actual__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Publication_Month__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+    </filters>
+    <label>philre22</label>
+</ListView>

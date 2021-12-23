@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Description__c</fullName>
+    <description>Complaint Description</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Description of Customer&apos;s Complaint</inlineHelpText>
+    <label>Complaint Description</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

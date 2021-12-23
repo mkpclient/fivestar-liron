@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Style__c</fullName>
+    <description>This field is used to describe the client&apos;s selection of product style (e.g. &quot;Seasonal postcard&quot; or &quot;Award Announcement postcard&quot; or &quot;Recipe postcard&quot;</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is used to describe the client&apos;s selection of product style (e.g. &quot;Seasonal postcard&quot; or &quot;Award Announcement postcard&quot; or &quot;Recipe postcard&quot;</inlineHelpText>
+    <label>Product Style</label>
+    <length>250</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

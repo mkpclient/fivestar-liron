@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View_Invoice</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>View Invoice</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>var validStatuses = [&quot;Released&quot;, &quot;Unreleased&quot;, &quot;Approved&quot;];
+
+if(validStatuses.includes(&quot;{!SalesOrder__c.Status_Picklist__c}&quot;)) {
+
+window.open(&apos;/apex/SalesOrderInvoicePDF?id={!SalesOrder__c.Id}&apos;, &apos;_blank&apos;);
+
+} else {
+alert(&quot;This order has not been approved.&quot;);
+}</url>
+</WebLink>

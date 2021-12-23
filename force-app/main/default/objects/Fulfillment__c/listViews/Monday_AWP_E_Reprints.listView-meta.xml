@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Monday_AWP_E_Reprints</fullName>
+    <columns>NAME</columns>
+    <columns>Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>E_Reprint_PDF_location__c</columns>
+    <columns>Display_Name__c</columns>
+    <columns>Publication_month__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
+    <columns>Customization__c</columns>
+    <columns>Full_ID__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>e-reprint</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Award Winner Profile</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>To Print,Closed,On Hold,In Revision,Cancelled,Ready to Publish,Product Created</value>
+    </filters>
+    <label>__1. Monday - AWP E-Reprints Create</label>
+    <sharedTo>
+        <group>Brianna_Jahangir</group>
+        <group>Fulfillment_Team</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

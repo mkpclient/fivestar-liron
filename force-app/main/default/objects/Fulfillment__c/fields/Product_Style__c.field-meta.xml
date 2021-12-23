@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Style__c</fullName>
+    <description>The client&apos;s selection of product style (e.g. &quot;Seasonal postcard&quot; or &quot;Standard/Professional&quot; testimonial survey etc.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The client&apos;s selection of product style (e.g. &quot;Seasonal postcard&quot; or &quot;Standard/Professional&quot; testimonial survey or &quot;Not recipes&quot; for social media.</inlineHelpText>
+    <label>Product Style</label>
+    <length>250</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

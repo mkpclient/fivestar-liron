@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_Testimonial_Posts__c</fullName>
+    <description># testimonial posts created (Not number posted to social media)</description>
+    <externalId>false</externalId>
+    <inlineHelpText># testimonial posts created (Not number posted to social media)</inlineHelpText>
+    <label># Testimonial Posts</label>
+    <summaryForeignKey>Testimonial__c.Fulfillment__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

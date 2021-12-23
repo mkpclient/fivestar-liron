@@ -1,0 +1,209 @@
+<!--<apex:page Controller="FSPSO" showHeader="false" renderAs="PDF" extensions="OrderedProducts">-->
+<apex:page Controller="PaymentReceiptController" showHeader="false" renderAs="PDF">
+    <!--<apex:stylesheet value="{!$Resource.customCSS}" />-->
+    <div class="container" width="950">
+
+        <body>
+            <table width="100%">
+                <tr>
+                    <td rowspan="5" align="left">
+                        <apex:image url="{!$Resource.Logo}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24">
+                        2117 Cliff Drive
+                    </td>
+                    <td align="right" style="font-size: 30px;">
+                        <strong>Payment Receipt</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24">
+                        Eagan, MN 55122
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24">
+                        Phone: 888-438-5782
+                    </td>
+                    <td align="right">
+                        Payment For Order : {!SalesOrder.name}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="left">
+                    </td>
+                    <td align="right" height="24">
+                        <!-- Payment Date: <apex:outputText value="{0, date, MM/dd/YY}">
+                        <apex:param value="{!SalesOrder.Released__c}" /> 
+                        </apex:outputText> 
+                        Payment Date: <apex:outputText value="{0, date, MM/dd/YY}">
+                                            <apex:param value="{!p.kugo2p__Date__c}" /> 
+                                        </apex:outputText>
+                                    -->
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td align="right"></td>
+                    <td align="right"></td>
+                    <td align="right" height="24">
+                        Account Manager: {!SalesOrder.kugo2p__Opportunity__r.Account_Manager_Name__c}
+                    </td>
+                </tr>
+
+            </table>
+        </body>
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+        <table width="100%">
+            <tr>
+                <td width='60%'>
+                    <strong>Bill to:</strong>
+                </td>
+
+                <td align="left" style="padding-Right:60%;">
+                    <strong>Transaction Information:</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {!SalesOrder.kugo2p__ContactBilling__r.name}
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <apex:repeat value="{!OrderPayments}" var="p" rendered="true">
+                <tr width="100%">
+                    <td>
+                        <apex:outputText value="{!SalesOrder.kugo2p__ContactBuying__r.ACDF_Branch_Office__c}"></apex:outputText>
+                    </td>
+                    <td>
+                        <b>Transaction Date:</b>
+                        <apex:outputText value="{0, date, MM/dd/YY}">
+                            <apex:param value="{!p.kugo2p__Date__c}" />
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td>
+                        {!SalesOrder.kugo2p__BillToStreetLong__c}
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td>
+                        <apex:outputText value="{!SalesOrder.kugo2p__BillToCity__c}, {!SalesOrder.kugo2p__BillToStateProvince__c} {!SalesOrder.kugo2p__billToZipPostalCode__c }"></apex:outputText>
+                    </td>
+                    <td>
+                        <b>Transaction Type: </b> {!p.kugo2p__Transaction_Type__c}
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                    <td>
+                        <b>Payment Type:</b> {!p.kugo2p__Card_Type__c} Ending in {!p.kugo2p__Last_4_Digits__c}
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                    <td>
+                        <b>Amount: </b>
+                        <apex:outputText value="USD{0, number, ###,##0.00}">
+                            <apex:param value="{!p.kugo2p__Amount__c}" />
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                    <td>
+                        <b>Transaction ID: </b> {!p.kugo2p__Transaction_Id__c}
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                    <td>
+                        <b>Authorization ID: </b> {!p.kugo2p__Authorization_Id__c}
+                    </td>
+                </tr>
+            </apex:repeat>
+        </table>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+        <div class="row-head" style="width:100%">
+            <!-- <div class="col-md-12">
+                <strong>For questions about:</strong>
+                <ul>
+                    <li>
+                        Billing (including invoices and payment information), contact <apex:outputLink value="mailto:clientservices@fivestarprofessional.com"> billing@fivestarprofessional.com</apex:outputlink>
+                    </li>
+                    <li>
+                        Your Order, or to order more tools, contact your Account Manager {!SalesOrder.kugo2p__Opportunity__r.Account_Manager_Name__c} by email <apex:outputlink value="{!SalesOrder.kugo2p__Opportunity__r.Account_Manager_Email__c}">{!SalesOrder.kugo2p__Opportunity__r.Account_Manager_Email__c}</apex:outputlink>  or phone {!SalesOrder.kugo2p__Opportunity__r.FSP_Sales_Rep__r.phone}.
+                    </li>
+                    <li>
+                        Delivery of your marketing tools, contact <apex:outputLink value="mailto:delivery@fivestarprofessional.com"> delivery@fivestarprofessional.com</apex:outputlink>
+                    </li>
+                    <li>
+                        Your magazine profile, contact <apex:outputLink value="mailto:production@fivestarprofessional.com"> production@fivestarprofessional.com</apex:outputlink>
+                    </li>
+                    <li>
+                        <strong>
+                            Order can be cancelled in the first three days, after which this is a non-cancellable contract.
+                        </strong>
+                    </li>
+                    <li>
+                        <strong>
+                            If you elected a payment plan the entire amount must be paid within the term of the payment
+                            plan, it is not a cancellable subscription.
+                        </strong>
+                    </li>
+                </ul>
+            </div> -->
+            <div class="col-md-12">
+                <strong>For questions about:</strong>
+                <ul>
+                    <li>Invoice, payments and payment plans, contact
+                        <a href='mailto:billing@fivestarprofessional.com'>billing@fivestarprofessional.com</a>
+                    </li>
+                    <li>Your order, or to order more tools, contact your Account Manager</li>
+                    <li>All marketing product service questions, contact
+                        <a href='mailto:customerservice@fivestarprofessional.com'>customerservice@fivestarprofessional.com</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <strong>100% “No Risk” Satisfaction Guarantee:</strong>
+                <p>If your expectations for any product or program are not fully met, as summarized on your invoice, give us
+                    one opportunity to make things right.</p>
+                <p>If we don’t make things right, we provide you a complete refund.</p>
+            </div>
+            <div style="width:100%" class="row">
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:page>

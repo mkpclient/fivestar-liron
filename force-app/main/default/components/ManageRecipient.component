@@ -1,0 +1,579 @@
+<apex:component allowDML="true" id="ManageRecipientComp">
+
+	<apex:attribute name="mode" type="String" description="Line type" />
+	<apex:attribute name="manageRecipientCon" type="ManageRecipientController" required="true" description="handle to the Manage Recipient controller" />
+
+	<apex:stylesheet value="{!URLFOR($Resource.kugo2p__SLDS, 'assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+
+	<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>
+	<apex:includeScript value="{!URLFOR($Resource.ManageLinesStyle, 'typeaheadJS/typeahead.jquery.min.js')}"/>
+
+    <style>
+        #blurybackground {
+            z-index:1000;
+            //bottom:0;
+            position:absolute;
+            left:0px;
+            top:0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            vertical-align: middle;
+            background-color: #222;
+            opacity:0.6;
+            filter:alpha(opacity=60);
+        }
+
+        #statusBox {
+            // for Modzilla
+            -moz-background-clip:border;
+            -moz-background-inline-policy:continuous;
+            -moz-background-origin:padding;
+            -moz-border-radius-bottomleft:5px;
+            -moz-border-radius-bottomright:5px;
+            -moz-border-radius-topleft:5px;
+            -moz-border-radius-topright:5px;
+            -moz-box-shadow:1px 6px 5px #888888;
+            
+            -webkit-border-bottom-left-radius:5px;
+            -webkit-border-bottom-right-radius:5px;
+            -webkit-border-top-left-radius:5px;
+            -webkit-border-top-right-radius:5px;
+            -webkit-box-shadow:1px 6px 5px #888888;
+            
+            box-shadow: 1px 6px 5px #888888;
+            
+            z-index:1000;
+
+            background:#FFFFFF none repeat scroll 0 0;
+            height:42px;
+            width:150px;
+            left:45%;
+            top:40%;
+            padding-left:15px;
+            padding-top:11px;
+            position:absolute;
+            vertical-align:middle;
+        }
+
+        #textBox {
+            margin-left:40px;
+            margin-top:-20px;
+            font-weight:bold;
+            font-size:14px;
+        }
+
+        .rightAlign {
+        	text-align:right !important;
+        }
+        
+		/* Twitter Typeahead css */
+		/* scaffolding */
+		/* ----------- */
+						
+		.tt-menu,
+		.gist {
+		  text-align: left;
+		}
+		
+		/* base styles */
+		/* ----------- */
+		
+		a {
+		  //color: #03739c;
+		  color: #999;
+		  text-decoration: none;
+		}
+		
+		a:hover {
+		  text-decoration: underline;
+		}
+
+		.table-of-contents li {
+		  //display: inline-block;
+		  *display: inline;
+		  zoom: 1;
+		}
+		
+		.table-of-contents li a {
+		  font-size: 16px;
+		  color: #999;
+		}
+		
+		p + p {
+		  margin: 30px 0 0 0;
+		}
+
+		.typeahead,
+		.tt-query,
+		.tt-hint {
+		  //width: 396px;
+		  width: 400px;
+		  //height: 30px;
+		  //padding: 8px 12px;
+		  //font-size: 24px;
+		  //line-height: 30px;
+		  //border: 2px solid #ccc;
+		  //border: 1px solid #ccc;
+		  //-webkit-border-radius: 8px;
+		     //-moz-border-radius: 8px;
+		          //border-radius: 8px;
+		  //outline: none;
+		}
+
+		.typeahead {
+		  //background-color: #fff;
+		  //background-color: #ffffff;
+		}
+
+		.typeahead:focus {
+		  //border: 2px solid #0097cf;
+		  border: 2px solid #999;
+		}
+		
+		.tt-query {
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		}
+
+		.tt-hint {
+		  color: #999
+		}
+		
+		.tt-menu {
+		  //width: 422px;
+		  width: 350px;
+		  //margin: 12px 0;
+		  margin: 10px 0;
+		  //padding: 8px 0;
+		  padding: 5px 0;
+		  background-color: #fff;
+		  border: 1px solid #ccc;
+		  border: 1px solid rgba(0, 0, 0, 0.2);
+		  -webkit-border-radius: 8px;
+		     -moz-border-radius: 8px;
+		          border-radius: 8px;
+		  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		}
+		
+		.tt-suggestion {
+		  padding: 3px 20px;
+		  //font-size: 18px;
+		  font-size: 11px;
+		  line-height: 24px;
+		}
+		
+		.tt-suggestion:hover {
+		  cursor: pointer;
+		  color: #fff;
+		  //background-color: #0097cf;
+		  background-color: #999;
+		}
+		
+		.tt-suggestion.tt-cursor {
+		  color: #fff;
+		  //background-color: #0097cf;
+		  background-color: #999;
+		
+		}
+
+		.tt-suggestion p {
+		  margin: 0;
+		}
+		
+		.gist {
+		  //font-size: 14px;
+		  font-size: 11px;
+		}
+		
+		/* example specific styles */
+		/* ----------------------- */ 
+		
+		/*#custom-templates .empty-message {*/
+		.empty-message {
+		  padding: 5px 10px;
+		  text-align: center;
+		}
+		
+		#multiple-datasets .league-name {
+		  margin: 0 20px 5px 20px;
+		  padding: 3px 0;
+		  border-bottom: 1px solid #ccc;
+		}
+
+		#scrollable-dropdown-menu-recipient .tt-menu {
+		  max-height: 200px;
+		  overflow-y: auto;
+		}
+
+		/*#rtl-support .tt-menu {
+		  text-align: right;
+		}*/
+		
+		.twitter-typeahead {
+			//display: inline-block;
+			display: inline !important;
+			padding: 4px 3px !important;
+		}
+		
+		.kugamon .slds-spinner {
+			//top: 25%;
+			top: 20%;
+		}
+    </style>
+    
+	<script type="text/javascript">
+
+		//debugger;
+        var autoCompleteSourceRecipients = [];
+
+        <apex:repeat value="{!manageRecipientCon.mapAutoCompleteSourceRecipients}" var="rep" >
+        	//console.log(' source ' + "{!manageRecipientCon.mapAutoCompleteSourceRecipients[rep]}");
+        	autoCompleteSourceRecipients.push("{!JSENCODE(manageRecipientCon.mapAutoCompleteSourceRecipients[rep])}");
+        </apex:repeat>
+        console.log(' autoCompleteSourceRecipients ' + autoCompleteSourceRecipients.length);	// + ' => ' + autoCompleteSourceRecipients
+
+		var substringMatcher = function(strs) {
+			return function findMatches(q, cb) {
+		    	var matches, substringRegex;
+
+		    	// an array that will be populated with substring matches
+		    	matches = [];
+
+		    	// regex used to determine if a string contains the substring 'q'
+		    	substrRegex = new RegExp(q, 'i');
+
+		    	// iterate through the pool of strings and for any string that
+		    	// contains the substring 'q', add it to the 'matches' array
+		    	j$.each(strs, function(i, str) {
+		    		// replace the code separator with a empty string
+		    		//strTemp = str.replace(pcodeSeparator, ' ');
+		      		//if (substrRegex.test(strTemp))
+		      		if (substrRegex.test(str)) {
+		        		matches.push(str);
+		      		}
+		    	});
+
+		    	cb(matches);
+			};
+		};
+
+		function initAutoCompleteRecipients() {
+
+			j$('#scrollable-dropdown-menu-recipient .typeahead').typeahead('destroy');
+
+			j$('#scrollable-dropdown-menu-recipient .typeahead').typeahead({
+			  hint: true,
+			  highlight: true,
+			  minLength: 1
+			},
+			{
+			  name: 'autoCompleteSourceRecipients',
+			  display: function(data) {
+			  	return data;
+			  },
+			  limit: 50,
+			  source: substringMatcher(autoCompleteSourceRecipients),
+			  templates: {
+			    empty: [
+			      '<div class="empty-message">',
+			        'Unable to find any Recipients that match the keyword',
+			      '</div>'
+			    ].join('\n'),
+				suggestion: function(data) {
+					return '<div>' + data + '</div>';
+				}
+			  }
+			});
+		}
+	</script>
+
+    	<apex:actionFunction name="resetRecipients" action="{!manageRecipientCon.resetRecipients}" rerender="dummyPanel" />
+    	<apex:actionFunction name="addRecipientOption" action="{!manageRecipientCon.addRecipientOption}" rerender="dummyPanel,primaryRecipientOPId" >	<!-- ,primaryRecipientOPId -->
+    		<apex:param value="selectedValue" name="selectedValue" assignTo="{!manageRecipientCon.selectedValue}" />
+    		<apex:param value="selectedItem" name="selectedItem" assignTo="{!manageRecipientCon.selectedItem}" />
+    	</apex:actionFunction>
+    	<apex:actionFunction name="removeRecipientOption" action="{!manageRecipientCon.removeRecipientOption}" rerender="dummyPanel,primaryRecipientOPId" >
+    		<apex:param value="selectedValue" name="selectedValue" assignTo="{!manageRecipientCon.selectedValue}" />
+    	</apex:actionFunction>
+
+        <apex:actionStatus id="processStatus" >
+            <apex:facet name="start">
+            	<!-- 
+                <div id="blurybackground"></div>
+                <div id="statusBox">
+                    <img src="/img/loading32.gif" />
+                    <div id="textBox">Processing...</div>
+                </div>
+                --> 
+
+                <div class="kugamon">
+				<div class="slds-spinner_container">
+				  <div class="slds-spinner--brand slds-spinner slds-spinner--medium" role="alert">
+				    <span class="slds-assistive-text">Processing...</span>
+				    <div class="slds-spinner__dot-a"></div>
+				    <div class="slds-spinner__dot-b"></div>
+				  </div>
+				</div>
+				</div>
+            </apex:facet>
+        </apex:actionStatus>
+        <apex:outputPanel id="msgOPId1">
+		</apex:outputPanel>
+
+		<apex:outputPanel id="dummyPanel" >
+		</apex:outputPanel>	
+
+		<apex:outputPanel id="RecipientPanel" >
+
+		<apex:pageBlock id="RecipientBlock" title="{!if(mode=='AssignRecipients', 'Assign Recipients', '')}">
+			<script>
+				initAutoCompleteRecipients();
+			</script>
+		
+			<apex:outputPanel id="msgOPId2">
+				<apex:pagemessages id="msgId" rendered="{!(mode=='AssignRecipients')}"/>
+			</apex:outputPanel>	
+
+			<apex:pageBlockButtons location="both" styleClass="kugamon">
+	       		<apex:commandButton value="Assign" 
+	       							action="{!manageRecipientCon.assignRecipients}" 
+	       							rerender="RecipientPanel,msgOPId1,msgOPId2" 
+	       							rendered="{!(mode=='AssignRecipients')}" 
+	       							styleClass="assignButton slds-button slds-button--brand" 
+	       							status="processStatus" 
+	       							oncomplete="if ({!manageRecipientCon.isSuccess} == true) hideRecipient();" />
+
+				<apex:outputPanel rendered="{!mode=='AssignRecipients'}">
+					<input type="button" class="btn xsButton slds-button slds-button--neutral" onclick="resetRecipients();closeWindow();" value="Cancel" />
+				</apex:outputPanel>
+                &nbsp;&nbsp;
+                <apex:actionStatus id="searchStatusRec">
+                    <apex:facet name="start">
+                        <apex:outputPanel >
+                            <apex:image value="/img/loading32.gif" style="vertical-align:middle;height:20px;" alt="refreshing..." />
+                            &nbsp;<b>Searching...</b>
+                        </apex:outputPanel>
+                    </apex:facet>
+                </apex:actionStatus>
+			</apex:pageBlockButtons>
+
+			<div class="pbHeader" id="pnlsearch" style="font-size: 91%;">
+				<table >
+	                <tbody>
+
+	                    <tr>
+	                        <td colspan="3" >
+                                <div >	<!-- class="searchFilterFieldsHolder searchFilterFieldsHolderFirst" -->
+                                    <table >	<!-- class="searchFilterFields" -->
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:32%;">
+													<div>
+					                                   	<div id="scrollable-dropdown-menu-recipient" >
+															<apex:inputText value="{!manageRecipientCon.QueryKey}" id="keywordsId" styleClass="keywordsId typeahead" style="width:175px;" html-placeholder="Recipient Name" onKeyPress="return keywordEnterKey(event)" />
+														<apex:outputPanel layout="block" style="position: relative; display: inline-block;">
+															<apex:commandButton action="{!manageRecipientCon.doSearch}" value="Search" reRender="RecipientPanel" status="searchStatusRec" styleClass="filterButtonRec" />
+														</apex:outputPanel>
+														</div>
+													</div>	
+                                                </td>
+
+                                                <td style="width:21%;">
+													<b>{!manageRecipientCon.productName}</b>
+                                                </td>
+
+                                                <td style="width:47%;text-align: right;">
+                                                	<b>Recipient Limit</b>&nbsp;&nbsp;{!manageRecipientCon.RecipientLimitDisplay}
+
+													 &nbsp;&nbsp;&nbsp;&nbsp;
+						                        	 <apex:outputPanel id="primaryRecipientOPId" >
+														<b>Primary Recipient</b>&nbsp;&nbsp;
+						                               	<apex:selectList id="primaryRecipientId" styleClass="primaryRecipientClass" style="font-size: 100%;width:150px;" value="{!manageRecipientCon.selectedPrimaryRecipientId}" multiselect="false" size="1">
+						                               		<apex:selectOptions value="{!manageRecipientCon.recipientOptions}" />
+											            </apex:selectList>
+									            	</apex:outputPanel>
+                                                
+				                      				<span style="display:{!if(NOT(ISBLANK(manageRecipientCon.RecipientPageController)) && manageRecipientCon.RecipientPageController.totalRecordsCount>10, '', 'none')}">
+
+				                               		<b>Records Per Page</b> &nbsp;
+					                               	<apex:selectList value="{!manageRecipientCon.RecipientPageController.pageSize}" multiselect="false" size="1">
+										                <apex:selectOption itemValue="10" itemLabel="10" />
+										                <apex:selectOption itemValue="25" itemLabel="25" />
+										                <apex:selectOption itemValue="50" itemLabel="50" />
+										                <apex:selectOption itemValue="100" itemLabel="100" />
+										                <apex:actionSupport event="onchange" action="{!manageRecipientCon.updatePageSize}" rerender="RecipientResultsPanelId,msgOPId1,msgOPId2" status="processStatus" />
+										            </apex:selectList>
+
+				                          			</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+	                        </td>
+
+                        </tr>                        
+                		</tbody>
+                   	</table>
+               </div>
+			<apex:outputPanel id="RecipientResultsPanelId" rendered="{!(NOT(ISBLANK(manageRecipientCon.RecipientPageController)) && manageRecipientCon.RecipientPageController.totalRecordsCount > 0)}">
+				<apex:pageBlockSection columns="1" >
+
+					<apex:pageBlockTable value="{!manageRecipientCon.RecipientWrapperList}" var="cw">
+						<apex:column styleclass="actionColumn" >
+							<apex:facet name="header">
+		                        <!-- <apex:inputCheckbox id="selectAllRecipients" value="{!manageRecipientCon.allSelected}" styleClass="selectAllClass" onclick="selectAllRecipients();" /> -->
+		                    </apex:facet>
+							<apex:inputCheckBox value="{!cw.isSelected}" styleClass="selectOneClass" onclick="selectOneRecipient(j$(this));" >
+							</apex:inputCheckBox>
+							<apex:outputText value="{!cw.Recipient.Id}" style="display:none;" />
+							<apex:outputText value="{!cw.Recipient.Name}" style="display:none;" />
+						</apex:column>
+
+			            <apex:column >
+			                <apex:facet name="header">
+			                    <apex:commandLink value="Recipient Name" action="{!manageRecipientCon.sortResults}" rerender="RecipientResultsPanelId,msgOPId1,msgOPId2" status="processStatus" >
+			                        <apex:image url="/s.gif" rendered="{!manageRecipientCon.RecipientPageController.orderByfield=='Name'}" styleClass="{!manageRecipientCon.RecipientPageController.sortStyle}" title="{!manageRecipientCon.RecipientPageController.SortTitle}" alt="{!manageRecipientCon.RecipientPageController.SortTitle}" />
+			                        <apex:param value="Name" name="column" assignTo="{!manageRecipientCon.RecipientPageController.orderByField}" />
+			                    </apex:commandLink>
+			                </apex:facet>
+
+							<apex:outputLink value="../{!cw.Recipient.Id}" target="_blank" >{!cw.Recipient.Name}</apex:outputLink>
+			            </apex:column>
+
+			            <apex:column >
+			                <apex:facet name="header">
+			                    <apex:commandLink value="Account" action="{!manageRecipientCon.sortResults}" rerender="RecipientResultsPanelId,msgOPId1,msgOPId2" status="processStatus" >
+			                        <apex:image url="/s.gif" rendered="{!manageRecipientCon.RecipientPageController.orderByfield=='AccountId'}" styleClass="{!manageRecipientCon.RecipientPageController.sortStyle}" title="{!manageRecipientCon.RecipientPageController.SortTitle}" alt="{!manageRecipientCon.RecipientPageController.SortTitle}" />
+			                        <apex:param value="AccountId" name="column" assignTo="{!manageRecipientCon.RecipientPageController.orderByField}" />
+			                    </apex:commandLink>
+			                </apex:facet>
+
+							<apex:outputLink value="../{!cw.Recipient.AccountId}" target="_blank" >{!cw.Recipient.Account.Name}</apex:outputLink>
+			            </apex:column>
+
+			            <apex:column >
+			                <apex:facet name="header">
+			                    <apex:commandLink value="Address" action="{!manageRecipientCon.sortResults}" rerender="RecipientResultsPanelId,msgOPId1,msgOPId2" status="processStatus" >
+			                        <apex:image url="/s.gif" rendered="{!manageRecipientCon.RecipientPageController.orderByfield=='MailingStreet'}" styleClass="{!manageRecipientCon.RecipientPageController.sortStyle}" title="{!manageRecipientCon.RecipientPageController.SortTitle}" alt="{!manageRecipientCon.RecipientPageController.SortTitle}" />
+			                        <apex:param value="MailingStreet" name="column" assignTo="{!manageRecipientCon.RecipientPageController.orderByField}" />
+			                    </apex:commandLink>
+			                </apex:facet>
+
+							<apex:outputText value="{!cw.Address}" />
+			            </apex:column>
+
+			            <apex:column >
+			                <apex:facet name="header">
+			                    <apex:commandLink value="Email" action="{!manageRecipientCon.sortResults}" rerender="RecipientResultsPanelId,msgOPId1,msgOPId2" status="processStatus" >
+			                        <apex:image url="/s.gif" rendered="{!manageRecipientCon.RecipientPageController.orderByfield=='Email'}" styleClass="{!manageRecipientCon.RecipientPageController.sortStyle}" title="{!manageRecipientCon.RecipientPageController.SortTitle}" alt="{!manageRecipientCon.RecipientPageController.SortTitle}" />
+			                        <apex:param value="Email" name="column" assignTo="{!manageRecipientCon.RecipientPageController.orderByField}" />
+			                    </apex:commandLink>
+			                </apex:facet>
+
+							<apex:outputField value="{!cw.Recipient.Email}" />
+			            </apex:column>
+
+					</apex:pageBlockTable>
+
+					<apex:outputPanel rendered="{!(NOT(ISBLANK(manageRecipientCon.RecipientPageController)) && manageRecipientCon.RecipientPageController.totalRecordsCount > 0)}" layout="block">
+
+					<apex:outputPanel rendered="{!manageRecipientCon.RecipientPageController.totalRecordsCount > 0}" layout="block" styleClass="pSearchShowMore" style="width:75%;margin-left: 100px;" id="navigationalPanel2" >
+	                	<!-- Previous Page Active link -->
+	                    <apex:image url="/img/search_prevarrow_disabled.gif" styleClass="prevArrow" rendered="{!NOT(manageRecipientCon.RecipientPageController.setController.HasPrevious)}"/>
+	                    <apex:image url="/img/search_prevarrow.gif" title="Previous Page" styleClass="prevArrow" rendered="{!manageRecipientCon.RecipientPageController.setController.HasPrevious}"/>
+	                    <apex:commandLink action="{!manageRecipientCon.previous}" title="Previous Page" value="Previous Page" rendered="{!manageRecipientCon.RecipientPageController.setController.HasPrevious}" rerender="RecipientResultsPanelId,msgOPId1,msgOPId2" status="processStatus"/>
+	                    <!-- Previous Page InActive link -->
+	                    <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(manageRecipientCon.RecipientPageController.setController.HasPrevious)}">Previous Page</apex:outputPanel>  
+
+	                    &nbsp;(Page&nbsp;{!manageRecipientCon.RecipientPageController.setController.PageNumber}&nbsp;of&nbsp;{!CEILING(manageRecipientCon.RecipientPageController.setController.resultSize/manageRecipientCon.RecipientPageController.setController.PageSize)})&nbsp;
+
+	                    <!-- Next Page InActive link -->
+	                    <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(manageRecipientCon.RecipientPageController.setController.HasNext)}">Next Page</apex:outputPanel> 
+	                    <!-- Next Page Active link -->       
+	                    <apex:commandLink action="{!manageRecipientCon.next}" title="Next Page" value="Next Page" rendered="{!manageRecipientCon.RecipientPageController.setController.HasNext}" rerender="RecipientResultsPanelId,msgOPId1,msgOPId2" status="processStatus"/>&nbsp;
+	                    <apex:image url="/img/search_nextarrow.gif" title="Next Page" styleClass="nextArrow" rendered="{!manageRecipientCon.RecipientPageController.setController.HasNext}"/>
+	                    <apex:image url="/img/search_nextarrow_disabled.gif" rendered="{!NOT(manageRecipientCon.RecipientPageController.setController.HasNext)}"/>
+	                </apex:outputPanel>
+	                </apex:outputPanel>
+
+                </apex:pageBlockSection>
+                <apex:pageBlockSection rendered="{!manageRecipientCon.RecipientPageController.totalRecordsCount==0}">
+               		No records returned.
+               	</apex:pageBlockSection>
+			</apex:outputPanel>
+		</apex:pageBlock>
+		</apex:outputPanel>		
+
+	<script type="text/javascript">
+
+		function processSelection(selectedItem) {
+
+			//debugger;
+			var contactId = selectedItem.parent().find("span")[0].innerHTML;
+			if (selectedItem.prop('checked')) {
+				var contactName = selectedItem.parent().find("span")[1].innerHTML;
+				if (j$(".primaryRecipientClass option[value=" + contactId + "]").length == 0) {
+					//j$(".primaryRecipientClass").append('<option value="' + contactId + '">' + contactName + '</option>');
+					addRecipientOption(contactId, contactName);
+					if (j$(".primaryRecipientClass option[value='']").length > 0) j$(".primaryRecipientClass option[value='']").remove();
+				}
+			} else {
+				//j$(".primaryRecipientClass option[value=" + contactId + "]").remove();
+				removeRecipientOption(contactId);
+			}
+		}
+
+		// Called when a Recipient checkbox is clicked.
+		function selectOneRecipient(selectedItem) {
+
+			processSelection(selectedItem);
+
+	 		var allChecked = true;
+	 		j$('.selectOneClass').each(function() {
+	 			//debugger;
+	 			if (!j$(this).prop('checked')) {
+	 				allChecked = false;
+	 				return false;
+	 			}
+	 		});
+
+			//debugger;
+	 		j$('.selectAllClass').prop('checked', allChecked);
+	 	}
+
+		// Called when Select All checkbox is clicked.
+		function selectAllRecipients() {
+			j$('.selectOneClass').prop('checked', j$('.selectAllClass').prop('checked'));
+
+	 		j$('.selectOneClass').each(function() {
+	 			processSelection(j$(this));
+	 		});
+		}
+
+		function keywordEnterKey(e) {
+			//debugger;
+			var key;
+            if (window.event) {
+				key = window.event.keyCode; //IE
+			} else {
+				key = e.which; //firefox
+			}
+
+			//debugger;
+			if (key==13) {
+				//debugger;
+            	j$('.filterButtonRec').click();
+            	//searchRecipients();
+            }
+
+			return (key != 13);
+		}
+	</script>
+
+</apex:component>

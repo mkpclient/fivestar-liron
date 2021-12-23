@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Change_Request_Created_for_Finance</fullName>
+        <description>Change Request Created for Finance</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>alyssa.hawn@fivestarprofessional.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>cheryl.wilson.2@fivestarprofessional.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jaime.houle@fivestarprofessional.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>shelly.martin@fivestarprofessional.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Finance_Templates/Change_Request_Created_Finance</template>
+    </alerts>
+    <alerts>
+        <fullName>Complaint_Change_Request</fullName>
+        <description>Complaint Change Request</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>teresa.hemingson@fivestarprofessional.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>customerservice@fivestarprofessional.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Change_Requests/Complaint_CR_Created</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_AM_of_Reciept</fullName>
+        <description>Notify AM of Reciept</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Change_Requests/Request_Created</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Completed_Email</fullName>
+        <description>Send Completed Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Change_Requests/Request_Completed</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Assign_Susan</fullName>
+        <field>OwnerId</field>
+        <lookupValue>shelly.martin@fivestarprofessional.com</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Assign Shelly</name>
+        <notifyAssignee>true</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Status_to_Open</fullName>
+        <field>Status__c</field>
+        <literalValue>Open</literalValue>
+        <name>Set Status to Open</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Complete_Time</fullName>
+        <field>Close_Date__c</field>
+        <formula>Now()</formula>
+        <name>Update Complete Time</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Open_Date</fullName>
+        <field>Open_Date__c</field>
+        <formula>NOW()</formula>
+        <name>Update Open Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Change Request Created</fullName>
+        <actions>
+            <name>Change_Request_Created_for_Finance</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Notify_AM_of_Reciept</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Assign_Susan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Status_to_Open</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Open_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Change_Request__c.Open_Date__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>Assigns new requests to Susan and Sets Open Date</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Complaint Change Request</fullName>
+        <actions>
+            <name>Complaint_Change_Request</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Change_Request__c.Request_Type__c</field>
+            <operation>equals</operation>
+            <value>Complaint</value>
+        </criteriaItems>
+        <description>If a change request is a complaint, triggers an email alert to Teresa</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Closed Date</fullName>
+        <actions>
+            <name>Send_Completed_Email</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Update_Complete_Time</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Change_Request__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Completed</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

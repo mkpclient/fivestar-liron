@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Alert_Sent__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This box is automatically checked by workflow rules once the client email alert has been sent.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This box is automatically checked by workflow rules once the client email alert has been sent.</inlineHelpText>
+    <label>Email Alert Sent</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approved_Send_to_Print</fullName>
+    <booleanFilter>((1 AND 2 AND 4 AND 6) OR (2 and 3) OR (1 and 2 and 5))</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Related_Core_Market__c</columns>
+    <columns>Proof_Location__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Ad_Prod_Alternate_Notes__c</columns>
+    <columns>Quantity__c</columns>
+    <columns>Postcard_Delivery_Month__c</columns>
+    <columns>Ship_Date__c</columns>
+    <columns>Product_Style__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Postcard,brochure,announcement band,decal,Reprints</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Approved</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Award Winner Profile</value>
+    </filters>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>notContain</operation>
+        <value>Reach,Home Estimate,SIT Postcard Service</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>print only</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>Award Winner Profile</value>
+    </filters>
+    <label>__0. Approved - Send to Print</label>
+    <sharedTo>
+        <group>Fulfillment_Team</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

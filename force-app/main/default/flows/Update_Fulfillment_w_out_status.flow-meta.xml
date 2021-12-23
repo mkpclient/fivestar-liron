@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <interviewLabel>Update Fulfillment w/out status 2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Fulfillment w/out status 2</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Fulfillment_w_out_status</name>
+        <label>Update Fulfillment w/out status</label>
+        <locationX>487</locationX>
+        <locationY>234</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ActivityHistory.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Callback_Date__c</field>
+            <value>
+                <elementReference>ActivityHistory.AdProd_Next_Call_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Last_Contact__c</field>
+            <value>
+                <elementReference>ActivityHistory.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <startElementReference>Update_Fulfillment_w_out_status</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>ActivityHistory</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProductServiceLineCheck</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR (
+
+AND (ISBLANK(OrderProductLine__c), ISBLANK(OrderServiceLine__c))
+,
+
+AND (NOT(ISBLANK(OrderProductLine__c)), NOT(ISBLANK(OrderServiceLine__c)))
+
+)</errorConditionFormula>
+    <errorMessage>Choose Either Order Product Line or Order Service Line to Assign the Recipient.</errorMessage>
+</ValidationRule>

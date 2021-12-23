@@ -1,0 +1,18 @@
+<apex:page standardController="kugo2p__SalesOrder__c" extensions="ManageLinesOrderExt" sidebar="false" action="{!calculateTotal}" id="thePage">
+
+    <apex:outputPanel rendered="false" >
+        <apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__PriceBookName__c}" />
+        <apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__DiscountPercent__c}" />
+        <apex:outputField value="{!kugo2p__SalesOrder__c.Name}" />
+        <apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__Account__r.Name}" />
+        <apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__RecordStatus__c}" />
+
+        <apex:outputField value="{!kugo2p__SalesOrder__c.Market__c}" />
+        <apex:outputField value="{!kugo2p__SalesOrder__c.Market__r.Publication_Year__c}" />
+        <apex:outputField value="{!kugo2p__SalesOrder__c.FulfillOrder__c}" />
+        <apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__ContactBuying__c}" />
+        <apex:outputField value="{!kugo2p__SalesOrder__c.kugo2p__ContactBuying__r.Name}" />
+    </apex:outputPanel>
+
+    <c:ManageLines lineType="Order" manageLinesOrderCon="{!manageLinesOrderCon}" id="pageComp"/>
+</apex:page>

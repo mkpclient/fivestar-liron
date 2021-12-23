@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QuantityMustBeGreaterThanZero</fullName>
+    <active>false</active>
+    <description>Not Active</description>
+    <errorConditionFormula>AND(Quantity__c &lt;= 0, 1=2)</errorConditionFormula>
+    <errorDisplayField>Quantity__c</errorDisplayField>
+    <errorMessage>Must Have A Quantity &gt; 0</errorMessage>
+</ValidationRule>

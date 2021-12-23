@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Packaged__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>To be checked when an order is being prepared for shipping</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Order is ready for shipping</inlineHelpText>
+    <label>Packaged</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Display_Name_OR_Product_name__c</fullName>
+    <description>Product Display Name OR Product name if no display name exists</description>
+    <externalId>false</externalId>
+    <formula>BLANKVALUE(OrderProductLine__r.Product__r.Product_Display_Name__c,OrderProductLine__r.Product__r.Name)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Product Display Name/Product Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

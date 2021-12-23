@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cant_Change_Product_Fields</fullName>
+    <active>true</active>
+    <description>Don&amp;apos;t allow changes to the Product field once saved.</description>
+    <errorConditionFormula>ischanged(Product__c)</errorConditionFormula>
+    <errorDisplayField>Product__c</errorDisplayField>
+    <errorMessage>Once a product line is saved, the Product reference cannot be changed. Please create a new line and delete this one.</errorMessage>
+</ValidationRule>

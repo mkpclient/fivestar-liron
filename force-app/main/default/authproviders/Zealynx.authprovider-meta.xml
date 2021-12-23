@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://api.zealynx.com/oauth2/auth</authorizeUrl>
+    <consumerKey>3MVG9MU2nFE8vlsjRvssgTkqkONL9Rx0xpKTcDbxa50iUF15JgqBwOJn_FiQ0uGuB5eBlHodspzTUCRAlxt98</consumerKey>
+    <consumerSecret>sYwQN1Xut2t1yh3HeTbiFhkUA1iBmoIpRvCt+Mx3xezGntGQjI9l0ZE/gtRB+S80+0o9oGGDql0pylhx5xxiiXBBGPdiC2rX</consumerSecret>
+    <friendlyName>Zealynx</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <providerType>OpenIdConnect</providerType>
+    <sendAccessTokenInHeader>true</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://api.zealynx.com/oauth2/token</tokenUrl>
+</AuthProvider>

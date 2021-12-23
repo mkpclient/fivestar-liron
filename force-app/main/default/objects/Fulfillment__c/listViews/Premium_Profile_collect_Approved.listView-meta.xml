@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Premium_Profile_collect_Approved</fullName>
+    <columns>NAME</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Graphics_Owner__c</columns>
+    <columns>ACDF_Parent_Company__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>As Seen In Premium Digital Profile</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>equals</operation>
+        <value>Fulfill</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Cancelled</value>
+    </filters>
+    <label>Premium Digital Profile - Publish</label>
+    <sharedTo>
+        <group>Graphics</group>
+    </sharedTo>
+</ListView>

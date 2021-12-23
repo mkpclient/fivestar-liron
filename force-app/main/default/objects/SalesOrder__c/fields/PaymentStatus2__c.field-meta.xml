@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PaymentStatus2__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( 
+    OR(ISPICKVAL(Status_Picklist__c, &quot;Draft&quot;), ISPICKVAL(Status_Picklist__c,&quot;Sent&quot;) ,AND(ISPICKVAL(Status_Picklist__c,&quot;Cancelled&quot;),  BalanceDueAmount__c == NetAmount__c )), &quot;&quot;,
+    IF(
+        AND (CompletedPayments__c == 0, BalanceDueAmount__c &gt;0), &quot;Unpaid&quot;,
+        IF(
+            BalanceDueAmount__c &lt;= 0.00, &quot;Paid&quot;,
+           IF(CompletedPayments__c &lt; 0.00, &quot;Over Refunded&quot;,
+                 IF(CompletedPayments__c &gt; NetAmount__c, &quot;Overpaid&quot;,
+                              &quot;Partially Paid&quot;))
+        )
+    )
+)</formula>
+    <label>Payment Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

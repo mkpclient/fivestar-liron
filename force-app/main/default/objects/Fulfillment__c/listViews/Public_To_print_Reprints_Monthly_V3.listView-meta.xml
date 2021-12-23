@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public_To_print_Reprints_Monthly_V3</fullName>
+    <columns>NAME</columns>
+    <columns>Fortune_Issue_Date__c</columns>
+    <columns>WSJ_Publication_Date__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Publication_month__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Product_Award_Year__c</columns>
+    <columns>X5_Pub_Month__c</columns>
+    <columns>Actual_Upload_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>reprints</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>contains</operation>
+        <value>Print,Print Post Sale,Print Rush,Print Complaint</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>In Revision,Closed,Closed No Response,On Hold,In Revision - Urgent,Cancelled</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>notEqual</operation>
+        <value>Print Prep</value>
+    </filters>
+    <filters>
+        <field>WSJ_Publication_Date__c</field>
+        <operation>equals</operation>
+        <value>7/29/2020</value>
+    </filters>
+    <label>(Public) To print Reprints - Monthly_WSJ</label>
+    <sharedTo>
+        <group>Graphics</group>
+        <group>Ryan_Duderstadt</group>
+    </sharedTo>
+</ListView>

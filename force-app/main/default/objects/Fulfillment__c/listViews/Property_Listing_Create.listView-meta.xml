@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Property_Listing_Create</fullName>
+    <columns>NAME</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Graphics_Owner__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Property Listing Ad</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>equals</operation>
+        <value>Create</value>
+    </filters>
+    <label>Property Listing - Create</label>
+    <sharedTo>
+        <group>Graphics</group>
+    </sharedTo>
+</ListView>

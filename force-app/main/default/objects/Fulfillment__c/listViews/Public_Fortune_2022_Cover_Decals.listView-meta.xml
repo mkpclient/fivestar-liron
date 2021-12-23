@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public_Fortune_2022_Cover_Decals</fullName>
+    <booleanFilter>(1 AND 2 AND 3 AND 4) OR (2 AND 3 AND 4 AND 5)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Market__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Related_Core_Market__c</columns>
+    <columns>Market_Sales_End_Date__c</columns>
+    <columns>Forbes_Upload_Date__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>LAST_ACTIVITY</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Market__c</field>
+        <operation>contains</operation>
+        <value>Fortune</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Complimentary Fortune magazine with cover decal</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Cancelled,content received</value>
+    </filters>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>cover decal</value>
+    </filters>
+    <filters>
+        <field>Product_Award_Year__c</field>
+        <operation>equals</operation>
+        <value>2022</value>
+    </filters>
+    <label>(Public) Fortune - 2022 Cover Decals</label>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>Adrianna_Loesch</group>
+        <group>Allen_Wardell</group>
+        <group>Arizona_Bitler</group>
+        <group>Brianna_Jahangir</group>
+        <group>Diana_Nguyen</group>
+        <group>Mindy_Stansbarger</group>
+        <group>Teresa_Hemingson</group>
+    </sharedTo>
+</ListView>

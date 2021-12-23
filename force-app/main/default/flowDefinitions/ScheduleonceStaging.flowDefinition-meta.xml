@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>4</activeVersionNumber>
+    <description>takes actions on opportunities when scheduleonce actions occur</description>
+    <masterLabel>ScheduleonceStaging</masterLabel>
+</FlowDefinition>

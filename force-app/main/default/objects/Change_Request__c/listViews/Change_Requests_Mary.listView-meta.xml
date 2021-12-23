@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Change_Requests_Mary</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Open_Date__c</columns>
+    <columns>Order__c</columns>
+    <columns>Request_Description__c</columns>
+    <columns>Request_Type__c</columns>
+    <columns>CREATEDBY_USER.ALIAS</columns>
+    <columns>Close_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>6/30/2016 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Request_Type__c</field>
+        <operation>notContain</operation>
+        <value>Complaint</value>
+    </filters>
+    <label>Change Requests-All</label>
+</ListView>

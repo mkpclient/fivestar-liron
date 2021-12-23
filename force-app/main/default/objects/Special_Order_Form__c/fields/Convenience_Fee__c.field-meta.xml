@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Convenience_Fee__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This box is checked when there should be a convenience fee applied to the Special Order (e.g. Financing fees, etc.)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This box is checked when there should be a convenience fee applied to the Special Order (e.g. Financing fees, etc.)</inlineHelpText>
+    <label>Convenience Fee</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

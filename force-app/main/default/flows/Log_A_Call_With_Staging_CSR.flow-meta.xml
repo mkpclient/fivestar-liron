@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>49.0</apiVersion>
+    <decisions>
+        <name>Status_Change</name>
+        <label>Status Change?</label>
+        <locationX>654</locationX>
+        <locationY>149</locationY>
+        <defaultConnector>
+            <targetReference>Update_Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Status is not no change</defaultConnectorLabel>
+        <rules>
+            <name>Status_Is_no_change</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Status_CSR</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NO CHANGE</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Next_Action</targetReference>
+            </connector>
+            <label>Status is no change</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Was_Type_Proof_Follow_Up</name>
+        <label>Was Type Proof Follow Up</label>
+        <locationX>350</locationX>
+        <locationY>141</locationY>
+        <defaultConnector>
+            <targetReference>Status_Change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Type was not proof follow up</defaultConnectorLabel>
+        <rules>
+            <name>Type_Was_Proof_Follow_Up</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Subject_CSR</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Proof Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Clear_Proof_Automatically_Sent_Flag</targetReference>
+            </connector>
+            <label>Type Was Proof Follow Up</label>
+        </rules>
+    </decisions>
+    <description>Used in conjunction with contact fields to create tasks/stage contacts for CSRs
+
+Added mechanism to preserve CSR date if CSR date passed by screen is blank
+
+Changed &quot;next action date is null&quot; filter to &quot;Next action date = blank&quot;
+
+Added completed screen at end of flow
+
+removed next action date decision entirely and defaulted next action to today
+
+Added CSR last contact date update to final contact update
+
+Added decision based on Subject_CSR, if the type chosen in the dialog is &quot;proof follow up&quot;, clears &quot;Proof Sent Automatically&quot; flag on contact that started the flow via field update</description>
+    <dynamicChoiceSets>
+        <name>Status</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>CSR_Status_Xfer__c</picklistField>
+        <picklistObject>Contact</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>Subject</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>General_Task_Picklist__c</picklistField>
+        <picklistObject>Task</picklistObject>
+    </dynamicChoiceSets>
+    <formulas>
+        <description>Current user id</description>
+        <name>CurrentUserID</name>
+        <dataType>String</dataType>
+        <expression>{!$User.Id}</expression>
+    </formulas>
+    <interviewLabel>Log a Call CSR {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Log a Call With Staging CSR</label>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>CreatTask</name>
+        <label>CreatTask</label>
+        <locationX>1063</locationX>
+        <locationY>192</locationY>
+        <connector>
+            <targetReference>Completed</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Comments__c</field>
+            <value>
+                <elementReference>Comments</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>CurrentUserID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>10</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>Subject_CSR</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>CurrentContactID</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordCreates>
+    <recordLookups>
+        <name>FindCurrentContact</name>
+        <label>FindCurrentContact</label>
+        <locationX>67</locationX>
+        <locationY>138</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Log_A_Call_CSR</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CurrentContactID</elementReference>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <outputAssignments>
+            <assignToReference>CurrentCSRNextAction</assignToReference>
+            <field>CSR_Next_Action_Date__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>CurrentCSRStatus</assignToReference>
+            <field>CSR_Status__c</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <name>Clear_Proof_Automatically_Sent_Flag</name>
+        <label>Clear Proof Automatically Sent Flag</label>
+        <locationX>353</locationX>
+        <locationY>270</locationY>
+        <connector>
+            <targetReference>Status_Change</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CurrentContactID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Proof_Sent_Automatically__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Next_Action</name>
+        <label>Update Next Action and Last Contact</label>
+        <locationX>903</locationX>
+        <locationY>188</locationY>
+        <connector>
+            <targetReference>CreatTask</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CurrentContactID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CSR_Last_Contact_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CSR_Next_Action_Date__c</field>
+            <value>
+                <elementReference>CSR_Next_Action</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Status</name>
+        <label>Update Status</label>
+        <locationX>653</locationX>
+        <locationY>253</locationY>
+        <connector>
+            <targetReference>Update_Next_Action</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CurrentContactID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CSR_Status__c</field>
+            <value>
+                <elementReference>Status_CSR</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <screens>
+        <name>Completed</name>
+        <label>Completed</label>
+        <locationX>1220</locationX>
+        <locationY>194</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Flow_completed_Screen</name>
+            <fieldText>All flow actions completed succesfully, please close this window and refresh the page to see new information.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Log_A_Call_CSR</name>
+        <label>Log A Call CSR</label>
+        <locationX>218</locationX>
+        <locationY>138</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Was_Type_Proof_Follow_Up</targetReference>
+        </connector>
+        <fields>
+            <name>Subject_CSR</name>
+            <choiceReferences>Subject</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Subject</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Comments</name>
+            <fieldText>Comments</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Status_CSR</name>
+            <choiceReferences>Status</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Status</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>CSR_Next_Action</name>
+            <dataType>Date</dataType>
+            <defaultValue>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </defaultValue>
+            <fieldText>Next Action</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>FindCurrentContact</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>Passed by button, ID of current contact record</description>
+        <name>CurrentContactID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Current next action date</description>
+        <name>CurrentCSRNextAction</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Current CSR status</description>
+        <name>CurrentCSRStatus</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

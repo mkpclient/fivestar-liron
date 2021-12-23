@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GAP_Targeted_Postcard_Mailing__c</fullName>
+    <externalId>false</externalId>
+    <label>GAP: Targeted Postcard Mailing</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Marketing_GAP</valueSetName>
+    </valueSet>
+</CustomField>

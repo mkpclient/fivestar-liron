@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_Fields</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( OR(  Admin_Status__c &lt;&gt; &quot;Draft&quot;, Release_Date__c &lt; TODAY()),OR( ShipToName__c  = &quot;&quot;, ShipToStreetLong__c  = &quot;&quot;,  ShipToCity__c = &quot;&quot;, ShipToStateProvince__c = &quot;&quot;,  ShipToZipPostalCode__c = &quot;&quot;))</errorConditionFormula>
+    <errorMessage>All shipping fields are required</errorMessage>
+</ValidationRule>

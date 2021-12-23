@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Complaints</fullName>
+    <columns>NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>Markets__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Complaint_Department__c</columns>
+    <columns>Complaint_Status__c</columns>
+    <columns>Assigned__c</columns>
+    <columns>Days_Open__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Complaint_Status__c</field>
+        <operation>contains</operation>
+        <value>New Complaint,In Progress,Refund requested,No response,Resolved</value>
+    </filters>
+    <filters>
+        <field>Complaint_Type__c</field>
+        <operation>notContain</operation>
+        <value>Cancellation</value>
+    </filters>
+    <label>All Complaints</label>
+</ListView>

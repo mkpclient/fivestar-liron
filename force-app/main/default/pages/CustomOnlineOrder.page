@@ -1,0 +1,269 @@
+<!------------------------------------------>
+<!--   OnlineOrder VF Page by Kugamon     -->
+<!--   Copyright: Kugamon LLC             -->
+<!--   http://www.kugamon.com             -->
+<!--   NO SUPPORT PROVIDED                -->
+<!--   DO NOT COPY, STEAL, SELL THIS CODE -->
+<!--------------------------------------- -->
+
+<apex:page standardController="kugo2p__SalesOrder__c" extensions="CustomOrderPDFExt" showHeader="false" sidebar="false" standardStylesheets="false" cache="false" action="{!orderPDFExt.initOnlineOrder}" id="onlineOrderPageId">	<!-- renderas="{!renderAs}"  -->
+
+	<style>
+		.btnImportant {
+			font-family:'Verdana','Geneva',sans-serif;background-image:url("/img/bgButtonImportant.gif");background-repeat:repeat-x;background-position:left top;border-right:1px solid #5C5D61;border-bottom:1px solid #5C5D61;border-top:none;border-left:none;font-size:80%;color:#FFFFFF;padding:1px 3px 1px 3px;cursor:pointer;font-weight:bold
+		}
+	
+	    .navigationStyle {
+	        font-size: 11px;
+	    }
+	</style>
+
+    <head>
+      <link href="{!URLFOR($Resource.kugo2p__KugamonImages, '/Signaturepad/css/jquery.signaturepad.css')}" rel="stylesheet"></link>
+      <!--[if lt IE 9]><script src="{!URLFOR($Resource.kugo2p__KugamonImages, '/Signaturepad/js/flashcanvas.js')}"></script><![endif]-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+      <script src="{!URLFOR($Resource.kugo2p__KugamonImages, '/Signaturepad/js/json2.min.js')}"></script>
+      <script src="{!URLFOR($Resource.kugo2p__KugamonImages, '/Signaturepad/js/jquery.signaturepad.js')}"></script>
+      <script src="{!URLFOR($Resource.kugo2p__KugamonImages, '/Signaturepad/js/modernizer.js')}"></script>
+      <script src="{!URLFOR($Resource.kugo2p__KugamonImages, '/Signaturepad/js/szimekSignaturepad.js')}"></script>
+    </head>
+
+<apex:composition template="SiteTemplate">
+    <apex:define name="body">
+        <div id="body">
+            <div class="pageMessage">
+                <apex:outputPanel id="pageMessage" >
+                    <apex:pageMessages id="msg" />
+                </apex:outputPanel>
+            </div>
+            <apex:outputPanel rendered="{!NOT(orderPDFExt.hasError)}" id="onlineOrderOP">            	
+                <c:CustomOrderPDF orderId="{!kugo2p__SalesOrder__c.Id}" isOnlineOrder="true" id="onlineOrderCompId"/>
+                <br/>
+                <apex:form rendered="{!(kugo2p__SalesOrder__c.kugo2p__PaymentStatus2__c != 'Paid') || (kugo2p__SalesOrder__c.kugo2p__RecordStatus__c == 'Approved' || kugo2p__SalesOrder__c.kugo2p__RecordStatus__c == 'Released') || (orderPDFExt.TermsAcceptedBy != '') || (settings.kugo2p__OnlinePaymentButton__c !='Accept & Approve' && kugo2p__SalesOrder__c.kugo2p__RecordStatus__c != 'Approved')}" id="onlineOrderformId">
+                    <apex:outputPanel rendered="{!(kugo2p__SalesOrder__c.kugo2p__RecordStatus__c == 'Draft' || kugo2p__SalesOrder__c.kugo2p__RecordStatus__c == 'Sent') && kugo2p__SalesOrder__c.kugo2p__PaymentStatus2__c != 'Paid'}">
+                    <table cellpadding="2" cellspacing="0" class="noborder">
+                        <tr>
+                            <td colspan="2">
+                                <apex:actionFunction name="termsChanged" rerender="acceptAndPayButton, acceptAndPayButtonCheckout" />
+                                <apex:inputCheckbox id="acceptTermsCheckbox" value="{!orderPDFExt.acceptTerms}" onChange="termsChanged()" />
+                                <apex:outputLabel for="acceptTermsCheckbox"><h3><font color="#000080">I hereby agree to the above order terms and conditions, and certify that I have authority to enter into this agreement.</font></h3><br/><br/></apex:outputLabel>
+                            </td>
+                            <td>
+                                <apex:outputPanel id="termsErrorBlock" style="vertical-align: top; color: red;">
+                                    <apex:outputPanel rendered="{!orderPDFExt.showTermsErrorBlock}"><b>* You must accept the terms before proceeding.</b><br/><br/></apex:outputPanel>
+                                </apex:outputPanel>
+
+                                <apex:outputPanel id="initialByErrorBlock" >
+                                                                	
+                                	<apex:inputhidden id="hidinitialBy" value="{!orderPDFExt.initialBy}" />
+                                		
+                                	<script>
+                                		objSelectedIds = document.getElementById("{!$Component.hidinitialBy}");
+                                		var objInitialBy = document.getElementById("initialBy");
+                                		if (objInitialBy != null) {
+	                                		objSelectedIds.value = objInitialBy.value;
+	                                		
+	                                		if ({!orderPDFExt.showInitialByErrorBlock} == true) {
+		                                		if (objInitialBy.value.length > 0)
+		                                			document.getElementById("onlineOrderPageId:SiteTemplate:onlineOrderCompId:orderCompId:initialbyErrorText").style.display = 'none';
+		                                		else
+		                                			document.getElementById("onlineOrderPageId:SiteTemplate:onlineOrderCompId:orderCompId:initialbyErrorText").style.display = 'inline';
+		                                	}
+		                                }
+                                	</script>
+                                </apex:outputPanel>
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td colspan="3">
+                        	<div class="sigPad">
+	                        	<apex:outputLabel for="acceptedByName" ><font color="#000080"><h3>Enter Your Name</h3></font></apex:outputLabel>
+	                        	<apex:actionFunction name="acceptedByNameChanged" rerender="acceptAndPayButton, acceptAndPayButtonCheckout" />
+	                        	<apex:inputText id="acceptedByName" value="{!OrderPDFExt.acceptedBy}" maxlength="30" onKeypress="acceptedByNameChanged()" onchange="acceptedByNameChanged()" styleclass="name" />
+                                <apex:outputPanel id="acceptedByNameErrorBlock" style="vertical-align: top; color: red;">
+                                    <apex:outputPanel rendered="{!OrderPDFExt.showAcceptedByNameErrorBlock}"><b>* You must enter your name before proceeding.</b></apex:outputPanel>
+                                </apex:outputPanel>
+
+						        <div id="canvasDiv" style="display:none;" >
+						            <p class="typeItDesc" >Review Your Signature</p>
+						            <p class="drawItDesc" >Draw Your Signature</p>
+						            <ul class="sigNav">
+						              <li class="typeIt navigationStyle" ><a href="#type-it" class="current">Type It</a></li>
+						              <li class="drawIt navigationStyle" ><a href="#draw-it" >Draw It</a></li>
+						              <li class="clearButton" ><a href="#clear" style="font-weight:normal;">Clear</a></li>
+						            </ul>
+						            <div class="sig sigWrapper">
+						            	<div class="typed"></div>
+						              	<canvas id="mainCanvas" class="pad" width="298" height="55"></canvas>
+						              	<apex:inputHidden value="{!encodedSignature}" id="hiddenInput"/>
+						              	<input type="hidden" name="output" class="output" style="margin-left: 200px;width: 500px;"/>
+						            </div>
+						        </div>
+					        </div>
+                        	</td>
+                        </tr>
+                    </table>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!kugo2p__SalesOrder__c.kugo2p__RecordStatus__c != 'Draft' && kugo2p__SalesOrder__c.kugo2p__RecordStatus__c != 'Sent' && orderPDFExt.TermsAcceptedBy != ''}" >						
+						<h2>Order Approval Information</h2>
+						<br></br><br></br>
+						<table cellpadding="2" cellspacing="0" class="noborder">
+							<tr style="display:{!IF(SignatureUrl!='','','none')}">
+								<td >
+									<img src="{!SignatureUrl}"/>
+								</td>
+							</tr>
+							<tr>
+								<td><apex:outputText ><b>Terms Accepted By:&nbsp;</b>{!orderPDFExt.TermsAcceptedBy}</apex:outputText></td>
+							</tr>
+							<tr>
+								<td><apex:outputText ><b>On Date:&nbsp;</b>{!orderPDFExt.TermsAcceptedDate}</apex:outputText></td>
+							</tr>
+							<tr>
+								<td><apex:outputText ><b>From IP Address:&nbsp;</b>{!orderPDFExt.TermsAcceptedFromIPAddress}</apex:outputText></td>
+							</tr>
+						</table>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!(kugo2p__SalesOrder__c.kugo2p__PaymentStatus2__c != 'Paid' || kugo2p__SalesOrder__c.kugo2p__RecordStatus__c == 'Approved' || kugo2p__SalesOrder__c.kugo2p__RecordStatus__c == 'Released')}">
+                    <table>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td >
+                            	<apex:actionFunction name="afAcceptAndPayOnline" action="{!acceptAndPayOnline}" reRender="termsErrorBlock,acceptedByNameErrorBlock,acceptedByTitleErrorBlock,initialByErrorBlock" status="status"></apex:actionFunction>
+                            	<apex:actionFunction name="afCheckout" action="{!Checkout}" reRender="termsErrorBlock,acceptedByNameErrorBlock,acceptedByTitleErrorBlock,initialByErrorBlock" status="status"></apex:actionFunction>
+
+								<apex:outputPanel rendered="{!kugo2p__SalesOrder__c.kugo2p__PaymentStatus2__c != 'Paid'}">
+	                                <apex:commandLink id="acceptAndPayButton" value="{!orderPDFExt.button1}" rendered="{!orderPDFExt.button1 != ''}" onclick="acceptAndPayOnline();" rerender="initialByErrorBlock" status="status" style="text-decoration:none;" styleClass="pay unlocked button1" />&nbsp;
+	                                <apex:commandLink id="acceptAndPayButtonCheckout" value="{!orderPDFExt.button2}" rendered="{!orderPDFExt.button2 != ''}" onclick="checkout();" rerender="initialByErrorBlock" status="status" style="text-decoration:none;" styleClass="pay unlocked button2"/>
+	                            </apex:outputPanel>
+
+                                <apex:outputPanel rendered="{!(kugo2p__SalesOrder__c.kugo2p__RecordStatus__c == 'Approved' || kugo2p__SalesOrder__c.kugo2p__RecordStatus__c == 'Released')}">
+                                	&nbsp;&nbsp;
+                                	<apex:commandLink value="Download PDF" onclick="downloadOrderPDF();" style="text-decoration:none;text-align: left;" styleClass="stdAction" rerender="initialByErrorBlock"/>
+                                </apex:outputPanel>	
+
+                                &nbsp;<apex:actionStatus id="status">
+                                    <apex:facet name="start"><apex:image value="{!$Resource.kugo2p__spinner}" width="16" height="16" alt="waiting" /></apex:facet>
+                                </apex:actionStatus>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <script>
+                    	function acceptAndPayOnline() {
+                    		if (j$(".button1").hasClass("unlocked")) {
+                    			j$(".button1").removeClass('unlocked');
+	                    		//console.log('button1 disabled');
+	                    		var objInitialBy = document.getElementById("initialBy");
+	                    		if (objInitialBy != null && objSelectedIds != null) objSelectedIds.value = objInitialBy.value;
+	                    		afAcceptAndPayOnline();
+	                    	}
+                    	}
+
+                    	function checkout() {
+                    		if (j$(".button2").hasClass("unlocked")) {
+                    			j$(".button2").removeClass('unlocked');
+	                    		//console.log('button2 disabled');
+	                    		var objInitialBy = document.getElementById("initialBy");
+	                    		if (objInitialBy != null && objSelectedIds != null) objSelectedIds.value = objInitialBy.value;
+	                    		afCheckout();
+	                    	}
+                    	}
+
+                  		function downloadOrderPDF() {
+                  			url = "{!downloadPDFURL}";
+                  			window.open(url);
+                  		}
+                    </script>
+                    
+                    </apex:outputPanel>
+                </apex:form>
+                <canvas style="display:none;" id="shadowCanvas"></canvas>
+                <br/>
+                
+				<script>
+		        var j$ = jQuery.noConflict();
+		        j$(function() {
+		            /*Check if the browser supports canvas*/
+		            if (Modernizr.canvas) {
+		                j$("#canvasDiv").show();
+		                j$("#shadowCanvas").attr('width', 300);
+		                j$("#shadowCanvas").attr('height', 55);
+
+		                /*Initiate the Thomas Bradley Signature pad, this will load the initial form template.*/
+		                var api = j$('.sigPad').signaturePad();
+		                var signPad;
+		                var canvasClearTimer;
+
+		                j$("#mainCanvas").hover(function() {
+		                    if(signPad != undefined && j$("a.current").text()=='Type It') {
+		                        canvasClearTimer = setInterval(function() {
+		                            signPad.clear();
+		                            var canvas = document.getElementById("mainCanvas"); 
+		                            drawSignatureLine(canvas);
+		                        },1);
+		                    }
+
+		                },function() {
+		                    if(canvasClearTimer != undefined) {
+		                        clearInterval(canvasClearTimer);
+		                    }
+		                });
+
+		                /* Initialize the Szimek Signature pad for the draw it functionality, this will make sure that the signature is smooth */
+		                j$(".drawIt").click(function() {
+		                    var canvas = document.getElementById("mainCanvas"); 
+		                    signPad = new SignaturePad(canvas, {
+		                        maxWidth : 1.2,
+		                        penColor : '#145394'
+		                    });
+		                });
+		                /*Capture the base64encoded string of the cavnas element. If the Draw It section is selected then the image is constructed from the
+		                  signature which the user has drawn else the image is constructed from the Text in he inputbox. 
+		                */
+		                j$(".sigPad").mouseout(function() {
+		                    if (j$("a.current").text() == 'Draw It') {
+		                        var encodedImageUrl = signPad.toDataURL();
+		                        var encodedImage = encodedImageUrl.split(',');
+		                        j$("[id$=hiddenInput]").val(encodedImage[1]);
+		                    } else {
+		                        var shadowCanvas = document.getElementById("shadowCanvas");
+		                        var ctx = shadowCanvas.getContext("2d");
+		                        ctx.clearRect(0, 0, shadowCanvas.width, shadowCanvas.height);
+		                        //ctx.font = "3.875em/50px Journal";
+		                        ctx.font = "3.0em/50px Journal";
+		                        ctx.fillStyle = '#145394';
+		                        ctx.lineWidth = 2;
+		                        //ctx.fillText(j$("div.typed").text(), 10, 34);
+		                        ctx.fillText(j$("div.typed").text(), 5, 34);
+		                        var encodedImage = shadowCanvas.toDataURL().split(',');
+		                        j$("[id$=hiddenInput]").val(encodedImage[1]);
+		                    }
+		                });
+		            }
+		        });
+		        
+		        /*This function loads standard canvas template*/
+		        function drawSignatureLine(canvas) {
+		            var canvasContext = canvas.getContext("2d");
+		            canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+		            canvasContext.fillStyle = '#ffffff';
+		            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+		            canvasContext.beginPath()
+		            canvasContext.lineWidth = 2;
+		            canvasContext.strokeStyle = '#ccc';
+		            canvasContext.moveTo(5, 35);
+		            canvasContext.lineTo(canvas.width - 5, 35);
+		            canvasContext.stroke();
+		            canvasContext.closePath();
+		        }
+		      	</script>
+
+            </apex:outputPanel>
+        </div>
+    </apex:define>
+</apex:composition>
+</apex:page>

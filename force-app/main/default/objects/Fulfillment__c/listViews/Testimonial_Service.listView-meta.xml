@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Testimonial_Service</fullName>
+    <columns>NAME</columns>
+    <columns>Market__c</columns>
+    <columns>Related_Core_Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>ACDF_Company__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Client_Contact_List__c</columns>
+    <columns>Product_Engagement_Status__c</columns>
+    <columns>Email_Announcement_Service__c</columns>
+    <columns>Number_Testimonial_Posts__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Service</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>capture</value>
+    </filters>
+    <label>_Testimonial Service - All</label>
+    <sharedTo>
+        <group>Allen_Wardell</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

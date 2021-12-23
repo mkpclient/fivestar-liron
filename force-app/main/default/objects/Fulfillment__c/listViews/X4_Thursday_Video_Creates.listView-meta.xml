@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X4_Thursday_Video_Creates</fullName>
+    <booleanFilter>1 AND 2 AND 4 AND((3 AND 5) OR 6)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Market__c</columns>
+    <columns>Market_Award_Year__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Profession__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Title__c</columns>
+    <columns>Years_Winner__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Go_Live_Date__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Market_Final_Upload_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Video</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>contains</operation>
+        <value>Create,In Batch</value>
+    </filters>
+    <filters>
+        <field>Go_Live_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>NEXT_MONTH</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Cancelled,Ready for AE,Ready to Publish</value>
+    </filters>
+    <filters>
+        <field>Profession__c</field>
+        <operation>contains</operation>
+        <value>WM,IP</value>
+    </filters>
+    <filters>
+        <field>Profession__c</field>
+        <operation>contains</operation>
+        <value>RE,MP,HA,RS</value>
+    </filters>
+    <label>__Week 2 - Video Creates</label>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>Brianna_Jahangir</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+        <group>Olivia_Snyder</group>
+        <group>Ryan_Duderstadt</group>
+    </sharedTo>
+</ListView>

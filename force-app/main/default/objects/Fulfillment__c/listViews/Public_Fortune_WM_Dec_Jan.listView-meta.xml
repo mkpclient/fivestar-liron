@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public_Fortune_WM_Dec_Jan</fullName>
+    <booleanFilter>1 AND 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Fortune_Upload_Date__c</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>Market__c</columns>
+    <columns>Fortune_Issue_Date__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Client_Approval_Deadline_hidden__c</columns>
+    <columns>Official_Order_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>equals</operation>
+        <value>Fortune Sixth Page Profile</value>
+    </filters>
+    <filters>
+        <field>Fortune_Issue_Date__c</field>
+        <operation>equals</operation>
+        <value>December 2021 / January 2022</value>
+    </filters>
+    <label>(Public) Fortune WM Dec/Jan</label>
+</ListView>

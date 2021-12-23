@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Generate_Shipments</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Generate Shipment(s)</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!requireScript(&quot;/soap/ajax/16.0/connection.js&quot;)}
+{!requireScript(&quot;/soap/ajax/16.0/apex.js&quot;)}
+if (&apos;{!SalesOrder__c.RecordStatus__c}&apos; == &apos;Approved&apos;) {
+	var productLines = {!GETRECORDIDS($ObjectType.SalesOrderProductLine__c)};
+
+	if (productLines.length &gt; 0) {
+		
+		var args = {
+			soId:&apos;{!SalesOrder__c.Id}&apos;,
+			productLines:productLines
+		};
+		
+		var result = sforce.apex.execute(&apos;kugo2p/ShipmentsHelper&apos;, &apos;createShipmentSchedule&apos;, args, null, false);
+		
+		location.href=result.pagereference;
+	} else {
+		alert(&apos;Please select the Product Line(s) for which to create Shipments.&apos;);
+	}
+} else {
+	alert(&apos;Shipments can only be created after the order is Approved.&apos;);
+}</url>
+</WebLink>

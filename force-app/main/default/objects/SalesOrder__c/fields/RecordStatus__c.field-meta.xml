@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RecordStatus__c</fullName>
+    <defaultValue>&quot;Draft&quot;</defaultValue>
+    <description>Valid Statuses are: Draft, Sent, Approved, Released, and Cancelled. Released Order status cannot be manually changed; use Status formula field instead. Cancelled Order status cannot be changed at all.</description>
+    <externalId>false</externalId>
+    <label>Record Status</label>
+    <length>30</length>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Result__c</fullName>
+    <externalId>false</externalId>
+    <label>Call Result</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Left VM (Office)</fullName>
+                <default>false</default>
+                <label>Left VM (Office)</label>
+            </value>
+            <value>
+                <fullName>Left VM (Cell)</fullName>
+                <default>false</default>
+                <label>Left VM (Cell)</label>
+            </value>
+            <value>
+                <fullName>Left message w/assistant</fullName>
+                <default>false</default>
+                <label>Left message w/assistant</label>
+            </value>
+            <value>
+                <fullName>TT : Hung up/Try again</fullName>
+                <default>false</default>
+                <label>TT : Hung up/Try again</label>
+            </value>
+            <value>
+                <fullName>TT : Explained prog. Think will complete.</fullName>
+                <default>false</default>
+                <label>TT : Explained prog. Think will complete.</label>
+            </value>
+            <value>
+                <fullName>TT : Said would complete</fullName>
+                <default>false</default>
+                <label>TT : Said would complete</label>
+            </value>
+            <value>
+                <fullName>TT : Busy, sent EM for follow up call.</fullName>
+                <default>false</default>
+                <label>TT : Busy, sent EM for follow up call.</label>
+            </value>
+            <value>
+                <fullName>TT : Completed over phone</fullName>
+                <default>false</default>
+                <label>TT : Completed over phone</label>
+            </value>
+            <value>
+                <fullName>TT : Not interested</fullName>
+                <default>false</default>
+                <label>TT : Not interested</label>
+            </value>
+            <value>
+                <fullName>TT : Busy ATM, CB</fullName>
+                <default>false</default>
+                <label>TT : Busy ATM, CB</label>
+            </value>
+            <value>
+                <fullName>NA : Explain</fullName>
+                <default>false</default>
+                <label>NA : Explain</label>
+            </value>
+            <value>
+                <fullName>Completed Form</fullName>
+                <default>false</default>
+                <label>Completed Form</label>
+            </value>
+            <value>
+                <fullName>Data Issue</fullName>
+                <default>false</default>
+                <label>Data Issue</label>
+            </value>
+            <value>
+                <fullName>Pre-recorded voicemail.</fullName>
+                <default>false</default>
+                <label>Pre-recorded voicemail.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancel_Scheduled_Payments</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Cancel Scheduled Payments</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot; )}
+var connection = sforce.connection;
+var soId = &quot;{!SalesOrder__c.Id}&quot;;
+
+var query = sforce.connection.query(&quot;SELECT Id FROM Payment__c WHERE Status__c=&apos;Scheduled&apos; AND Sales_Order__c =&apos;&quot; + soId + &quot;&apos;&quot;);
+
+var queryResult = query.getArray(&quot;records&quot;);
+
+if(confirm(&quot;Click ok if you&apos;d like to cancel all scheduled payments for this order.&quot;))
+{
+if(queryResult.length &gt; 0) {
+var payments = [];
+for(var i = 0; i &lt; queryResult.length; i++) {
+var p = new sforce.SObject(&apos;Payment__c&apos;);
+p.Id = queryResult[i].Id;
+p.Status__c = &quot;Canceled&quot;;
+p.Date__c = null;
+payments.push(p);
+}
+result = sforce.connection.update(payments);
+alert(payments.length + &quot; payments have been canceled.&quot;);
+location.reload(true);
+
+
+} else {
+alert(&quot;There are no scheduled payments for this Sales Order.&quot;);
+}
+}</url>
+</WebLink>

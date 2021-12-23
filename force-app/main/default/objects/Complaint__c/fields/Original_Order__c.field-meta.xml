@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Original_Order__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Original order if applicable</description>
+    <externalId>false</externalId>
+    <inlineHelpText>What order number (Kugamon-Only) is this complaint related to?</inlineHelpText>
+    <label>Original Order</label>
+    <referenceTo>kugo2p__SalesOrder__c</referenceTo>
+    <relationshipLabel>Complaints (Original Order)</relationshipLabel>
+    <relationshipName>Complaints1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

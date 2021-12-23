@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CustomOnlinePageStatus__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    AND(
+             RecordStatus__c &lt;&gt; &quot;Cancelled&quot;,
+             OR( ISBLANK(OnlinePaymentExpirationDate__c),
+                     OnlinePaymentExpirationDate__c&gt;=TODAY(),
+                     RecordStatus__c = &quot;Approved&quot;,
+                     RecordStatus__c = &quot;Released&quot;
+
+                  )
+    ),
+    (&quot;[&quot; &amp; HYPERLINK(ShipToStreet__c&amp;&quot;/CustomOnlineOrder?key=&quot; &amp; OnlineApprovalKey__c &amp; &quot;&amp;id=&quot;&amp; Id &amp; &quot;&amp;retURL=/CustomOnlineOrder%3Fkey=&quot; &amp; OnlineApprovalKey__c &amp; &quot;%26id=&quot;&amp; Id , &quot;Preview&quot;) &amp; &quot;] &quot; ),
+    IF(
+             OR(
+                       ISBLANK(OnlinePaymentExpirationDate__c), 
+                       RecordStatus__c  = &quot;Released&quot;,
+                       RecordStatus__c = &quot;Cancelled&quot;
+             ), 
+             &quot;Inactive&quot;, 
+             &quot;Expired&quot;
+     )
+)</formula>
+    <label>Online Order Page Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

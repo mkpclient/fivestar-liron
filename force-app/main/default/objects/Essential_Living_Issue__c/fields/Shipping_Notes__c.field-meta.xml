@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_Notes__c</fullName>
+    <description>Shipping Notes</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Shipping Notes (Ex: &quot;The client has no list, please ship directly to the client this month&quot;)</inlineHelpText>
+    <label>Shipping Notes</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

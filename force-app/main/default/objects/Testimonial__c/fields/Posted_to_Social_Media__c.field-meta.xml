@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Posted_to_Social_Media__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Box is checked when testimonial is posted or scheduled to be posted to client&apos;s social media</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Box is checked when testimonial is posted or scheduled to be posted to client&apos;s social media</inlineHelpText>
+    <label>Posted to Social Media</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

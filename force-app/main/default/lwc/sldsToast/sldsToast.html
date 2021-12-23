@@ -1,0 +1,39 @@
+<template>
+  <div
+    class="demo-only"
+    style="height: 4rem; position: fixed; top: 0; z-index: 999"
+  >
+    <div class="slds-notify_container slds-is-relative">
+      <div class={privateClass} role="status">
+        <span class="slds-assistive-text">{title}</span>
+        <span
+          class="
+            slds-icon_container
+            slds-icon-utility-success
+            slds-m-right_small
+            slds-no-flex slds-align-top
+          "
+          title="Description of icon when needed"
+        >
+          <svg class="slds-icon slds-icon_small" aria-hidden="true">
+            <use
+              xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"
+            ></use>
+          </svg>
+        </span>
+        <div class="slds-notify__content">
+          <h2 class="slds-text-heading_small">{message}</h2>
+        </div>
+        <div class="slds-notify__close">
+          <lightning-button-icon
+            icon-name="utility:close"
+            variant="bare-inverse"
+            alternative-text="Close"
+            onclick={handleClose}
+            title="Close"
+          ></lightning-button-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

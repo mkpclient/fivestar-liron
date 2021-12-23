@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <color>#DDDDDD</color>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Content Received</fullName>
+                <color>#FFCC66</color>
+                <default>false</default>
+                <label>Content Received</label>
+            </value>
+            <value>
+                <fullName>Ready for FTP</fullName>
+                <color>#E27001</color>
+                <default>false</default>
+                <label>Ready for FTP</label>
+            </value>
+            <value>
+                <fullName>Product Created</fullName>
+                <color>#A845DC</color>
+                <default>false</default>
+                <label>Product Created</label>
+            </value>
+            <value>
+                <fullName>In Revision</fullName>
+                <color>#F3D904</color>
+                <default>false</default>
+                <label>In Revision</label>
+            </value>
+            <value>
+                <fullName>In Revision - Urgent</fullName>
+                <color>#FFCC33</color>
+                <default>false</default>
+                <label>In Revision - Urgent</label>
+            </value>
+            <value>
+                <fullName>Approved</fullName>
+                <color>#66E9BD</color>
+                <default>false</default>
+                <label>Approved</label>
+            </value>
+            <value>
+                <fullName>Web Content Received</fullName>
+                <color>#0B24BE</color>
+                <default>false</default>
+                <label>Web Content Received</label>
+            </value>
+            <value>
+                <fullName>Web Product Created</fullName>
+                <color>#419249</color>
+                <default>false</default>
+                <label>Web Product Created</label>
+            </value>
+            <value>
+                <fullName>Web Approved</fullName>
+                <color>#66CCCC</color>
+                <default>false</default>
+                <label>Web Approved</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <color>#FF9900</color>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Active</fullName>
+                <color>#33CC00</color>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>To Print</fullName>
+                <color>#2F5D85</color>
+                <default>false</default>
+                <label>To Print</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <color>#666666</color>
+                <default>false</default>
+                <label>Closed</label>
+            </value>
+            <value>
+                <fullName>Closed No Response</fullName>
+                <color>#993300</color>
+                <default>false</default>
+                <label>Closed No Response</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <color>#EFAE73</color>
+                <default>false</default>
+                <label>On Hold</label>
+            </value>
+            <value>
+                <fullName>Write copy</fullName>
+                <color>#57F17C</color>
+                <default>false</default>
+                <label>Write copy</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Scheduled</fullName>
+                <color>#0B6FCE</color>
+                <default>false</default>
+                <label>CSR Appointment Scheduled</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Incomplete - 1st Request</fullName>
+                <color>#78C953</color>
+                <default>false</default>
+                <label>CSR Appointment Incomplete - 1st Request</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Incomplete - 2nd Request</fullName>
+                <color>#E27001</color>
+                <default>false</default>
+                <label>CSR Appointment Incomplete - 2nd Request</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Incomplete - 3rd Request</fullName>
+                <color>#A845DC</color>
+                <default>false</default>
+                <label>CSR Appointment Incomplete - 3rd Request</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Incomplete – 4th Request</fullName>
+                <color>#F3D904</color>
+                <default>false</default>
+                <label>CSR Appointment Incomplete – 4th Request</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Incomplete – Content Needed</fullName>
+                <color>#A53711</color>
+                <default>false</default>
+                <label>CSR Appointment Incomplete – Content Needed</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Incomplete – Approval Needed</fullName>
+                <color>#66E9BD</color>
+                <default>false</default>
+                <label>CSR Appointment Incomplete – Approval Needed</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Complete - Content Needed</fullName>
+                <color>#0B24BE</color>
+                <default>false</default>
+                <label>CSR Appointment Complete - Content Needed</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Complete - Approval Needed</fullName>
+                <color>#419249</color>
+                <default>false</default>
+                <label>CSR Appointment Complete - Approval Needed</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Complete - Open Fulfillment</fullName>
+                <color>#B6E32E</color>
+                <default>false</default>
+                <label>CSR Appointment Complete - Open Fulfillment</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Complete - Urgent Response Needed</fullName>
+                <color>#641CCF</color>
+                <default>false</default>
+                <label>CSR Appointment Complete - Urgent Response Needed</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Complete - Follow Up Needed</fullName>
+                <color>#F96FB7</color>
+                <default>false</default>
+                <label>CSR Appointment Complete - Follow Up Needed</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Complete – Follow Up Scheduled</fullName>
+                <color>#2F5D85</color>
+                <default>false</default>
+                <label>CSR Appointment Complete – Follow Up Scheduled</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Complete - LONG TERM Follow Up</fullName>
+                <color>#AFCADF</color>
+                <default>false</default>
+                <label>CSR Appointment Complete - LONG TERM Follow Up</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment Complete</fullName>
+                <color>#8F6429</color>
+                <default>false</default>
+                <label>CSR Appointment Complete</label>
+            </value>
+            <value>
+                <fullName>CSR Appointment NOT Complete - Closed</fullName>
+                <color>#EFAE73</color>
+                <default>false</default>
+                <label>CSR Appointment NOT Complete - Closed</label>
+            </value>
+            <value>
+                <fullName>CST Follow Up 1 Complete</fullName>
+                <color>#57F17C</color>
+                <default>false</default>
+                <label>CST Follow Up 1 Complete</label>
+            </value>
+            <value>
+                <fullName>CST Follow Up 1 Complete - Open Fulfillment</fullName>
+                <color>#0B6FCE</color>
+                <default>false</default>
+                <label>CST Follow Up 1 Complete - Open Fulfillment</label>
+            </value>
+            <value>
+                <fullName>CST Follow Up 2 Complete</fullName>
+                <color>#78C953</color>
+                <default>false</default>
+                <label>CST Follow Up 2 Complete</label>
+            </value>
+            <value>
+                <fullName>CST Follow Up 2 Complete - Open Fulfillment</fullName>
+                <color>#E27001</color>
+                <default>false</default>
+                <label>CST Follow Up 2 Complete - Open Fulfillment</label>
+            </value>
+            <value>
+                <fullName>CST Follow Up 3 Complete</fullName>
+                <color>#A845DC</color>
+                <default>false</default>
+                <label>CST Follow Up 3 Complete</label>
+            </value>
+            <value>
+                <fullName>CST Follow Up 1 Complete - Action Needed</fullName>
+                <color>#F3D904</color>
+                <default>false</default>
+                <label>CST Follow Up 1 Complete - Action Needed</label>
+            </value>
+            <value>
+                <fullName>CST Follow Up 2 Complete - Action Needed</fullName>
+                <color>#A53711</color>
+                <default>false</default>
+                <label>CST Follow Up 2 Complete - Action Needed</label>
+            </value>
+            <value>
+                <fullName>CST Follow Up 3 Complete - Action Needed</fullName>
+                <color>#66E9BD</color>
+                <default>false</default>
+                <label>CST Follow Up 3 Complete - Action Needed</label>
+            </value>
+            <value>
+                <fullName>CSR Client Success Experience Complete</fullName>
+                <color>#0B24BE</color>
+                <default>false</default>
+                <label>CSR Client Success Experience Complete</label>
+            </value>
+            <value>
+                <fullName>Ready for AE</fullName>
+                <color>#419249</color>
+                <default>false</default>
+                <label>Ready for AE</label>
+            </value>
+            <value>
+                <fullName>Ready to Publish</fullName>
+                <color>#B6E32E</color>
+                <default>false</default>
+                <label>Ready to Publish</label>
+            </value>
+            <value>
+                <fullName>Approved - Pending Listing</fullName>
+                <color>#641CCF</color>
+                <default>false</default>
+                <label>Approved - Pending Listing</label>
+            </value>
+            <value>
+                <fullName>Subscription Paused</fullName>
+                <default>false</default>
+                <label>Subscription Paused</label>
+            </value>
+            <value>
+                <fullName>Setup Pending</fullName>
+                <default>false</default>
+                <label>Setup Pending</label>
+            </value>
+            <value>
+                <fullName>Subscription Cancelled</fullName>
+                <color>#FF6666</color>
+                <default>false</default>
+                <label>Subscription Cancelled</label>
+            </value>
+            <value>
+                <fullName>Cancelled</fullName>
+                <color>#FF0000</color>
+                <default>false</default>
+                <label>Cancelled</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

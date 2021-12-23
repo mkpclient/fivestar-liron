@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TaxUsageRate__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(TaxableUsage__c, IF(OR(SalesOrder__r.Account__r.ShippingState = &quot;Minnesota&quot;, SalesOrder__r.Account__r.ShippingState = &quot;MN&quot;), $CustomMetadata.Sales_Tax__mdt.Default_MN.Rate__c / 100 ,0), 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Tax Usage Rate</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

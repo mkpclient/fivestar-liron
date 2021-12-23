@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Next_Action_Xfer__c</fullName>
+    <description>Hidden field, used to feed next action choices in to log a call flow.</description>
+    <externalId>false</externalId>
+    <label>Next Action Xfer</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Change</fullName>
+                <default>false</default>
+                <label>No Change</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>true</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Collect</fullName>
+                <default>false</default>
+                <label>Collect</label>
+            </value>
+            <value>
+                <fullName>Collect Urgent</fullName>
+                <default>false</default>
+                <label>Collect Urgent</label>
+            </value>
+            <value>
+                <fullName>Create</fullName>
+                <default>false</default>
+                <label>Create</label>
+            </value>
+            <value>
+                <fullName>Proof</fullName>
+                <default>false</default>
+                <label>Proof</label>
+            </value>
+            <value>
+                <fullName>Make Revisions</fullName>
+                <default>false</default>
+                <label>Make Revisions</label>
+            </value>
+            <value>
+                <fullName>Make Revisions (CE)</fullName>
+                <default>false</default>
+                <label>Make Revisions (CE)</label>
+            </value>
+            <value>
+                <fullName>Send Proof</fullName>
+                <default>false</default>
+                <label>Send Proof</label>
+            </value>
+            <value>
+                <fullName>Collect Revisions</fullName>
+                <default>false</default>
+                <label>Collect Revisions</label>
+            </value>
+            <value>
+                <fullName>Fulfill</fullName>
+                <default>false</default>
+                <label>Fulfill</label>
+            </value>
+            <value>
+                <fullName>Print Complaint</fullName>
+                <default>false</default>
+                <label>Print Complaint</label>
+            </value>
+            <value>
+                <fullName>Print</fullName>
+                <default>false</default>
+                <label>Print</label>
+            </value>
+            <value>
+                <fullName>Print Rush</fullName>
+                <default>false</default>
+                <label>Print Rush</label>
+            </value>
+            <value>
+                <fullName>Print Post Sale</fullName>
+                <default>false</default>
+                <label>Print Post Sale</label>
+            </value>
+            <value>
+                <fullName>Crease</fullName>
+                <default>false</default>
+                <label>Crease</label>
+            </value>
+            <value>
+                <fullName>Write Copy</fullName>
+                <default>false</default>
+                <label>Write Copy</label>
+            </value>
+            <value>
+                <fullName>Shipped</fullName>
+                <default>false</default>
+                <label>Shipped</label>
+            </value>
+            <value>
+                <fullName>Send Email</fullName>
+                <default>false</default>
+                <label>Send Email</label>
+            </value>
+            <value>
+                <fullName>Close</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Close</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

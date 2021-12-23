@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Clear_Scheduled_Date_Time</fullName>
+        <field>Scheduled_Date_Time__c</field>
+        <name>Clear Scheduled Date/Time</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Fire_Flow_True</fullName>
+        <field>Fire_Flow__c</field>
+        <literalValue>1</literalValue>
+        <name>Fire Flow True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Schedule_with_next_time</fullName>
+        <field>Scheduled_Date_Time__c</field>
+        <formula>Next_Scheduled_Date_Time__c</formula>
+        <name>Update Schedule with next time</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_the_next_scheduled_time</fullName>
+        <field>Next_Scheduled_Date_Time__c</field>
+        <formula>CASE(MOD(DATEVALUE(Scheduled_Date_Time__c) - DATE(1900, 1, 7 ), 7 ),
+0, Scheduled_Date_Time__c + 1 + 0.0104166666667,
+1, Scheduled_Date_Time__c + 0 + 0.0104166666667,
+2, Scheduled_Date_Time__c + 0 + 0.0104166666667,
+3, Scheduled_Date_Time__c + 0 + 0.0104166666667,
+4, Scheduled_Date_Time__c + 0 + 0.0104166666667,
+5, Scheduled_Date_Time__c + 2 + 0.0104166666667,
+6, Scheduled_Date_Time__c + 2 + 0.0104166666667,
+ Scheduled_Date_Time__c  + 0.0104166666667
+)</formula>
+        <name>Update the next scheduled time</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

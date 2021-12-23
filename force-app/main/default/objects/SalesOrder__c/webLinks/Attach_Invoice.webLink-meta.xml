@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attach_Invoice</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Attach Invoice</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>var allowedStatuses = [&quot;Released&quot;, &quot;Unreleased&quot;, &quot;Approved&quot;];
+
+if(allowedStatuses.includes(&quot;{!SalesOrder__c.Status_Picklist__c}&quot;)) {
+
+window.location.replace(&quot;/apex/SalesOrderAttachPDF?id={!SalesOrder__c.Id}&quot;); 
+
+} else {
+alert(&quot;This order has not been approved.&quot;);
+}</url>
+</WebLink>

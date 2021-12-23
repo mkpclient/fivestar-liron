@@ -1,0 +1,28 @@
+<apex:page standardController="Opportunity" extensions="ScheduleAppointmentController" showHeader="false" standardStylesheets="false" >
+    <html  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"/> 
+    
+    
+    <apex:form >
+        
+        <head>
+            
+            <apex:slds />
+            <div class="slds-page-header">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <apex:image url="{!$Resource.Logo}" width="100%" height="100%"/>
+                    </div>
+                   
+                </div>
+            </div>
+        </head>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <body >  
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-1 slds-button-group-list slds-align_absolute-center" role="group">
+                        <apex:commandButton action="{!btnRedirection}" value="Click Here to Schedule" styleClass="slds-p-around_medium  slds-align-center slds-button slds-button--brand slds-button--neutral slds-not-selected"/>
+                </div>
+            </div>
+        </body>
+    </apex:form>
+</apex:page>

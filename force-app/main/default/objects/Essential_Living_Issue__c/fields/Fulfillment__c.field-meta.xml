@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfillment__c</fullName>
+    <description>Related fulfillment record</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Related fulfillment record</inlineHelpText>
+    <label>Fulfillment</label>
+    <referenceTo>Fulfillment__c</referenceTo>
+    <relationshipLabel>Essential Living Issues</relationshipLabel>
+    <relationshipName>Essential_Living_Issues</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

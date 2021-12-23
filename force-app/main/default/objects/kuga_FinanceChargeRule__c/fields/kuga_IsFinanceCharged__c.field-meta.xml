@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>kuga_IsFinanceCharged__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>For Kugamon Project FS04 - add Admin controls to Finance Order function</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is Interest Calculated</inlineHelpText>
+    <label>Is Finance Charged</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

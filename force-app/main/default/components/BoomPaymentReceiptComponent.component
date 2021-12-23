@@ -1,0 +1,4 @@
+<apex:component controller="BoomPaymentController" access="global">
+    <apex:attribute name="pmtId" description="Payment Record Id" assignTo="{!paymentId}" type="Id" />
+    <apex:outputText value="{!PagePDFContent}" escape="false" />
+</apex:component>

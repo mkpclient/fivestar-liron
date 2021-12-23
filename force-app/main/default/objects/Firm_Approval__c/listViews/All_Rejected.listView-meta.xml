@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Rejected</fullName>
+    <columns>Approval_Status__c</columns>
+    <columns>NAME</columns>
+    <columns>Compliance_Contact__c</columns>
+    <columns>Firm_Approval_Type__c</columns>
+    <columns>Market_Project__c</columns>
+    <columns>Opportunity__c</columns>
+    <columns>Publication_Market__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Approval_Status__c</field>
+        <operation>equals</operation>
+        <value>Rejected</value>
+    </filters>
+    <label>All Rejected</label>
+</ListView>

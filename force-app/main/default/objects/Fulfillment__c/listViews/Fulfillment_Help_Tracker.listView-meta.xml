@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfillment_Help_Tracker</fullName>
+    <columns>NAME</columns>
+    <columns>Product_Name__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Market__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Delivered_on_date__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Proof_Location__c</columns>
+    <columns>Proof_Delivery_Date__c</columns>
+    <columns>Proof_Notes_for_Client__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>UPDATEDBY_USER.ALIAS</field>
+        <operation>contains</operation>
+        <value>fintern,hflet</value>
+    </filters>
+    <filters>
+        <field>LAST_UPDATE</field>
+        <operation>greaterThan</operation>
+        <value>LAST_WEEK</value>
+    </filters>
+    <label>Fulfillment Help Tracker</label>
+    <sharedTo>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

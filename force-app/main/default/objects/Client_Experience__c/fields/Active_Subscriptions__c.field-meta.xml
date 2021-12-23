@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Subscriptions__c</fullName>
+    <description>Active Subscription Products (Subscriptions not closed or cancelled)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Active Subscription Products (Subscriptions not closed or cancelled)</inlineHelpText>
+    <label>Active Subscriptions</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

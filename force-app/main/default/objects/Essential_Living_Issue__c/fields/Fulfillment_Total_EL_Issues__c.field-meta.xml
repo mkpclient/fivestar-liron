@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfillment_Total_EL_Issues__c</fullName>
+    <description># of EL issues for the related fulfillment (not including drafts or cancelled)</description>
+    <externalId>false</externalId>
+    <formula>Fulfillment__r.Total_EL_Issues__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText># of EL issues for the related fulfillment</inlineHelpText>
+    <label>Fulfillment Total EL Issues</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

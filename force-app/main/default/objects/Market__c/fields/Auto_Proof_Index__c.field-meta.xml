@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Proof_Index__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(MOD(Sales_Close__c - DATE(1900, 1, 7), 7), 0, Sales_Close__c +4, 1, Sales_Close__c +4, 2, Sales_Close__c +6,3, Sales_Close__c +5, 4, Sales_Close__c +4, 5, Sales_Close__c +4, 6, Sales_Close__c +4,null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Auto Proof Index</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

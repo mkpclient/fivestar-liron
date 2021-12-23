@@ -1,0 +1,2532 @@
+<apex:component allowDML="true" id="editLinesComp">
+
+<apex:attribute name="lineType" type="String" required="true" description="Line type" />
+
+<apex:attribute name="manageLinesOrderCon" type="ManageLinesOrderExt" description="handle to the Order Lines controller" /> 
+
+<apex:variable var="manageLinesCon" value="{!manageLinesOrderCon}" />
+<apex:variable var="actionWidth" value="{!IF(lineType=='Quote', 'width53', 'width38')}" />
+
+	<apex:stylesheet value="{!URLFOR($Resource.kugo2p__SLDS, 'assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.ManageLinesStyle, '/css/ManageLines.css')}"/>
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>
+
+	<apex:includeScript value="{!URLFOR($Resource.ManageLinesStyle, 'qTip/jquery.qtip.min.js')}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.ManageLinesStyle, '/qTip/jquery.qtip.min.css')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.ManageLinesStyle, 'DragNDrop/jqueryTableDragandDrop.js')}"/>
+	<apex:includeScript value="{!URLFOR($Resource.ManageLinesStyle, 'typeaheadJS/typeahead.jquery.min.js')}"/>
+
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+
+    <!--<script>function setFocusOnLoad(){ /*NOOP*/ }</script>
+    // override setFocus method instead of setFocusOnLoad, as SF relies upon setFocusOnLoad to set up elements on the page.-->
+    <script type="text/javascript">function setFocus() { }</script>
+    <script type="text/javascript">
+
+        var j$ = jQuery.noConflict();
+        var selectedValueCache;
+        var decimalSeparator;
+        var thousandSeparator;
+        var hasTierPricing = 0;
+        var autoCompleteSource = [];
+		var pcodeSeparator = "{!manageLinesCon.pcodeSeparator}";
+
+        <apex:repeat value="{!manageLinesCon.mapAutoCompleteSource}" var="sd" >
+        	//console.log(' source ' + "{!manageLinesCon.mapAutoCompleteSource[sd]}");
+        	autoCompleteSource.push("{!JSENCODE(manageLinesCon.mapAutoCompleteSource[sd])}");
+        </apex:repeat>
+        console.log(' autoCompleteSource ' + autoCompleteSource.length);	// + ' => ' + autoCompleteSource
+
+		j$(document).ready(function() {
+			//debugger;
+			initJS();
+
+			decimalSeparator = "{!JSENCODE(manageLinesCon.decimalSeparator)}";
+			if (decimalSeparator == ',') {
+				thousandSeparator = '.';
+			} else {
+				thousandSeparator = ',';
+			}
+		});
+
+		function initJS() {
+			initQTips();
+			sortTables();
+			initAutoComplete();
+			setKeywordsFocus();
+		}
+
+		function initTierPricing() {
+			hasTierPricing = j$('.hasTieredPricingProducts').text() == 'true' ? 1 : 0;
+			console.log('hasTierPricing in init ' + hasTierPricing);
+		}		
+
+        function sortTables() {
+			//debugger;
+			if ("{!lineType}" != 'Opportunity') {
+				j$('table.dragNDropClass').each(function(index) {
+					//debugger;
+					var tbody = j$('table.dragNDropClass')[index].children[3];
+					var quoteOptionals = false;
+					if (tbody == null) {
+						quoteOptionals = true;
+						tbody = j$('table.dragNDropClass')[index].children[2];
+					}	
+					assignSortOrder(tbody.rows, 0, quoteOptionals);
+				});
+	
+	            initDND();
+	    	}        
+        }
+
+        function initDND() {
+        	//debugger;
+        	if ("{!lineType}" != 'Opportunity') {
+				j$('table.dragNDropClass').each(function(index) {
+					//debugger;
+				    j$(this).tableDnD();
+	
+		            j$(this).tableDnD({
+
+		            	onAllowDrop: function(draggedRow, doRow) {
+		            		//debugger;
+	
+		            		var isKitBundleMember = j$(doRow.cells[1]).find('span')[1].innerText;
+		            		if (isKitBundleMember == 'true') {
+		            			//console.log('disable drop on kit members');
+		            			return false;
+		            		} else {
+		            			return true;
+		            		}
+		            	},
+	
+		                onDrop: function(table, draggedRow) {
+		                    //debugger;
+	
+							var quoteOptionals = true; 						
+							if (table.id != "thePage:pageComp:editLinesComp:theForm:topBlock:selectedSOptionals") {
+								quoteOptionals = false;
+				                moveKitMembers(draggedRow);
+				            }    
+
+		                    assignSortOrder(draggedRow.parentNode.rows, 0, quoteOptionals);
+		                }
+		           });
+				});
+			}	
+        }
+        
+        function moveKitMembers(row) {
+        
+        	if (row != null) {
+        
+				var isKit = j$(row.cells[1]).find('span')[0].innerText;
+		        var headerIndex = j$(row.cells[1]).find('span')[2].innerText;
+		
+				//console.log('isKit ' + isKit + ' isKitBundleMember ' + isKitBundleMember + ' kitBundleHeaderIndex ' + kitBundleHeaderIndex);
+		
+	            if (isKit == 'true') {
+	              	//console.log('header isKit ' + isKit + ' headerIndex ' + headerIndex);
+
+	              	var lastAppendedRow;
+	              	j$(row.parentNode.rows).each(function() {
+					var kitBundleHeaderIndex = j$(this.cells[1]).find('span')[3].innerText;
+	
+					//console.log('kitBundleHeaderIndex ' + kitBundleHeaderIndex);
+					if (kitBundleHeaderIndex != '' && kitBundleHeaderIndex == headerIndex) {
+						//console.log('moving this row index ' + j$(this.cells[1]).find('span')[2].innerText);
+						if (lastAppendedRow == null) {
+							lastAppendedRow = j$(this).insertAfter(row);
+						} else {
+							lastAppendedRow = j$(this).insertAfter(lastAppendedRow);
+						}
+					}
+	              	});
+	           }
+	    	}       
+        }
+
+        function assignSortOrder(rows, rowCount, quoteOptionals) {
+            j$(rows).each(function() {
+            	//debugger;
+                rowCount += 1;
+                //console.log('row Count ' + rowCount + ' row ' + j$(this).find('td:first').text());
+                j$(this.cells[0]).find('input:hidden').val(rowCount);
+
+				//debugger;
+				if (quoteOptionals == false) {
+					var isKit = j$(this.cells[1]).find('span')[0].innerText;
+	                var isKitBundleMember = j$(this.cells[1]).find('span')[1].innerText;
+	
+					//console.log('isKit ' + isKit + ' isKitBundleMember ' + isKitBundleMember + ' kitBundleHeaderIndex ' + kitBundleHeaderIndex);
+					//console.log('isKit ' + isKit + ' isKitBundleMember ' + isKitBundleMember);
+	
+	                if (isKit == 'true') {
+	                	j$(this).addClass('nodrop');
+	                }
+
+	                if (isKitBundleMember == 'true') {
+	                	//debugger;
+	                	j$(this).addClass('nodrag');
+	                	j$(this).addClass('nodrop');
+	                }
+	        	}        
+            });
+        }
+
+		function initQTips() {
+			//debugger;
+			j$('.qtyTierClass,.kitBundleClass,.kitBundleClass1,.recommendedProductsClass').each(function() {
+				//debugger;
+				j$(this).qtip({
+				    content: {
+	                    title  : {
+	                        text : j$(this.parentNode).next('div'),
+	                    },
+	                    text: j$(this.parentNode).next('div').next('div'),
+				    },
+	
+					position: {
+	                    my : 'bottom center',
+	                    //at : 'top center'
+	                    at : 'top right'
+					},
+	                style: {
+	                    classes : 'qtip-light qtip-rounded qtip-shadow',	//qtip-shadow qtip-cluetip
+	                    //width   : 200
+	                },
+                    hide: {
+                    	 event: 'unfocus mouseleave'
+                    }                    
+				});
+			});
+
+			j$('.kitBundleMemberClass').each(function() {
+				//debugger;
+				j$(this).qtip({
+				    content: {
+	                    title  : {
+	                        text : j$(this.parentNode).next('div'),
+	                    },
+	                    text: j$(this.parentNode).next('div').next('div'),
+	                    //button: true
+				    },
+	
+					position: {
+	                    my : 'bottom left',
+	                    at : 'top center'
+					},
+	                style: {
+	                    classes : 'qtip-light qtip-rounded qtip-shadow',
+	                },
+                    hide: {
+                    	 event: 'unfocus mouseleave'
+                    }                    
+				});
+			});
+		}
+
+		var substringMatcher = function(strs) {
+			return function findMatches(q, cb) {
+		    	var matches, substringRegex;
+
+		    	// an array that will be populated with substring matches
+		    	matches = [];
+
+		    	// regex used to determine if a string contains the substring 'q'
+		    	substrRegex = new RegExp(q, 'i');
+
+		    	// iterate through the pool of strings and for any string that
+		    	// contains the substring 'q', add it to the 'matches' array
+		    	j$.each(strs, function(i, str) {
+		    		// replace the code separator with a empty string
+		    		strTemp = str.replace(pcodeSeparator, ' ');
+		      		if (substrRegex.test(strTemp)) {
+		        		matches.push(str);
+		      		}
+		    	});
+
+		    	cb(matches);
+			};
+		};
+
+		function initAutoComplete() {
+
+			j$('#scrollable-dropdown-menu .typeahead').typeahead('destroy');
+
+			j$('#scrollable-dropdown-menu .typeahead').typeahead({
+			  hint: true,
+			  highlight: true,
+			  minLength: 1
+			},
+			{
+			  name: 'autoCompleteSource',
+			  display: function(data) {
+			  	//console.log(' display data: ' + data);
+                var index = data.indexOf(pcodeSeparator);
+                var product = index == -1 ? data : data.substring(0,index);
+			  	return product;
+			  },
+			  limit: 50,
+			  source: substringMatcher(autoCompleteSource),
+			  templates: {
+			    empty: [
+			      '<div class="empty-message">',
+			        'Unable to find any Product that match the keyword',
+			      '</div>'
+			    ].join('\n'),
+				suggestion: function(data) {
+					//console.log(' suggestion data: ' + data);
+					return '<div>' + data.replace(pcodeSeparator, ' - ') + '</div>';
+					//return '<div>' + data.replace(pcodeSeparator, ' - ') + '<i class="fa fa-plus-square fa-lg search-item-add" style="padding-left: 5px;"></i> </div> ';
+				}
+			  }
+			});
+
+			j$('#scrollable-dropdown-menu .typeahead').bind('typeahead:select', function(ev, suggestion) {
+				//debugger;
+				console.log('Selection: ' + suggestion);
+				//alert('selected ' + suggestion);
+				j$('.filterButton').click();
+			});
+		}
+
+        function changePricebook(elem) {
+            var msg = 'Changing a selected price book will delete all existing product and service lines from this order. Click OK to continue?';
+            if(confirm(msg)) {
+                resetPricebook();	
+                return true;
+            } else {
+                elem.value = selectedValueCache;
+                return false;
+            }
+        }
+        
+        function keywordEnterKey(e) {
+             var key;      
+             if(window.event)
+                  key = window.event.keyCode; //IE
+             else
+                  key = e.which; //firefox      
+
+             if(key==13) {
+             	j$('.filterButton').click();
+             }
+                 
+             return (key != 13);
+        }
+        
+        function addEntered() {
+        	//debugger;
+			exactMatch = document.getElementById('thePage:pageComp:editLinesComp:theForm:allBlock:exactMatch');
+			keywordsId = document.getElementById('thePage:pageComp:editLinesComp:theForm:allBlock:keywordsId');
+			
+			if (exactMatch != null && exactMatch.checked == true && keywordsId != null && keywordsId.value.indexOf("+") !=-1) {
+				j$('.qtyButton').click();
+			}
+
+			initAutoComplete();
+        }
+        
+        function qtyEnterKey(e) {
+             var key;      
+             if(window.event)
+                  key = window.event.keyCode; //IE
+             else
+                  key = e.which; //firefox      
+
+             if(key==13) {
+                 j$('.qtyButton').click();
+                 j$('.qtyField').blur();
+             }
+
+             //console.log(' qty ' + qty);
+             return (key != 13);
+        }
+
+		function setKeywordsFocus() {
+			//debugger;
+			/*var keywords = document.getElementById('thePage:pageComp:editLinesComp:theForm:allBlock:keywordsId');
+			if (keywords != null) {
+				keywords.focus();
+			}*/
+
+			j$('.keywordsId').focus();
+			j$('.keywordsId').select();
+		}
+
+		function setQtyFocus() {
+			//debugger;
+			var qty = document.getElementById('thePage:pageComp:editLinesComp:theForm:allBlock:productlines:0:qty');
+            if (qty == null) {
+            	setKeywordsFocus();
+            } else {
+            	qty.focus();
+            }
+		}
+
+		function disableKitMembers(column, isKitMember, isNewItem, allowQuantityChange) {
+			//debugger;
+			//console.log(' isNewItem ' + isNewItem);
+			var isReadOnly = false;
+			if (column.name.substring(column.name.lastIndexOf(':')+1, column.name.length)=="qty") isReadOnly = true;
+			//if (isKitMember && (isNewItem || isReadOnly))
+			if (isKitMember && (isNewItem || (isReadOnly && allowQuantityChange==false) )) {
+				column.setAttribute("readOnly", "readonly");
+			} else {
+				 column.select();
+			}
+		}
+		
+		function saveJS(obj, saveOnly) {
+			//debugger;
+			obj.disabled = true;
+			afSave(saveOnly);
+		}
+
+		function formatMoney(number, places, thousand, decimal) {
+			number = number || 0;
+			places = !isNaN(places = Math.abs(places)) ? places : 2;
+			thousand = thousand || ",";
+			decimal = decimal || ".";
+			try {
+				number = number.replace(' ', '');
+			} catch (err) {
+				console.log('error in formatMoney ' + err);
+			}
+			var negative = number < 0 ? "-" : "",
+			    i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
+			    j = (j = i.length) > 3 ? j % 3 : 0;
+			return negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
+		}
+		
+		function recalcRow(row, lineType, tiers, isService) {
+			console.log('in here line type = ' + lineType);
+			console.log('in here row = ' + row);
+			//debugger;
+			//console.log('in here tiers = ' + tiers);
+			console.log('is service ? ' + isService);
+			console.log('this is the decimal separater = ' + decimalSeparator);
+
+			initTierPricing();
+
+			var qtyIndex;
+			var tierIndex;
+			var salesPriceIndex;
+			var discountIndex;
+			var totalDiscountIndex;
+			var totalIndex;
+
+			if (isService) {
+				qtyIndex = 3;
+				tierIndex = 4;
+				salesPriceIndex = tierIndex + hasTierPricing;
+				// Five Star changes - added Recipient(s) column
+				//termIndex = salesPriceIndex + 4;
+				//discountIndex = salesPriceIndex + 5;
+				termIndex = salesPriceIndex + 5;
+				discountIndex = salesPriceIndex + 6;
+				//totalDiscountIndex = discountIndex + 1;
+				//totalIndex = totalDiscountIndex + 1;
+				totalDiscountIndex = (lineType == 'Opportunity') ? -1 : (discountIndex + 1);
+				totalIndex = (lineType == 'Opportunity') ? (discountIndex + 1) : (totalDiscountIndex + 1);
+
+			} else {
+				qtyIndex = 3;
+				tierIndex = 4;
+				salesPriceIndex = tierIndex + hasTierPricing;
+				// Five Star changes - added Recipient(s) column
+				//discountIndex = salesPriceIndex + 3;
+				discountIndex = salesPriceIndex + 4;
+				//totalDiscountIndex = discountIndex + 1;
+				//totalIndex = totalDiscountIndex + 1;
+				totalDiscountIndex = (lineType == 'Opportunity') ? -1 : (discountIndex + 1);
+				totalIndex = (lineType == 'Opportunity') ? (discountIndex + 1) : (totalDiscountIndex + 1);
+				
+			}
+
+			var quantityColChildren = row.childNodes[qtyIndex].childNodes;
+			var quantityDiv;
+			
+			for (i = 0; i < quantityColChildren.length; i++) {
+				//console.log('$$$ tag = ' + quantityColChildren[i].tagName);
+				//console.log('$$$ node = ' + quantityColChildren[i].nodeName);
+				if (quantityColChildren[i].tagName == 'DIV' && quantityColChildren[i].id == '') {
+					quantityDiv = quantityColChildren[i];
+				}
+			}
+			var quantity = quantityDiv.firstChild.value;
+			//debugger;
+			var useTiers;
+			if (tierIndex != -1 && row.childNodes[tierIndex].firstChild != null) {
+				useTiers = row.childNodes[tierIndex].firstChild.checked;
+			} else {
+				useTiers = false;
+			}
+
+			console.log(' **** user tiers? ' + useTiers);
+			console.log(' **** tiers length? ' + tiers.length);
+			
+			// Set sales price using tiers if needed;
+			var salesPrice;
+			if (tiers != null && tiers.length > 0 && useTiers) {
+				salesPrice = fetchTieredPrice(tiers, quantity);
+				row.childNodes[salesPriceIndex].firstChild.value = formatMoney(salesPrice, 2, thousandSeparator, decimalSeparator);
+				row.childNodes[salesPriceIndex].firstChild.className = 'KitMemberFields rightalign';
+				row.childNodes[salesPriceIndex].firstChild.disabled = true;
+			} else {
+				salesPrice = row.childNodes[salesPriceIndex].firstChild.value;
+				row.childNodes[salesPriceIndex].firstChild.className = 'rightalign';
+				row.childNodes[salesPriceIndex].firstChild.disabled = false;
+			}
+			var total;
+			if (decimalSeparator == '.') {
+				//total = convertToFloat(quantity) * convertToFloat(salesPrice.replace(",",""));
+				total = convertToFloat(quantity) * convertToFloat(salesPrice);
+			} else {
+				//salesPrice = salesPrice.replace(".", "");
+				salesPrice = salesPrice.replace(/./g, '');
+				//total = convertToFloat(quantity) * convertToFloat(salesPrice.replace(",", "."));
+				total = convertToFloat(quantity) * convertToFloat(salesPrice.replace(/,/g, "."));
+			}
+
+			if (isService) {
+				var term = row.childNodes[termIndex].firstChild.firstChild.value;
+				console.log('term = ' + term);
+				total = total * parseInt(term);
+			}
+
+			var overallDiscount = 0;
+			if (lineType != 'Opportunity') {
+				overallDiscount = convertToFloat($('thePage:pageComp:editLinesComp:theForm:topBlock:orderDiscountId').value);
+			}
+
+			//var lineDiscountPercent = row.childNodes[discountIndex].firstChild.value;
+			var lineDiscountPercent = row.childNodes[discountIndex].getElementsByTagName('input')[0].value;
+			var lineDiscount = convertToFloat(lineDiscountPercent);
+			var effectiveDiscount = lineDiscount + overallDiscount;
+
+			var discountAmt = (convertToFloat(effectiveDiscount) / 100) * total;
+			
+			total = total - discountAmt;
+
+			// Set total discount
+			if (totalDiscountIndex != -1) {
+				var totalDiscCol = row.childNodes[totalDiscountIndex].firstChild;
+				while( totalDiscCol.firstChild ) {
+				    totalDiscCol.removeChild( totalDiscCol.firstChild );
+				}
+				totalDiscCol.appendChild( document.createTextNode(effectiveDiscount.toFixed(2)));
+			}
+
+			var totalCol = row.childNodes[totalIndex].firstChild;
+			console.log('--- totalCol = ' + totalCol + '  -  ' + totalCol.firstChild);
+			totalFormatted = formatMoney(total.toFixed(2), 2, thousandSeparator, decimalSeparator);
+			
+			row.childNodes[totalIndex].innerHTML = totalFormatted;
+		}
+
+		function recalcTotalsAll() {
+			//debugger;
+			recalcTotals('{!lineType}', false);
+			recalcTotals('{!lineType}', true);
+		}
+
+		function recalcTotals(lineType, isService) {
+			if (isService) {
+				theTable = $('thePage:pageComp:editLinesComp:theForm:topBlock:selectedServices');	
+			} else {
+				theTable = $('thePage:pageComp:editLinesComp:theForm:topBlock:selectedProducts');
+			}
+
+			if (theTable != null) {		
+				tBody = theTable.childNodes[3];
+				tFoot = theTable.childNodes[2];
+
+				initTierPricing();
+
+				var qtyIndex;
+				var tierIndex;
+				var salesPriceIndex;
+				var discountIndex;
+				var totalDiscountIndex;
+				var totalIndex;
+				if (isService) {
+					qtyIndex = 3;
+					tierIndex = 4;
+					salesPriceIndex = tierIndex + hasTierPricing;
+					// Five Star changes - added Recipient(s) column
+					//termIndex = salesPriceIndex + 4;
+					//discountIndex = salesPriceIndex + 5;
+					termIndex = salesPriceIndex + 5;
+					discountIndex = salesPriceIndex + 6;
+					//totalDiscountIndex = discountIndex + 1;
+					//totalIndex = totalDiscountIndex + 1;
+					totalDiscountIndex = (lineType == 'Opportunity') ? -1 : (discountIndex + 1);
+					totalIndex = (lineType == 'Opportunity') ? (discountIndex + 1) : (totalDiscountIndex + 1);					
+				} else {
+					qtyIndex = 3;
+					tierIndex = 4;
+					salesPriceIndex = tierIndex + hasTierPricing;
+					// Five Star changes - added Recipient(s) column
+					//discountIndex = salesPriceIndex + 3;
+					discountIndex = salesPriceIndex + 4;
+					//totalDiscountIndex = discountIndex + 1;
+					//totalIndex = totalDiscountIndex + 1;
+					totalDiscountIndex = (lineType == 'Opportunity') ? -1 : (discountIndex + 1);
+					totalIndex = (lineType == 'Opportunity') ? (discountIndex + 1) : (totalDiscountIndex + 1);					
+				}
+
+				tableRows = tBody.childNodes;
+
+				sumQty = 0;
+				sumAmount = 0;
+				//console.log('**** tableRows length = ' + tableRows.length);
+				for (i = 0; i < tableRows.length ; i++) {
+					//console.log('inside loop iteration #' + i);
+					curRow = tableRows[i];
+					var quantityCol = curRow.childNodes[qtyIndex];
+					curQuantity = quantityCol.getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
+					console.log('*** curQuantity = ' + curRow.childNodes[totalIndex] + ' => ' + curQuantity);
+					//curAmount = curRow.childNodes[totalIndex].firstChild.innerHTML;
+					curAmount = curRow.cells[totalIndex].innerHTML;
+					
+					//sumQty += parseInt(curQuantity);
+					sumQty += convertToFloat(curQuantity);
+					if (decimalSeparator == ".") {
+						//sumAmount += convertToFloat(curAmount.replace(",",""));
+						//debugger;
+						sumAmount += convertToFloat(curAmount);
+					} else {
+						//curAmount = curAmount.replace(".", "");
+						curAmount = curAmount.replace(/./g, '');
+						//sumAmount += convertToFloat(curAmount.replace(",","."));
+						sumAmount += convertToFloat(curAmount.replace(/,/g, "."));
+					}
+
+					console.log('this is the cur sumQty = ' + sumQty + '  amount = ' + curAmount);
+				}
+
+				//debugger;
+				totalRow = tFoot.firstChild;
+				//console.log('totalrow =' + totalRow +  ' sumQty = ' + sumQty + '  sumAmount = ' + sumAmount);
+				//totalRow.childNodes[qtyIndex].innerHTML = sumQty;
+				totalRow.childNodes[qtyIndex].innerHTML = formatMoney(sumQty, 2, thousandSeparator, decimalSeparator);
+				totalRow.childNodes[totalIndex].innerHTML = formatMoney(sumAmount.toFixed(2), 2, thousandSeparator, decimalSeparator);
+			}
+		}
+
+		function convertToFloat(inStr) {
+			try {
+				//debugger;
+				inStr = inStr.replace(' ', '');
+				if (decimalSeparator == '.') {
+					inStr = inStr.replace(/,/g, '');
+				} else {
+					//inStr = inStr.replace(/./g, "");
+				}
+			} catch (err) {
+				//TypeError: inStr.replace is not a function for number values
+				console.log('error in convertToFloat ' + err);
+			}
+
+			var inStrValue = parseFloat(inStr);		//inStr.replace(/,/g,'')
+			if(isNaN(inStrValue)) inStrValue = 0;
+			return inStrValue;
+		}
+
+		function fetchTieredPrice(tiers, quantity) {
+			//debugger;
+			//chosenQty = parseInt(quantity);
+			chosenQty = convertToFloat(quantity);
+
+			// loop through TiersJSON string - tiers are in descending order
+			//debugger;
+			j$.each(JSON.parse(tiers), function(idx, tier) {
+				//debugger;
+				console.log(' idx ' + idx + ' tier ' + tier);
+				console.log("Tier Qty: " + this.kugo2p__QuantityStart__c + ' price ' + this.kugo2p__TierPrice__c);
+				console.log(" ");
+
+				if (chosenQty >= this.kugo2p__QuantityStart__c) {
+					//debugger;
+					salePrice = this.kugo2p__TierPrice__c;
+					console.log('this is the return price2 = ' + salePrice);
+					return false;
+				}
+			});
+
+		    console.log('this is the return price = ' + salePrice);
+		    return salePrice;
+		}
+
+		function addFavorite(elem) {
+			//debugger;
+			var heartElem = j$(elem).find('i')[0];
+
+			//j$(heartElem).removeClass('fa-heart-o');
+			//j$(heartElem).addClass('fa-heart redColor');
+
+			j$(elem).hide();
+			j$(elem).next('span').show();
+		}
+
+		function removeFavorite(elem) {
+			//debugger;
+			var heartElem = j$(elem).find('i')[0];
+
+			//j$(heartElem).removeClass('fa-heart redColor');
+			//j$(heartElem).addClass('fa-heart-o');
+
+			j$(elem).hide();
+			j$(elem).next('span').show();
+		}
+
+		// Five Star changes		
+        function addRecipients() {
+            debugger;
+            window.scrollTo(0,0);
+            j$("body").append('<div id="pageOverlay" />');
+            j$("#pageOverlay").css('opacity', '0.7').css('height', j$(document).height());
+            j$(".assignRecipientsDiv").css('visibility','visible');
+        }
+
+        function closeWindow() {
+            //debugger;
+            //j$("#blurybackground,#statusBox").remove();
+            j$(".assignRecipientsDiv").css('visibility', 'hidden');
+            j$("#pageOverlay").remove();
+        }
+
+	    function hideRecipient() {
+	    	closeWindow();
+	    	afHideRecipient();
+	    }
+    </script>
+
+    <style>
+
+		.kugamon .slds-spinner {
+			top: 25%;
+		}
+
+    	.width38 {
+    		width: 38px !important;
+    	}
+
+    	.width53 {
+    		width: 53px !important;
+    	}
+
+    	.favBusy {
+    		display: none;
+    	}
+
+    	.redColor {
+    		color: red;
+    	}
+
+		table.list tr.headerRow th {
+			font-size: 9.9px !important;
+		}
+
+		table.list tr td {
+			font-size: 11px !important;
+		}
+
+        #blurybackground {
+            z-index:1000;
+            //bottom:0;
+            position:absolute;
+            left:0px;
+            top:0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            vertical-align: middle;
+            background-color: #222;
+            opacity:0.6;
+            filter:alpha(opacity=60);
+        }
+
+        #statusBox {
+            // for Modzilla
+            -moz-background-clip:border;
+            -moz-background-inline-policy:continuous;
+            -moz-background-origin:padding;
+            -moz-border-radius-bottomleft:5px;
+            -moz-border-radius-bottomright:5px;
+            -moz-border-radius-topleft:5px;
+            -moz-border-radius-topright:5px;
+            -moz-box-shadow:1px 6px 5px #888888;
+            
+            -webkit-border-bottom-left-radius:5px;
+            -webkit-border-bottom-right-radius:5px;
+            -webkit-border-top-left-radius:5px;
+            -webkit-border-top-right-radius:5px;
+            -webkit-box-shadow:1px 6px 5px #888888;
+            
+            box-shadow: 1px 6px 5px #888888;
+            
+            z-index:1000;
+
+            background:#FFFFFF none repeat scroll 0 0;
+            height:42px;
+            width:150px;
+            left:45%;
+            top:30%;
+            padding-left:15px;
+            padding-top:11px;
+            position:absolute;
+            vertical-align:middle;
+        }
+
+        #textBox {
+            margin-left:40px;
+            margin-top:-20px;
+            font-weight:bold;
+            font-size:14px;
+        }
+
+        .rightalign{text-align:right;}    
+
+		.tierPricing {
+    	 	border-collapse: collapse;
+    	 	border-spacing: 0px;		
+		    width: 100%;
+		    height: 100%;
+    	}
+		.tierPricing th, .tierPricing td {
+			border: solid 1px #ddd;
+			padding: 3px 2px 3px 2px;
+		}
+
+		.oddTier {
+			//border-bottom: 1px solid #000;
+		 	//background-color: #DDD; #E2E2E2; #e0e3e5; #f1f1f1;
+		 	//background-color: #f1f1f1;
+		}
+		table.tierPricing tr:nth-child(odd) td {
+		    background-color: #f1f1f1;
+		}
+
+		.dd3-handle { position: absolute; margin: 0; left: 0; top: 0; cursor: pointer; width: 30px; text-indent: 100%; white-space: nowrap; overflow: hidden;
+		    border: 1px solid #aaa;
+		    background: #ddd;
+		    background: -webkit-linear-gradient(top, #ddd 0%, #bbb 100%);
+		    background:    -moz-linear-gradient(top, #ddd 0%, #bbb 100%);
+		    background:         linear-gradient(top, #ddd 0%, #bbb 100%);
+		    border-top-right-radius: 0;
+		    border-bottom-right-radius: 0;
+		}
+		.dd3-handle:before { content: '≡'; display: block; position: absolute; left: 0; top: 3px; width: 100%; text-align: center; text-indent: 0; color: #fff; font-size: 20px; font-weight: normal; }
+		.dd3-handle:hover { background: #ddd; }		
+		
+		.dd-handle { display: block; height: 30px; margin: 5px 0; padding: 5px 10px; color: #333; text-decoration: none; font-weight: bold; border: 1px solid #ccc;
+		    background: #fafafa;
+		    background: -webkit-linear-gradient(top, #fafafa 0%, #eee 100%);
+		    background:    -moz-linear-gradient(top, #fafafa 0%, #eee 100%);
+		    background:         linear-gradient(top, #fafafa 0%, #eee 100%);
+		    -webkit-border-radius: 3px;
+		            border-radius: 3px;
+		    box-sizing: border-box; -moz-box-sizing: border-box;
+		}
+		.dd-handle:hover { color: #2ea8e5; background: #fff; }
+
+		.dd-dragel > .dd-item .dd-handle { margin-top: 0; }
+		.dd-dragel .dd-handle {
+		    -webkit-box-shadow: 2px 4px 6px 0 rgba(0,0,0,.1);
+		            box-shadow: 2px 4px 6px 0 rgba(0,0,0,.1);
+		}
+		
+		#nestable2 .dd-handle {
+		    color: #fff;
+		    border: 1px solid #999;
+		    background: #bbb;
+		    background: -webkit-linear-gradient(top, #bbb 0%, #999 100%);
+		    background:    -moz-linear-gradient(top, #bbb 0%, #999 100%);
+		    background:         linear-gradient(top, #bbb 0%, #999 100%);
+		}
+		#nestable2 .dd-handle:hover { background: #bbb; }
+		//.dd-hover > .dd-handle { background: #2ea8e5 !important; }				
+
+	    .selectButtons {
+	        text-align:center;
+	        margin-bottom: 1em;
+	    }    
+        .rightalign{text-align:right;}
+        .centeralign{text-align:center;}
+        .nowrap{white-space:nowrap;}
+        .placeholder{color:#999;font-style:italic;}
+        .KitMembers{vertical-align:middle;background-color:#F3F3EC;background:#F3F3EC; url('/img/alohaSkin/bPageBlock_gradient.png')}
+        .KitMemberFields{color:#999;background-color:#EBEBE4;}
+
+		.activeTab {background-color: #236FBD; color:white; background-image:none}
+    	.inactiveTab { background-color: #EEE; color:black; background-image:none}	/*lightgrey*/        
+
+		pre {
+		 	white-space: pre-wrap;       /* css-3 */
+		 	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+		 	white-space: -pre-wrap;      /* Opera 4-6 */
+		 	white-space: -o-pre-wrap;    /* Opera 7 */
+		 	word-wrap: break-word;       /* Internet Explorer 5.5+ */		
+		 	font-family: Arial;
+		    //padding: 0;
+		    //margin: 0;
+		}
+		
+		/* Twitter Typeahead css */
+		/* scaffolding */
+		/* ----------- */
+						
+		.tt-menu,
+		.gist {
+		  text-align: left;
+		}
+		
+		/* base styles */
+		/* ----------- */
+		
+		a {
+		  //color: #03739c;
+		  color: #999;
+		  text-decoration: none;
+		}
+		
+		a:hover {
+		  text-decoration: underline;
+		}
+		
+		.table-of-contents li {
+		  display: inline-block;
+		  *display: inline;
+		  zoom: 1;
+		}
+		
+		.table-of-contents li a {
+		  font-size: 16px;
+		  color: #999;
+		}
+		
+		p + p {
+		  margin: 30px 0 0 0;
+		}
+
+		.typeahead,
+		.tt-query,
+		.tt-hint {
+		  //width: 396px;
+		  width: 400px;
+		  //height: 30px;
+		  //padding: 8px 12px;
+		  //font-size: 24px;
+		  //line-height: 30px;
+		  //border: 2px solid #ccc;
+		  //border: 1px solid #ccc;
+		  //-webkit-border-radius: 8px;
+		     //-moz-border-radius: 8px;
+		          //border-radius: 8px;
+		  //outline: none;
+		}
+
+		.typeahead {
+		  //background-color: #fff;
+		  //background-color: #ffffff;
+		}
+
+		.typeahead:focus {
+		  //border: 2px solid #0097cf;
+		  border: 2px solid #999;
+		}
+		
+		.tt-query {
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		}
+
+		.tt-hint {
+		  color: #999
+		}
+		
+		.tt-menu {
+		  //width: 422px;
+		  width: 350px;
+		  //margin: 12px 0;
+		  margin: 10px 0;
+		  //padding: 8px 0;
+		  padding: 5px 0;
+		  background-color: #fff;
+		  border: 1px solid #ccc;
+		  border: 1px solid rgba(0, 0, 0, 0.2);
+		  -webkit-border-radius: 8px;
+		     -moz-border-radius: 8px;
+		          border-radius: 8px;
+		  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		}
+		
+		.tt-suggestion {
+		  padding: 3px 20px;
+		  //font-size: 18px;
+		  font-size: 11px;
+		  line-height: 24px;
+		}
+		
+		.tt-suggestion:hover {
+		  cursor: pointer;
+		  color: #fff;
+		  //background-color: #0097cf;
+		  background-color: #999;
+		}
+		
+		.tt-suggestion.tt-cursor {
+		  color: #fff;
+		  //background-color: #0097cf;
+		  background-color: #999;
+		
+		}
+
+		.tt-suggestion p {
+		  margin: 0;
+		}
+		
+		.gist {
+		  //font-size: 14px;
+		  font-size: 11px;
+		}
+		
+		/* example specific styles */
+		/* ----------------------- */ 
+		
+		/*#custom-templates .empty-message {*/
+		.empty-message {
+		  padding: 5px 10px;
+		  text-align: center;
+		}
+		
+		#multiple-datasets .league-name {
+		  margin: 0 20px 5px 20px;
+		  padding: 3px 0;
+		  border-bottom: 1px solid #ccc;
+		}
+
+		#scrollable-dropdown-menu .tt-menu {
+		  max-height: 200px;
+		  overflow-y: auto;
+		  width: 450px;
+		}
+
+		/*#rtl-support .tt-menu {
+		  text-align: right;
+		}*/
+
+		/* Five Star changes */
+        div.assignRecipientsDiv {
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            width: 80%;
+            height: 800;
+            visibility: hidden;
+            z-index: 1000;
+        }
+        
+        div#pageOverlay {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 999;
+        }
+
+        div.assignRecipientsDiv h2 {
+            width: 200px;
+        }		
+    </style>
+
+	<apex:outputPanel >
+	    <apex:sectionHeader title="{!manageLinesCon.PageTitle}"/>
+	    <div class="bOverviewSearch">
+	        <div class="view">
+			    <apex:outputText rendered="{!lineType=='Quote'}" value="Manage products/services for this quote."></apex:outputText>
+			    <apex:outputText rendered="{!lineType=='Order'}" value="Manage products/services for this order."></apex:outputText>
+			    <apex:outputText rendered="{!lineType=='Opportunity'}" value="Manage products/services for this opportunity."></apex:outputText>
+	        </div>
+	    </div>
+    </apex:outputPanel>
+
+    <apex:form id="theForm">
+		<!-- Five Star changes -->
+		<apex:actionFunction name="afHideRecipient" action="{!manageLinesCon.hideRecipient}" reRender="opId,topPanel,msgopid1" status="updateStatus" oncomplete="initJS();" />    
+
+        <apex:actionStatus id="updateStatus" >
+            <apex:facet name="start">
+            	<!-- 
+                <div id="blurybackground">
+                </div>
+                <div id="statusBox">
+                    <img src="/img/loading32.gif" />
+                    <div id="textBox">Processing...</div>
+                </div>
+                -->
+
+                <div class="kugamon">
+				<div class="slds-spinner_container">
+				  <div class="slds-spinner--brand slds-spinner slds-spinner--medium" role="alert">
+				    <span class="slds-assistive-text">Processing...</span>
+				    <div class="slds-spinner__dot-a"></div>
+				    <div class="slds-spinner__dot-b"></div>
+				  </div>
+				</div>
+				</div>
+            </apex:facet>
+        </apex:actionStatus>        
+        <apex:actionStatus id="updateStatus2" onStop="j$('.keywords').select();" >
+            <apex:facet name="start">
+            	<!-- 
+                <div id="blurybackground">
+                </div>
+                <div id="statusBox">
+                    <img src="/img/loading32.gif" />
+                    <div id="textBox">Processing...</div>
+                </div>
+                -->
+
+                <div class="kugamon">
+				<div class="slds-spinner_container">
+				  <div class="slds-spinner--brand slds-spinner slds-spinner--medium" role="alert">
+				    <span class="slds-assistive-text">Processing...</span>
+				    <div class="slds-spinner__dot-a"></div>
+				    <div class="slds-spinner__dot-b"></div>
+				  </div>
+				</div>
+				</div>
+            </apex:facet>
+        </apex:actionStatus>
+        <apex:outputPanel id="msgopid1">
+        	<apex:pageMessages escape="false" />
+        	<apex:pageMessage escape="false" rendered="{!NOT(manageLinesCon.isPriceBookActive)}" summary="The Price Book <b>{!manageLinesCon.PricebookName}</b> that is assigned to this {!lineType} is Inactive.<br/><br/>Please either assign another Price Book for this {!lineType} or re-activate Price Book <b>{!manageLinesCon.PricebookName}</b>.<br/><br/>For more information, please consult your Administrator." severity="warning" strength="2"></apex:pageMessage>
+        	<apex:pageMessage escape="false" rendered="{!NOT(manageLinesCon.isPriceBookValid)}" summary="The Price Book <b>{!manageLinesCon.PricebookName}</b> that is assigned to this {!lineType} is Invalid.<br/><br/>Please either assign another Price Book for this {!lineType} or create a new Price Book <b>{!manageLinesCon.PricebookName}</b>.<br/><br/>For more information, please consult your Administrator." severity="warning" strength="2"></apex:pageMessage>
+        </apex:outputPanel>
+        
+        <apex:outputPanel id="topPanel">
+        <apex:pageBlock id="topBlock">
+
+            <apex:pageBlockButtons styleClass="kugamon">
+            	<apex:actionFunction name="afSave" action="{!manageLinesCon.save}" rerender="topPanel,msgopid1" status="updateStatus" >
+            		<apex:param name="saveOnly" value="" />	<!-- assignTo="{!manageLinesCon.saveOnly}" -->
+            	</apex:actionFunction>
+                <!-- 
+            	<apex:outputPanel rendered="{!If(manageLinesCon.recordStatus != 'Released' && manageLinesCon.recordStatus != 'Cancelled',true,false)}">
+	            	<button class="slds-button slds-button--brand" id="saveClose" onclick="saveJS(this, '0'); return false;" >Save &amp; Close</button>
+				</apex:outputPanel>
+				-->
+
+            	<!-- <button class="slds-button slds-button--neutral" id="save" onclick="saveJS(this, '1'); return false;" >Save</button> -->
+            	<apex:commandButton value="Save" onclick="saveJS(this, '1'); return false;" styleClass="slds-button slds-button--neutral" status="updateStatus" 
+            						rendered="{!If(manageLinesCon.recordStatus != 'Released' && manageLinesCon.recordStatus != 'Cancelled',true,false)}" 
+            						rerender="msgopid1" />
+
+                <apex:commandButton value="Cancel" styleClass="slds-button slds-button--neutral" action="{!manageLinesCon.cancel}" />
+
+				<apex:commandButton value="Save & Close" onclick="saveJS(this, '0'); return false;" styleClass="slds-button slds-button--brand" status="updateStatus" 
+									rendered="{!If(manageLinesCon.recordStatus != 'Released' && manageLinesCon.recordStatus != 'Cancelled',true,false)}"
+									rerender="msgopid1" />
+
+                &nbsp;&nbsp;
+                <apex:actionStatus id="processStatus">
+                    <apex:facet name="start">
+                        <apex:outputPanel >
+                            <apex:image value="/img/loading32.gif" style="vertical-align:middle;height:20px;" alt="refreshing..." />
+                            &nbsp;<b>Processing...</b></apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="stop">
+                        <apex:image value="{!URLFOR('/s.gif')}" alt="" style="height:17px;" />
+                    </apex:facet>
+                </apex:actionStatus>
+                <apex:actionStatus id="saveStatus">
+                    <apex:facet name="start">
+                        <apex:outputPanel >
+                            <apex:image value="/img/loading32.gif" style="vertical-align:middle;height:20px;" alt="Saving..." />
+                            &nbsp;saving...</apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="stop">
+                        <apex:image value="{!URLFOR('/s.gif')}" alt="" style="height:17px;" />
+                    </apex:facet>
+                </apex:actionStatus>                
+            </apex:pageBlockButtons>
+
+            <apex:outputPanel layout="block" style="text-align: right;padding-right:20px;padding-bottom:5px;" >
+            	<apex:outputText id="hasTieredPricingProducts" styleClass="hasTieredPricingProducts" style="display:none;visibility:hidden" value="{!manageLinesCon.hasTieredPricingProducts}" />
+                <apex:outputPanel >
+                    <apex:outputLabel value="Start Date" style="horizontal-align:right;"/>&nbsp;&nbsp;
+                    <apex:inputField value="{!manageLinesCon.dummyStartDate.ServiceDate}" style="horizontal-align:right;">
+                        <apex:actionSupport event="onchange" action="{!manageLinesCon.updateheaderStartDate}" reRender="topBlock,allBlock" status="updateStatus" oncomplete="initJS();">
+                            <apex:param value="-1" name="sindex" />
+                        </apex:actionSupport>   
+                    </apex:inputField>
+                    &nbsp;&nbsp;
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!lineType!='Opportunity'}" >
+                    <apex:outputLabel value="{!lineType} Discount (%)" style="horizontal-align:right;"/>&nbsp;&nbsp;
+                    <apex:inputText value="{!manageLinesCon.headerDiscount}" styleClass="rightalign" style="width:50px;" id="orderDiscountId"  >
+                        <apex:actionSupport event="onchange" action="{!manageLinesCon.updateheaderDiscount}" reRender="topBlock,allBlock" status="updateStatus" oncomplete="initJS();" />
+                    </apex:inputText>
+                </apex:outputPanel>
+	        </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!manageLinesCon.SelectedProducts.size > 0}">
+                <div class="pbSubheader first tertiaryPalette">
+                    <h3>Selected Products</h3>
+                </div>
+                <apex:pageBlockTable value="{!manageLinesCon.SelectedProducts}" var="sl" id="selectedProducts" styleClass="dragNDropClass">
+                    <apex:column headerValue="Action" styleClass="actionColumn centeralign {!IF(sl.isKitBundleMember,'KitMembers','')}" >
+                    	<apex:inputHidden value="{!sl.SortValue}" />
+                        <apex:commandLink action="{!manageLinesCon.cloneLine}" style="text-decoration:none;" title="Clone" reRender="topBlock" rendered="{!(NOT(sl.isKitBundleMember))}" oncomplete="initJS();" status="processStatus">
+                        	<i class="fa fa-files-o fa-lg"></i>
+                            <apex:param value="{!sl.Index}" name="cindex" />
+                        </apex:commandLink>
+
+						<apex:commandLink action="{!manageLinesCon.delLine}" style="text-decoration:none;" title="Delete" reRender="topBlock,recommendedBlock,recommendedPanel,msgopid1" rendered="{!( NOT(sl.isKitBundleMember) || (NOT(sl.isKitBundleMemberRequired) && NOT(sl.isNewItem)) )}" oncomplete="initJS();" status="processStatus">
+							<i class="fa fa-trash-o fa-lg"></i>	
+	                      	<apex:param value="{!sl.Index}" name="sindex" />
+	                    </apex:commandLink>
+
+						<apex:outputPanel rendered="{!(NOT(sl.isKitBundleMember) && lineType!='Opportunity')}"><i class="fa fa-bars fa-lg" style="padding-left: 2px;"></i></apex:outputPanel>
+                    </apex:column>
+
+					<!-- fields used for debugging
+					<apex:column headerValue="Index" value="{!sl.Index}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="KitBundle Header Index" value="{!sl.KitBundleHeaderIndex}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="Kit Bundle Member" value="{!sl.isKitBundleMember}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="New Kit Bundle Member" value="{!sl.isKitBundleMember}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="Line Item Id" value="{!sl.LineItemId}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="Kit Bundle Line Id" value="{!sl.KitBundleLineId}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    -->
+
+                    <apex:column headerValue="Product Name" width="200px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}" style="{!IF(sl.isKitBundleMember==true,'text-indent: 0.5em;','')}">
+                    	<!-- <apex:inputhidden value="{!sl.isKitBundleMember}" /> -->
+                    	<apex:outputPanel layout="inline" style="display:none;visibility:hidden">{!sl.isKit}</apex:outputPanel>
+                    	<apex:outputPanel layout="inline" style="display:none;visibility:hidden">{!sl.isKitBundleMember}</apex:outputPanel>
+                    	<apex:outputPanel layout="inline" style="display:none;visibility:hidden">{!sl.Index}</apex:outputPanel>
+                    	<apex:outputPanel layout="inline" style="display:none;visibility:hidden">{!sl.KitBundleHeaderIndex}</apex:outputPanel>
+
+						<!--
+                    	<apex:outputText value="Inactive " style="color:red;font-weight:bold;" rendered="{!(!sl.isActive)}" />
+                    	<apex:outputLink style="width:200px;" value="/{!if(lineType='Opportunity', sl.ProductId, sl.APDId)}" target="_blank" >{!sl.ProductName}</apex:outputLink>
+						-->
+
+                    	<div>
+							<apex:outputPanel id="kitBundleMemberIcon" rendered="{!sl.isKitBundleMember}"> 
+								<i class="fa fa-chevron-right kitBundleMemberClass" aria-hidden="true"></i>
+								&nbsp;&nbsp;
+							</apex:outputPanel>
+							<apex:outputPanel layout="block" rendered="{!sl.isKitBundleMember}" styleClass="hidden" style="margin: 0px;"></apex:outputPanel>
+		               		<apex:outputPanel layout="block" rendered="{!sl.isKitBundleMember}" styleClass="hidden" style="margin: 0px;">
+					        	Member of <b>{!sl.kitBundleHeaderName}</b>
+		               		</apex:outputPanel>
+
+	                    	<apex:outputText value="Inactive " style="color:red;font-weight:bold;" rendered="{!(!sl.isActive)}" />
+
+							<!-- <apex:outputLink style="width:200px;" styleClass="{!IF(sl.salesInstruction != null,'recommendedProductsClass','')}" value="/{!if(lineType='Opportunity', sl.ProductId, sl.APDId)}" target="_blank" >{!sl.ProductName}</apex:outputLink>
+							href="{! If(OR($User.UIThemeDisplayed == 'Theme1', $User.UIThemeDisplayed == 'Theme2', $User.UIThemeDisplayed == 'Theme3', $User.UIThemeDisplayed == 'PortalDefault', $User.UIThemeDisplayed == 'Webstore' ) == true, '/ui/setup/layout/PageLayouts?type=Account&setupid=AccountLayouts', '/one/one.app?source=aloha#/setup/object/Account?')} "
+							
+							value="/{!if(lineType='Opportunity', sl.ProductId, sl.APDId)}" target="_blank"
+							URLFOR($Action.AdditionalProductDetail__c.View, item.additionalProductDetail.Id)
+							onclick="sforce.one.navigateToSObject('{!sl.APDId}');" target="_blank"
+							value="/one/one.app#/sObject/{!if(lineType=='Opportunity', sl.ProductId, sl.APDId)}/view" target="_blank"
+							-->
+
+                    		<apex:outputLink value="{!if(lineType=='Opportunity', URLFOR($Action.Product2.View, sl.ProductId), URLFOR($Action.kugo2p__AdditionalProductDetail__c.View, sl.APDId))}" 
+                    						 target="_blank" style="width:200px;" styleClass="{!IF(sl.salesInstruction != null,'recommendedProductsClass','')}"                     						  
+                    						 rendered="{! ($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+                    			{!sl.ProductName}
+							</apex:outputLink>
+
+							<!-- URLFOR( function with a blank target is not working in Lightning page and hence using direct url. Also tried sforce.one.navigateToSObject but is not loading properly -->
+                    		<apex:outputLink value="/one/one.app#/sObject/{!if(lineType=='Opportunity', sl.ProductId, sl.APDId)}/view"  
+                    						 target="_blank" style="width:200px;" styleClass="{!IF(sl.salesInstruction != null,'recommendedProductsClass','')}"                    						 
+                    						 rendered="{! NOT($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+                    			{!sl.ProductName}
+							</apex:outputLink>
+
+	                    </div>
+
+                    	<apex:outputPanel layout="block" styleClass="hidden" rendered="{!sl.salesInstruction != null}" >
+	                    	<apex:outputText value="Sales Instructions" style="font-weight: bold;font-size: 11px;color: #000;" />
+	                    </apex:outputPanel>
+	                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!sl.salesInstruction != null}" style="margin: 3px 0px 3px 5px;">	<!-- white-space: pre; -->
+	                    	<pre><apex:outputText value="{!sl.salesInstruction}" /></pre>
+	                    </apex:outputPanel>
+                    </apex:column>
+
+                    <apex:column headerValue="Product Code" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}" style="{!IF(sl.isKitBundleMember==true,'text-indent: 0.5em;','')}" >
+                    	<!-- <apex:inputhidden value="{!sl.KitBundleHeaderIndex}" /> -->
+                    	<!-- <apex:outputText value="{!sl.Index}" style="display:none;visibility:hidden"/> -->
+                    	<!--  <apex:inputText value="{!sl.index}" />
+                    	<apex:inputText value="{!sl.KitBundleHeaderIndex}" />
+                    	-->                    	
+                    	<apex:outputText value="{!sl.ProductCode}" />
+                    </apex:column>
+
+                    <apex:column headerClass="rightalign" footerClass="rightalign" width="75px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Quantity</apex:facet>
+                        <apex:facet name="footer" >{!manageLinesCon.totalProductsQty}</apex:facet>
+
+                        <div>
+	                        <apex:inputText id="qty" value="{!sl.Quantity}" 
+	                        				style="width:75px;" 
+	                        				styleClass="{!if(sl.isKitBundleMember && (NOT(sl.allowQuantityChange) || sl.isNewItem) && sl.HasTieredPricing,'KitMemberFields rightalign qtyTierClass', if(sl.isKitBundleMember && (NOT(sl.allowQuantityChange) || sl.isNewItem),'KitMemberFields rightalign',if(sl.HasTieredPricing,'rightalign qtyTierClass','rightalign')))}" 
+	                        				onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange})" size="4" >
+
+	                            <apex:actionSupport event="onchange" action="{!manageLinesCon.updateSalesPriceAndKitMemberDtls}" reRender="topBlock" oncomplete="initJS();recalcTotals('{!lineType}', false);">
+	                            	<apex:param value="{!sl.Index}" name="sindex" />
+	                            	<apex:param value="0" name="resetSalesPrice" />
+	                            </apex:actionSupport>
+	                        </apex:inputText><br />
+	                    </div>
+	                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!sl.HasTieredPricing}" >
+	                    	<apex:outputText value="Tier Pricing" style="font-weight: bold;font-size: 11px;color: #000;" />
+	                    </apex:outputPanel>
+                        <apex:outputPanel layout="block" styleClass="hidden" rendered="{!sl.HasTieredPricing}" style="margin: 3px 5px 3px 5px;">
+                        	<table class="tierPricing centeralign" >
+                        		<thead>
+	                        		<tr class="tertiaryPalette tertiaryPaletteNew">
+	                        			<th style="color: white;"><b>Quantity</b></th>
+	                        			<th style="color: white;text-align:right;"><b>Discount</b></th>
+	                        			<th style="color: white;text-align:right;"><b>Tier Price</b></th>
+	                        		</tr>
+	                        	</thead>	
+	                        	<apex:variable value="oddTier" var="tierStyle"/>
+	                        	<tbody>
+	                        	<apex:repeat value="{!sl.tiersWrapper}" var="tw" >
+	                        		<tr class="{!tierStyle}">
+	                        			<td >{!tw.QuantityStart}</td>
+	                        			<td class="rightalign">{!tw.discount}</td>
+	                        			<td class="rightalign">{!tw.TierPrice}</td>
+	                        		</tr>
+	                        		<apex:variable value="{!if(tierStyle=='oddTier', '', 'oddTier')}" var="tierStyle" />
+	                        	</apex:repeat>
+	                        	</tbody>
+                        	</table>
+                        </apex:outputPanel>
+                        <apex:outputText value="{!IF(sl.QuantityError, 'Error: Invalid Quantity', '')}" style="color:red"/>
+                    </apex:column>
+
+	                <apex:column title="Use Tiered Pricing" headerValue="Use Tiered Pricing" rendered="{!manageLinesCon.hasTieredPricingProducts}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers centeralign','centeralign')}" width="35px;">
+		            	<apex:facet name="header">Use Tiered<br/>&nbsp;&nbsp;Pricing</apex:facet>
+		               	<apex:inputCheckbox id="useTieredPricing" 
+		               						value="{!sl.useTieredPricing}" 
+		               						onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});" 
+		               						styleClass="{!IF(sl.isKitBundleMember,'KitMembers centeralign','centeralign')}" 
+		               						rendered="{!sl.HasTieredPricing && ((sl.isKitBundleMember && NOT(sl.isNewItem)) || NOT(sl.isKitBundleMember))}" 
+		               						disabled="{!NOT(sl.HasTieredPricing)}" 
+		               						onchange="recalcRow(this.parentNode.parentNode, '{!lineType}', '{!sl.tiersJSON}', false);recalcTotals('{!lineType}', false);">
+		                
+		                	<!--status="updateStatus" -->
+		                	<apex:actionSupport event="onchange" action="{!manageLinesCon.updateSalesPriceAndKitMemberDtls}" reRender="topBlock" oncomplete="initJS();recalcTotals('{!lineType}', false);">
+		                    	<apex:param value="{!sl.Index}" name="sindex" />
+		                    	<apex:param value="1" name="resetSalesPrice" />
+		                    </apex:actionSupport>
+
+		               	</apex:inputCheckbox>
+	                </apex:column>
+
+                    <apex:column headerClass="rightalign" width="85px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Sales Price</apex:facet>
+
+						<!-- Five Star changes - updated disabled and styleClass attributes with LockPrice logic -->
+                        <apex:inputText id="salesPrice"
+                        				value="{!sl.SalesPrice}"  
+                        				style="width:85px;" 
+                        				styleClass="{!if(((sl.isKitBundleMember && sl.isNewItem) || sl.useTieredPricing || sl.LockPrice),'KitMemberFields rightalign','rightalign')}" 
+                        				onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});" 
+                        				disabled="{!(sl.useTieredPricing || sl.LockPrice)}" 
+                        				onchange="recalcRow(this.parentNode.parentNode,'{!lineType}', '{!sl.tiersJSON}');recalcTotals('{!lineType}', false);">
+                        </apex:inputText><br />
+                        <apex:outputText value="{!IF(sl.SalesPriceError, 'Error: Invalid SalesPrice', '')}" style="color:red"/>
+                    </apex:column>
+
+					<!-- Five Star changes -->	
+                    <apex:column headerClass="rightalign" footerClass="rightalign" width="140px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Recipient(s)</apex:facet>
+						<apex:outputPanel rendered="{!lineType=='Order' && NOT(ISBLANK(sl.RecipientLimit))}">
+							<span class="lookupInput">
+								<apex:outputText value="{!if(sl.hasAssignedRecipients, 'Assigned (' + TEXT(sl.AssignedRecipientsCount) + ')', 'Un-Assigned')}"/>&nbsp;
+								<apex:commandLink action="{!manageLinesCon.manageRecipients}" style="text-decoration:none;" rendered="{!((NOT(sl.isKitBundleMember) || (sl.isKitBundleMember && NOT(sl.isNewItem)) ))}" rerender="assignRecipientsOP" status="processStatus" oncomplete="addRecipients();">
+									<apex:param value="{!sl.APDId}" name="selectedAPDId" />
+									<apex:param value="{!sl.Index}" name="sindex" />
+									<img src="/s.gif" alt="Assign Recipient(s)" class="lookupIcon" onblur="this.className = 'lookupIcon';" onfocus="this.className = 'lookupIconOn';" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" title="Assign Recipient(s)" />
+								</apex:commandLink>
+							</span>
+						</apex:outputPanel>
+                    </apex:column>
+
+                    <apex:column width="140" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}" >
+                        <apex:facet name="header">Line Description</apex:facet>
+                        <apex:inputText value="{!sl.LineDescription}" 
+                        				id="linedesc" 
+                        				styleClass="{!if(sl.isKitBundleMember && sl.isNewItem,'KitMemberFields','')}" 
+                        				onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});">
+                        </apex:inputText><br />
+                    </apex:column>
+                    <apex:column headerValue="Date" width="150" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}">
+                        <apex:outputPanel styleClass="nowrap" >
+                            <apex:outputPanel rendered="{!sl.isKitBundleMember && sl.isNewItem}">
+                            	&nbsp;
+                            	<apex:outputText styleClass="cssbody" value="{!sl.StartDate}" style="width:70px" id="dateReadOnly" rendered="{!sl.isKitBundleMember}"/>
+                            </apex:outputPanel>
+                            <!-- <apex:inputText styleClass="cssbody" value="{!sl.StartDate}" size="10" style="width:70px" id="date" onfocus="DatePicker.pickDate(false, '{!$Component.thePage.pageComp.editLinesComp.theForm.topBlock.selectedProducts.date}', false);" rendered="{!NOT(sl.isKitBundleMember) || NOT(sl.isNewItem)}"/> -->
+                            <apex:inputText styleClass="cssbody" value="{!sl.StartDate}" size="10" style="width:70px" id="date" onfocus="DatePicker.pickDate(true, '{!$Component.thePage.pageComp.editLinesComp.theForm.topBlock.selectedProducts.date}', false);" rendered="{!NOT(sl.isKitBundleMember) || NOT(sl.isNewItem)}" >
+	                            <apex:actionSupport event="onchange" action="{!manageLinesCon.updateKitMemberStartDate}" reRender="topBlock" oncomplete="initJS();">	<!-- status="updateStatus" -->
+	                            	<apex:param value="{!sl.Index}" name="sindex" />
+	                            </apex:actionSupport>
+	                        </apex:inputText>
+                            <apex:outputPanel styleClass="dateFormat" style="{!if(sl.isKitBundleMember && sl.isNewItem,'display:none;','')}">
+                                [&nbsp;<a href="javascript:DatePicker.insertDate('{!Month(Today())}/{!Day(Today())}/{!Year(Today())}', '{!$Component.thePage.pageComp.editLinesComp.theForm.topBlock.selectedProducts.date}', true);" tabindex="6">{!Month(Today())}/{!Day(Today())}/{!Year(Today())}</a>&nbsp;]
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:column>
+
+                    <apex:column headerClass="rightalign" width="75px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Line Discount</apex:facet>
+
+						<!-- Five Star changes - display N/A for LockPrice Products -->
+						<apex:outputPanel rendered="{!(NOT(sl.LockPrice))}">
+	                        <apex:inputText value="{!sl.Discount}" 
+	                        				style="width:50px;" 
+	                        				styleClass="{!if(sl.isKitBundleMember && sl.isNewItem,'KitMemberFields rightalign','rightalign')}" 
+	                        				onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});" 
+	                        				size="5" 
+	                        				onchange="recalcRow(this.parentNode.parentNode,'{!lineType}', '{!sl.tiersJSON}', false);recalcTotals('{!lineType}', false);">
+	                        </apex:inputText>%
+                        </apex:outputPanel>
+                        <apex:outputText value="N/A" rendered="{!sl.LockPrice}" />
+                        <br />
+                        <apex:outputText value="{!IF(sl.DiscountError, 'Error: Invalid Discount', '')}" style="color:red"/>
+                    </apex:column>
+                    
+                    <apex:column headerClass="rightalign" headerValue="Total Discount" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" style="{!IF(sl.isKitBundleMember==true,'text-indent: 0.5em;','')}" rendered="{!lineType!='Opportunity'}">
+                        <apex:facet name="header">Total Discount</apex:facet>
+                        <apex:outputText value="{!sl.TotalDiscount}" style="width:50px;" styleClass="{!if(sl.isKitBundleMember && sl.isNewItem,'KitMemberFields rightalign','rightalign')}">
+                        </apex:outputText>%<br />
+                    </apex:column>
+
+                    <apex:column headerClass="rightalign" footerClass="rightalign" width="140" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Total Amount</apex:facet>
+                        <apex:facet name="footer">{!manageLinesCon.totalProductsAmount}</apex:facet>
+                        <apex:outputText value="{!sl.TotalAmount}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+            
+            <apex:outputPanel rendered="{!manageLinesCon.SelectedServices.size > 0}">
+            	<apex:outputPanel rendered="{!manageLinesCon.SelectedProducts.size > 0}"><br/></apex:outputPanel>
+                <div class="pbSubheader first tertiaryPalette">
+                    <h3>Selected Services</h3>
+                </div>
+
+                <apex:pageBlockTable value="{!manageLinesCon.SelectedServices}" var="sl" id="selectedServices" styleClass="dragNDropClass">
+                    <apex:column headerValue="Action" styleClass="actionColumn centeralign {!IF(sl.isKitBundleMember,'KitMembers','')}">
+                    	<apex:inputHidden value="{!sl.SortValue}" />
+
+                        <apex:commandLink action="{!manageLinesCon.cloneLine}" style="text-decoration:none;" title="Clone" reRender="topBlock" rendered="{!(NOT(sl.isKitBundleMember))}" oncomplete="initJS();" status="processStatus">
+                        	<i class="fa fa-files-o fa-lg"></i>
+                            <apex:param value="{!sl.Index}" name="cindex" />
+                        </apex:commandLink>
+
+						<apex:commandLink action="{!manageLinesCon.delLine}" style="text-decoration:none;" title="Delete" reRender="topBlock,recommendedBlock,recommendedPanel,msgopid1" rendered="{!( NOT(sl.isKitBundleMember) || (NOT(sl.isKitBundleMemberRequired) && NOT(sl.isNewItem)) )}" oncomplete="initJS();" status="processStatus">
+							<i class="fa fa-trash-o fa-lg"></i>
+	                      	<apex:param value="{!sl.Index}" name="sindex" />
+	                    </apex:commandLink>
+
+	                    <apex:outputPanel rendered="{!(NOT(sl.isKitBundleMember) && lineType!='Opportunity')}"><i class="fa fa-bars fa-lg" style="padding-left: 2px;"></i></apex:outputPanel>
+                    </apex:column>
+
+					<!-- fields used for debugging
+					<apex:column headerValue="Index" value="{!sl.Index}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="KitBundle Header Index" value="{!sl.KitBundleHeaderIndex}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="Kit Bundle Member" value="{!sl.isKitBundleMember}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="New Kit Bundle Member" value="{!sl.isKitBundleMember}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="Line Item Id" value="{!sl.LineItemId}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    <apex:column headerValue="Kit Bundle Line Id" value="{!sl.KitBundleLineId}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}"/>
+                    -->
+
+                    <apex:column headerValue="Service Name" width="200px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}" style="{!IF(sl.isKitBundleMember==true,'text-indent: 0.5em;','')}">
+                    	<apex:outputPanel layout="inline" style="display:none;visibility:hidden">{!sl.isKit}</apex:outputPanel>
+                    	<apex:outputPanel layout="inline" style="display:none;visibility:hidden">{!sl.isKitBundleMember}</apex:outputPanel>
+                    	<apex:outputPanel layout="inline" style="display:none;visibility:hidden">{!sl.Index}</apex:outputPanel>
+                    	<apex:outputPanel layout="inline" style="display:none;visibility:hidden">{!sl.KitBundleHeaderIndex}</apex:outputPanel>
+
+						<!-- 
+                    	<apex:outputText value="Inactive " style="color:red;font-weight:bold;" rendered="{!(!sl.isActive)}" />
+                        <apex:outputLink style="width:200px;" value="/{!sl.APDId}" target="_blank">{!sl.ProductName}</apex:outputLink>
+                        -->
+
+                        <div>
+							<apex:outputPanel id="kitBundleMemberIcon" rendered="{!sl.isKitBundleMember}"> 
+								<i class="fa fa-chevron-right kitBundleMemberClass" aria-hidden="true"></i>
+								&nbsp;&nbsp;
+							</apex:outputPanel>
+							<apex:outputPanel layout="block" rendered="{!sl.isKitBundleMember}" styleClass="hidden" style="margin: 0px;"></apex:outputPanel>
+		               		<apex:outputPanel layout="block" rendered="{!sl.isKitBundleMember}" styleClass="hidden" style="margin: 0px;">
+					        	Member of <b>{!sl.kitBundleHeaderName}</b>
+		               		</apex:outputPanel>
+
+							<apex:outputText value="Inactive " style="color:red;font-weight:bold;" rendered="{!(!sl.isActive)}" />
+							<!-- 		               		                        
+                        	<apex:outputLink styleClass="{!IF(sl.salesInstruction != null,'recommendedProductsClass','')}" style="width:200px;" value="/{!sl.APDId}" target="_blank">{!sl.ProductName}</apex:outputLink>
+                        	-->
+
+                    		<apex:outputLink value="{!if(lineType=='Opportunity', URLFOR($Action.Product2.View, sl.ProductId), URLFOR($Action.kugo2p__AdditionalProductDetail__c.View, sl.APDId))}"  
+                    						 target="_blank" style="width:200px;" styleClass="{!IF(sl.salesInstruction != null,'recommendedProductsClass','')}"                    						  
+                    						 rendered="{! ($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+                    			{!sl.ProductName}
+                    		</apex:outputLink>
+
+							<!-- URLFOR( function with a blank target is not working in Lightning page and hence using direct url. Also tried sforce.one.navigateToSObject but is not loading properly -->
+                    		<apex:outputLink value="/one/one.app#/sObject/{!if(lineType=='Opportunity', sl.ProductId, sl.APDId)}/view"  
+                    						 target="_blank" style="width:200px;" styleClass="{!IF(sl.salesInstruction != null,'recommendedProductsClass','')}"                    						 
+                    						 rendered="{! NOT($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+                    			{!sl.ProductName}
+                    		</apex:outputLink>
+                        	
+	                    </div>
+
+                        <apex:outputPanel layout="block" styleClass="hidden" rendered="{!sl.salesInstruction != null}" >
+	                    	<apex:outputText value="Sales Instructions" style="font-weight: bold;font-size: 11px;color: #000;" />
+	                    </apex:outputPanel>
+	                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!sl.salesInstruction != null}" style="margin: 3px 0px 3px 5px;">	<!-- white-space: pre; -->
+	                    	<pre><apex:outputText value="{!sl.salesInstruction}" /></pre>
+	                    </apex:outputPanel>
+                    </apex:column>
+
+                    <apex:column headerValue="Product Code" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}" style="{!IF(sl.isKitBundleMember==true,'text-indent: 0.5em;','')}" >
+                    	<apex:outputText value="{!sl.ProductCode}" />
+                    </apex:column>
+
+                    <apex:column headerClass="rightalign" footerClass="rightalign" width="75px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Quantity</apex:facet>
+                        <apex:facet name="footer" >{!manageLinesCon.totalServicesQty}</apex:facet>
+                        <div>
+	                        <apex:inputText id="qty" value="{!sl.Quantity}" 
+	                        				style="width:75px;" 
+	                        				styleClass="{!if(sl.isKitBundleMember && (NOT(sl.allowQuantityChange) || sl.isNewItem) && sl.HasTieredPricing,'KitMemberFields rightalign qtyTierClass', if(sl.isKitBundleMember && (NOT(sl.allowQuantityChange) || sl.isNewItem),'KitMemberFields rightalign',if(sl.HasTieredPricing,'rightalign qtyTierClass','rightalign')))}" 
+	                        				onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});" size="4" >
+
+	                            <apex:actionSupport event="onchange" action="{!manageLinesCon.updateSalesPriceAndKitMemberDtls}" reRender="topBlock" oncomplete="initJS();recalcTotals('{!lineType}', true);">	<!-- status="updateStatus" -->
+	                            	<apex:param value="{!sl.Index}" name="sindex" />
+	                            	<apex:param value="0" name="resetSalesPrice" />
+	                            </apex:actionSupport>
+	                        </apex:inputText><br />
+	                    </div>
+	                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!sl.HasTieredPricing}" >
+	                    	<apex:outputText value="Tier Pricing" style="font-weight: bold;font-size: 11px;color: #000;" />
+	                    </apex:outputPanel>
+                        <apex:outputPanel layout="block" styleClass="hidden" rendered="{!sl.HasTieredPricing}" style="margin: 3px 5px 3px 5px;">                        	
+                        	<table class="tierPricing centeralign" >
+                        		<thead>
+	                        		<tr class="tertiaryPalette tertiaryPaletteNew">
+	                        			<th style="color: white;"><b>Quantity</b></th>
+	                        			<th style="color: white;text-align:right;"><b>Discount</b></th>
+	                        			<th style="color: white;text-align:right;"><b>Tier Price</b></th>
+	                        		</tr>
+	                        	</thead>	
+	                        	<apex:variable value="oddTier" var="tierStyle"/>
+	                        	<tbody>
+	                        	<apex:repeat value="{!sl.tiersWrapper}" var="tw" >
+	                        		<tr class="{!tierStyle}">
+	                        			<td >{!tw.QuantityStart}</td>
+	                        			<td class="rightalign">{!tw.discount}</td>
+	                        			<td class="rightalign">{!tw.TierPrice}</td>
+	                        		</tr>
+	                        		<apex:variable value="{!if(tierStyle=='oddTier', '', 'oddTier')}" var="tierStyle" />
+	                        	</apex:repeat>
+	                        	</tbody>
+                        	</table>
+                        </apex:outputPanel>
+                        <apex:outputText value="{!IF(sl.QuantityError, 'Error: Invalid Quantity', '')}" style="color:red"/>
+                    </apex:column>
+
+	                <apex:column title="Use Tiered Pricing" headerValue="Use Tiered Pricing" rendered="{!manageLinesCon.hasTieredPricingProducts}" styleClass="{!IF(sl.isKitBundleMember,'KitMembers centeralign','centeralign')}" width="35px;">
+		            	<apex:facet name="header">Use Tiered<br/>&nbsp;&nbsp;Pricing</apex:facet>
+		               	<apex:inputCheckbox id="useTieredPricing" 
+		               						value="{!sl.useTieredPricing}" 
+		               						onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});" 
+		               						styleClass="{!IF(sl.isKitBundleMember,'KitMembers centeralign','centeralign')}" 
+		               						rendered="{!sl.HasTieredPricing && ((sl.isKitBundleMember && NOT(sl.isNewItem)) || NOT(sl.isKitBundleMember))}" 
+		               						disabled="{!NOT(sl.HasTieredPricing)}" 
+		               						onchange="recalcRow(this.parentNode.parentNode, '{!lineType}', '{!sl.tiersJSON}', true);recalcTotals('{!lineType}', true);">
+
+		               		<!--status="updateStatus" -->
+		                	<apex:actionSupport event="onchange" action="{!manageLinesCon.updateSalesPriceAndKitMemberDtls}" reRender="topBlock" oncomplete="initJS();recalcTotals('{!lineType}', true);">
+		                    	<apex:param value="{!sl.Index}" name="sindex" />
+		                    	<apex:param value="1" name="resetSalesPrice" />
+		                    </apex:actionSupport>
+
+		               	</apex:inputCheckbox>
+	                </apex:column>
+
+                    <apex:column headerClass="rightalign" width="85px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Sales Price</apex:facet>
+                        
+                        <!-- Five Star changes - updated disabled attribute with LockPrice logic -->
+                        <apex:inputText id="salesPrice" 
+                        				value="{!sl.SalesPrice}"
+                        				style="width:85px;"                         				 
+                        				styleClass="{!if(((sl.isKitBundleMember && sl.isNewItem) || sl.useTieredPricing || sl.LockPrice),'KitMemberFields rightalign','rightalign')}" 
+                        				onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});"  
+                        				disabled="{!(sl.useTieredPricing || sl.LockPrice)}"
+                        				onchange="recalcRow(this.parentNode.parentNode, '{!lineType}', '{!sl.tiersJSON}', true);recalcTotals('{!lineType}', true);">
+                            <!--
+                            <apex:actionSupport event="onchange" action="{!manageLinesCon.calculateTotal}" reRender="topBlock" status="updateStatus" oncomplete="initJS();" />
+                        -->
+                        </apex:inputText><br />
+                        <apex:outputText value="{!IF(sl.SalesPriceError, 'Error: Invalid SalesPrice', '')}" style="color:red"/>
+                    </apex:column>
+
+					<!-- Five Star changes -->
+                    <apex:column headerClass="rightalign" footerClass="rightalign" width="140px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Recipient(s)</apex:facet>
+						<apex:outputPanel rendered="{!lineType=='Order' && NOT(ISBLANK(sl.RecipientLimit))}">
+							<span class="lookupInput">
+								<apex:outputText value="{!if(sl.hasAssignedRecipients, 'Assigned (' + TEXT(sl.AssignedRecipientsCount) + ')', 'Un-Assigned')}"/>&nbsp;
+								<apex:commandLink action="{!manageLinesCon.manageRecipients}" style="text-decoration:none;" rendered="{!((NOT(sl.isKitBundleMember) || (sl.isKitBundleMember && NOT(sl.isNewItem)) ))}" rerender="assignRecipientsOP" status="processStatus" oncomplete="addRecipients();">
+									<apex:param value="{!sl.APDId}" name="selectedAPDId" />
+									<apex:param value="{!sl.Index}" name="sindex" />
+									<img src="/s.gif" alt="Assign Recipient(s)" class="lookupIcon" onblur="this.className = 'lookupIcon';" onfocus="this.className = 'lookupIconOn';" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" title="Assign Recipient(s)" />
+								</apex:commandLink>
+							</span>
+						</apex:outputPanel>
+                    </apex:column>
+
+                    <apex:column width="140" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}" >
+                        <apex:facet name="header">Line Description</apex:facet>
+                        <apex:inputText value="{!sl.LineDescription}" 
+                        				id="linedesc" 
+                        				styleClass="{!if(sl.isKitBundleMember && sl.isNewItem,'KitMemberFields','')}" 
+                        				onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});">
+                        </apex:inputText><br />
+                    </apex:column>
+                    
+                    <apex:column headerValue="Date Service Start" width="150" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}">
+                        <apex:outputPanel styleClass="nowrap" >
+                            <apex:outputPanel rendered="{!sl.isKitBundleMember && sl.isNewItem}">
+                            	&nbsp;
+                            	<apex:outputText styleClass="cssbody" value="{!sl.StartDate}" style="width:70px" id="startDateReadOnly" rendered="{!sl.isKitBundleMember}"/>
+                            </apex:outputPanel>
+                            <apex:inputText styleClass="cssbody" value="{!sl.StartDate}" size="10" style="width:70px" id="startDate" onfocus="DatePicker.pickDate(true, '{!$Component.thePage.pageComp.editLinesComp.theForm.topBlock.selectedServices.startDate}', false);" rendered="{!NOT(sl.isKitBundleMember) || NOT(sl.isNewItem)}" >
+	                            <apex:actionSupport event="onchange" action="{!manageLinesCon.calculateServiceEndDate}" reRender="topBlock" oncomplete="initJS();">	<!-- status="updateStatus" -->
+	                            	<apex:param value="{!sl.Index}" name="sindex" />
+	                            </apex:actionSupport>
+	                        </apex:inputText>
+                            <apex:outputPanel styleClass="dateFormat" style="{!if(sl.isKitBundleMember && sl.isNewItem,'display:none;','')}">
+                                [&nbsp;<a href="javascript:DatePicker.insertDate('{!Month(Today())}/{!Day(Today())}/{!Year(Today())}', '{!$Component.thePage.pageComp.editLinesComp.theForm.topBlock.selectedServices.startDate}', true);" tabindex="6">{!Month(Today())}/{!Day(Today())}/{!Year(Today())}</a>&nbsp;]
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                        <br /><apex:outputText value="{!IF(sl.StartDateError, 'Error: Invalid Date', '')}" style="color:red"/>
+                    </apex:column>
+                    
+                    <apex:column headerValue="Date Service End" width="150" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}" rendered="{!lineType!='Opportunity'}">
+                        <apex:outputPanel styleClass="nowrap" rendered="{!IF(sl.UnitofTerm == 'Second' || sl.UnitofTerm == 'Minute' || sl.UnitofTerm == 'Hour' || manageLinesCon.allowOverrideServiceDateUpdate, true, false)}">
+                            <apex:outputPanel rendered="{!sl.isKitBundleMember && sl.isNewItem}">
+                            	&nbsp;
+                            	<apex:outputText styleClass="cssbody" value="{!sl.EndDate}" style="width:70px" id="endDateReadOnly" rendered="{!sl.isKitBundleMember}"/>
+                            </apex:outputPanel>
+                            <apex:inputText styleClass="cssbody" value="{!sl.EndDate}" size="10" style="width:70px" id="endDate" onfocus="DatePicker.pickDate(false, '{!$Component.thePage.pageComp.editLinesComp.theForm.topBlock.selectedServices.endDate}', false);" rendered="{!NOT(sl.isKitBundleMember) || NOT(sl.isNewItem)}"/>                            
+                            <apex:outputPanel styleClass="dateFormat" style="{!if(sl.isKitBundleMember && sl.isNewItem,'display:none;','')}">
+                                [&nbsp;<a href="javascript:DatePicker.insertDate('{!Month(Today())}/{!Day(Today())}/{!Year(Today())}', '{!$Component.thePage.pageComp.editLinesComp.theForm.topBlock.selectedServices.endDate}', true);" tabindex="6">{!Month(Today())}/{!Day(Today())}/{!Year(Today())}</a>&nbsp;]
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+
+                        <apex:outputText value="{!sl.EndDate}" rendered="{!IF(sl.UnitofTerm != 'Second' && sl.UnitofTerm != 'Minute' && sl.UnitofTerm != 'Hour' && !(manageLinesCon.allowOverrideServiceDateUpdate), true, false)}"/>
+                        <br /><apex:outputText value="{!IF(sl.EndDateError, 'Error: Invalid Date', '')}" style="color:red"/>
+                    </apex:column>
+                    
+                    <apex:column headerValue="Term" width="130px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers','')}" style="{!IF(sl.isKitBundleMember==true,'text-indent: 0.5em;','')}">
+                        <apex:facet name="header">Term</apex:facet>                        
+                        <apex:outputPanel >
+	                        <apex:inputText id="term" value="{!sl.ServiceTerm}" style="width:25px;" styleClass="{!if(sl.isKitBundleMember && sl.isNewItem,'KitMemberFields rightalign','rightalign')}" >
+	                            <apex:actionSupport event="onchange" action="{!manageLinesCon.calculateServiceEndDate}" reRender="topBlock" oncomplete="initJS();">	<!-- status="updateStatus" -->
+	                            	<apex:param value="{!sl.Index}" name="sindex" />
+	                            </apex:actionSupport>
+	                        </apex:inputText>
+	                    </apex:outputPanel>	                    
+	                    &nbsp;<apex:outputText value="{!sl.UnitofTerm}" /><apex:outputText rendered="{!IF(sl.ServiceTermValue>1,true,false)}">s</apex:outputText>
+                        <br />
+                        <apex:outputText value="{!IF(sl.ServiceTermError, 'Error: Term must be greater than zero.', '')}" style="color:red"/>
+                    </apex:column>
+
+                    <apex:column headerClass="rightalign" width="75px" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Line Discount</apex:facet>
+
+						<!-- Five Star changes - display N/A for LockPrice Products -->
+						<apex:outputPanel rendered="{!(NOT(sl.LockPrice))}">
+	                        <apex:inputText value="{!sl.Discount}" 
+	                        				style="width:50px;" 
+	                        				styleClass="{!if(sl.isKitBundleMember && sl.isNewItem,'KitMemberFields rightalign','rightalign')}" 
+	                        				onfocus="disableKitMembers(this, {!(sl.isKitBundleMember)}, {!sl.isNewItem}, {!sl.allowQuantityChange});" 
+	                        				size="5" 
+	                        				onchange="recalcRow(this.parentNode.parentNode, '{!lineType}', '{!sl.tiersJSON}', true);recalcTotals('{!lineType}', true);">
+	                        </apex:inputText>%
+                        </apex:outputPanel>
+                        <apex:outputText value="N/A" rendered="{!sl.LockPrice}" />
+                        <br />
+                        <apex:outputText value="{!IF(sl.DiscountError, 'Error: Invalid Discount', '')}" style="color:red"/>
+                    </apex:column>                    
+
+                    <apex:column headerClass="rightalign" headerValue="Total Discount" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" style="{!IF(sl.isKitBundleMember==true,'text-indent: 0.5em;','')}" rendered="{!lineType!='Opportunity'}">
+                        <apex:facet name="header">Total Discount</apex:facet>
+                        <apex:outputText value="{!sl.TotalDiscount}" style="width:50px;" styleClass="{!if(sl.isKitBundleMember && sl.isNewItem,'KitMemberFields rightalign','rightalign')}">
+                        </apex:outputText>%<br />
+                    </apex:column>
+
+                    <apex:column headerClass="rightalign" footerClass="rightalign" width="140" styleClass="{!IF(sl.isKitBundleMember,'KitMembers rightalign','rightalign')}" >
+                        <apex:facet name="header">Total Amount</apex:facet>
+                        <apex:facet name="footer">{!manageLinesCon.totalServicesAmount}</apex:facet>
+                        <apex:outputText value="{!sl.TotalAmount}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+            
+        </apex:pageBlock>
+
+		<apex:tabPanel switchType="client" selectedTab="name2" id="theTabPanel" inactiveTabClass="inactiveTab" rendered="{!If(manageLinesCon.recordStatus != 'Released' && manageLinesCon.recordStatus != 'Cancelled',true,false)}">
+		
+		<apex:tab label="All" name="All" id="All">
+        <apex:pageBlock id="allBlock">
+            <apex:outputPanel id="productlinewarning">
+                <apex:pageMessage rendered="{!manageLinesCon.ProductLines.size>=manageLinesCon.queryLimit}" summary="Only the first {!manageLinesCon.queryLimit} products/services are displayed. Please narrow results by filtering products/services below." severity="warning" strength="2"></apex:pageMessage>
+            </apex:outputPanel>
+            <div class="pbHeader">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="pbTitle">
+                                <apex:outputPanel id="linesheader">
+                                    <h3>Find Products/Services [{!manageLinesCon.TotalProductsCount}]
+                                    <apex:outputText value="{!manageLinesCon.PricebookName}" rendered="false" /></h3>
+                                </apex:outputPanel>
+                            </td>
+                            <td class="pbButton">&nbsp;</td>
+                            <td class="pbHelp">
+                                <span>
+                                    <b>Records Per Page </b>
+                                    <apex:selectList value="{!manageLinesCon.PageSize}" multiselect="false" size="1">
+                                        <apex:actionSupport event="onchange" action="{!manageLinesCon.resetPagesize}" reRender="productlines,productlinesbuttons" status="updateStatus" oncomplete="initJS();"/>
+                                        <apex:selectOption itemValue="10" itemLabel="10" />
+                                        <apex:selectOption itemValue="25" itemLabel="25" />
+                                        <apex:selectOption itemValue="50" itemLabel="50" />
+                                        <apex:selectOption itemValue="100" itemLabel="100" />
+                                        <apex:selectOption itemValue="200" itemLabel="200" />
+                                    </apex:selectList>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div class="searchFilterFieldsHolder searchFilterFieldsHolderFirst">
+                                    <table class="searchFilterFields">
+                                        <tbody>
+                                            <tr>
+                                                <td style="border-right: 3px solid #EEE;width:220px;padding:10px;">
+                                                    <b>By Keyword</b><br/>
+													<apex:outputPanel id="scrollableOPId">
+                                                    <div id="scrollable-dropdown-menu">
+  														<apex:inputText value="{!manageLinesCon.QueryKey}" id="keywordsId" styleClass="keywordsId typeahead" style="width:225px;" 
+  																		html-placeholder="{!if(manageLinesCon.ExactMatch==false, 'Product/Service Name, Code, Description', 'Product Code1+Qty, Product Code2+Qty...')}" 
+  																		onKeyPress="return keywordEnterKey(event)" />
+													</div>
+                                                    </apex:outputPanel>
+
+                                                    <br/>
+						                            <apex:outputPanel id="ExactMatchOP">
+						                            	<apex:inputCheckbox id="exactMatch" styleClass="exactMatchClass" selected="false" value="{!manageLinesCon.ExactMatch}" title="Exact Match" label="Exact Match" >
+						                            		<apex:actionSupport event="onclick" rerender="scrollableOPId" oncomplete="initAutoComplete();" />
+						                            	</apex:inputCheckbox>
+						                            	<apex:outputLabel for="exactMatch" value="Exact Match"/>
+						                            </apex:outputPanel>
+                                                </td>
+                                                <td style="border-right: 3px solid #EEE;width:575px;padding:10px;vertical-align:top;">
+                                                	<b>By Field Filter </b><br/>
+                                                		<apex:outputPanel id="filterSection">
+
+											            	<apex:repeat value="{!manageLinesCon.filters}" var="curFilter">
+											            		<apex:outputPanel layout="block" rendered="{!manageLinesCon.showMoreFilters || curFilter.index == 0}">
+												            		<apex:selectList value="{!curFilter.selectedFieldName}" multiselect="false" size="1">
+												            			<apex:selectOptions value="{!curFilter.fieldOptions}" />
+												            			<apex:actionSupport event="onchange" action="{!curFilter.updateOperatorOptions}" rerender="filterSection" />
+												            		</apex:selectList>
+
+												            		<apex:selectList value="{!curFilter.selectedOperator}" multiselect="false" size="1" style="width:110px;">
+												            			<apex:selectOptions value="{!curFilter.operatorOptions}" />
+												            		</apex:selectList>
+
+												            		<apex:inputText value="{!curFilter.selectedFieldValue}" onKeyPress="return keywordEnterKey(event)" />
+																	<apex:outputText value=" AND " rendered="{!manageLinesCon.showMoreFilters && curFilter.index+1 != manageLinesCon.filters.size}" />
+
+																	<apex:outputPanel styleClass="kugamon">
+												            		<apex:commandLink value="More Filters >>" action="{!manageLinesCon.displayAllFilters}" styleClass="slds-text-link" style="font-family: Arial;vertical-align: middle;text-align: left;font-size: 8pt;margin-left: 3px;" rerender="filterSection" rendered="{!!manageLinesCon.showMoreFilters && curFilter.index == 0}" />	<!-- status="filterStatus" -->
+											            			<apex:commandLink value="Fewer Filters <<" action="{!manageLinesCon.hideAllFilters}" styleClass="slds-text-link" style="font-family: Arial;vertical-align: middle;text-align: left;font-size: 8pt;margin-left: 3px;" rerender="filterSection" rendered="{!manageLinesCon.showMoreFilters && curFilter.index+1 == manageLinesCon.filters.size}" />	<!-- status="filterStatus" -->
+											            			</apex:outputPanel>
+
+											            		</apex:outputPanel>
+											            	</apex:repeat>
+											        	</apex:outputPanel>
+                                                </td>
+                                                <!-- <td style="border-right: 3px solid #EEE;width:140px;"> -->
+                                                <!--
+                                                <td style="width:40px;">
+                                                    <apex:commandButton action="{!manageLinesCon.search}" value="Search" reRender="allBlock,msgopid1" status="filterStatus" styleClass="filterButton" oncomplete="addEntered(); initQTips(); sortTables(); return false;" rendered="{!lineType!='Opportunity'}"/>
+                                                    <apex:commandButton action="{!manageLinesCon.searchOpp}" value="Search" reRender="allBlock,msgopid1" status="filterStatus" styleClass="filterButton" oncomplete="addEntered(); initQTips(); sortTables(); return false;" rendered="{!lineType=='Opportunity'}"/>
+                                                    <br/>
+                                                </td>
+                                                <td style="width:80px;">
+                                                    <apex:commandLink value="Clear Filters" action="{!manageLinesCon.clearSearch}" style="font-family: Arial;vertical-align: middle;text-align: left;font-size: 8pt;" reRender="allBlock,msgopid1" status="filterStatus" rendered="{!lineType!='Opportunity'}" oncomplete="initAutoComplete();initQTips();"/>
+                                                    <apex:commandLink value="Clear Filters" action="{!manageLinesCon.clearSearchOpp}" style="font-family: Arial;vertical-align: middle;text-align: left;font-size: 8pt;" reRender="allBlock,msgopid1" status="filterStatus" rendered="{!lineType=='Opportunity'}" oncomplete="initAutoComplete();initQTips();"/>
+                                                    <br/>
+                                                </td>
+												-->
+                                                <td style="width:160px;" >
+                                                	<apex:outputPanel styleClass="kugamon">                                                		
+                                                    	<apex:commandButton action="{!manageLinesCon.search}" value="Search" reRender="allBlock,msgopid1" status="filterStatus" styleClass="slds-button slds-button--neutral filterButton" oncomplete="addEntered(); initQTips(); sortTables(); setQtyFocus(); return false;" rendered="{!lineType!='Opportunity'}"/>
+	                                                    <!-- <apex:commandButton action="{!manageLinesCon.searchOpp}" value="Search" reRender="allBlock,msgopid1" status="filterStatus" styleClass="slds-button slds-button--neutral filterButton" oncomplete="addEntered(); initQTips(); sortTables(); setQtyFocus(); return false;" rendered="{!lineType=='Opportunity'}"/> -->
+	                                                    <apex:commandLink value="Clear Filters" action="{!manageLinesCon.clearSearch}" styleClass="slds-text-link" style="font-family: Arial;vertical-align: middle;text-align: left;font-size: 8pt;margin-left: 5px;" reRender="allBlock,msgopid1" status="filterStatus" rendered="{!lineType!='Opportunity'}" oncomplete="initAutoComplete();initQTips();"/>
+	                                                   	<!-- <apex:commandLink value="Clear Filters" action="{!manageLinesCon.clearSearchOpp}" styleClass="slds-text-link" style="font-family: Arial;vertical-align: middle;text-align: left;font-size: 8pt;margin-left: 5px;" reRender="allBlock,msgopid1" status="filterStatus" rendered="{!lineType=='Opportunity'}" oncomplete="initAutoComplete();initQTips();"/> -->
+													</apex:outputPanel>
+                                                </td>                                                
+                                                <td style="border-right: 3px solid #EEE;width:40px;padding:8px;">
+                                                    <apex:actionStatus id="filterStatus">
+                                                        <apex:facet name="start">
+                                                            <!-- <img src="/img/loading32.gif" /> -->
+                                                            <img src="{!URLFOR($Resource.kugo2p__SLDS, '/assets/images/spinners/slds_spinner_brand.gif')}" height="32" width="32" alt="Processing..." />
+                                                        </apex:facet>
+                                                    </apex:actionStatus>
+                                                </td>
+                                                
+                                                <td style="padding:10px;">	<!-- border-right: 3px solid #EEE; -->
+                                                	<b>Price Book Name</b><br/>
+				                                    <apex:selectList value="{!manageLinesCon.PricebookNameOptionValue}" multiselect="false" size="1" onmouseover="selectedValueCache = this.value" onchange="changePricebook(this);">
+				                                        <apex:selectOptions value="{!manageLinesCon.PricebookOptions}" />
+				                                        <apex:actionFunction action="{!manageLinesCon.resetPricebook}" name="resetPricebook" onComplete="sortTables();"/>
+				                                    </apex:selectList>
+				                                    <br/><br/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <apex:pageBlockTable value="{!manageLinesCon.ProductLines}" var="pl" first="{!manageLinesCon.StartIndex}" rows="{!manageLinesCon.PageSize}" id="productlines" rendered="{!manageLinesCon.ProductLines.size > 0}">
+                <apex:column headerValue="Action" headerClass="{!actionWidth}" styleclass="actionColumn {!actionWidth}">
+					<apex:commandLink action="{!manageLinesCon.addLine}" style="text-decoration:none;" title="Add Line" rendered="{!(pl.IsActive && NOT(pl.HasInActiveKitMember))}" reRender="topBlock,recommendedBlock,recommendedPanel" status="updateStatus" oncomplete="initJS();recalcTotalsAll();">
+						<i class="fa fa-plus-square fa-lg"></i>
+                        <apex:param value="{!pl.Index}" name="uindex" />
+                        <apex:param value="{!manageLinesCon.headerDiscount}" name="headerDiscount" />
+                        <!-- <apex:param name="addOptionals" value="0" /> -->
+                        <apex:param name="lineType" value="All" />
+                   	</apex:commandLink>
+
+					<apex:outputPanel title="{!if(NOT(pl.IsActive), 'Unable to Add. Inactive Product', 'Unable to Add. Inactive Kit/Bundle Member Found')}" rendered="{!(NOT(pl.IsActive) || pl.HasInActiveKitMember)}">
+						<i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i>
+                   	</apex:outputPanel>
+
+					<!-- 
+                   	<span style="padding-left:2px;" />
+                   	<apex:commandLink action="{!manageLinesCon.addLineOptionalQuote}" style="text-decoration:none;" title="Add Optional" reRender="topBlock" status="updateStatus" oncomplete="initJS();" rendered="{!lineType=='Quote' && NOT(manageLinesCon.disableQuoteOptionalManagedLines)}">
+                   		<i class="fa fa-circle-o fa-lg"></i>
+                        <apex:param value="{!pl.Index}" name="uindex" />
+                        <apex:param value="{!manageLinesCon.headerDiscount}" name="headerDiscount" />
+                        <apex:param name="lineType" value="All" />
+                   	</apex:commandLink>
+                   	-->
+
+                   	<span style="padding-left:2px;" />
+					<apex:outputPanel id="bsOPId" >
+	                   	<apex:commandLink onclick="addFavorite(this);" action="{!manageLinesCon.addFavorite}" style="text-decoration:none;" title="Add Favorite" rendered="{!NOT(pl.IsFavorite)}" reRender="productlines,recommendedPanel,favoritePanel" oncomplete="initJS();">
+	                   		<i class="fa fa-heart-o fa-lg"></i>
+	                   		<apex:param value="{!pl.Index}" name="uindex" />
+	                        <apex:param value="{!pl.ProductId}" name="uProductId" />
+	                   	</apex:commandLink>
+	                   	<apex:commandLink onclick="removeFavorite(this);" action="{!manageLinesCon.removeFavorite}" style="text-decoration:none;" title="Remove Favorite" rendered="{!pl.IsFavorite}" reRender="productlines,recommendedPanel,favoritePanel" oncomplete="initJS();">
+	                   		<i class="fa fa-heart fa-lg redColor" ></i>
+	                   		<apex:param value="{!pl.Index}" name="uindex" />
+	                        <apex:param value="{!pl.ProductId}" name="uProductId" />
+	                   	</apex:commandLink>
+				        <apex:outputPanel id="favBusyOPId" styleClass="fa fa-lg favBusy">
+							<apex:image value="/img/loading32.gif" style="height:12px;" alt="Processing..." />
+				        </apex:outputPanel>
+	                </apex:outputPanel>
+                </apex:column>
+
+                <apex:column >
+                    <apex:facet name="header">
+                      <apex:commandLink action="{!manageLinesCon.sortResults}" value="Product/Service Name" rerender="allBlock" status="updateStatus2" oncomplete="initQTips();">
+                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ProductName',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ProductName',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+                      	<apex:param value="ProductName" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+                      </apex:commandLink>
+                    </apex:facet>
+
+					<div>
+						<!-- 
+                    	<apex:outputLink id="productName" target="_blank" value="../{!pl.APDId}" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}">{!pl.ProductName}</apex:outputLink>
+                    	-->
+
+                   		<apex:outputLink value="{!if(lineType=='Opportunity', URLFOR($Action.Product2.View, pl.ProductId), URLFOR($Action.kugo2p__AdditionalProductDetail__c.View, pl.APDId))}"
+                   						 target="_blank" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}"                   						   
+                   						 rendered="{! ($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+                   			{!pl.ProductName}
+						</apex:outputLink>
+
+						<!-- URLFOR( function with a blank target is not working in Lightning page and hence using direct url. Also tried sforce.one.navigateToSObject but is not loading properly -->
+                   		<apex:outputLink value="/one/one.app#/sObject/{!if(lineType=='Opportunity', pl.ProductId, pl.APDId)}/view"	
+                   						 target="_blank" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}"                    						 
+                   						 rendered="{! NOT($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+                   			{!pl.ProductName}
+						</apex:outputLink>
+                    </div>
+
+                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.hasRecommendedProducts}" >
+                    	<apex:outputText value="Recommended Products" style="font-weight: bold;font-size: 11px;color: #000;" />
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.hasRecommendedProducts}" style="margin: 3px 5px 3px 5px;">
+                    	<table class="tierPricing">
+                    		<thead>
+                     		<tr class="tertiaryPalette tertiaryPaletteNew">
+                     			<th style="color: white;"><b>Product</b></th>
+                     			<th style="color: white;"><b>Quantity</b></th>
+                     		</tr>
+                     	</thead>
+                     	<tbody>
+                     	<apex:repeat value="{!pl.RecommendedProducts}" var="rp" >
+                     		<tr >
+                     			<td >{!rp.Product__r.Name}</td>
+                     			<td class="rightalign">{!rp.Quantity__c}</td>
+                     		</tr>
+                     	</apex:repeat>
+                     	</tbody>
+                    	</table>
+                    </apex:outputPanel>
+                </apex:column>
+                                
+                <apex:column >
+                    <apex:facet name="header">
+                      <apex:commandLink action="{!manageLinesCon.sortResults}" value="Product Code" rerender="allBlock" status="updateStatus2" oncomplete="initQTips();">
+                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ProductCode',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ProductCode',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />                            
+                      	<apex:param value="ProductCode" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+                      </apex:commandLink>
+                    </apex:facet>
+                    
+                    <!--
+                    <apex:outputLink target="_blank" value="../{!pl.APDId}" >{!pl.ProductCode}</apex:outputLink>
+                    -->
+
+               		<apex:outputLink value="{!if(lineType=='Opportunity', URLFOR($Action.Product2.View, pl.ProductId), URLFOR($Action.kugo2p__AdditionalProductDetail__c.View, pl.APDId))}"
+               						 target="_blank"                   						   
+               						 rendered="{! ($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+               			{!pl.ProductCode}
+					</apex:outputLink>
+
+					<!-- URLFOR( function with a blank target is not working in Lightning page and hence using direct url. Also tried sforce.one.navigateToSObject but is not loading properly -->
+                  		<apex:outputLink value="/one/one.app#/sObject/{!if(lineType=='Opportunity', pl.ProductId, pl.APDId)}/view"	
+                  						 target="_blank"                    						 
+                  						 rendered="{! NOT($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+                  			{!pl.ProductCode}
+					</apex:outputLink>
+                </apex:column>                
+
+                <apex:column width="55" headerClass="centeralign" styleClass="centeralign" rendered="{!lineType!='Opportunity'}">
+                     <apex:facet name="header">
+                       <apex:commandLink action="{!manageLinesCon.sortResults}" value="Service" rerender="allBlock" status="updateStatus2" oncomplete="initQTips();">
+                         <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='Service',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+                         <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='Service',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+                       <apex:param value="Service" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+                       </apex:commandLink>
+                     </apex:facet>
+                                       
+                    <apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(pl.IsService)}"/>
+                    <apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg" alt="Checked" title="Checked" rendered="{!pl.IsService}"/>
+                </apex:column>
+
+                <apex:column headerValue="Kit/Bundle" width="70" headerClass="centeralign" styleClass="centeralign" rendered="{!lineType!='Opportunity'}">
+					<apex:facet name="header">
+                       <apex:commandLink action="{!manageLinesCon.sortResults}" value="Kit/Bundle" rerender="allBlock" status="updateStatus2" oncomplete="initQTips();">
+                         <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='KitBundle',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+                         <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='KitBundle',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+                       <apex:param value="KitBundle" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+                       </apex:commandLink>
+                    </apex:facet>
+                    <div>
+                    	<apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(pl.IsKit)}"/>
+                    	<apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg kitBundleClass1" alt="Checked" title="Checked" rendered="{!pl.IsKit}"/>
+                    </div>
+                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.IsKit}" >
+                    	<apex:outputText value="Kit/Bundle Members" style="font-weight: bold;font-size: 11px;color: #000;" />
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.IsKit}" style="margin: 3px 5px 3px 5px;">
+                    	<table class="tierPricing">
+                    		<thead>
+                     		<tr class="tertiaryPalette tertiaryPaletteNew">
+                     			<th style="color: white;"><b>Member</b></th>
+                     			<th style="color: white;"><b>Quantity</b></th>
+                     			<th style="color: white;"><b>Required</b></th>
+                     		</tr>
+                     	</thead>
+                     	<apex:variable value="oddTier" var="tierStyle"/>
+                     	<tbody>
+                     	<apex:repeat value="{!pl.KitMembers}" var="km" >
+                     		<tr class="{!tierStyle}">
+                     			<td ><apex:outputText value="Inactive " style="color:red;font-weight:bold;" rendered="{!( NOT(km.IsActive) || NOT(km.HasActivePBE) )}" />{!km.ProductName}</td>
+                     			<td class="rightalign">{!km.Quantity}</td>
+                     			<td class="centeralign">
+			                   		<apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(km.isKitBundleMemberRequired)}" />
+			                    	<apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg kitBundleClass1" alt="Checked" title="Checked" rendered="{!km.isKitBundleMemberRequired}" />
+                     			</td>
+                     		</tr>
+                     		<apex:variable value="{!if(tierStyle=='oddTier', '', 'oddTier')}" var="tierStyle" />
+                     	</apex:repeat>
+                     	</tbody>
+                    	</table>
+
+                    </apex:outputPanel>
+                </apex:column>
+                
+                <apex:column headerValue="List Price" headerClass="rightalign" styleClass="rightalign" width="140">
+                    <apex:facet name="header" >
+                      <apex:commandLink action="{!manageLinesCon.sortResults}" value="List Price" rerender="allBlock" status="updateStatus2" oncomplete="initQTips();">
+                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ListPrice',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ListPrice',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+                      <apex:param value="ListPrice" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+                      </apex:commandLink>
+                    </apex:facet>
+                    <apex:outputText value="{!manageLinesCon.currencySymbol} {!pl.ListPrice}" styleClass="rightalign" rendered="{!pl.ListPrice != ''}"/>
+                </apex:column>
+                <apex:column headerValue="Sales Price" headerClass="rightalign" width="45px">
+                	<!-- Five Star changes - display outputtext field for LockPrice Products -->
+                    <apex:inputText value="{!pl.SalesPrice}" styleClass="rightalign" onfocus="this.select()" rendered="{!NOT(pl.LockPrice)}"/>
+                    <apex:outputText value="{!pl.SalesPrice}" styleClass="KitMemberFields rightalign" style="float:right;" rendered="{!pl.LockPrice}" /><br />
+                    <apex:outputText value="{!IF(pl.SalesPriceError, 'Error: Invalid SalesPrice', '')}" style="color:red"/>                    
+                </apex:column>
+                <apex:column headerClass="rightalign" headerValue="Quantity" width="140">
+                    <apex:facet name="header">
+                        <apex:outputText >
+                            Quantity&nbsp;
+		                    <apex:commandLink action="{!manageLinesCon.addAll}" style="text-decoration:none;" title="Add Lines" reRender="topBlock,allBlock,recommendedBlock,favoriteBlock,recommendedPanel" status="updateStatus2" rendered="{!manageLinesCon.ProductLines.size>0}" styleClass="qtyButton" oncomplete="initJS();recalcTotalsAll();" >
+		                    	<i class="fa fa-plus-square fa-lg" style="padding-left: 5px;padding-right: 4px;"></i>
+		                        <!-- <apex:param name="addOptionals" value="0" /> -->
+		                        <apex:param name="lineType" value="All" />
+		                    </apex:commandLink>
+		                    <!-- 
+		                    <apex:commandLink action="{!manageLinesCon.addAllOptionalQuote}" style="text-decoration:none;" title="Add Optionals" reRender="topBlock,allBlock,recommendedBlock,favoriteBlock,recommendedPanel" status="updateStatus2" styleClass="qtyButtonOptional" oncomplete="initJS();"  rendered="{!lineType=='Quote' && NOT(manageLinesCon.disableQuoteOptionalManagedLines)}">
+		                    	<i class="fa fa-circle-o fa-lg" style="padding-right: 10px;"></i>
+		                        <apex:param name="lineType" value="All" />
+		                    </apex:commandLink>
+		                    -->
+
+                        </apex:outputText>
+                    </apex:facet>
+                    <apex:outputText >
+                    	<apex:inputText value="{!pl.Quantity}" onfocus="this.select()" id="qty" styleClass="qtyField rightalign" onKeyPress="return qtyEnterKey(event);" />
+                    	<br />
+                    	<apex:outputText value="{!IF(pl.QuantityError, 'Error: Invalid Quantity', '')}" style="color:red"/>
+                    </apex:outputText>
+                </apex:column>
+
+            </apex:pageBlockTable>
+            <apex:outputText rendered="{!manageLinesCon.ProductLines.size> 0}">
+                <script>
+                	//debugger;
+                	//var qty = document.getElementById('thePage:pageComp:editLinesComp:theForm:allBlock:productlines:0:qty');
+                	//if (qty != null) qty.focus();
+                </script>
+            </apex:outputText>
+            
+            <apex:pageBlockButtons location="bottom" rendered="{!manageLinesCon.ProductLines.size > 0}">
+                <apex:outputPanel id="productlinesbuttons">
+                    <img src="{!IF(manageLinesCon.CurrentPage == 1, '/img/search_prevarrow_disabled.gif', '/img/search_prevarrow.gif')}" class="prevArrow"/>&nbsp;
+                    <apex:commandLink styleClass="" value="Previous Page" action="{!manageLinesCon.previousPage}" style="color:{!If(manageLinesCon.CurrentPage == 1,'#999999','#000000')}" rendered="{!manageLinesCon.CurrentPage != 1}" reRender="productlines,productlinesbuttons" status="updateStatus" oncomplete="initQTips();" />
+                    <apex:outputText value="Previous Page" rendered="{!manageLinesCon.CurrentPage == 1}" style="color:#999999"/>
+                    &nbsp;&nbsp;<apex:outputText value="(Page {!manageLinesCon.CurrentPage} of {!manageLinesCon.PageCounts})" />&nbsp;&nbsp;
+                    <apex:outputText value="Next Page" rendered="{!manageLinesCon.CurrentPage == manageLinesCon.PageCounts}" style="color:#999999"/>
+                    <apex:commandLink value="Next Page" action="{!manageLinesCon.nextPage}" style="color:{!If(manageLinesCon.CurrentPage == manageLinesCon.PageCounts,'#999999','#000000')}" rendered="{!manageLinesCon.CurrentPage != manageLinesCon.PageCounts}" reRender="productlines,productlinesbuttons" status="updateStatus" oncomplete="initQTips();" />&nbsp;
+                    <img src="{!IF(manageLinesCon.CurrentPage == manageLinesCon.PageCounts, '/img/search_nextarrow_disabled.gif', '/img/search_nextarrow.gif')}" class="nextArrow"/>
+                </apex:outputPanel>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        </apex:tab>
+
+		<apex:tab label="Recommended" rendered="{!manageLinesCon.showRecommendedTab}">
+	       <apex:outputPanel id="recommendedPanel">
+	        	<apex:pageBlock id="recommendedBlock" >
+			        <apex:pageBlockTable value="{!manageLinesCon.recommendedProducts}" var="pl" id="recommendedProducts" rendered="{!manageLinesCon.recommendedProducts.size > 0}">
+
+		                <apex:column headerValue="Action" headerClass="{!actionWidth}" styleclass="actionColumn {!actionWidth}">
+							<apex:commandLink action="{!manageLinesCon.addLine}" style="text-decoration:none;" title="Add Line" rendered="{!(pl.IsActive && NOT(pl.HasInActiveKitMember))}" reRender="topBlock,recommendedBlock,recommendedPanel" status="updateStatus" oncomplete="initJS();recalcTotalsAll();">
+								<i class="fa fa-plus-square fa-lg"></i>
+		                        <apex:param value="{!pl.Index}" name="uindex" />
+		                        <apex:param value="{!manageLinesCon.headerDiscount}" name="headerDiscount" />
+		                        <!-- <apex:param name="addOptionals" value="0" /> -->
+		                        <apex:param name="lineType" value="Recommended" />
+		                   	</apex:commandLink>
+
+							<apex:outputPanel title="{!if(NOT(pl.IsActive), 'Unable to Add. Inactive Product', 'Unable to Add. Inactive Kit/Bundle Member Found')}" rendered="{!(NOT(pl.IsActive) || pl.HasInActiveKitMember)}">
+								<i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i>
+		                   	</apex:outputPanel>
+
+							<!-- 
+							<span style="padding-left:2px;" />
+		                   	<apex:commandLink action="{!manageLinesCon.addLineOptionalQuote}" style="text-decoration:none;" title="Add Optional" reRender="topBlock,recommendedBlock,recommendedPanel" status="updateStatus" oncomplete="initJS();" rendered="{!lineType=='Quote' && NOT(manageLinesCon.disableQuoteOptionalManagedLines)}">
+		                   		<i class="fa fa-circle-o fa-lg"></i>
+		                        <apex:param value="{!pl.Index}" name="uindex" />
+		                        <apex:param value="{!manageLinesCon.headerDiscount}" name="headerDiscount" />
+		                        <apex:param name="lineType" value="Recommended" />
+		                   	</apex:commandLink>
+		                    -->	
+
+		                   	<span style="padding-left:2px;" />
+							<apex:outputPanel id="bsOPId" >
+			                   	<apex:commandLink onclick="addFavorite(this);" action="{!manageLinesCon.addFavorite}" style="text-decoration:none;" title="Add Favorite" rendered="{!NOT(pl.IsFavorite)}" reRender="productlines,recommendedPanel,favoritePanel" oncomplete="initJS();">
+			                   		<i class="fa fa-heart-o fa-lg"></i>
+			                   		<apex:param value="{!pl.Index}" name="uindex" />
+			                        <apex:param value="{!pl.ProductId}" name="uProductId" />
+			                   	</apex:commandLink>
+			                   	<apex:commandLink onclick="removeFavorite(this);" action="{!manageLinesCon.removeFavorite}" style="text-decoration:none;" title="Remove Favorite" rendered="{!pl.IsFavorite}" reRender="productlines,recommendedPanel,favoritePanel" oncomplete="initJS();">
+			                   		<i class="fa fa-heart fa-lg redColor" ></i>
+			                   		<apex:param value="{!pl.Index}" name="uindex" />
+			                        <apex:param value="{!pl.ProductId}" name="uProductId" />
+			                   	</apex:commandLink>
+						        <apex:outputPanel id="favBusyOPId" styleClass="fa fa-lg favBusy">
+									<apex:image value="/img/loading32.gif" style="height:12px;" alt="Processing..." />
+						        </apex:outputPanel>
+							</apex:outputPanel>
+		                </apex:column>
+
+		                <apex:column >
+		                    <apex:facet name="header">                        
+		                      <apex:commandLink action="{!manageLinesCon.sortRecommendedProducts}" value="Product Name" rerender="recommendedBlock" status="updateStatus2" oncomplete="initQTips();">
+		                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ProductName',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ProductName',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+		                      	<apex:param value="ProductName" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                      </apex:commandLink>
+		                    </apex:facet>
+		
+							<div>
+								<!-- 
+		                    	<apex:outputLink id="productName" target="_blank" value="../{!pl.APDId}" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}">{!pl.ProductName}</apex:outputLink>
+		                     	-->	
+
+		                   		<apex:outputLink value="{!if(lineType=='Opportunity', URLFOR($Action.Product2.View, pl.ProductId), URLFOR($Action.kugo2p__AdditionalProductDetail__c.View, pl.APDId))}"
+		                   						 target="_blank" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}"                   						   
+		                   						 rendered="{! ($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+		                   			{!pl.ProductName}
+								</apex:outputLink>
+		
+								<!-- URLFOR( function with a blank target is not working in Lightning page and hence using direct url. Also tried sforce.one.navigateToSObject but is not loading properly -->
+		                   		<apex:outputLink value="/one/one.app#/sObject/{!if(lineType=='Opportunity', pl.ProductId, pl.APDId)}/view"	
+		                   						 target="_blank" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}"                    						 
+		                   						 rendered="{! NOT($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+		                   			{!pl.ProductName}
+								</apex:outputLink>
+		                    </div>
+
+		                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.hasRecommendedProducts}" >
+		                    	<apex:outputText value="Recommended Products" style="font-weight: bold;font-size: 11px;color: #000;" />
+		                    </apex:outputPanel>
+		                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.hasRecommendedProducts}" style="margin: 3px 5px 3px 5px;">
+		                    	<table class="tierPricing">
+		                    		<thead>
+		                     		<tr class="tertiaryPalette tertiaryPaletteNew">
+		                     			<th style="color: white;"><b>Product</b></th>
+		                     			<th style="color: white;"><b>Quantity</b></th>
+		                     		</tr>
+		                     	</thead>
+		                     	<tbody>
+		                     	<apex:repeat value="{!pl.RecommendedProducts}" var="rp" >
+		                     		<tr >
+		                     			<td >{!rp.Product__r.Name}</td>
+		                     			<td class="rightalign">{!rp.Quantity__c}</td>
+		                     		</tr>
+		                     	</apex:repeat>
+		                     	</tbody>
+		                    	</table>
+		                    </apex:outputPanel>		                    
+		                </apex:column>
+		                                
+		                <apex:column >
+		                    <apex:facet name="header">
+		                      <apex:commandLink action="{!manageLinesCon.sortRecommendedProducts}" value="Product Code" rerender="recommendedBlock" status="updateStatus2" oncomplete="initQTips();">
+		                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ProductCode',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ProductCode',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />                            
+		                      	<apex:param value="ProductCode" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                      </apex:commandLink>
+		                    </apex:facet>
+		                    
+		                    <div>
+			                    <!--
+			                    <apex:outputLink target="_blank" value="../{!pl.APDId}" >{!pl.ProductCode}</apex:outputLink>
+			                    -->
+			                    
+			               		<apex:outputLink value="{!if(lineType=='Opportunity', URLFOR($Action.Product2.View, pl.ProductId), URLFOR($Action.kugo2p__AdditionalProductDetail__c.View, pl.APDId))}"
+			               						 target="_blank"                   						   
+			               						 rendered="{! ($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+			               			{!pl.ProductCode}
+								</apex:outputLink>
+
+								<!-- URLFOR( function with a blank target is not working in Lightning page and hence using direct url. Also tried sforce.one.navigateToSObject but is not loading properly -->
+			                  		<apex:outputLink value="/one/one.app#/sObject/{!if(lineType=='Opportunity', pl.ProductId, pl.APDId)}/view"	
+			                  						 target="_blank"                    						 
+			                  						 rendered="{! NOT($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+			                  			{!pl.ProductCode}
+								</apex:outputLink>
+		                    </div>
+		                </apex:column>
+
+		                <apex:column width="55" headerClass="centeralign" styleClass="centeralign" rendered="{!lineType!='Opportunity'}">
+		                     <apex:facet name="header">
+		                       <apex:commandLink action="{!manageLinesCon.sortRecommendedProducts}" value="Service" rerender="recommendedBlock" status="updateStatus2" oncomplete="initQTips();">
+		                         <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='Service',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                         <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='Service',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+		                       <apex:param value="Service" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                       </apex:commandLink>
+		                     </apex:facet>
+		                                       
+		                    <apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(pl.IsService)}"/>
+		                    <apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg" alt="Checked" title="Checked" rendered="{!pl.IsService}"/>
+		                </apex:column>
+
+		                <apex:column headerValue="Kit/Bundle" width="70" headerClass="centeralign" styleClass="centeralign" rendered="{!lineType!='Opportunity'}">
+							<apex:facet name="header">
+		                       <apex:commandLink action="{!manageLinesCon.sortRecommendedProducts}" value="Kit/Bundle" rerender="recommendedBlock" status="updateStatus2" oncomplete="initQTips();">
+		                         <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='KitBundle',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                         <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='KitBundle',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+		                       <apex:param value="KitBundle" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                       </apex:commandLink>
+		                    </apex:facet>
+		                    <div>
+		                    	<apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(pl.IsKit)}"/>
+		                    	<apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg kitBundleClass1" alt="Checked" title="Checked" rendered="{!pl.IsKit}"/>
+		                    </div>
+		                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.IsKit}" >
+		                    	<apex:outputText value="Kit/Bundle Members" style="font-weight: bold;font-size: 11px;color: #000;" />
+		                    </apex:outputPanel>
+		                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.IsKit}" style="margin: 3px 5px 3px 5px;">
+
+		                    	<table class="tierPricing">
+		                    		<thead>
+		                     		<tr class="tertiaryPalette tertiaryPaletteNew">
+		                     			<th style="color: white;"><b>Member</b></th>
+		                     			<th style="color: white;"><b>Quantity</b></th>
+		                     			<th style="color: white;"><b>Required</b></th>
+		                     		</tr>
+		                     	</thead>
+		                     	<apex:variable value="oddTier" var="tierStyle"/>
+		                     	<tbody>
+		                     	<apex:repeat value="{!pl.KitMembers}" var="km" >
+		                     		<tr class="{!tierStyle}">
+		                     			<td ><apex:outputText value="Inactive " style="color:red;font-weight:bold;" rendered="{!( NOT(km.IsActive) || NOT(km.HasActivePBE) )}" />{!km.ProductName}</td>
+		                     			<td class="rightalign">{!km.Quantity}</td>
+		                     			<td class="centeralign">
+					                   		<apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(km.isKitBundleMemberRequired)}" />
+					                    	<apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg kitBundleClass1" alt="Checked" title="Checked" rendered="{!km.isKitBundleMemberRequired}" />
+		                     			</td>
+		                     		</tr>
+		                     		<apex:variable value="{!if(tierStyle=='oddTier', '', 'oddTier')}" var="tierStyle" />
+		                     	</apex:repeat>
+		                     	</tbody>
+		                    	</table>
+		                    </apex:outputPanel>
+		                </apex:column>
+		
+		                <apex:column headerValue="Unit Price" headerClass="rightalign" styleClass="rightalign" width="140">
+		                    <apex:facet name="header" >
+		                      <apex:commandLink action="{!manageLinesCon.sortRecommendedProducts}" value="List Price" rerender="recommendedBlock" status="updateStatus2" oncomplete="initQTips();">
+		                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ListPrice',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ListPrice',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+		                      <apex:param value="ListPrice" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                      </apex:commandLink>
+		                    </apex:facet>
+		                    <apex:outputText value="{!manageLinesCon.currencySymbol} {!pl.ListPrice}" styleClass="rightalign" rendered="{!pl.ListPrice != ''}"/>
+		                </apex:column>
+
+		                <apex:column headerClass="rightalign" headerValue="Quantity" width="140">
+		                    <apex:facet name="header">
+		                        <apex:outputText >
+		                            Quantity&nbsp;
+				                    <apex:commandLink action="{!manageLinesCon.addAll}" style="text-decoration:none;" title="Add Lines" reRender="topBlock,allBlock,recommendedBlock,favoriteBlock,recommendedPanel" status="updateStatus2" rendered="{!manageLinesCon.ProductLines.size>0}" styleClass="qtyButtonRecommended" oncomplete="initJS();recalcTotalsAll();" >
+				                    	<i class="fa fa-plus-square fa-lg" style="padding-left: 5px;padding-right: 4px;"></i>
+				                        <!-- <apex:param name="addOptionals" value="0" /> -->
+				                        <apex:param name="lineType" value="Recommended" />
+				                    </apex:commandLink>
+				                    <!-- 
+				                    <apex:commandLink action="{!manageLinesCon.addAllOptionalQuote}" style="text-decoration:none;" title="Add Optionals" reRender="topBlock,allBlock,recommendedBlock,favoriteBlock,recommendedPanel" status="updateStatus2" styleClass="qtyButtonRecommendedOptional" oncomplete="initJS();"  rendered="{!lineType=='Quote' && NOT(manageLinesCon.disableQuoteOptionalManagedLines)}">
+				                    	<i class="fa fa-circle-o fa-lg" style="padding-right: 10px;"></i>
+				                        <apex:param name="lineType" value="Recommended" />
+				                    </apex:commandLink>
+				                    -->
+		                        </apex:outputText>
+		                    </apex:facet>
+		                    <apex:outputText >
+		                    	<apex:inputText value="{!pl.Quantity}" onfocus="this.select()" id="qty" styleClass="qtyField rightalign" onKeyPress="return qtyEnterKey(event);" />
+		                    	<br />
+		                    	<apex:outputText value="{!IF(pl.QuantityError, 'Error: Invalid Quantity', '')}" style="color:red"/>
+		                    </apex:outputText>
+		                </apex:column>
+		
+		            </apex:pageBlockTable>
+		            <apex:outputText rendered="{!manageLinesCon.recommendedProducts.size == 0}" value="No Recommended Products Found." />
+
+			</apex:pageBlock>
+			</apex:outputPanel>
+		</apex:tab>
+
+		<apex:tab label="Favorites">
+	       <apex:outputPanel id="favoritePanel">
+	        	<apex:pageBlock id="favoriteBlock" >
+
+			        <apex:pageBlockTable value="{!manageLinesCon.favoriteProducts}" var="pl" id="favoriteProducts" rendered="{!manageLinesCon.favoriteProducts.size > 0}">
+
+		                <apex:column headerValue="Action" headerClass="{!actionWidth}" styleclass="actionColumn {!actionWidth}">
+							<apex:commandLink action="{!manageLinesCon.addLine}" style="text-decoration:none;" title="Add Line" rendered="{!(pl.IsActive && NOT(pl.HasInActiveKitMember))}" reRender="topBlock,recommendedBlock,recommendedPanel,favoriteBlock,favoritePanel" status="updateStatus" oncomplete="initJS();recalcTotalsAll();">
+								<i class="fa fa-plus-square fa-lg"></i>
+		                        <apex:param value="{!pl.Index}" name="uindex" />
+		                        <apex:param value="{!manageLinesCon.headerDiscount}" name="headerDiscount" />
+		                        <!-- <apex:param name="addOptionals" value="0" /> -->
+		                        <apex:param name="lineType" value="Favorites" />
+		                   	</apex:commandLink>
+
+							<apex:outputPanel title="{!if(NOT(pl.IsActive), 'Unable to Add. Inactive Product', 'Unable to Add. Inactive Kit/Bundle Member Found')}" rendered="{!(NOT(pl.IsActive) || pl.HasInActiveKitMember)}">
+								<i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i>
+		                   	</apex:outputPanel>
+
+							<!-- 
+							<span style="padding-left:2px;" />
+		                   	<apex:commandLink action="{!manageLinesCon.addLineOptionalQuote}" style="text-decoration:none;" title="Add Optional" reRender="topBlock,favoriteBlock,favoritePanel" status="updateStatus" oncomplete="initJS();" rendered="{!lineType=='Quote' && NOT(manageLinesCon.disableQuoteOptionalManagedLines)}">
+		                   		<i class="fa fa-circle-o fa-lg"></i>
+		                        <apex:param value="{!pl.Index}" name="uindex" />
+		                        <apex:param value="{!manageLinesCon.headerDiscount}" name="headerDiscount" />
+		                        <apex:param name="lineType" value="Favorites" />
+		                   	</apex:commandLink>
+		                    -->	
+
+		                   	<span style="padding-left:2px;" />
+							<apex:outputPanel id="bsOPId" >
+			                   	<apex:commandLink onclick="addFavorite(this);" action="{!manageLinesCon.addFavorite}" style="text-decoration:none;" title="Add Favorite" rendered="{!NOT(pl.IsFavorite)}" reRender="productlines,recommendedPanel,favoritePanel" oncomplete="initJS();">
+			                   		<i class="fa fa-heart-o fa-lg"></i>
+			                   		<apex:param value="{!pl.Index}" name="uindex" />
+			                        <apex:param value="{!pl.ProductId}" name="uProductId" />
+			                   	</apex:commandLink>
+			                   	<apex:commandLink onclick="removeFavorite(this);" action="{!manageLinesCon.removeFavorite}" style="text-decoration:none;" title="Remove Favorite" rendered="{!pl.IsFavorite}" reRender="productlines,recommendedPanel,favoritePanel" oncomplete="initJS();">
+			                   		<i class="fa fa-heart fa-lg redColor" ></i>
+			                   		<apex:param value="{!pl.Index}" name="uindex" />
+			                        <apex:param value="{!pl.ProductId}" name="uProductId" />
+			                   	</apex:commandLink>
+						        <apex:outputPanel id="favBusyOPId" styleClass="fa fa-lg favBusy">
+									<apex:image value="/img/loading32.gif" style="height:12px;" alt="Processing..." />
+						        </apex:outputPanel>
+							</apex:outputPanel>
+		                </apex:column>
+
+		                <apex:column >
+		                    <apex:facet name="header">                        
+		                      <apex:commandLink action="{!manageLinesCon.sortFavoriteProducts}" value="Product Name" rerender="favoriteBlock" status="updateStatus2" oncomplete="initQTips();">
+		                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ProductName',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ProductName',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+		                      	<apex:param value="ProductName" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                      </apex:commandLink>
+		                    </apex:facet>
+		
+							<div>
+								<!-- 
+		                    	<apex:outputLink id="productName" target="_blank" value="../{!pl.APDId}" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}">{!pl.ProductName}</apex:outputLink>
+		                    	-->
+
+		                   		<apex:outputLink value="{!if(lineType=='Opportunity', URLFOR($Action.Product2.View, pl.ProductId), URLFOR($Action.kugo2p__AdditionalProductDetail__c.View, pl.APDId))}"
+		                   						 target="_blank" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}"                   						   
+		                   						 rendered="{! ($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+		                   			{!pl.ProductName}
+								</apex:outputLink>
+		
+								<!-- URLFOR( function with a blank target is not working in Lightning page and hence using direct url. Also tried sforce.one.navigateToSObject but is not loading properly -->
+		                   		<apex:outputLink value="/one/one.app#/sObject/{!if(lineType=='Opportunity', pl.ProductId, pl.APDId)}/view"	
+		                   						 target="_blank" styleClass="{!IF(pl.hasRecommendedProducts,'recommendedProductsClass','')}"                    						 
+		                   						 rendered="{! NOT($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+		                   			{!pl.ProductName}
+								</apex:outputLink>
+		                    </div>
+
+		                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.hasRecommendedProducts}" >
+		                    	<apex:outputText value="Recommended Products" style="font-weight: bold;font-size: 11px;color: #000;" />
+		                    </apex:outputPanel>
+		                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.hasRecommendedProducts}" style="margin: 3px 5px 3px 5px;">
+		                    	<table class="tierPricing">
+		                    		<thead>
+		                     		<tr class="tertiaryPalette tertiaryPaletteNew">
+		                     			<th style="color: white;"><b>Product</b></th>
+		                     			<th style="color: white;"><b>Quantity</b></th>
+		                     		</tr>
+		                     	</thead>
+		                     	<tbody>
+		                     	<apex:repeat value="{!pl.RecommendedProducts}" var="rp" >
+		                     		<tr >
+		                     			<td >{!rp.Product__r.Name}</td>
+		                     			<td class="rightalign">{!rp.Quantity__c}</td>
+		                     		</tr>
+		                     	</apex:repeat>
+		                     	</tbody>
+		                    	</table>
+		                    </apex:outputPanel>		                    
+		                </apex:column>
+		                                
+		                <apex:column >
+		                    <apex:facet name="header">
+		                      <apex:commandLink action="{!manageLinesCon.sortFavoriteProducts}" value="Product Code" rerender="favoriteBlock" status="updateStatus2" oncomplete="initQTips();">
+		                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ProductCode',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ProductCode',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />                            
+		                      	<apex:param value="ProductCode" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                      </apex:commandLink>
+		                    </apex:facet>
+		                    
+		                    <div>
+			                    <!--
+			                    <apex:outputLink target="_blank" value="../{!pl.APDId}" >{!pl.ProductCode}</apex:outputLink>
+			                    -->
+
+			               		<apex:outputLink value="{!if(lineType=='Opportunity', URLFOR($Action.Product2.View, pl.ProductId), URLFOR($Action.kugo2p__AdditionalProductDetail__c.View, pl.APDId))}"
+			               						 target="_blank"                   						   
+			               						 rendered="{! ($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+			               			{!pl.ProductCode}
+								</apex:outputLink>
+
+								<!-- URLFOR( function with a blank target is not working in Lightning page and hence using direct url. Also tried sforce.one.navigateToSObject but is not loading properly -->
+			                  		<apex:outputLink value="/one/one.app#/sObject/{!if(lineType=='Opportunity', pl.ProductId, pl.APDId)}/view"	
+			                  						 target="_blank"                    						 
+			                  						 rendered="{! NOT($User.UIThemeDisplayed == 'Theme1' || $User.UIThemeDisplayed == 'Theme2' || $User.UIThemeDisplayed == 'Theme3' || $User.UIThemeDisplayed == 'PortalDefault' || $User.UIThemeDisplayed == 'Webstore') }">
+			                  			{!pl.ProductCode}
+								</apex:outputLink>
+		                    </div>
+		                </apex:column>
+
+		                <apex:column width="55" headerClass="centeralign" styleClass="centeralign" rendered="{!lineType!='Opportunity'}">
+		                     <apex:facet name="header">
+		                       <apex:commandLink action="{!manageLinesCon.sortFavoriteProducts}" value="Service" rerender="favoriteBlock" status="updateStatus2" oncomplete="initQTips();">
+		                         <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='Service',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                         <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='Service',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+		                       <apex:param value="Service" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                       </apex:commandLink>
+		                     </apex:facet>
+		                                       
+		                    <apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(pl.IsService)}"/>
+		                    <apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg" alt="Checked" title="Checked" rendered="{!pl.IsService}"/>
+		                </apex:column>		                
+
+		                <apex:column headerValue="Kit/Bundle" width="70" headerClass="centeralign" styleClass="centeralign" rendered="{!lineType!='Opportunity'}">
+							<apex:facet name="header">
+		                       <apex:commandLink action="{!manageLinesCon.sortFavoriteProducts}" value="Kit/Bundle" rerender="favoriteBlock" status="updateStatus2" oncomplete="initQTips();">
+		                         <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='KitBundle',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                         <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='KitBundle',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+		                       <apex:param value="KitBundle" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                       </apex:commandLink>
+		                    </apex:facet>
+		                    <div>
+		                    	<apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(pl.IsKit)}"/>
+		                    	<apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg kitBundleClass1" alt="Checked" title="Checked" rendered="{!pl.IsKit}"/>
+		                    </div>
+		                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.IsKit}" >
+		                    	<apex:outputText value="Kit/Bundle Members" style="font-weight: bold;font-size: 11px;color: #000;" />
+		                    </apex:outputPanel>
+		                    <apex:outputPanel layout="block" styleClass="hidden" rendered="{!pl.IsKit}" style="margin: 3px 5px 3px 5px;">
+
+		                    	<table class="tierPricing">
+		                    		<thead>
+		                     		<tr class="tertiaryPalette tertiaryPaletteNew">
+		                     			<th style="color: white;"><b>Member</b></th>
+		                     			<th style="color: white;"><b>Quantity</b></th>
+		                     			<th style="color: white;"><b>Required</b></th>
+		                     		</tr>
+		                     	</thead>
+		                     	<apex:variable value="oddTier" var="tierStyle"/>
+		                     	<tbody>
+		                     	<apex:repeat value="{!pl.KitMembers}" var="km" >
+		                     		<tr class="{!tierStyle}">
+		                     			<td ><apex:outputText value="Inactive " style="color:red;font-weight:bold;" rendered="{!( NOT(km.IsActive) || NOT(km.HasActivePBE) )}" />{!km.ProductName}</td>
+		                     			<td class="rightalign">{!km.Quantity}</td>
+		                     			<td class="centeralign">
+					                   		<apex:image url="/img/checkbox_unchecked.gif" width="21" height="16" styleClass="checkImg" alt="Not Checked" title="Not Checked" rendered="{!NOT(km.isKitBundleMemberRequired)}" />
+					                    	<apex:image url="/img/checkbox_checked.gif" width="21" height="16" styleClass="checkImg kitBundleClass1" alt="Checked" title="Checked" rendered="{!km.isKitBundleMemberRequired}" />
+		                     			</td>
+		                     		</tr>
+		                     		<apex:variable value="{!if(tierStyle=='oddTier', '', 'oddTier')}" var="tierStyle" />
+		                     	</apex:repeat>
+		                     	</tbody>
+		                    	</table>
+		                    </apex:outputPanel>
+		                </apex:column>
+		
+		                <apex:column headerValue="Unit Price" headerClass="rightalign" styleClass="rightalign" width="140">
+		                    <apex:facet name="header" >
+		                      <apex:commandLink action="{!manageLinesCon.sortFavoriteProducts}" value="List Price" rerender="favoriteBlock" status="updateStatus2" oncomplete="initQTips();">
+		                        <apex:image url="/s.gif" rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection=='desc',true,false),IF(manageLinesCon.sortExpression=='ListPrice',true,false))}" styleClass="sortDesc" title="Sorted Descending" alt="Sorted Descending" />
+		                        <apex:image url="/s.gif"  rendered="{!AND(IF($User.UIThemeDisplayed == 'Theme3',true,false),IF(manageLinesCon.sortDirection!='desc',true,false),IF(manageLinesCon.sortExpression=='ListPrice',true,false))}" styleClass="sortAsc" title="Sorted Ascending" alt="Sorted Ascending" />
+		                      <apex:param value="ListPrice" name="column" assignTo="{!manageLinesCon.sortExpression}" ></apex:param>
+		                      </apex:commandLink>
+		                    </apex:facet>
+		                    <apex:outputText value="{!manageLinesCon.currencySymbol} {!pl.ListPrice}" styleClass="rightalign" rendered="{!pl.ListPrice != ''}"/>
+		                </apex:column>
+
+		                <apex:column headerClass="rightalign" headerValue="Quantity" width="140">
+		                    <apex:facet name="header">
+		                        <apex:outputText >
+		                            Quantity&nbsp;
+				                    <apex:commandLink action="{!manageLinesCon.addAll}" style="text-decoration:none;" title="Add Lines" reRender="topBlock,allBlock,favoriteBlock,favoritePanel" status="updateStatus2" rendered="{!manageLinesCon.ProductLines.size>0}" styleClass="qtyButtonRecommended" oncomplete="initJS();recalcTotalsAll();" >
+				                    	<i class="fa fa-plus-square fa-lg" style="padding-left: 5px;padding-right: 4px;"></i>
+				                        <!-- <apex:param name="addOptionals" value="0" /> -->
+				                        <apex:param name="lineType" value="Favorites" />
+				                    </apex:commandLink>
+				                    <!-- 
+				                    <apex:commandLink action="{!manageLinesCon.addAllOptionalQuote}" style="text-decoration:none;" title="Add Optionals" reRender="topBlock,allBlock,favoriteBlock,favoritePanel" status="updateStatus2" styleClass="qtyButtonRecommendedOptional" oncomplete="initJS();"  rendered="{!lineType=='Quote' && NOT(manageLinesCon.disableQuoteOptionalManagedLines)}">
+				                    	<i class="fa fa-circle-o fa-lg" style="padding-right: 10px;"></i>
+				                        <apex:param name="lineType" value="Favorites" />
+				                    </apex:commandLink>
+				                    --> 
+		                        </apex:outputText>
+		                    </apex:facet>
+		                    <apex:outputText >
+		                    	<apex:inputText value="{!pl.Quantity}" onfocus="this.select()" id="qty" styleClass="qtyField rightalign" onKeyPress="return qtyEnterKey(event);" />
+		                    	<br />
+		                    	<apex:outputText value="{!IF(pl.QuantityError, 'Error: Invalid Quantity', '')}" style="color:red"/>
+		                    </apex:outputText>
+		                </apex:column>
+		
+		            </apex:pageBlockTable>
+		            <apex:outputPanel rendered="{!manageLinesCon.TotalFavorites == 0}" >
+		            	No Favorites Found. Click <i class="fa fa-heart-o fa-lg"></i> to Favorite.
+		            </apex:outputPanel>
+
+			</apex:pageBlock>
+			</apex:outputPanel>
+		</apex:tab>		
+
+        </apex:tabPanel>
+        </apex:outputPanel>
+
+		<!-- Five Star changes -->	
+		<div id="assignRecipientsDiv" class="assignRecipientsDiv">
+		    <apex:outputPanel id="assignRecipientsOP">
+		        <c:ManageRecipient mode="AssignRecipients" manageRecipientCon="{!manageLinesCon.manageRecipientCon}" rendered="{!manageLinesCon.showRecipient}" />
+		    </apex:outputPanel>
+		</div>
+    </apex:form>
+
+</apex:component>

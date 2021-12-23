@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_Winners_by_Year_Won__c</fullName>
+    <description>This field shows the # of certified winners by years won (updated after Sales Close)</description>
+    <externalId>false</externalId>
+    <label>Actual Winners by Year Won</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

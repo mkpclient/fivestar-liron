@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CityImageURL__c</fullName>
+    <description>URL for the file location of the City Image photo.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used to populate cover image on Digital Spotlight Award when user has no profile photo or user-entered photo.</inlineHelpText>
+    <label>City Image URL</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

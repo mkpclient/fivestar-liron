@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Experience_Owner__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>CSR who is responsible for this client experience</description>
+    <externalId>false</externalId>
+    <inlineHelpText>CSR who is responsible for this client experience</inlineHelpText>
+    <label>Client Experience Owner</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Client_Experiences</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

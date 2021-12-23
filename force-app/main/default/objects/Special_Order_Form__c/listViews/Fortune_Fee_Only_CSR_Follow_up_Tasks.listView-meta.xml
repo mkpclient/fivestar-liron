@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fortune_Fee_Only_CSR_Follow_up_Tasks</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>NAME</columns>
+    <columns>Client_Experience_Status__c</columns>
+    <columns>Package__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Related_Contact__c</columns>
+    <columns>Special_Instructions_for_Production__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Order_Status__c</field>
+        <operation>equals</operation>
+        <value>Released</value>
+    </filters>
+    <filters>
+        <field>Next_Action_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Fortune Fee-Only CSR Follow-up Tasks</label>
+</ListView>

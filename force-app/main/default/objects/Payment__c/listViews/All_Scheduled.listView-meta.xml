@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Scheduled</fullName>
+    <columns>NAME</columns>
+    <columns>Amount__c</columns>
+    <columns>Billing_Name__c</columns>
+    <columns>NetAmount__c</columns>
+    <columns>Payment_Processor__c</columns>
+    <columns>Scheduled_Payment_Date__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Scheduled</value>
+    </filters>
+    <label>All Scheduled Payments</label>
+</ListView>

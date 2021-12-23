@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PUBcontact3__c</fullName>
+    <description>Third line of contact info for 5 POINT mag (18th page profile)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Third line of contact info for 5 POINT mag (18th page profile)</inlineHelpText>
+    <label>PUBcontact3</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

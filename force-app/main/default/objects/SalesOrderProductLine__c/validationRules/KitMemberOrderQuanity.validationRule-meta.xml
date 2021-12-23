@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KitMemberOrderQuanity</fullName>
+    <active>false</active>
+    <description>Not Active</description>
+    <errorConditionFormula>AND (1=2, ISCHANGED ( Quantity__c ),  (KitBundleLine__c  &lt;&gt; null))</errorConditionFormula>
+    <errorDisplayField>Quantity__c</errorDisplayField>
+    <errorMessage>Kit/Bundle Member Quantity Cannot Be Changed</errorMessage>
+</ValidationRule>

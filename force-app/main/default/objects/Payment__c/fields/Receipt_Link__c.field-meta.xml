@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Receipt_Link__c</fullName>
+    <description>Auto generated link for PaymentVF page under default site</description>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;/apex/Payment2VF?orderId=&quot;+Sales_Order__c+&quot;&amp;paymentId=&quot;+Id, &quot;[Receipt]&quot;,
+&quot;_blank&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Link to send directly for receipt of this payment</inlineHelpText>
+    <label>Receipt Link</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

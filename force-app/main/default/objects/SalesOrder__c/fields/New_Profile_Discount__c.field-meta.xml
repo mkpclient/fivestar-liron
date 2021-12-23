@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Profile_Discount__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(New_Profile_Total__c &lt;&gt; 0, IF(New_Profile_Actual__c &lt;&gt; 0, (New_Profile_Total__c - New_Profile_Actual__c) / New_Profile_Total__c, 0), 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>New Profile Discount %</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Facebook_IDs</fullName>
+    <columns>NAME</columns>
+    <columns>ASfb__c</columns>
+    <columns>ASli__c</columns>
+    <columns>ASname__c</columns>
+    <columns>ASplatform__c</columns>
+    <columns>Fulfillment__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Contact__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>Digital Post</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>LAST_N_DAYS:45</value>
+    </filters>
+    <filters>
+        <field>ASfb__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>Facebook IDs</label>
+    <sharedTo>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

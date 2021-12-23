@@ -1,0 +1,33 @@
+<apex:page standardController="SalesOrder__c" renderas="pdf" showHeader="false" sidebar="false" extensions="SalesOrderPDFExtension" standardStylesheets="false"
+  cache="false">
+
+  <head>
+    <style type="text/css">
+      @page {
+        @bottom-left {
+          content: "Order: {!salesOrder.Name}";
+          font-size: 10.5px;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        @bottom-right {
+          content: "Page " counter(page) " of " counter(pages);
+          font-size: 10.5px;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+      }
+    </style>
+  </head>
+
+  <div id="body">
+    <div class="pageMessage">
+      <apex:outputPanel id="pageMessage">
+        <apex:pageMessages id="msg" />
+      </apex:outputPanel>
+    </div>
+    <br/>
+    <apex:outputPanel >
+      <c:SalesOrderPDF recId="{!salesOrder.Id}" renderAs="pdf" />
+    </apex:outputPanel>
+  </div>
+</apex:page>

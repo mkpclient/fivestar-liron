@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>awardworthiness</fullName>
+                <default>false</default>
+                <label>1 I don’t see any value in marketing the award (award worthiness)</label>
+            </value>
+            <value>
+                <fullName>dontneedmarketing</fullName>
+                <default>false</default>
+                <label>2 I don’t need to do marketing. My business comes from referral.</label>
+            </value>
+            <value>
+                <fullName>noroi</fullName>
+                <default>false</default>
+                <label>3 I don’t see any value in marketing the award (no real ROI).</label>
+            </value>
+            <value>
+                <fullName>expensive</fullName>
+                <default>false</default>
+                <label>4 Options are too expensive.</label>
+            </value>
+            <value>
+                <fullName>notime</fullName>
+                <default>false</default>
+                <label>5 I don’t have time to use the tools.</label>
+            </value>
+            <value>
+                <fullName>noprofileinmagazine</fullName>
+                <default>false</default>
+                <label>6 I don’t want to have a profile in a magazine.</label>
+            </value>
+            <value>
+                <fullName>compliancewillnotletmedoanything</fullName>
+                <default>false</default>
+                <label>7 Compliance issue or concern.</label>
+            </value>
+            <value>
+                <fullName>companydoesmarketing</fullName>
+                <default>false</default>
+                <label>8 My Company does all my marketing.</label>
+            </value>
+            <value>
+                <fullName>nothingfromitlastyear</fullName>
+                <default>false</default>
+                <label>9 I didn’t get anything from it last year.</label>
+            </value>
+            <value>
+                <fullName>companydoesmarketingre</fullName>
+                <default>false</default>
+                <label>7RE My Company does all my marketing.</label>
+            </value>
+            <value>
+                <fullName>useothermarketingre</fullName>
+                <default>false</default>
+                <label>8RE I Use Other Marketing Programs &amp; Services</label>
+            </value>
+            <value>
+                <fullName>outofmoneyre</fullName>
+                <default>false</default>
+                <label>9RE I’m out of budget / I don’t have any money</label>
+            </value>
+            <value>
+                <fullName>nothingfromitlastyearre</fullName>
+                <default>false</default>
+                <label>10RE I didn’t get anything from it last year.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

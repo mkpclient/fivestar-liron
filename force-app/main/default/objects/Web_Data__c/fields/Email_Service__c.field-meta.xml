@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Service__c</fullName>
+    <description>E-newsletter Email Preference</description>
+    <externalId>false</externalId>
+    <formula>Text(Fulfillment__r.Email_Announcement_Service__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>E-newsletter Email Preference</inlineHelpText>
+    <label>Email Service</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

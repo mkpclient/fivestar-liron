@@ -1,0 +1,67 @@
+<template>
+  <template if:true={recordId}>
+    <template if:false={componentReady}>
+      <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <lightning-quick-action-panel header={headerTitle}>
+      <lightning-card
+        variant="Narrow"
+        title={headerTitle}
+        icon-name="standard:product_item"
+        class="slds-var-m-around_medium"
+        if:true={componentReady}
+      >
+        <lightning-button-group slot="actions">
+          <lightning-button
+            label="Return to Order"
+            onclick={handleCloseAction}
+            disabled={isButtonDisabled}
+            variant="brand"
+          ></lightning-button>
+        </lightning-button-group>
+        <div
+          class="slds-card__body slds-card__body_inner"
+          if:true={orderLineId}
+        >
+          <c-manage-lines-edit-line
+            onsuccess={handleFormSuccess}
+            order-line-id={orderLineId}
+            oncancel={handleFormCancel}
+          ></c-manage-lines-edit-line>
+        </div>
+        <template if:false={orderLineId}>
+          <template if:true={SalesOrder__c}>
+            <!-- <lightning-formatted-url
+              if:true={isVFPage}
+              value={recordLink}
+              label="Return to Record"
+            >
+            </lightning-formatted-url> -->
+            <c-manage-lines-recipients
+              sales-order={SalesOrder__c}
+              onsetcomponentview={toggleRecipientView}
+              oneditline={handleOrderLineEdit}
+              is-editable={isEditable}
+            ></c-manage-lines-recipients>
+            <template if:true={isEditable}>
+              <template if:false={isAddRecipient}>
+                <c-manage-lines-products
+                  sales-order={SalesOrder__c}
+                  onpricebookchange={handleChangePriceBook}
+                  onlineadd={handleAddLine}
+                ></c-manage-lines-products>
+              </template>
+            </template>
+          </template>
+        </template>
+        <div slot="footer">
+          <lightning-button
+            label="Back to Order"
+            onclick={handleCloseAction}
+            disabled={isButtonDisabled}
+          ></lightning-button>
+        </div>
+      </lightning-card>
+    </lightning-quick-action-panel>
+  </template>
+</template>

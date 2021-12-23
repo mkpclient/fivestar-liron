@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ENL_Logo__c</fullName>
+    <description>e-newsletter logo</description>
+    <externalId>false</externalId>
+    <inlineHelpText>e-newsletter logo</inlineHelpText>
+    <label>ENL Logo</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

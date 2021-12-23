@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Related Order</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Related Order</inlineHelpText>
+    <label>Order</label>
+    <referenceTo>kugo2p__SalesOrder__c</referenceTo>
+    <relationshipLabel>Order Form</relationshipLabel>
+    <relationshipName>Order_Forms</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

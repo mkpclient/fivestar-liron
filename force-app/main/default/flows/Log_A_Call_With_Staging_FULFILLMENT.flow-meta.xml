@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>49.0</apiVersion>
+    <decisions>
+        <name>Change_Status</name>
+        <label>Change Status</label>
+        <locationX>1126</locationX>
+        <locationY>644</locationY>
+        <defaultConnector>
+            <targetReference>Update_Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Status is not no change</defaultConnectorLabel>
+        <rules>
+            <name>Status_is_no_change</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Status_DropDown</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NO CHANGE</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Next_Action_No_Change</targetReference>
+            </connector>
+            <label>Status is no change</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Delivered_On_Blank</name>
+        <label>Is Delivered On Blank</label>
+        <locationX>874</locationX>
+        <locationY>513</locationY>
+        <defaultConnector>
+            <targetReference>Update_Delivered_on_Date</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Delivered on is not blank</defaultConnectorLabel>
+        <rules>
+            <name>Delivered_On_Is_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Delivered_On</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Change_Status</targetReference>
+            </connector>
+            <label>Delivered On Is Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Final_Delivery_Blank</name>
+        <label>Is Final Delivery Blank</label>
+        <locationX>634</locationX>
+        <locationY>504</locationY>
+        <defaultConnector>
+            <targetReference>Update_Final_Delivery</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Final_Delivery_is_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Final_Delivery</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Is_Delivered_On_Blank</targetReference>
+            </connector>
+            <label>Final Delivery is Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Next_Action_Date_Blank</name>
+        <label>Is Next Action Date Blank</label>
+        <locationX>156</locationX>
+        <locationY>514</locationY>
+        <defaultConnector>
+            <targetReference>Update_Next_Action_Date</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Next Action is not blank</defaultConnectorLabel>
+        <rules>
+            <name>Next_Action_Is_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Next_Action</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Is_Proof_Delivery_Blank</targetReference>
+            </connector>
+            <label>Next Action is Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Next_Action_No_Change</name>
+        <label>Is Next Action No Change</label>
+        <locationX>1354</locationX>
+        <locationY>643</locationY>
+        <defaultConnector>
+            <targetReference>Update_Next_Action</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Next Action is Not no Change</defaultConnectorLabel>
+        <rules>
+            <name>Next_Action_is_no_Change</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Next_Action_DropDown</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NO CHANGE</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Proof_Locatoion_is_Blank</targetReference>
+            </connector>
+            <label>Next Action is no Change</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Proof_Delivery_Blank</name>
+        <label>Is Proof Delivery Blank</label>
+        <locationX>394</locationX>
+        <locationY>512</locationY>
+        <defaultConnector>
+            <targetReference>Update_Proof_Delivery</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Proof Delivery Is Not Blank</defaultConnectorLabel>
+        <rules>
+            <name>Proof_Delivery_is_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Proof_Delivery</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Is_Final_Delivery_Blank</targetReference>
+            </connector>
+            <label>Proof Delivery is Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Proof_Locatoion_is_Blank</name>
+        <label>Proof Locatoion is Blank</label>
+        <locationX>1631</locationX>
+        <locationY>636</locationY>
+        <defaultConnector>
+            <targetReference>Update_Proof_Location</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Proof_Location_is_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Proof_Location</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Proof_Notes_for_Client_is_Blank</targetReference>
+            </connector>
+            <label>Proof Location is Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Proof_Notes_for_Client_is_Blank</name>
+        <label>Proof Notes for Client is Blank</label>
+        <locationX>1932</locationX>
+        <locationY>643</locationY>
+        <defaultConnector>
+            <targetReference>Update_Proof_Notes</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Proof Notes for Client is Not Blank</defaultConnectorLabel>
+        <rules>
+            <name>Proof_Notes_for_Client_is_Blank_decision</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Proof_Notes_for_Client</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>CreateActivity</targetReference>
+            </connector>
+            <label>Proof Notes for Client is Blank</label>
+        </rules>
+    </decisions>
+    <description>Similar to log a call with staging but set up for fulfillments.
+
+Added Decision and update mechanism that accounts for all three delivery date fields as well as &quot;no change&quot; vs change in status for status and next action.
+
+Added contact ID to original query to avoid having to pass through button.
+
+Updated &quot;callback date&quot; to datetime
+
+Temporarily removed callback date due to datetime limitation in visual flows
+
+Added preservation mechanism for callback date, removed earlier attempted mechanism from record update.
+
+Added box to enter subject
+
+Converted subject to dropdown list with Call, Email
+Added date fields to primary page, worked in decisions
+
+Fixed missing date inputs from record updates
+
+Updated subject with custom hidden field list to contain proper choices
+
+Added mechanism to update next action date if desired
+
+Moved next action to the top of the list, added back button to final screen, fixed issue with incorrect decision pathing on next action
+
+completed decision/update mechansim for proof info
+temporarily removed reference to ad prod comments</description>
+    <dynamicChoiceSets>
+        <name>ActivityChoices</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Activity_Subject_Choices__c</picklistField>
+        <picklistObject>Fulfillment__c</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>InteractionType</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Interaction_Type__c</picklistField>
+        <picklistObject>Task</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>NextAction</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Next_Action_Xfer__c</picklistField>
+        <picklistObject>Fulfillment__c</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>Status</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Status_Xfer__c</picklistField>
+        <picklistObject>Fulfillment__c</picklistObject>
+    </dynamicChoiceSets>
+    <formulas>
+        <description>Current User ID</description>
+        <name>UserID</name>
+        <dataType>String</dataType>
+        <expression>{!$User.Id}</expression>
+    </formulas>
+    <interviewLabel>Log A Call With Staging FULFILLMENT {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Log A Call With Staging FULFILLMENT</label>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Notes</name>
+        <label>Create Notes</label>
+        <locationX>2063</locationX>
+        <locationY>750</locationY>
+        <connector>
+            <targetReference>Preserve_CallBack_Date</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Assigned_To__c</field>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Comments__c</field>
+            <value>
+                <elementReference>Comments</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>LaunchedFulfillmentContact</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Due_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Fulfillment__c</field>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Subject_DropDown</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Notes__c</object>
+    </recordCreates>
+    <recordCreates>
+        <name>CreateActivity</name>
+        <label>CreateActivity</label>
+        <locationX>2245</locationX>
+        <locationY>643</locationY>
+        <connector>
+            <targetReference>Create_Notes</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>10</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>Subject_DropDown</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>LaunchedFulfillmentContact</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordCreates>
+    <recordLookups>
+        <name>FindCurrentFulfillment</name>
+        <label>FindCurrentFulfillment</label>
+        <locationX>19</locationX>
+        <locationY>650</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Log_a_Call</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <object>Fulfillment__c</object>
+        <outputAssignments>
+            <assignToReference>OriginalCallBackDateTime</assignToReference>
+            <field>Callback_Date__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>LaunchedFulfillmentContact</assignToReference>
+            <field>PrimaryRecipient__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>OriginalStatus</assignToReference>
+            <field>Status__c</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <name>Preserve_CallBack_Date</name>
+        <label>Preserve CallBack Date</label>
+        <locationX>2079</locationX>
+        <locationY>864</locationY>
+        <connector>
+            <targetReference>Final_Screen</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Callback_Date__c</field>
+            <value>
+                <elementReference>OriginalCallBackDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Delivered_on_Date</name>
+        <label>Update Delivered on Date</label>
+        <locationX>872</locationX>
+        <locationY>646</locationY>
+        <connector>
+            <targetReference>Change_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Delivered_on_date__c</field>
+            <value>
+                <elementReference>Delivered_On</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Final_Delivery</name>
+        <label>Update Final Delivery</label>
+        <locationX>631</locationX>
+        <locationY>656</locationY>
+        <connector>
+            <targetReference>Is_Delivered_On_Blank</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Estimated_Delivery_Date__c</field>
+            <value>
+                <elementReference>Final_Delivery</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Next_Action</name>
+        <label>Update Next Action</label>
+        <locationX>1349</locationX>
+        <locationY>526</locationY>
+        <connector>
+            <targetReference>Proof_Locatoion_is_Blank</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Next_Action__c</field>
+            <value>
+                <elementReference>Next_Action_DropDown</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Next_Action_Date</name>
+        <label>Update Next Action Date</label>
+        <locationX>154</locationX>
+        <locationY>651</locationY>
+        <connector>
+            <targetReference>Is_Proof_Delivery_Blank</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Next_Action_Date__c</field>
+            <value>
+                <elementReference>Next_Action</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Proof_Delivery</name>
+        <label>Update Proof Delivery</label>
+        <locationX>392</locationX>
+        <locationY>657</locationY>
+        <connector>
+            <targetReference>Is_Final_Delivery_Blank</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Proof_Delivery_Date__c</field>
+            <value>
+                <elementReference>Proof_Delivery</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Proof_Location</name>
+        <label>Update Proof Location</label>
+        <locationX>1626</locationX>
+        <locationY>512</locationY>
+        <connector>
+            <targetReference>Proof_Notes_for_Client_is_Blank</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Proof_Location__c</field>
+            <value>
+                <elementReference>Proof_Location</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Proof_Notes</name>
+        <label>Update Proof Notes</label>
+        <locationX>1930</locationX>
+        <locationY>516</locationY>
+        <connector>
+            <targetReference>CreateActivity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Proof_Notes_for_Client__c</field>
+            <value>
+                <elementReference>Proof_Notes_for_Client</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Status</name>
+        <label>Update Status</label>
+        <locationX>1122</locationX>
+        <locationY>510</locationY>
+        <connector>
+            <targetReference>Is_Next_Action_No_Change</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LaunchedFulfillmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <elementReference>Status_DropDown</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Fulfillment__c</object>
+    </recordUpdates>
+    <screens>
+        <name>Final_Screen</name>
+        <label>Final Screen</label>
+        <locationX>2260</locationX>
+        <locationY>851</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>PleaseClose</name>
+            <fieldText>Please close this window and refresh the Fulfillment page to see new data.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Log_a_Call</name>
+        <label>Log a Call</label>
+        <locationX>17</locationX>
+        <locationY>515</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Is_Next_Action_Date_Blank</targetReference>
+        </connector>
+        <fields>
+            <name>Subject_DropDown</name>
+            <choiceReferences>ActivityChoices</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Subject</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Comments</name>
+            <fieldText>Comments</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Status_DropDown</name>
+            <choiceReferences>Status</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Status</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Next_Action_DropDown</name>
+            <choiceReferences>NextAction</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Next Action</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Next_Action</name>
+            <dataType>Date</dataType>
+            <fieldText>Next Action</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Proof_Delivery</name>
+            <dataType>Date</dataType>
+            <fieldText>Proof Delivery</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Final_Delivery</name>
+            <dataType>Date</dataType>
+            <fieldText>Final Delivery</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Delivered_On</name>
+            <dataType>Date</dataType>
+            <fieldText>Delivered On</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Proof_Location</name>
+            <dataType>String</dataType>
+            <fieldText>Proof Location</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Proof_Notes_for_Client</name>
+            <fieldText>Proof Notes for Client</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>FindCurrentFulfillment</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>used for &quot;WhoID&quot; on activity created at the end of flow</description>
+        <name>LaunchedFulfillmentContact</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>LaunchedFulfillmentID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>OriginalCallBackDateTime</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>OriginalStatus</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

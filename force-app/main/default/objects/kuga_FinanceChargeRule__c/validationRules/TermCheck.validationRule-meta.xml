@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TermCheck</fullName>
+    <active>true</active>
+    <description>Finance Order function supports only Term (Month) values 2 or higher</description>
+    <errorConditionFormula>OR(ISBLANK(kuga_Term__c), 
+kuga_Term__c &lt; 2)</errorConditionFormula>
+    <errorMessage>Finance Order function supports only Term (Month) values 2 or higher</errorMessage>
+</ValidationRule>

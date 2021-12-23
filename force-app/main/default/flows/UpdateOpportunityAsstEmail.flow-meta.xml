@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <interviewLabel>UpdateOpportunityAsstEmail {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>UpdateOpportunityAsstEmail</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UpdateOpportunityAssistantEmail</name>
+        <label>UpdateOpportunityAssistantEmail</label>
+        <locationX>122</locationX>
+        <locationY>117</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Contact.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Alive</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Asst_Email__c</field>
+            <value>
+                <elementReference>Contact.Assistant_Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <startElementReference>UpdateOpportunityAssistantEmail</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>Contact</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+</Flow>

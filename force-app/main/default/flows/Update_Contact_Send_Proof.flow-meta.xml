@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>when &quot;send proof&quot; is the selected status on a fulfillment, this flow is triggered by a process builder to go to the primary recipient of the fulfillment&apos;s contact page and check &quot;send proof&quot;</description>
+    <interviewLabel>Update Contact Send Proof {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Contact Send Proof</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Contact</name>
+        <label>Update Contact</label>
+        <locationX>601</locationX>
+        <locationY>249</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>FulfillmentContact</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CSR_Send_Proof__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <startElementReference>Update_Contact</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>Full ID of contact related to fulfillment (primary recipient) passed via process builder</description>
+        <name>FulfillmentContact</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

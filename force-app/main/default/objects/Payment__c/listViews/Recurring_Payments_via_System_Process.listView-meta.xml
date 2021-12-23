@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recurring_Payments_via_System_Process</fullName>
+    <columns>NAME</columns>
+    <columns>Date__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Status__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Payment_Type__c</columns>
+    <columns>Transaction_Id__c</columns>
+    <columns>Authorization_Id__c</columns>
+    <columns>Transaction_Type__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>contains</operation>
+        <value>System</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>notContain</operation>
+        <value>Recurring</value>
+    </filters>
+    <filters>
+        <field>Date__c</field>
+        <operation>greaterThan</operation>
+        <value>1/1/2017</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Completed</value>
+    </filters>
+    <label>Online Payments</label>
+</ListView>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EL_Boxed_Copies__c</fullName>
+    <description>Fulfillment EL Quantity minus EL Direct Mail Copies</description>
+    <externalId>false</externalId>
+    <formula>Fulfillment_EL_Quantity__c - EL_Direct_Mail_Copies__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>EL Boxed Copies for THIS issue</inlineHelpText>
+    <label>EL Boxed Copies</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Market_Free_Financing_Available__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND(Market__r.Free_Financing_Promo_Approved__c, Market__r.Free_Financing_Start_Date__c &gt;= TODAY(), Market__r.Free_Financing_End_Date__c &lt;= TODAY())</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Market Free Financing Available</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

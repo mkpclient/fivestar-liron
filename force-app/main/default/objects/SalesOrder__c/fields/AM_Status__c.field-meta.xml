@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AM_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+(RecordStatus__c = &quot;Draft&quot;),
+RecordStatus__c &amp;
+&quot; [&quot; &amp;
+HYPERLINK(
+&quot;/apex/kontroller?action=updateOrderStatus&amp;status=Approved&amp;ordId=&quot; &amp;
+Id,
+&quot;Approve&quot;,
+&quot;_self&quot;
+) &amp;
+&quot;] &quot;,
+IF(
+(RecordStatus__c = &quot;Sent&quot;),
+RecordStatus__c &amp;
+&quot; [&quot; &amp;
+HYPERLINK(
+&quot;/apex/kontroller?action=updateOrderStatus&amp;status=Approved&amp;ordId=&quot; &amp;
+Id,
+&quot;Approve&quot;,
+&quot;_self&quot;
+) &amp;
+&quot;] &quot;,
+IF(
+(RecordStatus__c = &quot;Approved&quot;),
+RecordStatus__c,
+RecordStatus__c
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status - AM</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

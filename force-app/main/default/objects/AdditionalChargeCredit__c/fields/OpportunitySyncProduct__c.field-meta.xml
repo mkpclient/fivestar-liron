@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OpportunitySyncProduct__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Reference Product used in Syncing to Opportunity Products
+
+Applicable to Primary Quotes or Orders with Opportunity Lines Sync enabled. If Product is used only for Syncing purpose, best to set Product &apos;Hide&apos; to Checked.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Reference Product used in Syncing to Opportunity Products
+
+Applicable to Primary Quotes or Orders with Opportunity Lines Sync enabled. If Product is used only for Syncing purpose, best to set Product &apos;Hide&apos; to Checked</inlineHelpText>
+    <label>Opportunity Sync Product</label>
+    <referenceTo>Product2</referenceTo>
+    <relationshipName>Additional_Charges_Credits</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,35 @@
+<!------------------------------------------>
+<!--   CustomInvoicePDF VF Page by Kugamon-->
+<!--   Copyright: Kugamon LLC             -->
+<!--   http://www.kugamon.com             -->
+<!--   NO SUPPORT PROVIDED                -->
+<!--   DO NOT COPY, STEAL, SELL THIS CODE -->
+<!------------------------------------------>
+
+<apex:page standardController="kugo2p__KugamonInvoice__c" extensions="CustomInvoicePDFExt" recordSetVar="printInvoices" renderas="pdf" showHeader="false" sidebar="false" standardStylesheets="false" cache="false">
+
+	<c:CustomInvoicePDF invoiceId="{!Invoice.Id}" rendered="{!if(invoicePDFExt.totalPDFsToPrint==1,true,false)}"/>	
+
+	<!-- don't print footer page number if printing multiple invoices -->
+	<head>
+		<style type="text/css">
+		@page {
+			@bottom-left {content: "";}
+			@bottom-right {content: "";}
+		}
+		</style>
+	</head>
+    
+    <apex:variable value="{!0}" var="invoiceNumber"/>
+    <apex:datatable value="{!invoicePDFExt.invoices}" var="invoice" rendered="{!if(invoicePDFExt.totalPDFsToPrint>1,True,False)}">
+        <apex:column width="100%" >
+                <apex:variable value="{!invoiceNumber + 1}" var="invoiceNumber"/>
+                <apex:stylesheet value="{!$Resource.CustomPdfCss}" />
+                <c:CustomInvoicePDF invoiceId="{!invoice.Id}" />
+                <apex:outputPanel rendered="{!if(invoiceNumber<invoicePDFExt.totalPDFsToPrint,True,False)}">
+                    <h1 style="page-break-after: always;"> </h1>
+                </apex:outputPanel>
+        </apex:column>
+    </apex:datatable>
+
+</apex:page>

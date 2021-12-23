@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Social_Media_Account__c</fullName>
+    <description>Testimonial_Display_Social_Media__c from fulfillment</description>
+    <externalId>false</externalId>
+    <formula>Fulfillment__r.Testimonial_Display_Social_Media__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Testimonial Display Social Media from fulfillment</inlineHelpText>
+    <label>Social Media Account</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

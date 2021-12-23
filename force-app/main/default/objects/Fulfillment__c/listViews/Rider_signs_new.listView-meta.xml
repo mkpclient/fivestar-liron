@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rider_signs_new</fullName>
+    <columns>NAME</columns>
+    <columns>Publication_month__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Delivered_on_date__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Graphics_Owner__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>contains</operation>
+        <value>Create,Make Revisions,Send Proof,Collect,Collect Urgent</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Rider signs</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>package,E-reprint,Digital spotlight reprints,electronic</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Approved,Closed,Closed No Response,On Hold,Cancelled,print,none</value>
+    </filters>
+    <label>Rider signs _new</label>
+</ListView>

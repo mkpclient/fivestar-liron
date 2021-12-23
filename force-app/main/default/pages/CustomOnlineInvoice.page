@@ -1,0 +1,25 @@
+<!------------------------------------------>
+<!--   CustomOnlineInvoice VF Page        -->
+<!--   Copyright: Kugamon LLC             -->
+<!--   http://www.kugamon.com             -->
+<!--   NO SUPPORT PROVIDED                -->
+<!--   DO NOT COPY, STEAL, SELL THIS CODE -->
+<!--------------------------------------- -->
+
+<apex:page standardController="kugo2p__KugamonInvoice__c" extensions="CustomInvoicePDFExt" showHeader="false" sidebar="false" standardStylesheets="false" cache="false" action="{!invoicePDFExt.initOnlineInvoice}" id="onlineInvoicePageId">	<!-- renderas="{!renderAs}"  -->
+
+<apex:composition template="SiteTemplate">
+    <apex:define name="body">
+        <div id="body">
+            <div class="pageMessage">
+                <apex:outputPanel id="pageMessage" >        
+                    <apex:pageMessages id="msg" />
+                </apex:outputPanel>
+            </div>
+            <apex:outputPanel id="onlineInvoiceOP1" rendered="{!NOT(invoicePDFExt.hasError)}">
+                <c:CustomInvoicePDF invoiceId="{!kugo2p__KugamonInvoice__c.Id}" isOnlineInvoice="true" id="onlineInvoiceCompId"/>
+            </apex:outputPanel>
+        </div>
+    </apex:define>
+</apex:composition>
+</apex:page>

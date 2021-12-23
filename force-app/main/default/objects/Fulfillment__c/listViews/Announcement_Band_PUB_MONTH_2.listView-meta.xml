@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Announcement_Band_PUB_MONTH_2</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Publication_month__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Production_Owner__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Graphics_Owner__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Announcement band</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>package,E-reprint,Digital spotlight reprints,electronic</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Closed,Cancelled</value>
+    </filters>
+    <filters>
+        <field>Publication_month__c</field>
+        <operation>equals</operation>
+        <value>February</value>
+    </filters>
+    <filters>
+        <field>Award_Year__c</field>
+        <operation>notContain</operation>
+        <value>2020</value>
+    </filters>
+    <label>Announcement Band - PUB MONTH_2</label>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>CSRs</group>
+        <group>Graphics</group>
+    </sharedTo>
+</ListView>

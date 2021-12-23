@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approve_Complimentary_Order</fullName>
+    <availability>online</availability>
+    <displayType>link</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Approve Complimentary Order</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+
+var so = new sforce.SObject(&apos;SalesOrder__c&apos;);
+if(&quot;{!SalesOrder__c.Status_Picklist__c}&quot; == &apos;Approved&apos; &amp;&amp; &quot;{!SalesOrder__c.Approved_Complimentary_Order__c}&quot; != true &amp;&amp; &quot;{!SalesOrder__c.NetAmount__c}&quot; == &quot;$0.00&quot;) {
+so.id = &quot;{!SalesOrder__c.Id}&quot;;
+so.Approved_Complimentary_Order__c = true;
+result = sforce.connection.update([so]);
+location.reload(true);
+} else if (&quot;{!SalesOrder__c.Approved_Complimentary_Order__c}&quot; == true) {
+alert(&quot;This order is already an approved complimentary order.&quot;); 
+} else {
+alert(&quot;This is not a valid / approved complimentary order.&quot;);
+}</url>
+</WebLink>

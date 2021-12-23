@@ -1,0 +1,245 @@
+<template>
+  <div class="slds-card__body slds-card__body_inner">
+    <lightning-tabset>
+      <lightning-tab label="All">
+        <article class="slds-card slds-card_boundary" style="z-index: 1">
+          <div class="slds-card__header slds-grid">
+            <div class="slds-col slds-size_2-of-3">
+              <h2 class="slds-card__header-title">
+                <span>Find Products [{numberOfProducts}]</span>
+              </h2>
+            </div>
+            <div class="slds-col slds-size_1-of-3 slds-grid">
+              <label for="limit-records slds-col">
+                <h4 class="slds-card__header-title">Records to Show:</h4>
+              </label>
+              <select
+                id="limit-records"
+                class="slds-select slds-col"
+                onchange={handleShowRecords}
+              >
+                <template for:each={showRecordsOptions} for:item="option">
+                  <option
+                    key={option.key}
+                    value={option.value}
+                    selected={option.isSelected}
+                  >
+                    {option.value}
+                  </option>
+                </template>
+              </select>
+            </div>
+          </div>
+          <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-box slds-grid" onkeyup={handleKeyUp}>
+              <div
+                class="
+                  slds-col
+                  slds-size_2-of-4
+                  slds-border_right
+                  slds-var-p-right_medium
+                "
+                id="keyword-search"
+              >
+                <lightning-input
+                  name="enter-search"
+                  label="By Keyword"
+                  type="search"
+                  class="search-label"
+                  onchange={handleKeywordChange}
+                  placeholder="Search Product Name, Code, Description, or Base Product"
+                  value={searchKeyword}
+                ></lightning-input>
+                <template if:true={searchKeyword}>
+                  <div
+                    class="slds-scrollable slds-box"
+                    style="
+                      height: 10rem;
+                      width: 24rem;
+                      position: absolute;
+                      background: white;
+                      z-index: 10;
+                    "
+                  >
+                    <template if:false={searchOptions.length}>
+                      Product not found
+                    </template>
+                    <template if:true={searchOptions.length}>
+                      <lightning-vertical-navigation
+                        onselect={handleOptionSelect}
+                      >
+                        <lightning-vertical-navigation-section
+                          label="Available Products"
+                        >
+                          <template for:each={searchOptions} for:item="option">
+                            <lightning-vertical-navigation-item
+                              key={option.Id}
+                              label={option.Name}
+                              name={option.Name}
+                            ></lightning-vertical-navigation-item>
+                          </template>
+                        </lightning-vertical-navigation-section>
+                      </lightning-vertical-navigation>
+                    </template>
+                  </div>
+                </template>
+                <lightning-input
+                  type="checkbox"
+                  label="Exact Match"
+                  name="exact-match"
+                  id="exact-match"
+                  onchange={toggleExactMatch}
+                  checked={isExactMatch}
+                ></lightning-input>
+              </div>
+              <!--
+              <div
+                class="
+                  slds-col
+                  slds-size_2-of-5
+                  slds-var-p-horizontal_medium
+                  slds-border_right
+                "
+                style="overflow-y: scroll"
+              >
+                <p class="search-label slds-form-element__label">
+                  By Field Filter
+                </p>
+                <p>
+                  Filter fields will go here if still deemed necessary. The
+                  original one does not seem to be very useful because of the
+                  Field names dump. As an alternative, we can select a few field
+                  names that employees actually use then go from there.
+                </p>
+                <div class="slds-grid">
+                </div>
+              </div>
+              -->
+              <div
+                class="
+                  slds-col
+                  slds-size_1-of-4
+                  slds-var-p-horizontal_medium
+                  slds-border_right
+                "
+              >
+                <lightning-button
+                  label="Search"
+                  title="search-button"
+                  onclick={handleSearch}
+                  class="slds-var-m-left_x-small"
+                ></lightning-button>
+                <lightning-button
+                  label="Clear Search"
+                  title="clear-search-button"
+                  onclick={handleSearch}
+                  class="slds-var-m-left_x-small"
+                ></lightning-button>
+              </div>
+              <div
+                class="slds-col slds-size_1-of-4 slds-var-p-horizontal_medium"
+              >
+                <!-- <lightning-record-view-form
+                  if:false={isPriceBookEditing}
+                  object-api-name="SalesOrder__c"
+                  record-id={salesOrder.Id}
+                >
+                  <lightning-output-field field-name="Price_Book__c">
+                  </lightning-output-field>
+                  <div class="slds-var-m-top_medium">
+                    <lightning-button
+                      variant="brand"
+                      label="Change Pricebook"
+                      onclick={onPriceBookChange}
+                    >
+                    </lightning-button>
+                  </div>
+                </lightning-record-view-form>
+                <lightning-record-edit-form
+                  if:true={isPriceBookEditing}
+                  object-api-name="SalesOrder__c"
+                  record-id={salesOrder.Id}
+                  onsuccess={onPriceBookSave}
+                >
+                  <lightning-input-field field-name="Price_Book__c" required>
+                  </lightning-input-field>
+                  <div class="slds-var-m-top_medium">
+                    <lightning-button
+                      variant="brand"
+                      type="submit"
+                      label="Save"
+                    >
+                    </lightning-button>
+                    <lightning-button
+                      label="Cancel"
+                      onclick={onPriceBookCancel}
+                    >
+                    </lightning-button>
+                  </div>
+                </lightning-record-edit-form> -->
+              </div>
+              <!-- <div
+                class="slds-col slds-size_1-of-4 slds-var-p-horizontal_medium"
+              >
+                <label
+                  for="pricebook-select"
+                  class="search-label slds-form-element__label"
+                >
+                  Price Book Name
+                </label>
+                <select
+                  id="pricebook-select"
+                  class="slds-select"
+                  onchange={handlePricebookSelect}
+                >
+                  <template for:each={pricebooks} for:item="pricebook">
+                    <option
+                      key={pricebook.Id}
+                      value={pricebook.Name}
+                      selected={pricebook.isSelected}
+                    >
+                      {pricebook.Name}
+                    </option>
+                  </template>
+                </select>
+                <template if:true={errorMessage}>
+                  <lightning-icon
+                    class="slds-icon-text-error"
+                    icon-name="utility:warning"
+                    alternative-text="Warning!"
+                    title="Warning"
+                  ></lightning-icon>
+                  <p style="color: #c23934">{errorMessage}</p>
+                </template>
+              </div> -->
+            </div>
+          </div>
+          <footer class="slds-card__footer">
+            <template if:false={transferredProducts}>
+              <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <div if:true={transferredProducts}>
+              <c-manage-lines-products-list
+                products={transferredProducts}
+                onlineadd={handleLineAdd}
+                ontogglefavorite={handleFavoriteChange}
+              ></c-manage-lines-products-list>
+            </div>
+          </footer>
+        </article>
+      </lightning-tab>
+      <lightning-tab label="Favorites">
+        <template if:false={userFavorites.length}>
+          <span>No favorites found</span>
+        </template>
+        <template if:true={userFavorites.length}>
+          <c-manage-lines-favorites
+            favorites={userFavorites}
+            onlineadd={handleLineAdd}
+            ontogglefavorite={handleFavoriteChange}
+          ></c-manage-lines-favorites>
+        </template>
+      </lightning-tab>
+    </lightning-tabset>
+  </div>
+</template>

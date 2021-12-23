@@ -1,0 +1,21 @@
+.slds-modal__container {
+  width: 95vw !important;
+  max-width: 95vw !important;
+}
+
+.disable-edit {
+  pointer-events: none;
+}
+
+.child-disable-edit {
+  pointer-events: none;
+  background: #CCC !important;
+  color: #333 !important;
+  font-style: italic !important;
+}
+
+.child-element {
+  background: #CCC !important;
+  color: #333 !important;
+  font-style: italic !important;
+}

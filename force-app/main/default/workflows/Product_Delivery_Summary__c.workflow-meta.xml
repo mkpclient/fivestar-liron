@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>New_Product_Delivery_Summary_Email_Aert</fullName>
+        <description>New Product Delivery Summary Email Aert</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contact__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>customerservice@fivestarprofessional.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Ad_Prod_Templates/PDS_Alert</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Update_PDS_Email_Alert_Sent</fullName>
+        <field>Sent_PDS_Email_Alert__c</field>
+        <literalValue>1</literalValue>
+        <name>Update PDS Email Alert Sent</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>PDS Alert</fullName>
+        <actions>
+            <name>New_Product_Delivery_Summary_Email_Aert</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Update_PDS_Email_Alert_Sent</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Product_Delivery_Summary__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Publish</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Product_Delivery_Summary__c.Sent_PDS_Email_Alert__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Product_Delivery_Summary__c.Published_Date__c</field>
+            <operation>lessThan</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <description>Send PDS Email Alert</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

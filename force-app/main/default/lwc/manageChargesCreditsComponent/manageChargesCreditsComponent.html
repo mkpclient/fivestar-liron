@@ -1,0 +1,92 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-quick-action-panel if:true={recordId}>
+    <lightning-card title="Charges/Credits" if:true={isRendered}>
+      <lightning-button
+        variant="brand"
+        label="Return to Order"
+        onclick={handleCancel}
+        slot="actions"
+      ></lightning-button>
+      <template if:true={allowEdit}>
+      <!-- <lightning-button
+        label="Delete All (Testing Only)"
+        onclick={handleDeleteAll}
+        slot="actions"
+        variant="destructive"
+      ></lightning-button> -->
+    </template>
+      <div class="slds-p-around_medium">
+        <lightning-datatable
+          key-field="Id"
+          data={lineData}
+          columns={lineColumns}
+          column-widths-mode="auto"
+          onrowaction={handleRowAction}
+          oncellchange={handleSave}
+          suppress-bottom-bar
+          hide-checkbox-column
+          min-column-width="10"
+        ></lightning-datatable>
+        <template if:true={noData}> No data to display </template>
+        <div
+          class="
+            slds-text-align_right
+            slds-text-heading_small
+            slds-theme_shade
+            slds-p-around_small
+          "
+        >
+          Total Amount:
+          <lightning-formatted-number
+            value={totalAmount}
+            format-style="currency"
+            currency-code="USD"
+          ></lightning-formatted-number>
+        </div>
+        <template if:false={allowEdit}>
+          This Sales Order cannot be modified.
+        </template>
+        <template if:true={allowEdit}>
+        <lightning-input
+          data-name="searchinput"
+          label="Search Charges/Credits"
+          type="search"
+          placeholder="Search Charges/Credits..."
+          onchange={handleSearch}
+        ></lightning-input>
+        <lightning-button-group>
+          <lightning-button
+            label="Add All"
+            onclick={handleSelectAll}
+          ></lightning-button>
+          <!-- <lightning-button
+            label="Add Selected"
+            onclick={handleAddSelected}
+          ></lightning-button>
+          <lightning-button
+            label="Clear Selected"
+            onclick={handleClearSelected}
+          ></lightning-button> -->
+        </lightning-button-group>
+        <!-- <lightning-pill-container
+          items={selectedItems}
+          onitemremove={handleItemRemove}
+        >
+          ></lightning-pill-container
+        > -->
+        <lightning-datatable
+          key-field="Id"
+          data={addLineData}
+          columns={addLineColumns}
+          column-widths-mode="auto"
+          onrowaction={handleRowAction}
+          suppress-bottom-bar
+          hide-checkbox-column
+          min-column-width="10"
+        ></lightning-datatable>
+      </template>
+      </div>
+    </lightning-card>
+  </lightning-quick-action-panel>
+</template>

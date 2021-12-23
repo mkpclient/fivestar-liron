@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Publication_Distribution__c</fullName>
+    <description>Details of the publication distribution (can include information on readership, circulation, zip code distribution, etc.)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Details of the publication distribution (can include information on readership, circulation, zip code distribution, etc.)</inlineHelpText>
+    <label>Publication Distribution</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

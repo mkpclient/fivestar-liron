@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>When a winner is confirmed on the opportunity via the winner checkbox, is fired by a process to update the contact record with this year&apos;s winner information, which is stored on the opportunity
+
+Changed the list to a text variable
+Changed both variables to match what the contact fields are</description>
+    <interviewLabel>YearsWonUpdate {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>YearsWonUpdate</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UpdateContactLists</name>
+        <label>UpdateContactLists</label>
+        <locationX>137</locationX>
+        <locationY>123</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>oppcontact</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Years_Winner__c</field>
+            <value>
+                <elementReference>futureyearswon</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Years_Won_List__c</field>
+            <value>
+                <elementReference>futurelist</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <startElementReference>UpdateContactLists</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>opp future list</description>
+        <name>futurelist</name>
+        <dataType>Multipicklist</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Years won</description>
+        <name>futureyearswon</name>
+        <dataType>Picklist</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Contact referenced on opp</description>
+        <name>oppcontact</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

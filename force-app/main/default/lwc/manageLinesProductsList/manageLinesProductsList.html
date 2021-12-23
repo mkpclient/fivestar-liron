@@ -1,0 +1,20 @@
+<template>
+  <template if:false={products.length}>
+    <span>No products found</span>
+  </template>
+  <template if:true={products.length}>  
+    <div class="slds-scrollable_y" style="height: 30rem">
+      <lightning-datatable
+        key-field="Id"
+        data={data}
+        suppress-bottom-bar
+        columns={columns}
+        column-widths-mode="fixed"
+        onrowaction={handleRowAction}
+        oncellchange={handleSave}
+        hide-checkbox-column
+      >
+      </lightning-datatable>
+    </div>
+  </template>
+</template>

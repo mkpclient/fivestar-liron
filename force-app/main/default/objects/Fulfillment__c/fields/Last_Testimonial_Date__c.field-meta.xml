@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Testimonial_Date__c</fullName>
+    <description>Date of most recent testimonial post</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date of most recent testimonial post</inlineHelpText>
+    <label>Last Testimonial Date</label>
+    <summarizedField>Testimonial__c.Publish_Date__c</summarizedField>
+    <summaryFilterItems>
+        <field>Testimonial__c.Status__c</field>
+        <operation>equals</operation>
+        <value>Published</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Testimonial__c.Fulfillment__c</summaryForeignKey>
+    <summaryOperation>max</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

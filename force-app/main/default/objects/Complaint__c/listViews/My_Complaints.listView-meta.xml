@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Complaints</fullName>
+    <columns>NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>Markets__c</columns>
+    <columns>Assigned__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Complaint_Department__c</columns>
+    <columns>Complaint_Status__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Date_Opened__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Assigned__c</field>
+        <operation>equals</operation>
+        <value>Dylan Campbell,Mark Douglass,Michelle Schneider</value>
+    </filters>
+    <filters>
+        <field>Complaint_Status__c</field>
+        <operation>equals</operation>
+        <value>In Progress</value>
+    </filters>
+    <label>My Complaints</label>
+    <sharedTo>
+        <group>Dylan_Campbell</group>
+        <group>Mark_Douglass</group>
+        <group>Michelle_Schneider</group>
+    </sharedTo>
+</ListView>

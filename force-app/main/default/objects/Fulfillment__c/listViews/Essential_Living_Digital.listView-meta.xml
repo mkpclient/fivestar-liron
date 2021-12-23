@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_Living_Digital</fullName>
+    <booleanFilter>(1 AND 2) OR (1 AND 3 AND 4)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Market__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Client_Contact_List__c</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>e-magazine</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>cancelled</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>notEqual</operation>
+        <value>None</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>cancelled</value>
+    </filters>
+    <label>(Public) Essential Living Mag - Digital</label>
+</ListView>

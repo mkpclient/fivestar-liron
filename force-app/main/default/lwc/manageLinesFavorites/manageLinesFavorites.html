@@ -1,0 +1,15 @@
+<template>
+  <div class="slds-scrollable_y" style="height: 30rem">
+    <lightning-datatable
+      key-field="Id"
+      data={data}
+      suppress-bottom-bar
+      columns={columns}
+      onrowaction={handleRowAction}
+      oncellchange={handleSave}
+      hide-checkbox-column
+      column-widths-mode="auto"
+    >
+    </lightning-datatable>
+  </div>
+</template>

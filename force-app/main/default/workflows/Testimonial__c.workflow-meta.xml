@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>New_Testimonial_Published</fullName>
+        <description>New Testimonial Published</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contact__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>customerservice@fivestarprofessional.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Ad_Prod_Templates/New_Testimonial_Published</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Update_Email_Alert_Sent_on_Testimonial</fullName>
+        <field>Email_Alert_Sent__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Email Alert Sent on Testimonial</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>New Testimonial Published</fullName>
+        <actions>
+            <name>New_Testimonial_Published</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Update_Email_Alert_Sent_on_Testimonial</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Testimonial__c.Publish_Date__c</field>
+            <operation>lessOrEqual</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Testimonial__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Published</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Testimonial__c.Email_Alert_Sent__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Send Testimonial and Broadcast campaign clients an email alert when a new Testimonial is published.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

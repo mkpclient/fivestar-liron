@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Original_Due_Date</fullName>
+        <field>Due_DateX__c</field>
+        <formula>Due_Date__c</formula>
+        <name>Original Due Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ResearchCall_Complete</fullName>
+        <description>When a call result is recorded, the research call is marked complete</description>
+        <field>Call_Complete__c</field>
+        <literalValue>1</literalValue>
+        <name>ResearchCall - Complete</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ResearchCall_Date</fullName>
+        <field>Last_Call_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>ResearchCall Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Opportunity__c</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ResearchCall_Due_Date_was_changed</fullName>
+        <field>Due_Date_was_Changed__c</field>
+        <literalValue>1</literalValue>
+        <name>ResearchCall - Due Date was changed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ResearchCall_Importance_is_Updated</fullName>
+        <field>Importance__c</field>
+        <formula>Importance__c</formula>
+        <name>ResearchCall-Importance is Updated</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Opportunity__c</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ResearchCall_Is_New_Call_Comments</fullName>
+        <description>When a new open Research Call is created, it updates the Open Call Comments field on the related opportunity.</description>
+        <field>Open_Call_Comments__c</field>
+        <formula>Comments__c</formula>
+        <name>ResearchCall - Is New, Call Comments</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Opportunity__c</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ResearchCall_Is_New_Call_Due_Date</fullName>
+        <field>Open_Call_Due_Date__c</field>
+        <formula>Due_Date__c</formula>
+        <name>ResearchCall - Is New, Call Due Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Opportunity__c</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ResearchCall_Is_New_Call_Type</fullName>
+        <description>When a new open Research Call is created, it updates the Open Call Type field on the related opportunity.</description>
+        <field>Open_Call_Type__c</field>
+        <formula>TEXT(Call_Type__c )</formula>
+        <name>ResearchCall - Is New, Call Type</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Opportunity__c</targetObject>
+    </fieldUpdates>
+    <rules>
+        <fullName>ResearchCall - Complete</fullName>
+        <actions>
+            <name>ResearchCall_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Research_Call__c.Call_Result__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>When a call result is recorded, the research call is marked complete</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ResearchCall - Is Open</fullName>
+        <actions>
+            <name>ResearchCall_Is_New_Call_Comments</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ResearchCall_Is_New_Call_Due_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ResearchCall_Is_New_Call_Type</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Research_Call__c.Call_Result__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>When a new open Research Call is created, it updates the Open Call Type field on the related opportunity.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ResearchCall Date</fullName>
+        <actions>
+            <name>ResearchCall_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When a call is marked complete it updates the Last Call Date field on the related Opportunity with today&apos;s date.</description>
+        <formula>OR  (ISPICKVAL( Call_Result__c , &quot;Left VM 1&quot;),  ISPICKVAL( Call_Result__c , &quot;Left VM 2&quot;),  ISPICKVAL( Call_Result__c , &quot;Left VM 3&quot;),  ISPICKVAL( Call_Result__c , &quot;Left VM 4&quot;),  ISPICKVAL( Call_Result__c , &quot;Left VM 5&quot;),  ISPICKVAL( Call_Result__c , &quot;Too Busy - Reconnect&quot;),  ISPICKVAL( Call_Result__c , &quot;Left message with assistant&quot;),  ISPICKVAL( Call_Result__c , &quot;GK/Asst. has heard the story - not qualified&quot;),  ISPICKVAL( Call_Result__c , &quot;GK/Asst. has heard the story - will participate&quot;),  ISPICKVAL( Call_Result__c , &quot;Candidate has heard the story - not qualified&quot;),  ISPICKVAL( Call_Result__c , &quot;Candidate has heard the story - will participate&quot;),  ISPICKVAL( Call_Result__c , &quot;No - will not complete the form&quot;),  ISPICKVAL( Call_Result__c , &quot;Completed form&quot;))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ResearchCall-Importance is Updated</fullName>
+        <actions>
+            <name>ResearchCall_Importance_is_Updated</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Research_Call__c.Importance__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Sends Importance ratings from call to Opportunity.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

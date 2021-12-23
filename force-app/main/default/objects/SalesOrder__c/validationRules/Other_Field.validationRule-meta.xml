@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Field</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(ISPICKVAL( Cancellation_reason__c , &quot;9. Other&quot;), ISBLANK( Other__c ) , NULL)</errorConditionFormula>
+    <errorMessage>Other field cannot be blank if “Cancellation reason” is “Other”</errorMessage>
+</ValidationRule>

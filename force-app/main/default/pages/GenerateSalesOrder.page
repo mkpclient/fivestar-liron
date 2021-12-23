@@ -1,0 +1,23 @@
+<apex:page standardController="Opportunity" extensions="ApexControllers" action="{!generateOrder}">
+<apex:form >
+<apex:inputHidden value="{!opportunity.OwnerId}"/>
+<apex:inputHidden value="{!opportunity.Name}"/>
+<apex:inputHidden value="{!opportunity.Market_Project__c}"/>
+<apex:inputHidden value="{!opportunity.AccountId}"/>
+<apex:inputHidden value="{!opportunity.Market_Project__r.Price_Book__c}"/>
+<apex:inputHidden value="{!opportunity.Market_Project__r.Name}"/>
+<apex:inputHidden value="{!opportunity.ContactId}"/>
+<apex:inputHidden value="{!opportunity.Account.Name}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.MailingCity}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.MailingCountry}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.MailingState}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.MailingStreet}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.MailingPostalCode}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.OtherCity}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.OtherCountry}"/>
+<apex:inputHidden value="{!opportunity.Account.Name}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.OtherState}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.OtherStreet}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.OtherPostalCode}"/>
+</apex:form>
+</apex:page>

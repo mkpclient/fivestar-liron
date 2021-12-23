@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Creates_PC_Marketing</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Market__c</columns>
+    <columns>Customization__c</columns>
+    <columns>Proof_Location__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Market_Final_Upload_Date__c</columns>
+    <columns>Production_Owner__c</columns>
+    <columns>Product_Template__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Postcard</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Closed,Cancelled,Hold,FTP,In Revision</value>
+    </filters>
+    <label>_Create Postcards Marketing</label>
+    <sharedTo>
+        <group>Brianna_Jahangir</group>
+    </sharedTo>
+</ListView>

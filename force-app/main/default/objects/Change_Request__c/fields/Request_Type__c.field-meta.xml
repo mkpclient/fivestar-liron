@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Request_Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Type of Change Request</inlineHelpText>
+    <label>Request Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Payment Plan</fullName>
+                <default>false</default>
+                <label>Payment Plan</label>
+            </value>
+            <value>
+                <fullName>Cancel-Subscription</fullName>
+                <default>false</default>
+                <label>Cancel-Subscription</label>
+            </value>
+            <value>
+                <fullName>Cancel-Full</fullName>
+                <default>false</default>
+                <label>Cancel-Full</label>
+            </value>
+            <value>
+                <fullName>Cancel-Partial</fullName>
+                <default>false</default>
+                <label>Cancel-Partial</label>
+            </value>
+            <value>
+                <fullName>Cancel-20% Non-refundable</fullName>
+                <default>false</default>
+                <label>Cancel-20% Non-refundable</label>
+            </value>
+            <value>
+                <fullName>Cancel-Fulfillment only</fullName>
+                <default>false</default>
+                <label>Cancel-Fulfillment only</label>
+            </value>
+            <value>
+                <fullName>Product(s)-Add</fullName>
+                <default>false</default>
+                <label>Product(s)-Add</label>
+            </value>
+            <value>
+                <fullName>Product(s)-Replacement</fullName>
+                <default>false</default>
+                <label>Product(s)-Replacement</label>
+            </value>
+            <value>
+                <fullName>Apply Credit from Cancelled Order</fullName>
+                <default>false</default>
+                <label>Apply Credit from Cancelled Order</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>FINANCE</fullName>
+                <default>false</default>
+                <label>FINANCE ONLY</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>Triggered by process builder, automatically fixes additional account info record attached to an account when an opportunity is staged to &quot;purchased&quot;</description>
+    <interviewLabel>AutoUpdateAdditionalAccountInfo {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>AutoUpdateAdditionalAccountInfo</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UpdateAdditionalAccountInfo</name>
+        <label>UpdateAdditionalAccountInfo</label>
+        <locationX>294</locationX>
+        <locationY>150</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>kugo2p__Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>AssociatedAccountID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>kugo2p__ContactBilling__c</field>
+            <value>
+                <elementReference>Opp_contact_id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>kugo2p__ContactBuying__c</field>
+            <value>
+                <elementReference>Opp_contact_id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>kugo2p__ContactShipping__c</field>
+            <value>
+                <elementReference>Opp_contact_id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>kugo2p__AdditionalAccountDetail__c</object>
+    </recordUpdates>
+    <startElementReference>UpdateAdditionalAccountInfo</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>Id of the account associated with opportunity, should be passed by process builder, used to find the account associated with the additional account info record</description>
+        <name>AssociatedAccountID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Should be passed by process builder, ID of the contact associated with the opportunity</description>
+        <name>Opp_contact_id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

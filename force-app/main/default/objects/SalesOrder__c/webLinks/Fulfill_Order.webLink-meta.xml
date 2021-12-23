@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfill_Order</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Fulfill Order</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/52.0/connection.js&quot;)}
+
+var order = new sforce.SObject(&quot;SalesOrder__c&quot;);
+order.id = &apos;{!SalesOrder__c.Id}&apos;;
+order.FulfillOrder__c = true;
+
+var result = sforce.connection.update([order]);
+
+if (result[0].success == &apos;false&apos;) {
+alert(result[0].errors.message);
+} else {
+//window.location.reload();
+location.reload(true);
+}</url>
+</WebLink>
