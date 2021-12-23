@@ -97,6 +97,7 @@ public with sharing class SalesOrderHelperTest {
       'Sales Order has no Order Fulfillments. FulfillOrder__c is :' +
       updSo.FulfillOrder__c
     );
+    
     PriceBook2 customPriceBook = new PriceBook2();
     customPriceBook.Name = 'Custom Pricebook';
     customPriceBook.IsActive = true;
@@ -105,6 +106,18 @@ public with sharing class SalesOrderHelperTest {
     updSo.Price_Book__c = customPriceBook.Id;
 
     update updSo;
+
+    updSo.FulfillOrder__c = false;
+    update updSo;
+
+    List<Fulfillment__c> newFulfillments = [
+      SELECT Id
+      FROM Fulfillment__c
+      WHERE Boom_Order__c = :testSo.Id
+    ];
+
+    System.assertEquals(true, newFulfillments.size() == 0, 'Fulfillments not removed');
+
   }
 
   @isTest

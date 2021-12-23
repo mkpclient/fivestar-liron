@@ -108,7 +108,7 @@ public without sharing class SalesOrderHelper {
     }
 
     if (fulfillmentsToDelete.size() > 0) {
-      // deleteFulfillments(fulfillmentsToDelete);
+      deleteFulfillments(fulfillmentsToDelete);
     }
 
     if (salesOrderMap.size() > 0) {
@@ -285,32 +285,11 @@ public without sharing class SalesOrderHelper {
     }
   }
 
-  // ? : from 11/OCT meeting with Fivestar, we do not need to fill in the value for ParentFulfillment__c
 
   public static Fulfillment__c constructFulfillment(
     SalesOrderProductLine__c l
   ) {
     Fulfillment__c f = new Fulfillment__c();
-    // f.Activity_Subject_Choices__c = '';
-    // f.Ad_Prod_Alternate_Contact__c = null;
-    // f.Ad_Prod_Alternate_Email__c = '';
-    // f.Ad_Prod_Alternate_Notes__c = '';
-    // f.Ad_Prod_Alternate_Phone__c = '';
-    // f.Appropriate_Template_Opened__c = false;
-    // f.approved_completed__c = false;
-    // f.Auto_Post__c = false;
-    // f.Back_Cover_Inside_Ad_Template__c = '';
-    // f.Back_Cover_Ad_Form__c = '';
-    // f.Boosted__c = false;
-    // f.Build_from_Existing_Proflie__c = false;
-    // f.Build_Reprint_from_Profile__c = false;
-    // f.Callback_Date__c = null;
-    // f.CFP__c = false;
-    // f.Change_status_to_Send_Initial_Proof__c = false;
-    // f.Client_Contact_List__c = '';
-    // f.Client_Contact_List_2__c = '';
-    // f.Client_Success_Tracker_URL__c = '';
-    // f.Client_Tier__c = '';
     f.Contact__c = l.ContactShipping__c;
     f.Boom_Order_Product_Line__c = l.Id;
     f.Status__c = 'New Profile';

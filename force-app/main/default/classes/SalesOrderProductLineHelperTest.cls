@@ -249,17 +249,17 @@ public with sharing class SalesOrderProductLineHelperTest {
       'Completed'
     );
 
-    // List<Fulfillment__c> beforeDeleteFulfillments = [
-    //   SELECT Id
-    //   FROM Fulfillment__c
-    //   WHERE Boom_Order_Product_Line__c = :prodLineToDelete.Id
-    // ];
+    List<Fulfillment__c> beforeDeleteFulfillments = [
+      SELECT Id
+      FROM Fulfillment__c
+      WHERE Boom_Order_Product_Line__c = :prodLineToDelete.Id
+    ];
 
-    // System.assertEquals(
-    //   true,
-    //   beforeDeleteFulfillments.size() > 0,
-    //   'Fulfillments were not created'
-    // );
+    System.assertEquals(
+      true,
+      beforeDeleteFulfillments.size() > 0,
+      'Fulfillments were not created'
+    );
     
     testSo.Status_Picklist__c = 'Draft';
     update testSo;
@@ -272,11 +272,11 @@ public with sharing class SalesOrderProductLineHelperTest {
       WHERE KitBundleLine__c = :prodLineToDelete.Id
     ];
 
-    // List<Fulfillment__c> afterDeleteFulfillments = [
-    //   SELECT Id
-    //   FROM Fulfillment__c
-    //   WHERE Boom_Order_Product_Line__c = :prodLineToDelete.Id
-    // ];
+    List<Fulfillment__c> afterDeleteFulfillments = [
+      SELECT Id
+      FROM Fulfillment__c
+      WHERE Boom_Order_Product_Line__c = :prodLineToDelete.Id
+    ];
 
     List<Order_Line_Recipient__c> afterDeleteRecipients = [
       SELECT Id
@@ -290,17 +290,64 @@ public with sharing class SalesOrderProductLineHelperTest {
       'Bundle product line was not deleted'
     );
 
-    // System.assertEquals(
-    //   false,
-    //   afterDeleteFulfillments.size() > 0,
-    //   'Fulfillments were not deleted'
-    // );
+    System.assertEquals(
+      false,
+      afterDeleteFulfillments.size() > 0,
+      'Fulfillments were not deleted'
+    );
 
     System.assertEquals(
       false,
       afterDeleteRecipients.size() > 0,
       'Recipients were not deleted'
     );
+  }
+
+  @isTest
+  private static void testTaxes() {
+    Account testAcc = BoomTestHelpers.generateAccount();
+    Contact testCtc = BoomTestHelpers.generateContact(testAcc.Id);
+    SalesOrderProductLine__c prodLineToUpdate = [
+      SELECT Id
+      FROM SalesOrderProductLine__c
+      WHERE SalesPrice__c = 10 AND Quantity__c = 5 AND KitBundle__c = TRUE
+      ORDER BY CreatedDate DESC
+      LIMIT 1
+    ];
+
+    prodLineToUpdate.ContactShipping__c = testCtc.Id;
+
+    update prodLineToUpdate;
+    List<SalesOrderProductLine__c> preTax = [
+      SELECT Id, TaxAmount__c, Product__c FROM SalesOrderProductLine__c WHERE TaxAmount__c = 0
+    ];
+
+    Product2 taxProd = new Product2(
+      Id = preTax[0].Product__c,
+      TaxableSale__c = true
+    );
+
+    update taxProd;
+
+    testCtc.MailingState = 'MN';
+
+    update testCtc;
+
+    Formula.recalculateFormulas(preTax);
+
+    update preTax;
+    
+    List<SalesOrderProductLine__c> postTax = [
+      SELECT Id, TaxAmount__c, ShipToStateProvince__c  FROM SalesOrderProductLine__c WHERE TaxAmount__c > 0
+    ];
+
+
+    System.assertEquals(
+      preTax.size() > 0,
+      postTax.size() > 0,
+      'Taxes were not calculated'
+    );
+
   }
 
 

@@ -172,7 +172,7 @@ public without sharing class SalesOrderProductLineHelper {
     }
 
     if (forFulfillments.size() > 0) {
-      // deleteFulfillments(forFulfillments);
+      deleteFulfillments(forFulfillments);
     }
   }
 
@@ -384,15 +384,15 @@ public without sharing class SalesOrderProductLineHelper {
     }
   }
 
-  // public static void deleteFulfillments(Set<Id> soplIds) {
-  //   List<Fulfillment__c> fulfillments = [
-  //     SELECT Id
-  //     FROM Fulfillment__c
-  //     WHERE Boom_Order_Product_Line__c IN :soplIds
-  //   ];
+  public static void deleteFulfillments(Set<Id> soplIds) {
+    List<Fulfillment__c> fulfillments = [
+      SELECT Id
+      FROM Fulfillment__c
+      WHERE Boom_Order_Product_Line__c IN :soplIds
+    ];
 
-  //   if (fulfillments.size() > 0) {
-  //     delete fulfillments;
-  //   }
-  // }
+    if (fulfillments.size() > 0) {
+      delete fulfillments;
+    }
+  }
 }
