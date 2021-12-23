@@ -5,6 +5,7 @@
     <externalId>false</externalId>
     <label>Ship To Street</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>TextArea</type>

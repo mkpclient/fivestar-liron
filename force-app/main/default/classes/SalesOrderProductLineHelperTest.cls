@@ -1,3 +1,9 @@
+/**
+   * *************************************************************************
+   * * uncomment everything that's commented below if I leave anything out *
+   * *************************************************************************
+   */
+
 @isTest
 public with sharing class SalesOrderProductLineHelperTest {
   @TestSetup
@@ -255,7 +261,7 @@ public with sharing class SalesOrderProductLineHelperTest {
     //   'Fulfillments were not created'
     // );
     
-    testSo.Status_Picklist__c = 'Draft'; // reset so we can delete
+    testSo.Status_Picklist__c = 'Draft';
     update testSo;
 
     delete prodLineToDelete;

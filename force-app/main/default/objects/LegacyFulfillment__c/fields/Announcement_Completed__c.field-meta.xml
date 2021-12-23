@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Announcement_Completed__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ((Product_Name__c) = &quot;Social Media / Email Campaign - 12X&quot; &amp;&amp;  TEXT(Times_Announced__c) = &quot;12&quot; ||
+(Product_Name__c) = &quot;Social Media / Email Campaign - 6X&quot; &amp;&amp;  TEXT(Times_Announced__c) = &quot;6&quot; ||
+(Product_Name__c) = &quot;Social Media / Email Campaign - 4X&quot; &amp;&amp;  TEXT(Times_Announced__c) = &quot;4&quot; ||
+(Product_Name__c) = &quot;Social Media / Email Campaign - 2X&quot; &amp;&amp;  TEXT(Times_Announced__c) = &quot;2&quot;, TRUE, FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Announcement Completed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

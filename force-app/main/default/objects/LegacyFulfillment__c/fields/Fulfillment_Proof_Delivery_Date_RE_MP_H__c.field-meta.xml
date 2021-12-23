@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfillment_Proof_Delivery_Date_RE_MP_H__c</fullName>
+    <externalId>false</externalId>
+    <formula>Market__r.Fullfillment_Proof_Delivery_Date_REMPHA__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Fulfillment Proof Delivery Date (RE-MP-H</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

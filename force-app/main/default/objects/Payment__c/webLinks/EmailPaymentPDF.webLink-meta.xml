@@ -3,23 +3,10 @@
     <fullName>EmailPaymentPDF</fullName>
     <availability>online</availability>
     <displayType>button</displayType>
-    <linkType>javascript</linkType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
     <masterLabel>Email PDF</masterLabel>
-    <openType>onClickJavaScript</openType>
+    <openType>replace</openType>
     <protected>false</protected>
-    <url>{!requireScript(&quot;/soap/ajax/52.0/connection.js&quot;)}
-{!requireScript(&quot;/soap/ajax/52.0/apex.js&quot;)}
-
-var qr = sforce.connection.query(&quot;SELECT id from EmailTemplate WHERE DeveloperName = &apos;Boom_Payment_VF_Template&apos;&quot;);
-
-
-if ( qr.size &lt; 1 ) {
-  alert(&apos;Please contact your SF Administrator to create Boom_Payment_VF_Template &apos;);
-} else {
-var templatedId = qr.getArray(&quot;records&quot;)[0].Id;
-
-
-location.replace(&apos;/email/author/emailauthor.jsp?retURL=/{!Payment__c.Id}&amp;p3_lkid={!Payment__c.Id}&amp;rtype=003&amp;p2_lkid={!Payment__c.Contact__c}&amp;template_id=&apos; + templatedId + &apos;&amp;new_template=1&apos;);
-
-}</url>
+    <url>/apex/kontroller?action=emailPaymentPDF&amp;Id=</url>
 </WebLink>

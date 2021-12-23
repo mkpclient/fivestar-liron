@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SWP_approved</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Status__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Graphics_Owner__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>Approved</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>single,rider,desk,plate</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>package,E-reprint,Digital spotlight reprints,electronic,profile</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Closed,Closed No Response,On Hold,Cancelled,print,none</value>
+    </filters>
+    <filters>
+        <field>Market__c</field>
+        <operation>notContain</operation>
+        <value>13,14,15,16,17</value>
+    </filters>
+    <label>SWP-Approved</label>
+</ListView>

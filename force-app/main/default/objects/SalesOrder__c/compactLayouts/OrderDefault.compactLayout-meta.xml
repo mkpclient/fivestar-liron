@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderDefault</fullName>
+    <fields>Name</fields>
+    <fields>OrderName__c</fields>
+    <fields>Account__c</fields>
+    <fields>IsPrimary__c</fields>
+    <fields>DateRequired__c</fields>
+    <fields>RecordStatus__c</fields>
+    <fields>NetAmount__c</fields>
+    <fields>BalanceDueAmount__c</fields>
+    <fields>PaymentStatus2__c</fields>
+    <label>Order Default</label>
+</CompactLayout>

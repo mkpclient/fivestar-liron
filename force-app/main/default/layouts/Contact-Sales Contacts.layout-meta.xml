@@ -3,8 +3,6 @@
     <customButtons>Send_Emails</customButtons>
     <customButtons>Create_Extended_Sales_Opportunity</customButtons>
     <excludeButtons>AddToList</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -195,10 +193,6 @@
                 <behavior>Edit</behavior>
                 <field>Profession__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Locale__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -327,10 +321,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Do_Not_Call_for_NAMS_F_U__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Central_Contact__c</field>
             </layoutItems>
             <layoutItems>
@@ -364,7 +354,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>VP_of_Sales_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>VP_of_Sales_Phone_Number__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>AssistantName</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AssistantPhone</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -596,12 +598,7 @@
     <quickActionList/>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>et4ae5__DateSent__c</fields>
-        <fields>et4ae5__Clicked__c</fields>
-        <fields>et4ae5__Opened__c</fields>
         <relatedList>et4ae5__IndividualEmailResult__c.et4ae5__Contact__c</relatedList>
-        <sortField>et4ae5__DateSent__c</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <excludeButtons>NewEvent</excludeButtons>
@@ -659,21 +656,13 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>kugo2p__Type__c</fields>
         <fields>CREATED_DATE</fields>
-        <fields>kugo2p__IsActive__c</fields>
-        <fields>kugo2p__Card_Type__c</fields>
-        <fields>kugo2p__Last_4_Digits__c</fields>
-        <fields>kugo2p__Expiration_Month__c</fields>
-        <fields>kugo2p__Expiration_Year__c</fields>
-        <fields>kugo2p__Default__c</fields>
         <relatedList>kugo2p__Payment_Method__c.kugo2p__Contact__c</relatedList>
-        <sortField>CREATED_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>Product_Name__c</fields>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>Status__c</fields>
         <fields>Renewal_Date__c</fields>
         <fields>Fulfillment_Owner__c</fields>
@@ -699,7 +688,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>
@@ -708,6 +696,13 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Sales_Presentation_Summary__c.Related_Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Card_Type__c</fields>
+        <fields>Last_4_Digits_of_Card__c</fields>
+        <fields>Expiration_Date__c</fields>
+        <relatedList>Payment_Method__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

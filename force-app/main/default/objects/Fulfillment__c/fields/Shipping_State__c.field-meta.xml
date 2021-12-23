@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Shipping_State__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.kugo2p__ShipToStateProvince__c</formula>
+    <formula>Boom_Order__r.ShipToStateProvince__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Shipping State</label>
     <required>false</required>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Orders</fullName>
+    <columns>NAME</columns>
+    <columns>OrderName__c</columns>
+    <columns>Account__c</columns>
+    <columns>ContactBuying__c</columns>
+    <columns>OrderDate__c</columns>
+    <columns>FulfillOrder__c</columns>
+    <columns>RecordStatus__c</columns>
+    <columns>PaymentStatus2__c</columns>
+    <columns>Released__c</columns>
+    <columns>NetAmount__c</columns>
+    <columns>BalanceDueAmount__c</columns>
+    <columns>OnlinePaymentExpirationDate__c</columns>
+    <columns>Online_Page_Status__c</columns>
+    <columns>Payments_Made__c</columns>
+    <columns>Salesperson__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

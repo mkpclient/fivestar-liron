@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Shipping_Zip__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.kugo2p__ShipToZipPostalCode__c</formula>
+    <formula>Boom_Order__r.ShipToZipPostalCode__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Shipping Zip</label>
     <required>false</required>

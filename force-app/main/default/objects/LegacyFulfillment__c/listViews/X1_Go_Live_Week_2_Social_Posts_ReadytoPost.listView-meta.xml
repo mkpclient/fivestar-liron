@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X1_Go_Live_Week_2_Social_Posts_ReadytoPost</fullName>
+    <columns>Full_ID__c</columns>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Social_Media_Platform__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Posting_Number__c</columns>
+    <columns>Posting_Date__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Web_Account_URL__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Social Media / Email Campaign</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Approved</value>
+    </filters>
+    <filters>
+        <field>Posting_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>NEXT_N_DAYS:31</value>
+    </filters>
+    <filters>
+        <field>Social_Media_Platform__c</field>
+        <operation>equals</operation>
+        <value>LinkedIn</value>
+    </filters>
+    <label>__Week 3 - LN Ready2Post</label>
+    <sharedTo>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+        <group>Olivia_Snyder</group>
+    </sharedTo>
+</ListView>

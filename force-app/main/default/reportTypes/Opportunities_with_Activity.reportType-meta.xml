@@ -192,6 +192,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>pi__pardot_source_id__c</field>
+            <table>Opportunity.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Next_Call_Goal__c</field>
             <table>Opportunity.Activities</table>
         </columns>
@@ -2080,76 +2085,6 @@
             <field>BDR_Follow_Up__c</field>
             <table>Opportunity</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Certification_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Roadmap_to_Success_URL__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Client_Check_In_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_CT_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Digital_Ads_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_ELM_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_E_Newsletter_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_LSS_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_MLSS_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Postcards_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_SMM_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_U_40_SS_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_WIW_SS_Follow_Up_Link__c</field>
-            <table>Opportunity</table>
-        </columns>
         <masterLabel>Opportunities</masterLabel>
     </sections>
     <sections>
@@ -2211,6 +2146,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CallObject</field>
+            <table>Opportunity.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Call_Recording_Response__c</field>
             <table>Opportunity.Activities</table>
         </columns>
         <columns>
@@ -2370,6 +2310,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Call_Type__c</field>
+            <table>Opportunity.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Priority</field>
             <table>Opportunity.Activities</table>
         </columns>
@@ -2451,6 +2396,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Years_Winner__c</field>
+            <table>Opportunity.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Related_Contact_Name__c</field>
             <table>Opportunity.Activities</table>
         </columns>
         <masterLabel>Activities</masterLabel>

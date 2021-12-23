@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ActiveProductCheck</fullName>
-    <active>false</active>
+    <active>true</active>
     <description>Ensure the product selected is active.</description>
     <errorConditionFormula>AND(Product__r.IsActive = false, ISNEW())</errorConditionFormula>
     <errorDisplayField>Product__c</errorDisplayField>

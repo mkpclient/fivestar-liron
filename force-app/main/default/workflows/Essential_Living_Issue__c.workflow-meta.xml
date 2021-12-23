@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>customerservice@fivestarprofessional.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>unfiled$public/New_Essential_Living_Issue_Email_Alert</template>
+        <template>ALL/New_Essential_Living_Issue_Email_Alert</template>
     </alerts>
     <fieldUpdates>
         <fullName>Update_EL_status_change_date</fullName>

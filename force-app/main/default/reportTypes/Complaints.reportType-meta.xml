@@ -198,42 +198,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Original_Fulfillment__c.OrderNumber__c</field>
-            <table>Complaint__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Original_Fulfillment__c.OrderNumber__c.Id</field>
-            <table>Complaint__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Original_Fulfillment__c.OrderNumber__c.Name</field>
-            <table>Complaint__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Original_Fulfillment__c.OrderNumber__c.kugo2p__OrderName__c</field>
-            <table>Complaint__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Order_Fulfillment__c</field>
-            <table>Complaint__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>IDS_Owner__c</field>
-            <table>Complaint__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>IDS_Notes__c</field>
-            <table>Complaint__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>IDS_Complete__c</field>
             <table>Complaint__c</table>
         </columns>
         <masterLabel>Complaints</masterLabel>

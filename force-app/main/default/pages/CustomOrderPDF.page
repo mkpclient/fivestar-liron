@@ -6,30 +6,37 @@
 <!--   DO NOT COPY, STEAL, SELL THIS CODE -->
 <!------------------------------------------>
 
-<apex:page standardController="kugo2p__SalesOrder__c" renderas="pdf" showHeader="false" sidebar="false" standardStylesheets="false" cache="false">	<!-- extensions="CustomOrderPDFExt" -->
+<apex:page standardController="kugo2p__SalesOrder__c" renderas="pdf" showHeader="false" sidebar="false" standardStylesheets="false"
+    cache="false">
+    <!-- extensions="CustomOrderPDFExt" -->
 
-<head>
-    <style type="text/css">
-    
-	@page {
-		@bottom-left {content:  "Order: {!kugo2p__SalesOrder__c.Name}"; font-size: 10.5px; font-family:Arial,Helvetica,sans-serif; }
-	
-		@bottom-right {
-			content: "Page " counter(page) " of " counter(pages); font-size: 10.5px; font-family:Arial,Helvetica,sans-serif;
-		}
-	}
-            
-    </style>
-</head>
+    <head>
+        <style type="text/css">
+            @page {
+                @bottom-left {
+                    content: "Order: {!kugo2p__SalesOrder__c.Name}";
+                    font-size: 10.5px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
 
-<div id="body">
-    <div class="pageMessage">
-        <apex:outputPanel id="pageMessage">        
-            <apex:pageMessages id="msg" />
+                @bottom-right {
+                    content: "Page " counter(page) " of " counter(pages);
+                    font-size: 10.5px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+            }
+        </style>
+    </head>
+
+    <div id="body">
+        <div class="pageMessage">
+            <apex:outputPanel id="pageMessage">
+                <apex:pageMessages id="msg" />
+            </apex:outputPanel>
+        </div>
+        <br/>
+        <apex:outputPanel >
+            <c:CustomOrderPDF orderId="{!kugo2p__SalesOrder__c.Id}" renderAs="pdf" />
         </apex:outputPanel>
-    </div><br/>
-<apex:outputPanel >
-    <c:CustomOrderPDF orderId="{!kugo2p__SalesOrder__c.Id}" renderAs="pdf" />
-</apex:outputPanel>
-</div>
+    </div>
 </apex:page>

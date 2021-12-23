@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Packages</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Product_Award_Year__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>AM_Full_Name__c</columns>
+    <columns>ACDF_Company__c</columns>
+    <columns>Index_Pull_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Cancelled</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>12/1/2018 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>package</value>
+    </filters>
+    <label>Packages (Brianna and Mindy)</label>
+    <sharedTo>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

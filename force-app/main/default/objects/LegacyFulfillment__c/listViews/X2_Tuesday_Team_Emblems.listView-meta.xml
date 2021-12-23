@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2_Tuesday_Team_Emblems</fullName>
+    <columns>NAME</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Display_Team_Name__c</columns>
+    <columns>Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Market_Final_Upload_Date__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Emblem</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Team</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>product created,Closed,Closed No Response,On Hold,Cancelled</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>In Revision</value>
+    </filters>
+    <label>__2. Create - Team Emblems</label>
+    <sharedTo>
+        <group>Brianna_Jahangir</group>
+        <group>Jonathan_Wesser</group>
+        <group>Kendra_Philion</group>
+        <group>Mindy_Stansbarger</group>
+        <group>Olivia_Snyder</group>
+    </sharedTo>
+</ListView>

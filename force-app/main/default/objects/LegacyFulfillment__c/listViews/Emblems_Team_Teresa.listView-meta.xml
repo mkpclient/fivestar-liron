@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Emblems_Team_Teresa</fullName>
+    <columns>NAME</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Status__c</columns>
+    <columns>Emblem_Type__c</columns>
+    <columns>Market__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Order_Special_Notes__c</columns>
+    <columns>Notes_for_Ad_Prod__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>emblem,headliner</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>Product Created</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>package</value>
+    </filters>
+    <filters>
+        <field>Fulfillment_Owner__c</field>
+        <operation>contains</operation>
+        <value>Teresa Hemingson</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>contains</operation>
+        <value>Send Proof</value>
+    </filters>
+    <label>Emblems - Team - Teresa</label>
+    <sharedTo>
+        <group>Allen_Wardell</group>
+        <group>Teresa_Hemingson</group>
+    </sharedTo>
+</ListView>

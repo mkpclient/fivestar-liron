@@ -7,5 +7,7 @@
     <masterLabel>Generate Packing List</masterLabel>
     <openType>onClickJavaScript</openType>
     <protected>false</protected>
-    <url>window.open(`/apex/packing_list?id={!Fulfillment__c.OrderNumberId__c}`);</url>
+    <url>window.open(`/apex/packing_list?id=
+&quot;{!&quot;Fulfillment__c.OrderNumberId__c&quot;}&quot;
+`);</url>
 </WebLink>

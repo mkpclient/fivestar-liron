@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2_Wednesday_Wall_Plaques_WF</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Product_Award_Year__c</columns>
+    <columns>WP_Background_Color__c</columns>
+    <columns>WP_Text_Color__c</columns>
+    <columns>WP_Board_Color__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>ACDF_Company__c</columns>
+    <columns>ACDF_Parent_Company__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>Ad_Prod_Alternate_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Single Wall Plaque</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>To Print,Closed</value>
+    </filters>
+    <filters>
+        <field>Product_Delivered_Link__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>ACDF_Parent_Company__c</field>
+        <operation>contains</operation>
+        <value>wells</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>7/1/2018 12:00 AM</value>
+    </filters>
+    <label>__3. Wednesday - WF Wall Plaques</label>
+    <sharedTo>
+        <group>Brianna_Jahangir</group>
+        <group>Fulfillment_Team</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

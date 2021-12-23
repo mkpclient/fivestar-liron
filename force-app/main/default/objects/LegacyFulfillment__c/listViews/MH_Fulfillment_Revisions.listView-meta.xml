@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MH_Fulfillment_Revisions</fullName>
+    <booleanFilter>1 AND 2 AND (3 or 5) AND 4</booleanFilter>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Market__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Production_Owner__c</columns>
+    <columns>Market_Final_Upload_Date__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>equals</operation>
+        <value>Make Revisions,Make Revisions (CE)</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>In Revision,In Revision - Urgent</value>
+    </filters>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>postcard</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Closed,Cancelled</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Award Winner Profile</value>
+    </filters>
+    <label>__0. MH Fulfillment Revisions PC and AWP</label>
+</ListView>

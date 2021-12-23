@@ -3,5 +3,5 @@
     <description>Remote Site setting to make callouts</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
     <isActive>true</isActive>
-    <url>https://na52.salesforce.com</url>
+    <url>https://cs170.salesforce.com</url>
 </RemoteSiteSetting>

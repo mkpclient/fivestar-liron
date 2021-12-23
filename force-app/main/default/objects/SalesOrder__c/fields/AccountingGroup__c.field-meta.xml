@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AccountingGroup__c</fullName>
+    <externalId>false</externalId>
+    <label>Accounting Group</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Business Sale</fullName>
+                <default>false</default>
+                <label>Business Sale</label>
+            </value>
+            <value>
+                <fullName>Consumer Sale</fullName>
+                <default>false</default>
+                <label>Consumer Sale</label>
+            </value>
+            <value>
+                <fullName>Internal Sale</fullName>
+                <default>false</default>
+                <label>Internal Sale</label>
+            </value>
+            <value>
+                <fullName>Reseller Sale</fullName>
+                <default>false</default>
+                <label>Reseller Sale</label>
+            </value>
+            <value>
+                <fullName>Partner Sale</fullName>
+                <default>false</default>
+                <label>Partner Sale</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

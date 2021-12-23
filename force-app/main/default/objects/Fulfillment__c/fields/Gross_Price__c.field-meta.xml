@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Gross_Price__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderProductLine__r.kugo2p__ListPrice__c</formula>
+    <formula>Boom_Order_Product_Line__r.ListPrice__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Gross Price</label>
     <precision>18</precision>

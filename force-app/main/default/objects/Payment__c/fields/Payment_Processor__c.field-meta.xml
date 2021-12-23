@@ -5,6 +5,7 @@
     <inlineHelpText>The payment processor or merchant account used to process this payment.  This field is set automatically when external payments are received and recorded, and when payments are processed using the Payment Terminal.</inlineHelpText>
     <label>Payment Processor</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>

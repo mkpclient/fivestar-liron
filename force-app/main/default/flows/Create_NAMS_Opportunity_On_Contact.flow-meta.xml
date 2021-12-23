@@ -4,8 +4,7 @@
     <description>removed everything except account id
 removed contact id
 put everything back
-removed account id
-removed hard coded account id</description>
+removed account id</description>
     <dynamicChoiceSets>
         <name>OppNameOptions</name>
         <dataType>Picklist</dataType>
@@ -142,7 +141,7 @@ removed hard coded account id</description>
         <inputAssignments>
             <field>AccountId</field>
             <value>
-                <elementReference>ContactAccountId</elementReference>
+                <stringValue>001d000001MZOsvAAH</stringValue>
             </value>
         </inputAssignments>
         <object>Opportunity</object>

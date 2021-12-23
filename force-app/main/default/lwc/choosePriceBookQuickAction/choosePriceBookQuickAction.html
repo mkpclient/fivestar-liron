@@ -1,0 +1,54 @@
+<template>
+  <template if:false={componentReady}>
+    <template if:false={recordId}>
+      <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+  </template>
+  <template if:true={recordId}>
+    <template if:true={isManagedLines}>
+      <c-manage-lines-component record-id={recordId} from-price-book-component="true" onclose={handleCloseAction}></c-manage-lines-component>
+    </template>
+    <template if:false={isManagedLines}>
+      <lightning-quick-action-panel
+        header="Choose Price Book"
+      >
+        <p>
+          <lightning-formatted-text
+            value="Select a Price Book to associate with this Order. You can add Products only from the Price Book you associate with this Order. Changing the Price Book deletes all Products from the Order."
+          ></lightning-formatted-text>
+        </p>
+        <br />
+        <lightning-combobox
+          name="pricebook"
+          label="Select Pricebook"
+          value={selectedPriceBook}
+          placeholder="Select Pricebook"
+          options={pricebooks}
+          onchange={handleChange}
+          dropdown-alignment="auto" 
+          required
+        ></lightning-combobox>
+        <div slot="footer">
+          <lightning-button
+            variant="neutral"
+            label="Cancel"
+            onclick={handleCloseAction}
+          ></lightning-button>
+          <lightning-button
+            variant="brand"
+            label="Save & Close"
+            class="slds-m-left_x-small"
+            onclick={handleSave}
+          ></lightning-button>
+          <lightning-button
+            variant="brand"
+            label="Save & Manage Lines"
+            class="slds-m-left_x-small"
+            onclick={handleSave}
+            name="manageLines"
+          ></lightning-button>
+        </div>
+      </lightning-quick-action-panel>
+    </template>
+  </template>
+</template>

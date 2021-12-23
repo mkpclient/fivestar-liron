@@ -5,6 +5,7 @@
     <inlineHelpText>Authorization expiration date returned from payment processor.</inlineHelpText>
     <label>Auth Expiration</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>DateTime</type>

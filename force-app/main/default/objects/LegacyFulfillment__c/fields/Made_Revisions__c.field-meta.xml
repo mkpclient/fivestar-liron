@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Made_Revisions__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Perfect Order Checklist</description>
+    <externalId>false</externalId>
+    <inlineHelpText>As revisions were made, were they saved with a new number? P1, P2, for example?</inlineHelpText>
+    <label>Made Revisions</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

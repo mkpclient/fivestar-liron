@@ -5,6 +5,7 @@
     <description>Used to allow $0 orders to release</description>
     <externalId>false</externalId>
     <label>Approved Complimentary Order</label>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

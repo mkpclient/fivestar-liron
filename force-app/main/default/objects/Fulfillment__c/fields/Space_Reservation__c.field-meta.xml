@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Space_Reservation__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.Space_Reservation__c</formula>
+    <formula>Boom_Order__r.Space_Reservation__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Space Reservation</label>
     <trackHistory>false</trackHistory>

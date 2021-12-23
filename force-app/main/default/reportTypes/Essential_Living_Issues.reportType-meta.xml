@@ -473,37 +473,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Order_Fulfillment__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Mailing_Style__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_EL_Boxed_Copies__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Total_ELM_Copies__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Custom_Front_Cover_Inside_Ad__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Custom_Front_Cover_Ad__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>EL_Direct_Mail_Copies__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>EL_Boxed_Copies__c</field>
             <table>Essential_Living_Issue__c</table>
         </columns>
         <masterLabel>Essential Living Issues</masterLabel>

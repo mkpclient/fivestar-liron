@@ -4,9 +4,11 @@
     <externalId>false</externalId>
     <label>Sales Order</label>
     <referenceTo>SalesOrder__c</referenceTo>
+    <relationshipLabel>Payments 2</relationshipLabel>
     <relationshipName>Payments</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>MasterDetail</type>

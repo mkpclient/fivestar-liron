@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Return_Shipping</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Postcard,Postcards,customization,brochures,announcement band</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>package,E-reprint,Digital spotlight reprints,electronic</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>contains</operation>
+        <value>Collect Revisions</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>On Hold</value>
+    </filters>
+    <label>Return Shipping</label>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>Graphics</group>
+    </sharedTo>
+</ListView>

@@ -3,7 +3,7 @@
     <fullName>Date_Ordered__c</fullName>
     <description>Used to sort new fulfillments Line effective date of order product line</description>
     <externalId>false</externalId>
-    <formula>OrderProductLine__r.Line_Effective_Date__c</formula>
+    <formula>Boom_Order_Product_Line__r.Line_Effective_Date__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Line effective date of order product line - can be used to find recently added products</inlineHelpText>
     <label>Date Ordered</label>

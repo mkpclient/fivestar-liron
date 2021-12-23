@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Children_Updates</fullName>
+    <active>true</active>
+    <description>prevents children record line changes on approved and released</description>
+    <errorConditionFormula>OR(ISPICKVAL( Status_Picklist__c, &apos;Approved&apos;),ISPICKVAL( Status_Picklist__c, &apos;Released&apos;)) &amp;&amp; OR(PRIORVALUE(ProductAmount__c) &lt;&gt; ProductAmount__c, PRIORVALUE( Total_Recipients__c ) &lt;&gt; Total_Recipients__c, PRIORVALUE( AdditionalChargeCreditAmount__c ) &lt;&gt; AdditionalChargeCreditAmount__c, PRIORVALUE(NetAmount__c) &lt;&gt; NetAmount__c)</errorConditionFormula>
+    <errorMessage>This order cannot be changed.</errorMessage>
+</ValidationRule>

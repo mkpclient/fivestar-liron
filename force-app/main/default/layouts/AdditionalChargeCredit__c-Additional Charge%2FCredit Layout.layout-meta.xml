@@ -49,6 +49,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>TaxableVAT__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>UnitPrice__c</field>
             </layoutItems>
             <layoutItems>
@@ -100,6 +104,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>TaxableSales__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>VAT__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

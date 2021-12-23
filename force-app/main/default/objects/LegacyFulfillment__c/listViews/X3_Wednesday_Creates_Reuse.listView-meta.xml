@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X3_Wednesday_Creates_Reuse</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Market__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Market_Final_Upload_Date__c</columns>
+    <columns>Production_Owner__c</columns>
+    <columns>Proof_Location__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>reuse</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Closed,Closed No Response,On Hold,Cancelled</value>
+    </filters>
+    <filters>
+        <field>Product_Templates_Finalized__c</field>
+        <operation>lessOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>__3. Wednesday - Reuse License</label>
+    <sharedTo>
+        <group>Brianna_Jahangir</group>
+        <group>Fulfillment_Team</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

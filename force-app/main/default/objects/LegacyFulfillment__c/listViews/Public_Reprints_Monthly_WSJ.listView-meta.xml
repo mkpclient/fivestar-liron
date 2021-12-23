@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public_Reprints_Monthly_WSJ</fullName>
+    <columns>NAME</columns>
+    <columns>Fortune_Issue_Date__c</columns>
+    <columns>WSJ_Publication_Date__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Publication_month__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Product_Award_Year__c</columns>
+    <columns>X5_Pub_Month__c</columns>
+    <columns>Actual_Upload_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>WSJ Profile Reprints</value>
+    </filters>
+    <filters>
+        <field>Market_Award_Year__c</field>
+        <operation>equals</operation>
+        <value>2020</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Closed,Cancelled</value>
+    </filters>
+    <label>(Public)  Reprints - Monthly_WSJ</label>
+    <sharedTo>
+        <group>Graphics</group>
+        <group>Ryan_Duderstadt</group>
+    </sharedTo>
+</ListView>

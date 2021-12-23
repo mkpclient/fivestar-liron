@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Success_Tracker_URL__c</fullName>
+    <description>The auto-generated CST url will appear in this field for all Client Success fulfillments associated with the same Market Project</description>
+    <externalId>false</externalId>
+    <label>Client Success Tracker URL</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

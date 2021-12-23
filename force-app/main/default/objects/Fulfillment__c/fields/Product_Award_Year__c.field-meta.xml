@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Product_Award_Year__c</fullName>
     <externalId>false</externalId>
-    <formula>TEXT(OrderProductLine__r.Award_Year__c)</formula>
+    <formula>TEXT(Boom_Order_Product_Line__r.Award_Year__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Product Award Year</label>
     <required>false</required>

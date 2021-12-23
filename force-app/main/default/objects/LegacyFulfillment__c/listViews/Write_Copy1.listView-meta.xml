@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Write_Copy1</fullName>
+    <columns>NAME</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Market__c</columns>
+    <columns>Years_Winner__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>Official_Order_Date__c</columns>
+    <columns>Market_Final_Upload__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>eighth,quarter,half,full,two-page,showcase,three-page,four-page,five-page,WSJ,Fo</value>
+    </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>equals</operation>
+        <value>Write copy</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Cancelled</value>
+    </filters>
+    <label>Write Copy</label>
+    <sharedTo>
+        <group>Graphics</group>
+    </sharedTo>
+</ListView>

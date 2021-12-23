@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>New_Boom_Payment_Method</customButtons>
     <customButtons>Schedule_Meeting</customButtons>
     <customButtons>Send_Emails</customButtons>
     <customButtons>dupcheck__dc3Check</customButtons>
-    <customButtons>Create_Extended_Sales_Opportunity</customButtons>
     <excludeButtons>AddToList</excludeButtons>
     <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>RequestUseSfdc</excludeButtons>
@@ -514,10 +514,6 @@
                 <behavior>Edit</behavior>
                 <field>Active_Order__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Do_Not_Call_for_NAMS_F_U__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -680,6 +676,10 @@
                 <behavior>Edit</behavior>
                 <field>dupcheck__dc3DisableDuplicateCheck__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>MX_Customer_Id__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -800,6 +800,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>AssistantPhone</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Assistant_Phone__c</field>
             </layoutItems>
             <layoutItems>
@@ -813,6 +817,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>HasOptedOutOfEmail</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>VP_of_Sales_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>VP_of_Sales_Phone_Number__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -899,10 +911,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Sync_with_Marketing_Cloud__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Locale__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -1058,6 +1066,20 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>OrderNumber__c</fields>
+        <fields>OrderLine__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>Order_Fulfillment__c.PrimaryRecipient__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Card_Type__c</fields>
+        <fields>Last_4_Digits_of_Card__c</fields>
+        <fields>Expiration_Date__c</fields>
+        <relatedList>Payment_Method__c.Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <customButtons>kugo2p__Set_Default_Method</customButtons>
         <fields>NAME</fields>
         <fields>kugo2p__Type__c</fields>
@@ -1072,7 +1094,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>Market__c</fields>
         <fields>Status__c</fields>
         <fields>Next_Action__c</fields>
@@ -1113,12 +1134,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>et4ae5__DateSent__c</fields>
-        <fields>et4ae5__Clicked__c</fields>
-        <fields>et4ae5__Opened__c</fields>
         <relatedList>et4ae5__IndividualEmailResult__c.et4ae5__Contact__c</relatedList>
-        <sortField>et4ae5__DateSent__c</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -1191,7 +1207,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>

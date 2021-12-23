@@ -5,6 +5,7 @@
     <inlineHelpText>Scheduled Payment Date is the date on which payment is expected to be paid, and may be used to trigger payment reminders using workflow rules.</inlineHelpText>
     <label>Scheduled Payment Date</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Date</type>

@@ -2171,6 +2171,11 @@
             <field>kugo2p__SalesOrder__c.kugo2p__ContactBuying__c.Full_ID__c</field>
             <table>kugo2p__PaymentX__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>test__c</field>
+            <table>kugo2p__PaymentX__c</table>
+        </columns>
         <masterLabel>Payments</masterLabel>
     </sections>
 </ReportType>

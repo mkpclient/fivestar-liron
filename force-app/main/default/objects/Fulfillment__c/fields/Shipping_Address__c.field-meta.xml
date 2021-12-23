@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Shipping_Address__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.kugo2p__ShipToStreetLong__c</formula>
+    <formula>Boom_Order__r.ShipToStreetLong__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Shipping Address</label>
     <required>false</required>

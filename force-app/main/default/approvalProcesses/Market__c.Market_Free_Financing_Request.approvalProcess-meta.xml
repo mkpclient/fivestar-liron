@@ -25,7 +25,7 @@
         <label>step 1</label>
         <name>step_1</name>
     </approvalStep>
-    <emailTemplate>unfiled$public/Market_Free_Financing_Request</emailTemplate>
+    <emailTemplate>ALL/Market_Free_Financing_Request</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

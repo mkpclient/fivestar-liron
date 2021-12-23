@@ -8,6 +8,7 @@
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
     <tabs>standard-Opportunity</tabs>
+    <tabs>standard-Quote</tabs>
     <tabs>standard-Lead</tabs>
     <tabs>standard-Task</tabs>
     <tabs>standard-File</tabs>
@@ -32,5 +33,6 @@
     <tabs>Essential_Living_Issue__c</tabs>
     <tabs>Essential_Living_Publication__c</tabs>
     <tabs>Client_Experience__c</tabs>
+    <tabs>SalesOrder__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

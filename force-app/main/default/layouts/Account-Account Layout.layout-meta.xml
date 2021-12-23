@@ -266,11 +266,6 @@
         <relatedList>RelatedContactList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
-        <fields>TotalAmount__c</fields>
-        <relatedList>SalesOrder__c.Account__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
@@ -364,7 +359,6 @@
         <fields>CONTACT.PHONE1</fields>
         <relatedList>Contact.Parent_Company_Aka_Broker_Dealer__c</relatedList>
     </relatedLists>
-    <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

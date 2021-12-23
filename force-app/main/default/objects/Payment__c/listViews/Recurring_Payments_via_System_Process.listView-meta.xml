@@ -12,6 +12,8 @@
     <columns>Authorization_Id__c</columns>
     <columns>Transaction_Type__c</columns>
     <columns>CREATED_DATE</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>OWNER.FIRST_NAME</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CREATEDBY_USER</field>

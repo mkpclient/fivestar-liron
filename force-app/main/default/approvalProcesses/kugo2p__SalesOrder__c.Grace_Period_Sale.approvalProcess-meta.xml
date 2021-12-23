@@ -63,14 +63,6 @@
         <allowDelegate>false</allowDelegate>
         <assignedApprover>
             <approver>
-                <name>catherine.furman@fivestarprofessional.com</name>
-                <type>user</type>
-            </approver>
-            <approver>
-                <name>jessica.polvere@fivestarprofessional.com</name>
-                <type>user</type>
-            </approver>
-            <approver>
                 <name>jonathan.wesser@fivestarprofessional.com</name>
                 <type>user</type>
             </approver>

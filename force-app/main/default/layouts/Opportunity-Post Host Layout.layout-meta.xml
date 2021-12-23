@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Log_a_Call2</customButtons>
-    <customButtons>Send_Emails</customButtons>
     <excludeButtons>StartOutboundConversation</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
@@ -109,10 +108,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>BDR_Follow_Up__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>AM_Certification_Link__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -373,17 +368,14 @@
         <relatedList>Special_Order_Form__c.Related_Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
-        <fields>forcebrain__EventType__c</fields>
-        <fields>forcebrain__RecurrenceEvent__c</fields>
-        <fields>forcebrain__Status__c</fields>
-        <fields>forcebrain__StartDateTime__c</fields>
-        <fields>forcebrain__EndDateTime__c</fields>
-        <fields>forcebrain__Event_Id__c</fields>
-        <fields>forcebrain__IsAllDayEvent__c</fields>
-        <fields>RECORDTYPE</fields>
-        <fields>forcebrain__IsRecurrence__c</fields>
-        <relatedList>forcebrain__Event__c.Opportunity__c</relatedList>
+        <fields>QUOTE.QUOTENUMBER</fields>
+        <fields>QUOTE.NAME</fields>
+        <fields>QUOTE.ISSYNCING</fields>
+        <fields>QUOTE.EXPIRATIONDATE</fields>
+        <fields>QUOTE.SUBTOTAL</fields>
+        <fields>QUOTE.TOTALPRICE</fields>
+        <fields>CreatedBy</fields>
+        <relatedList>RelatedQuoteList</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

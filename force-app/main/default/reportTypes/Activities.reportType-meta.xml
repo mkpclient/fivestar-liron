@@ -103,6 +103,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Call_Recording_Response__c</field>
+            <table>Activity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CallDisposition</field>
             <table>Activity</table>
         </columns>
@@ -283,6 +288,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Call_Type__c</field>
+            <table>Activity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>pi__pardot_source_id__c</field>
+            <table>Activity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Priority</field>
             <table>Activity</table>
         </columns>
@@ -394,6 +409,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Owner.UserRole</field>
+            <table>Activity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Related_Contact_Name__c</field>
             <table>Activity</table>
         </columns>
         <masterLabel>Activities</masterLabel>

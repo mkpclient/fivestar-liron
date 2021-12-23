@@ -23,5 +23,5 @@
         <field>NAME</field>
         <operation>contains</operation>
     </filters>
-    <label>philre22</label>
+    <label>All</label>
 </ListView>

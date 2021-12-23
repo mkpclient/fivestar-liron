@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <formula>Fulfillment__r.EL_Quantity__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>TOTAL Quantity as seen on fulfillment. (can update over time if the client adjusts quantity)</inlineHelpText>
+    <inlineHelpText>Quantity of Essential Living Personal Magazine Subscription Copies as seen on fulfillment. (can update over time, this field will ALWAYS reflect what is on the fulfillment)</inlineHelpText>
     <label>Fulfillment EL Quantity</label>
     <precision>18</precision>
     <required>false</required>

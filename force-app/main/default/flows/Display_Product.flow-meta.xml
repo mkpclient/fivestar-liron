@@ -41,10 +41,41 @@
                         <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.Product_Family__c</leftValueReference>
+                <leftValueReference>myVariable_current.Product__r.Name</leftValueReference>
                 <operator>Contains</operator>
                 <rightValue>
-                    <stringValue>Magazine Profile</stringValue>
+                    <stringValue>Display</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Currency</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Currency</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Currency</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Currency</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.ListPrice__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -53,7 +84,7 @@
             <label>Display</label>
         </rules>
     </decisions>
-    <interviewLabel>Display_Product-9_InterviewLabel</interviewLabel>
+    <interviewLabel>Display_Product-4_InterviewLabel</interviewLabel>
     <label>Display Product</label>
     <processMetadataValues>
         <name>ObjectType</name>

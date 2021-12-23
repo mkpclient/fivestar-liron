@@ -3,7 +3,7 @@
     <fullName>Product_Display_Name_OR_Product_name__c</fullName>
     <description>Product Display Name OR Product name if no display name exists</description>
     <externalId>false</externalId>
-    <formula>BLANKVALUE(OrderProductLine__r.kugo2p__Product__r.kugo2p__ReferenceProduct__r.Product_Display_Name__c,OrderProductLine__r.kugo2p__Product__r.kugo2p__ReferenceProduct__r.Name)</formula>
+    <formula>BLANKVALUE(Boom_Order_Product_Line__r.Product__r.Product_Display_Name__c,Boom_Order_Product_Line__r.Product__r.Name)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Product Display Name/Product Name</label>
     <required>false</required>

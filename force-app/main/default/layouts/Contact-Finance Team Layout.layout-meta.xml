@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>New_Boom_Payment_Method</customButtons>
     <customButtons>Schedule_Meeting</customButtons>
     <excludeButtons>AddToList</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -210,10 +211,6 @@
                 <behavior>Edit</behavior>
                 <field>Profession__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Do_Not_Call_for_NAMS_F_U__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -393,6 +390,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>AssistantName</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AssistantPhone</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -590,9 +591,6 @@
         <fields>Card_Type__c</fields>
         <fields>Last_4_Digits_of_Card__c</fields>
         <fields>Expiration_Date__c</fields>
-        <fields>Billing_First_Name__c</fields>
-        <fields>Billing_Last_Name__c</fields>
-        <fields>Default__c</fields>
         <relatedList>Payment_Method__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -610,7 +608,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>Market__c</fields>
         <fields>Status__c</fields>
         <fields>Next_Action__c</fields>
@@ -714,7 +711,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>

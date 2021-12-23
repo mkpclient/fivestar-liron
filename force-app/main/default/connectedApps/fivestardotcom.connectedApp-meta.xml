@@ -5,7 +5,7 @@
     <label>fivestar.com</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/fivestardotcom</callbackUrl>
-        <consumerKey>3MVG9rFJvQRVOvk4EiHGk2mvbF.njZEQGMl8WfNlv3nbu9IdtFgBnqNqyziH3x_.gTymhUbFU1mvjlSKkea1h</consumerKey>
+        <consumerKey>3MVG9snqYUvtJB1PKIJxVBRpflfQ_RfqvLpovCzkRsN5LgSXsSPNX9VjXwMWCzcVmG3cq8a5VFuuUD70ZmE1T</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>

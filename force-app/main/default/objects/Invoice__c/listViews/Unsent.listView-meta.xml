@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unsent</fullName>
+    <columns>NAME</columns>
+    <columns>AccountNumber__c</columns>
+    <columns>Account__c</columns>
+    <columns>ContactBilling__c</columns>
+    <columns>InvoiceDate__c</columns>
+    <columns>InvoiceDueDate__c</columns>
+    <columns>RecordStatus__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RecordStatus__c</field>
+        <operation>contains</operation>
+        <value>Unsent</value>
+    </filters>
+    <label>Unsent</label>
+</ListView>

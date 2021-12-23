@@ -57,10 +57,6 @@
                 <field>Dual_Market__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Profession__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Full_ID__c</field>
             </layoutItems>
@@ -164,10 +160,6 @@
                 <behavior>Edit</behavior>
                 <field>Sync_with_Marketing_Cloud__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Locale__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -262,10 +254,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Email_2__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Do_Not_Call_for_NAMS_F_U__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -1169,7 +1157,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>Market__c</fields>
         <fields>Status__c</fields>
         <fields>Next_Action__c</fields>
@@ -1188,8 +1175,6 @@
         <fields>et4ae5__Clicked__c</fields>
         <fields>et4ae5__Opened__c</fields>
         <relatedList>et4ae5__IndividualEmailResult__c.et4ae5__Contact__c</relatedList>
-        <sortField>et4ae5__DateSent__c</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -1237,6 +1222,13 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Card_Type__c</fields>
+        <fields>Last_4_Digits_of_Card__c</fields>
+        <fields>Expiration_Date__c</fields>
+        <relatedList>Payment_Method__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

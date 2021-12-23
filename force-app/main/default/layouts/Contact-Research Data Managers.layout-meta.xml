@@ -208,10 +208,6 @@
                 <behavior>Edit</behavior>
                 <field>Active_Order__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Do_Not_Call_for_NAMS_F_U__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -886,7 +882,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>OrderLine__c</fields>
         <fields>Status__c</fields>
         <relatedList>Fulfillment__c.PrimaryRecipient__c</relatedList>
@@ -907,11 +902,17 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>
         <relatedList>Fulfillment__c.Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Card_Type__c</fields>
+        <fields>Last_4_Digits_of_Card__c</fields>
+        <fields>Expiration_Date__c</fields>
+        <relatedList>Payment_Method__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

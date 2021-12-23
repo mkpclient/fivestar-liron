@@ -19,4 +19,6 @@
     <tabs>Essential_Living_Issue__c</tabs>
     <tabs>Essential_Living_Publication__c</tabs>
     <tabs>Client_Experience__c</tabs>
+    <tabs>standard-Quote</tabs>
+    <tabs>SalesOrder__c</tabs>
 </CustomApplication>

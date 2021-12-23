@@ -155,9 +155,7 @@
             </defaultShortcuts>
         </keyboardShortcuts>
         <listPlacement>
-            <height>20</height>
-            <location>top</location>
-            <units>percent</units>
+            <location>full</location>
         </listPlacement>
         <listRefreshMethod>refreshList</listRefreshMethod>
     </consoleConfig>
@@ -195,6 +193,7 @@
     <tabs>Essential_Living_Issue__c</tabs>
     <tabs>Essential_Living_Publication__c</tabs>
     <tabs>Client_Experience__c</tabs>
+    <tabs>SalesOrder__c</tabs>
     <workspaceConfig>
         <mappings>
             <tab>Annual_Financial_Summary__c</tab>
@@ -222,6 +221,9 @@
         </mappings>
         <mappings>
             <tab>Product_Delivery_Summary__c</tab>
+        </mappings>
+        <mappings>
+            <tab>SalesOrder__c</tab>
         </mappings>
         <mappings>
             <tab>Special_Order_Form__c</tab>

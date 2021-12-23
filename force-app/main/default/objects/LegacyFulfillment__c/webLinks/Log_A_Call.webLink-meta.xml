@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Log_A_Call</fullName>
+    <availability>online</availability>
+    <description>Launches Log a Call Dialog (log a call with staging FULFILLMENT flow)</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>450</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Log A Call</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>https://na52.salesforce.com/flow/Log_a_Call_With_Staging_FULFILLMENT?LaunchedFulfillmentID={!Fulfillment__c.Id}</url>
+    <width>600</width>
+</WebLink>

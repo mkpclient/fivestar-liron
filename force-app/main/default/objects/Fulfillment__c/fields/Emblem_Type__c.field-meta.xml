@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Emblem_Type__c</fullName>
     <externalId>false</externalId>
-    <formula>TEXT( OrderProductLine__r.Emblem_Type__c)</formula>
+    <formula>TEXT( Boom_Order_Product_Line__r.Emblem_Type__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Emblem Type</label>
     <required>false</required>

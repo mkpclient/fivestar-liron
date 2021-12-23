@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Full_Order_ID__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.Full_Order_ID__c</formula>
+    <formula>Boom_Order__r.Full_Order_ID__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Full Order ID</label>
     <required>false</required>

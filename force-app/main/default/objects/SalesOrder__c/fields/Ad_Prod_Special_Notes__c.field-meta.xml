@@ -4,6 +4,7 @@
     <externalId>false</externalId>
     <label>Ad Prod Special Notes</label>
     <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>

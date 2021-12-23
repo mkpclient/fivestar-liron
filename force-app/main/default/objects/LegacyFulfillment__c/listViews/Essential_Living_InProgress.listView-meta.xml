@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_Living_InProgress</fullName>
+    <columns>NAME</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Market_Project__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>Contact_Block_Name__c</columns>
+    <columns>Contact_Block_Company__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>Personal Magazine Subscription</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>New,On Hold,Subscription Cancelled,Cancelled</value>
+    </filters>
+    <label>(Public) Essential Living Mag - Live</label>
+</ListView>

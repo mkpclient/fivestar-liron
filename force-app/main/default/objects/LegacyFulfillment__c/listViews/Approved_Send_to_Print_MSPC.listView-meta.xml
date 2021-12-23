@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approved_Send_to_Print_MSPC</fullName>
+    <columns>NAME</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <columns>Quantity__c</columns>
+    <columns>Postcard_Delivery_Month__c</columns>
+    <columns>Ship_Date__c</columns>
+    <columns>Product_Style__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Notes_for_Ad_Prod__c</columns>
+    <columns>Client_Contact_List__c</columns>
+    <columns>Preferred_Delivery_Area__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>contains</operation>
+        <value>Postcard Service</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>contains</operation>
+        <value>Approved</value>
+    </filters>
+    <label>__0. Approved - Send to Print MSPC</label>
+    <sharedTo>
+        <group>Fulfillment_Team</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

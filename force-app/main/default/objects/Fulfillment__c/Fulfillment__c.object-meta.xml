@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionOverrides>
         <actionName>Accept</actionName>
         <type>Default</type>
@@ -152,7 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Fulfillment</label>
     <nameField>
         <displayFormat>F-{000000}</displayFormat>
@@ -161,24 +161,26 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Fulfillments</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <searchLayouts>
-        <customTabListAdditionalFields>OrderNumber__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields xsi:nil="true"></customTabListAdditionalFields>
         <customTabListAdditionalFields>OrderLine__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>PrimaryRecipient__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
-        <lookupDialogsAdditionalFields>OrderNumber__c</lookupDialogsAdditionalFields>
+        <listViewButtons>Log_a_Call_list</listViewButtons>
+        <lookupDialogsAdditionalFields xsi:nil="true"></lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>OrderLine__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>PrimaryRecipient__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>OrderNumber__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields xsi:nil="true"></lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>OrderLine__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>PrimaryRecipient__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Status__c</lookupPhoneDialogsAdditionalFields>
-        <searchResultsAdditionalFields>OrderNumber__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields xsi:nil="true"></searchResultsAdditionalFields>
         <searchResultsAdditionalFields>OrderLine__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>PrimaryRecipient__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

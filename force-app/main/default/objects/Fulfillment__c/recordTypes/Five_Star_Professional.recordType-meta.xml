@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Five_Star_Professional</fullName>
+    <active>true</active>
+    <description>FSP award markeing tools</description>
+    <label>Five Star Professional</label>
+    <picklistValues>
+        <picklist>Activity_Subject_Choices__c</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Task</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Email_Announcement_Service__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes%2C has list</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes%2C need list</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Email_Template__c</picklist>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send CST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Product Delivered Link</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - 5 Point</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Announcement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Call for noms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Client Thank You</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Client sat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Client website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - FML</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Find me on FSP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - HGTV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Heat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Mag pub</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Share your story</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Testimonials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Post - Working with winner</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mailing_Style__c</picklist>
+        <values>
+            <fullName>Direct Mail - Flexmail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct to Client - Pre Stamped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct to Client - Print Only</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Managed_Social_Media_Platform__c</picklist>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Next_Action_Xfer__c</picklist>
+        <values>
+            <fullName>Collect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collect Revisions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collect Urgent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Create</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fulfill</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Make Revisions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Make Revisions %28CE%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Print</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Post Sale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Rush</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Proof</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Write Copy</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Next_Action__c</picklist>
+        <values>
+            <fullName>Collect</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Collect Revisions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collect Urgent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Create</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fulfill</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Batch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Make Revisions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Make Revisions %28CE%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Post Sale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Prep</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Rush</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Schedule Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Proof</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Write copy</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Postcard_Delivery_Month__c</picklist>
+        <values>
+            <fullName>April</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>August</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>December</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>February</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>January</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>July</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>June</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>March</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>May</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>November</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>October</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>September</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Posting_Number__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Engagement_Status__c</picklist>
+        <values>
+            <fullName>Engaged</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Profile_Layout__c</picklist>
+        <values>
+            <fullName>Property Listing%28s%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Return_Category__c</picklist>
+        <values>
+            <fullName>Returned - Client refused</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returned - FSP issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returned - Vendor issue</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Social_Network__c</picklist>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Social_Post_Share_Service_Status__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status_Xfer__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Approval Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Content Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Follow Up Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Open Fulfillment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Urgent Response Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete %E2%80%93 4th Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete %E2%80%93 Approval Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete %E2%80%93 Content Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete - 1st Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete - 2nd Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete - 3rd Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment NOT Complete - Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Client Success Experience Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Follow Up 1 Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Follow Up 2 Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Follow Up 3 Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 1 Complete - Action Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 1 Complete - Open Fulfillment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 2 Complete - Action Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 2 Complete - Open Fulfillment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 3 Complete - Action Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed No Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Content Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Revision - Urgent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Change</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Created</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready for FTP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>To Print</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Write copy</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved - Pending Listing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete %E2%80%93 Follow Up Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Approval Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Content Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Follow Up Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - LONG TERM Follow Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Open Fulfillment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Complete - Urgent Response Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete %E2%80%93 4th Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete %E2%80%93 Approval Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete %E2%80%93 Content Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete - 1st Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete - 2nd Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Incomplete - 3rd Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment NOT Complete - Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Appointment Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR Client Success Experience Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 1 Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 1 Complete - Action Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 1 Complete - Open Fulfillment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 2 Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 2 Complete - Action Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 2 Complete - Open Fulfillment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 3 Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CST Follow Up 3 Complete - Action Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed No Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Content Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Revision - Urgent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Created</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready for AE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready for FTP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready to Publish</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subscription Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>To Print</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web Content Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web Product Created</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Write copy</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Times_Announced__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Vendor__c</picklist>
+        <values>
+            <fullName>AmReg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gordy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>WP_Background_Color__c</picklist>
+        <values>
+            <fullName>Black</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blue</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>WP_Board_Color__c</picklist>
+        <values>
+            <fullName>Black</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mahogany</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>WP_Text_Color__c</picklist>
+        <values>
+            <fullName>Gold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Silver</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>WP_Type__c</picklist>
+        <values>
+            <fullName>10 Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15 Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5 Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Standard</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

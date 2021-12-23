@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TrackThisShipment__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(Carrier__c, &apos;USPS&apos;), HYPERLINK(&apos;http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=&apos;&amp;TrackingNumber__c, &quot;Track with USPS&quot;, &quot;_blank&quot;),
+
+IF(ISPICKVAL(Carrier__c, &apos;UPS&apos;),HYPERLINK(&apos;http://wwwapps.ups.com/WebTracking/track?track=yes&amp;trackNums=&apos;&amp;TrackingNumber__c,&quot;Track with UPS&quot;,&quot;_blank&quot;),
+
+IF(ISPICKVAL(Carrier__c, &apos;FedEx&apos;),HYPERLINK(&apos;http://www.fedex.com/Tracking?action=track&amp;tracknumbers=&apos;&amp;TrackingNumber__c,&quot;Track with FedEx&quot;,&quot;_blank&quot;),
+
+IF(ISPICKVAL(Carrier__c, &apos;DHL&apos;), HYPERLINK(&apos;http://www.dhl.com/content/g0/en/express/tracking.shtml?brand=DHL&amp;AWB=&apos;&amp;TrackingNumber__c, &quot;Track with DHL&quot;, &quot;_blank&quot;),&quot;&quot;)
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Track this Shipment</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

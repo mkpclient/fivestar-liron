@@ -289,7 +289,6 @@
         <fields>Next_Action__c</fields>
         <fields>Stage_Change_Date__c</fields>
         <fields>CREATED_DATE</fields>
-        <fields>OrderNumber__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <relatedList>Fulfillment__c.Related_Client_Experience__c</relatedList>
     </relatedLists>
