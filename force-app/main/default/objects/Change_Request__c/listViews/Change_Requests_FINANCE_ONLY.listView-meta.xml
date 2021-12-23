@@ -7,7 +7,6 @@
     <columns>Order__c</columns>
     <columns>Status__c</columns>
     <columns>Request_Description__c</columns>
-    <columns>CREATEDBY_USER</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Request_Type__c</field>

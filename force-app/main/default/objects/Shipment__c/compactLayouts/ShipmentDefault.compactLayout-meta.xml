@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ShipmentDefault</fullName>
+    <fields>Name</fields>
+    <fields>RecordStatus__c</fields>
+    <fields>SalesOrder__c</fields>
+    <fields>ContactShipping__c</fields>
+    <fields>ShipToCity__c</fields>
+    <fields>ShipmentDate__c</fields>
+    <label>Shipment Default</label>
+</CompactLayout>

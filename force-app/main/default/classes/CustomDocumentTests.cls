@@ -19,7 +19,7 @@ public class CustomDocumentTests {
         CustomOrderPDFExt orderpdf = new CustomOrderPDFExt();
         orderpdf.orderIdValue = SalesOrder.Id;
 
-        orderpdf = new CustomOrderPDFExt(new ApexPages.StandardController(SalesOrder));
+        // CustomOrderPDFExt orderpdf = new CustomOrderPDFExt(new ApexPages.StandardController(SalesOrder));
         //orderpdf.orderIdValue = SalesOrder.Id;
 
         system.assertEquals(orderpdf.Order.Id, SalesOrder.Id);
@@ -88,9 +88,9 @@ public class CustomDocumentTests {
         CustomInvoicePDFExt invoicepdf = new CustomInvoicePDFExt();
         invoicepdf.invoiceIdValue = Invoice.Id;
         
-        invoicepdf = new CustomInvoicePDFExt(new ApexPages.StandardSetController(new kugo2p__KugamonInvoice__c[] {Invoice}));
+        // invoicepdf = new CustomInvoicePDFExt(new ApexPages.StandardSetController(new kugo2p__KugamonInvoice__c[] {Invoice}));
 
-        invoicepdf = new CustomInvoicePDFExt(new ApexPages.StandardController(Invoice));
+        // invoicepdf = new CustomInvoicePDFExt(new ApexPages.StandardController(Invoice));
         //orderpdf.orderIdValue = SalesOrder.Id;
 
         system.assertEquals(invoicepdf.Invoice.Id, Invoice.Id);

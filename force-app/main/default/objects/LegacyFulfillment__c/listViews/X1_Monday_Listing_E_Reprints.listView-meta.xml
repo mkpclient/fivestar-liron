@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X1_Monday_Listing_E_Reprints</fullName>
+    <booleanFilter>1 AND 8 AND ((7 and 4) or (2 and 5) or (3 AND 6) or (9 and 10))</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
+    <columns>Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>E_Reprint_PDF_location__c</columns>
+    <columns>Display_Name__c</columns>
+    <columns>ACDF_Company__c</columns>
+    <columns>Phone__c</columns>
+    <columns>Full_ID__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Publication_month__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>Listing e-reprint</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>WSJ</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Fortune</value>
+    </filters>
+    <filters>
+        <field>Product_Templates_Finalized__c</field>
+        <operation>lessOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>WSJ_Upload__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Fortune_Upload_Date__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>wsj,fortune,Forbes,E-reprint (EH) - Issue</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>To Print,Closed,On Hold,In Revision,Cancelled,Ready to Publish,Product Created</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Forbes</value>
+    </filters>
+    <filters>
+        <field>Forbes_Upload_Date__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>__1. Monday - Listing E-Reprints Create</label>
+    <sharedTo>
+        <group>Brianna_Jahangir</group>
+        <group>Fulfillment_Team</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

@@ -6,9 +6,9 @@
     <encodingKey>UTF-8</encodingKey>
     <height>600</height>
     <linkType>url</linkType>
-    <masterLabel>Boom Credit Card Payment</masterLabel>
+    <masterLabel>New Payment</masterLabel>
     <openType>sidebar</openType>
     <protected>false</protected>
     <requireRowSelection>false</requireRowSelection>
-    <url>/apex/PaymentTerminalVF?Id={!SalesOrder__c.Id}</url>
+    <url>/apex/tbd</url>
 </WebLink>

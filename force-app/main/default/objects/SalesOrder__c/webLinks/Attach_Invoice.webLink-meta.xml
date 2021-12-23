@@ -3,17 +3,9 @@
     <fullName>Attach_Invoice</fullName>
     <availability>online</availability>
     <displayType>button</displayType>
-    <linkType>javascript</linkType>
+    <linkType>page</linkType>
     <masterLabel>Attach Invoice</masterLabel>
-    <openType>onClickJavaScript</openType>
+    <openType>replace</openType>
+    <page>SalesOrderAttachPDF</page>
     <protected>false</protected>
-    <url>var allowedStatuses = [&quot;Released&quot;, &quot;Unreleased&quot;, &quot;Approved&quot;];
-
-if(allowedStatuses.includes(&quot;{!SalesOrder__c.Status_Picklist__c}&quot;)) {
-
-window.location.replace(&quot;/apex/SalesOrderAttachPDF?id={!SalesOrder__c.Id}&quot;); 
-
-} else {
-alert(&quot;This order has not been approved.&quot;);
-}</url>
 </WebLink>

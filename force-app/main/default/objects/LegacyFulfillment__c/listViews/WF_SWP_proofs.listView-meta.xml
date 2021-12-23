@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WF_SWP_proofs</fullName>
+    <columns>NAME</columns>
+    <columns>Official_Order_Date__c</columns>
+    <columns>ACDF_Company__c</columns>
+    <columns>ACDF_Parent_Company__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Upload_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Production_Owner__c</columns>
+    <columns>Date_Sent_to_Vendor__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Wall Plaque - Single</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>package,E-reprint,Digital spotlight reprints,electronic,double</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>5/1/2019 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>To Print,Closed</value>
+    </filters>
+    <filters>
+        <field>Product_Delivered_Link__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>ACDF_Parent_Company__c</field>
+        <operation>contains</operation>
+        <value>Wells Fargo</value>
+    </filters>
+    <label>WF - SWP - proofs</label>
+</ListView>

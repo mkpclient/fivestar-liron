@@ -1054,21 +1054,6 @@
             <field>Memo__c</field>
             <table>kugo2p__SalesOrder__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>WSJ_Listing__c</field>
-            <table>kugo2p__SalesOrder__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fortune_Listing__c</field>
-            <table>kugo2p__SalesOrder__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Alchemer_Web_Order_ID__c</field>
-            <table>kugo2p__SalesOrder__c</table>
-        </columns>
         <masterLabel>Orders</masterLabel>
     </sections>
     <sections>
@@ -1693,6 +1678,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>kugo2p__Trigger_Tax_Calc__c</field>
+            <table>kugo2p__SalesOrder__c.kugo2p__Scheduled_Charges__r.kugo2p__Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>test__c</field>
             <table>kugo2p__SalesOrder__c.kugo2p__Scheduled_Charges__r.kugo2p__Payments__r</table>
         </columns>
         <masterLabel>Payments</masterLabel>

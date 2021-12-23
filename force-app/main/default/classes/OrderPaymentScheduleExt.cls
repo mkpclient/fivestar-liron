@@ -305,7 +305,7 @@ public with sharing class OrderPaymentScheduleExt {
 
 				system.debug(' ### soAccs_To_Upsert ' + soAccs_To_Upsert.size() + ' => ' + soAccs_To_Upsert);
 				if (!soAccs_To_Upsert.isEmpty()) {
-					FiveStarHelper.processingOrderPaymentSchedule = true;
+					// FiveStarHelper.processingOrderPaymentSchedule = true;
 					upsert soAccs_To_Upsert;
 				}	
 

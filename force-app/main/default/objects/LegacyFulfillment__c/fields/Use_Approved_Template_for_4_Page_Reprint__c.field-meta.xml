@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_Approved_Template_for_4_Page_Reprint__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>E reprint checklist field</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Has the approved 4 page reprint template been used?</inlineHelpText>
+    <label>Use Approved Template for 4 Page Reprint</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

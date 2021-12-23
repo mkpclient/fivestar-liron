@@ -1,4 +1,4 @@
-<apex:page standardController="SalesOrder__c" sidebar="false" >
+<apex:page standardController="SalesOrder__c">
     <apex:includeLightning />    
     <div id="LightningComponentid" />   
 <!-- the Id of div tag which will be used to render your LWC component  -->

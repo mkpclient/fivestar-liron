@@ -128,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Sales_Order_Record_Page3</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -141,12 +144,12 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>OrderDefault</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>SO{YYMMDD}-{0000000}</description>
+    <description>Main object for Order details. Contains key data points such as Account Name, Order Contacts, and Payment Information.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
@@ -154,22 +157,57 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ReadWrite</externalSharingModel>
-    <label>Boom Order</label>
+    <label>Sales Order</label>
     <nameField>
         <displayFormat>SO{YYMMDD}-{0000000}</displayFormat>
-        <label>Sales Order Name</label>
+        <label>Order Number</label>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Boom Orders</pluralLabel>
+    <pluralLabel>Sales Orders</pluralLabel>
     <searchLayouts>
-        <searchResultsAdditionalFields>WebOrder__c</searchResultsAdditionalFields>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ProductTotalAmount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>NetAmount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CompletedPayments__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>BalanceDueAmount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ScheduledPayments__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Net_Due__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PaymentStatus2__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>OrderName__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>WebOrder__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>NetAmount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>DateRequired__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>RecordStatus__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PaymentStatus2__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OrderName__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>WebOrder__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Account__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>NetAmount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>BalanceDueAmount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>DateRequired__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>RecordStatus__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PaymentStatus2__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>OrderName__c</searchFilterFields>
+        <searchFilterFields>Account__c</searchFilterFields>
+        <searchFilterFields>NetAmount__c</searchFilterFields>
+        <searchFilterFields>CompletedPayments__c</searchFilterFields>
+        <searchFilterFields>BalanceDueAmount__c</searchFilterFields>
+        <searchFilterFields>PaymentStatus2__c</searchFilterFields>
+        <searchFilterFields>Status__c</searchFilterFields>
+        <searchResultsAdditionalFields>OrderName__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>NetAmount__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>DateRequired__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CompletedPayments__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>BalanceDueAmount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ScheduledPayments__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Net_Due__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>PaymentStatus2__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Status_Picklist__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

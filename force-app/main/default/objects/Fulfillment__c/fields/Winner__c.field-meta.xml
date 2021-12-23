@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Winner__c</fullName>
     <externalId>false</externalId>
-    <formula>TEXT(OrderNumber__r.kugo2p__Opportunity__r.Winner__c)</formula>
+    <formula>TEXT(Boom_Order__r.Opportunity__r.Winner__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Winner</label>
     <required>false</required>

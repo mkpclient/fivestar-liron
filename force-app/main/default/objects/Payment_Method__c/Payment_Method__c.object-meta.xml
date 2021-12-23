@@ -157,14 +157,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Boom Payment Method</label>
+    <label>Payment Method</label>
     <nameField>
         <displayFormat>PM-{00000000}</displayFormat>
         <label>Payment Method Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Boom Payment Methods</pluralLabel>
+    <pluralLabel>Payment Methods</pluralLabel>
     <searchLayouts></searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>

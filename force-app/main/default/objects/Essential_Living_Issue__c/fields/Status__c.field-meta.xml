@@ -27,11 +27,6 @@
                 <label>Changes Submitted</label>
             </value>
             <value>
-                <fullName>Changes Submitted - Needs Proof</fullName>
-                <default>false</default>
-                <label>Changes Submitted - Needs Proof</label>
-            </value>
-            <value>
                 <fullName>Reviewed by Production</fullName>
                 <default>false</default>
                 <label>Reviewed by Production</label>
@@ -67,11 +62,6 @@
                 <label>To Print</label>
             </value>
             <value>
-                <fullName>Print Prep</fullName>
-                <default>false</default>
-                <label>Print Prep</label>
-            </value>
-            <value>
                 <fullName>Shipped</fullName>
                 <default>false</default>
                 <label>Shipped</label>
@@ -80,6 +70,18 @@
                 <fullName>Cancelled</fullName>
                 <default>false</default>
                 <label>Cancelled</label>
+            </value>
+            <value>
+                <fullName>Changes Submitted - Needs Proof</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Changes Submitted - Needs Proof</label>
+            </value>
+            <value>
+                <fullName>Print Prep</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Print Prep</label>
             </value>
         </valueSetDefinition>
     </valueSet>

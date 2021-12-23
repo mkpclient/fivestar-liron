@@ -11,9 +11,16 @@ trigger onFulfillmentUpdated on Fulfillment__c (after update) {
 
     List<String> ids = new List<String>();
 
-    for (String key: Trigger.newMap.keySet()){
-        ids.add(key);
+    Map<Id, Fulfillment__c> newMap = Trigger.newMap;
+    Map<Id, Fulfillment__c> oldMap = Trigger.oldMap;
+
+    for (String key: newMap.keySet()){
+        if(newMap.get(key).Boom_Order__c == null && oldMap.get(key).Boom_Order__c == null){
+            ids.add(key);
+        }
     }    
     
-    WebappNotifyService.notifyFulfillmentUpdated(ids);
+    if(ids.size() > 0) {
+        WebappNotifyService.notifyFulfillmentUpdated(ids);
+    }
 }

@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Subscription__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderProductLine__r.kugo2p__Product__r.kugo2p__ReferenceProduct__r.Subscription__c</formula>
+    <formula>Boom_Order_Product_Line__r.Product__r.Subscription__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Subscription</label>
     <trackHistory>false</trackHistory>

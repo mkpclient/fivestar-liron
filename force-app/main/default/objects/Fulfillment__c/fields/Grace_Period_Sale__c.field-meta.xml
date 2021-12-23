@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Grace_Period_Sale__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.Grace_Period_Sale__c</formula>
+    <formula>Boom_Order__r.Grace_Period_Sale__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Grace Period Sale</label>
     <trackHistory>false</trackHistory>

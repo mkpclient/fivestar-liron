@@ -525,9 +525,9 @@ public with sharing class ManageLinesOrderExt extends ManageLinesController {
  
  			list<Fulfillment__c> childFulfillments_To_Insert = new list<Fulfillment__c>();
             map<Id, Fulfillment__c> mapOrderLineId_To_Fulfillment = new map<Id, Fulfillment__c>{};
-            for (Fulfillment__c ff : [Select Id, OrderProductLine__c, OrderServiceLine__c, PrimaryRecipient__c from Fulfillment__c where OrderNumber__c = :SalesOrder.Id]) {
-            	mapOrderLineId_To_Fulfillment.put(ff.OrderProductLine__c == null ? ff.OrderServiceLine__c : ff.OrderProductLine__c, ff);
-            }
+            // for (Fulfillment__c ff : [Select Id, OrderProductLine__c, OrderServiceLine__c, PrimaryRecipient__c from Fulfillment__c where OrderNumber__c = :SalesOrder.Id]) {
+            // 	mapOrderLineId_To_Fulfillment.put(ff.OrderProductLine__c == null ? ff.OrderServiceLine__c : ff.OrderProductLine__c, ff);
+            // }
 
 			map<Id, LineRecipient__c> mapLineId_To_PrimaryLineRecipient = new map<Id, LineRecipient__c>{};
 			for (LineRecipient__c lr : [Select Id, Order__c, OrderProductLine__c, OrderServiceLine__c, Primary__c, Recipient__c, Recipient__r.Name from LineRecipient__c where Order__c = :salesOrder.Id and Primary__c = true]) {
@@ -555,19 +555,19 @@ public with sharing class ManageLinesOrderExt extends ManageLinesController {
 			            		if (mapOrderLineId_To_Fulfillment.containsKey(lineId) && mapOrderLineId_To_Fulfillment.get(lineId).Id != null) {
 			            			lr.Fulfillment__c = mapOrderLineId_To_Fulfillment.get(lineId).Id;
 			            		} else if (lr.Primary__c) {
-			            			Fulfillment__c fulfillment = new Fulfillment__c(OrderNumber__c=salesOrder.Id, OrderProductLine__c=(isProduct ? lineId : null), OrderServiceLine__c=(isProduct ? null : lineId), 
-			            															Status__c='New Profile', PrimaryRecipient__c=(lr.Primary__c ? lr.Recipient__c : null), 
-			            															Product_Name__c=lineItem.ProductName, Market__c=salesOrder.Market__c);
-			            			mapOrderLineId_To_fulfillment.put(lineId, fulfillment);
+			            			// Fulfillment__c fulfillment = new Fulfillment__c(OrderNumber__c=salesOrder.Id, OrderProductLine__c=(isProduct ? lineId : null), OrderServiceLine__c=(isProduct ? null : lineId), 
+			            			// 												Status__c='New Profile', PrimaryRecipient__c=(lr.Primary__c ? lr.Recipient__c : null), 
+			            			// 												Product_Name__c=lineItem.ProductName, Market__c=salesOrder.Market__c);
+			            			// mapOrderLineId_To_fulfillment.put(lineId, fulfillment);
 
-									if (lineItem.NumOrderFulfillments > 1) {
-										for (Integer i=2; i <= lineItem.NumOrderFulfillments; i++) {
-											childFulfillments_To_Insert.add(fulfillment.clone(false, true));
-										}
-									}
+									// if (lineItem.NumOrderFulfillments > 1) {
+									// 	for (Integer i=2; i <= lineItem.NumOrderFulfillments; i++) {
+									// 		childFulfillments_To_Insert.add(fulfillment.clone(false, true));
+									// 	}
+									// }
 
-			            			system.debug(' ### adding a new fulfillment record for line id 1 ' + lineId + ' - ' + fulfillment);
-			            			fulfillments_To_Upsert.add(fulfillment);
+			            			// system.debug(' ### adding a new fulfillment record for line id 1 ' + lineId + ' - ' + fulfillment);
+			            			// fulfillments_To_Upsert.add(fulfillment);
 			            		}
 							}
 
@@ -589,20 +589,20 @@ public with sharing class ManageLinesOrderExt extends ManageLinesController {
 
 					if ( (lineItem.QuantityValue <= 0 || !lineItem.CreateOrderFulfillment || !salesOrder.FulfillOrder__c) && mapOrderLineId_To_Fulfillment.containsKey(lineId)) fulfillments_To_Delete.add(mapOrderLineId_To_Fulfillment.get(lineId));
 					if (lineItem.QuantityValue > 0 && lineItem.CreateOrderFulfillment && salesOrder.FulfillOrder__c && !mapOrderLineId_To_Fulfillment.containsKey(lineId)) {
-	        			Fulfillment__c fulfillment = new Fulfillment__c(OrderNumber__c=salesOrder.Id, OrderProductLine__c=(isProduct ? lineId : null), OrderServiceLine__c=(isProduct ? null : lineId), 
-	        															Status__c='New Profile', 
-	        															PrimaryRecipient__c=mapLineId_To_PrimaryLineRecipient.containsKey(lineId) ? mapLineId_To_PrimaryLineRecipient.get(lineId).Recipient__c : null,
-	        															Product_Name__c=lineItem.ProductName, Market__c=salesOrder.Market__c);
-	        			mapOrderLineId_To_fulfillment.put(lineId, fulfillment);
+	        			// Fulfillment__c fulfillment = new Fulfillment__c(OrderNumber__c=salesOrder.Id, OrderProductLine__c=(isProduct ? lineId : null), OrderServiceLine__c=(isProduct ? null : lineId), 
+	        			// 												Status__c='New Profile', 
+	        			// 												PrimaryRecipient__c=mapLineId_To_PrimaryLineRecipient.containsKey(lineId) ? mapLineId_To_PrimaryLineRecipient.get(lineId).Recipient__c : null,
+	        			// 												Product_Name__c=lineItem.ProductName, Market__c=salesOrder.Market__c);
+	        			// mapOrderLineId_To_fulfillment.put(lineId, fulfillment);
 
 						if (lineItem.NumOrderFulfillments > 1) {
 							for (Integer i=2; i <= lineItem.NumOrderFulfillments; i++) {
-								childFulfillments_To_Insert.add(fulfillment.clone(false, true));
+								// childFulfillments_To_Insert.add(fulfillment.clone(false, true));
 							}
 						}
 
-	        			system.debug(' ### adding a new fulfillment record for line id 2 ' + lineId + ' - ' + fulfillment);
-	        			fulfillments_To_Upsert.add(fulfillment);
+	        			// system.debug(' ### adding a new fulfillment record for line id 2 ' + lineId + ' - ' + fulfillment);
+	        			// fulfillments_To_Upsert.add(fulfillment);
 					}
             	}
             }
@@ -611,12 +611,12 @@ public with sharing class ManageLinesOrderExt extends ManageLinesController {
             upsert fulfillments_To_Upsert;
 
 			if (!childFulfillments_To_Insert.isEmpty()) {
-				for (Fulfillment__c ff : childFulfillments_To_Insert) {
-					Id lineId = ff.OrderProductLine__c == null ? ff.OrderServiceLine__c : ff.OrderProductLine__c;
+				// for (Fulfillment__c ff : childFulfillments_To_Insert) {
+				// 	Id lineId = ff.OrderProductLine__c == null ? ff.OrderServiceLine__c : ff.OrderProductLine__c;
 
-					ff.ParentFulfillment__c = mapOrderLineId_To_fulfillment.get(lineId).Id;
-					ff.PrimaryRecipient__c = mapOrderLineId_To_fulfillment.get(lineId).PrimaryRecipient__c;
-				}
+				// 	ff.ParentFulfillment__c = mapOrderLineId_To_fulfillment.get(lineId).Id;
+				// 	ff.PrimaryRecipient__c = mapOrderLineId_To_fulfillment.get(lineId).PrimaryRecipient__c;
+				// }
 
 				system.debug(' ### childFulfillments_To_Insert ' + childFulfillments_To_Insert.size() + ' => ' + childFulfillments_To_Insert);
 				insert childFulfillments_To_Insert;

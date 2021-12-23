@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public_FML_March_2021_Exp_ERP</fullName>
+    <columns>NAME</columns>
+    <columns>Fulfillment_Owner__c</columns>
+    <columns>Graphics_Owner__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Market__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
+    <columns>Next_Action_Date__c</columns>
+    <columns>LAST_ACTIVITY</columns>
+    <columns>Related_Core_Market__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>Fortune Listing E-reprint - Expanded</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Cancelled,content received</value>
+    </filters>
+    <filters>
+        <field>Profession__c</field>
+        <operation>notContain</operation>
+        <value>WM,IP</value>
+    </filters>
+    <label>(Public) FML - 2021 Exp EReprints</label>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>Adrianna_Loesch</group>
+        <group>Allen_Wardell</group>
+        <group>Arizona_Bitler</group>
+        <group>Brianna_Jahangir</group>
+        <group>Diana_Nguyen</group>
+        <group>Mindy_Stansbarger</group>
+        <group>Teresa_Hemingson</group>
+    </sharedTo>
+</ListView>

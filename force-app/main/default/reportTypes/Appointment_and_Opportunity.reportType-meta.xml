@@ -515,16 +515,6 @@
             <field>Appointment_Length__c</field>
             <table>forcebrain__Event__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Opportunity__c</field>
-            <table>forcebrain__Event__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Assigned_to_And_Owner_the_same__c</field>
-            <table>forcebrain__Event__c</table>
-        </columns>
         <masterLabel>Appointments</masterLabel>
     </sections>
     <sections>

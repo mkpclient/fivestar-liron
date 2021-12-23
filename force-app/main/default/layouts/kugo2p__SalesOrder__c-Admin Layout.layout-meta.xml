@@ -77,10 +77,6 @@
                 <field>Released__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FulfillOrder__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Sales_Close_Date__c</field>
             </layoutItems>
@@ -136,18 +132,6 @@
                 <behavior>Readonly</behavior>
                 <field>Profession_from_Contact__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>WSJ_Listing__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Fortune_Listing__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Alchemer_Web_Order_ID__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -202,6 +186,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Complaint_Order__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FulfillOrder__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -568,18 +556,6 @@
         <fields>Market_Project__c</fields>
         <fields>Market__c</fields>
         <relatedList>LineRecipient__c.Order__c</relatedList>
-        <sortField>OrderLine__c</sortField>
-        <sortOrder>Asc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>OrderLine__c</fields>
-        <fields>PrimaryRecipient__c</fields>
-        <fields>Status__c</fields>
-        <fields>Market__c</fields>
-        <fields>Fulfillment_Owner__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Fulfillment__c.OrderNumber__c</relatedList>
         <sortField>OrderLine__c</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>

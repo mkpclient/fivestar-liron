@@ -29,9 +29,7 @@
     </filters>
     <label>__1. MONDAY Product Templates toFinalize</label>
     <sharedTo>
-        <group>Ad_Prod</group>
         <group>Fulfillment_Team</group>
-        <group>Graphics</group>
         <group>Jonathan_Wesser</group>
         <group>Mindy_Stansbarger</group>
         <group>Olivia_Snyder</group>

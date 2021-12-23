@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TaxAmount__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( AdditionalChargeCredit__r.kugo2p__TaxableSales__c ,( round(AdditionalChargeCreditAmount__c * TaxSalesRate__c,2 )), 0) +
+IF( AdditionalChargeCredit__r.kugo2p__TaxableExcise__c ,( round(AdditionalChargeCreditAmount__c * TaxExciseRate__c,2) ),0) +
+IF( AdditionalChargeCredit__r.kugo2p__TaxableUsage__c ,( round(AdditionalChargeCreditAmount__c * TaxUsageRate__c,2) ),0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Tax Amount</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

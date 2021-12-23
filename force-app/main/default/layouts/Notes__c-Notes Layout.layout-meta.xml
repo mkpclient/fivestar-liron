@@ -45,10 +45,6 @@
                 <behavior>Edit</behavior>
                 <field>Contact__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Order_Fulfillment__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

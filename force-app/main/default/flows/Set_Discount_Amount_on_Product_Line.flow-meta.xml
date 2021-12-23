@@ -61,12 +61,12 @@
                 <stringValue>(([kugo2p__SalesOrderProductLine__c].kugo2p__ListPrice__c - [kugo2p__SalesOrderProductLine__c].kugo2p__SalesPrice__c)*[kugo2p__SalesOrderProductLine__c].kugo2p__Quantity__c)  + ([kugo2p__SalesOrderProductLine__c].kugo2p__LineDiscountAmount__c + [kugo2p__SalesOrderProductLine__c].kugo2p__OrderDiscountAmount__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_0517882657</name>
+        <name>formula_2_myRule_1_A1_7900049425</name>
         <dataType>Currency</dataType>
         <expression>(({!myVariable_current.kugo2p__ListPrice__c} - {!myVariable_current.kugo2p__SalesPrice__c})*{!myVariable_current.kugo2p__Quantity__c})  + ({!myVariable_current.kugo2p__LineDiscountAmount__c} + {!myVariable_current.kugo2p__OrderDiscountAmount__c} )</expression>
         <scale>18</scale>
     </formulas>
-    <interviewLabel>Set_Discount_Amount_on_Product_Line-8_InterviewLabel</interviewLabel>
+    <interviewLabel>Set_Discount_Amount_on_Product_Line-9_InterviewLabel</interviewLabel>
     <label>Set_Discount_Amount_on_Product_Line</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -212,13 +212,13 @@
             </processMetadataValues>
             <field>Actual_Discount__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_0517882657</elementReference>
+                <elementReference>formula_2_myRule_1_A1_7900049425</elementReference>
             </value>
         </inputAssignments>
         <object>kugo2p__SalesOrderProductLine__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

@@ -253,6 +253,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>FSP_Split_Value__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>FSP_Sale_Price__c</field>
             </layoutItems>
             <layoutItems>
@@ -467,10 +471,6 @@
                 <behavior>Readonly</behavior>
                 <field>Subscription__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>FSP_Split_Value__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -642,6 +642,17 @@
         <fields>CORE.USERS.FULL_NAME</fields>
         <fields>TASK.LAST_UPDATE</fields>
         <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>ShipmentLine__c.SalesOrderProductLine__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>OrderLine__c</fields>
+        <fields>PrimaryRecipient__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>Fulfillment__c.Boom_Order_Product_Line__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

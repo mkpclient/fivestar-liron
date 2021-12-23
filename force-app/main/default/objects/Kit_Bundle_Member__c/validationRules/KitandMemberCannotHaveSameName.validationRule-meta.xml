@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KitandMemberCannotHaveSameName</fullName>
+    <active>true</active>
+    <errorConditionFormula>ReferenceMemberProduct__c = ReferenceKitBundle__c</errorConditionFormula>
+    <errorDisplayField>ReferenceMemberProduct__c</errorDisplayField>
+    <errorMessage>Kit/Bundle and Member Product Cannot Have the Same Name</errorMessage>
+</ValidationRule>

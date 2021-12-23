@@ -57,6 +57,8 @@ public without sharing class SalesOrderHelper {
     List<Id> salesOrderIdsList = new List<Id>();
     Set<Id> recordsToLock = new Set<Id>();
     Set<Id> paymentsToCancel = new Set<Id>();
+    Set<Id> cancelledOrderIds = new Set<Id>();
+    Set<Id> fulfillmentsToDelete = new Set<Id>();
 
     for (Integer i = 0; i < newList.size(); i++) {
       // we do not want legacy orders running through the triggers
@@ -64,12 +66,14 @@ public without sharing class SalesOrderHelper {
         if (orderNeedsFulfillmentsCreated(newList[i], oldList[i])) {
           salesOrderMap.put(newList[i].Id, newList[i]);
         } else if (orderWasCancelled(newList[i], oldList[i])) {
+          cancelledOrderIds.add(newList[i].Id);
         }
 
         if (
           oldList[i].BalanceDueAmount__c != newList[i].BalanceDueAmount__c &&
           newList[i].BalanceDueAmount__c == 0 &&
-          newList[i].NetAmount__c != null && newList[i].NetAmount__c != 0
+          newList[i].NetAmount__c != null &&
+          newList[i].NetAmount__c != 0
         ) {
           paymentsToCancel.add(newList[i].Id);
         }
@@ -93,12 +97,22 @@ public without sharing class SalesOrderHelper {
         ) {
           recordsToLock.add(newList[i].Id);
         }
+
+        if (
+          newList[i].FulfillOrder__c != oldList[i].FulfillOrder__c &&
+          !newList[i].FulfillOrder__c
+        ) {
+          fulfillmentsToDelete.add(newList[i].Id);
+        }
       }
+    }
+
+    if (fulfillmentsToDelete.size() > 0) {
+      // deleteFulfillments(fulfillmentsToDelete);
     }
 
     if (salesOrderMap.size() > 0) {
       createfulfillments(salesOrderMap.keySet());
-      // createInvoice(salesOrderMap.values());
     }
 
     if (salesOrderIdsList.size() > 0) {
@@ -112,6 +126,10 @@ public without sharing class SalesOrderHelper {
 
     if (paymentsToCancel.size() > 0) {
       cancelScheduledPayments(paymentsToCancel);
+    }
+
+    if (cancelledOrderIds.size() > 0) {
+      cancelFulfillments(cancelledOrderIds);
     }
 
     for (Id id : recordsToLock) {
@@ -177,16 +195,52 @@ public without sharing class SalesOrderHelper {
     SalesOrder__c newRecord,
     SalesOrder__c oldRecord
   ) {
-    return (newRecord.RecordStatus__c == CANCELLED_STATUS &&
-    newRecord.RecordStatus__c != oldRecord.RecordStatus__c);
+    return (newRecord.Status_Picklist__c == CANCELLED_STATUS &&
+    newRecord.Status_Picklist__c != oldRecord.Status_Picklist__c);
   }
 
   public static void createfulfillments(Set<Id> orderIds) {
-    List<Order_Fulfillment__c> fulfillments = new List<Order_Fulfillment__c>();
+    List<Fulfillment__c> fulfillments = new List<Fulfillment__c>();
+    Map<Id, Integer> childFulfillmentsCountMap = new Map<Id, Integer>();
+    List<Fulfillment__c> childFulfillments = new List<Fulfillment__c>();
+
     for (SalesOrderProductLine__c l : queryOrderProductLines(orderIDs)) {
       fulfillments.add(constructFulfillment(l));
+
+      String numberOfFulfillments = l.Product__r.Name.substringBetween(
+        '- ',
+        'X'
+      );
+
+      if (
+        numberOfFulfillments != null &&
+        numberOfFulfillments.isNumeric() &&
+        Integer.valueOf(numberOfFulfillments) > 1
+      ) {
+        childFulfillmentsCountMap.put(
+          l.Id,
+          (Integer.valueOf(numberOfFulfillments) - 1)
+        );
+      }
     }
+
     insert fulfillments;
+
+    for (Fulfillment__c f : fulfillments) {
+      if (childFulfillmentsCountMap.containsKey(f.Boom_Order_Product_Line__c)) {
+        for (
+          Integer i = 0;
+          i < childFulfillmentsCountMap.get(f.Boom_Order_Product_Line__c);
+          i++
+        ) {
+          Fulfillment__c nf = f.clone(false, true);
+          nf.ParentFulfillment__c = f.Id;
+          childFulfillments.add(nf);
+        }
+      }
+    }
+
+    insert childFulfillments;
   }
 
   public static List<SalesOrderProductLine__c> queryOrderProductLines(
@@ -199,6 +253,7 @@ public without sharing class SalesOrderHelper {
         Product__r.Name,
         SalesOrder__c,
         SalesOrder__r.Market__c,
+        SalesOrder__r.Opportunity__r.Owner.Email,
         (
           SELECT Id, Recipient__c, Primary__c
           FROM Order_Line_Recipients__r
@@ -232,10 +287,10 @@ public without sharing class SalesOrderHelper {
 
   // ? : from 11/OCT meeting with Fivestar, we do not need to fill in the value for ParentFulfillment__c
 
-  public static Order_Fulfillment__c constructFulfillment(
+  public static Fulfillment__c constructFulfillment(
     SalesOrderProductLine__c l
   ) {
-    Order_Fulfillment__c f = new Order_Fulfillment__c();
+    Fulfillment__c f = new Fulfillment__c();
     // f.Activity_Subject_Choices__c = '';
     // f.Ad_Prod_Alternate_Contact__c = null;
     // f.Ad_Prod_Alternate_Email__c = '';
@@ -257,62 +312,33 @@ public without sharing class SalesOrderHelper {
     // f.Client_Success_Tracker_URL__c = '';
     // f.Client_Tier__c = '';
     f.Contact__c = l.ContactShipping__c;
-    f.OrderProductLine__c = l.Id;
+    f.Boom_Order_Product_Line__c = l.Id;
     f.Status__c = 'New Profile';
     f.PrimaryRecipient__c = l.Order_Line_Recipients__r[0].Recipient__c;
     f.Product_Name__c = l.Product__r.Name;
     f.Market__c = l.SalesOrder__r.Market__c;
-    f.OrderNumber__c = l.SalesOrder__c;
+    f.Boom_Order__c = l.SalesOrder__c;
+    f.Order_Creator_Email__c = l.SalesOrder__r.Opportunity__r.Owner.Email;
     return f;
   }
 
-  // public static void createInvoice(List<SalesOrder__c> soDetails) {
+  public static void cancelFulfillments(Set<Id> cancelledOrderIds) {
+    list<Fulfillment__c> fulfillments_To_Update = [
+      SELECT Id, Status__c
+      FROM Fulfillment__c
+      WHERE Boom_Order__c IN :cancelledOrderIds
+    ];
 
-  //   Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
-  //   Map<String, Schema.SObjectField> invoiceFields = schemaMap.get('Invoice__c')
-  //     .getDescribe()
-  //     .fields.getMap();
-  //   List<Invoice__c> newInvoices = new List<Invoice__c>();
-  //   for (SalesOrder__c so : soDetails) {
-  //     Map<String, Object> soFields = so.getPopulatedFieldsAsMap();
-  //     Invoice__c inv = new Invoice__c();
-  //     inv.SalesOrder__c = so.Id;
+    for (Fulfillment__c ff : fulfillments_To_Update) {
+      ff.Status__c = 'Cancelled';
+    }
 
-  //     for (String field : soFields.keySet()) {
-  //       Object value = soFields.get(field);
-  //       if (
-  //         invoiceFields.containsKey(field) &&
-  //         invoiceFields.get(field).getDescribe().isUpdateable()
-  //       ) {
-  //         inv.put(field, soFields.get(field));
-  //       }
-  //     }
+    System.debug('running test? ' + Test.isRunningTest());
 
-  //     newInvoices.add(inv);
-  //   }
-  //   try {
-  //     if (newInvoices.size() > 0) {
-  //       Database.insert(newInvoices, false);
-  //       System.Debug(JSON.serialize(newInvoices));
-  //       List<OrderInvoiceRelationship__c> newOIR = new List<OrderInvoiceRelationship__c>();
-  //       for (Invoice__c inv : newInvoices) {
-  //         newOIR.add(
-  //           new OrderInvoiceRelationship__c(
-  //             SalesOrder__c = inv.SalesOrder__c,
-  //             Invoice__c = inv.Id
-  //           )
-  //         );
-  //       }
-  //       Database.insert(newOIR, false);
-  //     }
-  //   } catch (DmlException err) {
-  //     System.debug(
-  //       JSON.serialize(
-  //         new Map<String, String>{
-  //           'Error creating invoice' => err.getMessage()
-  //         }
-  //       )
-  //     );
-  //   }
-  // }
+    update fulfillments_To_Update;
+  }
+
+  public static void deleteFulfillments(Set<Id> orderIds) {
+    delete [SELECT Id FROM Fulfillment__c WHERE Boom_Order__c IN :orderIds];
+  }
 }

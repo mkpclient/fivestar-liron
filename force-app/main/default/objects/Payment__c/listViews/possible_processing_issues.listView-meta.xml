@@ -4,6 +4,7 @@
     <columns>NAME</columns>
     <columns>Contact__c</columns>
     <columns>Date__c</columns>
+    <columns>OWNER.ALIAS</columns>
     <columns>Status__c</columns>
     <filterScope>Everything</filterScope>
     <filters>

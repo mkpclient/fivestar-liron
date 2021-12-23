@@ -14,9 +14,9 @@ public without sharing class CustomInvoicePDFExt {
         invoicePDFExt = new kugo2p.InvoicePDFExt();
     }
     
-    // public CustomInvoicePDFExt(ApexPages.StandardController stdController) {
-    //  invoicePDFExt = new kugo2p.InvoicePDFExt(stdController);
-    // }
+    public CustomInvoicePDFExt(ApexPages.StandardController stdController) {
+     invoicePDFExt = new kugo2p.InvoicePDFExt(stdController);
+    }
     
     // public CustomInvoicePDFExt(ApexPages.StandardSetController controller) {
     //  invoicePDFExt = new kugo2p.InvoicePDFExt(controller);

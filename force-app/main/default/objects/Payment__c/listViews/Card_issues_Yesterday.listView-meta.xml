@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Card_issues_Yesterday</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Subscription_Id__c</columns>
+    <columns>Transaction_Id__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Date__c</field>
+        <operation>equals</operation>
+        <value>YESTERDAY</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Declined,Error</value>
+    </filters>
+    <label>Card issues Yesterday</label>
+</ListView>

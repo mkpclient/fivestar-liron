@@ -4,10 +4,11 @@
     <availability>online</availability>
     <displayType>massActionButton</displayType>
     <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
     <linkType>url</linkType>
     <masterLabel>Boom Manual Payment</masterLabel>
-    <openType>replace</openType>
+    <openType>sidebar</openType>
     <protected>false</protected>
     <requireRowSelection>true</requireRowSelection>
-    <url>/apex/manualPaymentFormVf?id={!SalesOrder__c.Id}</url>
+    <url>/a5W/e?CF00N6T00000AFPWI={!Payment__c.Sales_Order__c}</url>
 </WebLink>

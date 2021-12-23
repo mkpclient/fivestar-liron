@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Market_Project__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.Market__c</formula>
+    <formula>Boom_Order__r.Market__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Market Project</label>
     <required>false</required>

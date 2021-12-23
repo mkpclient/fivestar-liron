@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scheduled</fullName>
+    <columns>NAME</columns>
+    <columns>ShipmentDate__c</columns>
+    <columns>RecordStatus__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RecordStatus__c</field>
+        <operation>equals</operation>
+        <value>Scheduled</value>
+    </filters>
+    <label>Scheduled</label>
+</ListView>

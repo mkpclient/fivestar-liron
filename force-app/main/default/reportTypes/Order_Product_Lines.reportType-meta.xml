@@ -786,11 +786,6 @@
             <field>Display_Name_for_Invoice__c</field>
             <table>kugo2p__SalesOrderProductLine__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Alchemer_Web_Order_ID__c</field>
-            <table>kugo2p__SalesOrderProductLine__c</table>
-        </columns>
         <masterLabel>Order Product Lines</masterLabel>
     </sections>
 </ReportType>

@@ -5,9 +5,10 @@
     <externalId>false</externalId>
     <label>Payment Method</label>
     <referenceTo>Payment_Method__c</referenceTo>
-    <relationshipLabel>Boom Order Payments</relationshipLabel>
+    <relationshipLabel>Payments 2</relationshipLabel>
     <relationshipName>Payments</relationshipName>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

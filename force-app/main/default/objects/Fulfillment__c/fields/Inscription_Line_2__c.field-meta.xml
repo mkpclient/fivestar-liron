@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Inscription_Line_2__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderProductLine__r.Inscription_Line_2__c</formula>
+    <formula>Boom_Order_Product_Line__r.Inscription_Line_2__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Inscription Line 2 RETIRED</label>
     <required>false</required>

@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Alternate_Contact_Phone__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.Alternate_Contact_Phone__c</formula>
+    <formula>Boom_Order__r.Alternate_Contact_Phone__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Alternate Contact Phone</label>
     <required>false</required>

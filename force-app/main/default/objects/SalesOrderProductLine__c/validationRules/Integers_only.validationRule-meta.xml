@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integers_only</fullName>
+    <active>true</active>
+    <description>no partial quantities</description>
+    <errorConditionFormula>FLOOR( Quantity__c ) &lt;&gt; Quantity__c</errorConditionFormula>
+    <errorMessage>No Partial Quantities allowed</errorMessage>
+</ValidationRule>

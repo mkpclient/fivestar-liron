@@ -18,18 +18,8 @@
             <type>creator</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>ALL/Sales_Order_Team_Order_Approved</template>
+        <template>Finance_Templates/Team_Order_Approved</template>
     </alerts>
-    <fieldUpdates>
-        <fullName>Approved</fullName>
-        <field>Status_Picklist__c</field>
-        <literalValue>Approved</literalValue>
-        <name>Approved</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
     <fieldUpdates>
         <fullName>Check_Processed_Box</fullName>
         <field>Team_Order_Processed__c</field>
@@ -61,27 +51,7 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Sent_for_Approval</fullName>
-        <field>Sent_for_Approval__c</field>
-        <literalValue>1</literalValue>
-        <name>Sent for Approval</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Status_Approved</fullName>
-        <field>Status_Picklist__c</field>
-        <literalValue>Approved</literalValue>
-        <name>Status = Approved</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Status_Approved1</fullName>
         <field>Status_Picklist__c</field>
         <literalValue>Approved</literalValue>
         <name>Status = Approved</name>
@@ -95,26 +65,6 @@
         <field>Status_Picklist__c</field>
         <literalValue>Submitted</literalValue>
         <name>Status = Submitted</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Update_Approval_Date</fullName>
-        <field>DateApproved__c</field>
-        <formula>Today()</formula>
-        <name>Update Approval Date</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Update_Status</fullName>
-        <field>Status_Picklist__c</field>
-        <literalValue>Submitted</literalValue>
-        <name>Update Status</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>

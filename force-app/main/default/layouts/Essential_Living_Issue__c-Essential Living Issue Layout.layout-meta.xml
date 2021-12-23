@@ -35,6 +35,14 @@
                 <behavior>Readonly</behavior>
                 <field>Fulfillment_Market_Project__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Order_Fulfillment__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Mailing_Style__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -48,6 +56,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Delivery_End__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Fulfillment_EL_Quantity__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -164,14 +176,6 @@
                 <behavior>Edit</behavior>
                 <field>Custom_Back_Cover_Ad__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Custom_Front_Cover_Inside_Ad__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Custom_Front_Cover_Ad__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -191,10 +195,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Mailing_Style__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Shipping_Notes__c</field>
             </layoutItems>
             <layoutItems>
@@ -205,6 +205,8 @@
                 <behavior>Readonly</behavior>
                 <field>Fulfillment_Total_EL_Issues__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>EL_E_Magazine_Purchaser__c</field>
@@ -212,20 +214,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>E_Magazine_URL__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Fulfillment_EL_Quantity__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>EL_Direct_Mail_Copies__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>EL_Boxed_Copies__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -341,10 +329,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Fulfillment_Custom_Back_Cover_Ad__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Fulfillment_EL_Boxed_Copies__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

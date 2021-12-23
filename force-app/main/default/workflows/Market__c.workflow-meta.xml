@@ -21,7 +21,7 @@
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Market_free_financing_rejected</template>
+        <template>ALL/Market_free_financing_rejected</template>
     </alerts>
     <alerts>
         <fullName>market_free_financing_approved</fullName>
@@ -44,7 +44,7 @@
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Market_free_financing_approved</template>
+        <template>ALL/Market_free_financing_approved</template>
     </alerts>
     <fieldUpdates>
         <fullName>approved</fullName>

@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Official_Order_Date__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.Released__c</formula>
+    <formula>Boom_Order__r.Released__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Official Order Date</label>
     <required>false</required>

@@ -145,6 +145,11 @@
             <field>Final_Index__c</field>
             <table>Market__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Price_Book__c</field>
+            <table>Market__c</table>
+        </columns>
         <masterLabel>Markets</masterLabel>
     </sections>
     <sections>
@@ -706,76 +711,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>BDR_Follow_Up__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Certification_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Roadmap_to_Success_URL__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Client_Check_In_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_CT_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Digital_Ads_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_ELM_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_E_Newsletter_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_LSS_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_MLSS_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_Postcards_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_SMM_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_U_40_SS_Follow_Up_Link__c</field>
-            <table>Market__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AM_WIW_SS_Follow_Up_Link__c</field>
             <table>Market__c.Opportunities__r</table>
         </columns>
         <masterLabel>Opportunities</masterLabel>

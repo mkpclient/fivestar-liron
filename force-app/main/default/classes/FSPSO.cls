@@ -184,23 +184,24 @@ public with sharing class FSPSO {
 
   // get recipients
   public String getFulfillments() {
-    List<Fulfillment__c> fulfillments = [
-      SELECT Id, Name, PrimaryRecipient__r.Name
-      FROM Fulfillment__c
-      WHERE OrderNumber__c = :ApexPages.currentPage().getParameters().get('id')
-    ];
+    // List<Fulfillment__c> fulfillments = [
+    //   SELECT Id, Name, PrimaryRecipient__r.Name
+    //   FROM Fulfillment__c
+    //   WHERE OrderNumber__c = :ApexPages.currentPage().getParameters().get('id')
+    // ];
 
-    String recipients = '';
-    Set<String> uniques = new Set<String>();
-    for ( Fulfillment__c f : fulfillments ) {
-      uniques.add(f.PrimaryRecipient__r.Name);
-    }
+    // String recipients = '';
+    // Set<String> uniques = new Set<String>();
+    // for ( Fulfillment__c f : fulfillments ) {
+    //   uniques.add(f.PrimaryRecipient__r.Name);
+    // }
 
-    for (String s : uniques) {
-      recipients += s + ', ';
-    }
+    // for (String s : uniques) {
+    //   recipients += s + ', ';
+    // }
 
-    return recipients.substringBeforeLast(',');
+    // return recipients.substringBeforeLast(',');
+    return null;
   }
 
   public Boolean getMemo() {

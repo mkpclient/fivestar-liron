@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Background_Color__c</fullName>
     <externalId>false</externalId>
-    <formula>TEXT(OrderProductLine__r.Background_Color__c)</formula>
+    <formula>TEXT(Boom_Order_Product_Line__r.Background_Color__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Background Color RETIRED</label>
     <required>false</required>
