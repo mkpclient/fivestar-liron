@@ -712,7 +712,7 @@ export default class UpdatePaymentMethod extends LightningElement {
 
   get yearOptions() {
     let options = [];
-    for (let i = 1; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
       let y = new Date().getFullYear() + i;
       options.push({ label: "" + y, value: "" + y });
     }
