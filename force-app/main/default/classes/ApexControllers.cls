@@ -32,9 +32,10 @@ public class ApexControllers {
     } else {
       generatedSO.Price_Book__c = opp.Market_Project__r.Price_Book__c;
     }
-    generatedSO.ContactBilling__c = opp.ContactId;
-    generatedSO.ContactBuying__c = opp.ContactId;
-    generatedSO.ContactShipping__c = opp.ContactId;
+
+    generatedSO.ContactBilling__c = opp.Contact__r.Id;
+    generatedSO.ContactBuying__c = opp.Contact__r.Id;
+    generatedSO.ContactShipping__c = opp.Contact__r.Id;
     generatedSO.BillToName__c = opp.Account.Name;
     generatedSO.BillToCity__c = opp.Contact__r.MailingCity;
     generatedSO.BillToCountry__c = opp.Contact__r.MailingCountry;
