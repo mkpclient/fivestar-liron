@@ -150,7 +150,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     if (data) {
       if (
         data.fields.Status_Picklist__c.value == "Draft" ||
-        data.fields.Status_Picklist__c.value == "Submitted for Approval"
+        data.fields.Status_Picklist__c.value == "Submitted"
       ) {
         this.enablePayments = false;
         alert("Unable to make payments on unapproved sales orders.");
