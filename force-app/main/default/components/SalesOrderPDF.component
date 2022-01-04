@@ -82,7 +82,7 @@
   <table cellpadding="3" cellspacing="0" class="noborder">
     <tr>
       <td width="50%">
-        <apex:outputPanel >
+        <apex:outputPanel>
           <b>Bill To:</b>
           <br/>
           <apex:outputPanel rendered="{!Order.BillToName__c != null}">
@@ -446,13 +446,15 @@
     <apex:outputPanel rendered="{!isOnlineOrder}">
       <br/>
     </apex:outputPanel>
-    <h2 style="display:block"><font color ="#999999">Payment Schedule</font></h2>
+    <h2 style="display:block">
+      <font color="#999999">Payment Schedule</font>
+    </h2>
     <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!PaymentSchedules}" var="ps">
       <apex:column headerClass="colheader">
         <apex:facet name="header">Billing Name</apex:facet>
         <apex:outputField value="{!ps.Billing_Name__c}" />
-      </apex:column>  
-    <apex:column headerClass="colheader">
+      </apex:column>
+      <apex:column headerClass="colheader">
         <apex:facet name="header">Due Date</apex:facet>
         <apex:outputField value="{!ps.Scheduled_Payment_Date__c}" />
       </apex:column>
@@ -584,7 +586,7 @@
           </td>
           <td>
             <apex:outputPanel id="initialByErrorBlock" style="vertical-align: top; color: red;">
-              <apex:outputPanel >
+              <apex:outputPanel>
                 <b>
                   <apex:outputText id="initialbyErrorText" value="* You must initial terms before proceeding." style="display:none;" />
                 </b>
@@ -604,7 +606,7 @@
 
           <td width="80">
             <br></br>
-            <apex:outputText >
+            <apex:outputText>
               <b>Initialed By:&nbsp;</b>{!InitialedBy}</apex:outputText>
           </td>
         </tr>
@@ -710,25 +712,28 @@
     <table cellpadding="2" cellspacing="0" class="noborder">
       <tr style="display:{!IF(attachmentId != null,'','none')}">
         <td>
-          <img src="{!URLFOR($Action.Attachment.Download, attachmentId)}" />
+            <apex:image url="{!URLFOR($Action.Attachment.Download, attachmentId)}" rendered="{!NOT(ISBLANK(attachmentId))}" />
         </td>
       </tr>
       <tr>
         <td>
-          <apex:outputText >
-            <b>Terms Accepted By:&nbsp;</b>{!TermsAcceptedBy}</apex:outputText>
+          <apex:outputText rendered="{!TermsAcceptedBy != null}">
+            <b>Terms Accepted By:&nbsp;</b>{!TermsAcceptedBy}
+          </apex:outputText>
         </td>
       </tr>
       <tr>
         <td>
-          <apex:outputText >
-            <b>On Date:&nbsp;</b>{!TermsAcceptedDate}</apex:outputText>
+          <apex:outputText rendered="{!TermsAcceptedDate != null}">
+            <b>On Date:&nbsp;</b>{!TermsAcceptedDate}
+          </apex:outputText>
         </td>
       </tr>
       <tr>
         <td>
-          <apex:outputText >
-            <b>From IP Address:&nbsp;</b>{!TermsAcceptedFromIPAddress}</apex:outputText>
+          <apex:outputText rendered="{!TermsAcceptedFromIPAddress != null}">
+            <b>From IP Address:&nbsp;</b>{!TermsAcceptedFromIPAddress}
+          </apex:outputText>
         </td>
       </tr>
     </table>

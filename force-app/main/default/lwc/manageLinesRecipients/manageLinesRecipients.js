@@ -68,7 +68,7 @@ const generateColumns = (isEditable) => [
     fieldName: "Quantity__c",
     type: "number",
     sortable: true,
-    fixedWidth: 72,
+    fixedWidth: 100,
     editable: isEditable,
     cellAttributes: { class: isEditable ? { fieldName: "disableEdit" } : "" }
   },
@@ -424,16 +424,11 @@ export default class ManageLinesRecipients extends NavigationMixin(
         line.Product__r.Minimum_Quantity__c,
       Default_Quantity__c:
         line.Product__r.Default_Quantity__c &&
-        line.Product__r.Default_Quantity__c,
+      line.Product__r.Default_Quantity__c,
       Recipient_Limit__c:
         line.Product__r.Recipient_Limit__c &&
         line.Product__r.Recipient_Limit__c,
-      disableEdit:
-        line.AllowQuantityChange__c == true
-          ? ""
-          : line.Kit_Bundle_Member__c == true
-          ? "child-disable-edit"
-          : "disable-edit",
+      disableEdit: "",
       expandIconName: line.expandIconName
         ? line.expandIconName
         : line.KitBundle__c == true &&
@@ -884,6 +879,10 @@ export default class ManageLinesRecipients extends NavigationMixin(
         newData.TotalAmount__c =
           quantity *
           (salesPrice * ((100 - (totalDiscount + lineDiscount)) / 100));
+
+        if (newData.Sales_Order_Product_Lines__r && newData.Sales_Order_Product_Lines__r.length > 0) { 
+          newData.Sales_Order_Product_Lines__r.forEach(so => {so.Quantity__c = quantity; so.DateRequired__c = newData.DateRequired__c;});
+        }
         return {
           ...newData
         };

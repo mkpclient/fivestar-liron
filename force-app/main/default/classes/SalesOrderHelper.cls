@@ -14,37 +14,39 @@ public without sharing class SalesOrderHelper {
       SalesOrder__c newSO = newMap.get(key);
 
       // skipping legacy orders
-      if (String.isEmpty(newSO.Legacy_Id__c)) {
         // when SO meets all release criteria
+      if(Approval.isLocked(newSO.Id)) {
         Approval.unlock(newSO.Id);
-        if (
-          newSO.Status_Picklist__c == APPROVED_STATUS &&
-          newSO.ExistingPayments__c >= newSO.NetAmount__c &&
-          newSO.FinanceOverride__c != true &&
-          newSO.Status_Picklist__c != RELEASED_STATUS &&
-          (newSO.NetAmount__c != 0 ||
-          (newSO.Approved_Complimentary_Order__c == true ||
-          newSO.Complaint_Order__c == true ||
-          newSO.Sample_ELM_Copy__c == true))
-        ) {
-          if (newSO.DateReleased__c == null) {
-            newSO.DateReleased__c = Date.today();
-          }
-          newSO.Release_Date__c = Date.today();
-          newSO.Status_Picklist__c = RELEASED_STATUS;
-          newSO.Released__c = System.now();
-          newSO.FulfillOrder__c = true;
-          newSO.Email_To_Send__c = true;
-        }
-
-        // when SO gets unreleased
-        if (
-          (newSO.Status_Picklist__c != oldSO.Status_Picklist__c) &&
-          (newSO.Status_Picklist__c == UNRELEASED_STATUS)
-        ) {
-          newSO.FinanceOverride__c = true;
-        }
       }
+
+      if (
+        newSO.Status_Picklist__c == APPROVED_STATUS &&
+        newSO.ExistingPayments__c >= newSO.NetAmount__c &&
+        newSO.FinanceOverride__c != true &&
+        newSO.Status_Picklist__c != RELEASED_STATUS &&
+        (newSO.NetAmount__c != 0 ||
+        (newSO.Approved_Complimentary_Order__c == true ||
+        newSO.Complaint_Order__c == true ||
+        newSO.Sample_ELM_Copy__c == true))
+      ) {
+        if (newSO.DateReleased__c == null) {
+          newSO.DateReleased__c = Date.today();
+        }
+        newSO.Release_Date__c = Date.today();
+        newSO.Status_Picklist__c = RELEASED_STATUS;
+        newSO.Released__c = System.now();
+        newSO.FulfillOrder__c = true;
+        newSO.Email_To_Send__c = true;
+      }
+
+      // when SO gets unreleased
+      if (
+        (newSO.Status_Picklist__c != oldSO.Status_Picklist__c) &&
+        (newSO.Status_Picklist__c == UNRELEASED_STATUS)
+      ) {
+        newSO.FinanceOverride__c = true;
+      }
+      
     }
   }
 
@@ -62,49 +64,49 @@ public without sharing class SalesOrderHelper {
 
     for (Integer i = 0; i < newList.size(); i++) {
       // we do not want legacy orders running through the triggers
-      if (String.isEmpty(newList[i].Legacy_Id__c)) {
-        if (orderNeedsFulfillmentsCreated(newList[i], oldList[i])) {
-          salesOrderMap.put(newList[i].Id, newList[i]);
-        } else if (orderWasCancelled(newList[i], oldList[i])) {
-          cancelledOrderIds.add(newList[i].Id);
-        }
-
-        if (
-          oldList[i].BalanceDueAmount__c != newList[i].BalanceDueAmount__c &&
-          newList[i].BalanceDueAmount__c == 0 &&
-          newList[i].NetAmount__c != null &&
-          newList[i].NetAmount__c != 0
-        ) {
-          paymentsToCancel.add(newList[i].Id);
-        }
-
-        if (
-          newList[i].Initial_Invoice_Sent__c != true &&
-          newList[i].Email_To_Send__c == true &&
-          newList[i].Status_Picklist__c == RELEASED_STATUS
-        ) {
-          salesOrderIdsList.add(newList[i].Id);
-        }
-
-        if (oldList[i].Price_Book__c != newList[i].Price_Book__c) {
-          salesOrderIds.add(newList[i].Id);
-        }
-
-        if (
-          !Approval.isLocked(newList[i].Id) &&
-          (newList[i].Status_Picklist__c == 'Released' ||
-          newList[i].Status_Picklist__c == 'Approved')
-        ) {
-          recordsToLock.add(newList[i].Id);
-        }
-
-        if (
-          newList[i].FulfillOrder__c != oldList[i].FulfillOrder__c &&
-          !newList[i].FulfillOrder__c
-        ) {
-          fulfillmentsToDelete.add(newList[i].Id);
-        }
+    
+      if (orderNeedsFulfillmentsCreated(newList[i], oldList[i])) {
+        salesOrderMap.put(newList[i].Id, newList[i]);
+      } else if (orderWasCancelled(newList[i], oldList[i])) {
+        cancelledOrderIds.add(newList[i].Id);
       }
+
+      if (
+        oldList[i].BalanceDueAmount__c != newList[i].BalanceDueAmount__c &&
+        newList[i].BalanceDueAmount__c == 0 &&
+        newList[i].NetAmount__c != null &&
+        newList[i].NetAmount__c != 0
+      ) {
+        paymentsToCancel.add(newList[i].Id);
+      }
+
+      if (
+        newList[i].Initial_Invoice_Sent__c != true &&
+        newList[i].Email_To_Send__c == true &&
+        newList[i].Status_Picklist__c == RELEASED_STATUS
+      ) {
+        salesOrderIdsList.add(newList[i].Id);
+      }
+
+      if (oldList[i].Price_Book__c != newList[i].Price_Book__c) {
+        salesOrderIds.add(newList[i].Id);
+      }
+
+      if (
+        !Approval.isLocked(newList[i].Id) &&
+        (newList[i].Status_Picklist__c == 'Released' ||
+        newList[i].Status_Picklist__c == 'Approved')
+      ) {
+        recordsToLock.add(newList[i].Id);
+      }
+
+      if (
+        newList[i].FulfillOrder__c != oldList[i].FulfillOrder__c &&
+        !newList[i].FulfillOrder__c
+      ) {
+        fulfillmentsToDelete.add(newList[i].Id);
+      }
+    
     }
 
     if (fulfillmentsToDelete.size() > 0) {
@@ -141,8 +143,7 @@ public without sharing class SalesOrderHelper {
     for (Integer i = 0; i < oldList.size(); i++) {
       if (
         (oldList[i].Status_Picklist__c != DRAFT_STATUS ||
-        oldList[i].ExistingPayments__c > 0) &&
-        String.isEmpty(oldList[i].Legacy_Id__c)
+        oldList[i].ExistingPayments__c > 0)
       ) {
         oldList[i]
           .addError(

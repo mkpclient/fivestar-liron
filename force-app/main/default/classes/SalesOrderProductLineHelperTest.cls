@@ -213,6 +213,30 @@ public with sharing class SalesOrderProductLineHelperTest {
 
     prodLineToUpdate.Quantity__c = 10;
     update prodLineToUpdate;
+
+    SalesOrderProductLine__c parentLine = [
+      SELECT Id FROM SalesOrderProductLine__c WHERE Kit_Bundle_Product__c = true LIMIT 1
+    ];
+
+    parentLine.Quantity__c = 20;
+
+    update parentLine;
+
+    List<SalesOrderProductLine__c> bundleProdLine = [
+      SELECT Id, KitBundleLine__c
+      FROM SalesOrderProductLine__c
+      WHERE KitBundleLine__c = :prodLineToUpdate.Id
+      AND Quantity__c = 20
+    ];
+
+    System.assertEquals(
+      true,
+      bundleProdLine.size() > 0,
+      'Bundle product line was not updated'
+    );
+
+    
+
   }
 
   @isTest
@@ -333,6 +357,7 @@ public with sharing class SalesOrderProductLineHelperTest {
 
     update testCtc;
 
+
     Formula.recalculateFormulas(preTax);
 
     update preTax;
@@ -340,6 +365,7 @@ public with sharing class SalesOrderProductLineHelperTest {
     List<SalesOrderProductLine__c> postTax = [
       SELECT Id, TaxAmount__c, ShipToStateProvince__c  FROM SalesOrderProductLine__c WHERE TaxAmount__c > 0
     ];
+
 
 
     System.assertEquals(

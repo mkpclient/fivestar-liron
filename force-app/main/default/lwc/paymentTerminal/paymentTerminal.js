@@ -268,7 +268,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   async queryExistingMethods() {
     let queryString = "SELECT " + paymentMethodFields.join(",");
     queryString +=
-      " FROM Payment_Method__c WHERE Contact__r.AccountId = '" +
+      " FROM Payment_Method__c WHERE Contact__c = '" + this.salesOrder.ContactBilling__c + "' OR Contact__r.AccountId = '" +
       this.salesOrder.Account__c +
       "'";
     try {
@@ -283,7 +283,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   async getRelatedContacts() {
     let queryString = "SELECT " + contactFields.join(",");
     queryString +=
-      " FROM Contact WHERE AccountId = '" + this.salesOrder.Account__c + "'";
+      " FROM Contact WHERE Id = '" + this.salesOrder.ContactBilling__c + "' OR AccountId = '" + this.salesOrder.Account__c + "'";
     try {
       const res = await doQuery({ queryString: queryString });
       // console.log(res);
@@ -592,7 +592,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       entryClass: "WEB",
       cardAccountToken: this.selectedPaymentMethod.Merchant_Token__c,
       clientReference: this.salesOrder.Name,
-      invoice: this.salesOrder.Name
+      invoice: this.salesOrder.Name.length > 16 ? this.salesOrder.Name.replace('-', '') : this.salesOrder.Name
       // customerId: parseInt(this.accountContacts[this.selectedPaymentMethod.Contact__c]
       //     .MX_Customer_Id__c)
     };
@@ -617,9 +617,11 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       }
     );
 
+    // console.log(pmtData);
 
     if(caughtError) {
       await saveRecord({ record: savedRecord });
+      this.displayError();
       return;
     }
 
@@ -713,7 +715,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       expiryYear: "" + paymentMethodCopy.expiryYear,
       name: paymentMethodCopy.firstName + " " + paymentMethodCopy.lastName,
       avsStreet: "" + paymentMethodCopy.billingStreet,
-      avsZip: "" + paymentMethodCopy.billingPostalCode,
+      avsZip: paymentMethodCopy.billingPostalCode.length == 5 ? "" +  paymentMethodCopy.billingPostalCode : "0" + paymentMethodCopy.billingPostalCode,
       REPLACE_number: "" + paymentMethodCopy.cardNumber,
       alias:
         paymentMethodCopy.firstName +
@@ -752,7 +754,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       address2: "",
       city: contactRecord.billingCity,
       state: contactRecord.billingState,
-      zip: contactRecord.billingPostalCode,
+      zip: contactRecord.billingPostalCode.length == 5 ? contactRecord.billingPostalCode : "0" + contactRecord.billingPostalCode,
       customerType: "Business"
     };
     // console.log(CustomerResource);
@@ -762,9 +764,16 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       if (!res.isSuccess) {
         if (res.errorMessage && res.errorCode) {
           console.error(res.errorCode + " : " + res.errorMessage);
+          
           return;
         }
       }
+
+      if(!res.customer.id) {
+        alert("Error: Customer cannot be created. Please make sure that all fields have been filled out correctly.");
+        return;
+      }
+
       const updatedContact = {
         sobjectType: "Contact",
         MX_Customer_Id__c: res.customer.id + "",
@@ -1019,5 +1028,9 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       { label: "WI", value: "WI" },
       { label: "WY", value: "WY" }
     ];
+  }
+
+  get noPaymentMethods() {
+    return this.paymentMethods.length === 0;
   }
 }

@@ -101,7 +101,7 @@ export default class PaymentMethodForm extends LightningElement {
       expiryYear: "" + record.expiryYear,
       name: record.Billing_First_Name__c + " " + record.Billing_Last_Name__c,
       avsStreet: "" + record.Billing_Street__c,
-      avsZip: "" + record.Billing_Postal_Code__c,
+      avsZip: "" + record.Billing_Postal_Code__c.length == 5 ? record.Billing_Postal_Code__c : "0" + record.Billing_Postal_Code__c,
       ...(this.isNew && { REPLACE_number: "" + record.cardNumber }),
       ...(this.isNew && {
         alias:
@@ -121,6 +121,8 @@ export default class PaymentMethodForm extends LightningElement {
 
       return res.creditCard;
     } catch (err) {
+      alert('An error has occurred. Please verify that all fields have been entered correctly.');
+      this.disableButton = false;
       console.error(err);
       throw new Error(err);
     }
@@ -138,7 +140,7 @@ export default class PaymentMethodForm extends LightningElement {
       address2: "",
       city: contactRecord.MailingCity,
       state: contactRecord.MailingState,
-      zip: contactRecord.MailingPostalCode,
+      zip: contactRecord.MailingPostalCode.length == 5 ? contactRecord.MailingPostalCode : "0" + contactRecord.MailingPostalCode,
       customerType: "Business"
     };
     console.log(CustomerResource);
@@ -149,6 +151,11 @@ export default class PaymentMethodForm extends LightningElement {
         console.error(res.errorCode + " : " + res.errorMessage);
         return;
       }
+    }
+
+    if(!res.customer.id) {
+      alert("Unable to save customer on merchant's portal. Please make sure that the formats (i.e. Zip Code) are correct. ");
+      return;
     }
 
     const updatedContact = {

@@ -229,7 +229,7 @@ export default class PublicPaymentTerminal extends LightningElement {
       address2: "",
       city: contactRecord.MailingCity,
       state: contactRecord.MailingState,
-      zip: contactRecord.MailingPostalCode,
+      zip: contactRecord.MailingPostalCode.length == 5 ? contactRecord.MailingPostalCode : "0" + contactRecord.MailingPostalCode,
       customerType: "Business"
     };
     console.log(CustomerResource);
@@ -260,7 +260,7 @@ export default class PublicPaymentTerminal extends LightningElement {
       expiryYear: "" + this.paymentEntry.ExpiryYear,
       name: this.paymentEntry.FirstName + " " + this.paymentEntry.LastName,
       avsStreet: "" + this.paymentEntry.MailingStreet,
-      avsZip: "" + this.paymentEntry.MailingPostalCode,
+      avsZip: this.paymentEntry.MailingPostalCode.length == 5 ? "" + this.paymentEntry.MailingPostalCode : "0" + this.paymentEntry.MailingPostalCode,
       REPLACE_number: "" + this.paymentEntry.CardNumber,
       alias:
         this.paymentEntry.FirstName +
@@ -270,11 +270,12 @@ export default class PublicPaymentTerminal extends LightningElement {
         this.paymentEntry.CardType,
       cvv: "" + this.paymentEntry.SecurityCode
     };
-    console.log(CreditCardResource);
+    // console.log(CreditCardResource);
     const res = await savePaymentMethod({ creditCard: CreditCardResource });
     console.log(res);
     if (!res.isSuccess) {
       console.error(res.errorMessage);
+      this.isProcessing = false;
       this.errorMessage =
         "An error has occured. We apologize for the inconvenience.";
       return;
@@ -319,6 +320,7 @@ export default class PublicPaymentTerminal extends LightningElement {
       paymentMethodres = await saveRecord({ record: paymentMethodData });
     } catch(err) {
       console.error(err);
+      this.isProcessing = false;
       this.errorMessage =
         "Unable to process this card. We apologize for the inconvenience.";
       return;
@@ -402,6 +404,7 @@ export default class PublicPaymentTerminal extends LightningElement {
         await this.handlePayment();
       } catch (err) {
         console.error(err);
+        this.isProcessing = false;
         this.errorMessage =
           "An error has occured. Please contact the sender and try again later. We apologize for the inconvenience.";
       }

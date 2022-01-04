@@ -27,7 +27,7 @@
         </template>
         <template if:true={showNewPaymentMethod}>
           <lightning-button
-            label="New Payment Method"
+            label="Add Credit Card to Vault"
             onclick={handleOnClick}
             variant="brand-outline"
           ></lightning-button>
@@ -95,7 +95,14 @@
         columns={paymentMethodColumns}
         onrowselection={handleRowSelection}
         onrowaction={handleRowAction}
+        max-row-selection="1"
       ></lightning-datatable>
+
+
+      <template if:true={noPaymentMethods}>
+        No payment method vaulted. Please vault a new one.
+      </template>
+
 
       <template if:true={showNewCardScreen}>
         <lightning-layout multiple-rows="true">

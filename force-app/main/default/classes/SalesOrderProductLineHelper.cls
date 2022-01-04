@@ -109,6 +109,7 @@ public without sharing class SalesOrderProductLineHelper {
     List<SalesOrderProductLine__c> newList
   ) {
     List<SalesOrderProductLine__c> taxUpdated = new List<SalesOrderProductLine__c>();
+    Map<Id,SalesOrderProductLine__c> updChildren = new Map<Id,SalesOrderProductLine__c>();
 
     for (Integer i = 0; i < newList.size(); i++) {
       if (
@@ -128,10 +129,19 @@ public without sharing class SalesOrderProductLineHelper {
           .Rate__c;
         taxUpdated.add(taxSopl);
       }
+
+      if((newList[i].Quantity__c != oldList[i].Quantity__c || newList[i].DateRequired__c != oldList[i].DateRequired__c) && newList[i].Kit_Bundle_Product__c == true) {
+        updChildren.put(newList[i].Id, newList[i]);
+      }
+
     }
 
     if (taxUpdated.size() > 0) {
       update taxUpdated;
+    }
+
+    if (updChildren.size() > 0) {
+      updateChildren(updChildren);
     }
   }
 
@@ -191,6 +201,22 @@ public without sharing class SalesOrderProductLineHelper {
       System.debug('ON DELETE CHILDREN OF SALES ORDER PROD LINES ERROR ::: ');
       System.debug(err.getMessage());
     }
+  }
+
+  public static void updateChildren(Map<Id, SalesOrderProductLine__c> soplMap) {
+    List<SalesOrderProductLine__c> recs = [
+      SELECT Id, Quantity__c, KitBundleLine__c, DateRequired__c
+      FROM SalesOrderProductLine__c 
+      WHERE KitBundleLine__c IN :soplMap.keySet()
+    ];
+
+    for(SalesOrderProductLine__c r : recs) {
+      r.Quantity__c = soplMap.get(r.KitBundleLine__c).Quantity__c;
+      r.DateRequired__c = soplMap.get(r.KitBundleLine__c).DateRequired__c;
+    }
+
+    update recs;
+    
   }
 
   public static void deleteRecipients(Set<Id> withRecipients) {
