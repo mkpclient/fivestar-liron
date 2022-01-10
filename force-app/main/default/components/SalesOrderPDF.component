@@ -277,11 +277,11 @@
         <apex:outputText value="{!line.TaxVAT__c}" />
       </apex:column>
 -->
-      <apex:column headerClass="colheader">
+      <!-- <apex:column headerClass="colheader">
         <apex:facet name="header">Date
           <br/>Available</apex:facet>
         <apex:outputField value="{!line.DateAvailableToPromise__c}" />
-      </apex:column>
+      </apex:column> -->
       <apex:column headerClass="colheader alignRight" style="text-align: right">
         <apex:facet name="header">Quantity</apex:facet>
         <apex:outputText value="{0, number, ###,##0.00}">
@@ -505,7 +505,7 @@
         <tr>
           <td valign="top">
             <!-- <apex:outputField value="{!if(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Name, lr.OrderServiceLine__r.Name)}" /> -->
-            <apex:outputField value="{!lr.OrderProductLine__r.Product__r.Name}" rendered="{!lr.OrderProductLine__c != null}" />
+            <apex:outputField value="{!IF(NOT(ISBLANK(lr.OrderProductLine__r.Product__r.Product_Display_Name__c)), {lr.OrderProductLine__r.Product__r.Product_Display_Name__c}, {lr.OrderProductLine__r.Product__r.Name})}" rendered="{!lr.OrderProductLine__c != null}" />
           </td>
           <td valign="top">
             <apex:outputField value="{!lr.Recipient__r.Name}" />

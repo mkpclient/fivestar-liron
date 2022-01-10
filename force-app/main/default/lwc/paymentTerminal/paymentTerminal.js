@@ -321,7 +321,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   async handleOnClick(event) {
     let label = event.target.label;
     // console.log(label);
-    if (label === "New Payment Method") {
+    if (label === "Add Credit Card to Vault") {
       this.showNewCardScreen = true;
       this.showNewPaymentMethod = false;
     } else if (label === "Cancel") {

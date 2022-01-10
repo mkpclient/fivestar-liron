@@ -134,6 +134,12 @@ public without sharing class OrderLineRecipientsHelper {
     return salesOrders;
   }
 
+  public static Map<Id, Contact> generateOppToContactMap() {
+    Map<Id, Contact> returnedMap = new Map<Id, Contact>();
+
+    return returnedMap;
+  }
+
   public static void updateParentOrderLine(Set<Id> orderLineIds) {
    
   List<SalesOrderProductLine__c> SOPLs = [

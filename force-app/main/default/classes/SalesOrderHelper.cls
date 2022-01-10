@@ -12,7 +12,10 @@ public without sharing class SalesOrderHelper {
     for (Id key : newMap.keySet()) {
       SalesOrder__c oldSO = oldMap.get(key);
       SalesOrder__c newSO = newMap.get(key);
-
+      
+      if(newSo.Legacy_Id__c != null) {
+        continue;
+      }
       // skipping legacy orders
         // when SO meets all release criteria
       if(Approval.isLocked(newSO.Id)) {
@@ -64,6 +67,10 @@ public without sharing class SalesOrderHelper {
 
     for (Integer i = 0; i < newList.size(); i++) {
       // we do not want legacy orders running through the triggers
+
+      if(newList[i].Legacy_Id__c != null) {
+        continue;
+      }
     
       if (orderNeedsFulfillmentsCreated(newList[i], oldList[i])) {
         salesOrderMap.put(newList[i].Id, newList[i]);
@@ -188,8 +195,8 @@ public without sharing class SalesOrderHelper {
     SalesOrder__c newRecord,
     SalesOrder__c oldRecord
   ) {
-    return (newRecord.FulfillOrder__c == true &&
-    oldRecord.FulfillOrder__c == false);
+    return ((newRecord.FulfillOrder__c == true &&
+    oldRecord.FulfillOrder__c == false) || (newRecord.FulfillOrder__c == true && oldRecord.Status_Picklist__c == 'Unreleased' && newRecord.Status_Picklist__c == 'Released'));
   }
 
   public static Boolean orderWasCancelled(
@@ -266,6 +273,13 @@ public without sharing class SalesOrderHelper {
         SalesOrder__c IN :orderIds
         AND Product__r.CreateOrderFulfillment__c = TRUE
         AND Quantity__c > 0
+        AND Id NOT IN (
+          SELECT
+          Boom_Order_Product_Line__c
+          FROM Fulfillment__c
+          WHERE
+          Boom_Order__c IN :orderIds
+        )
     ];
   }
 

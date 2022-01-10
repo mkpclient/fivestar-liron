@@ -257,6 +257,7 @@ global without sharing class SalesOrderPDFExtension {
             Id,
             Display_Name_for_Invoice__c,
             Product__r.Name,
+            Product__r.Product_Display_Name__c,
             ListPrice__c,
             Name,
             LineDescription__c,
@@ -463,6 +464,7 @@ global without sharing class SalesOrderPDFExtension {
             Id,
             OrderLine__c,
             OrderProductLine__r.Product__r.Name,
+            OrderProductLine__r.Product__r.Product_Display_Name__c,
             Recipient__r.Name,
             Primary__c
           FROM Order_Line_Recipient__c

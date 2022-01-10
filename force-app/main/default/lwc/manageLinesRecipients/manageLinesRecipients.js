@@ -632,6 +632,9 @@ export default class ManageLinesRecipients extends NavigationMixin(
       this.searchRecipientQueryItems.accountId = !this.salesOrder.Account__c
         ? null
         : this.salesOrder.Account__c;
+      this.searchRecipientQueryItems.accountName = !this.salesOrder.Account__r.Name
+        ? null
+        : this.salesOrder.Account__r.Name;
       this.searchRecipientQueryItems.isLoaded = true;
       this.discountPercent = this.discountPercent
         ? this.discountPercent

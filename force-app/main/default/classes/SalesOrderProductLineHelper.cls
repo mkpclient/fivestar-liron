@@ -51,7 +51,7 @@ public without sharing class SalesOrderProductLineHelper {
           sampleOrders.add(sopl.SalesOrder__c);
         }
 
-        if(sopl.Sample_Parent_Order__c == true && sopl.Sample_Product__c != true) {
+        if(sopl.Sample_Parent_Order__c == true && sopl.Sample_Product__c != true && sopl.ListPrice__c != 0) {
           desampleOrders.add(sopl.SalesOrder__c);
         }
 

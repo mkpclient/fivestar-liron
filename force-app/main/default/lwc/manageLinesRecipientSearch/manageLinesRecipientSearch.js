@@ -49,7 +49,8 @@ export default class ManageLinesRecipientSearch extends LightningElement {
     marketId: null,
     publicationYear: null,
     contactIdFromOpp: null,
-    accountId: null
+    accountId: null,
+    accountName: null
   };
   @track errorMessage;
   @track onAddRecipient = false;
@@ -196,7 +197,7 @@ export default class ManageLinesRecipientSearch extends LightningElement {
     const hasConditions = this.queryItems.accountId != null;
     let whereCondition = null;
     if (hasConditions) {
-      whereCondition = `WHERE AccountId = '${this.queryItems.accountId}'`;
+      whereCondition = `WHERE Account.Name = '${this.queryItems.accountName}' OR AccountId = '${this.queryItems.accountId}'`;
 
       // whereCondition = `WHERE (Market_Project__c = '${this.queryItems.marketId}' AND Awarded_Years__c INCLUDES('${this.queryItems.publicationYear}')) OR Id='${this.queryItems.contactIdFromOpp}'`;
     } else {
