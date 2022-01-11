@@ -18,29 +18,36 @@ public without sharing class NewPaymentTriggerHelper {
   public static void beforeInsert(List<Payment__c> newPayments) {
     Set<Id> pmtMethodIds = new Set<Id>();
     List<Payment__c> paymentsToUpdate = new List<Payment__c>();
+    List<Id> SalesOrdersToUnlock = new List<Id>();
+
     for (Payment__c p : newPayments) {
-      if (String.isEmpty(p.Legacy_Id__c)) {
-        if (Approval.isLocked(p.Sales_Order__c)) {
-          Approval.unlock(p.Sales_Order__c);
-        }
 
-        if (String.isEmpty(p.Name)) {
-          p.Name = 'Payment for Sales Order ' + p.Order_Name__c;
-        }
-
-        if (
-          String.isEmpty(p.Payment_Processor__c) &&
-          (p.Status__c == SCHEDULED_STATUS ||
-          String.isNotEmpty(p.Payment_Token__c))
-        ) {
-          p.Payment_Processor__c = MXMERCHANT_PROCESSOR;
-        }
-
-        if (p.Payment_Method__c != null && String.isEmpty(p.Billing_Name__c)) {
-          pmtMethodIds.add(p.Payment_Method__c);
-          paymentsToUpdate.add(p);
-        }
+      if (Approval.isLocked(p.Sales_Order__c)) {
+        SalesOrdersToUnlock.add(p.Sales_Order__c);
       }
+
+      if (String.isEmpty(p.Name)) {
+        p.Name = 'Payment for Sales Order ' + p.Order_Name__c;
+      }
+
+      if (
+        String.isEmpty(p.Payment_Processor__c) &&
+        p.Payment_Method__c != null &&
+        (p.Status__c == SCHEDULED_STATUS ||
+        String.isNotEmpty(p.Payment_Token__c))
+      ) {
+        p.Payment_Processor__c = MXMERCHANT_PROCESSOR;
+      }
+
+      if (p.Payment_Method__c != null && String.isEmpty(p.Billing_Name__c)) {
+        pmtMethodIds.add(p.Payment_Method__c);
+        paymentsToUpdate.add(p);
+      }
+      
+    }
+
+    if(SalesOrdersToUnlock.size() > 0) {
+      Approval.unlock(SalesOrdersToUnlock);
     }
 
     if (pmtMethodIds.size() > 0) {
@@ -69,19 +76,25 @@ public without sharing class NewPaymentTriggerHelper {
 
   public static void afterInsert(List<Payment__c> newList) {
     List<Payment__c> completedPayments = new List<Payment__c>();
+    List<Id> salesOrdersToLock = new List<Id>();
     for (Payment__c p : newList) {
-      if (String.isEmpty(p.Legacy_Id__c)) {
-        if (
-          p.Status__c == COMPLETED_STATUS &&
-          p.Payment_Method__c != null &&
-          p.Order_Release_Date__c != null
-        ) {
-          completedPayments.add(p);
-        }
+      if (
+        p.Status__c == COMPLETED_STATUS &&
+        p.Payment_Method__c != null &&
+        p.Order_Release_Date__c != null
+      ) {
+        completedPayments.add(p);
+      }
 
-        if (!Approval.isLocked(p.Sales_Order__c)) {
-          Approval.lock(p.Sales_Order__c);
-        }
+      if (!Approval.isLocked(p.Sales_Order__c)) {
+        salesOrdersToLock.add(p.Sales_Order__c);
+      }
+    }
+
+    if(salesOrdersToLock.size() > 0) {
+      List<SalesOrder__c> queriedOrdersToLock = [SELECT Id FROM SalesOrder__c WHERE Id IN :salesOrdersToLock AND Status_Picklist__c IN ('Released', 'Approved')];
+      if(queriedOrdersToLock.size() > 0) {
+        Approval.lock(queriedOrdersToLock);
       }
     }
 
@@ -96,31 +109,35 @@ public without sharing class NewPaymentTriggerHelper {
   ) {
     Set<Id> pmtMethodIds = new Set<Id>();
     List<Payment__c> paymentsToUpdate = new List<Payment__c>();
+    List<Id> salesOrdersToUnlock = new List<Id>();
 
     for (Integer i = 0; i < newList.size(); i++) {
-      if (String.isEmpty(newList[i].Legacy_Id__c)) {
         Payment__c p = newList[i];
         Payment__c oldP = oldList[i];
 
-        if (Approval.isLocked(p.Sales_Order__c)) {
-          Approval.unlock(p.Sales_Order__c);
-        }
-
-        if (
-          String.isNotEmpty(p.Payment_Token__c) &&
-          String.isEmpty(p.Payment_Processor__c)
-        ) {
-          p.Payment_Processor__c = MXMERCHANT_PROCESSOR;
-        }
-
-        if (
-          (p.Payment_Method__c != oldP.Payment_Method__c ||
-          String.isEmpty(p.Billing_Name__c)) && p.Payment_Method__c != null
-        ) {
-          pmtMethodIds.add(p.Payment_Method__c);
-          paymentsToUpdate.add(p);
-        }
+      if (Approval.isLocked(p.Sales_Order__c)) {
+        salesOrdersToUnlock.add(p.Sales_Order__c);
       }
+
+      if (
+        String.isNotEmpty(p.Payment_Token__c) &&
+        String.isEmpty(p.Payment_Processor__c) &&
+        p.Payment_Method__c != null
+      ) {
+        p.Payment_Processor__c = MXMERCHANT_PROCESSOR;
+      }
+
+      if (
+        (p.Payment_Method__c != oldP.Payment_Method__c ||
+        String.isEmpty(p.Billing_Name__c)) && p.Payment_Method__c != null
+      ) {
+        pmtMethodIds.add(p.Payment_Method__c);
+        paymentsToUpdate.add(p);
+      }
+      
+    }
+    if(salesOrdersToUnlock.size() > 0) {
+      Approval.unlock(salesOrdersToUnlock);
     }
 
     if (pmtMethodIds.size() > 0) {
@@ -151,10 +168,20 @@ public without sharing class NewPaymentTriggerHelper {
     List<Payment__c> oldList,
     List<Payment__c> newList
   ) {
+
+    List<Id> unlockedOrders = new List<Id>();
+
+
     for (Integer i = 0; i < newList.size(); i++) {
-      if (String.isEmpty(newList[i].Legacy_Id__c) && !Approval.isLocked(newList[i].Sales_Order__c)) {
-        Approval.lock(newList[i].Sales_Order__c);
+      if (!Approval.isLocked(newList[i].Sales_Order__c)) {
+        unlockedOrders.add(newList[i].Sales_Order__c);
       }
+    }
+
+    List<SalesOrder__c> ordersToLock = [SELECT Id FROM SalesOrder__c WHERE Id IN :unlockedOrders AND Status_Picklist__c IN ('Approved', 'Released')];
+    
+    if(ordersToLock.size() > 0) {
+      Approval.lock(ordersToLock);
     }
   }
 
@@ -214,14 +241,15 @@ public without sharing class NewPaymentTriggerHelper {
       message.setWhatId(pmt.Id);
       message.toAddresses = new List<String>{ emailAddress };
 
-      PageReference pdf = Page.Payment2VF;
+      String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/Payment2VF?orderId=' + pmt.Sales_Order__c + '&paymentId=' + pmt.Id;
 
-      pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
-      pdf.getParameters().put('paymentId', (String) pmt.Id);
+      PageReference pdf = new PageReference(url);
 
       // Take the PDF content
       Blob b;
       if (Test.isRunningTest()) {
+        System.debug('::PAGE REFERENCE');
+        System.debug(pdf);
         b = Blob.valueOf('testbody');
       } else {
         b = pdf.getContent();

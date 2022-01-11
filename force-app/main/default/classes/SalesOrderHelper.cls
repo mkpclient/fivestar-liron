@@ -9,18 +9,18 @@ public without sharing class SalesOrderHelper {
     Map<Id, SalesOrder__c> oldMap,
     Map<Id, SalesOrder__c> newMap
   ) {
+
+    Approval.unlock(newMap.values());
+
     for (Id key : newMap.keySet()) {
       SalesOrder__c oldSO = oldMap.get(key);
       SalesOrder__c newSO = newMap.get(key);
       
-      if(newSo.Legacy_Id__c != null) {
-        continue;
-      }
+      // if(newSo.Legacy_Id__c != null) {
+      //   continue;
+      // }
       // skipping legacy orders
         // when SO meets all release criteria
-      if(Approval.isLocked(newSO.Id)) {
-        Approval.unlock(newSO.Id);
-      }
 
       if (
         newSO.Status_Picklist__c == APPROVED_STATUS &&
@@ -60,7 +60,7 @@ public without sharing class SalesOrderHelper {
     Map<Id, SalesOrder__c> salesOrderMap = new Map<Id, SalesOrder__c>();
     Set<Id> salesOrderIds = new Set<Id>();
     List<Id> salesOrderIdsList = new List<Id>();
-    Set<Id> recordsToLock = new Set<Id>();
+    List<Id> recordsToLock = new List<Id>();
     Set<Id> paymentsToCancel = new Set<Id>();
     Set<Id> cancelledOrderIds = new Set<Id>();
     Set<Id> fulfillmentsToDelete = new Set<Id>();
@@ -68,9 +68,9 @@ public without sharing class SalesOrderHelper {
     for (Integer i = 0; i < newList.size(); i++) {
       // we do not want legacy orders running through the triggers
 
-      if(newList[i].Legacy_Id__c != null) {
-        continue;
-      }
+      // if(newList[i].Legacy_Id__c != null) {
+      //   continue;
+      // }
     
       if (orderNeedsFulfillmentsCreated(newList[i], oldList[i])) {
         salesOrderMap.put(newList[i].Id, newList[i]);
@@ -141,8 +141,8 @@ public without sharing class SalesOrderHelper {
       cancelFulfillments(cancelledOrderIds);
     }
 
-    for (Id id : recordsToLock) {
-      Approval.lock(id);
+    if(recordsToLock.size() > 0) {
+      Approval.lock(recordsToLock);
     }
   }
 
@@ -213,22 +213,26 @@ public without sharing class SalesOrderHelper {
     List<Fulfillment__c> childFulfillments = new List<Fulfillment__c>();
 
     for (SalesOrderProductLine__c l : queryOrderProductLines(orderIDs)) {
-      fulfillments.add(constructFulfillment(l));
 
-      String numberOfFulfillments = l.Product__r.Name.substringBetween(
-        '- ',
-        'X'
-      );
+      if(l.Order_Line_Recipients__r !=null && l.Order_Line_Recipients__r.size() > 0) {
+        fulfillments.add(constructFulfillment(l));
+      
 
-      if (
-        numberOfFulfillments != null &&
-        numberOfFulfillments.isNumeric() &&
-        Integer.valueOf(numberOfFulfillments) > 1
-      ) {
-        childFulfillmentsCountMap.put(
-          l.Id,
-          (Integer.valueOf(numberOfFulfillments) - 1)
+        String numberOfFulfillments = l.Product__r.Name.substringBetween(
+          '- ',
+          'X'
         );
+
+        if (
+          numberOfFulfillments != null &&
+          numberOfFulfillments.isNumeric() &&
+          Integer.valueOf(numberOfFulfillments) > 1
+        ) {
+          childFulfillmentsCountMap.put(
+            l.Id,
+            (Integer.valueOf(numberOfFulfillments) - 1)
+          );
+        }
       }
     }
 
@@ -273,6 +277,7 @@ public without sharing class SalesOrderHelper {
         SalesOrder__c IN :orderIds
         AND Product__r.CreateOrderFulfillment__c = TRUE
         AND Quantity__c > 0
+        AND CreatedDate > 2022-01-02T14:04:00Z 
         AND Id NOT IN (
           SELECT
           Boom_Order_Product_Line__c

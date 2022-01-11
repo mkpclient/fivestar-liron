@@ -59,8 +59,8 @@ global without sharing class SalesOrderPDFExtension {
 
   global PageReference attachPDF() {
     SalesOrder__c salesOrder = querySalesOrder(orderId);
-    PageReference p = Page.SalesOrderPDF;
-    p.getParameters().put('id', orderId);
+    String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/SalesOrderPDF?id=' + orderId;
+    PageReference p = new PageReference(url);
 
     Blob body;
 
@@ -465,6 +465,7 @@ global without sharing class SalesOrderPDFExtension {
             OrderLine__c,
             OrderProductLine__r.Product__r.Name,
             OrderProductLine__r.Product__r.Product_Display_Name__c,
+            OrderProductLine__r.Display_Name_for_Invoice__c,
             Recipient__r.Name,
             Primary__c
           FROM Order_Line_Recipient__c

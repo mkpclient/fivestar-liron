@@ -8,16 +8,15 @@ public without sharing class SalesOrderProductLineHelper {
 
   public static void beforeInsert(List<SalesOrderProductLine__c> newObjs) {
     for (SalesOrderProductLine__c sopl : newObjs) {
-      if (String.isEmpty(sopl.Legacy_Id__c)) {
 
-        if (sopl.Kit_Bundle_Product__c == true) {
-          sopl.KitBundle__c = true;
-        }
-
-        if (sopl.DateRequired__c == null) {
-          sopl.DateRequired__c = System.today();
-        }
+      if (sopl.Kit_Bundle_Product__c == true) {
+        sopl.KitBundle__c = true;
       }
+
+      if (sopl.DateRequired__c == null) {
+        sopl.DateRequired__c = System.today();
+      }
+      
     }
 
     System.debug('BEFORE INSERT');
@@ -32,38 +31,37 @@ public without sharing class SalesOrderProductLineHelper {
     Set<Id> desampleOrders = new Set<Id>();
 
     for (SalesOrderProductLine__c sopl : newLines.values()) {
-      if (String.isEmpty(sopl.Legacy_Id__c)) {
 
-        if (
-          String.isNotEmpty(sopl.ShipToStateProvince__c) &&
-          Sales_Tax__mdt.getInstance(sopl.ShipToStateProvince__c) != null
-        ) {
-          SalesOrderProductLine__c taxSopl = new SalesOrderProductLine__c();
-          taxSopl.Id = sopl.Id;
-          taxSopl.State_Tax_Rate__c = Sales_Tax__mdt.getInstance(
-              sopl.ShipToStateProvince__c
-            )
-            .Rate__c;
-          taxableLines.add(taxSopl);
-        }
-
-        if(sopl.Sample_Product__c == true) {
-          sampleOrders.add(sopl.SalesOrder__c);
-        }
-
-        if(sopl.Sample_Parent_Order__c == true && sopl.Sample_Product__c != true && sopl.ListPrice__c != 0) {
-          desampleOrders.add(sopl.SalesOrder__c);
-        }
-
-        if (sopl.Kit_Bundle_Product__c == true) {
-          parentLines.put(sopl.Id, sopl);
-        } else if (sopl.Kit_Bundle_Member__c != true) {
-          nonBundles.add(sopl);
-        }
-        if (sopl.DiscountAmount__c != null && sopl.DiscountAmount__c > 0) {
-          orderIds.add(sopl.SalesOrder__c);
-        }
+      if (
+        String.isNotEmpty(sopl.ShipToStateProvince__c) &&
+        Sales_Tax__mdt.getInstance(sopl.ShipToStateProvince__c) != null
+      ) {
+        SalesOrderProductLine__c taxSopl = new SalesOrderProductLine__c();
+        taxSopl.Id = sopl.Id;
+        taxSopl.State_Tax_Rate__c = Sales_Tax__mdt.getInstance(
+            sopl.ShipToStateProvince__c
+          )
+          .Rate__c;
+        taxableLines.add(taxSopl);
       }
+
+      if(sopl.Sample_Product__c == true) {
+        sampleOrders.add(sopl.SalesOrder__c);
+      }
+
+      if(sopl.Sample_Parent_Order__c == true && sopl.Sample_Product__c != true && sopl.ListPrice__c != 0) {
+        desampleOrders.add(sopl.SalesOrder__c);
+      }
+
+      if (sopl.Kit_Bundle_Product__c == true) {
+        parentLines.put(sopl.Id, sopl);
+      } else if (sopl.Kit_Bundle_Member__c != true) {
+        nonBundles.add(sopl);
+      }
+      if (sopl.DiscountAmount__c != null && sopl.DiscountAmount__c > 0) {
+        orderIds.add(sopl.SalesOrder__c);
+      }
+      
     }
 
     if (parentLines.size() > 0) {
@@ -113,7 +111,6 @@ public without sharing class SalesOrderProductLineHelper {
 
     for (Integer i = 0; i < newList.size(); i++) {
       if (
-        String.isEmpty(newList[i].Legacy_Id__c) &&
         String.isNotEmpty(newList[i].ShipToStateProvince__c) &&
         Sales_Tax__mdt.getInstance(newList[i].ShipToStateProvince__c) != null &&
         (newList[i].ShipToStateProvince__c !=
@@ -153,21 +150,21 @@ public without sharing class SalesOrderProductLineHelper {
     Map<Id, Id> sampleMap = new Map<Id, Id>();
 
     for (Id id : oldMap.keySet()) {
-      if (String.isEmpty(oldMap.get(id).Legacy_Id__c)) {
-        forFulfillments.add(id);
 
-        if (oldMap.get(id).Kit_Bundle_Product__c == true) {
-          kitBundles.add(id);
-        }
+      forFulfillments.add(id);
 
-        if (oldMap.get(id).Recipient_Count__c > 0) {
-          withRecipients.add(id);
-        }
-
-        if(oldMap.get(id).Sample_Product__c == true && oldMap.get(id).Sample_Parent_Order__c == true) {
-          sampleMap.put(id, oldMap.get(id).SalesOrder__c);
-        }
+      if (oldMap.get(id).Kit_Bundle_Product__c == true) {
+        kitBundles.add(id);
       }
+
+      if (oldMap.get(id).Recipient_Count__c > 0) {
+        withRecipients.add(id);
+      }
+
+      if(oldMap.get(id).Sample_Product__c == true && oldMap.get(id).Sample_Parent_Order__c == true) {
+        sampleMap.put(id, oldMap.get(id).SalesOrder__c);
+      }
+      
     }
 
     if (kitBundles.size() > 0) {

@@ -82,7 +82,7 @@
   <table cellpadding="3" cellspacing="0" class="noborder">
     <tr>
       <td width="50%">
-        <apex:outputPanel>
+        <apex:outputPanel >
           <b>Bill To:</b>
           <br/>
           <apex:outputPanel rendered="{!Order.BillToName__c != null}">
@@ -265,7 +265,10 @@
     <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!ProductLines}" var="line">
       <apex:column headerClass="colheader">
         <apex:facet name="header">Product</apex:facet>
-        <apex:outputText value="{!line.Product__r.Name}" />
+        <apex:outputText value="{!line.Product__r.Name}" rendered="{!AND(line.Product__r.Product_Display_Name__c = null, line.Display_Name_for_Invoice__c = null)}" />
+        <apex:outputText value="{!line.Display_Name_for_Invoice__c}" rendered="{!line.Display_Name_for_Invoice__c != null}" />
+        <apex:outputText value="{!line.Product__r.Product_Display_Name__c}" rendered="{!AND(line.Product__r.Product_Display_Name__c != null, line.Display_Name_for_Invoice__c = null)}" />
+
       </apex:column>
       <apex:column headerClass="colheader" rendered="{!productsHaveDescriptions}">
         <apex:facet name="header">Description</apex:facet>
@@ -505,7 +508,10 @@
         <tr>
           <td valign="top">
             <!-- <apex:outputField value="{!if(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Name, lr.OrderServiceLine__r.Name)}" /> -->
-            <apex:outputField value="{!IF(NOT(ISBLANK(lr.OrderProductLine__r.Product__r.Product_Display_Name__c)), {lr.OrderProductLine__r.Product__r.Product_Display_Name__c}, {lr.OrderProductLine__r.Product__r.Name})}" rendered="{!lr.OrderProductLine__c != null}" />
+            <apex:outputField value="{!lr.OrderProductLine__r.Product__r.Name}" rendered="{!AND(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Display_Name_for_Invoice__c = null, lr.OrderProductLine__r.Product__r.Product_Display_Name__c = null)}" />
+            <apex:outputField value="{!lr.OrderProductLine__r.Display_Name_for_Invoice__c}" rendered="{!AND(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Display_Name_for_Invoice__c != null)}" />
+            <apex:outputField value="{!lr.OrderProductLine__r.Product__r.Product_Display_Name__c}" rendered="{!AND(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Display_Name_for_Invoice__c = null, lr.OrderProductLine__r.Product__r.Product_Display_Name__c != null)}" />
+
           </td>
           <td valign="top">
             <apex:outputField value="{!lr.Recipient__r.Name}" />
@@ -586,7 +592,7 @@
           </td>
           <td>
             <apex:outputPanel id="initialByErrorBlock" style="vertical-align: top; color: red;">
-              <apex:outputPanel>
+              <apex:outputPanel >
                 <b>
                   <apex:outputText id="initialbyErrorText" value="* You must initial terms before proceeding." style="display:none;" />
                 </b>
@@ -606,7 +612,7 @@
 
           <td width="80">
             <br></br>
-            <apex:outputText>
+            <apex:outputText >
               <b>Initialed By:&nbsp;</b>{!InitialedBy}</apex:outputText>
           </td>
         </tr>
