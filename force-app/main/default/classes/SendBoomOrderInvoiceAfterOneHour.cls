@@ -67,8 +67,9 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     for (SalesOrder__c order : lstOrdersToSend) {
       Attachment attach = new Attachment();
       attach.ParentId = order.Id;
-      PageReference pref = page.SalesOrderPDF;
-      pref.getParameters().put('id', order.Id);
+      String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/SalesOrderPDF?id=' + order.Id;
+      PageReference pref = new PageReference(url);
+     
       pref.setRedirect(true);
       if (!test.isRunningTest()) {
         Blob b = pref.getContentAsPDF();
@@ -211,10 +212,12 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       message.setWhatId(pmt.Id);
       message.toAddresses = new List<String>{ emailAddress };
 
-      PageReference pdf = Page.Payment2VF;
+      String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/Payment2VF?paymentId=' + pmt.Id + '&orderId=' + pmt.Sales_Order__c;
 
-      pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
-      pdf.getParameters().put('paymentId', (String) pmt.Id);
+      PageReference pdf = new Pagereference(url);
+
+      // pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
+      // pdf.getParameters().put('paymentId', (String) pmt.Id);
 
       // Take the PDF content
       Blob b;

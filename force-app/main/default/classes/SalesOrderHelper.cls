@@ -121,7 +121,7 @@ public without sharing class SalesOrderHelper {
     }
 
     if (salesOrderMap.size() > 0) {
-      createfulfillments(salesOrderMap.keySet());
+    createfulfillments(salesOrderMap.keySet());
     }
 
     if (salesOrderIdsList.size() > 0) {

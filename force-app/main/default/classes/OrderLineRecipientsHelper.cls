@@ -130,7 +130,7 @@ public without sharing class OrderLineRecipientsHelper {
         WHERE Id IN :salesOrderIds
       ]
     );
-
+    
     return salesOrders;
   }
 
