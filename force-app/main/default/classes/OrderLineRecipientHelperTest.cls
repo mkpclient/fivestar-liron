@@ -22,7 +22,11 @@ public with sharing class OrderLineRecipientHelperTest {
     @isTest
     private static void testAfterInsertAndDelete() {
         Account testAcc = BoomTestHelpers.generateAccount();
+        Account testAcc2 = BoomTestHelpers.generateAccount();
+
         Contact testCtc = BoomTestHelpers.generateContact(testAcc.Id);
+        Contact testCtc2 = BoomTestHelpers.generateContact(testAcc.Id);
+
         Product2 testPrd = BoomTestHelpers.generateProduct();
         Product2 testPrd2 = BoomTestHelpers.generateProduct();
         PricebookEntry testPbe = BoomTestHelpers.generatePricebookEntry(testPrd.Id);
@@ -33,6 +37,8 @@ public with sharing class OrderLineRecipientHelperTest {
         Kit_Bundle_Member__c testKbm = BoomTestHelpers.generateTestKitBundle(testPrd.Id, testPrd2.Id);
         SalesOrderProductLine__c testSoPrdLn = BoomTestHelpers.generateBoomProductLine(testSo.Id, testPbe);
         Order_Line_Recipient__c testRecipient = BoomTestHelpers.generateTestLineRecipient(testSo.Id, testSoPrdLn.Id, testCtc.Id, true);
+        Order_Line_Recipient__c testRecipient2 = BoomTestHelpers.generateTestLineRecipient(testSo.Id, testSoPrdLn.Id, testCtc2.Id, false);
+
         List<Order_Line_Recipient__c> queriedRecipients = [SELECT Id FROM Order_Line_Recipient__c WHERE Order__c = :testSo.Id];
         List<Order_Line_Recipient__c> queriedRecipientsForSopl = [SELECT Id FROM Order_Line_Recipient__c WHERE OrderProductLine__c = :testSoPrdLn.Id];
         SalesOrderProductLine__c queriedSoPrdLn = [SELECT Id, Recipient_Count__c FROM SalesOrderProductLine__c WHERE Id = :testSoPrdLn.Id];

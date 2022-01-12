@@ -1,14 +1,23 @@
 public without sharing class OrderLineRecipientsHelper {
   public static void beforeInsert(List<Order_Line_Recipient__c> newRecipients) {
     Set<Id> salesOrderIds = new Set<Id>();
+    List<Id> nonPrimaryIds = new List<Id>();
 
     for (Order_Line_Recipient__c r : newRecipients) {
       salesOrderIds.add(r.Order__c);
+      if(r.Primary__c != true) {
+        nonPrimaryIds.add(r.Recipient__c);
+      }
     }
 
     Map<Id, SalesOrder__c> parentSalesOrders = generateSalesOrders(
       salesOrderIds
     );
+
+    Map<Id, Contact> recipientsMap = generateOppToContactMap(
+      nonPrimaryIds
+    );
+
 
     for (Order_Line_Recipient__c r : newRecipients) {
       if (r.Market__c == null) {
@@ -16,8 +25,12 @@ public without sharing class OrderLineRecipientsHelper {
       }
 
       if (r.AccountManager__c == null) {
-        r.AccountManager__c = parentSalesOrders.get(r.Order__c)
+        if(r.Primary__c == true) {
+          r.AccountManager__c = parentSalesOrders.get(r.Order__c)
           .Opportunity__r.OwnerId;
+        } else if(recipientsMap.containsKey(r.Recipient__c)) {
+          r.AccountManager__c = recipientsMap.get(r.Recipient__c).OwnerId;
+        }
       }
     }
   }
@@ -127,8 +140,12 @@ public without sharing class OrderLineRecipientsHelper {
     return salesOrders;
   }
 
-  public static Map<Id, Contact> generateOppToContactMap() {
-    Map<Id, Contact> returnedMap = new Map<Id, Contact>();
+  public static Map<Id, Contact> generateOppToContactMap(List<Id> contactIds) {
+    Map<Id, Contact> returnedMap = new Map<Id, Contact>([
+      SELECT Id, OwnerId
+      FROM Contact
+      WHERE Id IN :contactIds
+    ]);
 
     return returnedMap;
   }
