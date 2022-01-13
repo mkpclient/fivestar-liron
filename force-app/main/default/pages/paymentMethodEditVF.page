@@ -8,7 +8,7 @@
             { 
                 paymentMethodId : '{!$CurrentPage.parameters.id}',
                 recordId : '{!Payment_Method__c.Contact__c}',
-                defaultMonth : "" + new Date('{!Payment_Method__c.Expiration_Date__c}').getMonth() + 1,
+                defaultMonth : "" + (Number(new Date('{!Payment_Method__c.Expiration_Date__c}').getMonth()) + 1),
                 defaultYear: "" + new Date('{!Payment_Method__c.Expiration_Date__c}').getFullYear(),
                 defaultState: '{!Payment_Method__c.Billing_State__c}',
                 merchantToken: '{!Payment_Method__c.Merchant_Token__c}',

@@ -211,6 +211,7 @@ public without sharing class SalesOrderHelper {
     List<Fulfillment__c> fulfillments = new List<Fulfillment__c>();
     Map<Id, Integer> childFulfillmentsCountMap = new Map<Id, Integer>();
     List<Fulfillment__c> childFulfillments = new List<Fulfillment__c>();
+    Map<Id, Id> mapLineIdToFulfillmentId = new Map<Id, Id>();
 
     for (SalesOrderProductLine__c l : queryOrderProductLines(orderIDs)) {
 
@@ -239,6 +240,9 @@ public without sharing class SalesOrderHelper {
     insert fulfillments;
 
     for (Fulfillment__c f : fulfillments) {
+
+      mapLineIdToFulfillmentId.put(f.Boom_Order_Product_Line__c, f.Id);
+
       if (childFulfillmentsCountMap.containsKey(f.Boom_Order_Product_Line__c)) {
         for (
           Integer i = 0;
@@ -253,6 +257,17 @@ public without sharing class SalesOrderHelper {
     }
 
     insert childFulfillments;
+
+    List<Order_Line_Recipient__c> recipientsToUpdate = [SELECT Id, OrderProductLine__c FROM Order_Line_Recipient__c WHERE OrderProductLine__c IN :mapLineIdToFulfillmentId.keySet()];
+
+    if(recipientsToUpdate.size() > 0) {
+      for (Order_Line_Recipient__c r : recipientsToUpdate) {
+        r.Fulfillment__c = mapLineIdToFulfillmentId.get(r.OrderProductLine__c);
+      }
+      update recipientsToUpdate;
+    }
+
+
   }
 
   public static List<SalesOrderProductLine__c> queryOrderProductLines(

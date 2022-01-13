@@ -1,29 +1,23 @@
-List<SalesOrderProductLine__c> sopls = [SELECT Id, SalesOrder__c, SalesOrder__r.Status_Picklist__c FROM SalesOrderProductLine__c WHERE CreatedDate > 2022-01-02T14:04:00Z AND SalesOrder__r.FulfillOrder__c = true AND Product__r.CreateOrderFulfillment__c = TRUE AND Quantity__c >0 AND SalesOrder__r.Status_Picklist__c = 'Released' AND Id NOT IN (SELECT Boom_Order_Product_Line__c
-          FROM Fulfillment__c WHERE CreatedDate > 2022-01-02T14:04:00Z AND Boom_Order__r.FulfillOrder__c = true)];
+List<Fulfillment__c> fulfillments = [SELECT Id, Boom_Order_Product_Line__c FROM Fulfillment__c WHERE ParentFulfillment__c = null AND Boom_Order_Product_Line__c IN (SELECT OrderProductLine__c FROM Order_Line_Recipient__c WHERE Order__r.FulfillOrder__c = true AND Fulfillment__c = null AND CreatedDate > 2022-01-02T14:04:00Z) LIMIT 200];
 
-Map<Id, SalesOrder__c> soMap = new Map<Id, SalesOrder__c>();
+Map<Id, Id> prodLineFulfillmentMap = new Map<Id, Id>();
 
-for(SalesOrderProductLine__c pl : sopls) {
-  SalesOrder__c salesOrder = new SalesOrder__c();
-  if(!soMap.containsKey(pl.SalesOrder__c)) {
-    salesOrder.Id = pl.SalesOrder__c;
-    salesOrder.Status_Picklist__c = 'Unreleased';
-    soMap.put(pl.SalesOrder__c, salesOrder);
-  }
+for(Fulfillment__c f : fulfillments) {
+    prodLineFulfillmentMap.put(f.Boom_Order_Product_Line__c, f.Id);
 }
 
-update soMap.values();
+List<Order_Line_Recipient__c> olrs = [SELECT Id, OrderProductLine__c FROM Order_Line_Recipient__c WHERE OrderProductLine__c IN :prodLineFulfillmentMap.keySet() AND Fulfillment__c = null AND CreatedDate > 2022-01-02T14:04:00Z LIMIT 200];
 
-for(SalesOrder__c so : soMap.values()) {
-  so.Status_Picklist__c = 'Released';
-  soMap.put(so.Id, so);
+for(Order_Line_Recipient__c olr : olrs) {
+    olr.Fulfillment__c = prodLineFulfillmentMap.get(olr.OrderProductLine__c);
 }
 
-update soMap.values();
+
+update olrs;
 
 /** 
  * 
-for i in {1..10}
+for i in {1..7}
 do
 sfdx force:apex:execute --loglevel ERROR --apexcodefile '/Volumes/LaCie/Salesforce/FIVESTAR GITTED/FIVESTAR/scripts/apex/hello.apex'
 done

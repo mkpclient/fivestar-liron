@@ -106,7 +106,8 @@ public without sharing class BoomTestHelpers {
       Type = 'New Business',
       Description = 'Test Opportunity',
       Market_Project__c = marketId,
-      ContactId = contId
+      ContactId = contId,
+      Contact__c = contId
     );
     insert opportunity;
     return opportunity;

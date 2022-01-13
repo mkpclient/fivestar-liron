@@ -17,7 +17,7 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     }
   }
 
-  public static void SendEmail(List<id> listofSalesOrderIds) {
+  global static void SendEmail(List<id> listofSalesOrderIds) {
     List<SalesOrder__c> lstOrders = [
       SELECT
         Id,
@@ -67,8 +67,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     for (SalesOrder__c order : lstOrdersToSend) {
       Attachment attach = new Attachment();
       attach.ParentId = order.Id;
-      String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/SalesOrderPDF?id=' + order.Id;
-      PageReference pref = new PageReference(url);
+      PageReference pref = Page.SalesOrderPDF;
+      pref.getParameters().put('id', (String) order.Id);
      
       pref.setRedirect(true);
       if (!test.isRunningTest()) {
@@ -162,7 +162,7 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       System.debug(e.getMessage());
     }
   }
-  public static void EmailSent(List<SalesOrder__c> lstOrders) {
+  global static void EmailSent(List<SalesOrder__c> lstOrders) {
     List<SalesOrder__c> lstOrdersToUpdate = new List<SalesOrder__c>();
     for (SalesOrder__c so : lstOrders) {
       if (so.Initial_Invoice_Sent__c == false) {
@@ -174,7 +174,7 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     update lstOrdersToUpdate;
   }
 
-  public static void sendPaymentEmails(
+  global static void sendPaymentEmails(
     List<Payment__c> payments
   ) {
     Id templateId = [
@@ -212,12 +212,13 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       message.setWhatId(pmt.Id);
       message.toAddresses = new List<String>{ emailAddress };
 
-      String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/Payment2VF?paymentId=' + pmt.Id + '&orderId=' + pmt.Sales_Order__c;
 
-      PageReference pdf = new Pagereference(url);
+      PageReference pdf = Page.Payment2VF;
 
-      // pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
-      // pdf.getParameters().put('paymentId', (String) pmt.Id);
+      pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
+      pdf.getParameters().put('paymentId', (String) pmt.Id);
+
+      pdf.setRedirect(true);
 
       // Take the PDF content
       Blob b;

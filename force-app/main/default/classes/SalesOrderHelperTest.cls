@@ -65,9 +65,15 @@ public with sharing class SalesOrderHelperTest {
     );
 
     List<Fulfillment__c> fulfillments = [
-      SELECT Id
+      SELECT Id,Boom_Order_Product_Line__c
       FROM Fulfillment__c
       WHERE Boom_Order__c = :testSo.Id
+    ];
+
+    List<Order_Line_Recipient__c> olrs = [
+      SELECT Id, Fulfillment__c FROM Order_Line_Recipient__c
+      WHERE Order__c = :testSo.Id
+      AND Fulfillment__c IN :fulfillments
     ];
 
     SalesOrder__c updSo = [
@@ -97,6 +103,7 @@ public with sharing class SalesOrderHelperTest {
       'Sales Order has no Order Fulfillments. FulfillOrder__c is :' +
       updSo.FulfillOrder__c
     );
+    System.assertEquals(true, olrs.size() > 0, 'Line recipients were not updated');
     
     PriceBook2 customPriceBook = new PriceBook2();
     customPriceBook.Name = 'Custom Pricebook';
@@ -172,6 +179,7 @@ public with sharing class SalesOrderHelperTest {
 
   @IsTest
   public static void testOrderCancellation() {
+    Test.setMock(HttpCalloutMock.class, new ExampleCalloutMock());
     SalesOrder__c testSo = [SELECT Id, Account__c, ContactBilling__c FROM SalesOrder__c WHERE OrderDate__c=TODAY ORDER BY CreatedDate Desc LIMIT 1];
     testSo.Status_Picklist__c = 'Approved';
 
