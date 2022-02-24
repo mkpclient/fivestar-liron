@@ -13,7 +13,7 @@ global with sharing class SendOrderInvoiceWithAttachmentAfter1Hour implements Sc
         
     }    
  
-    global static void SendEmail(List<id> listofSalesOrderIds) {
+    public static void SendEmail(List<id> listofSalesOrderIds) {
         List<kugo2p__SalesOrder__c> lstOrders = [select id,kugo2p__ContactBilling__c, kugo2p__RecordStatus__c, kugo2p__ContactBuying__r.Email, Initial_Invoice_Sent__c, Email_To_Send__c, kugo2p__NetAmount__c  from kugo2p__SalesOrder__c where Id in:listofSalesOrderIds];
         List<kugo2p__SalesOrder__c> lstOrdersToSend = new List<kugo2p__SalesOrder__c>();
         for(kugo2p__SalesOrder__c so:lstOrders) {
@@ -99,7 +99,7 @@ global with sharing class SendOrderInvoiceWithAttachmentAfter1Hour implements Sc
             System.debug(e.getMessage());
         }
     }
-    global static void EmailSent(List<kugo2p__SalesOrder__c> lstOrders){
+    public static void EmailSent(List<kugo2p__SalesOrder__c> lstOrders){
        // List<kugo2p__SalesOrder__c> lstOrders = [select id,kugo2p__ContactBilling__c, kugo2p__ContactBuying__r.Email, Initial_Invoice_Sent__c  from kugo2p__SalesOrder__c where Id in:listofSalesOrderIds];
         List<kugo2p__SalesOrder__c> lstOrdersToUpdate = new List<kugo2p__SalesOrder__c>();
         for(kugo2p__SalesOrder__c so:lstOrders) {

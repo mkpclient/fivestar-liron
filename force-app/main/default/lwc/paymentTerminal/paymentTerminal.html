@@ -88,7 +88,20 @@
           </div>
         </div>
       </template>
-
+      <div if:true={salesOrder} style="width: 50%;">
+      <c-custom-lookup 
+        object-name="Contact" 
+        field-name="Name" 
+        required="true"
+        input-label={currentMethodContact.Name}
+        input-value={currentMethodContact.Id}
+        filter-field="Account.Name"
+        filter-value={salesOrder.Account__r.Name}
+        icon-name="standard:customers"
+        field-label="Showing Payment Methods for the following contact: "
+        onselect={handlePaymentMethodCustomLookupSelect}
+      ></c-custom-lookup>
+      </div>
       <lightning-datatable
         key-field="Id"
         data={paymentMethods}
@@ -157,16 +170,42 @@
             ></lightning-combobox>
           </lightning-layout-item>
           <lightning-layout-item padding="around-small" size="3">
-            <lightning-input
+            <!-- <lightning-input
               type="text"
               label="cvv"
               name="cvv"
               data-objectname="paymentMethod"
               onchange={handleOnChange}
               required
-            ></lightning-input>
+            ></lightning-input> -->
           </lightning-layout-item>
-          <template if:true={contactOptions.length}>
+          <template if:true={currentMethodContact}>
+            <lightning-layout-item padding="around-small" size="6" if:true={salesOrder}>
+              <c-custom-lookup 
+                object-name="Contact" 
+                field-name="Name" 
+                required="true"
+                input-label={currentMethodContact.Name}
+                input-value={currentMethodContact.Id}
+                filter-field="Account.Name"
+                filter-value={salesOrder.Account__r.Name}
+                field-label="Contact"
+                onselect={handleCustomLookupSelect}
+                ></c-custom-lookup>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+              <lightning-input
+                type="checkbox"
+                label="Set this Card as this person's Default"
+                name="isDefault"
+                value={selectedPaymentMethod.isDefault}
+                data-objectname="paymentMethod"
+                onchange={handleOnChange}
+              >
+              </lightning-input>
+            </lightning-layout-item>
+          </template>
+          <!-- <template if:true={contactOptions.length}>
             <lightning-layout-item padding="around-small" size="6">
               <lightning-combobox
                 name="Contact__c"
@@ -189,7 +228,7 @@
               >
               </lightning-input>
             </lightning-layout-item>
-          </template>
+          </template> -->
           <lightning-layout-item padding="around-small" size="4">
             <lightning-input
               type="text"

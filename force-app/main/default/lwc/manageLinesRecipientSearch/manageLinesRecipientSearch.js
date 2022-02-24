@@ -198,12 +198,9 @@ export default class ManageLinesRecipientSearch extends LightningElement {
     let whereCondition = null;
     if (hasConditions) {
       whereCondition = `WHERE Account.Name = '${this.queryItems.accountName}' OR AccountId = '${this.queryItems.accountId}'`;
-
       // whereCondition = `WHERE (Market_Project__c = '${this.queryItems.marketId}' AND Awarded_Years__c INCLUDES('${this.queryItems.publicationYear}')) OR Id='${this.queryItems.contactIdFromOpp}'`;
-    } else {
-      whereCondition = "LIMIT 100";
     }
-    whereCondition += " ORDER BY LastName";
+    whereCondition += " ORDER BY LastName LIMIT 1000";
     const [contacts, error] = await getMLRecord({
       getFunction: doQuery,
       objectType: "Contact",
@@ -213,9 +210,24 @@ export default class ManageLinesRecipientSearch extends LightningElement {
     });
     if (error !== null) {
       console.error("CONTACT GET ERROR :" + JSON.stringify(error));
+      return;
     } else {
+      const [soleContact, err] = await getMLRecord({
+        getFunction: doQuery,
+        objectType: "Contact",
+        fields: "Id, Name, Account.Name",
+        hasConditions: true,
+        conditions: `WHERE Id = '${this.queryItems.contactIdFromOpp}' LIMIT 1`
+      });
       // console.log(contacts);
-      return contacts;
+      
+      if (err) {
+        console.error("CONTACT GET ERROR :" + JSON.stringify(err));
+        return;
+      } else if (soleContact) {
+          contacts.unshift(soleContact[0]);
+          return contacts;
+      }
     }
   };
 

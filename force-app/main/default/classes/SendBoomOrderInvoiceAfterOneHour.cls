@@ -40,7 +40,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         Contact__c,
         Contact__r.Email,
         Sales_Order__c,
-        Sales_Order__r.Send_Invoice_to_Alternate_Contact__c,
+        Sales_Order__r.Name,
+      Sales_Order__r.Send_Invoice_to_Alternate_Contact__c,
         Sales_Order__r.Alternate_Contact_Email__c
       FROM Payment__c
       WHERE Sales_Order__c IN :listofSalesOrderIds AND Status__c = 'Completed'
@@ -67,7 +68,7 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     for (SalesOrder__c order : lstOrdersToSend) {
       Attachment attach = new Attachment();
       attach.ParentId = order.Id;
-      PageReference pref = Page.SalesOrderPDF;
+      PageReference pref = Page.SalesOrderInvoicePDF;
       pref.getParameters().put('id', (String) order.Id);
      
       pref.setRedirect(true);
@@ -187,6 +188,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
 
     Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage>();
 
+    List<Attachment> attachments = new List<Attachment>();
+
     for (Payment__c pmt : payments) {
       Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
 
@@ -212,6 +215,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       message.setWhatId(pmt.Id);
       message.toAddresses = new List<String>{ emailAddress };
 
+      Attachment attach = new Attachment();
+      attach.ParentId = pmt.Id;
 
       PageReference pdf = Page.Payment2VF;
 
@@ -225,11 +230,14 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       if (Test.isRunningTest()) {
         b = Blob.valueOf('testbody');
       } else {
-        b = pdf.getContent();
+        b = pdf.getContentAsPdf();
       }
-      // Create the email attachment
+      attach.Body = b;
+      attach.Name = 'Payment_For_' + pmt.Sales_Order__r.Name + '.pdf';
+      attachments.add(attach);
+
       Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
-      efa.setFileName('Payment_Invoice.pdf');
+      efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
       efa.setBody(b);
 
       message.setFileAttachments(
@@ -245,6 +253,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         System.debug(JSON.serializePretty(messages));
         return;
       }
+
+      Database.insert(attachments, false);
       Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
 
       system.debug('results ===' + results);

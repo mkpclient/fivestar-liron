@@ -1,0 +1,12 @@
+<template>
+  <li role="presentation" class="slds-listbox__item" data-id={item.value} data-name={item.label} onclick={handleSelected} >
+      <div  class="slds-media slds-listbox__option slds-listbox__option_entity" role="option">
+        <span class="slds-media__figure slds-listbox__option-icon">
+            <lightning-icon class="slds-icon slds-icon_container" icon-name={iconname} size="medium" alternative-text="icon" ></lightning-icon>
+        </span>
+        <span class="slds-media__body">
+          <span class="slds-listbox__option slds-listbox__option-text slds-listbox__option-text_entity">{item.label}</span> 
+        </span>
+      </div>
+    </li>  
+</template>

@@ -29,7 +29,7 @@ export default class UpdatePaymentMethod extends LightningElement {
     _cardNumber: "",
     _expiryMonth: "",
     _expiryYear: "",
-    _cvv: 123,
+    // _cvv: 123,
     Billing_First_Name__c: "",
     Billing_Last_Name__c: "",
     Billing_Street__c: "",
@@ -78,6 +78,7 @@ export default class UpdatePaymentMethod extends LightningElement {
       "Payment__c.Transaction_Id__c"
     ]
   })
+
   wiredRecord({ error, data }) {
     if (error) {
       console.error(error);
@@ -112,6 +113,9 @@ export default class UpdatePaymentMethod extends LightningElement {
           }
           paymentRecord[key] = childRecords;
         }
+      }
+      if(!methodData.Billing_Country__c) {
+        methodData.Billing_Country__c = "United States";
       }
       this.currentPaymentMethod = paymentRecord["Payment_Method__c"];
       this.paymentMethodData = methodData;
@@ -303,9 +307,9 @@ export default class UpdatePaymentMethod extends LightningElement {
           " " +
           this.paymentMethodData.Card_Type__c
       }),
-      ...(this.paymentMethodData._cvv && {
-        cvv: "" + this.paymentMethodData._cvv
-      })
+      // ...(this.paymentMethodData._cvv && {
+      //   cvv: "" + this.paymentMethodData._cvv
+      // })
     };
 
     console.log(this.paymentInfo);
@@ -385,8 +389,13 @@ export default class UpdatePaymentMethod extends LightningElement {
     }
 
     const cardData = await this.vaultPaymentMethod();
+    
+    const soqlString = `SELECT Id FROM Payment_Method__c WHERE Merchant_Token__c = '${cardData.token}' AND Contact__c = '${this.paymentInfo.Contact__c}'`;
+    const queryResult = await doQuery({ queryString: soqlString });
 
-    if (!this.isUpdateExisting && cardData.id && cardData.token) {
+    if(queryResult.length > 0) {
+      sfRecord["Id"] = queryResult[0].Id;
+    } else if (!this.isUpdateExisting && cardData.id && cardData.token) {
       sfRecord["ExternalId__c"] = "" + cardData.id;
       sfRecord["Merchant_Token__c"] = "" + cardData.token;
     }
@@ -548,13 +557,13 @@ export default class UpdatePaymentMethod extends LightningElement {
           this.showNotification = true;
           return;
         }
-        if (this.paymentMethodData._cvv < 100) {
-          this.toastTitle = "Error";
-          this.toastMessage = "This card's cvv is invalid.";
-          this.toastVariant = "error";
-          this.showNotification = true;
-          return;
-        }
+        // if (this.paymentMethodData._cvv < 100) {
+        //   this.toastTitle = "Error";
+        //   this.toastMessage = "This card's cvv is invalid.";
+        //   this.toastVariant = "error";
+        //   this.showNotification = true;
+        //   return;
+        // }
       } else {
         const proceedWithSave = Object.entries(this.paymentMethodData).some(
           ([key, value]) => !!value
@@ -567,13 +576,13 @@ export default class UpdatePaymentMethod extends LightningElement {
           return;
         }
 
-        if (this.paymentMethodData._cvv && this.paymentMethodData._cvv < 100) {
-          this.toastTitle = "Error";
-          this.toastMessage = "This card's cvv is invalid.";
-          this.toastVariant = "error";
-          this.showNotification = true;
-          return;
-        }
+        // if (this.paymentMethodData._cvv && this.paymentMethodData._cvv < 100) {
+        //   this.toastTitle = "Error";
+        //   this.toastMessage = "This card's cvv is invalid.";
+        //   this.toastVariant = "error";
+        //   this.showNotification = true;
+        //   return;
+        // }
       }
 
       try {
@@ -712,7 +721,7 @@ export default class UpdatePaymentMethod extends LightningElement {
 
   get yearOptions() {
     let options = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 11; i++) {
       let y = new Date().getFullYear() + i;
       options.push({ label: "" + y, value: "" + y });
     }

@@ -28,7 +28,7 @@ export default class PublicPaymentTerminal extends LightningElement {
     MailingCountry: "",
     CardType: "",
     CardNumber: "",
-    SecurityCode: "",
+    // SecurityCode: "",
     ExpiryYear: "",
     ExpiryMonth: "",
     MX_Customer_Id__c: "Unavailable"
@@ -130,10 +130,9 @@ export default class PublicPaymentTerminal extends LightningElement {
     for (let i = 0; i <= 10; i++) {
       yearValues.push({
         label: new Date().getFullYear() + i,
-        value: ("" + new Date().getFullYear() + i).slice(-2)
+        value: ("" + (new Date().getFullYear() + i)).slice(-2)
       });
     }
-
     return yearValues;
   }
 
@@ -221,9 +220,9 @@ export default class PublicPaymentTerminal extends LightningElement {
   async handleSaveCustomer() {
     const contactRecord = { ...this.contactRecord };
     const CustomerResource = {
-      name: contactRecord.FirstName + " " + contactRecord.FirstName,
+      name: contactRecord.FirstName + " " + contactRecord.LastName,
       firstName: contactRecord.FirstName,
-      lastName: contactRecord.FirstName,
+      lastName: contactRecord.LastName,
       REPLACE_number: this.contactId,
       address1: contactRecord.MailingStreet,
       address2: "",
@@ -232,10 +231,8 @@ export default class PublicPaymentTerminal extends LightningElement {
       zip: contactRecord.MailingPostalCode.length == 5 ? contactRecord.MailingPostalCode : "0" + contactRecord.MailingPostalCode,
       customerType: "Business"
     };
-    console.log(CustomerResource);
     const res = await saveCustomer({ customer: CustomerResource });
-    console.log(res);
-    if (!res.isSuccess) {
+      if (!res.isSuccess) {
       if (res.errorMessage && res.errorCode) {
         console.error(res.errorCode + " : " + res.errorMessage);
         return;
@@ -268,11 +265,9 @@ export default class PublicPaymentTerminal extends LightningElement {
         this.paymentEntry.LastName +
         " " +
         this.paymentEntry.CardType,
-      cvv: "" + this.paymentEntry.SecurityCode
+      // cvv: "" + this.paymentEntry.SecurityCode
     };
-    // console.log(CreditCardResource);
     const res = await savePaymentMethod({ creditCard: CreditCardResource });
-    console.log(res);
     if (!res.isSuccess) {
       console.error(res.errorMessage);
       this.isProcessing = false;
@@ -297,8 +292,7 @@ export default class PublicPaymentTerminal extends LightningElement {
         "Unable to process this card. We apologize for the inconvenience.";
       return;
     }
-    const paymentMethodData = {
-      sobjectType: "Payment_Method__c",
+    let paymentMethodData = {
       Card_Type__c: this.paymentEntry.CardType,
       Billing_First_Name__c: this.paymentEntry.FirstName,
       Billing_Last_Name__c: this.paymentEntry.LastName,
@@ -317,6 +311,13 @@ export default class PublicPaymentTerminal extends LightningElement {
     let paymentMethodres = {};
 
     try {
+      let queryString = `SELECT Id FROM Payment_Method__c WHERE Merchant_Token__c = '${paymentMethod.token}'`;
+      const queriedRecords = await doQuery({ queryString: queryString });
+      if(queriedRecords.length > 0) { 
+        paymentMethodData.Id = queriedRecords[0].Id;
+      } else {
+        paymentMethodData.sobjectType = "Payment_Method__c";
+      }
       paymentMethodres = await saveRecord({ record: paymentMethodData });
     } catch(err) {
       console.error(err);
@@ -352,18 +353,20 @@ export default class PublicPaymentTerminal extends LightningElement {
       entryClass: "WEB",
       cardAccountToken: paymentMethod.token,
       clientReference: this.soName,
-      invoice: this.soName
+      invoice: this.soName.length > 16 ? this.soName.replace('-', '') : this.soName
     };
-    console.log(paymentResource);
     const pmtData = await makePayment({ payment: paymentResource });
+    console.log(pmtData);
     if (!pmtData.isSuccess) {
       if (pmtData.errorMessage && pmtData.errorCode) {
         this.isProcessing = false;
         console.error(pmtData.errorCode + " : " + pmtData.errorMessage);
-        this.errorMessage = "Your payment could not be processed at this time.";
-        return;
+        
       }
       newRecord.Status__c = "Error";
+      this.errorMessage = "Your payment could not be processed at this time.";
+
+      return;
     } else {
       if (pmtData.payment.status == "Approved") {
         newRecord.Status__c = "Completed";

@@ -24,30 +24,20 @@ public without sharing class SalesOrderHelper {
 
       if (
         newSO.Status_Picklist__c == APPROVED_STATUS &&
-        newSO.ExistingPayments__c >= newSO.NetAmount__c &&
-        newSO.FinanceOverride__c != true &&
+        newSO.ExistingPayments__c == newSO.NetAmount__c &&
         newSO.Status_Picklist__c != RELEASED_STATUS &&
         (newSO.NetAmount__c != 0 ||
         (newSO.Approved_Complimentary_Order__c == true ||
         newSO.Complaint_Order__c == true ||
         newSO.Sample_ELM_Copy__c == true))
       ) {
-        if (newSO.DateReleased__c == null) {
-          newSO.DateReleased__c = Date.today();
-        }
-        newSO.Release_Date__c = Date.today();
+
+        newSO.DateReleased__c = System.today();
+        newSO.Release_Date__c = System.today();
         newSO.Status_Picklist__c = RELEASED_STATUS;
         newSO.Released__c = System.now();
         newSO.FulfillOrder__c = true;
         newSO.Email_To_Send__c = true;
-      }
-
-      // when SO gets unreleased
-      if (
-        (newSO.Status_Picklist__c != oldSO.Status_Picklist__c) &&
-        (newSO.Status_Picklist__c == UNRELEASED_STATUS)
-      ) {
-        newSO.FinanceOverride__c = true;
       }
       
     }
@@ -126,7 +116,13 @@ public without sharing class SalesOrderHelper {
 
     if (salesOrderIdsList.size() > 0) {
       BoomOrderInvoiceWithAttachment.sendEmailWithAttachment(salesOrderIdsList);
+      if ( !Test.isRunningTest() ) {
+        // System.scheduleBatch(new BoomPDFOneHourBatch(salesOrderIdsList), 'BoomPDFOneHourBatch' + System.today(), 60);
+      }
     }
+
+
+    
 
     if (salesOrderIds.size() > 0) {
       // ? : all order product lines are deleted when price book is changed

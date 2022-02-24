@@ -4,6 +4,7 @@ public without sharing class PaymentConversionTriggerHelper {
         Set<String> orderLegacyIds = new Set<String>();
         Set<String> recurringIds = new Set<String>();
         Set<String> orderNames = new Set<String>();
+        Set<String> subscriptionIds = new Set<String>();
         Map<Id, kugo2p__Payment_Profile__c> paymentProfileMap = new Map<Id, kugo2p__Payment_Profile__c>();
 
         for (kugo2p__PaymentX__c p : newMap.values()) {
@@ -13,6 +14,8 @@ public without sharing class PaymentConversionTriggerHelper {
                 recurringIds.add(p.kugo2p__Payment_Profile__c);
             } else if (String.isNotEmpty(p.kugo2p__Invoice_Number__c)) {
                 orderNames.add(p.kugo2p__Invoice_Number__c);
+            } else if (String.isNotEmpty(p.kugo2p__Subscription_Id__c)) {
+                subscriptionIds.add(p.kugo2p__Subscription_Id__c);
             }
         }
 
@@ -20,8 +23,8 @@ public without sharing class PaymentConversionTriggerHelper {
             paymentProfileMap = queryOrdersWithProfiles(recurringIds);
         }
 
-        if(orderLegacyIds.size() > 0 || paymentProfileMap.size() > 0 || orderNames.size() > 0) {
-            createBoomPayments(orderLegacyIds, paymentProfileMap, newMap, orderNames, false);
+        if(orderLegacyIds.size() > 0 || paymentProfileMap.size() > 0 || orderNames.size() > 0 || subscriptionIds.size() > 0) {
+            createBoomPayments(orderLegacyIds, paymentProfileMap, newMap, orderNames, subscriptionIds, false);
         }
 
 
@@ -31,6 +34,7 @@ public without sharing class PaymentConversionTriggerHelper {
         Set<String> orderLegacyIds = new Set<String>();
         Set<String> recurringIds = new Set<String>();
         Set<String> orderNames = new Set<String>();
+        Set<String> subscriptionIds = new Set<String>();
         Map<Id, kugo2p__Payment_Profile__c> paymentProfileMap = new Map<Id, kugo2p__Payment_Profile__c>();
 
         for (kugo2p__PaymentX__c p : newMap.values()) {
@@ -38,8 +42,10 @@ public without sharing class PaymentConversionTriggerHelper {
                 orderLegacyIds.add(p.kugo2p__SalesOrder__c);
             } else if (p.kugo2p__Payment_Profile__c != null) {
                 recurringIds.add(p.kugo2p__Payment_Profile__c);
-            } else if (p.kugo2p__Invoice_Number__c != null) {
+            } else if (String.isNotEmpty(p.kugo2p__Invoice_Number__c)) {
                 orderNames.add(p.kugo2p__Invoice_Number__c);
+            } else if (String.isNotEmpty(p.kugo2p__Subscription_Id__c)) {
+                subscriptionIds.add(p.kugo2p__Subscription_Id__c);
             }
         }
 
@@ -47,8 +53,8 @@ public without sharing class PaymentConversionTriggerHelper {
             paymentProfileMap = queryOrdersWithProfiles(recurringIds);
         }
 
-        if(orderLegacyIds.size() > 0 || paymentProfileMap.size() > 0 || orderNames.size() > 0) {
-            createBoomPayments(orderLegacyIds, paymentProfileMap, newMap, orderNames, true);
+        if(orderLegacyIds.size() > 0 || paymentProfileMap.size() > 0 || orderNames.size() > 0 || subscriptionIds.size() > 0) {
+            createBoomPayments(orderLegacyIds, paymentProfileMap, newMap, orderNames, subscriptionIds, true);
         }
 
 
@@ -67,8 +73,8 @@ public without sharing class PaymentConversionTriggerHelper {
         return orderMap;
     }
 
-    public static void createBoomPayments(Set<String> orderIds, Map<Id, kugo2p__Payment_Profile__c> profileMap, Map<Id, kugo2p__PaymentX__c> payments, Set<String> boomOrderNames, Boolean isUpdate) {
-        Map<String, SalesOrder__c> boomOrderMap = generateBoomOrderMap(boomOrderNames, orderIds, profileMap.keySet());
+    public static void createBoomPayments(Set<String> orderIds, Map<Id, kugo2p__Payment_Profile__c> profileMap, Map<Id, kugo2p__PaymentX__c> payments, Set<String> boomOrderNames, Set<String> subscriptionIds, Boolean isUpdate) {
+        Map<String, SalesOrder__c> boomOrderMap = generateBoomOrderMap(subscriptionIds, boomOrderNames, orderIds, profileMap.keySet());
         List<Payment__c> boomPayments = new List<Payment__c>();
         Map<String, Id> boomPaymentMap = new Map<String, Id>();
 
@@ -89,11 +95,21 @@ public without sharing class PaymentConversionTriggerHelper {
                 }
             } else if (String.isNotEmpty(k.kugo2p__Invoice_Number__c) && boomOrderMap.containsKey(k.kugo2p__Invoice_Number__c)) {
                 bso = boomOrderMap.get(k.kugo2p__Invoice_Number__c);
+            } else if(String.isNotEmpty(k.kugo2p__Subscription_Id__c) && boomOrderMap.containsKey(k.kugo2p__Subscription_Id__c)) { 
+                bso = boomOrderMap.get(k.kugo2p__Subscription_Id__c);
             } else {
                 continue;
             }
 
             bp.Sales_Order__c = bso.Id;
+
+            if(!bp.Name.contains(bso.Name)) {
+                if(bp.Name.contains('Recurring')) {
+                    bp.Name = 'Recurring Payment for ' + bso.Name;
+                } else {
+                    bp.Name = 'Payment for ' + bso.Name;
+                }
+            }
 
             if(bp.Contact__c == null && bso.ContactBilling__c != null) {
                 bp.Contact__c = bso.ContactBilling__c;
@@ -132,7 +148,7 @@ public without sharing class PaymentConversionTriggerHelper {
 
 
 
-    public static Map<String, SalesOrder__c> generateBoomOrderMap(Set<String> boomOrderNames, Set<String> orderIds, Set<Id> profileIds) {
+    public static Map<String, SalesOrder__c> generateBoomOrderMap(Set<String> subscriptionIds, Set<String> boomOrderNames, Set<String> orderIds, Set<Id> profileIds) {
 
         if(profileIds.size() > 0) {
             Map<Id, kugo2p__SalesOrder__c> kugoOrderMap = new Map<Id, kugo2p__SalesOrder__c>([
@@ -150,16 +166,19 @@ public without sharing class PaymentConversionTriggerHelper {
         }
 
         List<SalesOrder__c> boomOrders = [
-            SELECT Id,Legacy_Id__c,Name,ContactBilling__c,Account__c,ContactBilling__r.FirstName,ContactBilling__r.LastName
+            SELECT Id,Legacy_Id__c,Name,ContactBilling__c,Account__c,ContactBilling__r.FirstName,ContactBilling__r.LastName,Subscription_Id__c
             FROM SalesOrder__c
             WHERE Legacy_Id__c IN :orderIds
             OR Name IN :boomOrderNames
+            OR Subscription_Id__c IN :subscriptionIds
         ];
 
         Map<String, SalesOrder__c> boomOrderMap = new Map<String, SalesOrder__c>();
         for(SalesOrder__c order : boomOrders) {
             if(String.isNotEmpty(order.Legacy_Id__c)) {
                 boomOrderMap.put(order.Legacy_Id__c, order);
+            } else if(String.isNotEmpty(order.Subscription_Id__c)) {
+                boomOrderMap.put(order.Subscription_Id__c, order);
             } else {
                 boomOrderMap.put(order.Name, order);
             }
@@ -189,7 +208,7 @@ public without sharing class PaymentConversionTriggerHelper {
             Ship_To_Name__c = k.kugo2p__Ship_To_Name__c,
             Ship_To_Company__c = k.kugo2p__Ship_To_Company__c,
             Ship_To_Street__c = k.kugo2p__Ship_To_Street__c,
-            Transaction_Type__c = k.kugo2p__Transaction_Type__c,
+            Transaction_Type__c = k.kugo2p__Transaction_Type__c == 'Credit' ? 'Refund' : k.kugo2p__Transaction_Type__c,
             Tax_Method__c = k.kugo2p__Tax_Method__c,
             Status__c = k.kugo2p__Status__c,
             Shipping_Method__c = k.kugo2p__Shipping_Method__c,
@@ -218,8 +237,7 @@ public without sharing class PaymentConversionTriggerHelper {
             Activity_Created__c = k.Activity_Created__c,
             Reschedule__c= k.kugo2p__Reschedule__c,
             Is_Test_Transaction__c = k.kugo2p__Is_Test_Transaction__c,
-            Connection_Error__c = k.kugo2p__Connection_Error__c,
-            Intacct_Sync_Complete__c = k.Intacct_Sync_Complete__c
+            Connection_Error__c = k.kugo2p__Connection_Error__c
         );
 
         return p;

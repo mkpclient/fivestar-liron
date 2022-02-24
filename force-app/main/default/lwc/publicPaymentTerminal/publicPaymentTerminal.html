@@ -14,7 +14,7 @@
     >
       <img src={logoUrl} alt="Fivestar Logo" />
       <template if:true={isSuccess}>
-        <p style="font-weight: bold; font-size: 21pt;">Your payment has been processed. You may now close this window. Thank you.</p>
+        <p style="font-weight: bold; font-size: 18pt;">Your payment has been processed. You may now close this window. Thank you.</p>
       </template>
       <template if:false={isSuccess}>
         <p style="font-weight: bold; font-size: 21pt;">Checkout</p>
@@ -114,14 +114,14 @@
               onchange={handleChange}
               disabled={isReview}
             ></lightning-input>
-            <lightning-input
+            <!-- <lightning-input
               label="Security Code"
               value={paymentEntry.SecurityCode}
               data-name="SecurityCode"
               variant="label-inline"
               onchange={handleChange}
               disabled={isReview}
-            ></lightning-input>
+            ></lightning-input> -->
             <lightning-combobox
               name="Expiry Month"
               label="ExpiryMonth"

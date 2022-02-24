@@ -1,5 +1,7 @@
-public with sharing class MarketNewTriggerHelper {
+public without sharing class MarketNewTriggerHelper {
   // Trigger to add pricebook to each market record when they're updated or inserted for simpler record access
+  public static Boolean hasAfterUpdateRun = false;
+
   public static void afterInsert(Map<Id, Market__c> newMap) {
     Map<Id, String> pbNameMap = new Map<Id, String>();
     for (Id key : newMap.keySet()) {
@@ -16,18 +18,22 @@ public with sharing class MarketNewTriggerHelper {
     Map<Id, Market__c> newMap
   ) {
     Map<Id, String> pbNameMap = new Map<Id, String>();
+    Boolean localAfterUpdate = false;
     for (Id key : newMap.keySet()) {
       Market__c oldMarket = oldMap.get(key);
       Market__c newMarket = newMap.get(key);
       if (
-        newMarket.Price_Book__c == null ||
+        (newMarket.Price_Book__c == null && !hasAfterUpdateRun) ||
         (oldMarket.Name != newMarket.Name &&
-        newMarket.Price_Book_Name__c != newMarket.Name)
+        newMarket.Price_Book_Name__c != newMarket.Name
+        && !hasAfterUpdateRun)
       ) {
         pbNameMap.put(key, newMarket.Name);
+        localAfterUpdate = true;
       }
     }
     findPriceBook(pbNameMap);
+    hasAfterUpdateRun = localAfterUpdate;
   }
 
   public static void findPriceBook(Map<Id, String> pbNameMap) {

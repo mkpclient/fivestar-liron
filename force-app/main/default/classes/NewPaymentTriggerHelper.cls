@@ -195,6 +195,8 @@ public without sharing class NewPaymentTriggerHelper {
       List<Payment__c>.class
     );
 
+    DateTime dt = System.Now().addHours(-1);
+
     List<Payment__c> payments = [
       SELECT
         Id,
@@ -202,9 +204,11 @@ public without sharing class NewPaymentTriggerHelper {
         Contact__r.Email,
         Sales_Order__c,
         Sales_Order__r.Send_Invoice_to_Alternate_Contact__c,
-        Sales_Order__r.Alternate_Contact_Email__c
+        Sales_Order__r.Alternate_Contact_Email__c,
+        Sales_Order__r.Name
       FROM Payment__c
       WHERE Id IN :pts
+      AND Sales_Order__r.Released__c <= :dt
     ];
 
     Id templateId = [
@@ -217,64 +221,73 @@ public without sharing class NewPaymentTriggerHelper {
 
     Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage>();
 
-    for (Payment__c pmt : payments) {
-      Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
+    if(payments.size() > 0) {
 
-      String emailAddress = '';
-
-      if (
-        pmt.Sales_Order__r.Send_Invoice_to_Alternate_Contact__c == true &&
-        String.isNotEmpty(pmt.Sales_Order__r.Alternate_Contact_Email__c)
-      ) {
-        emailAddress = pmt.Sales_Order__r.Alternate_Contact_Email__c;
-      } else {
-        emailAddress = pmt.Contact__r.Email;
+      for (Payment__c pmt : payments) {
+        Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
+  
+        String emailAddress = '';
+  
+        if (
+          pmt.Sales_Order__r.Send_Invoice_to_Alternate_Contact__c == true &&
+          String.isNotEmpty(pmt.Sales_Order__r.Alternate_Contact_Email__c)
+        ) {
+          emailAddress = pmt.Sales_Order__r.Alternate_Contact_Email__c;
+        } else {
+          emailAddress = pmt.Contact__r.Email;
+        }
+  
+        message.setTargetObjectId(pmt.Contact__c);
+        message.setSenderDisplayName('Five Star Billing');
+        message.setReplyTo('billing@fivestarprofessional.com');
+        message.setUseSignature(false);
+        message.setBccSender(false);
+        message.setSaveAsActivity(false);
+        message.setTemplateID(templateId);
+        message.setWhatId(pmt.Id);
+        message.toAddresses = new List<String>{ emailAddress };
+  
+        
+        PageReference pdf = Page.Payment2VF;
+  
+        pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
+        pdf.getParameters().put('paymentId', (String) pmt.Id);
+  
+        pdf.setRedirect(true);
+  
+        // Take the PDF content
+        Blob b;
+        if (Test.isRunningTest()) {
+          System.debug('::PAGE REFERENCE');
+          System.debug(pdf);
+          b = Blob.valueOf('testbody');
+        } else {
+          b = pdf.getContentAsPdf();
+        }
+        // Create the email attachment
+        Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
+        efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
+        efa.setBody(b);
+  
+        message.setFileAttachments(
+          new List<Messaging.EmailFileAttachment>{ efa }
+        );
+  
+        messages.add(message);
       }
-
-      message.setTargetObjectId(pmt.Contact__c);
-      message.setSenderDisplayName('Five Star Billing');
-      message.setReplyTo('billing@fivestarprofessional.com');
-      message.setUseSignature(false);
-      message.setBccSender(false);
-      message.setSaveAsActivity(false);
-      message.setTemplateID(templateId);
-      message.setWhatId(pmt.Id);
-      message.toAddresses = new List<String>{ emailAddress };
-
-      String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/Payment2VF?orderId=' + pmt.Sales_Order__c + '&paymentId=' + pmt.Id;
-
-      PageReference pdf = new PageReference(url);
-
-      // Take the PDF content
-      Blob b;
-      if (Test.isRunningTest()) {
-        System.debug('::PAGE REFERENCE');
-        System.debug(pdf);
-        b = Blob.valueOf('testbody');
+  
+      if (!isSandbox && !Test.isRunningTest()) {
+        try {
+          Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
+        } catch (Exception e) {
+          System.debug('Error sending email: ' + e.getMessage());
+        }
       } else {
-        b = pdf.getContent();
+        System.debug('Skipping email send in sandbox mode');
+        System.debug(JSON.serializePretty(messages));
       }
-      // Create the email attachment
-      Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
-      efa.setFileName('Payment_Invoice.pdf');
-      efa.setBody(b);
-
-      message.setFileAttachments(
-        new List<Messaging.EmailFileAttachment>{ efa }
-      );
-
-      messages.add(message);
     }
 
-    if (!isSandbox && !Test.isRunningTest()) {
-      try {
-        Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
-      } catch (Exception e) {
-        System.debug('Error sending email: ' + e.getMessage());
-      }
-    } else {
-      System.debug('Skipping email send in sandbox mode');
-      System.debug(JSON.serializePretty(messages));
-    }
+    
   }
 }

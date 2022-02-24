@@ -10,6 +10,10 @@ public without sharing class FiveStarHelper{
 	 * * * this method has been recreated elsewhere and does not need to be revived.  
 	 */
 
+	public static void autoReleaseOrder(Map<Id,kugo2p__Payment_Profile__c> p1, Map<Id,kugo2p__Payment_Profile__c> p2){
+
+	}
+
 	// public static void assignMarket(list<kugo2p__SalesOrder__c> salesOrders){
 	// 	System.debug('-> salesorders: ' + salesorders.size());
 	// 	if (salesOrders != null && !salesOrders.isEmpty()){

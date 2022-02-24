@@ -68,6 +68,16 @@ public with sharing class OrderLineRecipientHelperTest {
         update testRecipient;
         List<Order_Line_Recipient__c> queriedRecipients = [SELECT Id FROM Order_Line_Recipient__c WHERE OrderProductLine__c = :testSoPrdLn.Id AND Id = :testRecipient.Id];
         System.assertEquals(queriedRecipients.size() == 0, true, 'The recipient should not be in the list of recipients for the old sales order product line');
+
+        Order_Line_Recipient__c testRecipient2 = BoomTestHelpers.generateTestLineRecipient(testSo.Id, testSoPrdLn2.Id, testCtc.Id, true);
+        List<Order_Line_Recipient__c> beforePrimaryUpdate = [SELECT Id, Primary__c FROM Order_Line_Recipient__c WHERE Id = :testRecipient.Id];
+
+        testRecipient2.Primary__c = true;
+        update new List<Order_Line_Recipient__c>{new Order_Line_Recipient__c(Id = beforePrimaryUpdate[0].Id, Primary__c = false), testRecipient2};
+
+        List<Order_Line_Recipient__c> afterPrimaryUpdate = [SELECT Id, Primary__c FROM Order_Line_Recipient__c WHERE Id = :testRecipient.Id];
+
+        System.assertNotEquals(beforePrimaryUpdate.get(0).Primary__c, afterPrimaryUpdate.get(0).Primary__c, 'The recipient should have been updated to be the primary recipient');
         Test.stopTest();
     }
 }

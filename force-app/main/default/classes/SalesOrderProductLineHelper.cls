@@ -153,6 +153,10 @@ public without sharing class SalesOrderProductLineHelper {
 
       forFulfillments.add(id);
 
+      if(oldMap.get(id).Order_Status__c == 'Released' || oldMap.get(id).Order_Status__c == 'Approved') {
+        oldMap.get(id).addError('You are not allowed to delete this record because it has already been approved.');
+      }
+
       if (oldMap.get(id).Kit_Bundle_Product__c == true) {
         kitBundles.add(id);
       }
