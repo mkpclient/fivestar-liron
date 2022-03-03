@@ -1,0 +1,8 @@
+<messaging:emailTemplate subject="Essential Engine Invoice" recipientType="Contact" relatedToType="SalesOrder__c">
+<messaging:htmlEmailBody >
+<c:EssentialEngineEmailComponent SalesOrder__c="{!relatedTo}" contactRecipient="{!recipient}" />
+</messaging:htmlEmailBody>
+<messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">    
+  <c:EssentialEngineInvoicePdf recId="{!relatedTo.Id}"  renderAs="pdf"  />                           
+</messaging:attachment>
+</messaging:emailTemplate>

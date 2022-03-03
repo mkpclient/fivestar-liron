@@ -118,7 +118,7 @@ global without sharing class SalesOrderPDFExtension {
   global String getTermsAcceptedBy() {
     return acceptedBy != null
       ? acceptedBy
-      : Order != null ? Order.ContactBilling__r.Name : '';
+      : orderId != null && Order != new SalesOrder__c() ? Order.ContactBilling__r.Name : '';
   }
 
   global String getTermsAcceptedDate() {
@@ -149,7 +149,7 @@ global without sharing class SalesOrderPDFExtension {
 
   global string InitialedBy {
     get {
-      if (String.isEmpty(InitialedBy) && Order != null && Order != new SalesOrder__c()) {
+      if (String.isEmpty(InitialedBy) && orderId != null && Order != null && Order != new SalesOrder__c()) {
         InitialedBy = Order.ContactBilling__r.Name;
       }
       return InitialedBy;

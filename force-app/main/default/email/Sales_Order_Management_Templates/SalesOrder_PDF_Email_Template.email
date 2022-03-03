@@ -1,6 +1,6 @@
 <messaging:emailTemplate subject="Five Star Professional Invoice: {!relatedTo.Name}" recipientType="Contact" relatedToType="SalesOrder__c">
   <messaging:plainTextEmailBody >
-    Dear  {!relatedTo.ContactBilling__r.Name},                
+  Dear  {!relatedTo.ContactBilling__r.Name},                
 
     Here is your invoice receipt for your records. Please note that the balance due amount does not include any future payments scheduled as part of a payment plan.
 

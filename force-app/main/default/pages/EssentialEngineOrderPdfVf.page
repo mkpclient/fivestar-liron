@@ -1,0 +1,4 @@
+<apex:page standardController="SalesOrder__c" renderas="pdf" showHeader="false" sidebar="false" extensions="SalesOrderPDFExtension"
+  standardStylesheets="false" cache="false">
+  <c:EssentialEngineInvoicePdf recId="{!salesOrder.Id}" renderAs="pdf" />
+</apex:page>

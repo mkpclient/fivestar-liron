@@ -1,0 +1,63 @@
+<messaging:emailTemplate subject="Five Star Professional Invoice" recipientType="Contact" relatedToType="SalesOrder__c">
+<messaging:plainTextEmailBody >
+Hello {!relatedTo.ContactBilling__r.Name},
+
+
+Great news! We have processed your order on {!relatedTo.Release_Date__c}.
+
+You are all set to use your marketing tools in pursuit of your business objectives.
+
+To view your invoice or to download a PDF copy for your records, please find the attached document {!relatedTo.Name}.
+
+We appreciate your business and are fired up about our partnership!
+
+Kind regards,
+
+Five Star Professional
+888-438-5782 Option 2 | Email: billing@fivestarprofessional.com
+2117 Cliff Drive
+Eagan, MN 55122
+
+</messaging:plainTextEmailBody>
+<messaging:htmlEmailBody>
+  <div style="background-color: #F2F2F2; padding: 10px;">
+    <div>
+      <center><img src="https://fivestarprofessional--c.na169.content.force.com/servlet/servlet.ImageServer?id=015d0000007camL&oid=00Dd0000000gsfl" alt="Essential Engine Logo" height="150px" /></center>
+    </div>
+    <div style="font-family: Helvetica, sans-serif;">
+      <p>
+        <apex:outputText value="Hello {0},">
+          <apex:param value="{!relatedTo.ContactBilling__r.Name}" />
+        </apex:outputText>
+      </p>
+      <p>
+        <apex:outputText value="Great news! We have processed your order on {0,date,MM/dd/yyyy}.">
+          <apex:param value="{!relatedTo.Release_Date__c}" />
+        </apex:outputText>
+      </p>
+      <p>
+        <apex:outputText value="You are all set to use your marketing tools in pursuit of your business objectives." />
+      </p>
+      <p>
+        <apex:outputText value="To view your invoice or to download a PDF copy for your records, please find the attached
+      document {0}.">
+          <apex:param value="{!relatedTo.Name}" />
+        </apex:outputText>
+      </p>
+      <p>
+        <apex:outputText value="We appreciate your business and are excited about our partnership!" />
+      </p>
+      <apex:outputText value="Kind Regards, " />
+      <br />
+      <p>Five Star Professional
+        <br /> 888-438-5782 Option 2 | Email: billing@fivestarprofessional.com
+        <br /> 2117 Cliff Drive
+        <br /> Eagan, MN 55122
+      </p>
+    </div>
+  </div>
+</messaging:htmlEmailBody>
+<messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">
+  <c:SalesOrderPdfAttachment recId="{!relatedTo.Id}"  />
+</messaging:attachment>
+</messaging:emailTemplate>

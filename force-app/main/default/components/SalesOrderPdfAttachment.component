@@ -1,0 +1,353 @@
+<apex:component access="global" Controller="EssentialEngineEmailController" allowDml="true" id="orderCompId">
+  <apex:attribute name="recId" type="Id" assignTo="{!orderId}" description="Id of the Order" access="global" />
+
+  <head>
+    <style>
+      li {
+        list-style-type: circle;
+        font-size: 11pt;
+      }
+
+      .list li:before {
+        content: "";
+        padding-left: 10px;
+      }
+
+      td {
+        height: 50px;
+      }
+    </style>
+  </head>
+  <div class="container" width="900">
+
+    <body>
+      <table width="100%">
+        <tr>
+          <td rowspan="5" align="left">
+            <apex:image url="{!$Resource.Logo}" />
+          </td>
+        </tr>
+        <tr>
+          <td align="left" height="24">
+            2117 Cliff Drive
+          </td>
+          <td align="right" style="font-size: 30px;">
+            <strong>Invoice</strong>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" height="24">
+            Eagan MN, 55122
+          </td>
+          <td align="right">
+            {!Order.Name}
+          </td>
+        </tr>
+        <tr>
+          <td align="left" height="24">
+            Phone: 888-438-5782
+          </td>
+          <td align="right">
+            Order Date:
+            <apex:outputText value="{0, date, MM/dd/YY}">
+              <apex:param value="{!Order.Released__c}" />
+            </apex:outputText>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+          </td>
+          <hr/>
+        </tr>
+      </table>
+    </body>
+    <table width="100%">
+      <tr>
+        <td>
+          <strong>Bill to:</strong>
+        </td>
+        <td style="text-align:right;">
+          <strong>Ship to:</strong>
+        </td>
+      </tr>
+      <tr width="100%">
+        <td>
+          {!Order.BillToName__c}
+        </td>
+        <td style="text-align:right;">
+          {!Order.ShipToName__c}
+        </td>
+      </tr>
+
+      <tr width="100%">
+        <td>
+          {!Order.ContactBuying__r.Name}
+        </td>
+        <td style="text-align:right;">
+          {!Order.ContactBuying__r.Name}
+        </td>
+      </tr>
+      <tr width="100%">
+        <td>
+          {!Order.BillToStreetLong__c}
+        </td>
+        <td style="text-align:right;">
+          {!Order.ShipToStreetLong__c}
+        </td>
+      </tr>
+      <tr width="100%">
+        <td>
+          <apex:outputText value="{!Order.BillToCity__c}, {!Order.billToStateProvince__c} {!Order.billToZipPostalCode__c }"></apex:outputText>
+        </td>
+        <td style="text-align:right;">
+          <apex:outputText value="{!Order.ShipToCity__c}, {!Order.ShipToStateProvince__c} {!Order.ShipToZipPostalCode__c }"></apex:outputText>
+        </td>
+      </tr>
+      <tr width="100%">
+        <td>
+
+        </td>
+        <td style="text-align:right;">
+          <apex:outputText value="{!Order.Billing_Email__c}"></apex:outputText>
+        </td>
+      </tr>
+    </table>
+    <div class="row">
+      <div class="col-md-12">
+        <hr/>
+      </div>
+    </div>
+
+    <table width="100%">
+      <tr>
+        <td>
+          <strong>Products:</strong>
+        </td>
+        <td align="right">
+          <strong>Quantity</strong>
+        </td>
+        <td align="right">
+          <strong>List Price</strong>
+        </td>
+        <td align="right">
+          <strong>Amount</strong>
+        </td>
+      </tr>
+      <apex:repeat value="{!ProductLines}" var="o">
+        <tr>
+          <td>
+            <apex:outputPanel rendered="{!o.Display_Name_for_Invoice__c != null}">
+              {!o.Display_Name_for_Invoice__c }
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!AND(o.Display_Name_for_Invoice__c == null, o.Product__r.Product_Display_Name__c == null)}">
+              {!o.Product__r.Name}
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!AND(o.Product__r.Product_Display_Name__c != null, o.Display_Name_for_Invoice__c == null)}">
+              {!o.Product__r.Product_Display_Name__c}
+            </apex:outputPanel>
+          </td>
+          <td align="right">
+            <apex:outputText value="{0, number, integer}">
+              <apex:param value="{!o.Quantity__c}" />
+            </apex:outputText>
+          </td>
+          <td align="right">
+            <apex:outputField value="{!o.ListPrice__c}" />
+          </td>
+          <td align="right">
+            <apex:outputField value="{!o.Actual_Price__c}" />
+          </td>
+        </tr>
+      </apex:repeat>
+    </table>
+    <div class="col-md-12">
+      <br/>
+    </div>
+    <div class="row">
+      <div align="right">
+        Products Total:&nbsp;
+        <apex:outputField value="{!Order.ProductTotalAmount__c}" />
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <hr/>
+        </div>
+      </div>
+
+      <apex:outputPanel rendered="{!ACCLines.size > 0}">
+        <table width="100%">
+          <tr>
+            <td>
+              <strong>Additional Charges/Credits:</strong>
+            </td>
+            <td align="left">
+              <strong>Line Description</strong>
+            </td>
+            <td align="right">
+              <strong>Quantity</strong>
+            </td>
+            <td align="right">
+              <strong>Amount</strong>
+            </td>
+          </tr>
+          <apex:repeat value="{!ACCLines}" var="a" rendered="true">
+            <tr>
+              <td>{!a.Additional_Charge_Credit__r.Name}</td>
+              <td align="left">{!a.LineDescription__c}</td>
+              <td align="right">
+                <apex:outputText value="{0, number, integer}">
+                  <apex:param value="{!a.Quantity__c}" />
+                </apex:outputText>
+              </td>
+              <td align="right">
+                <apex:outputField value="{!a.SalesPrice__c}" />
+              </td>
+            </tr>
+          </apex:repeat>
+        </table>
+
+        <div class="col-md-12">
+          <br/>
+        </div>
+        <div align="right">
+          Additional Charges/Credits Total:
+          <span>
+            <apex:outputField value="{!Order.AdditionalChargeCreditAmount__c}" />
+          </span>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr/>
+          </div>
+        </div>
+
+      </apex:outputPanel>
+      <div align="right">
+        Net Amount:
+        <span>
+          <apex:outputField value="{!Order.NetAmount__c}" />
+        </span>
+      </div>
+      <div align="right">
+        Tax Amount:
+        <span>
+          <apex:outputField value="{!Order.TotalTaxAmount__c}" />
+        </span>
+      </div>
+      <div align="right">
+        Total Applied Payments:
+        <span>
+          <apex:outputField value="{!Order.CompletedPayments__c}" />
+        </span>
+      </div>
+      <div align="right">
+        Balance Due Amount:
+        <span>
+          <apex:outputField value="{!Order.BalanceDueAmount__c}" />
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr/>
+      </div>
+    </div>
+    <apex:outputPanel rendered="{!allPayments.size>0}">
+      <table width="100%">
+        <tr>
+          <td>
+            <strong>Payments:</strong>
+          </td>
+          <td align="right">
+            <strong>Date</strong>
+          </td>
+          <td align="right">
+            <strong>Type</strong>
+          </td>
+          <td align="right">
+            <strong>Last 4 digits</strong>
+          </td>
+          <td align="right">
+            <strong>Status</strong>
+          </td>
+          <td align="right">
+            <strong>Amount</strong>
+          </td>
+        </tr>
+
+        <apex:repeat value="{!allPayments}" var="p" rendered="true">
+          <tr>
+            <td>
+              <apex:outputText value="{!IF(p.Billing_Name__c != null, p.Billing_Name__c, p.Contact__r.Name)}" />
+            </td>
+            <td align="right">
+              <apex:outputText value="{0, date, MM/dd/YY}">
+                <apex:param value="{!p.Date__c}" />
+              </apex:outputText>
+            </td>
+            <td align="right">
+              {!p.CardType__c}
+            </td>
+            <td align="right">
+              {!p.Last_Four_Digits__c}
+            </td>
+            <td align="right">
+              {!p.Status__c}
+            </td>
+            <td align="right">
+              <apex:outputField value="{!p.Amount__c}" />
+            </td>
+          </tr>
+        </apex:repeat>
+      </table>
+    </apex:outputPanel>
+
+    <div class="row">
+      <div class="col-md-12">
+        <hr/>
+      </div>
+    </div>
+    <br/>
+    <div>
+      <div class="col-md-12">
+        <strong>For questions about:</strong>
+        <ul>
+          <li>Invoice, payments and payment plans, contact
+            <a href='mailto:billing@fivestarprofessional.com'>billing@fivestarprofessional.com</a>
+          </li>
+          <li>Your order, or to order more tools, contact your Account Manager</li>
+          <li>All marketing product service questions, contact
+            <a href='mailto:customerservice@fivestarprofessional.com'>customerservice@fivestarprofessional.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12">
+        <strong>100% “No Risk” Satisfaction Guarantee:</strong>
+        <p>If your expectations for any product or program are not fully met, as summarized on your invoice, give us one opportunity
+          to make things right.</p>
+        <p>If we don’t make things right, we provide you a complete refund.</p>
+      </div>
+
+      <div class='col-md-12'>
+        <!-- <h4> -->
+        <!-- <u>Order For:</u> -->
+        <!-- </h4>
+        <apex:outputPanel rendered="{!UniqueLineRecipients != null}">
+          <apex:repeat value="{!UniqueLineRecipients}" var="lr" id="lineRecipientsUnique">
+            {!lr} <br />
+          </apex:repeat>
+        </apex:outputPanel> -->
+        <br/>
+        <apex:outputPanel rendered="{!Order.Memo__c != null}">
+          <div style='margin-top: 9px'>
+            <strong>Memo on Invoice:</strong>
+            <div style='border: 1px solid black; padding: 7px; width: 45%'>
+              {!Order.Memo__c}
+            </div>
+          </div>
+        </apex:outputPanel>
+      </div>
+    </div>
+  </div>
+</apex:component>
