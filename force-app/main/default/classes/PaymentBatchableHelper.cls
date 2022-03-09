@@ -1,7 +1,7 @@
 public without sharing class PaymentBatchableHelper {
   public static Map<String, Id> templateMap = new Map<String, Id>{
     'Declined' => queryTemplateId('New_Credit_Card_Declined'),
-    'Approved' => queryTemplateId('New_Payment_Reciept_PDF')
+    'Approved' => queryTemplateId('Boom_Payment_VF_Template')
   };
 
   public static OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'billing@fivestarprofessional.com'];
@@ -99,24 +99,24 @@ public without sharing class PaymentBatchableHelper {
     message.setccAddresses(ccAddresses);
 
     if(status == 'Approved') {
-      PageReference pdf = Page.Payment2VF;
+      // PageReference pdf = Page.Payment2VF;
 
-      pdf.getParameters().put('orderId', (String) salesOrderId);
-      pdf.getParameters().put('paymentId', (String) paymentId);
-      Blob b;
-      if (Test.isRunningTest()) {
-        b = Blob.valueOf('testbody');
-      } else {
-        b = pdf.getContent();
-      }
-      // Create the email attachment
-      Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
-      efa.setFileName('Payment_Invoice.pdf');
-      efa.setBody(b);
+      // pdf.getParameters().put('orderId', (String) salesOrderId);
+      // pdf.getParameters().put('paymentId', (String) paymentId);
+      // Blob b;
+      // if (Test.isRunningTest()) {
+      //   b = Blob.valueOf('testbody');
+      // } else {
+      //   b = pdf.getContent();
+      // }
+      // // Create the email attachment
+      // Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
+      // efa.setFileName('Payment_Invoice.pdf');
+      // efa.setBody(b);
 
-      message.setFileAttachments(
-        new List<Messaging.EmailFileAttachment>{ efa }
-      );
+      // message.setFileAttachments(
+      //   new List<Messaging.EmailFileAttachment>{ efa }
+      // );
 
     }
 

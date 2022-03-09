@@ -93,7 +93,10 @@
             ></lightning-input>
           </div>
         </div>
-        <div class="slds-grid slds-wrap" style="background: rgb(134, 195, 226)">
+        <br />
+        <p style="font-weight: bold">Card Information</p>
+        <br />
+        <div class="slds-grid slds-wrap" style="background: #ddd">
           <div class="slds-col slds-size_3-of-4">
             <lightning-combobox
               name="CardType"
@@ -105,6 +108,7 @@
               variant="label-inline"
               options={cardOptions}
               disabled={isReview}
+              class="textInput"
             ></lightning-combobox>
             <lightning-input
               label="Credit Card Number"
@@ -113,6 +117,7 @@
               variant="label-inline"
               onchange={handleChange}
               disabled={isReview}
+              class="textInput"
             ></lightning-input>
             <!-- <lightning-input
               label="Security Code"
@@ -123,8 +128,8 @@
               disabled={isReview}
             ></lightning-input> -->
             <lightning-combobox
-              name="Expiry Month"
-              label="ExpiryMonth"
+              name="ExpiryMonth"
+              label="Expiration Month"
               placeholder="Choose Month"
               value={paymentEntry.ExpiryMonth}
               onchange={handleChange}
@@ -132,10 +137,11 @@
               variant="label-inline"
               options={monthOptions}
               disabled={isReview}
+              class="textInput" 
             ></lightning-combobox>
             <lightning-combobox
-              name="Expiry Year"
-              label="ExpiryYear"
+              name="ExpiryYear"
+              label="Expiration Year"
               placeholder="Choose Year"
               value={paymentEntry.ExpiryYear}
               onchange={handleChange}
@@ -143,6 +149,7 @@
               variant="label-inline"
               options={yearOptions}
               disabled={isReview}
+              class="textInput" 
             ></lightning-combobox>
           </div>
         </div>

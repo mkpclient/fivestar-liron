@@ -19,7 +19,7 @@ public with sharing class NewPaymentTriggerTest {
         String expectedPmtName = 'Payment for Sales Order ' + [SELECT Name FROM SalesOrder__c WHERE Id = :testSo.Id][0].Name;
         String returnedPmtName = [SELECT Name FROM Payment__c WHERE Id = :testPmt.Id][0].Name;
 
-        testSo.DateReleased__c = (Date) System.today();
+        testSo.Release_Date__c = (Date) System.today();
         testSo.Released__c = System.Now().addHours(-5);
         update testSo;
         Payment__c testPmt3 = BoomTestHelpers.generateTestPayment(testSo.Id, testAcc.Id, testCtc.Id, testPmtMethod.Id, 40, 'Completed');

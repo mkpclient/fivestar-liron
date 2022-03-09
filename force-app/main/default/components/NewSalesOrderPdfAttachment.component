@@ -1,4 +1,4 @@
-<apex:component access="global" Controller="EssentialEngineEmailController" allowDml="true" id="orderCompId">
+<apex:component access="global" Controller="BoomEmailController" allowDml="true" id="orderCompId">
   <apex:attribute name="recId" type="Id" assignTo="{!orderId}" description="Id of the Order" access="global" />
   <apex:attribute name="renderAs" type="string" description="The format this component will be rendered to." access="global"
   />
@@ -8,12 +8,10 @@
   <table cellpadding="3" cellspacing="0" class="noborder">
     <tr>
       <td>
-        <apex:outputPanel rendered="{!IF(logoUrl!=null,true,false)}">
-          <img src="{!logoUrl}" alt="Essential Engine Logo" width="140px" />
-        </apex:outputPanel>
+        <apex:image url="{!$Resource.Logo}" />
       </td>
       <td>
-        <apex:outputText value="Essential Engine" />
+        <apex:outputText value="Five Star Professional" />
         <br/>
         <apex:outputText value="2117 Cliff Drive" />
         <br/>
@@ -21,7 +19,7 @@
         <apex:outputText value="MN" />&nbsp;
         <apex:outputText value="55122" />
         <br/>
-        <apex:outputText value="Phone: (888) 308-7350" />
+        <apex:outputText value="Phone: (888) 438-5782" />
         <br/>
       </td>
       <td width="34%">
@@ -68,19 +66,19 @@
         </apex:outputPanel>
       </td>
       <td width="50%">
-          <b>Ship To:</b>
+        <b>Ship To:</b>
+        <br/>
+        <apex:outputPanel rendered="{!Order.ShipToName__c != null}">
+          <apex:outputField value="{!Order.ShipToName__c}" />
           <br/>
-          <apex:outputPanel rendered="{!Order.ShipToName__c != null}">
-            <apex:outputField value="{!Order.ShipToName__c}" />
-            <br/>
-          </apex:outputPanel>
-          <apex:outputField value="{!Order.ShipToStreetLong__c}" />
-          <br/>
-          <apex:outputText value="{!Order.ShipToCity__c}" />,&nbsp;
-          <apex:outputText value="{!Order.ShipToStateProvince__c}" />&nbsp;
-          <apex:outputText value="{!Order.ShipToZipPostalCode__c}" />
-          <br/>
-          <apex:outputText value="{!Order.ShipToCountry__c}" />
+        </apex:outputPanel>
+        <apex:outputField value="{!Order.ShipToStreetLong__c}" />
+        <br/>
+        <apex:outputText value="{!Order.ShipToCity__c}" />,&nbsp;
+        <apex:outputText value="{!Order.ShipToStateProvince__c}" />&nbsp;
+        <apex:outputText value="{!Order.ShipToZipPostalCode__c}" />
+        <br/>
+        <apex:outputText value="{!Order.ShipToCountry__c}" />
       </td>
     </tr>
     <tr>
@@ -204,11 +202,11 @@
       </apex:column>
       <apex:column headerClass="colheader alignRight" style="text-align: right">
         <apex:facet name="header">Unit Price</apex:facet>
-        <apex:outputField value="{!ChargeCreditLine.SalesPrice__c}"  />
+        <apex:outputField value="{!ChargeCreditLine.SalesPrice__c}" />
       </apex:column>
       <apex:column headerClass="colheader alignRight" style="text-align: right">
         <apex:facet name="header">Amount</apex:facet>
-        <apex:outputField value="{!ChargeCreditLine.AdditionalChargeCreditAmount__c}"  />
+        <apex:outputField value="{!ChargeCreditLine.AdditionalChargeCreditAmount__c}" />
       </apex:column>
     </apex:dataTable>
   </apex:outputPanel>
@@ -420,22 +418,18 @@
     </table>
   </apex:outputPanel> -->
 
+  <apex:outputPanel rendered="{!settings.PrintCompanyTextandTerms && settings.CompanyTextandTerms != null}">
     <br />
     <div style="font-size: 11px; font-weight: normal;">
-      <p>For questions about: </p>
-      <ul>
-        <li>Invoice, payments and payment plans, contact billing@essentialengine.com</li>
-        <li>Your order, or to order more tools, contact your Account Manager</li>
-        <li>All marketing product service questions, contact customerservice@fivestarprofessional.com</li>
-      </ul>
-      <p>100% "No Risk" Satisfaction Guarantee</p>
-      <p>If your expectations for any product or program are not fully met, as summarized on your invoice, give us one opportunity to make things right.If we don’t make things right, we provide you a complete refund.</p>
+      <apex:outputText escape="false" value="{!settings.CompanyTextandTerms}" />
     </div>
 
     <br/>
-    <!-- <div class="hr">
+    <div class="hr">
       <hr />
     </div>
+  </apex:outputPanel>
+
   <p class="footer">All rights reserved. Copyright&nbsp;
-    <apex:outputText value="{!$Organization.Name}" /> </p> -->
+    <apex:outputText value="{!$Organization.Name}" /> </p>
 </apex:component>

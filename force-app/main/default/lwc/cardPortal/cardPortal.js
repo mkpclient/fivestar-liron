@@ -31,8 +31,8 @@ const FIELD_LABEL_MAP = {
   Billing_Country__c: 'Billing Country',
   Card_Type__c: 'Card Type',
   _cardNumber: 'Card Number',
-  _expMonth: 'Expiry Month',
-  _expYear: 'Expiry Year',
+  _expMonth: 'Expiration Month',
+  _expYear: 'Expiration Year',
 }
 
 export default class CardPortal extends LightningElement {
@@ -450,18 +450,18 @@ luhnCheck(val) {
 
   get monthOptions() {
     return [
-      { label: "Jan", value: "01" },
-      { label: "Feb", value: "02" },
-      { label: "Mar", value: "03" },
-      { label: "Apr", value: "04" },
-      { label: "May", value: "05" },
-      { label: "Jun", value: "06" },
-      { label: "Jul", value: "07" },
-      { label: "Aug", value: "08" },
-      { label: "Sep", value: "09" },
-      { label: "Oct", value: "10" },
-      { label: "Nov", value: "11" },
-      { label: "Dec", value: "12" }
+      { label: "01 - Jan", value: "01" },
+      { label: "02 - Feb", value: "02" },
+      { label: "03 - Mar", value: "03" },
+      { label: "04 - Apr", value: "04" },
+      { label: "05 - May", value: "05" },
+      { label: "06 - Jun", value: "06" },
+      { label: "07 - Jul", value: "07" },
+      { label: "08 - Aug", value: "08" },
+      { label: "09 - Sep", value: "09" },
+      { label: "10 - Oct", value: "10" },
+      { label: "11 - Nov", value: "11" },
+      { label: "12 - Dec", value: "12" }
     ];
   }
 

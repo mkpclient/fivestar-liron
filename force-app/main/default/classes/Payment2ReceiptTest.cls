@@ -15,11 +15,14 @@ public with sharing class Payment2ReceiptTest {
         Pagereference testPageRef = Page.Payment2VF;
         Test.setCurrentPage(testPageRef);
         Payment2ReceiptController controller = new Payment2ReceiptController();
-        ApexPages.currentPage().getParameters().put('orderId', testSo.Id);
-        ApexPages.currentPage().getParameters().put('paymentId', testPmt.Id);
+        controller.paymentId = testPmt.Id;
+        controller.orderId = testSo.Id;
         System.assertEquals(testSo.Id, controller.SalesOrder.Id, 'Sales order Ids should match');
         System.assertEquals(1, controller.OrderPayments.size(), 'Payment count should be 1');
         System.assertEquals(testPmtMethod.Id, controller.paymentMethod.Id, 'Payment method Ids should match');
+        ApexPages.currentPage().getParameters().put('orderId', testSo.Id);
+        ApexPages.currentPage().getParameters().put('paymentId', testPmt.Id);
+
         Pagereference pf = controller.attachPDF();
     }
 }

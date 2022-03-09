@@ -1,7 +1,7 @@
 global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedulable {
   global List<Id> soIds;
   public static final String ESSENTIAL_ENG = 'Essential Engine';
-  public static final String PAYMENT_EMAIL_TEMPLATE = 'New_Payment_Reciept_PDF';
+  public static final String PAYMENT_EMAIL_TEMPLATE = 'Boom_Payment_VF_Template';
   public static final Map<String, String> EMAIL_TEMP_MAP = new Map<String, String> {
     'Five Star' => 'Five_Star_Standard_Email_Template',
     'Essential' => 'Essential_Engine_Email_Template'
@@ -205,7 +205,7 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
 
     Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage>();
 
-    List<Attachment> attachments = new List<Attachment>();
+    // List<Attachment> attachments = new List<Attachment>();
 
     for (Payment__c pmt : payments) {
       Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
@@ -232,34 +232,34 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       message.setWhatId(pmt.Id);
       message.toAddresses = new List<String>{ emailAddress };
 
-      Attachment attach = new Attachment();
-      attach.ParentId = pmt.Id;
+      // Attachment attach = new Attachment();
+      // attach.ParentId = pmt.Id;
 
-      PageReference pdf = Page.Payment2VF;
+      // PageReference pdf = Page.Payment2VF;
 
-      pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
-      pdf.getParameters().put('paymentId', (String) pmt.Id);
+      // pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
+      // pdf.getParameters().put('paymentId', (String) pmt.Id);
 
-      pdf.setRedirect(true);
+      // pdf.setRedirect(true);
 
-      // Take the PDF content
-      Blob b;
-      if (Test.isRunningTest()) {
-        b = Blob.valueOf('testbody');
-      } else {
-        b = pdf.getContentAsPdf();
-      }
-      attach.Body = b;
-      attach.Name = 'Payment_For_' + pmt.Sales_Order__r.Name + '.pdf';
-      attachments.add(attach);
+      // // Take the PDF content
+      // Blob b;
+      // if (Test.isRunningTest()) {
+      //   b = Blob.valueOf('testbody');
+      // } else {
+      //   b = pdf.getContentAsPdf();
+      // }
+      // attach.Body = b;
+      // attach.Name = 'Payment_For_' + pmt.Sales_Order__r.Name + '.pdf';
+      // attachments.add(attach);
 
-      Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
-      efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
-      efa.setBody(b);
+      // Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
+      // efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
+      // efa.setBody(b);
 
-      message.setFileAttachments(
-        new List<Messaging.EmailFileAttachment>{ efa }
-      );
+      // message.setFileAttachments(
+      //   new List<Messaging.EmailFileAttachment>{ efa }
+      // );
 
       messages.add(message);
     }
@@ -271,7 +271,7 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         return;
       }
 
-      Database.insert(attachments, false);
+      // Database.insert(attachments, false);
       Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
 
       system.debug('results ===' + results);

@@ -65,10 +65,10 @@
                 <lightning-input required label="Credit Card Number" data-stage="payment" data-field="_cardNumber" value={pmData._cardNumber} placeholder="Please enter your card number"></lightning-input>
               </lightning-layout-item>
               <lightning-layout-item size="6" medium-device-size="6" large-device-size="6" small-device-size="12">
-                <lightning-combobox class="combobox" required label="Expiry Month" data-stage="payment" data-field="_expMonth" value={pmData._expMonth} placeholder="Choose Expiry Month" options={monthOptions}></lightning-combobox>
+                <lightning-combobox class="combobox" required label="Expiration Month" data-stage="payment" data-field="_expMonth" value={pmData._expMonth} placeholder="Choose Expiration Month" options={monthOptions}></lightning-combobox>
               </lightning-layout-item>
               <lightning-layout-item size="6" medium-device-size="6" large-device-size="6" small-device-size="12">
-                <lightning-combobox class="combobox" required label="Expiry Year" data-stage="payment" data-field="_expYear" value={pmData._expYear} placeholder="Choose Expiry Year" options={yearOptions}></lightning-combobox>
+                <lightning-combobox class="combobox" required label="Expiration Year" data-stage="payment" data-field="_expYear" value={pmData._expYear} placeholder="Choose Expiration Year" options={yearOptions}></lightning-combobox>
               </lightning-layout-item>
             </lightning-layout>
             <lightning-layout multiple-rows if:true={isReview}>

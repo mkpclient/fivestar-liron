@@ -59,7 +59,7 @@ global without sharing class SalesOrderPDFExtension {
 
   global PageReference attachPDF() {
     SalesOrder__c salesOrder = querySalesOrder(orderId);
-    String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/SalesOrderPDF?id=' + orderId;
+    String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/salesorderpdfvf?id=' + orderId;
     PageReference p = new PageReference(url);
 
     Blob body;

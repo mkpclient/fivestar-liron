@@ -49,7 +49,7 @@
           </td>
           <td align="right">
             Order Date:
-            <apex:outputText value="{0, date, MM/dd/YY}">
+            <apex:outputText value="{0, date, MM/dd/yy}">
               <apex:param value="{!SalesOrder__c.Released__c}" />
             </apex:outputText>
           </td>

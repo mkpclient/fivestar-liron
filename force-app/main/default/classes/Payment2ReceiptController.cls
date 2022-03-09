@@ -1,6 +1,12 @@
 public class Payment2ReceiptController {
+  public Id paymentId {get; set;}
+  public Id orderId {get; set;}
+
   public SalesOrder__c SalesOrder {
     get {
+      if(orderId == null) {
+        return null;
+      }
       List<SalesOrder__c> resultsList = [
         SELECT
           Id,
@@ -13,7 +19,7 @@ public class Payment2ReceiptController {
           BillToZipPostalCode__c,
           ContactBuying__r.ACDF_Branch_Office__c
         FROM SalesOrder__c
-        WHERE id = :ApexPages.currentPage().getParameters().get('orderId')
+        WHERE id = :orderId
       ];
 
       SalesOrder = resultsList.isEmpty() == false
@@ -27,10 +33,9 @@ public class Payment2ReceiptController {
 
   public list<Payment__c> OrderPayments {
     get {
-      String paymentId = ApexPages.currentPage()
-        .getParameters()
-        .get('paymentId');
-
+      if(paymentId == null) {
+        return null;
+      }
       OrderPayments = [
         SELECT
           Id,
@@ -83,12 +88,13 @@ public class Payment2ReceiptController {
   }
 
   public PageReference attachPDF() {
+    paymentId = ApexPages.currentPage().getParameters().get('paymentId');
     PageReference p = Page.Payment2VF;
     p.getParameters()
-      .put('orderId', ApexPages.currentPage().getParameters().get('orderId'));
+      .put('soId', ApexPages.currentPage().getParameters().get('orderId'));
     p.getParameters()
       .put(
-        'paymentId',
+        'pmtId',
         ApexPages.currentPage().getParameters().get('paymentId')
       );
 

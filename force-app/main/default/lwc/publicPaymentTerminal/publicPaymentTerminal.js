@@ -110,18 +110,18 @@ export default class PublicPaymentTerminal extends LightningElement {
 
   get monthOptions() {
     return [
-      { label: "Jan", value: "01" },
-      { label: "Feb", value: "02" },
-      { label: "Mar", value: "03" },
-      { label: "Apr", value: "04" },
-      { label: "May", value: "05" },
-      { label: "Jun", value: "06" },
-      { label: "Jul", value: "07" },
-      { label: "Aug", value: "08" },
-      { label: "Sep", value: "09" },
-      { label: "Oct", value: "10" },
-      { label: "Nov", value: "11" },
-      { label: "Dec", value: "12" }
+      { label: "01 - Jan", value: "01" },
+      { label: "02 - Feb", value: "02" },
+      { label: "03 - Mar", value: "03" },
+      { label: "04 - Apr", value: "04" },
+      { label: "05 - May", value: "05" },
+      { label: "06 - Jun", value: "06" },
+      { label: "07 - Jul", value: "07" },
+      { label: "08 - Aug", value: "08" },
+      { label: "09 - Sep", value: "09" },
+      { label: "10 - Oct", value: "10" },
+      { label: "11 - Nov", value: "11" },
+      { label: "12 - Dec", value: "12" }
     ];
   }
 
@@ -335,6 +335,8 @@ export default class PublicPaymentTerminal extends LightningElement {
     };
 
 
+
+
     const newRecord = {
       sobjectType: "Payment__c",
       Payment_Method__c: paymentMethodres.Id,
@@ -342,7 +344,7 @@ export default class PublicPaymentTerminal extends LightningElement {
       Amount__c: Number(this.paymentAmount).toFixed(2),
       Sales_Order__c: this.orderId,
       Contact__c: this.contactId,
-      Date__c: new Date(Date.now()),
+      Date__c: new Date(new Date().toLocaleDateString()),
       Payment_Type__c: "Credit Card"
     };
 

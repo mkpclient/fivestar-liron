@@ -114,13 +114,12 @@ export default class poCustomLookup extends LightningElement {
     handleKeyUp(e){
         //console.log('e.keyCode==>',e.keyCode);
         console.log("YOUR KEY CODE IS: " + e.keyCode);
-        this.inputLabel = e.target.value;
-        if (e.keyCode == 13) { 
-            e.preventDefault();
-            
-            /*If the ENTER key is pressed, prevent the form from being submitted,*/
-        }  
-        if(e.target.value.length < MIN_SEARCH_LEN){ // do not search before min chars required
+        let value = e.target.value;
+        if(value.length > 0 && value[0] == ' '){
+            value=  value.replace(' ', '');
+        }
+        this.inputLabel = value;
+        if(value < MIN_SEARCH_LEN){ // do not search before min chars required
             // if (e.keyCode == 8) this.listItems = []; //backspace
             return;
         }

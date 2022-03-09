@@ -58,6 +58,7 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
       "Payment__c.Transaction_Id__c",
       "Payment__c.MX_Payment_Id__c",
       "Payment__c.Payment_Method__r.MX_Customer_Id__c",
+      "Payment__c.RemainingBalance__c"
     ]
   })
   wiredRecord({ error, data }) {
@@ -69,9 +70,9 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
     else if (data && (!data.fields.hasOwnProperty("Payment_Method__c") || data.fields.Payment_Method__c.value == null)) {
       this.showScreen = false;
     } else if (data && data.fields.hasOwnProperty("Payment_Method__c") && data.fields.Payment_Method__c.value != null) {
-      if(data.fields.Transaction_Type__c.value != "Payment" || data.fields.Status__c.value == "Voided") {
+      if(!(data.fields.Transaction_Type__c.value == "Payment" || data.fields.Transaction_Type__c.value == "Refund") || data.fields.Status__c.value == "Voided") {
         this.showScreen = false;
-      } else if (data.fields.Status__c.value != "Completed" && data.fields.Transaction_Type__c.value == "Payment" ) {
+      } else if (data.fields.Status__c.value != "Completed" && data.fields.Transaction_Type__c.value == "Payment") {
         this.sectionDisabled = true;
       } else {
         this.disallowUpdatePaymentMethod = true;
@@ -212,8 +213,7 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
             Payment_Type__c: "Credit Card",
             MX_Payment_Id__c: "" + returnedVal.payment.id,
             Transaction_Id__c: "" + returnedVal.payment.reference,
-            Authorization_Id__c: "" + returnedVal.payment.authCode,
-            RelatedPayment__c: this.recordId
+            Authorization_Id__c: "" + returnedVal.payment.authCode
           };
           const savedPmtRecord = await saveRecord({ record: newPaymentRecord });
           if (savedPmtRecord.hasOwnProperty("Id")) {
@@ -227,14 +227,19 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
             this.isVoid = false;
           }
         } else {
+          this.isLoading = false;
           if (returnedVal.errorMessage) {
             this.errorMessage = returnedVal.errorMessage;
             console.error(returnedVal.errorMessage);
             return;
+          } else {
+            this.errorMessage = 'Unable to process this refund. Please check if a refund has already been processed for this payment.';
+            return; 
           }
         }
       } catch (err) {
         console.error(err);
+        this.isLoading = false;
         this.errorMessage = "A server error has occured.";
       }
     }

@@ -9,7 +9,7 @@ public without sharing class NewPaymentTriggerHelper {
     'Reversed',
     'Voided'
   };
-  public static final String EMAIL_TEMPLATE = 'New_Payment_Reciept_PDF';
+  public static final String EMAIL_TEMPLATE = 'Boom_Payment_VF_Template';
   public static Boolean isSandbox = [SELECT IsSandbox FROM Organization LIMIT 1]
   .IsSandbox;
 
@@ -248,30 +248,30 @@ public without sharing class NewPaymentTriggerHelper {
         message.toAddresses = new List<String>{ emailAddress };
   
         
-        PageReference pdf = Page.Payment2VF;
+        // PageReference pdf = Page.Payment/2VF;
   
-        pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
-        pdf.getParameters().put('paymentId', (String) pmt.Id);
+        // pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
+        // pdf.getParameters().put('paymentId', (String) pmt.Id);
   
-        pdf.setRedirect(true);
+        // pdf.setRedirect(true);
   
-        // Take the PDF content
-        Blob b;
-        if (Test.isRunningTest()) {
-          System.debug('::PAGE REFERENCE');
-          System.debug(pdf);
-          b = Blob.valueOf('testbody');
-        } else {
-          b = pdf.getContentAsPdf();
-        }
-        // Create the email attachment
-        Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
-        efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
-        efa.setBody(b);
+        // // Take the PDF content
+        // Blob b;
+        // if (Test.isRunningTest()) {
+        //   System.debug('::PAGE REFERENCE');
+        //   System.debug(pdf);
+        //   b = Blob.valueOf('testbody');
+        // } else {
+        //   b = pdf.getContentAsPdf();
+        // }
+        // // Create the email attachment
+        // Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
+        // efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
+        // efa.setBody(b);
   
-        message.setFileAttachments(
-          new List<Messaging.EmailFileAttachment>{ efa }
-        );
+        // message.setFileAttachments(
+        //   new List<Messaging.EmailFileAttachment>{ efa }
+        // );
   
         messages.add(message);
       }

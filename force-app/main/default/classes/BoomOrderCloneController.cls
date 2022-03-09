@@ -25,6 +25,7 @@ public without sharing class BoomOrderCloneController {
       clonedOrder.FulfillOrder__c = false;
       clonedOrder.FinanceOverride__c = false;
       clonedOrder.Legacy_Id__c = null;
+      clonedOrder.Initial_Invoice_Sent__c = false;
       insert clonedOrder;
       cloneOrderProductLines(recordId, clonedOrder.Id);
       cloneAdditionalChargeCredit(recordId, clonedOrder.Id);
