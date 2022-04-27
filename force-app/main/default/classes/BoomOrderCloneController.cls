@@ -1,4 +1,7 @@
 public without sharing class BoomOrderCloneController {
+  public static final String FINANCE_FEE_ACC = 'Multi payment Convenience Fee';
+  public static final String DISC_PRODUCTNAME = 'Discount';
+
   @AuraEnabled
   public static Id cloneBoomOrder(Id recordId) {
     Savepoint sp = Database.setSavepoint();
@@ -12,6 +15,7 @@ public without sharing class BoomOrderCloneController {
         '\' LIMIT 1';
       SalesOrder__c boomOrder = Database.query(soql);
       SalesOrder__c clonedOrder = boomOrder.clone(false, true, false, false);
+      clonedOrder.Down_Payment__c= 0;
       clonedOrder.Approval_Status__c = 'Pending';
       clonedOrder.Status_Picklist__c = 'Draft';
       clonedOrder.Release_Status__c = null;
@@ -42,6 +46,7 @@ public without sharing class BoomOrderCloneController {
     Id newBoomOrderId
   ) {
     Savepoint sp = Database.setSavepoint();
+    List<AdditionalChargeCredit__c> acc = [SELECT Id FROM AdditionalChargeCredit__c WHERE Name = :FINANCE_FEE_ACC AND IsActive__c = true LIMIT 1];
     try {
       String editableFields = getEditableFields(
         'SalesOrderAdditionalChargeCredit__c'
@@ -56,6 +61,9 @@ public without sharing class BoomOrderCloneController {
       if (oldACCs.size() > 0) {
         List<SalesOrderAdditionalChargeCredit__c> newACCs = new List<SalesOrderAdditionalChargeCredit__c>();
         for (SalesOrderAdditionalChargeCredit__c oA : oldACCs) {
+          if(acc.size() > 0 && oA.Additional_Charge_Credit__c == acc[0].Id){
+            continue;
+          }
             SalesOrderAdditionalChargeCredit__c nA = oA.clone(false, true, false, false);
             nA.SalesOrder__c = newBoomOrderId;
             nA.Adjustment_Date__c = null;
@@ -76,6 +84,8 @@ public without sharing class BoomOrderCloneController {
     Id newBoomOrderId
   ) {
     Savepoint sp = Database.setSavepoint();
+    List<Product2> discProd = [SELECT Id FROM Product2 WHERE Name = :DISC_PRODUCTNAME AND IsActive = true LIMIT 1];
+
     try {
       String editableFields = getEditableFields('SalesOrderProductLine__c');
       String soql =
@@ -94,6 +104,9 @@ public without sharing class BoomOrderCloneController {
         for (
           SalesOrderProductLine__c oldOrderProductLine : oldOrderProductLines
         ) {
+          if(discProd.size() > 0 && oldOrderProductLine.Product__c == discProd[0].Id) {
+            continue;
+          }
           if (oldOrderProductLine.KitBundleLine__c == null) {
             SalesOrderProductLine__c clonedOrderProductLine = oldOrderProductLine.clone(
               false,

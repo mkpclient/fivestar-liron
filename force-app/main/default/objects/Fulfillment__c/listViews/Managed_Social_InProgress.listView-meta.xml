@@ -31,7 +31,7 @@
     <filters>
         <field>Status__c</field>
         <operation>contains</operation>
-        <value>Approved</value>
+        <value>Active,Approved</value>
     </filters>
     <filters>
         <field>Status__c</field>
@@ -41,9 +41,9 @@
     <filters>
         <field>Next_Action__c</field>
         <operation>contains</operation>
-        <value>In Progress</value>
+        <value>Fulfill</value>
     </filters>
-    <label>_Managed Social - In Progress</label>
+    <label>_Managed Social - Active</label>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Allen_Wardell</group>

@@ -1,13 +1,9 @@
 global class PaymentMethodBatch implements Database.Batchable<sObject>, Database.AllowsCallouts,Database.Stateful {
     global String queryString;
-    global List<Payment_Method__c> newPaymentMethods;
   
     global PaymentMethodBatch() {
-      if(newPaymentMethods == null) {
-        newPaymentMethods = new List<Payment_Method__c>();
-      }
       if (String.isBlank(queryString)) {
-        queryString = 'SELECT Id, MX_Customer_Id__c, ExternalId__c, Merchant_Token__c, Expiration_Date__c FROM Payment_MEthod__c WHERE Expiration_Date__c = THIS_MONTH AND Expiration_Date__c = THIS_YEAR AND MX_Customer_Id__c != null LIMIT 100';
+        queryString = 'SELECT Id, MX_Customer_Id__c, ExternalId__c, Merchant_Token__c, Expiration_Date__c FROM Payment_MEthod__c WHERE Expiration_Date__c = THIS_MONTH AND Expiration_Date__c = THIS_YEAR AND MX_Customer_Id__c != null';
       }
       // if (Test.isRunningTest()) {
       //   queryString += ' LIMIT 1';
@@ -19,7 +15,8 @@ global class PaymentMethodBatch implements Database.Batchable<sObject>, Database
     }
   
     global void execute(Database.BatchableContext info, List<Payment_Method__c> scope) {
-      List<Payment_Method__c> paymentMethodLocal = new List<Payment_Method__c>();
+      List<Payment_Method__c> validPaymentMethods = new List<Payment_Method__c>();
+      List<Payment_Method__c> invalidPaymentMethods = new List<Payment_Method__c>();
       for (Payment_Method__c s : scope) {
         Zealynx.CreditCardResource cardRecord = new Zealynx.CreditCardResource();
         Date oldDate = s.Expiration_Date__c;
@@ -44,23 +41,23 @@ global class PaymentMethodBatch implements Database.Batchable<sObject>, Database
           Date lastDayOfMonth = Date.newInstance(newYear, newMonth, numberOfDays);
           s.Expiration_Date__c = lastDayOfMonth; 
           
-          
+          validPaymentMethods.add(s);
         } else {
-          System.debug('An error has occured in the payment method batch process.');
+          
+          invalidPaymentMethods.add(s);
         }
-  
-        paymentMethodLocal.add(s);
       }
-  
-      newPaymentMethods.addAll(paymentMethodLocal);
+      if(validPaymentMethods.size() > 0) {
+        System.enqueueJob(new BoomSubscriptionPaymentsQueuable(validPaymentMethods, false));
+      }
+      
     }
   
     global void finish(Database.BatchableContext info) {
   
-  
-      if (newPaymentMethods.size() > 0) {
-        update newPaymentMethods;
-  
-      }
+    }
+
+    private static void sendExceptionEmails(List<Payment_Method__c> invalidPaymentMethods) {
+      // do something 
     }
   }

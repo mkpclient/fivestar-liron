@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>TaxSalesRate__c</fullName>
     <externalId>false</externalId>
-    <formula>IF(TaxableSale__c, IF(OR(NOT(ISBLANK( State_Tax_Rate__c)), State_Tax_Rate__c &lt;&gt; 0), State_Tax_Rate__c/100,0), 0)</formula>
+    <formula>IF( TaxableSale__c,  IF( ISBLANK( State_Tax_Rate__c ), 0,   State_Tax_Rate__c), 0)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Tax Sales Rate</label>
     <precision>18</precision>

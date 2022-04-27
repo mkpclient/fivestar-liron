@@ -66,6 +66,21 @@ const actions = [
   { label: "Delete Record", name: "delete" }
 ];
 
+const getDefaultNextPaymentDate = () => {
+  const today = new Date();
+  let todayDate = today.getDate();
+  let nextMonth = Number(today.getMonth()) + 2;
+  nextMonth = nextMonth > 9 ? nextMonth : "0" + nextMonth;
+  const todayYear = today.getFullYear();
+  let maxDay = Number(new Date(todayYear, today.getMonth() + 1, 0).getDate());
+  if(todayDate > maxDay) {
+    todayDate = maxDay;
+  }
+  return `${todayYear}-${nextMonth}-${todayDate}`;
+}
+
+const DEFAULT_NEXT_PAYMENT = getDefaultNextPaymentDate();
+
 export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   @api recordId;
   @track salesOrder;
@@ -104,7 +119,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     cardType: "",
     orderIds: [],
     isMultiple: false,
-    scheduledDate: null,
+    scheduledDate: DEFAULT_NEXT_PAYMENT,
     numberOfPayments: 0,
     contactId: null
   };
@@ -322,6 +337,9 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     queryString += " FROM Contact WHERE Id = '" + contactId + "'";
     try {
       const res = await doQuery({ queryString });
+      if(res.length < 1) {
+        return [{} , null];
+      }
       let d = res[0];
       const retVal =  {
             firstName: d.FirstName,
@@ -420,7 +438,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     const [ selectedContact, error ] = await this.getSelectedContact(contactId);
     if (error) {
       console.error(error)
-    } else {
+    } else if (selectedContact) {
       this.selectedPaymentMethod = {
         ...this.selectedPaymentMethod,
         ...selectedContact
@@ -495,7 +513,12 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       if (name === "isMultiple") {
         this.payment[name] = event.target.checked;
         this.showScheduledPayment = event.target.checked;
-        this.totalScheduledPayment = this.allowedTotalScheduled;
+        if(event.target.checked) {
+          this.payment.amount = (this.totalAmount * 0.2).toFixed(2);
+          this.totalScheduledPayment = (this.totalAmount - this.payment.amount).toFixed(2);
+        } else {
+          this.payment.amount = this.totalAmount;
+        }
       } else if (name === "totalScheduledPayment") {
         // console.log(value);
         this.totalScheduledPayment = value;
@@ -598,7 +621,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
         this.isSubmittingTransaction = false;
         return;
       }
-      if (!this.payment.numberOfPayments || this.payment.numberOfPayments < 1) {
+      if (!this.payment.numberOfPayments || Number(this.payment.numberOfPayments) < 1) {
         this.toastTitle = "Error";
         this.toastMessage = "Please enter a valid number of payments.";
         this.toastVariant = "error";
@@ -624,7 +647,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       let year = fullDate.getFullYear();
       let month = fullDate.getMonth() + 1;
       let accumulatedPayments = 0;
-      for (let i = 0; i < this.payment.numberOfPayments; i++) {
+      for (let i = 0; i < Number(this.payment.numberOfPayments); i++) {
         let actualDay = day;
         if (month > 12) {
           year++;
@@ -1073,10 +1096,10 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   }
 
   get scheduledPayment() {
-    return this.payment.numberOfPayments > 0
+    return Number(this.payment.numberOfPayments) > 0
       ? Number(
           (
-            Number(this.totalScheduledPayment) / this.payment.numberOfPayments
+            Number(this.totalScheduledPayment) / Number(this.payment.numberOfPayments)
           ).toFixed(2)
         )
       : 0;
@@ -1165,5 +1188,35 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
 
   get noPaymentMethods() {
     return this.paymentMethods.length === 0;
+  }
+
+  get financeFeePercent() {
+    if (!this.totalAmount) {
+      return 0;
+    }
+    
+    return (
+      Number(this.totalAmount) >= 500 && Number(this.totalAmount) < 1000 
+        ? 0.015 
+        : Number(this.totalAmount) >= 1000 
+        ? 0.03 
+        : 0
+        );
+  }
+
+  get numberOfSchedPaymentsOptions() {
+    const options = [
+      { label: "1 Scheduled Payment", value: "1" }
+    ];
+    
+    if(Number(this.totalAmount) >= 500) {
+      options.push({ label: "2 Scheduled Payments", value: "2" });
+    }
+
+    if(Number(this.totalAmount) >= 1000) {
+      options.push({ label: "5 Scheduled Payments", value: "5" });
+    }
+
+    return options;
   }
 }

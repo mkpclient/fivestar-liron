@@ -5,8 +5,8 @@
     <columns>Market__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Base_Product__c</columns>
-    <columns>Product_Templates_Finalized__c</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>E_Reprint_PDF_location__c</columns>
     <columns>Publication_month__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
@@ -15,7 +15,7 @@
     <columns>Fortune_Upload_Date__c</columns>
     <columns>WSJ_Upload__c</columns>
     <columns>Notes_for_Ad_Prod__c</columns>
-    <columns>Actual_Upload_Date__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>

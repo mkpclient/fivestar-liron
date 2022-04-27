@@ -9,12 +9,12 @@
     <columns>Product_Name__c</columns>
     <columns>Base_Product__c</columns>
     <columns>Quantity__c</columns>
+    <columns>Auto_Post__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>Fulfillment_Owner__c</columns>
     <columns>Next_Action_Date__c</columns>
-    <columns>Client_Contact_List__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>

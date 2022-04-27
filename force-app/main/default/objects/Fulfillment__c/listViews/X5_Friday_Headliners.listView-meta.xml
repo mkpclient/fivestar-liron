@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>X5_Friday_Headliners</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 7) OR (6 AND 8) OR (9 AND 10))</booleanFilter>
     <columns>NAME</columns>
     <columns>Product_Name__c</columns>
     <columns>PrimaryRecipient__c</columns>
@@ -36,6 +37,36 @@
         <field>Product_Templates_Finalized__c</field>
         <operation>lessOrEqual</operation>
         <value>LAST_WEEK</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>forbes</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>fortune</value>
+    </filters>
+    <filters>
+        <field>Forbes_Upload_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>THIS_WEEK</value>
+    </filters>
+    <filters>
+        <field>Fortune_Upload_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>THIS_WEEK</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>contains</operation>
+        <value>WSJ</value>
+    </filters>
+    <filters>
+        <field>WSJ_Upload__c</field>
+        <operation>lessOrEqual</operation>
+        <value>THIS_WEEK</value>
     </filters>
     <label>__2. Create - Headliners</label>
     <sharedTo>

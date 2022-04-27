@@ -4,6 +4,8 @@ public without sharing class SalesOrderHelper {
   static final String CANCELLED_STATUS = 'Cancelled';
   static final String APPROVED_STATUS = 'Approved';
   static final String DRAFT_STATUS = 'Draft';
+  static final String RENEWAL_STATUS = 'Pending Renewal';
+  static final String UPDATE_NEEDED = 'Payment Update Needed';
 
   public static void beforeUpdate(
     Map<Id, SalesOrder__c> oldMap,
@@ -11,6 +13,7 @@ public without sharing class SalesOrderHelper {
   ) {
 
     Approval.unlock(newMap.values());
+    List<Subscription__c> subsForQueue = new List<Subscription__c>();
 
     for (Id key : newMap.keySet()) {
       SalesOrder__c oldSO = oldMap.get(key);
@@ -23,23 +26,34 @@ public without sharing class SalesOrderHelper {
         // when SO meets all release criteria
 
       if (
-        newSO.Status_Picklist__c == APPROVED_STATUS &&
-        newSO.ExistingPayments__c == newSO.NetAmount__c &&
-        newSO.Status_Picklist__c != RELEASED_STATUS &&
-        (newSO.NetAmount__c != 0 ||
-        (newSO.Approved_Complimentary_Order__c == true ||
-        newSO.Complaint_Order__c == true ||
-        newSO.Sample_ELM_Copy__c == true))
+        orderCanBeReleased(oldSO, newSO)
       ) {
-
+        if(newSO.Status_Picklist__c == RENEWAL_STATUS && newSO.Subscription__c != null 
+        && (
+            (
+              FivestarSetting__mdt.getInstance('Universal') != null 
+            && FivestarSetting__mdt.getInstance('Universal').Allow_Subscriptions__c) 
+            || test.isRunningTest()
+            )
+          )  {
+          subsForQueue.add(new Subscription__c(
+            Id = newSO.Subscription__c,
+            Create_Next_Subscription__c = true
+          ));
+        }
         newSO.DateReleased__c = System.today();
         newSO.Release_Date__c = System.today();
         newSO.Status_Picklist__c = RELEASED_STATUS;
         newSO.Released__c = System.now();
         newSO.FulfillOrder__c = true;
         newSO.Email_To_Send__c = true;
+        
       }
       
+    }
+
+    if(subsForQueue.size() > 0) {
+      processSubscriptions(subsForQueue);
     }
   }
 
@@ -85,7 +99,7 @@ public without sharing class SalesOrderHelper {
         salesOrderIdsList.add(newList[i].Id);
       }
 
-      if (oldList[i].Price_Book__c != newList[i].Price_Book__c) {
+      if (oldList[i].Price_Book__c != newList[i].Price_Book__c && newList[i].Subscription__c == null) {
         salesOrderIds.add(newList[i].Id);
       }
 
@@ -185,6 +199,28 @@ public without sharing class SalesOrderHelper {
       prodLines.size() +
       ' product lines'
     );
+  }
+
+  public static Boolean orderCanBeReleased(SalesOrder__c oldSO, SalesOrder__c newSO) {
+    return ((newSO.Status_Picklist__c == APPROVED_STATUS || 
+    (
+      (newSO.Status_Picklist__c == RENEWAL_STATUS || newSO.Status_Picklist__c == UPDATE_NEEDED) && newSO.OrderDate__c <= System.today()
+      &&
+      (
+        (
+          FivestarSetting__mdt.getInstance('Universal') != null 
+        && FivestarSetting__mdt.getInstance('Universal').Allow_Subscriptions__c
+        ) 
+        || test.isRunningTest()
+      )
+    )
+    ) &&
+    newSO.ExistingPayments__c == newSO.NetAmount__c &&
+    newSO.Status_Picklist__c != RELEASED_STATUS &&
+    (newSO.NetAmount__c != 0 ||
+    (newSO.Approved_Complimentary_Order__c == true ||
+    newSO.Complaint_Order__c == true ||
+    newSO.Sample_ELM_Copy__c == true)));
   }
 
   public static Boolean orderNeedsFulfillmentsCreated(
@@ -314,6 +350,19 @@ public without sharing class SalesOrderHelper {
 
       update payments;
     }
+  }
+
+  public static void processSubscriptions(List<Subscription__c> subs) {
+      List<Subscription__c> childrenSubs = [SELECT Id FROM Subscription__c WHERE Parent_Subscription__c IN :subs];
+      List<Subscription__c> subsLocal = new List<Subscription__c>();
+      subsLocal.addAll(subs);
+      if(childrenSubs.size() > 0) {
+        for(Subscription__c s : childrenSubs) {
+          s.Create_Next_Subscription__c =  true;
+          subsLocal.add(s);
+        }
+      }
+      update subsLocal;
   }
 
 

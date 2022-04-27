@@ -4,7 +4,6 @@
     <externalId>false</externalId>
     <label>Specific Terms &amp; Conditions</label>
     <length>32000</length>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>

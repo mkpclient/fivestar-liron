@@ -115,11 +115,9 @@ export default class poCustomLookup extends LightningElement {
         //console.log('e.keyCode==>',e.keyCode);
         console.log("YOUR KEY CODE IS: " + e.keyCode);
         let value = e.target.value;
-        if(value.length > 0 && value[0] == ' '){
-            value=  value.replace(' ', '');
-        }
+       
         this.inputLabel = value;
-        if(value < MIN_SEARCH_LEN){ // do not search before min chars required
+        if(value.length < MIN_SEARCH_LEN){ // do not search before min chars required
             // if (e.keyCode == 8) this.listItems = []; //backspace
             return;
         }

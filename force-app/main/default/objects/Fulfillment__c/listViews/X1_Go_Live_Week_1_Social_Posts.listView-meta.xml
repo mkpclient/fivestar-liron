@@ -23,7 +23,7 @@
     <filters>
         <field>Status__c</field>
         <operation>notContain</operation>
-        <value>In Revision,Closed,Cancelled,Approved</value>
+        <value>In Revision,Closed,Cancelled</value>
     </filters>
     <filters>
         <field>Posting_Date__c</field>

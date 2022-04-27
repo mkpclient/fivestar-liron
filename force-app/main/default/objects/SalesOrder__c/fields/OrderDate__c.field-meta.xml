@@ -5,7 +5,6 @@
     <externalId>false</externalId>
     <label>Order Date</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Date</type>

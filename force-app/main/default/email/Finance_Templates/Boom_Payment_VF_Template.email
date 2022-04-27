@@ -6,7 +6,9 @@
       {!''}
     </apex:outputText>
 
-    <apex:outputText value="A credit card transaction for {0, Number, Currency} has been processed on {1,date,MM/dd/yy} for your order {2} placed on {3,date,MM/dd/yy}.">
+    <apex:outputText value="A {0} {1} for {2, Number, Currency} has been processed on {3,date,MM/dd/yy} for your order {4} placed on {5,date,MM/dd/yy}.">
+      <apex:param value="{!relatedTo.Payment_Type__c}" />
+      <apex:param value="{!relatedTo.Transaction_Type__c}" />
       <apex:param value="{!relatedTo.Amount__c}" />
       <apex:param value="{!relatedTo.Date__c}" />
       <apex:param value="{!relatedTo.Sales_Order__r.Name}" />
@@ -43,12 +45,14 @@
         </apex:outputText>
       </p>
       <p>
-        <apex:outputText value="A credit card transaction for {0, Number, Currency} has been processed on {1,date,MM/dd/yy} for your order {2} placed on {3,date,MM/dd/yy}.">
-          <apex:param value="{!relatedTo.Amount__c}" />
-          <apex:param value="{!relatedTo.Date__c}" />
-          <apex:param value="{!relatedTo.Sales_Order__r.Name}" />
-          <apex:param value="{!relatedTo.Order_Release_Date__c}" />
-        </apex:outputText>
+    <apex:outputText value="A {0} {1} for {2, Number, Currency} has been processed on {3,date,MM/dd/yy} for your order {4} placed on {5,date,MM/dd/yy}.">
+      <apex:param value="{!relatedTo.Payment_Type__c}" />
+      <apex:param value="{!relatedTo.Transaction_Type__c}" />
+      <apex:param value="{!relatedTo.Amount__c}" />
+      <apex:param value="{!relatedTo.Date__c}" />
+      <apex:param value="{!relatedTo.Sales_Order__r.Name}" />
+      <apex:param value="{!relatedTo.Order_Release_Date__c}" />
+    </apex:outputText>
       </p>
       <p>
         <apex:outputText value="Attached is a copy of your receipt." />

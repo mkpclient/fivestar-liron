@@ -14,9 +14,9 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Direct to Client - Pre Stamped</fullName>
+                <fullName>Direct Mail - Flexmail</fullName>
                 <default>false</default>
-                <label>Direct to Client - Pre Stamped</label>
+                <label>Direct Mail - Flexmail</label>
             </value>
             <value>
                 <fullName>Direct to Client - Print Only</fullName>
@@ -24,9 +24,9 @@
                 <label>Direct to Client - Print Only</label>
             </value>
             <value>
-                <fullName>Direct Mail - Flexmail</fullName>
+                <fullName>Direct to Client - Pre Stamped</fullName>
                 <default>false</default>
-                <label>Direct Mail - Flexmail</label>
+                <label>Direct to Client - Pre Stamped</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -1,8 +1,11 @@
 public without sharing class PaymentBatchableHelper {
   public static Map<String, Id> templateMap = new Map<String, Id>{
     'Declined' => queryTemplateId('New_Credit_Card_Declined'),
-    'Approved' => queryTemplateId('Boom_Payment_VF_Template')
+    'Approved' => queryTemplateId('Boom_Payment_VF_Template'),
+    'Approved_Essential' => queryTemplateId('Essential_Payment_VF_Template')
   };
+
+  public static final String ESSENTIAL_ENG = 'Essential Engine';
 
   public static OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'billing@fivestarprofessional.com'];
 
@@ -14,6 +17,8 @@ public without sharing class PaymentBatchableHelper {
 
     Messaging.SingleEmailMessage[] approvedMessages = new List<Messaging.SingleEmailMessage>();
     Messaging.SingleEmailMessage[] declinedMessages = new List<Messaging.SingleEmailMessage>();
+    Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null &&
+    FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
 
     for (Payment__c s : newPayments) {
       String emailAddress = '';
@@ -28,10 +33,21 @@ public without sharing class PaymentBatchableHelper {
       }
 
       if (String.isNotEmpty(emailAddress)) {
+        String statusText = '';
+
+        if (s.Status__c == 'Completed') {
+          if(s.Sales_Order__r.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
+            statusText = 'Approved_Essential';
+          } else {
+            statusText = 'Approved';
+          }
+        } else {
+          statusText = 'Declined';
+        }
 
         if(s.Status__c == 'Completed') {
           approvedMessages.add(sendEmail(
-          'Approved',
+          statusText,
           s.Id,
           s.Contact__c,
           emailAddress,
@@ -40,7 +56,7 @@ public without sharing class PaymentBatchableHelper {
         ));
         } else if (s.Status__c == 'Declined') {
           declinedMessages.add(sendEmail(
-          'Declined',
+          statusText,
           s.Id,
           s.Contact__c,
           emailAddress,
@@ -56,11 +72,11 @@ public without sharing class PaymentBatchableHelper {
     if (!isSandbox) {
       Messaging.SendEmailResult[] results = new List<Messaging.SendEmailResult>();
       if (approvedMessages.size() > 0) {
-        results.addAll(Messaging.sendEmail(approvedMessages));
+        results.addAll(Messaging.sendEmail(approvedMessages, false));
       }
 
       if(declinedMessages.size() > 0) {
-        results.addAll(Messaging.sendEmail(declinedMessages));
+        results.addAll(Messaging.sendEmail(declinedMessages, false));
       }
 
       if (results.size() > 0 && results[0].success) {

@@ -27,6 +27,11 @@
         <operation>equals</operation>
         <value>Ready to Publish</value>
     </filters>
+    <filters>
+        <field>Next_Action__c</field>
+        <operation>notEqual</operation>
+        <value>Make Revisions</value>
+    </filters>
     <label>__4. Thursday - Video Ready to Publish</label>
     <sharedTo>
         <group>Ad_Prod</group>

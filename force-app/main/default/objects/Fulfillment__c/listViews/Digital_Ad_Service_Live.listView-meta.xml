@@ -22,7 +22,7 @@
     <filters>
         <field>Status__c</field>
         <operation>equals</operation>
-        <value>Approved</value>
+        <value>Approved,Active</value>
     </filters>
     <filters>
         <field>Next_Action__c</field>

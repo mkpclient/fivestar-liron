@@ -3,17 +3,17 @@
     <fullName>View_Invoice</fullName>
     <availability>online</availability>
     <displayType>button</displayType>
-    <hasMenubar>false</hasMenubar>
-    <hasScrollbars>true</hasScrollbars>
-    <hasToolbar>false</hasToolbar>
-    <height>600</height>
-    <isResizable>true</isResizable>
-    <linkType>page</linkType>
+    <linkType>javascript</linkType>
     <masterLabel>View Invoice</masterLabel>
-    <openType>newWindow</openType>
-    <page>SalesOrderInvoicePDF</page>
-    <position>none</position>
+    <openType>onClickJavaScript</openType>
     <protected>false</protected>
-    <showsLocation>false</showsLocation>
-    <showsStatus>false</showsStatus>
+    <url>var validStatuses = [&quot;Released&quot;, &quot;Unreleased&quot;, &quot;Approved&quot;];
+
+if(validStatuses.includes(&quot;{!SalesOrder__c.Status_Picklist__c}&quot;)) {
+
+window.open(&apos;/apex/SalesOrderPdfVF?id={!SalesOrder__c.Id}&apos;, &apos;_blank&apos;);
+
+} else {
+alert(&quot;This order has not been approved.&quot;);
+}</url>
 </WebLink>

@@ -4,7 +4,7 @@
   <div style="background-color: #F2F2F2; padding:10px;">
     <div>
       <center>
-        <img src="{!logoUrl}" alt="Essential Engine Logo" height="150px" />
+        <img src="{!logoUrl}" alt="Essential Engine Logo" height="10%" />
       </center>
     </div>
     <div style="font-family: Helvetica, sans-serif">
@@ -13,23 +13,29 @@
           <apex:param value="{!contactRecipient.Name}" />
         </apex:outputText>
       </p>
+      <br />
       <p>
         <apex:outputText value="Great news! We have processed your order on {0,date,MM/dd/yyyy}.">
           <apex:param value="{!SalesOrder__c.Release_Date__c}" />
         </apex:outputText>
       </p>
+      <br />
       <p>
         <apex:outputText value="You are all set to use your marketing tools in pursuit of your business objectives." />
       </p>
+      <br />
       <p>
         <apex:outputText value="To view your invoice or to download a PDF copy for your records, please find the attached
     document {0}.">
           <apex:param value="{!SalesOrder__c.Name}" />
         </apex:outputText>
       </p>
+      <br />
       <p>
         <apex:outputText value="We appreciate your business and are excited about our partnership!" />
       </p>
+      <br />
+      <br />
       <apex:outputText value="Kind Regards, " />
       <br />
       <p>Essential Engine

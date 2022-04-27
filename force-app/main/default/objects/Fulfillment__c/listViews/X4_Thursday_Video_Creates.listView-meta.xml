@@ -6,8 +6,8 @@
     <columns>Market__c</columns>
     <columns>Market_Award_Year__c</columns>
     <columns>PrimaryRecipient__c</columns>
-    <columns>Next_Action__c</columns>
     <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
     <columns>Stage_Change_Date__c</columns>
     <columns>Profession__c</columns>
     <columns>Product_Delivered_Link__c</columns>

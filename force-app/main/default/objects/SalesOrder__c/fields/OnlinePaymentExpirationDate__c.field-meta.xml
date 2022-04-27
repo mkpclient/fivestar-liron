@@ -12,7 +12,6 @@ Approved and Released Orders:
     <inlineHelpText>Blank = Online Order Pages Never Expire</inlineHelpText>
     <label>Expiration Date</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Date</type>

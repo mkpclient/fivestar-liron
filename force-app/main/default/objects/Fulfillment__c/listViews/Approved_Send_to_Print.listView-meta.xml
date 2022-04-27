@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Approved_Send_to_Print</fullName>
-    <booleanFilter>(((2 AND 4 AND 6 AND (1 or 3)) OR (1 and 2 and 5)))</booleanFilter>
+    <booleanFilter>((1 AND 2 AND 4 AND 6) OR (2 and 3) OR (1 and 2 and 5))</booleanFilter>
     <columns>NAME</columns>
     <columns>Stage_Change_Date__c</columns>
     <columns>Market__c</columns>
@@ -46,7 +46,7 @@
     <filters>
         <field>Product_Name__c</field>
         <operation>notContain</operation>
-        <value>profile</value>
+        <value>Award Winner Profile</value>
     </filters>
     <label>__0. Approved - Send to Print</label>
     <sharedTo>

@@ -15,6 +15,7 @@
     <columns>Fulfillment_Owner__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>LAST_UPDATE</columns>
+    <columns>Last_Testimonial_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>

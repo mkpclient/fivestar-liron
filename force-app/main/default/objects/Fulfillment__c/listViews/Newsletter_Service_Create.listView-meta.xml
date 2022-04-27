@@ -25,7 +25,7 @@
     <filters>
         <field>Next_Action__c</field>
         <operation>contains</operation>
-        <value>Create,Make Revisions,fulfill</value>
+        <value>Create,Make Revisions</value>
     </filters>
     <filters>
         <field>Status__c</field>

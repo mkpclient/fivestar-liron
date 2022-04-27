@@ -1,0 +1,52 @@
+<apex:page showHeader="false" id="EssentialEngineSiteTemplate">
+  <style>
+  #background {
+    /* background: #E6E6E6; */
+    background-image:url('{!URLFOR($Resource.BackgroundPattern)}');
+    width:100%;
+    height:100%;
+    padding-top:40px;
+    padding-bottom:40%;
+  }
+  #box {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    <!--
+        -moz-background-origin:padding;
+        -moz-border-radius-bottomleft:5px;
+        -moz-border-radius-bottomright:5px;
+        -moz-border-radius-topleft:5px;
+        -moz-border-radius-topright:5px;
+        -moz-box-shadow:2px 5px 5px #41383C;
+        
+        -webkit-border-bottom-left-radius:5px;
+        -webkit-border-bottom-right-radius:5px;
+        -webkit-border-top-left-radius:5px;
+        -webkit-border-top-right-radius:5px;
+        -webkit-box-shadow:2px 5px 5px #41383C;
+    -->
+    background: #FFFFFF;
+    box-shadow: 2px 5px 5px #41383C;
+    width:750px;
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+    padding-right: 0px;
+    padding-top:40px;
+    padding-bottom:20px;
+  }
+  </style>
+  <div id="background">
+   <div id="box">
+  <apex:insert name="header">
+  <br/><br/>
+  </apex:insert>
+ 
+  <apex:insert name="body"/>
+  </div>
+  <apex:insert name="footer">
+  
+  </apex:insert>
+  </div>
+</apex:page>

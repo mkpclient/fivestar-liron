@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Quantity__c</fullName>
+    <description>OrderProductLine__r.kugo2p__Quantity__c</description>
     <externalId>false</externalId>
     <formula>Boom_Order_Product_Line__r.Quantity__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

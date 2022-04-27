@@ -2,7 +2,8 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Finance_Charge__c</fullName>
     <externalId>false</externalId>
-    <formula>(TotalAmount__c -  Down_Payment__c)  * (0.01) *  Additional_Payments__c</formula>
+    <formula>IF( Wave_Finance_Fee__c ,0,IF(Down_Payment__c &gt; 0, IF(TotalAmount__c &gt;= 500 &amp;&amp; TotalAmount__c &lt; 1000, (TotalAmount__c - Down_Payment__c) * $CustomMetadata.Finance_Fee_Chart__mdt.X500.Finance_Fee_Rate__c,
+IF(TotalAmount__c &gt;= 1000, (TotalAmount__c - Down_Payment__c) * $CustomMetadata.Finance_Fee_Chart__mdt.X1000.Finance_Fee_Rate__c,0)), 0))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Finance Charge</label>
     <precision>18</precision>

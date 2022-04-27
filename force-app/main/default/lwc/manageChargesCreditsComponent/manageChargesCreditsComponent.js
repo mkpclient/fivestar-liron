@@ -107,7 +107,7 @@ export default class ManageChargesCreditsComponent extends LightningElement {
     if(error) {
       console.error(error);
     } else if(data) {
-      this.allowEdit = ["Draft", "Unreleased"].includes(data.fields.Status_Picklist__c.value);
+      this.allowEdit = ["Draft", "Unreleased", "Pending Renewal"].includes(data.fields.Status_Picklist__c.value);
     }
   }
 

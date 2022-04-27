@@ -102,7 +102,7 @@
                 <tr width="100%">
                     <td></td>
                     <td>
-                        <b>Payment Type:</b> {!p.CardType__c} Ending in {!p.Last_Four_Digits__c}
+                        <b>Payment Type:</b> {!p.Payment_Type__c}
                     </td>
                 </tr>
                 <tr width="100%">
@@ -132,19 +132,34 @@
                 <tr width="100%">
                     <td></td>
                 </tr>
-                <tr width="100%">
-                    <td></td>
-                    <td>
-                        <b>Transaction ID: </b> {!p.Transaction_Id__c}
-                    </td>
-                </tr>
-                <tr width="100%">
-                    <td></td>
-                    <td>
-                        <b>Authorization ID: </b> {!p.Authorization_Id__c}
-                    </td>
-                </tr>
-            </apex:repeat>
+                    <tr width="100%">
+                        <td></td>
+                        <td>
+                            <apex:outputPanel rendered="{!p.Payment_Type__c == 'Credit Card'}">
+                            <b>Transaction ID: </b> {!p.Transaction_Id__c}
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!p.Payment_Type__c != 'Credit Card'}">
+                            <b>Check Number: </b> {!p.Check_Number__c}
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr width="100%">
+                        <td></td>
+                        <td>
+                            <apex:outputPanel rendered="{!p.Payment_Type__c == 'Credit Card'}">
+                            <b>Authorization ID: </b> {!p.Authorization_Id__c}
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr width="100%">
+                        <td></td>
+                        <td>
+                            <apex:outputPanel rendered="{!p.Payment_Type__c == 'Credit Card'}">
+                            <b>Credit Card: </b>{!p.CardType__c} ending in {!p.Last_Four_Digits__c}
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+        </apex:repeat>
         </table>
 
         <div class="row">

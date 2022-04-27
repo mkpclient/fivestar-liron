@@ -197,10 +197,10 @@ export default class ManageLinesRecipientSearch extends LightningElement {
     const hasConditions = this.queryItems.accountId != null;
     let whereCondition = null;
     if (hasConditions) {
-      whereCondition = `WHERE Account.Name = '${this.queryItems.accountName}' OR AccountId = '${this.queryItems.accountId}'`;
+      whereCondition = `WHERE Id = '${this.queryItems.contactIdFromOpp}' OR Account.Name = '${(this.queryItems.accountName).replace(/'/g, "\\'")}' OR AccountId = '${this.queryItems.accountId}'`;
       // whereCondition = `WHERE (Market_Project__c = '${this.queryItems.marketId}' AND Awarded_Years__c INCLUDES('${this.queryItems.publicationYear}')) OR Id='${this.queryItems.contactIdFromOpp}'`;
     }
-    whereCondition += " ORDER BY LastName LIMIT 1000";
+    whereCondition += " ORDER BY LastName LIMIT 10000";
     const [contacts, error] = await getMLRecord({
       getFunction: doQuery,
       objectType: "Contact",
@@ -212,22 +212,24 @@ export default class ManageLinesRecipientSearch extends LightningElement {
       console.error("CONTACT GET ERROR :" + JSON.stringify(error));
       return;
     } else {
-      const [soleContact, err] = await getMLRecord({
-        getFunction: doQuery,
-        objectType: "Contact",
-        fields: "Id, Name, Account.Name",
-        hasConditions: true,
-        conditions: `WHERE Id = '${this.queryItems.contactIdFromOpp}' LIMIT 1`
-      });
-      // console.log(contacts);
+
+      return contacts;
+      // const [soleContact, err] = await getMLRecord({
+      //   getFunction: doQuery,
+      //   objectType: "Contact",
+      //   fields: "Id, Name, Account.Name",
+      //   hasConditions: true,
+      //   conditions: `WHERE Id = '${this.queryItems.contactIdFromOpp}' LIMIT 1`
+      // });
+      // // console.log(contacts);
       
-      if (err) {
-        console.error("CONTACT GET ERROR :" + JSON.stringify(err));
-        return;
-      } else if (soleContact) {
-          contacts.unshift(soleContact[0]);
-          return contacts;
-      }
+      // if (err) {
+      //   console.error("CONTACT GET ERROR :" + JSON.stringify(err));
+      //   return;
+      // } else if (soleContact) {
+      //     contacts.unshift(soleContact[0]);
+      //     return contacts;
+      // }
     }
   };
 

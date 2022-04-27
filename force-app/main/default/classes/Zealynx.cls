@@ -311,6 +311,7 @@ public without sharing class Zealynx {
       bodyMap.put('zealynx_sourceOperation','Upsert');
       bodyMap.put('zealynx_sourceObject','Payment');
       bodyMap.put('records', new List<PaymentResource>{this});
+      System.debug('IN PAYMENT SAVE BEFORE CALLOUT');
       HttpResponse res = callout('POST',endpoint,null,JSON.serialize(bodyMap));
       ZealynxResponseResource ZealynxResponse = (ZealynxResponseResource)JSON.deserialize(res.getBody(), ZealynxResponseResource.class);
       System.debug(ZealynxResponse.responses);
@@ -345,6 +346,7 @@ public without sharing class Zealynx {
       bodyMap.put('zealynx_sourceOperation','Refund');
       bodyMap.put('zealynx_sourceObject','Payment');
       bodyMap.put('records', new List<PaymentResource>{this});
+      System.debug('IN REFUND BEFORE CALLOUT');
       HttpResponse res = callout('POST',endpoint,null,JSON.serialize(bodyMap));
       ZealynxResponseResource ZealynxResponse = (ZealynxResponseResource)JSON.deserialize(res.getBody(), ZealynxResponseResource.class);
       if ( 

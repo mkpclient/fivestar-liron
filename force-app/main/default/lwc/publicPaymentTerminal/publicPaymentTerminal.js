@@ -11,12 +11,11 @@ export default class PublicPaymentTerminal extends LightningElement {
   isSuccess = false;
   soName;
   @api orderId;
+  @api isEssential = false;
   isReview = false;
   accountId;
   contactId;
   errorMessage = "";
-  logoUrl =
-    "https://fivestarprofessional--c.na169.content.force.com/servlet/servlet.ImageServer?id=015d00000060AVl&oid=00Dd0000000gsfl";
   paymentAmount;
   paymentEntry = {
     FirstName: "",
@@ -34,6 +33,11 @@ export default class PublicPaymentTerminal extends LightningElement {
     MX_Customer_Id__c: "Unavailable"
   };
   contactRecord = {};
+
+  get logoUrl() {
+    return this.isEssential ? "https://fivestarprofessional--c.na169.content.force.com/servlet/servlet.ImageServer?id=0156T00000FQUOJ&oid=00Dd0000000gsfl" : "https://fivestarprofessional--c.na169.content.force.com/servlet/servlet.ImageServer?id=015d00000060AVl&oid=00Dd0000000gsfl";
+  }
+
   get stateOptions() {
     return [
       { label: "AL", value: "AL" },
@@ -344,7 +348,7 @@ export default class PublicPaymentTerminal extends LightningElement {
       Amount__c: Number(this.paymentAmount).toFixed(2),
       Sales_Order__c: this.orderId,
       Contact__c: this.contactId,
-      Date__c: new Date(new Date().toLocaleDateString()),
+      Date__c: new Date().toLocaleDateString("sv"),
       Payment_Type__c: "Credit Card"
     };
 

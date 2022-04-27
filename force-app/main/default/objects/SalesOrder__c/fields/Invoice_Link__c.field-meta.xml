@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Invoice_Link__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( Profession__c = &quot;WM&quot;, &quot;https://fivestarprofessional.secure.force.com/apex/New_FSP_Invoice?id=&quot; &amp; Id, &quot;https://fivestarprofessional.secure.force.com/apex/New_FSP_Invoice?id=&quot; &amp; Id)</formula>
+    <formula>IF( ISPICKVAL(Status_Picklist__c, &quot;Released&quot;),  &quot;https://fivestarprofessional.lightning.force.com/apex/SalesOrderPDF?id=&quot; + Id, &quot;Invoice not available until order is released&quot; )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Invoice Link</label>
     <required>false</required>

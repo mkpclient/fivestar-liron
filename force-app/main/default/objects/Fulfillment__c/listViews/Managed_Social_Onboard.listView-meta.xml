@@ -12,6 +12,7 @@
     <columns>CREATED_DATE</columns>
     <columns>LAST_UPDATE</columns>
     <columns>UPDATEDBY_USER.ALIAS</columns>
+    <columns>Managed_Social_Media_Platform__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>
@@ -26,7 +27,7 @@
     <filters>
         <field>Status__c</field>
         <operation>notContain</operation>
-        <value>Approved,On Hold,Subscription Cancelled,Cancelled</value>
+        <value>Active,New,On Hold,Subscription Cancelled,Cancelled,Paused</value>
     </filters>
     <label>_Managed Social - Onboard</label>
     <sharedTo>

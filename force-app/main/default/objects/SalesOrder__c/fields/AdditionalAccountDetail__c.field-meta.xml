@@ -8,10 +8,8 @@ Update this field to change the Account Name for this Order.</description>
     <externalId>false</externalId>
     <label>Additional Account Info</label>
     <referenceTo>kugo2p__AdditionalAccountDetail__c</referenceTo>
-    <relationshipLabel>Sales Orders</relationshipLabel>
     <relationshipName>Sales_Orders</relationshipName>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

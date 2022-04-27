@@ -50,12 +50,13 @@
     <filters>
         <field>Fulfillment_Owner__c</field>
         <operation>contains</operation>
-        <value>Kristi C</value>
+        <value>Julie N</value>
     </filters>
-    <label>__2. CSR Calls Due TODAY - Kristi C</label>
+    <label>__2. CSR Calls Due TODAY - Julie N</label>
     <sharedTo>
         <group>Allen_Wardell</group>
+        <group>Diana_Nguyen</group>
         <group>Jonathan_Wesser</group>
-        <group>Teresa_Hemingson</group>
+        <group>Julie_Nguyen</group>
     </sharedTo>
 </ListView>

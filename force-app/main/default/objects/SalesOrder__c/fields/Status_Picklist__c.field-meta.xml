@@ -4,8 +4,7 @@
     <externalId>false</externalId>
     <label>Status</label>
     <required>false</required>
-    <trackFeedHistory>true</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -35,6 +34,16 @@
                 <fullName>Unreleased</fullName>
                 <default>false</default>
                 <label>Unreleased</label>
+            </value>
+            <value>
+                <fullName>Pending Renewal</fullName>
+                <default>false</default>
+                <label>Pending Renewal</label>
+            </value>
+            <value>
+                <fullName>Payment Update Needed</fullName>
+                <default>false</default>
+                <label>Payment Update Needed</label>
             </value>
         </valueSetDefinition>
     </valueSet>

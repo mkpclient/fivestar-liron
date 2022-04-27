@@ -5,6 +5,13 @@ global without sharing class SalesOrderPDFExtension {
   global String acceptedBy { get; set; }
   global SalesOrder__c salesOrder { get; set; }
   global Boolean showTermsErrorBlock { get; set; }
+
+  global Boolean allowEssentialEmails {
+    get {
+      return FivestarSetting__mdt.getInstance('Universal') != null &&
+      FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
+    } private set;
+  }
   global SalesOrderPDFExtension() {
     system.debug('Default Constructor');
     if (
@@ -58,8 +65,16 @@ global without sharing class SalesOrderPDFExtension {
   }
 
   global PageReference attachPDF() {
+    
+
     SalesOrder__c salesOrder = querySalesOrder(orderId);
-    String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/salesorderpdfvf?id=' + orderId;
+    String vfPageName = 'salesorderpdfvf';
+
+    if(salesOrder.Price_Book__r.Business_Unit__c == 'Essential Engine' && allowEssentialEmails) {
+      vfPageName = 'EssentialEngineOrderPdfVf';
+    }
+    String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/' + vfPageName + '?id=' + orderId;
+
     PageReference p = new PageReference(url);
 
     Blob body;
@@ -95,6 +110,7 @@ global without sharing class SalesOrderPDFExtension {
     fieldNames.add('ContactBilling__r.Phone');
     fieldNames.add('ContactBilling__r.Fax');
     fieldNames.add('Account__r.Name');
+    fieldNames.add('Price_Book__r.Business_Unit__c');
 
     String queryString =
       ' SELECT ' +
@@ -316,10 +332,13 @@ global without sharing class SalesOrderPDFExtension {
         '\n ### toExternalForm ' + URL.getSalesforceBaseUrl().toExternalForm()
       );
       system.debug('\n ### getHost ' + URL.getSalesforceBaseUrl().getHost());
-
+      String pageName = 'SalesOrderPDF';
+      if(Order.Price_Book__r.Business_Unit__c == 'Essential Engine' && allowEssentialEmails) {
+        pageName = 'EssentialEngineOrderPdfVf';
+      }
       String url =
         URL.getSalesforceBaseUrl().toExternalForm() +
-        '/apex/SalesOrderPDF?id=' +
+        '/apex/' + pageName + '?id=' +
         Order.Id +
         '&p=1';
 
@@ -338,8 +357,9 @@ global without sharing class SalesOrderPDFExtension {
   global PageReference acceptAndPayOnline() {
     String orderRecordStatus = this.Order.Status_Picklist__c;
     // this will be the page reference to the payment screen
+    Boolean isEssential = allowEssentialEmails && Order.Price_Book__r.Business_Unit__c == 'Essential Engine';
     PageReference pr = new PageReference(
-      '/apex/publicPaymentVfPage?id=' + orderId
+      '/apex/publicPaymentVfPage?id=' + orderId + '&isEssential=' + isEssential
     );
 
     if (attachmentId == null) {

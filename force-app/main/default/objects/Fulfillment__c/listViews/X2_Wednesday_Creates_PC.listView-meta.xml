@@ -3,10 +3,10 @@
     <fullName>X2_Wednesday_Creates_PC</fullName>
     <booleanFilter>(1 AND 2 AND 3) OR (2 AND 4 and 5 and 7) OR (4 AND 2 AND 6) OR (2 AND 4 and 8 and 7 and 3)</booleanFilter>
     <columns>NAME</columns>
+    <columns>Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
     <columns>Product_Style__c</columns>
     <columns>Product_Name__c</columns>
-    <columns>Market__c</columns>
     <columns>Product_Templates_Finalized__c</columns>
     <columns>Stage_Change_Date__c</columns>
     <columns>Customization__c</columns>
@@ -26,7 +26,7 @@
     <filters>
         <field>Status__c</field>
         <operation>notContain</operation>
-        <value>New,In Revision,Approved,To Print,Created,Closed,Cancelled,Hold,FTP</value>
+        <value>New,In Revision,Approved,To Print,Created,Closed,Cancelled,Hold,FTP,Web</value>
     </filters>
     <filters>
         <field>Product_Templates_Finalized__c</field>
@@ -35,7 +35,7 @@
     </filters>
     <filters>
         <field>Base_Product__c</field>
-        <operation>equals</operation>
+        <operation>contains</operation>
         <value>Postcard Service</value>
     </filters>
     <filters>

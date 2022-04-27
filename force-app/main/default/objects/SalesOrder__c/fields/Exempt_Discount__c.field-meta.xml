@@ -5,7 +5,6 @@
     <externalId>false</externalId>
     <inlineHelpText>Discount is exempt</inlineHelpText>
     <label>Exempt Discount</label>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

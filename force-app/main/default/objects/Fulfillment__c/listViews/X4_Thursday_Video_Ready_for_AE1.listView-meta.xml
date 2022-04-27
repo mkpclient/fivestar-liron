@@ -4,15 +4,15 @@
     <columns>NAME</columns>
     <columns>Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>Profession__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
     <columns>Market_Award_Year__c</columns>
     <columns>Stage_Change_Date__c</columns>
-    <columns>Status__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Years_Winner__c</columns>
-    <columns>Profession__c</columns>
     <columns>Go_Live_Date__c</columns>
     <columns>Notes_for_Ad_Prod__c</columns>
-    <columns>Next_Action__c</columns>
     <columns>Next_Action_Date__c</columns>
     <columns>Market_Final_Upload_Date__c</columns>
     <columns>Proof_Location__c</columns>

@@ -3,7 +3,7 @@
     <fullName>Product_Template__c</fullName>
     <description>Product Template Chosen (created for marketing services postcards initially)</description>
     <externalId>false</externalId>
-    <inlineHelpText>Product Template Chosen by Client</inlineHelpText>
+    <inlineHelpText>Product Template Chosen by Client (postcard/testimonial post/social media dislike options)</inlineHelpText>
     <label>Product Template</label>
     <length>255</length>
     <required>false</required>

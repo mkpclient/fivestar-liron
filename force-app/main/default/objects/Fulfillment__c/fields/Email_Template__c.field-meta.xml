@@ -102,6 +102,11 @@
                 <default>false</default>
                 <label>Social Post - Client Thank You</label>
             </value>
+            <value>
+                <fullName>Social Post - Forbes Legends</fullName>
+                <default>false</default>
+                <label>Social Post - Forbes Legends</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -23,16 +23,16 @@
         <value>newsletter</value>
     </filters>
     <filters>
-        <field>Next_Action__c</field>
+        <field>Status__c</field>
         <operation>equals</operation>
-        <value>Collect Revisions,Fulfill,In Progress</value>
+        <value>Product Created,Approved,In Progress,Active</value>
     </filters>
     <filters>
         <field>Status__c</field>
         <operation>notEqual</operation>
         <value>Subscription Cancelled,Cancelled</value>
     </filters>
-    <label>_Newsletter Service - In Progress</label>
+    <label>_Newsletter Service - Active</label>
     <sharedTo>
         <group>Allen_Wardell</group>
         <group>Jonathan_Wesser</group>

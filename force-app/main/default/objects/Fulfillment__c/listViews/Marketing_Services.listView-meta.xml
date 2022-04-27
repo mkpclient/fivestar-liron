@@ -4,16 +4,16 @@
     <columns>Market__c</columns>
     <columns>NAME</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>Years_Winner__c</columns>
     <columns>ACDF_Company__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Base_Product__c</columns>
     <columns>Quantity__c</columns>
+    <columns>Years_Won_List__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>Product_Style__c</columns>
-    <columns>Ship_Date__c</columns>
-    <columns>UPDATEDBY_USER.ALIAS</columns>
     <columns>ACDF_Parent_Company__c</columns>
     <columns>Profession__c</columns>
     <filterScope>Everything</filterScope>

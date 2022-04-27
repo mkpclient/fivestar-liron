@@ -24,12 +24,12 @@
     <filters>
         <field>Base_Product__c</field>
         <operation>notEqual</operation>
-        <value>package,profile,Campaigniac,Testamonial Service,Digital Ad Service</value>
+        <value>package,profile,Campaigniac,Testamonial Service</value>
     </filters>
     <filters>
         <field>Status__c</field>
         <operation>notEqual</operation>
-        <value>Closed,Cancelled</value>
+        <value>Closed,Cancelled,Ready for AE,Ready to Publish</value>
     </filters>
     <filters>
         <field>Product_Name__c</field>

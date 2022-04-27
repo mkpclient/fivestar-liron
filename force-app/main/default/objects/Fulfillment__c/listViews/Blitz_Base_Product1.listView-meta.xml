@@ -32,7 +32,7 @@
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
-        <value>Fulfillment__c.Five_Star_Professional</value>
+        <value>0126T000001QGEO</value>
     </filters>
     <label>Blitz - All Profiles</label>
 </ListView>

@@ -1,0 +1,196 @@
+<apex:component controller="Payment2ReceiptController" access="global">
+    <apex:attribute name="pmtId" description="Payment Record Id" assignTo="{!paymentId}" type="Id" />
+    <apex:attribute name="soId" description="Order Record Id" assignTo="{!orderId}" type="Id" />
+
+    <div class="container" width="950">
+        <body>
+            <table width="100%">
+                <tr>
+                    <td rowspan="5" align="left">
+                        <img src="{!essentialLogo}" alt="Essential Engine Logo" width="140px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24">
+                        2117 Cliff Drive
+                    </td>
+                    <td align="right" style="font-size: 30px;">
+                        <strong>Payment Receipt</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24">
+                        Eagan, MN 55122
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" height="24">
+                        Phone: 888-438-5782
+                    </td>
+                    <td align="right">
+                        Payment For Order : {!SalesOrder.Name}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="left">
+                    </td>
+                    <td align="right" height="24">
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td align="right"></td>
+                    <td align="right"></td>
+                    <td align="right" height="24">
+                        Account Manager: {!SalesOrder.Opportunity__r.Account_Manager_Name__c}
+                    </td>
+                </tr>
+
+            </table>
+        </body>
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+        <table width="100%">
+
+            <apex:repeat value="{!OrderPayments}" var="p" rendered="true">
+                <tr>
+                    <td width='60%'>
+                        <strong>Bill to:</strong>
+                    </td>
+    
+                    <td align="left" style="padding-Right:60%;">
+                        <strong>Transaction Information:</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {!p.Billing_Name__c}
+                    </td>
+                    <td>
+    
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td>
+                        <apex:outputText value="{!SalesOrder.ContactBuying__r.ACDF_Branch_Office__c}"></apex:outputText>
+                    </td>
+                    <td>
+                        <b>Transaction Date:</b>
+                        <apex:outputText value="{0, date, MM/dd/YY}">
+                            <apex:param value="{!p.Date__c}" />
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td>
+                        <apex:outputText value="{!IF(p.Payment_Method__c != null, paymentMethod.Billing_Street__c, SalesOrder.BillToStreetLong__c)}"></apex:outputText>
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td>
+                        <apex:outputText value="{!IF(p.Payment_Method__c != null, paymentMethod.Billing_City__c + ', ' + paymentMethod.Billing_State__c + ' ' + paymentMethod.Billing_Postal_Code__c, SalesOrder.BillToCity__c + SalesOrder.BillToStateProvince__c + SalesOrder.BillToZipPostalCode__c)}"></apex:outputText>
+                    </td>
+                    <td>
+                        <b>Transaction Type: </b> {!p.Transaction_Type__c}
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                    <td>
+                        <b>Payment Type:</b> {!p.Payment_Type__c}
+                    </td>
+                </tr>
+                <tr width="100%">
+                  <td></td>
+                  <td>
+                      <b>Payment Status:</b> {!p.Status__c}
+                  </td>
+              </tr>
+                <tr width="100%">
+                    <td></td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                    <td>
+                        <b>Amount: </b>
+                        <apex:outputText value="USD{0, number, ###,##0.00}">
+                            <apex:param value="{!p.Amount__c}" />
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                </tr>
+                <tr width="100%">
+                    <td></td>
+                </tr>
+                    <tr width="100%">
+                        <td></td>
+                        <td>
+                            <apex:outputPanel rendered="{!p.Payment_Type__c == 'Credit Card'}">
+                            <b>Transaction ID: </b> {!p.Transaction_Id__c}
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!p.Payment_Type__c != 'Credit Card'}">
+                            <b>Check Number: </b> {!p.Check_Number__c}
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr width="100%">
+                        <td></td>
+                        <td>
+                            <apex:outputPanel rendered="{!p.Payment_Type__c == 'Credit Card'}">
+                            <b>Authorization ID: </b> {!p.Authorization_Id__c}
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr width="100%">
+                        <td></td>
+                        <td>
+                            <apex:outputPanel rendered="{!p.Payment_Type__c == 'Credit Card'}">
+                            <b>Credit Card: </b>{!p.CardType__c} ending in {!p.Last_Four_Digits__c}
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+        </apex:repeat>
+        </table>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr/>
+            </div>
+        </div>
+        <div class="row-head" style="width:100%">
+            <div class="col-md-12">
+                <strong>For questions about:</strong>
+                <ul>
+                    <li>Invoice, payments and payment plans, contact
+                        <a href='mailto:billing@essentialengine.com'>billing@essentialengine.com</a>
+                    </li>
+                    <li>Your order, or to order more tools, contact your Account Manager</li>
+                    <li>All marketing product service questions, contact
+                        <a href='mailto:customerservice@essentialengine.com'>customerservice@essentialengine.com</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <strong>100% “No Risk” Satisfaction Guarantee:</strong>
+                <p>If your expectations for any product or program are not fully met, as summarized on your invoice, give us
+                    one opportunity to make things right.</p>
+                <p>If we don’t make things right, we provide you a complete refund.</p>
+            </div>
+            <div style="width:100%" class="row">
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:component>

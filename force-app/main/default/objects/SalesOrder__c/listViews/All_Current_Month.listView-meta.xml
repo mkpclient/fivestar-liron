@@ -7,7 +7,7 @@
     <columns>ContactBuying__c</columns>
     <columns>OrderDate__c</columns>
     <columns>FulfillOrder__c</columns>
-    <columns>RecordStatus__c</columns>
+    <columns>Status_Picklist__c</columns>
     <columns>PaymentStatus2__c</columns>
     <columns>Released__c</columns>
     <columns>NetAmount__c</columns>

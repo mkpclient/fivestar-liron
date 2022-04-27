@@ -88,7 +88,7 @@
           </div>
         </div>
       </template>
-      <div if:true={salesOrder} style="width: 50%;">
+      <div if:true={salesOrder} style="width: 30%; padding: 10px; background: ">
       <c-custom-lookup 
         object-name="Contact" 
         field-name="Name" 
@@ -386,7 +386,7 @@
                   step="0.01"
                   label="Total Amount to Schedule"
                   data-name="totalScheduledPayment"
-                  onchange={handleOnChange}
+                  onchange={handleOnChange}s
                   max={allowedTotalScheduled}
                 ></lightning-input>
                 <lightning-input
@@ -443,16 +443,15 @@
               ></lightning-input>
             </lightning-layout-item>
             <lightning-layout-item padding="around-small" size="2">
-              <lightning-input
+              <lightning-combobox
                 name="numberOfPayments"
                 value={payment.numberOfPayments}
-                type="number"
-                step="1"
                 label="Number of Scheduled Payments (Monthly Frequency)"
                 data-objectname="payment"
                 onchange={handleOnChange}
+                options={numberOfSchedPaymentsOptions}
                 required
-              ></lightning-input>
+              ></lightning-combobox>
             </lightning-layout-item>
           </template>
         </lightning-layout>

@@ -25,6 +25,8 @@ public with sharing class EssentialEngineEmailControllerTest {
         controller.orderId = so.Id;
         SalesOrderPDFExtension.SettingResource settings = controller.settings;
         
+        System.assertEquals(so.Id, controller.Order.Id, 'Order from controller should have a value.');
+        System.assertEquals(true, controller.allPayments.size() > 0, 'There should be at least one payment.');
         System.assertEquals(true, String.isNotEmpty(controller.logoUrl), 'LogoUrl should not be empty');
         System.assertEquals(sopl.Id, controller.ProductLines[0].Id, 'ProductLines[0].Id should be equal to sopl.Id');
         System.assertEquals(new List<SalesOrderAdditionalChargeCredit__c>(), controller.ACCLines, 'ACCLines should be empty');

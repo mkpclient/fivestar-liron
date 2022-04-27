@@ -1,0 +1,515 @@
+<template>
+  <lightning-card title="Payment Terminal">
+    <template if:true={showComponent}>
+      <div class="slds-grid slds-gutters slds-var-p-around_small">
+        <div class="slds-box slds-var-m-around_small slds-col">
+          <template if:true={showLookup}>
+            <div class="slds-var-m-left_x-small">
+              <c-custom-lookup
+                object-name="Contact"
+                field-name="Name"
+                required="true"
+                input-label={selectedContact.Name}
+                input-value={selectedContact.Id}
+                filter-field="Account.Name"
+                filter-value={record.accountName}
+                icon-name="standard:customers"
+                field-label="Please click (x) then search for your contact"
+                onselect={handlePaymentMethodCustomLookupSelect}
+              ></c-custom-lookup>
+            </div>
+          </template>
+          <template if:false={showLookup}>
+            <h1 class="slds-var-m-left_x-small">
+              Showing available payment methods for:
+              <strong>{selectedContact.Name}</strong>
+            </h1>
+          </template>
+          <lightning-button
+            variant="brand"
+            label={contactLookupButtonLabel}
+            title="toggle lookup"
+            onclick={handleClick}
+            class="slds-var-m-left_x-small"
+          ></lightning-button>
+        </div>
+        <div
+          class="slds-box slds-var-m-around_small slds-col"
+          style="width: 40%"
+        >
+          <lightning-button
+            variant="brand"
+            label="Return to Order"
+            title="return to order"
+            onclick={handleClick}
+            class="slds-var-m-left_x-small"
+          ></lightning-button>
+          <lightning-button
+            variant="brand-outline"
+            label="Add Credit Card to Vault"
+            title="add card to vault"
+            onclick={handleClick}
+            class="slds-var-m-left_x-small"
+            disabled={showCardForm}
+          ></lightning-button>
+        </div>
+      </div>
+      <template if:true={hasErrors}>
+        <div
+          class="slds-notify slds-notify_alert slds-alert_error"
+          role="alert"
+        >
+          <span class="slds-assistive-text">error</span>
+          <span
+            class="
+              slds-icon_container
+              slds-icon-utility-error
+              slds-var-m-right_x-small
+            "
+            title="Error icon"
+          >
+            <lightning-icon
+              icon-name="utility:error"
+              size="small"
+            ></lightning-icon>
+          </span>
+          <h2>The following error/s occurred:</h2>
+          <ul class="slds-list_horizontal slds-wrap">
+            <template for:each={errorMessages} for:item="error">
+              <li key={error}>{error}</li>
+            </template>
+          </ul>
+        </div>
+      </template>
+      <div class="slds-box slds-var-m-around_small">
+        <template if:false={selectedPaymentMethod}>
+          <template if:false={showCardForm}>
+            <div class="slds-grid slds-wrap" if:false={noPaymentMethods}>
+              <template for:each={paymentMethods} for:item="pm">
+                <div
+                  key={pm.Id}
+                  class="
+                    slds-col_bump-right
+                    slds-size_1-of-3
+                    slds-grid slds-wrap slds-box
+                    slds-theme_shade
+                  "
+                >
+                  <div class="slds-col">
+                    <p>
+                      <strong
+                        >{pm.Billing_First_Name__c}
+                        {pm.Billing_Last_Name__c}</strong
+                      >
+                    </p>
+                    <p>
+                      {pm.Card_Type__c} ending in {pm.Last_4_Digits_of_Card__c}
+                    </p>
+                    <p>Exp {pm._expiration}</p>
+                    <p>
+                      Default:
+                      <span>
+                        <template if:true={pm.Default__c}>
+                          <lightning-icon
+                            icon-name="utility:check"
+                            size="x-small"
+                          ></lightning-icon>
+                        </template>
+                      </span>
+                    </p>
+                  </div>
+                  <div class="slds-col_bump-left">
+                    <div style="height: 20%">
+                      <lightning-button
+                        variant="brand"
+                        label="Select"
+                        title="select payment method"
+                        onclick={handleClick}
+                        class="slds-var-m-left_x-small"
+                        data-id={pm.Id}
+                      ></lightning-button>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <template if:true={noPaymentMethods}>
+              <div class="slds-text-align_center">
+                <p>No payment methods found.</p>
+              </div>
+              <lightning-button
+                variant="brand"
+                label="Add Credit Card to Vault"
+                title="add card to vault"
+                onclick={handleClick}
+                class="slds-var-m-left_x-small"
+              ></lightning-button>
+            </template>
+          </template>
+        </template>
+        <template if:true={showCardForm}>
+          <lightning-record-edit-form
+            object-api-name="Payment_Method__c"
+            onsubmit={handleFormSubmit}
+            onsuccess={handleFormSuccess}
+          >
+            <div class="slds-grid slds-wrap">
+              <div class="slds-col slds-size_1-of-4">
+                <lightning-input-field
+                  field-name="Card_Type__c"
+                  variant="label-stacked"
+                  required
+                ></lightning-input-field>
+              </div>
+              <div class="slds-col slds-size_3-of-4">
+                <lightning-input
+                  label="Card Number"
+                  data-field="_cardNumber"
+                  data-type="_paymentMethod"
+                  required
+                  oncommit={handleCardNumberCommit}
+                ></lightning-input>
+              </div>
+              <div class="slds-col slds-size_1-of-4">
+                <lightning-combobox
+                  label="Expiration Month"
+                  data-field="_expirationMonth"
+                  data-type="_paymentMethod"
+                  options={monthOptions}
+                  required
+                ></lightning-combobox>
+              </div>
+              <div class="slds-col slds-size_1-of-4">
+                <lightning-combobox
+                  label="Expiration Year"
+                  data-field="_expirationYear"
+                  data-type="_paymentMethod"
+                  options={yearOptions}
+                  required
+                ></lightning-combobox>
+              </div>
+              <div class="slds-col slds-size_2-of-4"></div>
+              <div class="slds-col slds-size_2-of-4">
+                <lightning-input-field
+                  field-name="Contact__c"
+                  value={selectedContact.Id}
+                  style="display: none"
+                ></lightning-input-field>
+                <lightning-input
+                  label="Contact"
+                  disabled
+                  value={selectedContact.Name}
+                ></lightning-input>
+              </div>
+              <div class="slds-col slds-size_2-of-4">
+                <lightning-input-field
+                  field-name="Default__c"
+                  variant="label-stacked"
+                ></lightning-input-field>
+              </div>
+              <div class="slds-col slds-size_2-of-4">
+                <lightning-input-field
+                  field-name="Billing_First_Name__c"
+                  value={selectedContact.FirstName}
+                  variant="label-stacked"
+                  required
+                ></lightning-input-field>
+              </div>
+              <div class="slds-col slds-size_2-of-4">
+                <lightning-input-field
+                  field-name="Billing_Last_Name__c"
+                  value={selectedContact.LastName}
+                  variant="label-stacked"
+                  required
+                ></lightning-input-field>
+              </div>
+              <div class="slds-col slds-size_2-of-4">
+                <lightning-input-field
+                  field-name="Billing_Street__c"
+                  value={selectedContact.MailingStreet}
+                  variant="label-stacked"
+                  required
+                ></lightning-input-field>
+              </div>
+              <div class="slds-col slds-size_2-of-4">
+                <lightning-input-field
+                  field-name="Billing_City__c"
+                  value={selectedContact.MailingCity}
+                  variant="label-stacked"
+                  required
+                ></lightning-input-field>
+              </div>
+              <div class="slds-col slds-size_1-of-4">
+                <lightning-combobox
+                  label="Billing State"
+                  data-field="Billing_State__c"
+                  data-type="Payment_Method__c"
+                  options={stateOptions}
+                  value={selectedContact.MailingState}
+                  required
+                ></lightning-combobox>
+              </div>
+              <div class="slds-col slds-size_2-of-4">
+                <lightning-input-field
+                  field-name="Billing_Country__c"
+                  value={selectedContact.MailingCountry}
+                  variant="label-stacked"
+                  required
+                ></lightning-input-field>
+              </div>
+              <div class="slds-col slds-size_1-of-4">
+                <lightning-input-field
+                  field-name="Billing_Postal_Code__c"
+                  value={selectedContact.MailingPostalCode}
+                  variant="label-stacked"
+                  required
+                ></lightning-input-field>
+              </div>
+            </div>
+
+            <div class="slds-var-m-top_medium">
+              <lightning-button
+                variant="brand"
+                type="submit"
+                label="Save Payment Method"
+              >
+              </lightning-button>
+              <lightning-button
+                title="add card to vault"
+                label="Cancel"
+                onclick={handleClick}
+              >
+              </lightning-button>
+            </div>
+          </lightning-record-edit-form>
+        </template>
+        <lightning-layout
+          multiple-rows="true"
+          if:true={selectedPaymentMethod}
+          class="slds-var-m-bottom_small"
+        >
+          <lightning-layout-item size="12">
+            <p>
+              <strong>Processing payment for:&nbsp;</strong>
+              {selectedPaymentMethod.Card_Type__c} ending in
+              {selectedPaymentMethod.Last_4_Digits_of_Card__c}
+            </p>
+          </lightning-layout-item>
+          <lightning-layout-item size="12" if:true={record.allowMultiple}>
+            <lightning-input
+              type="checkbox"
+              label="Set multiple payments for this order"
+              name="isMultiple"
+              value={isMultiple}
+              checked={isMultiple}
+              data-objectname="payment"
+              onchange={toggleMultiple}
+            ></lightning-input>
+          </lightning-layout-item>
+
+          <template if:false={isMultiple}>
+            <lightning-layout-item size="5" class="slds-var-m-bottom_small">
+              <lightning-input
+                name="amount"
+                value={record.amountDue}
+                type="number"
+                formatter="currency"
+                step="0.01"
+                label="Payment Amount"
+                min="0.01"
+                max={record.amountDue}
+                required
+                data-name="amountfield"
+                disabled={record.isAmProfile}
+              ></lightning-input>
+            </lightning-layout-item>
+          </template>
+          <template if:true={isMultiple}>
+            <lightning-layout-item
+              size="2"
+              class="slds-var-m-left_small slds-var-m-bottom_small"
+            >
+              <lightning-input
+                type="number"
+                name="firstpayment"
+                label="First Payment %"
+                value={firstPaymentPercent}
+                formatter="percent-fixed"
+                step="0.01"
+                min={minFirstPayPercent}
+                max={maxFirstPayPercent}
+                required
+                data-local="percent"
+                onchange={handleFirstPaymentChange}
+                oncommit={handleFirstPaymentCommit}
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item
+              size="3"
+              class="slds-var-m-left_small slds-var-m-bottom_small"
+            >
+              <lightning-input
+                type="number"
+                name="firstpaymentamount"
+                label="First Payment Amount (Charged TODAY)"
+                value={firstPayment}
+                formatter="currency"
+                step="0.01"
+                required
+                data-local="number"
+                onchange={handleFirstPaymentChange}
+                oncommit={handleFirstPaymentCommit}
+                min="0"
+                max={record.amountDue}
+                data-type="multiplePayment"
+                data-key="firstPayment"
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item
+              size="3"
+              class="slds-var-m-left_small slds-var-m-bottom_small"
+            >
+              <lightning-input
+                type="date"
+                name="firstPaymentDate"
+                label="Date of First Scheduled Payment"
+                value={multiplePayment.newFirstPaymentDate}
+                required
+                disabled={record.isAmProfile}
+                data-type="multiplePayment"
+                data-key="newFirstPaymentDate"
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item
+              size="3"
+              class="slds-var-m-left_small slds-var-m-bottom_small"
+            >
+              <lightning-combobox
+                options={numberOfSchedPaymentsOptions}
+                name="numberOfPayments"
+                label="Number of Scheduled Payments (Monthly)"
+                value={scheduledPaymentComboboxValue}
+                required
+                data-type="multiplePayment"
+                data-key="numberOfPayments"
+                onchange={handleSchedPaymentsChange}
+              ></lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item
+              size="3"
+              class="slds-var-m-left_small slds-var-m-bottom_small"
+            >
+              <lightning-input
+                type="number"
+                name="totalAmountToSchedule"
+                label="Total Amount to Schedule"
+                value={totalScheduledAmount}
+                formatter="currency"
+                step="0.01"
+                onchange={handleTotalScheduledAmountChange}
+                max={record.amountDue}
+                required
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item
+              size="3"
+              class="slds-var-m-left_small slds-var-m-bottom_small"
+            >
+              <lightning-input
+                type="number"
+                name="paymentAmount"
+                label="Scheduled Payment Amount"
+                value={scheduledPaymentAmount}
+                formatter="currency"
+                step="0.01"
+                disabled
+                data-type="multiplePayment"
+                data-key="paymentAmount"
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item
+              size="1"
+              class="slds-var-m-left_small slds-var-m-bottom_small"
+            >
+              <lightning-input
+                type="number"
+                name="financeFee"
+                label="Finance Fee"
+                value={financeFee}
+                formatter="currency"
+                step="0.01"
+                disabled=""
+                data-type="multiplePayment"
+                data-key="financeFee"
+              ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item
+              size="2"
+              class="slds-var-m-left_small slds-var-m-bottom_small"
+            >
+              <lightning-input
+                type="checkbox"
+                name="waveFinanceFee"
+                label="Waive Finance Fee"
+                onchange={toggleFinanceFeeWaiver}
+                data-type="multiplePayment"
+                data-key="waveFinanceFee"
+              ></lightning-input>
+            </lightning-layout-item>
+          </template>
+          <lightning-layout-item size="12" class="slds-var-m-bottom_small">
+            <lightning-button
+              variant="brand"
+              label="Submit Transaction"
+              title="submit transaction"
+              onclick={handleClick}
+              class="slds-var-m-left_x-small"
+            ></lightning-button>
+            <lightning-button
+              variant="brand-outline"
+              label="Change Payment Method"
+              title="change payment method"
+              onclick={handleClick}
+              class="slds-var-m-left_x-small"
+            ></lightning-button>
+          </lightning-layout-item>
+        </lightning-layout>
+      </div>
+      <div class="slds-box slds-var-m-around_small">
+        <p>
+          <strong>Order Total: </strong>
+          <lightning-formatted-number
+            currency-code="USD"
+            value={record.totalAmount}
+            format-style="currency"
+          >
+          </lightning-formatted-number>
+        </p>
+        <p>
+          <strong>Paid / Scheduled: </strong>
+          <lightning-formatted-number
+            currency-code="USD"
+            value={record.amountPaid}
+            format-style="currency"
+          >
+          </lightning-formatted-number>
+        </p>
+        <p>
+          <strong>Net Due: </strong>
+          <lightning-formatted-number
+            currency-code="USD"
+            value={amountDue}
+            format-style="currency"
+          >
+          </lightning-formatted-number>
+        </p>
+      </div>
+    </template>
+    <template if:false={showComponent}>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="small"
+      ></lightning-spinner>
+    </template>
+  </lightning-card>
+</template>

@@ -5,7 +5,6 @@
     <externalId>false</externalId>
     <inlineHelpText>Adds either PayPal or Google Checkout online payment instructions and an embedded link to the PDF. The preferred online payment processor is decided by your Administrator and your payment merchant account service type.</inlineHelpText>
     <label>Add Checkout to Order PDF</label>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

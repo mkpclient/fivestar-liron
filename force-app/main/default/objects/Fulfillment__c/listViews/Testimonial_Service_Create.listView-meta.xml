@@ -35,7 +35,7 @@
     <filters>
         <field>Status__c</field>
         <operation>notContain</operation>
-        <value>Approved,On Hold,Subscription Cancelled,Cancelled</value>
+        <value>Approved,On Hold,Subscription Cancelled,Cancelled,Active</value>
     </filters>
     <filters>
         <field>Next_Action__c</field>

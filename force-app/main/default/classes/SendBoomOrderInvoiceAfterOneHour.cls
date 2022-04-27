@@ -2,17 +2,49 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
   global List<Id> soIds;
   public static final String ESSENTIAL_ENG = 'Essential Engine';
   public static final String PAYMENT_EMAIL_TEMPLATE = 'Boom_Payment_VF_Template';
-  public static final Map<String, String> EMAIL_TEMP_MAP = new Map<String, String> {
-    'Five Star' => 'Five_Star_Standard_Email_Template',
-    'Essential' => 'Essential_Engine_Email_Template'
+
+  public static final Map<String, EmailTemplate> PMT_EMAIL_TEMP_MAP = new Map<String, EmailTemplate> {
+    'Five Star' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Boom_Payment_VF_Template'
+    ],
+    'Essential' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Essential_Payment_VF_Template'
+    ]
   };
-  public static final Map<String,String> ORGWIDE_EMAIL_MAP = new Map<String, String> {
-    'Five Star' => 'billing@fivestarprofessional.com',
-    'Essential' => 'billing@essentialengine.com'
+
+  public static final Map<String, EmailTemplate> EMAIL_TEMP_MAP = new Map<String, EmailTemplate> {
+    'Five Star' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Five_Star_Standard_Email_Template'
+    ],
+    'Essential' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Essential_Engine_Email_Template'
+    ]
+  };
+  public static final Map<String,OrgWideEmailAddress> ORGWIDE_EMAIL_MAP = new Map<String, OrgWideEmailAddress> {
+    'Five Star' => [
+      SELECT Id
+      FROM OrgWideEmailAddress
+      WHERE Address = 'billing@fivestarprofessional.com'
+    ],
+    'Essential' => [
+      SELECT Id
+      FROM OrgWideEmailAddress
+      WHERE Address = 'billing@essentialengine.com'
+    ]
   };
 
   public static Boolean isSandbox = [SELECT IsSandbox FROM Organization LIMIT 1]
   .IsSandbox;
+
+  // public static Boolean isSandbox = false;
 
   public SendBoomOrderInvoiceAfterOneHour(List<id> listofSalesOrderIds) {
     soIds = listofSalesOrderIds;
@@ -52,8 +84,9 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         Contact__r.Email,
         Sales_Order__c,
         Sales_Order__r.Name,
-      Sales_Order__r.Send_Invoice_to_Alternate_Contact__c,
-        Sales_Order__r.Alternate_Contact_Email__c
+        Sales_Order__r.Send_Invoice_to_Alternate_Contact__c,
+        Sales_Order__r.Alternate_Contact_Email__c,
+        Sales_Order__r.Price_Book__r.Business_Unit__c
       FROM Payment__c
       WHERE Sales_Order__c IN :listofSalesOrderIds AND Status__c = 'Completed'
     ];
@@ -102,26 +135,21 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     // system.debug(
     //   'After Insert mapOrderIdToAttachment===' + mapOrderIdToAttachment
     // );
+
+    Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null &&
+          FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
+
     for (SalesOrder__c order : lstOrders) {
       String bizType = 'Five Star';
 
-      if(order.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG){
+      if(order.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
         bizType = 'Essential';
       }
       String Orderid = order.Id;
-      String emailTemplateName = EMAIL_TEMP_MAP.get(bizType);
-      EmailTemplate et = [
-        SELECT Id
-        FROM EmailTemplate
-        WHERE DeveloperName = :emailTemplateName
-      ];
+      EmailTemplate et = EMAIL_TEMP_MAP.get(bizType);
       List<string> toAddress = new List<string>();
       List<string> cCAddress = new List<string>();
-      OrgWideEmailAddress[] anOrgWideEmailAddress = [
-        SELECT Id
-        FROM OrgWideEmailAddress
-        WHERE Address = :ORGWIDE_EMAIL_MAP.get(bizType)
-      ];
+      OrgWideEmailAddress anOrgWideEmailAddress = ORGWIDE_EMAIL_MAP.get(bizType);
 
       if (
         order.Send_Invoice_to_Alternate_Contact__c == true &&
@@ -135,8 +163,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       cCAddress.add('accounts.receivable@fivestarprofessional.com');
       Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
       mail.setTemplateId(et.Id);
-      if (anOrgWideEmailAddress != null && anOrgWideEmailAddress.size() > 0) {
-        mail.setOrgWideEmailAddressId(anOrgWideEmailAddress[0].Id);
+      if (anOrgWideEmailAddress != null) {
+        mail.setOrgWideEmailAddressId(anOrgWideEmailAddress.Id);
       }
       mail.setCCAddresses(cCAddress);
       mail.setToAddresses(toAddress);
@@ -195,13 +223,11 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
   global static void sendPaymentEmails(
     List<Payment__c> payments
   ) {
-    Id templateId = [
-      SELECT Id, DeveloperName
-      FROM EmailTemplate
-      WHERE DeveloperName = :PAYMENT_EMAIL_TEMPLATE
-      LIMIT 1
-    ]
-    .Id;
+    
+
+    Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null &&
+    FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
+
 
     Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage>();
 
@@ -221,10 +247,19 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         emailAddress = pmt.Contact__r.Email;
       }
 
+      String bizType = 'Five Star';
+
+      if(pmt.Sales_Order__r.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
+        bizType = 'Essential';
+      }
+
+      Id templateId = PMT_EMAIL_TEMP_MAP.get(bizType).Id;
+
       message.setTargetObjectId(pmt.Contact__c);
       message.setTreatTargetObjectAsRecipient(false);
-      message.setSenderDisplayName('Five Star Billing');
-      message.setReplyTo('billing@fivestarprofessional.com');
+      if(ORGWIDE_EMAIL_MAP.get(bizType) != null) {
+        message.setOrgWideEmailAddressId(ORGWIDE_EMAIL_MAP.get(bizType).Id);
+      }
       message.setUseSignature(false);
       message.setBccSender(false);
       message.setSaveAsActivity(false);

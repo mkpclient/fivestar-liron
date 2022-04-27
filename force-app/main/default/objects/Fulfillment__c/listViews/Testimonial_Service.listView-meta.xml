@@ -7,14 +7,13 @@
     <columns>PrimaryRecipient__c</columns>
     <columns>ACDF_Company__c</columns>
     <columns>Product_Name__c</columns>
-    <columns>Base_Product__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
     <columns>CREATED_DATE</columns>
-    <columns>Fulfillment_Owner__c</columns>
-    <columns>Next_Action_Date__c</columns>
     <columns>Client_Contact_List__c</columns>
     <columns>Product_Engagement_Status__c</columns>
+    <columns>Email_Announcement_Service__c</columns>
+    <columns>Number_Testimonial_Posts__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>

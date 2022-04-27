@@ -32,11 +32,6 @@
                 <label>Proof</label>
             </value>
             <value>
-                <fullName>Make Revisions</fullName>
-                <default>false</default>
-                <label>Make Revisions</label>
-            </value>
-            <value>
                 <fullName>Send Proof</fullName>
                 <default>false</default>
                 <label>Send Proof</label>
@@ -47,9 +42,34 @@
                 <label>Collect Revisions</label>
             </value>
             <value>
+                <fullName>Make Revisions</fullName>
+                <default>false</default>
+                <label>Make Revisions</label>
+            </value>
+            <value>
+                <fullName>Make Revisions (CE)</fullName>
+                <default>false</default>
+                <label>Make Revisions (CE)</label>
+            </value>
+            <value>
                 <fullName>Fulfill</fullName>
                 <default>false</default>
                 <label>Fulfill</label>
+            </value>
+            <value>
+                <fullName>Collect Contact List</fullName>
+                <default>false</default>
+                <label>Collect Contact List</label>
+            </value>
+            <value>
+                <fullName>Collect Content</fullName>
+                <default>false</default>
+                <label>Collect Content</label>
+            </value>
+            <value>
+                <fullName>Collect MISC</fullName>
+                <default>false</default>
+                <label>Collect MISC</label>
             </value>
             <value>
                 <fullName>Print Complaint</fullName>
@@ -82,21 +102,6 @@
                 <label>In Batch</label>
             </value>
             <value>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-                <label>In Progress</label>
-            </value>
-            <value>
-                <fullName>Crease</fullName>
-                <default>false</default>
-                <label>Crease</label>
-            </value>
-            <value>
-                <fullName>None</fullName>
-                <default>false</default>
-                <label>None</label>
-            </value>
-            <value>
                 <fullName>Write copy</fullName>
                 <default>false</default>
                 <label>Write copy</label>
@@ -112,44 +117,45 @@
                 <label>Send Email</label>
             </value>
             <value>
-                <fullName>Make Revisions (CE)</fullName>
+                <fullName>None</fullName>
                 <default>false</default>
-                <label>Make Revisions (CE)</label>
-            </value>
-            <value>
-                <fullName>Schedule Delivery</fullName>
-                <default>false</default>
-                <label>Schedule Delivery</label>
-            </value>
-            <value>
-                <fullName>Collect Social Media</fullName>
-                <default>false</default>
-                <label>Collect Social Media</label>
-            </value>
-            <value>
-                <fullName>Collect List</fullName>
-                <default>false</default>
-                <label>Collect List</label>
-            </value>
-            <value>
-                <fullName>Collect Refresh</fullName>
-                <default>false</default>
-                <label>Collect Refresh</label>
-            </value>
-            <value>
-                <fullName>Collect Content</fullName>
-                <default>false</default>
-                <label>Collect Content</label>
-            </value>
-            <value>
-                <fullName>Collect Approval</fullName>
-                <default>false</default>
-                <label>Collect Approval</label>
+                <label>None</label>
             </value>
             <value>
                 <fullName>Collect Email Verification</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Collect Email Verification</label>
+            </value>
+            <value>
+                <fullName>Collect Refresh</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Collect Refresh</label>
+            </value>
+            <value>
+                <fullName>Collect Social Media</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Collect Social Media</label>
+            </value>
+            <value>
+                <fullName>Crease</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Crease</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Schedule Delivery</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Schedule Delivery</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>X3_Wednesday_AmReg_To_Print1</fullName>
-    <columns>LAST_UPDATE</columns>
     <columns>NAME</columns>
     <columns>Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
@@ -15,6 +14,8 @@
     <columns>Stage_Change_Date__c</columns>
     <columns>Market_Final_Upload_Date__c</columns>
     <columns>Proof_Location__c</columns>
+    <columns>Quantity__c</columns>
+    <columns>Address_1__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>

@@ -3,9 +3,10 @@
     <fullName>New_Payment</fullName>
     <availability>online</availability>
     <displayType>button</displayType>
+    <height>600</height>
     <linkType>page</linkType>
-    <masterLabel>New Payment</masterLabel>
-    <openType>replace</openType>
+    <masterLabel>Boom Credit Card Payment</masterLabel>
+    <openType>noSidebar</openType>
     <page>PaymentTerminalVF</page>
     <protected>false</protected>
 </WebLink>

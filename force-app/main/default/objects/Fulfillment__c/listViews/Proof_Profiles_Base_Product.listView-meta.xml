@@ -34,5 +34,10 @@
         <operation>notContain</operation>
         <value>send</value>
     </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Cancelled</value>
+    </filters>
     <label>Proof Profiles</label>
 </ListView>

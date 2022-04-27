@@ -13,7 +13,37 @@ public without sharing class NewPaymentTriggerHelper {
   public static Boolean isSandbox = [SELECT IsSandbox FROM Organization LIMIT 1]
   .IsSandbox;
 
+  // public static Boolean isSandbox = false;
+
   public static final String MXMERCHANT_PROCESSOR = 'MX Merchant';
+
+  public static final Map<String, EmailTemplate> EMAIL_TEMP_MAP = new Map<String, EmailTemplate> {
+    'Five Star' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Boom_Payment_VF_Template'
+    ],
+    'Essential' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Essential_Payment_VF_Template'
+    ]
+  };
+
+  public static final Map<String,OrgWideEmailAddress> ORGWIDE_EMAIL_MAP = new Map<String, OrgWideEmailAddress> {
+    'Five Star' => [
+      SELECT Id
+      FROM OrgWideEmailAddress
+      WHERE Address = 'billing@fivestarprofessional.com'
+    ],
+    'Essential' => [
+      SELECT Id
+      FROM OrgWideEmailAddress
+      WHERE Address = 'billing@essentialengine.com'
+    ]
+  };
+
+  public static final String ESSENTIAL_ENG = 'Essential Engine';
 
   public static void beforeInsert(List<Payment__c> newPayments) {
     Set<Id> pmtMethodIds = new Set<Id>();
@@ -205,21 +235,17 @@ public without sharing class NewPaymentTriggerHelper {
         Sales_Order__c,
         Sales_Order__r.Send_Invoice_to_Alternate_Contact__c,
         Sales_Order__r.Alternate_Contact_Email__c,
-        Sales_Order__r.Name
+        Sales_Order__r.Name,
+        Sales_Order__r.Price_Book__r.Business_Unit__c
       FROM Payment__c
       WHERE Id IN :pts
       AND Sales_Order__r.Released__c <= :dt
     ];
 
-    Id templateId = [
-      SELECT Id, DeveloperName
-      FROM EmailTemplate
-      WHERE DeveloperName = :EMAIL_TEMPLATE
-      LIMIT 1
-    ]
-    .Id;
-
     Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage>();
+    Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null &&
+    FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
+
 
     if(payments.size() > 0) {
 
@@ -236,10 +262,19 @@ public without sharing class NewPaymentTriggerHelper {
         } else {
           emailAddress = pmt.Contact__r.Email;
         }
+
+        String bizType = 'Five Star';
+
+        if(pmt.Sales_Order__r.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
+          bizType = 'Essential';
+        }
+
+        Id templateId = EMAIL_TEMP_MAP.get(bizType).Id;
   
         message.setTargetObjectId(pmt.Contact__c);
-        message.setSenderDisplayName('Five Star Billing');
-        message.setReplyTo('billing@fivestarprofessional.com');
+        if(ORGWIDE_EMAIL_MAP.get(bizType) != null) {
+          message.setOrgWideEmailAddressId(ORGWIDE_EMAIL_MAP.get(bizType).Id);
+        }
         message.setUseSignature(false);
         message.setBccSender(false);
         message.setSaveAsActivity(false);

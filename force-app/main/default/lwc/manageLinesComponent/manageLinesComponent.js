@@ -72,7 +72,7 @@ export default class ManageLinesComponent extends LightningElement {
       if (
         salesOrder &&
         salesOrder[0].Status_Picklist__c &&
-        (salesOrder[0].Status_Picklist__c != "Draft" && salesOrder[0].Status_Picklist__c != "Unreleased")
+        (salesOrder[0].Status_Picklist__c != "Draft" && salesOrder[0].Status_Picklist__c != "Unreleased" && salesOrder[0].Status_Picklist__c != "Pending Renewal")
       ) {
         this.isEditable = false;
         this.headerTitle =

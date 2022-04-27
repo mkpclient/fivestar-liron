@@ -18,12 +18,12 @@
     <filters>
         <field>Market__c</field>
         <operation>contains</operation>
-        <value>Forbes Market Leaders 2021</value>
+        <value>Fortune Market Leaders 2022</value>
     </filters>
     <filters>
         <field>Product_Name__c</field>
         <operation>contains</operation>
-        <value>complimentary forbes magazine with cover decal</value>
+        <value>Complimentary Fortune magazine with cover decal</value>
     </filters>
     <filters>
         <field>Status__c</field>
@@ -38,9 +38,9 @@
     <filters>
         <field>Product_Award_Year__c</field>
         <operation>equals</operation>
-        <value>2021</value>
+        <value>2022</value>
     </filters>
-    <label>(Public) Forbes ML - 2021 Cover Decals</label>
+    <label>(Public) Fortune ML &apos;22 - Cover Decals</label>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Adrianna_Loesch</group>

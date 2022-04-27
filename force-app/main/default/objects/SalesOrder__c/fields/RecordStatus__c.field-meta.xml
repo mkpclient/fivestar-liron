@@ -7,7 +7,6 @@
     <label>Record Status</label>
     <length>30</length>
     <required>false</required>
-    <trackFeedHistory>true</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>

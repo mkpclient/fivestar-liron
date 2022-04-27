@@ -4,7 +4,7 @@
     <description>Field to track the status/health of a marketing service or product</description>
     <externalId>false</externalId>
     <inlineHelpText>Status for tracking the health of a marketing service product</inlineHelpText>
-    <label>Product Engagement Status</label>
+    <label>Subscription Health</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
@@ -14,19 +14,40 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Engaged</fullName>
+                <fullName>Green</fullName>
+                <color>#33FF33</color>
                 <default>false</default>
-                <label>Engaged</label>
+                <label>Green</label>
             </value>
             <value>
-                <fullName>Passive</fullName>
+                <fullName>Yellow</fullName>
+                <color>#FFFF66</color>
                 <default>false</default>
-                <label>Passive</label>
+                <label>Yellow</label>
+            </value>
+            <value>
+                <fullName>Red</fullName>
+                <color>#FF0000</color>
+                <default>false</default>
+                <label>Red</label>
+            </value>
+            <value>
+                <fullName>Engaged</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Engaged</label>
             </value>
             <value>
                 <fullName>Not Active</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Not Active</label>
+            </value>
+            <value>
+                <fullName>Passive</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Passive</label>
             </value>
         </valueSetDefinition>
     </valueSet>
