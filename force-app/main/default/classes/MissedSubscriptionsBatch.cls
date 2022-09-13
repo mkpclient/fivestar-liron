@@ -5,9 +5,9 @@ global class MissedSubscriptionsBatch implements Database.Batchable<sObject>,Dat
         if(String.isBlank(queryString)) {
             queryString = 'SELECT Id';
             queryString += ' FROM Subscription__c';
-            queryString += ' WHERE  Status__c = \'Active\' AND Parent_Subscription__c = null';
-            queryString += ' AND Id NOT IN (SELECT Subscription__c from SalesOrder__c where Subscription__c != null and OrderDate__c = NEXT_MONTH and Status_Picklist__c = \'Pending Renewal\')';
-            queryString += ' AND Id in (SELECT Subscription__c from SalesOrder__c where Subscription__c != null and OrderDate__c = THIS_MONTH and OrderDate__c < TODAY and Status_Picklist__c = \'Released\')';
+            queryString += ' WHERE  Status__c = \'Active\' AND Parent_Subscription__c = null AND Payment_Method__c != null';
+            queryString += ' AND Id NOT IN (SELECT Subscription__c from SalesOrder__c where Subscription__c != null and OrderDate__c > TODAY and Status_Picklist__c = \'Pending Renewal\')';
+            queryString += ' AND Id in (SELECT Subscription__c from SalesOrder__c where Subscription__c != null and OrderDate__c <= TODAY and Status_Picklist__c = \'Released\')';
         }
         
         if (Test.isRunningTest()) {
@@ -32,6 +32,17 @@ global class MissedSubscriptionsBatch implements Database.Batchable<sObject>,Dat
             sub.Create_Next_Subscription__c = true;
 
             updatedSubs.add(sub);
+        }
+
+        List<Subscription__c> childrenSubs = [
+            SELECT Id FROM Subscription__c WHERE Parent_Subscription__c IN :updatedSubs AND Status__c = 'Active'
+        ];
+
+        if(childrenSubs.size() > 0) {
+            for(Subscription__c sub : childrenSubs) {
+                sub.Create_Next_Subscription__c = true;
+                updatedSubs.add(sub);
+            }
         }
 
         if(updatedSubs.size() > 0) {

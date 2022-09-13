@@ -243,8 +243,7 @@ public without sharing class NewPaymentTriggerHelper {
     ];
 
     Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage>();
-    Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null &&
-    FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
+    Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null && FivestarSetting__mdt.getInstance('Universal').Send_Essential_Engine_Payment_Receipts__c;
 
 
     if(payments.size() > 0) {
@@ -267,6 +266,8 @@ public without sharing class NewPaymentTriggerHelper {
 
         if(pmt.Sales_Order__r.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
           bizType = 'Essential';
+        } else if (pmt.Sales_Order__r.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && !allowEssentialEmails) {
+          continue;
         }
 
         Id templateId = EMAIL_TEMP_MAP.get(bizType).Id;

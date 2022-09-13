@@ -8,12 +8,12 @@ public without sharing class BoomPaymentTerminal_LightningController {
   public static final List<String> DISALLOW_STATUSES = new List<String>{
     'Draft',
     'Released',
-    'Submitted for Approval'
+    'Submitted'
   };
 
-  public static final String FINANCE_FEE_ACC = 'Multi payment Convenience Fee';
-  public static final String DISC_PRODUCTNAME = 'Discount';
-
+  public static final String FINANCE_FEE_ACC = 'a5X6T00000IrsqV';
+  public static final String DISC_PRODUCTID = '01t0W000005jbNq';
+  
   public static final List<String> CONTACT_FIELDS = new List<String>{
     'Id',
     'Name',
@@ -52,6 +52,10 @@ public without sharing class BoomPaymentTerminal_LightningController {
     public String accountName { get; set; }
     @AuraEnabled
     public Boolean allowPayments { get; set; }
+    @AuraEnabled
+    public String status { get; set; }
+    @AuraEnabled
+    public Boolean allowWaiver { get; set; }
   }
 
   public virtual class MultiplePayment {
@@ -121,10 +125,10 @@ public without sharing class BoomPaymentTerminal_LightningController {
         return returnObject;
       }
 
-      SalesOrder__c so = [SELECT Id, Name, ContactBilling__c, Account__c FROM SalesOrder__c WHERE Id = :multiplePayment.salesOrderId];
+      SalesOrder__c so = [SELECT Id, Name, ContactBilling__c, No_Fee_Plan__c, Account__c FROM SalesOrder__c WHERE Id = :multiplePayment.salesOrderId];
       List<Payment__c> scheduledPayments = new List<Payment__c>();
 
-      if(multiplePayment.financeFee != 0 && multiplePayment.numberOfPayments > 1) {
+      if(multiplePayment.financeFee != 0  && multiplePayment.numberOfPayments > 1) {
         processFinanceFee(multiplePayment.waveFinanceFee, multiplePayment.financeFee, multiplePayment.salesOrderId, so.ContactBilling__c);
       }
 
@@ -171,7 +175,7 @@ public without sharing class BoomPaymentTerminal_LightningController {
 
   @future
   public static void processFinanceFee(Boolean waived, Decimal financeFee, String orderId, String contactId) {
-    List<AdditionalChargeCredit__c> acc = [SELECT Id FROM AdditionalChargeCredit__c WHERE Name = :FINANCE_FEE_ACC AND IsActive__c = true LIMIT 1];
+    List<AdditionalChargeCredit__c> acc = [SELECT Id FROM AdditionalChargeCredit__c WHERE Id = :FINANCE_FEE_ACC AND IsActive__c = true LIMIT 1];
     if(acc.size() > 0) {
       Id accId = acc[0].Id;
       SalesOrderAdditionalChargeCredit__c newSOACC = new SalesOrderAdditionalChargeCredit__c();
@@ -184,7 +188,7 @@ public without sharing class BoomPaymentTerminal_LightningController {
       insert newSOACC;
 
       if(waived) {
-        List<Product2> discProd = [SELECT Id FROM Product2 WHERE Name = :DISC_PRODUCTNAME AND IsActive = true LIMIT 1];
+        List<Product2> discProd = [SELECT Id FROM Product2 WHERE Id = :DISC_PRODUCTID AND IsActive = true LIMIT 1];
         if(discProd.size() > 0) {
           Id discProdId = discProd[0].Id;
           SalesOrderProductLine__c newSopl = new SalesOrderProductLine__c();
@@ -256,11 +260,12 @@ public without sharing class BoomPaymentTerminal_LightningController {
       return returnObject;
     } catch (Exception err) {
       payment.Status__c = 'Error';
-      if(String.isNotEmpty(payment.MX_Payment_Id__c)) {
-        Zealynx.PaymentResource voidRec = new Zealynx.PaymentResource();
-        voidRec.id = Long.valueOf(payment.MX_Payment_Id__c);
-        Zealynx.voidPayment(voidRec);
-      }
+      
+      // if(String.isNotEmpty(payment.MX_Payment_Id__c)) {
+      //   Zealynx.PaymentResource voidRec = new Zealynx.PaymentResource();
+      //   voidRec.id = Long.valueOf(payment.MX_Payment_Id__c);
+      //   Zealynx.voidPayment(voidRec);
+      // }
       insert payment;
       System.debug(err.getLineNumber() + ': ' + err.getMessage());
       throw new AuraHandledException(err.getMessage());
@@ -355,9 +360,7 @@ public without sharing class BoomPaymentTerminal_LightningController {
           LIMIT 1
         ];
         if (existing.size() > 0) {
-          throw new AuraException(
-            'This card is already associated with another account.'
-          );
+          record.Id = existing[0].Id;
         }
 
         record.ExternalId__c = String.valueOf(creditCard.id);
@@ -403,7 +406,8 @@ public without sharing class BoomPaymentTerminal_LightningController {
           Net_Due__c,
           Price_Book__r.Business_Unit__c,
           TotalAmount__c,
-          Status_Picklist__c
+          Status_Picklist__c,
+          No_Fee_Plan__c
         FROM SalesOrder__c
         WHERE Id = :recordId
       ];
@@ -444,6 +448,8 @@ public without sharing class BoomPaymentTerminal_LightningController {
       retData.contactId = so.ContactBilling__c;
       retData.accountName = so.Account__r.Name;
       retData.allowPayments = !DISALLOW_STATUSES.contains(so.Status_Picklist__c);
+      retData.status = so.Status_Picklist__c;
+      retData.allowWaiver = so.No_Fee_Plan__c == false;
       return retData;
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
@@ -472,6 +478,7 @@ public without sharing class BoomPaymentTerminal_LightningController {
             Default__c
           FROM Payment_Method__c
           WHERE Contact__c = :contactId AND Inactive__c = FALSE
+          ORDER BY Default__c DESC
         ]
       );
     } catch (Exception e) {

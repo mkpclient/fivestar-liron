@@ -108,10 +108,10 @@ export default class CardPortal extends LightningElement {
 
   setDate() {
     return new Date(
-      this.pmData._expYear,
-      this.pmData._expMonth,
+      parseFloat(this.pmData._expYear) + 2000,
+      parseFloat(this.pmData._expMonth),
       0
-    ).getDate();
+    );
   }
 
   async handleSubmit() { 
@@ -137,7 +137,7 @@ export default class CardPortal extends LightningElement {
       }
     }
 
-    paymentMethodData.Expiration_Date__c = new Date(this.pmData._expMonth + '-' + this.setDate() + '-' + this.pmData._expYear);
+    paymentMethodData.Expiration_Date__c = this.setDate();
     paymentMethodData.Last_4_Digits_of_Card__c = this.pmData._cardNumber.substring(this.pmData._cardNumber.length - 4);
     paymentMethodData.ExternalId__c = "" + paymentMethod.id;
     paymentMethodData.Merchant_Token__c = paymentMethod.token;

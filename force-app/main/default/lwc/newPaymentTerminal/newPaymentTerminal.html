@@ -89,7 +89,7 @@
                 <div
                   key={pm.Id}
                   class="
-                    slds-col_bump-right
+                    slds-col
                     slds-size_1-of-3
                     slds-grid slds-wrap slds-box
                     slds-theme_shade
@@ -106,17 +106,12 @@
                       {pm.Card_Type__c} ending in {pm.Last_4_Digits_of_Card__c}
                     </p>
                     <p>Exp {pm._expiration}</p>
-                    <p>
-                      Default:
-                      <span>
-                        <template if:true={pm.Default__c}>
-                          <lightning-icon
-                            icon-name="utility:check"
-                            size="x-small"
-                          ></lightning-icon>
-                        </template>
-                      </span>
-                    </p>
+                    <template if:true={pm.Default__c}>
+                      <p><strong>Default Payment Method</strong></p>
+                    </template>
+                    <template if:false={pm.Default__c}>
+                      <p style="visibility: hidden">Default Payment Method</p>
+                    </template>
                   </div>
                   <div class="slds-col_bump-left">
                     <div style="height: 20%">
@@ -422,6 +417,7 @@
                 value={scheduledPaymentAmount}
                 formatter="currency"
                 step="0.01"
+                min="0.01"
                 disabled
                 data-type="multiplePayment"
                 data-key="paymentAmount"
@@ -454,6 +450,7 @@
                 onchange={toggleFinanceFeeWaiver}
                 data-type="multiplePayment"
                 data-key="waveFinanceFee"
+                if:true={showWaiveCheckbox}
               ></lightning-input>
             </lightning-layout-item>
           </template>

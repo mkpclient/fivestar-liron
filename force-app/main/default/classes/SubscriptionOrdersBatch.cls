@@ -7,7 +7,7 @@ global class SubscriptionOrdersBatch implements Database.Batchable<sObject>, Dat
             queryString = 'SELECT Id, Name, Subscription__c, Net_Due__c, Subscription__r.Payment_Method__c, ';
             queryString += 'Account__c, ContactBilling__c, ';
             queryString += 'Subscription__r.Payment_Method__r.Merchant_Token__c, Subscription__r.Payment_Method__r.MX_Customer_Id__c '; 
-            queryString += 'FROM SalesOrder__c WHERE Subscription__c != null AND Subscription__r.Status__c = \'Active\' AND OrderDate__c = LAST_N_DAYS:28 AND (Status_Picklist__c = \'Pending Renewal\' OR Status_Picklist__c = \'Payment Update Needed\')';
+            queryString += 'FROM SalesOrder__c WHERE Subscription__r.Payment_Method__c != null AND Subscription__c != null AND Subscription__r.Status__c = \'Active\' AND OrderDate__c = LAST_N_DAYS:28 AND (Status_Picklist__c = \'Pending Renewal\' OR Status_Picklist__c = \'Payment Update Needed\')';
           }
     }
 
@@ -93,17 +93,20 @@ global class SubscriptionOrdersBatch implements Database.Batchable<sObject>, Dat
             
         }
 
-        if(paymentsLocal.size() > 0 && updatedSalesOrders.size() > 0) {
-          System.enqueueJob(new BoomSubscriptionPaymentsQueuable(paymentsLocal, updatedSalesOrders));
-        } else if (paymentsLocal.size() > 0 && updatedSalesOrders.size() < 1) {
-          System.enqueueJob(new BoomSubscriptionPaymentsQueuable(paymentsLocal, false));
-        } else if (paymentsLocal.size() < 1 && updatedSalesOrders.size() > 0) {
-          System.enqueueJob(new BoomSubscriptionPaymentsQueuable(updatedSalesOrders, false));
+        if(paymentsLocal.size() > 0) {
+          upsert paymentsLocal;
         }
-        
+
+        if(updatedSalesOrders.size() > 0) {
+          upsert updatedSalesOrders;
+        }
       }
     
       global void finish(Database.BatchableContext info) {
-        Database.executeBatch(new MissedSubscriptionsBatch(), 50);
+        if(test.isRunningTest()) {
+          Database.executeBatch(new MissedSubscriptionsBatch(), 50);
+        } else {
+          System.scheduleBatch(new MissedSubscriptionsBatch(), 'Create Pending Renewals for Missed Subscriptions', 30, 50);
+        }
       }
 }

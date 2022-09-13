@@ -29,6 +29,7 @@ export default class BoomOrderEditAddressesLwc extends LightningElement {
     evt.preventDefault();
     console.log("handle submit");
     const fields = evt.detail.fields;
+    fields.Use_Billing_Address__c = false;
     
     this.wasLocked = await unlockRecord({ recordId: this.recordId });
     this.showForm = false;

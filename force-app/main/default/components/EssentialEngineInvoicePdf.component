@@ -26,17 +26,15 @@
       </td>
       <td width="34%">
         <div align="right">
-          <b>ORDER for&nbsp;
+          <!-- <b>ORDER for&nbsp;
             <apex:outputText value="{!Order.Account__r.Name}" />
-          </b>
+          </b> -->
           <br/> Order:&nbsp;
           <apex:outputText value="{!Order.Name}" />
           <br/> Date:&nbsp;
           <apex:outputText value="{0,date,M/d/yyyy}">
-            <apex:param value="{!Order.OrderDate__c}" /></apex:outputText>
+            <apex:param value="{!Order.Release_Date__c}" /></apex:outputText>
           <br/>
-          <apex:outputPanel rendered="{!NOT(ISBLANK(order.owner.Name))}">Prepared by:&nbsp;
-            <apex:outputText value="{!order.owner.Name}" /></apex:outputPanel>
         </div>
       </td>
     </tr>
@@ -51,7 +49,7 @@
   <table cellpadding="3" cellspacing="0" class="noborder">
     <tr>
       <td width="50%">
-        <apex:outputPanel>
+        <apex:outputPanel >
           <b>Bill To:</b>
           <br/>
           <apex:outputPanel rendered="{!Order.BillToName__c != null}">
@@ -380,8 +378,24 @@
         <apex:outputField value="{!pmt.Date__c}" />
       </apex:column>
       <apex:column headerClass="colheader">
-        <apex:facet name="header">Payment Type</apex:facet>
-        <apex:outputField value="{!pmt.Payment_Type__c}" />
+        <apex:facet name="header">Billing Name</apex:facet>
+        <apex:outputText value="{!IF((pmt.Billing_Name__c == null), pmt.Contact__r.Name , pmt.Billing_Name__c)}" />
+      </apex:column>
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Transaction Type</apex:facet>
+        <apex:outputField value="{!pmt.Transaction_Type__c}" />
+      </apex:column>
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Status</apex:facet>
+        <apex:outputField value="{!pmt.Status__c}" />
+      </apex:column>
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Card Type</apex:facet>
+        <apex:outputField value="{!pmt.CardType__c}" />
+      </apex:column>
+      <apex:column headerClass="colheader">
+        <apex:facet name="header">Last 4 Digits</apex:facet>
+        <apex:outputField value="{!pmt.Last_Four_Digits__c}" />
       </apex:column>
       <apex:column headerClass="colheader">
         <apex:facet name="header">Memo</apex:facet>

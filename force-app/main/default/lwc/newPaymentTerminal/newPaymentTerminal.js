@@ -95,12 +95,24 @@ export default class NewPaymentTerminal extends LightningElement {
   async loadRecordData() {
     try {
       const res = await getRecordData({ recordId: this.recordId });
-      if(!res.allowPayments) {
-        alert("Payments cannot be applied to this order until it's released.");
+      if(!res.allowPayments && res.status !== "Released") {
+        let alertMessage = '';
+        switch (res.status) {
+          case "Draft":{
+            alertMessage = "Payments cannot be applied to this order in draft status. Please submit for approval.";
+            break;
+          }
+          case "Submitted for Approval": {
+            alertMessage = "Payments cannot be applied to this order while it is awaiting approval.";
+            break;
+          }
+        }
+        alert(alertMessage);
         this.returnToRecord();
         return;
       }
       this.record = res;
+      
       if (res.hasOwnProperty("firstPaymentDate")) {
         this.multiplePayment = {
           ...this.multiplePayment,
@@ -287,11 +299,18 @@ export default class NewPaymentTerminal extends LightningElement {
     const inp = this.template.querySelector(`[data-name='amountfield']`);
     inp.reportValidity();
     if (!inp.checkValidity()) {
+      this.showComponent = true;
       this.errorMessages = ["Please enter a valid amount."];
       return;
     }
 
     const amount = Number(Number(inp.value).toFixed(2));
+
+    if(amount < 0.01) {
+      this.showComponent = true;
+      this.errorMessages = ["You cannot make negative payments here. Please refund an existing one instead."];
+      return;
+    }
     const singlePayment = {
       amount,
       salesOrderId: this.recordId,
@@ -347,6 +366,12 @@ export default class NewPaymentTerminal extends LightningElement {
       }
       fields[ip.dataset.key] = value;
     });
+
+    if(fields.paymentAmount < 0.01) {
+      this.errorMessages = ["Please enter a valid amount."];
+      this.showComponent = true;
+      return;
+    }
 
     const financeFee = this.financeFeeWaved || Number(fields.numberOfPayments) <= 1 ? 0 : fields.financeFee;
     if(financeFee) {
@@ -415,7 +440,7 @@ export default class NewPaymentTerminal extends LightningElement {
     if (allValid) {
       this.showComponent = false;
       this.errorMessages = [];
-
+      
       defaultFields.forEach((inp) => {
         fields[inp.dataset.field] = inp.value;
       });
@@ -433,7 +458,7 @@ export default class NewPaymentTerminal extends LightningElement {
 
       await this.savePaymentMethodToMerchant(fields, customRecord);
     } else {
-      this.errorMessages = ["Please fill out all required fields."];
+      this.errorMessages = ["Please fill out all required fields and make sure your inputs are valid."];
     }
   }
 
@@ -592,7 +617,7 @@ export default class NewPaymentTerminal extends LightningElement {
     //   (this.totalScheduledAmountLocal / numberOfPayments).toFixed(2)
     // );
 
-    return this.totalScheduledAmountLocal || this.maxTotalScheduledAmount;
+    return Number(parseFloat(this.totalScheduledAmountLocal).toFixed(2)) || Number(parseFloat(this.maxTotalScheduledAmount).toFixed(2));
   }
 
   set totalScheduledAmount(val) {
@@ -615,15 +640,23 @@ export default class NewPaymentTerminal extends LightningElement {
   // }
 
   get numberOfSchedPaymentsOptions() {
-    const options = [{ label: "1 Scheduled Payment", value: "1" }];
-
-    if (Number(this.amountDue) >= 500) {
-      options.push({ label: "2 Scheduled Payments", value: "2" });
-    }
-
-    if (Number(this.amountDue) >= 1000) {
-      options.push({ label: "5 Scheduled Payments", value: "5" });
-    }
+    let options = [];
+    // if(!this.record.allowWaiver) {
+    //   options.push({ label: "2 Scheduled Payments (No Fee)", value: "2" });
+    // } else {
+      options = [{ label: "1 Scheduled Payment", value: "1" }];
+      if (Number(this.amountDue) >= 500 && this.record.allowWaiver) {
+        options.push({ label: "2 Scheduled Payments", value: "2" });
+      }
+  
+      if (!this.record.allowWaiver) {
+        options.push({ label: "2 Scheduled Payments (No Fee)", value: "2" });
+      }
+  
+      if (Number(this.amountDue) >= 1000) {
+        options.push({ label: "5 Scheduled Payments", value: "5" });
+      }  
+    // }
 
     return options;
   }
@@ -668,8 +701,12 @@ export default class NewPaymentTerminal extends LightningElement {
   get financeFeeRate() {
     return this.numberOfSchedulePayments &&
      this.numberOfSchedulePayments == 2 ?
-     0.015 : this.numberOfSchedulePayments == 5 ?
+     (this.record.allowWaiver ? 0.015 : 0) : this.numberOfSchedulePayments == 5 ?
      0.03 : 0;
+  }
+
+  get showWaiveCheckbox() {
+    return !(this.numberOfSchedulePayments == 2 && !this.record.allowWaiver)
   }
 
   get financeFee() {

@@ -1,5 +1,7 @@
 public without sharing class BoomFulfillmentHelper {
     public static String SCHEDULED_SUBSCRIPTION = 'Subscription Copies';
+    public static String MAG_TYPE_ESSENTIAL_LIVING = 'Essential Living';
+
     public static void afterInsert(Map<Id, Fulfillment__c> newMap) {
         Map<Id, Fulfillment__c> subscriptionFulfillments = new Map<Id, Fulfillment__c>();
         Set<Id> fulfillmentProductLines = new Set<Id>();
@@ -21,8 +23,8 @@ public without sharing class BoomFulfillmentHelper {
 
     public static void createSubscriptions(Map<Id, Fulfillment__c> ffMap, Set<Id> prodLineIds, Set<String> subscriptionProductIds) {
         Map<Id, SalesOrderProductLine__c> prodLineMap = new Map<Id, SalesOrderProductLine__c>([
-            SELECT Id,ListPrice__c,Quantity__c,Name,SalesOrder__r.Release_Date__c, SalesOrder__r.Subscription__c,SalesOrder__r.Subscription__r.Name,SalesOrder__r.Subscription__r.Renewal_Date_Day_of_Month__c,SalesOrder__r.Subscription__r.Original_Subscription_Boom_Order__c,Product__c,Product__r.Renewal_Product__c,Product__r.Renewal_Frequency__c,
-            SalesOrder__r.ContactBilling__c,SalesOrder__r.Name,Product__r.Base_Product__c,Product__r.Is_Subscription_Addon__c,
+            SELECT Id,SalesOrder__r.Opportunity__c, ListPrice__c,Quantity__c,Name,SalesOrder__r.Release_Date__c, SalesOrder__r.Subscription__c,SalesOrder__r.Subscription__r.Name,SalesOrder__r.Subscription__r.Renewal_Date_Day_of_Month__c,SalesOrder__r.Subscription__r.Original_Subscription_Boom_Order__c,Product__c,Product__r.Renewal_Product__c,Product__r.Renewal_Frequency__c,
+            SalesOrder__r.ContactBilling__c,SalesOrder__r.Name,Product__r.Base_Product__c,Product__r.Is_Subscription_Addon__c,Product__r.Magazine_Type__c,
             (SELECT Id, AccountManager__c,Recipient__c FROM Order_Line_Recipients__r WHERE Primary__c = true LIMIT 1)
             FROM SalesOrderProductLine__c
             WHERE Id IN :prodLineIds
@@ -47,6 +49,7 @@ public without sharing class BoomFulfillmentHelper {
 
 
         List<Subscription__c> newSubscriptions = new List<Subscription__c>();
+        List<Subscription__c> newAddons = new List<Subscription__c>();
         Integer dayOfMonth = (System.today()).day();
 
         for(Fulfillment__c ff : ffMap.values()) {
@@ -57,11 +60,14 @@ public without sharing class BoomFulfillmentHelper {
 
             if(prodLine != null && prodLine.Order_Line_Recipients__r.size() > 0 && prodLine.Product__r.Renewal_Product__c != null) {
                 Boolean hasSpecialSchedule = prodLine.Product__r.Base_Product__c == SCHEDULED_SUBSCRIPTION;
-
+                Boolean isEssential = prodLine.Product__r.Magazine_Type__c == MAG_TYPE_ESSENTIAL_LIVING;
                 // add logic to determine if the subscription is a special schedule
-        
-                if(hasSpecialSchedule && Order_Renewal_Schedule__mdt.getInstance('Universal_Renewal_date') != null) {
-                    dayOfMonth = Integer.valueOf(Order_Renewal_Schedule__mdt.getInstance('Universal_Renewal_date').Renewal_Date__c);
+                if(hasSpecialSchedule) {
+                    dayOfMonth = isEssential && Order_Renewal_Schedule__mdt.getInstance('Universal_Renewal_date') != null
+                        ? Integer.valueOf(Order_Renewal_Schedule__mdt.getInstance('Universal_Renewal_date').Renewal_Date__c)
+                        : !isEssential && BiMonthly_Renewal_Schedule__mdt.getInstance('Universal_Renewal_date') != null
+                        ? Integer.valueOf(BiMonthly_Renewal_Schedule__mdt.getInstance('Universal_Renewal_date').Renewal_Date__c)
+                        : dayOfMonth;
                 }
                 
                 Subscription__c sub = new Subscription__c();
@@ -98,7 +104,7 @@ public without sharing class BoomFulfillmentHelper {
                 sub.Name = subName;
                 sub.Account_Manager__c = prodLine.Order_Line_Recipients__r[0].AccountManager__c;
                 sub.Contact__c = prodLine.Order_Line_Recipients__r[0].Recipient__c;
-
+                sub.Opportunity__c = prodLine.SalesOrder__r.Opportunity__c;
                 sub.Payment_Method__c = paymentMethodMap.get(ff.Boom_Order__c);
                 sub.Renewal_Date_Day_of_Month__c = '' + dayOfMonth;
                 sub.Renewal_Frequency__c = prodLine.Product__r.Renewal_Frequency__c;
@@ -116,6 +122,7 @@ public without sharing class BoomFulfillmentHelper {
             // System.enqueueJob(new BoomSubscriptionsQueuable(newSubscriptions, true, false));
             createNewSubscriptions(newSubscriptions);
         }
+
     }
 
     public static Map<String,SalesOrderProductLine__c> generateSubscriptionProductsMap(Set<String> subsProdsIds, Set<Id> ffIds) {
@@ -125,8 +132,8 @@ public without sharing class BoomFulfillmentHelper {
 
         Map<String,SalesOrderProductLine__c> subsProdMap = new Map<String,SalesOrderProductLine__c>();
         List<SalesOrderProductLine__c> prodLines = [
-            SELECT Id,SalesOrder__c,SalesOrder__r.Subscription__r.Renewal_Date_Day_of_Month__c,Quantity__c,ListPrice__c,Name,SalesOrder__r.Release_Date__c, SalesOrder__r.Subscription__c,SalesOrder__r.Subscription__r.Name,SalesOrder__r.Subscription__r.Original_Subscription_Boom_Order__c,Product__c,Product__r.Renewal_Product__c,Product__r.Renewal_Frequency__c,
-            SalesOrder__r.ContactBilling__c,SalesOrder__r.Name,Product__r.Base_Product__c,Product__r.Is_Subscription_Addon__c,
+            SELECT Id,SalesOrder__c,SalesOrder__r.Opportunity__c, SalesOrder__r.Subscription__r.Renewal_Date_Day_of_Month__c,Quantity__c,ListPrice__c,Name,SalesOrder__r.Release_Date__c, SalesOrder__r.Subscription__c,SalesOrder__r.Subscription__r.Name,SalesOrder__r.Subscription__r.Original_Subscription_Boom_Order__c,Product__c,Product__r.Renewal_Product__c,Product__r.Renewal_Frequency__c,
+            SalesOrder__r.ContactBilling__c,SalesOrder__r.Name,Product__r.Base_Product__c,Product__r.Is_Subscription_Addon__c,Product__r.Magazine_Type__c,
             (SELECT Id, AccountManager__c,Recipient__c FROM Order_Line_Recipients__r WHERE Primary__c = true LIMIT 1)
             FROM SalesOrderProductLine__c
             WHERE Product__c IN :subsProdsIds

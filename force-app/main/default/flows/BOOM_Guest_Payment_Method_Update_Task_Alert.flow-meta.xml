@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This task alerts finance to when a new payment method is submitted. Finance will review order and apply payment. Tasks are created by flow when New Boom Method Payment object is created from link by guest user. (0050W0000088QHCQA2)</description>
+        <name>New_Payment_Method_Submitted</name>
+        <label>New Payment Method Submitted</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <actionName>NewTask</actionName>
+        <actionType>quickAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>OwnerId</name>
+            <value>
+                <stringValue>0050W0000088PvuQAE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ActivityDate</name>
+            <value>
+                <elementReference>TODAYDATE</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>WhoId</name>
+            <value>
+                <elementReference>$Record.Contact__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Status</name>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Subject</name>
+            <value>
+                <stringValue>Review New Payment Method and Apply</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>54.0</apiVersion>
+    <description>This flow creates a task for Finance when a new Boom Payment Method record is created by guest user (id: 0050W0000088QHCQA2)</description>
+    <formulas>
+        <name>TODAYDATE</name>
+        <dataType>Date</dataType>
+        <expression>{!$Flow.CurrentDate}</expression>
+    </formulas>
+    <formulas>
+        <name>TOMORROWDATE</name>
+        <dataType>Date</dataType>
+        <expression>{!$Flow.CurrentDate} + 1</expression>
+    </formulas>
+    <interviewLabel>BOOM Guest Payment Method Update Task Alert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>BOOM Guest Payment Method Update Task Alert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>New_Payment_Method_Submitted</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>CreatedById</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0050W0000088QHCQA2</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LastModifiedById</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0050W0000088QHCQA2</stringValue>
+            </value>
+        </filters>
+        <object>Payment_Method__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -129,6 +129,7 @@ public without sharing class EssentialEngineEmailController {
               SELECT
                 Scheduled_Payment_Date__c,
                 Id,
+                Transaction_Type__c,
                 Date__c,
                 Payment_Type__c,
                 Memo__c,
@@ -189,6 +190,7 @@ public without sharing class EssentialEngineEmailController {
             Contact__r.Name,
             CardType__c,
             Last_Four_Digits__c,
+            Transaction_Type__c,
             Status__c,
             Billing_Name__c
           FROM Payment__c

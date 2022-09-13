@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <decisions>
+        <description>E-newsletter path</description>
+        <name>E_Newsletter_Sort</name>
+        <label>E-Newsletter Sort</label>
+        <locationX>182</locationX>
+        <locationY>455</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>E_Newsletter_Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Base_Product__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>E-Newsletter Service</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Content_Renewal_Date</targetReference>
+            </connector>
+            <label>E-Newsletter Yes</label>
+        </rules>
+    </decisions>
+    <description>Sets campaign start date and assigns task for e-newsletter content renewal for campaign start date + 300 days</description>
+    <formulas>
+        <description>Content Renewal add 330 days</description>
+        <name>Add330Days</name>
+        <dataType>Date</dataType>
+        <expression>{!$Flow.CurrentDate}+330</expression>
+    </formulas>
+    <interviewLabel>Subscription Start Date {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Campaign Start Date</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Collect another year of e-newsletter topics</description>
+        <name>Task_Collect_New_E_Newsletter_Topics</name>
+        <label>Task Collect New E-Newsletter Topics</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>$Record.Content_Renewal__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>AdProd_Comments__c</field>
+            <value>
+                <stringValue>Need to refresh content, collect new topics by sending link to form</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.Fulfillment_Owner__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>1</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>CSR - Collect New Topics</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.Full_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>$Record.Customer_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordUpdates>
+        <description>Set e-newsletter content renewal date</description>
+        <name>Set_Content_Renewal_Date</name>
+        <label>Set Content Renewal Date</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <connector>
+            <targetReference>Task_Collect_New_E_Newsletter_Topics</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Content_Renewal__c</field>
+            <value>
+                <elementReference>Add330Days</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates campaign start date to today</description>
+        <name>Update_Campaign_Start_Date</name>
+        <label>Update Campaign Start Date</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <connector>
+            <targetReference>E_Newsletter_Sort</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Campaign_Start_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Campaign_Start_Date</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>(1 OR 4 OR 5 OR 6) AND 2 AND 3</filterLogic>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Testimonial Service</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Campaign_Start_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>E-Newsletter Service</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Digital Ad Service</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Managed Social Service</stringValue>
+            </value>
+        </filters>
+        <object>Fulfillment__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

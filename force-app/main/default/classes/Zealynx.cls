@@ -83,6 +83,7 @@ public without sharing class Zealynx {
     HttpRequest req = new HttpRequest();
     req.setMethod(method);
     req.setEndpoint(endpoint);
+    req.setTimeout(120000);
     if ( headers == null ){
       headers = new List<List<String>>();
       headers.add(new List<String>{'Content-Type','application/json'});
@@ -102,7 +103,11 @@ public without sharing class Zealynx {
       return res;       
     } catch (Exception e) {
       system.debug(e);
-      throw new AuraHandledException(e.getMessage());
+      if(System.isBatch() || System.isFuture() || System.isQueueable() || System.isScheduled() || ApexPages.currentPage() == null) {
+        throw new CalloutException(e.getMessage() + ' on line ' + e.getLineNumber());
+      } else {
+        throw new AuraHandledException(e.getMessage());
+      }
     }
      
   } 

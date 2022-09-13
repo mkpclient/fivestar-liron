@@ -6,40 +6,41 @@ public without sharing class SalesOrderHelper {
   static final String DRAFT_STATUS = 'Draft';
   static final String RENEWAL_STATUS = 'Pending Renewal';
   static final String UPDATE_NEEDED = 'Payment Update Needed';
+  static final String SUB_CANCELLED = 'Subscription Cancelled';
 
   public static void beforeUpdate(
     Map<Id, SalesOrder__c> oldMap,
     Map<Id, SalesOrder__c> newMap
   ) {
-
     Approval.unlock(newMap.values());
     List<Subscription__c> subsForQueue = new List<Subscription__c>();
 
     for (Id key : newMap.keySet()) {
       SalesOrder__c oldSO = oldMap.get(key);
       SalesOrder__c newSO = newMap.get(key);
-      
+
       // if(newSo.Legacy_Id__c != null) {
       //   continue;
       // }
       // skipping legacy orders
-        // when SO meets all release criteria
+      // when SO meets all release criteria
 
-      if (
-        orderCanBeReleased(oldSO, newSO)
-      ) {
-        if(newSO.Status_Picklist__c == RENEWAL_STATUS && newSO.Subscription__c != null 
-        && (
-            (
-              FivestarSetting__mdt.getInstance('Universal') != null 
-            && FivestarSetting__mdt.getInstance('Universal').Allow_Subscriptions__c) 
-            || test.isRunningTest()
+      if (orderCanBeReleased(oldSO, newSO)) {
+        if (
+          newSO.Status_Picklist__c == RENEWAL_STATUS &&
+          newSO.Subscription__c != null &&
+          ((FivestarSetting__mdt.getInstance('Universal') != null &&
+          FivestarSetting__mdt.getInstance('Universal')
+            .Allow_Subscriptions__c) || test.isRunningTest())
+        ) {
+          newSO.Initial_Invoice_Sent__c = false;
+          newSO.Email_To_Send__c = true;
+          subsForQueue.add(
+            new Subscription__c(
+              Id = newSO.Subscription__c,
+              Create_Next_Subscription__c = true
             )
-          )  {
-          subsForQueue.add(new Subscription__c(
-            Id = newSO.Subscription__c,
-            Create_Next_Subscription__c = true
-          ));
+          );
         }
         newSO.DateReleased__c = System.today();
         newSO.Release_Date__c = System.today();
@@ -47,12 +48,27 @@ public without sharing class SalesOrderHelper {
         newSO.Released__c = System.now();
         newSO.FulfillOrder__c = true;
         newSO.Email_To_Send__c = true;
-        
+      } else if (
+        newSO.Status_Picklist__c == UPDATE_NEEDED &&
+        newSO.Subscription__c != null &&
+        oldSO.Status_Picklist__c != UPDATE_NEEDED &&
+        ((FivestarSetting__mdt.getInstance('Universal') != null &&
+        FivestarSetting__mdt.getInstance('Universal').Allow_Subscriptions__c) ||
+        test.isRunningTest())
+      ) {
+        newSO.Initial_Invoice_Sent__c = false;
+        newSO.Email_To_Send__c = true;
+
+        subsForQueue.add(
+          new Subscription__c(
+            Id = newSO.Subscription__c,
+            Create_Next_Subscription__c = true
+          )
+        );
       }
-      
     }
 
-    if(subsForQueue.size() > 0) {
+    if (subsForQueue.size() > 0) {
       processSubscriptions(subsForQueue);
     }
   }
@@ -68,6 +84,8 @@ public without sharing class SalesOrderHelper {
     Set<Id> paymentsToCancel = new Set<Id>();
     Set<Id> cancelledOrderIds = new Set<Id>();
     Set<Id> fulfillmentsToDelete = new Set<Id>();
+    Set<Id> cancelledSubs = new Set<Id>();
+    Map<Id, SalesOrder__c> discountSalesOrderMap = new Map<Id, SalesOrder__c>();
 
     for (Integer i = 0; i < newList.size(); i++) {
       // we do not want legacy orders running through the triggers
@@ -75,11 +93,19 @@ public without sharing class SalesOrderHelper {
       // if(newList[i].Legacy_Id__c != null) {
       //   continue;
       // }
-    
+
       if (orderNeedsFulfillmentsCreated(newList[i], oldList[i])) {
         salesOrderMap.put(newList[i].Id, newList[i]);
       } else if (orderWasCancelled(newList[i], oldList[i])) {
         cancelledOrderIds.add(newList[i].Id);
+      }
+
+      if (
+        newList[i].Status_Picklist__c == SUB_CANCELLED &&
+        oldList[i].Status_Picklist__c != SUB_CANCELLED &&
+        newList[i].Subscription__c != null
+      ) {
+        cancelledSubs.add(newList[i].Subscription__c);
       }
 
       if (
@@ -94,12 +120,17 @@ public without sharing class SalesOrderHelper {
       if (
         newList[i].Initial_Invoice_Sent__c != true &&
         newList[i].Email_To_Send__c == true &&
-        newList[i].Status_Picklist__c == RELEASED_STATUS
+        newList[i].Status_Picklist__c == RELEASED_STATUS &&
+        (oldList[i].Status_Picklist__c != RENEWAL_STATUS ||
+        oldList[i].Status_Picklist__c != UPDATE_NEEDED)
       ) {
         salesOrderIdsList.add(newList[i].Id);
       }
 
-      if (oldList[i].Price_Book__c != newList[i].Price_Book__c && newList[i].Subscription__c == null) {
+      if (
+        oldList[i].Price_Book__c != newList[i].Price_Book__c &&
+        newList[i].Subscription__c == null
+      ) {
         salesOrderIds.add(newList[i].Id);
       }
 
@@ -117,7 +148,21 @@ public without sharing class SalesOrderHelper {
       ) {
         fulfillmentsToDelete.add(newList[i].Id);
       }
-    
+
+      // newList[i].Status_Picklist__c != oldList[i].Status_Picklist__c && newList[i].Status_Picklist__c == 'Released' && (oldList[i] != 'Pending Renewal' || oldList[i] != 'Payment Update Needed')
+      // create a new method to check if there are existing parent subscriptions already created for the salesorder (pass Map<Id,SalesOrder__c>() of salesorders collected from above)
+      if (
+        newList[i].Status_Picklist__c != oldList[i].Status_Picklist__c &&
+        newList[i].Status_Picklist__c == 'Released' &&
+        oldList[i].Status_Picklist__c != 'Pending Renewal' &&
+        oldList[i].Status_Picklist__c != 'Payment Update Needed'
+      ) {
+        discountSalesOrderMap.put(newList[i].Id, newList[i]);
+      }
+    }
+
+    if (discountSalesOrderMap.size() > 0) {
+      addDiscountSubscriptions(discountSalesOrderMap);
     }
 
     if (fulfillmentsToDelete.size() > 0) {
@@ -125,18 +170,21 @@ public without sharing class SalesOrderHelper {
     }
 
     if (salesOrderMap.size() > 0) {
-    createfulfillments(salesOrderMap.keySet());
+      createfulfillments(salesOrderMap.keySet());
+    }
+
+    if (cancelledSubs.size() > 0) {
+      cancelSubscriptions(cancelledSubs);
     }
 
     if (salesOrderIdsList.size() > 0) {
-      BoomOrderInvoiceWithAttachment.sendEmailWithAttachment(salesOrderIdsList);
-      if ( !Test.isRunningTest() ) {
+      if (!Test.isRunningTest()) {
+        BoomOrderInvoiceWithAttachment.sendEmailWithAttachment(
+          salesOrderIdsList
+        );
         // System.scheduleBatch(new BoomPDFOneHourBatch(salesOrderIdsList), 'BoomPDFOneHourBatch' + System.today(), 60);
       }
     }
-
-
-    
 
     if (salesOrderIds.size() > 0) {
       // ? : all order product lines are deleted when price book is changed
@@ -151,9 +199,174 @@ public without sharing class SalesOrderHelper {
       cancelFulfillments(cancelledOrderIds);
     }
 
-    if(recordsToLock.size() > 0) {
+    if (recordsToLock.size() > 0) {
       Approval.lock(recordsToLock);
     }
+  }
+
+  // SELECT Id,Original_Subscription_Boom_Order__c FORM Subscription__c WHERE Original_Subscription_Boom_Order__c IN :salesOrderMap.keySet()
+  // * QUERY ALL FIELDS FROM SUBSCRIPTION IN SOQL ABOVE *
+  // loop through the subscriptions and do a salesOrderMap.remove(sub.Original_Subscription_Boom_Order__c);
+
+  // if any subscription is returned, we create the new discount product SubscriptionHelper.createRecurringAddon(subscriptions);
+
+  // In SubscriptionHelper, check if an addon was already created for the product line. Comment already made in "createRecurringAddon"
+
+  // if salesOrderMap.size() > 0, we go loop through the salesOrderMap.values()
+  // set<id> collect a set of id for so.Opportunity__c;
+
+  // SELECT Id,Original_Subscription_Boom_Order__c,Original_Subscription_Boom_Order__r.Opportunity__c FROM Subscription__c WHERE Parent_Subscription__c = NULL AND (NOT Name LIKE '%-disc-%') AND (NOT Name LIKE '%-addon-%') AND Original_Subscription_Boom_Order__c IN ( SELECT Id FROM SalesOrder__c WHERE Opportunity__c IN :oppIds);
+
+  // set<id> existingOppIds;
+  // loop through the subscriptions that we queried and add Original_Subscription_Boom_Order__r.Opportunity__c to new set of Ids.
+
+  // List<SalesOrder__c> soListForDisc = new List<SalesOrder__c>();
+  // loop through our salesOrderMap.values() and check if existingOppIds.contains(so.Opportunity__c)
+  // if true, we add the salesorder__c to a new list of salesorder__c
+  // we create a new discount subscription but without details from parent
+  //  Naming convention: SalesOrder__c.Name + '-DISC-' + SalesOrderProductLine__c.Name;
+  // Original_Subscription_Boom_Order__c = SalesOrder__c.Id
+
+  public static void addDiscountSubscriptions(
+    Map<Id, SalesOrder__c> discountSalesOrderMap
+  ) {
+    List<Subscription__c> subscriptions = [
+      SELECT
+        Id,
+        Original_Subscription_Boom_Order__c,
+        Original_Subscription_Boom_Order__r.Opportunity__c,
+        Contact__c,
+        Create_Next_Subscription__c,
+        Pause_Date__c,
+        End_Date__c,
+        Name,
+        Parent_Subscription__c,
+        Renewal_Date_Day_of_Month__c,
+        Renewal_Frequency__c,
+        Renewal_Price__c,
+        Start_Date__c,
+        Status__c
+      FROM Subscription__c
+      WHERE
+        Original_Subscription_Boom_Order__c IN :discountSalesOrderMap.keySet()
+    ];
+
+    for (Integer i = 0; i < subscriptions.size(); i++) {
+      discountSalesOrderMap.remove(
+        subscriptions[i].Original_Subscription_Boom_Order__c
+      );
+    }
+
+    // if (subscriptions.size() > 0) {
+    //   SubscriptionHelper.createRecurringAddon(subscriptions);
+    // }
+
+    Set<Id> oppIds = new Set<Id>();
+    if (discountSalesOrderMap.size() > 0) {
+      for (SalesOrder__c discountSalesOrder : discountSalesOrderMap.values()) {
+        oppIds.add(discountSalesOrder.Opportunity__c);
+      }
+    }
+
+    List<Subscription__c> parentDiscountSubscriptions = [
+      SELECT
+        Id,
+        Original_Subscription_Boom_Order__c,
+        Original_Subscription_Boom_Order__r.Opportunity__c
+      FROM Subscription__c
+      WHERE
+        Parent_Subscription__c = NULL
+        AND (NOT Name LIKE '%-disc-%')
+        AND (NOT Name LIKE '%-addon-%')
+        AND Original_Subscription_Boom_Order__c IN (
+          SELECT Id
+          FROM SalesOrder__c
+          WHERE Opportunity__c IN :oppIds
+        )
+    ];
+
+    Set<Id> existingOppIds = new Set<Id>();
+    for (Subscription__c parentDiscSub : parentDiscountSubscriptions) {
+      existingOppIds.add(
+        parentDiscSub.Original_Subscription_Boom_Order__r.Opportunity__c
+      );
+    }
+
+    Map<Id, SalesOrder__c> addSubSO = new Map<Id, SalesOrder__c>();
+    for (SalesOrder__c discountSO : discountSalesOrderMap.values()) {
+      if (existingOppIds.contains(discountSO.Opportunity__c)) {
+        addSubSO.put(discountSO.Id, discountSO);
+      }
+    }
+
+    List<SalesOrderProductLine__c> prodLines = [
+      SELECT
+        Id,
+        ListPrice__c,
+        Quantity__c,
+        Name,
+        SalesOrder__c,
+        SalesOrder__r.Release_Date__c,
+        Product__c,
+        SalesOrder__r.ContactBilling__c,
+        SalesOrder__r.Name,
+        Product__r.Recurring_Discount__c,
+        Product__r.Discount_Frequency__c,
+        Product__r.Discount_Occurences__c,
+        (
+          SELECT Id, AccountManager__c, Recipient__c
+          FROM Order_Line_Recipients__r
+          WHERE Primary__c = TRUE
+          LIMIT 1
+        )
+      FROM SalesOrderProductLine__c
+      WHERE
+        SalesOrder__c IN :addSubSO.keySet()
+        AND Product__r.Recurring_Discount__c = TRUE
+    ];
+
+    List<Subscription__c> addonSubs = new List<Subscription__c>();
+    for (SalesOrderProductLine__c line : prodLines) {
+      addonSubs.add(generateDiscAddon(line));
+    }
+
+    insert addonSubs;
+  }
+
+  public static Subscription__c generateDiscAddon(
+    SalesOrderProductLine__c line
+  ) {
+    Subscription__c newAddonSub = new Subscription__c();
+    Integer numOccurences = Integer.valueOf(
+      line.Product__r.Discount_Occurences__c
+    );
+    Date currDate = System.today();
+    Date endDate = Date.newInstance(
+        currDate.year(),
+        currDate.month(),
+        currDate.day()
+      )
+      .addMonths(numOccurences - 1)
+      .addDays(-1);
+    newAddonSub.End_Date__c = endDate;
+    newAddonSub.Start_Date__c = System.today();
+    String subName =
+      line.SalesOrder__r.Name.replace('SO', 'SUB') +
+      '-DISC-' +
+      line.Name;
+    newAddonSub.Name = subName;
+    newAddonSub.status__c = 'Active';
+    // newAddonSub.Payment_Method__c = sub.Payment_Method__c;
+    newAddonSub.Account_Manager__c = line.Order_Line_Recipients__r[0]
+      .AccountManager__c;
+    newAddonSub.Contact__c = line.Order_Line_Recipients__r[0].Recipient__c;
+    newAddonSub.Renewal_Product__c = line.Product__c;
+    newAddonSub.Renewal_Price__c = line.ListPrice__c;
+    // newAddonSub.Renewal_Frequency__c = sub.Renewal_Frequency__c;
+    newAddonSub.Renewal_Quantity__c = line.Quantity__c;
+    // newAddonSub.Renewal_Date_Day_of_Month__c = sub.Renewal_Date_Day_of_Month__c;
+    newAddonSub.Original_Subscription_Boom_Order__c = line.SalesOrder__c;
+    return newAddonSub;
   }
 
   public static void beforeDelete(List<SalesOrder__c> oldList) {
@@ -167,6 +380,23 @@ public without sharing class SalesOrderHelper {
             'Cannot delete sales orders that aren\'t in draft and has payments.'
           );
       }
+    }
+  }
+
+  //
+
+  public static void cancelSubscriptions(Set<Id> subIds) {
+    List<Subscription__c> subs = [
+      SELECT Id
+      FROM Subscription__c
+      WHERE Id IN :subIds AND Status__c != 'Cancelled'
+      FOR UPDATE
+    ];
+    if (subs.size() > 0) {
+      for (Subscription__c s : subs) {
+        s.Status__c = 'Cancelled';
+      }
+      update subs;
     }
   }
 
@@ -201,20 +431,17 @@ public without sharing class SalesOrderHelper {
     );
   }
 
-  public static Boolean orderCanBeReleased(SalesOrder__c oldSO, SalesOrder__c newSO) {
-    return ((newSO.Status_Picklist__c == APPROVED_STATUS || 
-    (
-      (newSO.Status_Picklist__c == RENEWAL_STATUS || newSO.Status_Picklist__c == UPDATE_NEEDED) && newSO.OrderDate__c <= System.today()
-      &&
-      (
-        (
-          FivestarSetting__mdt.getInstance('Universal') != null 
-        && FivestarSetting__mdt.getInstance('Universal').Allow_Subscriptions__c
-        ) 
-        || test.isRunningTest()
-      )
-    )
-    ) &&
+  public static Boolean orderCanBeReleased(
+    SalesOrder__c oldSO,
+    SalesOrder__c newSO
+  ) {
+    return ((newSO.Status_Picklist__c == APPROVED_STATUS ||
+    ((newSO.Status_Picklist__c == RENEWAL_STATUS ||
+    newSO.Status_Picklist__c == UPDATE_NEEDED) &&
+    newSO.OrderDate__c <= System.today() &&
+    ((FivestarSetting__mdt.getInstance('Universal') != null &&
+    FivestarSetting__mdt.getInstance('Universal').Allow_Subscriptions__c) ||
+    test.isRunningTest()))) &&
     newSO.ExistingPayments__c == newSO.NetAmount__c &&
     newSO.Status_Picklist__c != RELEASED_STATUS &&
     (newSO.NetAmount__c != 0 ||
@@ -228,7 +455,10 @@ public without sharing class SalesOrderHelper {
     SalesOrder__c oldRecord
   ) {
     return ((newRecord.FulfillOrder__c == true &&
-    oldRecord.FulfillOrder__c == false) || (newRecord.FulfillOrder__c == true && oldRecord.Status_Picklist__c == 'Unreleased' && newRecord.Status_Picklist__c == 'Released'));
+    oldRecord.FulfillOrder__c == false) ||
+    (newRecord.FulfillOrder__c == true &&
+    oldRecord.Status_Picklist__c == 'Unreleased' &&
+    newRecord.Status_Picklist__c == 'Released'));
   }
 
   public static Boolean orderWasCancelled(
@@ -246,15 +476,17 @@ public without sharing class SalesOrderHelper {
     Map<Id, Id> mapLineIdToFulfillmentId = new Map<Id, Id>();
 
     for (SalesOrderProductLine__c l : queryOrderProductLines(orderIDs)) {
-
-      if(l.Order_Line_Recipients__r !=null && l.Order_Line_Recipients__r.size() > 0) {
+      if (
+        l.Order_Line_Recipients__r != null &&
+        l.Order_Line_Recipients__r.size() > 0
+      ) {
         fulfillments.add(constructFulfillment(l));
-      
 
-        String numberOfFulfillments = l.Product__r.Name.substringBetween(
+        String numberOfFulfillments = String.isNotEmpty(l.Product__r.Name) && l.Product__r.Name.contains('- ') && l.Product__r.Name.contains('X') ? l.Product__r.Name.substringBetween(
           '- ',
           'X'
-        );
+        ) : null;
+
 
         if (
           numberOfFulfillments != null &&
@@ -272,7 +504,6 @@ public without sharing class SalesOrderHelper {
     insert fulfillments;
 
     for (Fulfillment__c f : fulfillments) {
-
       mapLineIdToFulfillmentId.put(f.Boom_Order_Product_Line__c, f.Id);
 
       if (childFulfillmentsCountMap.containsKey(f.Boom_Order_Product_Line__c)) {
@@ -290,16 +521,18 @@ public without sharing class SalesOrderHelper {
 
     insert childFulfillments;
 
-    List<Order_Line_Recipient__c> recipientsToUpdate = [SELECT Id, OrderProductLine__c FROM Order_Line_Recipient__c WHERE OrderProductLine__c IN :mapLineIdToFulfillmentId.keySet()];
+    List<Order_Line_Recipient__c> recipientsToUpdate = [
+      SELECT Id, OrderProductLine__c
+      FROM Order_Line_Recipient__c
+      WHERE OrderProductLine__c IN :mapLineIdToFulfillmentId.keySet()
+    ];
 
-    if(recipientsToUpdate.size() > 0) {
+    if (recipientsToUpdate.size() > 0) {
       for (Order_Line_Recipient__c r : recipientsToUpdate) {
         r.Fulfillment__c = mapLineIdToFulfillmentId.get(r.OrderProductLine__c);
       }
       update recipientsToUpdate;
     }
-
-
   }
 
   public static List<SalesOrderProductLine__c> queryOrderProductLines(
@@ -324,13 +557,11 @@ public without sharing class SalesOrderHelper {
         SalesOrder__c IN :orderIds
         AND Product__r.CreateOrderFulfillment__c = TRUE
         AND Quantity__c > 0
-        AND CreatedDate > 2022-01-02T14:04:00Z 
+        AND CreatedDate > 2022-01-02T14:04:00Z
         AND Id NOT IN (
-          SELECT
-          Boom_Order_Product_Line__c
+          SELECT Boom_Order_Product_Line__c
           FROM Fulfillment__c
-          WHERE
-          Boom_Order__c IN :orderIds
+          WHERE Boom_Order__c IN :orderIds
         )
     ];
   }
@@ -353,18 +584,21 @@ public without sharing class SalesOrderHelper {
   }
 
   public static void processSubscriptions(List<Subscription__c> subs) {
-      List<Subscription__c> childrenSubs = [SELECT Id FROM Subscription__c WHERE Parent_Subscription__c IN :subs];
-      List<Subscription__c> subsLocal = new List<Subscription__c>();
-      subsLocal.addAll(subs);
-      if(childrenSubs.size() > 0) {
-        for(Subscription__c s : childrenSubs) {
-          s.Create_Next_Subscription__c =  true;
-          subsLocal.add(s);
-        }
+    List<Subscription__c> childrenSubs = [
+      SELECT Id
+      FROM Subscription__c
+      WHERE Parent_Subscription__c IN :subs
+    ];
+    List<Subscription__c> subsLocal = new List<Subscription__c>();
+    subsLocal.addAll(subs);
+    if (childrenSubs.size() > 0) {
+      for (Subscription__c s : childrenSubs) {
+        s.Create_Next_Subscription__c = true;
+        subsLocal.add(s);
       }
-      update subsLocal;
+    }
+    update subsLocal;
   }
-
 
   public static Fulfillment__c constructFulfillment(
     SalesOrderProductLine__c l

@@ -144,6 +144,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
 
       if(order.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
         bizType = 'Essential';
+      } else if (order.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && !allowEssentialEmails) {
+        continue;
       }
       String Orderid = order.Id;
       EmailTemplate et = EMAIL_TEMP_MAP.get(bizType);
@@ -160,7 +162,12 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         toAddress.add(order.ContactBuying__r.Email);
       }
 
+      if(bizType == 'Essential') {
+        cCAddress.add('billing@essentialengine.com');
+      } else {
       cCAddress.add('accounts.receivable@fivestarprofessional.com');
+      }
+
       Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
       mail.setTemplateId(et.Id);
       if (anOrgWideEmailAddress != null) {
@@ -226,7 +233,7 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     
 
     Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null &&
-    FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
+    FivestarSetting__mdt.getInstance('Universal').Send_Essential_Engine_Payment_Receipts__c;
 
 
     Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage>();

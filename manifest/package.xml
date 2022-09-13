@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <types>
-        <members>Finance_Templates/Essential_Payment_VF_Template</members>
-        <name>EmailTemplate</name>
-    </types>
-    <version>53.0</version>
+	<types>
+		<members>Product2.Change_For__c</members>
+		<members>Product2.Related_Fulfillment_Product__c</members>
+		<members>Product2.Is_Change_Product__c</members>
+		<name>CustomField</name>
+	</types>
+	<version>53.0</version>
 </Package>
-<!--PaymentBatchScheduleTest, SubscriptionTests, SalesOrderHelperTest -->
+
+<!-- sfdx force:source:deploy -x manifest/package.xml  -l RunSpecifiedTests -r BoomPaymentTerminal_Tests,BoomOrderCloneTest -c -->

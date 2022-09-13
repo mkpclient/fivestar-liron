@@ -5,6 +5,8 @@ global class BoomSubscriptionsQueuable implements Queueable {
   private List<Subscription__c> addonSubs = new List<Subscription__c>();
   public static String SCHEDULED_SUBSCRIPTION = 'Subscription Copies';
 
+  public static String MAG_TYPE_ESSENTIAL_LIVING = 'Essential Living';
+
   global BoomSubscriptionsQueuable(
     List<Subscription__c> subscriptions,
     Boolean isInsert,
@@ -70,56 +72,64 @@ global class BoomSubscriptionsQueuable implements Queueable {
     System.debug(existingOrders);
 
     Map<Id, SalesOrder__c> existingOrdersMap = new Map<Id, SalesOrder__c>();
-    Map<Id, SalesOrderProductLine__c> prodLines = new Map<Id, SalesOrderProductLine__c>();
-    Map<Id, Order_Line_Recipient__c> recipients = new Map<Id, Order_Line_Recipient__c>();
-
+    List<SalesOrderProductLine__c> prodLines = new List<SalesOrderProductLine__c>();
+    List<Order_Line_Recipient__c> recipients = new List< Order_Line_Recipient__c>();
+    Map<Id,Order_Line_Recipient__c> recipientMap = new Map<Id,Order_Line_Recipient__c>();
     for (SalesOrder__c order : existingOrders) {
       existingOrdersMap.put(order.Subscription__c, order);
     }
+    Map<Id, Subscription__c> subWithSopls = new Map<Id,Subscription__c>([SELECT Id FROM Subscription__c WHERE Id IN (SELECT Related_Subscription__c FROM SalesOrderProductLine__c WHERE SalesOrder__c IN :existingOrders AND Related_Subscription__c IN :subscriptions)]);
+
 
     for (Subscription__c s : subscriptions) {
       if(s.Status__c != 'Active') {
         continue;
       }
       Id key = updatedSubs.get(s.Id).Parent_Subscription__c;
-      if(existingOrdersMap.containsKey(key)) {
+      if(existingOrdersMap.containsKey(key) && !subWithSopls.containsKey(s.Id)) {
         SalesOrder__c so = existingOrdersMap.get(key);
-        SalesOrderProductLine__c sopl = generateSubscriptionProductLine(
+        SalesOrderProductLine__c sopl = new SalesOrderProductLine__c();
+        sopl = generateSubscriptionProductLine(
           s,
           so.OrderDate__c,
           so
         );
+        
         sopl.SalesOrder__c = so.Id;
         Order_Line_Recipient__c recipient = generateSubscriptionLineRecipient(
           s,
           so
         );
-  
-        prodLines.put(so.Id, sopl);
-        recipients.put(so.Id, recipient);
+        recipient.OrderProductLine__r = sopl;
+        prodLines.add(sopl);
+        recipients.add(recipient);
+        subWithSopls.put(s.id, s);
       }
       
     }
 
     if (prodLines.size() > 0) {
-      insert prodLines.values();
-
+      insert prodLines;
+      for(Order_Line_Recipient__c r : recipients) {
+        recipientMap.put(r.OrderProductLine__r.Id, r);
+      }
       List<Order_Line_Recipient__c> defaultRecipients = [
-        SELECT Id, Order__c
+        SELECT Id, Order__c,OrderProductLine__c
         FROM Order_Line_Recipient__c
-        WHERE Order__c IN :recipients.keySet()
+        WHERE OrderProductLine__c IN :prodLines
         FOR UPDATE
       ];
 
       for (Order_Line_Recipient__c r : defaultRecipients) {
-        String key = r.Order__c;
-        Order_Line_Recipient__c olr = recipients.get(key);
+        String key = r.OrderProductLine__c;
+        Order_Line_Recipient__c olr = recipientMap.get(key);
+        olr.OrderProductLine__r = null;
         olr.Id = r.Id;
-        recipients.put(key, olr);
+        recipientMap.put(key, olr);
       }
 
-      if (recipients.size() > 0) {
-        update recipients.values();
+      if (recipientMap.size() > 0) {
+        update recipientMap.values();
       }
     }
   }
@@ -152,61 +162,71 @@ global class BoomSubscriptionsQueuable implements Queueable {
         continue;
       }
       Integer day = Integer.valueOf(sub.Renewal_Date_Day_of_Month__c);
-      Integer month = System.today().month() < 12
-        ? System.today().month() + 1
-        : 1;
+      
+      Integer month = System.today().addMonths(1).month();
+      Integer year = System.today().year();
+
+      if(day > System.today().day()) {
+        month = System.today().month();
+      }
 
       Boolean hasSpecialSchedule =
         sub.Base_Product__c == SCHEDULED_SUBSCRIPTION &&
         ((sub.Start_Date__c.month() == System.today().month() && 
-        sub.Start_Date__c.year() == System.today().year()) || (
-          sub.Re_Start_Date__c != null && (
-            sub.Re_Start_Date__c.month() == System.today().month() &&
-            sub.Re_Start_Date__c.year() == System.today().year()
-          )
-        ));
-      
+        sub.Start_Date__c.year() == System.today().year()));
+
+      Boolean isEssentialLiving = sub.Magazine_Type__c == MAG_TYPE_ESSENTIAL_LIVING;
       // add logic to determine if the subscription is a special schedule
+      Date startFullDate =  sub.Start_Date__c;
+      Integer startMonth = startFullDate.month();
+      Integer startDate = startFullDate.day();
+      Integer startYear = startFullDate.year();
 
-      if (hasSpecialSchedule) {
-        Integer currMonth = sub.Re_Start_Date__c != null ? sub.Re_Start_Date__c.month() : sub.Start_Date__c.month();
-        Integer currDate = sub.Re_Start_Date__c != null ? sub.Re_Start_Date__c.day() : sub.Start_Date__c.day();
-        
-        if (
-          Order_Renewal_Schedule__mdt.getInstance('X' + currMonth) != null &&
-          Order_Renewal_Schedule__mdt.getInstance('X' + currMonth)
-            .Start_Month__c <= currMonth &&
-          Order_Renewal_Schedule__mdt.getInstance('X' + currMonth)
-            .Start_Date__c >= currDate &&
-          Order_Renewal_Schedule__mdt.getInstance('X' + currMonth)
-            .End_Month__c >= currMonth &&
-          Order_Renewal_Schedule__mdt.getInstance('X' + currMonth)
-            .End_Date__c <= currDate
-        ) {
-          month = Integer.valueOf(
-            Order_Renewal_Schedule__mdt.getInstance('X' + currMonth)
-              .Renewal_Month__c
-          );
-        } else if (
-          Order_Renewal_Schedule__mdt.getInstance('X' + (currMonth + 1)) != null
-        ) {
-          month = Integer.valueOf(
-            Order_Renewal_Schedule__mdt.getInstance('X' + (currMonth + 1))
-              .Renewal_Month__c
-          );
+      if (hasSpecialSchedule && isEssentialLiving) {
+        Map<String,Order_Renewal_Schedule__mdt> schedules = Order_Renewal_Schedule__mdt.getAll();
+
+        for(Order_Renewal_Schedule__mdt sched : schedules.values()) {
+          Date schedStartDate = Date.newInstance(startYear, Integer.valueOf(sched.Start_Month__c), Integer.valueOf(sched.Start_Date__c));
+          Date schedEndDate = Date.newInstance(startYear, Integer.valueOf(sched.End_Month__c), Integer.valueOf(sched.End_Date__c));
+          if(sched.End_Month__c < sched.Start_Month__c) {
+            schedEndDate.addYears(1);
+          }
+          System.debug(sched);
+          if(schedStartDate <= startFullDate && schedEndDate >= startFullDate) {
+            day = Integer.valueOf(sched.Renewal_Date__c);
+            month = Integer.valueOf(sched.Renewal_Month__c);
+          }
         }
-      }
-      // month = Integer.valueOf(Order_Renewal_Schedule__mdt.getInstance('Universal_Renewal_date').Renewal_Month__c);
+      } else if (hasSpecialSchedule && !isEssentialLiving) {
+        Map<String, BiMonthly_Renewal_Schedule__mdt> schedules = BiMonthly_Renewal_Schedule__mdt.getAll();
+        // Map<DeveloperName, metadata values> 
+        for(BiMonthly_Renewal_Schedule__mdt sched : schedules.values()) {
+          Date schedStartDate = Date.newInstance(startYear, Integer.valueOf(sched.Start_Month__c), Integer.valueOf(sched.Start_Date__c));
+          Date schedEndDate = Date.newInstance(startYear, Integer.valueOf(sched.End_Month__c), Integer.valueOf(sched.End_Date__c));
+          if(sched.End_Month__c < sched.Start_Month__c) {
+            schedEndDate.addYears(1);
+          }
+          System.debug(sched);
+          if(schedStartDate <= startFullDate && schedEndDate >= startFullDate) {
+            day = Integer.valueOf(sched.Renewal_Date__c);
+            month = Integer.valueOf(sched.Renewal_Month__c);
+          }
 
-      Integer year = month < System.today().month()
-        ? System.today().year() + 1
-        : System.today().year();
-      if (sub.Renewal_Frequency__c == 'Annual') {
+        }
+      } else if (sub.Renewal_Frequency__c == 'Annual') {
         month = System.today().month();
         year = System.today().year() + 1;
+      } else if (sub.Renewal_Frequency__c == 'Bi-Monthly') {
+        month = System.today().addMonths(2).month();
       }
+      // month = Integer.valueOf(Order_Renewal_Schedule__mdt.getInstance('Universal_Renewal_date').Renewal_Month__c);
+      if(month < System.today().month()) {
+        year = year + 1;
+      }
+        
 
       Date orderDate = date.newInstance(year, month, day);
+      
       SalesOrder__c newSo = generateSubscriptionOrder(
         salesOrderMap.get(sub.Original_Subscription_Boom_Order__c),
         sub,
@@ -221,7 +241,7 @@ global class BoomSubscriptionsQueuable implements Queueable {
         sub,
         newSo
       );
-
+      
       if(existingSubMap.containsKey(sub.Id) 
         && existingSubMap.get(sub.Id).Boom_Orders__r != null 
         && existingSubMap.get(sub.Id).Boom_Orders__r.size() > 0) {
@@ -297,6 +317,7 @@ global class BoomSubscriptionsQueuable implements Queueable {
     sopl.Product__c = sub.Renewal_Product__c;
     sopl.ContactShipping__c = so.ContactShipping__c;
     sopl.DateAvailableToPromise__c = orderDate;
+    sopl.Related_Subscription__c = sub.Id;
     return sopl;
   }
 

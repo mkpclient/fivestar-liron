@@ -11,15 +11,16 @@ public without sharing class BoomTestHelpers {
     return pro;
   }
 
-  public static Product2 createSubscriptionProduct(Product2 p) {
+  public static Product2 createSubscriptionProduct(Product2 p, String magazineType, String freq) {
     Product2 pro = new Product2(
       Name = 'Test Product Subscription 1',
       Family = 'Test',
       isActive = true,
-      CreateOrderFulfillment__c = true,
+    CreateOrderFulfillment__c = true,
       Set_Up_Subscription__c = true,
       Renewal_Product__c = p.Id,
-      Renewal_Frequency__c = 'Monthly'
+      Renewal_Frequency__c = freq,
+      Magazine_Type__c = magazineType
     );
     insert pro;
     return pro;

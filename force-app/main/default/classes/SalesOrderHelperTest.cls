@@ -36,6 +36,8 @@ public with sharing class SalesOrderHelperTest {
 
   @isTest
   private static void testOrderReleaseSingleFulfillment() {
+    Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
+
     SalesOrder__c testSo = [SELECT Id, Account__c, ContactBilling__c FROM SalesOrder__c WHERE OrderDate__c=TODAY ORDER BY CreatedDate Desc LIMIT 1];
     testSo.Status_Picklist__c = 'Approved';
 
@@ -129,6 +131,7 @@ public with sharing class SalesOrderHelperTest {
 
   @isTest
   public static void testOrderReleaseWithChildFulfillments() {
+    Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
 
     SalesOrder__c testSo = [SELECT Id, Account__c, ContactBilling__c FROM SalesOrder__c WHERE OrderDate__c=TODAY ORDER BY CreatedDate Desc LIMIT 1];
     Product2 productWithX2 = BoomTestHelpers.generateProduct();
@@ -179,6 +182,8 @@ public with sharing class SalesOrderHelperTest {
 
   @IsTest
   public static void testOrderCancellation() {
+    Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
+
     Test.setMock(HttpCalloutMock.class, new ExampleCalloutMock());
     SalesOrder__c testSo = [SELECT Id, Account__c, ContactBilling__c FROM SalesOrder__c WHERE OrderDate__c=TODAY ORDER BY CreatedDate Desc LIMIT 1];
     testSo.Status_Picklist__c = 'Approved';
@@ -208,6 +213,7 @@ public with sharing class SalesOrderHelperTest {
       FROM Fulfillment__c
       WHERE Boom_Order__c = :testSo.Id
       AND Status__c = 'Cancelled'
+      LIMIT 1
     ];
 
     System.assertEquals(1, fulfillments.size(), 'Fulfillment was not cancelled');

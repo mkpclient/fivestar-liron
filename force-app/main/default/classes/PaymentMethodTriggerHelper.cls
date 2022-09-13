@@ -1,6 +1,12 @@
-public with sharing class PaymentMethodTriggerHelper {
+public without sharing class PaymentMethodTriggerHelper {
+    private static final Map<Id,User> GUEST_USERS = new Map<Id,User>([
+        SELECT Id FROM User WHERE Name LIKE '%Guest User%'
+    ]);
     public static void beforeInsert(List<Payment_Method__c> newList) {
         for(Payment_Method__c pm : newList) {
+            if(GUEST_USERS.keySet().contains(pm.CreatedById)) {
+                pm.Default__c = true;
+            }
             if(String.isEmpty(pm.Payment_Processor__c)) {
                 pm.Payment_Processor__c = 'MX Merchant';
             }
@@ -57,6 +63,68 @@ public with sharing class PaymentMethodTriggerHelper {
             }
 
             update existingPms;
+            
+            
         }
+        updatePaymentMethods(contactIds);
     }
+
+    @future
+    public static void updatePaymentMethods(Set<Id> contactIds) {
+        Map<Id,Contact> contactMap = new Map<Id,Contact>([
+            SELECT Id, (SELECT Id FROM Payment_Methods__r WHERE Default__c = true ORDER BY CreatedDate DESC LIMIT 1)
+            FROM Contact
+            WHERE Id IN :contactIds
+        ]);
+
+        List<Subscription__c> subscriptions = [
+            SELECT Id, Payment_Method__r.Contact__c
+            FROM Subscription__c
+            WHERE Payment_Method__r.Contact__c IN :contactIds
+            AND Override_Default_Payment_Method__c = false
+            AND Status__c != 'Cancelled'
+            AND Payment_Method__r.Default__c = false
+        ];
+
+        List<Payment__c> payments = [
+            SELECT Id, Payment_Method__c, Payment_Method__r.Contact__c
+            FROM Payment__c
+            WHERE Payment_Method__r.Contact__c IN :contactIds
+            AND Status__c = 'Scheduled'
+            AND Payment_Method__r.Default__c = false
+        ];
+
+        List<Payment__c> updatedPayments = new List<Payment__c>();
+        List<Subscription__c> updatedSubscriptions = new List<Subscription__c>();
+
+        for(Subscription__c sub : subscriptions) {
+            Contact c = contactMap.get(sub.Payment_Method__r.Contact__c);
+            if(c.Payment_Methods__r != null && c.Payment_Methods__r.size() > 0) {
+                updatedSubscriptions.add(new Subscription__c(
+                    Id = sub.Id,
+                    Payment_Method__c =  c.Payment_Methods__r[0].Id
+                ));
+            }
+        }
+
+        for(Payment__c pay : payments) {
+            Contact c = contactMap.get(pay.Payment_Method__r.Contact__c);
+            if(c.Payment_Methods__r != null && c.Payment_Methods__r.size() > 0) {
+                updatedPayments.add(new Payment__c(
+                    Id = pay.Id,
+                    Payment_Method__c =  c.Payment_Methods__r[0].Id
+                ));
+            }
+        }
+
+        if(updatedPayments.size() > 0) {
+            update updatedPayments;
+        }
+
+        if(updatedSubscriptions.size() > 0) {
+            update updatedSubscriptions;
+        }
+
+    }
+    
 }

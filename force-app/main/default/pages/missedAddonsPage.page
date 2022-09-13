@@ -1,0 +1,16 @@
+<apex:page sidebar="false">
+    <apex:includeLightning />    
+    <div id="LightningComponentid" />   
+<!-- the Id of div tag which will be used to render your LWC component  -->
+    <script>
+        $Lightning.use("c:missedAddonsApp", function() {
+            $Lightning.createComponent("c:missedAddons",
+            { 
+            },
+            "LightningComponentid", // the Id of div tag where your component will be rendered
+            function(cmp) {
+                console.log('Calling the LWC Component');
+            });
+        });
+    </script>
+</apex:page>

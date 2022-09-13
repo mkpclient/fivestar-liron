@@ -39,7 +39,7 @@
         <object>kugo2p__AdditionalAccountDetail__c</object>
     </recordUpdates>
     <startElementReference>UpdateAdditionalAccountInfo</startElementReference>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <description>Id of the account associated with opportunity, should be passed by process builder, used to find the account associated with the additional account info record</description>
         <name>AssociatedAccountID</name>

@@ -3,10 +3,10 @@ global class SubscriptionStatusBatch implements Database.Batchable<sObject>,Data
 
     global SubscriptionStatusBatch() {
         if(String.isBlank(queryString)) {
-            queryString = 'SELECT Id, End_Date__c, Re_Start_Date__c ';
+            queryString = 'SELECT Id, End_Date__c, Re_Start_Date__c, Status__c ';
             queryString += 'FROM Subscription__c ';
             queryString += 'WHERE (End_Date__c  <= TODAY AND Status__c != \'Cancelled\') ';
-            queryString += 'OR (Re_Start_Date__c <= TODAY AND Status__c != \'Active\')';
+            queryString += 'OR (Re_Start_Date__c <= TODAY AND Status__c = \'Paused\')';
         }
     }
 
@@ -20,9 +20,9 @@ global class SubscriptionStatusBatch implements Database.Batchable<sObject>,Data
         for(Subscription__c sub : scope) {
             Date today = System.today();
 
-            if(sub.End_Date__c <= today) {
+            if(sub.End_Date__c <= today && sub.Status__c != 'Cancelled') {
                 sub.Status__c = 'Cancelled';
-            } else if(sub.Re_Start_Date__c <= today) {
+            } else if(sub.Re_Start_Date__c <= today && sub.Status__c == 'Paused') {
                 sub.Status__c = 'Active';
             }
 

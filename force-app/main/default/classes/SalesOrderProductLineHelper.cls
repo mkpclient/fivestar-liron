@@ -29,6 +29,9 @@ public without sharing class SalesOrderProductLineHelper {
     List<SalesOrderProductLine__c> taxableLines = new List<SalesOrderProductLine__c>();
     Set<Id> sampleOrders = new Set<Id>();
     Set<Id> desampleOrders = new Set<Id>();
+    Set<Id> noFeeOrders = new Set<Id>();
+    Set<Id> removeNoFeeOrders = new Set<Id>();
+
 
     for (SalesOrderProductLine__c sopl : newLines.values()) {
 
@@ -43,6 +46,14 @@ public without sharing class SalesOrderProductLineHelper {
           )
           .Rate__c;
         taxableLines.add(taxSopl);
+      }
+
+      if(sopl.No_Fee_Plan__c == true && sopl.No_Fee_Order__c == false && sopl.KitBundleLine__c == null) {
+        noFeeOrders.add(sopl.SalesOrder__c);
+      }
+
+      if(sopl.No_Fee_Plan__c == false && sopl.No_Fee_Order__c == true && sopl.KitBundleLine__c == null) {
+        removeNoFeeOrders.add(sopl.SalesOrder__c);
       }
 
       if(sopl.Sample_Product__c == true) {
@@ -82,6 +93,14 @@ public without sharing class SalesOrderProductLineHelper {
 
     if(desampleOrders.size() > 0) {
       unsetSampleOrders(desampleOrders);
+    }
+
+    if(noFeeOrders.size() > 0) {
+      updateNoFeeOrders(noFeeOrders, true, new Set<Id>());
+    }
+
+    if(removeNoFeeOrders.size() > 0) {
+      updateNoFeeOrders(removeNoFeeOrders, false, new Set<Id>());
     }
   }
 
@@ -148,7 +167,7 @@ public without sharing class SalesOrderProductLineHelper {
 
     Set<Id> forFulfillments = new Set<Id>();
     Map<Id, Id> sampleMap = new Map<Id, Id>();
-
+    Map<Id,Id> forNoFee = new Map<Id,Id>();
     for (Id id : oldMap.keySet()) {
 
       forFulfillments.add(id);
@@ -168,9 +187,17 @@ public without sharing class SalesOrderProductLineHelper {
       if(oldMap.get(id).Sample_Product__c == true && oldMap.get(id).Sample_Parent_Order__c == true) {
         sampleMap.put(id, oldMap.get(id).SalesOrder__c);
       }
+
+      if(oldMap.get(id).No_Fee_Plan__c == false && oldMap.get(id).KitBundleLine__c == null) {
+        forNoFee.put(id, oldMap.get(id).SalesOrder__c);
+      }
       
     }
-
+    if(forNoFee.size() > 0) {
+      Set<Id> noFeeOrders = new Set<Id>();
+      noFeeOrders.addAll(forNoFee.values());
+      updateNoFeeOrders(noFeeOrders, true, forNoFee.keySet());
+    }
     if (kitBundles.size() > 0) {
       deleteChildren(kitBundles);
     }
@@ -185,6 +212,31 @@ public without sharing class SalesOrderProductLineHelper {
     if (forFulfillments.size() > 0) {
       deleteFulfillments(forFulfillments);
     }
+  }
+  
+  public static void updateNoFeeOrders(Set<Id> orderIds, Boolean isNoFee, Set<Id> soplIds) {
+    List<SalesOrder__c> orders = new List<SalesOrder__c>();
+    Map<Id,SalesOrder__c> orderMap = new Map<Id,SalesOrder__c>();
+    if(isNoFee) {
+      orderMap = new Map<Id,SalesOrder__c>([
+       SELECT Id,
+       (SELECT Id FROM Sales_Order_Product_Lines__r WHERE No_Fee_Plan__c = false AND KitBundleLine__c = null AND Id NOT IN :soplIds)
+       FROM SalesOrder__c
+       WHERE Id IN :orderIds
+      ]);
+    }
+
+    for(Id id : orderIds) {
+      if(isNoFee == true && orderMap.containsKey(id) && orderMap.get(id).Sales_Order_Product_Lines__r != null && orderMap.get(id).Sales_Order_Product_Lines__r.size() > 0) {
+        continue;
+      }
+      orders.add(new SalesOrder__c(
+        Id = id,
+        No_Fee_Plan__c = isNoFee
+      ));
+    }
+
+    update orders;
   }
 
   public static void deleteChildren(Set<Id> kitBundles) {
@@ -269,31 +321,34 @@ public without sharing class SalesOrderProductLineHelper {
 
       List<SalesOrderProductLine__c> newOPLs = new List<SalesOrderProductLine__c>();
       for (Id key : parentLines.keySet()) {
-        List<Kit_Bundle_Member__c> memberProds = bundleMap.get(
-          parentLines.get(key).Product__c
-        );
-
-        for (Kit_Bundle_Member__c p : memberProds) {
-         
-          Decimal price = 0;
-          newOPLs.add(
-            new SalesOrderProductLine__c(
-              AllowQuantityChange__c = p.AllowQuantityChange__c,
-              KitBundle__c = false,
-              KitBundleMemberRequired__c = p.Required__c,
-              Product__c = p.ReferenceMemberProduct__c,
-              SalesPrice__c = price,
-              ListPrice__c = price,
-              ContactShipping__c = parentLines.get(key).ContactShipping__c,
-              SalesOrder__c = parentLines.get(key).SalesOrder__c,
-              Quantity__c = parentLines.get(key).Quantity__c,
-              DateRequired__c = parentLines.get(key).DateRequired__c,
-              LineDiscountPercent__c = parentLines.get(key)
-                .LineDiscountPercent__c,
-              KitBundleLine__c = key
-            )
+        if(bundleMap.containsKey(parentLines.get(key).Product__c)) {
+          List<Kit_Bundle_Member__c> memberProds = bundleMap.get(
+            parentLines.get(key).Product__c
           );
+          System.debug(parentLines.get(key).Product__c);
+          for (Kit_Bundle_Member__c p : memberProds) {
+           
+            Decimal price = 0;
+            newOPLs.add(
+              new SalesOrderProductLine__c(
+                AllowQuantityChange__c = p.AllowQuantityChange__c,
+                KitBundle__c = false,
+                KitBundleMemberRequired__c = p.Required__c,
+                Product__c = p.ReferenceMemberProduct__c,
+                SalesPrice__c = price,
+                ListPrice__c = price,
+                ContactShipping__c = parentLines.get(key).ContactShipping__c,
+                SalesOrder__c = parentLines.get(key).SalesOrder__c,
+                Quantity__c = parentLines.get(key).Quantity__c,
+                DateRequired__c = parentLines.get(key).DateRequired__c,
+                LineDiscountPercent__c = parentLines.get(key)
+                  .LineDiscountPercent__c,
+                KitBundleLine__c = key
+              )
+            );
+          }
         }
+        
       }
 
       try {

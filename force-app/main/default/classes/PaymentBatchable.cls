@@ -3,7 +3,7 @@ global class PaymentBatchable implements Database.Batchable<sObject>, Database.A
 
   global paymentBatchable() {
     if (String.isBlank(queryString)) {
-      queryString = 'SELECT Id, Sales_Order__r.Name, Sales_Order__r.Alternate_Contact_Email__c, Sales_Order__r.Send_Invoice_to_Alternate_Contact__c, Sales_Order__r.Price_Book__r.Business_Unit__c, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Status__c = \'Scheduled\' AND Scheduled_Payment_Date__c <= TODAY AND Payment_Method__c != null AND Sales_Order__r.Net_Due__c > 0';
+      queryString = 'SELECT Id, Payment_Method__c, Sales_Order__r.Name, Sales_Order__r.Alternate_Contact_Email__c, Sales_Order__r.Send_Invoice_to_Alternate_Contact__c, Sales_Order__r.Price_Book__r.Business_Unit__c, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Status__c = \'Scheduled\' AND Scheduled_Payment_Date__c <= TODAY AND Payment_Method__c != null AND Sales_Order__r.BalanceDueAmount__c > 0';
     }
     // if (Test.isRunningTest()) {
     //   queryString += ' LIMIT 1';
@@ -60,6 +60,7 @@ global class PaymentBatchable implements Database.Batchable<sObject>, Database.A
       } catch (Exception err) {
         System.debug(err.getMessage());
         s.Status__c = 'Error';
+        s.Memo__c = 'Error: ' + err.getMessage();
         paymentsLocal.add(s);
         continue;
       }
