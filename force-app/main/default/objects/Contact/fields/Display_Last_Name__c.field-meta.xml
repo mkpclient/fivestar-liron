@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Display_Last_Name__c</fullName>
+    <description>This name displays the last name (and middle name when provided by client). This field is used to populate digital products.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This name displays the last name (and middle name when provided by client). This field is used to populate digital products.</inlineHelpText>
+    <label>Display Last Name</label>
+    <length>250</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

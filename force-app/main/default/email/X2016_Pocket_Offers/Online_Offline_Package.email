@@ -1,0 +1,42 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<table cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td valign="top" class="td1">
+<p class="p1"><span class="s1">Hello {!Contact.ACDF_FName__c}!</span></p><p class="p1"><span class="s1"><br></span></p>
+<table cellspacing="0" cellpadding="0" class="t1">
+<tbody>
+<tr>
+<td valign="middle" class="td2">
+<p class="p2"><span class="s1">It was great speaking with you today. Based on our conversation, I believe our online/offline marketing package would be a perfect fit for you and your business! This package includes:</span></p>
+<ul class="ul1">
+<li class="li2"><span class="s1">Award emblem</span></li>
+<li class="li2"><span class="s1">Digital spotlight profile (<a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-03e9-1603/Bct/l-tst/l-tst:4/ct5_0/1?sid=ucgnVJeak"><span class="s2">Click here</span></a> to see a sample!)</span></li>
+<li class="li2"><span class="s1">50 two-page reprints of your digital spotlight content</span></li>
+</ul>
+<p class="p2"><span class="s1">The list price for this package is $800, but it is available to you for only $649.&nbsp;</span></p>
+</td>
+<td valign="middle" class="td3">
+<p class="p3"><span class="s1"></span><br></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="p2"><span class="s1">How to use this package to drive referrals, retention and new business opportunities:</span></p>
+<ul class="ul1">
+<li class="li2"><span class="s1">Use the digital spotlight to improve your SEO and expand your digital footprint. Share it on your social media accounts to direct clients, prospects and referral partners to learn more about you</span></li>
+<li class="li2"><span class="s1">Add the award emblem to your email signature and on your website</span></li>
+<ul class="ul2">
+<li class="li2"><span class="s1">Bonus tip: Make your award emblem a hyperlink to your digital spotlight profile to drive traffic and increase your SEO!</span></li>
+</ul>
+<li class="li2"><span class="s1">Include your spotlight reprints in client handouts, mailings or as leave-behinds at open houses</span></li>
+</ul>
+<p class="p2"><span class="s1">Ready to get started? <a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-03e9-1603/Bct/l-tst/l-tst:4/ct9_0/1?sid=ucgnVJeak"><span class="s2">Click here</span></a> to schedule an appointment to place your order!</span></p></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="t1"><tbody><tr><td valign="top" class="td1"><p class="p3"><span class="s4"><br></span></p><p class="p3"><span class="s4">{!Opportunity.OwnerFullName}</span></p><p class="p3"><span class="s4">Account Manager</span></p><p class="p3"><span class="s4">Five Star Professional</span></p><p class="p3"><span class="s4">{!Opportunity.OwnerPhone}</span></p><p class="p3"><span class="s4">{!Opportunity.OwnerEmail}</span></p><p class="p3"><span class="s4"><br></span></p>
+</td>
+</tr>
+</tbody>
+</table>]]></td>
+</tr>
+</table>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_Engine_Friend_Capture__c</fullName>
+    <externalId>false</externalId>
+    <formula>&quot;https://essentialengine.com/refer-services/?referral_id=&quot; &amp; SF_ID__c &amp; &quot;&amp;firstname=&quot; &amp; FirstName &amp; &quot;&amp;email=&quot; &amp; Email &amp; &quot;&amp;source=AM&quot;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Essential Engine Friend Capture</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

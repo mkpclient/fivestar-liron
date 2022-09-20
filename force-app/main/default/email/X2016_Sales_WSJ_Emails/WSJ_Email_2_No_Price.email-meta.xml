@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>WSJ Email 2 - Unique opportunity</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>WSJ Email 2 No Price</name>
+    <style>formalLetter</style>
+    <subject>Did you see me in the Wall Street Journal?</subject>
+    <textOnly>Hello {!Opportunity.ACDF_Fname__c},
+
+I have a unique opportunity that I think you might be interested in.
+
+ 
+Wealth Managers You Need to Know in The Wall Street Journal
+Each day, a coveted audience of thousands of leaders, influencers and investors turn to The Wall Street Journal for their news and financial information. 
+ 
+Appear regionally in a full-page feature within The Wall Street Journal as one of the Five Star Wealth Managers consumers need to know. This is a rare chance to reach a key group of prospects and differentiate yourself from other wealth managers in the area.
+ 
+Click here for more details: {!Opportunity.Market_Guidebook_No_Price__c}
+ 
+Space is limited for this special section. Don’t miss your chance to stand out and be recognized as a leading professional in the wealth management industry! To learn more about this exclusive opportunity, give me a call today.
+
+
+Thank you,
+
+{!Opportunity.OwnerFullName}
+Account Manager
+
+Five Star Professional
+{!Opportunity.OwnerPhone}
+{!Opportunity.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

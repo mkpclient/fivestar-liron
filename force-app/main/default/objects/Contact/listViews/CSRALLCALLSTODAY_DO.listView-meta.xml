@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSRALLCALLSTODAY_DO</fullName>
+    <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 10) AND 9</booleanFilter>
+    <columns>CSR_Status__c</columns>
+    <columns>CSR_Send_Proof__c</columns>
+    <columns>CSR_Next_Action_Date__c</columns>
+    <columns>CSR_Last_Contact_Date__c</columns>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>Web_Account_Url__c</columns>
+    <columns>Date_of_most_recent_login__c</columns>
+    <columns>Market_Project__c</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>Core_Opportunity_owner_full_name__c</columns>
+    <columns>CSR_Owner__c</columns>
+    <columns>Market_Upload_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CSR_Next_Action_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>CSR_Status__c</field>
+        <operation>equals</operation>
+        <value>New - No CS Appointment Scheduled on Sumo</value>
+    </filters>
+    <filters>
+        <field>CSR_Status__c</field>
+        <operation>contains</operation>
+        <value>Request</value>
+    </filters>
+    <filters>
+        <field>CSR_Status__c</field>
+        <operation>equals</operation>
+        <value>CS Appointment Incomplete - 3rd Request</value>
+    </filters>
+    <filters>
+        <field>CSR_Status__c</field>
+        <operation>equals</operation>
+        <value>CS Appointment Complete - Follow-Up Needed</value>
+    </filters>
+    <filters>
+        <field>CSR_Status__c</field>
+        <operation>equals</operation>
+        <value>CS Appointment Complete - Content Needed</value>
+    </filters>
+    <filters>
+        <field>CSR_Status__c</field>
+        <operation>equals</operation>
+        <value>CS Appointment Complete - Approval Needed</value>
+    </filters>
+    <filters>
+        <field>CSR_Status__c</field>
+        <operation>equals</operation>
+        <value>CS Appointment Complete - Urgent Response Needed</value>
+    </filters>
+    <filters>
+        <field>CSR_Owner__c</field>
+        <operation>contains</operation>
+        <value>David Ocar</value>
+    </filters>
+    <filters>
+        <field>CSR_Status__c</field>
+        <operation>equals</operation>
+        <value>CS appointment NOT scheduled</value>
+    </filters>
+    <label>__2. CSR: All Calls Due Today - DO</label>
+    <sharedTo>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

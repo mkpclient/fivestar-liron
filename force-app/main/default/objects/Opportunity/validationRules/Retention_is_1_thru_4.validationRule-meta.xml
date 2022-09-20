@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retention_is_1_thru_4</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(OR (ISNULL(  Retention_x__c ),(AND(  Retention_x__c  &lt;5,  Retention_x__c  &gt;0))))</errorConditionFormula>
+    <errorMessage>Retention must be a number 1-4</errorMessage>
+</ValidationRule>

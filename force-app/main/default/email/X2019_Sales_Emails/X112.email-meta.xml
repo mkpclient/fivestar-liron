@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Need CSR appointment to be scheduled for profile buyers</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>11: Order Follow Up PROFILES - Schedule an appointment</name>
+    <style>freeForm</style>
+    <subject>Need to Schedule Your Five Star Customer Service Rep Appointment</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+It’s been a pleasure working with you! Thank you for taking the time to determine the best ways to increase the impact of your Five Star award.
+
+Click here to schedule your Client Success Rep appointment: {!Contact.Profile_Plus_Link__c}
+
+Here&apos;s what you can look forward to next:
+
+Your Client Success Rep appointment: You will meet with your Client Success Rep to discuss the steps you need to take to submit materials, access your tools and ideas for how to use your tools.
+Invoice: You will receive an invoice for the items you purchased by the next business day following your order.
+
+The best part of my job is working with great people like you, and I’m excited to see the results of our efforts. As always, please feel free to contact me with any questions. Thank you for your time and partnership throughout the process!
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

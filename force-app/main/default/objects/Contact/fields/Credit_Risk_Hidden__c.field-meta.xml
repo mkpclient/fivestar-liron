@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credit_Risk_Hidden__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Hidden field used to trigger credit risk automation due to a conflict w/ validation rule on contact object preventing contact info from being visible if credit risk is checked</description>
+    <externalId>false</externalId>
+    <label>Credit Risk Hidden</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

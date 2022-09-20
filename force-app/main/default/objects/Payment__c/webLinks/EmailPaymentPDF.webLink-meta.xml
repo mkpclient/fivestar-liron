@@ -10,7 +10,24 @@
     <url>{!requireScript(&quot;/soap/ajax/52.0/connection.js&quot;)}
 {!requireScript(&quot;/soap/ajax/52.0/apex.js&quot;)}
 
-var qr = sforce.connection.query(&quot;SELECT id from EmailTemplate WHERE DeveloperName = &apos;Boom_Payment_VF_Template&apos;&quot;);
+var essentEngineRecord = sforce.connection.query(&quot;SELECT Allow_Essential_Engine_Emails__c from FivestarSetting__mdt where DeveloperName = &apos;Universal&apos; limit 1&quot;);
+
+records = essentEngineRecord.getArray(&quot;records&quot;);
+
+var allowEssEng = records[0].Allow_Essential_Engine_Emails__c;
+
+var tempName = &apos;Boom_Payment_VF_Template&apos;;
+
+if(allowEssEng) {
+
+var isEssEng = &apos;{!Payment__c.Pricebook_Business_Unit__c}&apos; == &apos;Essential Engine&apos;;
+
+if(isEssEng) {
+tempName = &apos;Essential_Payment_VF_Template&apos;;
+}
+}
+
+var qr = sforce.connection.query(&quot;SELECT id from EmailTemplate WHERE DeveloperName = &apos;&quot;+ tempName + &quot;&apos;&quot;);
 
 
 if ( qr.size &lt; 1 ) {

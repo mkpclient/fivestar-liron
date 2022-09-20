@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__NoNameAndLastNameProviders</fullName>
+    <active>true</active>
+    <description>A Contact can&apos;t have a null name and it&apos;s Last Name be &apos;Providers&apos;.</description>
+    <errorConditionFormula>(ISNULL( FirstName ) || FirstName = &apos;&apos;) &amp;&amp; (LastName = &apos;Providers&apos;)</errorConditionFormula>
+    <errorMessage>A Contact can&apos;t have a null name and it&apos;s Last Name be &apos;Providers&apos;.</errorMessage>
+</ValidationRule>

@@ -153,7 +153,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
@@ -165,7 +165,15 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Boom Payment Methods</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Billing_First_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Billing_Last_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Contact__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Card_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Last_4_Digits_of_Card__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Expiration_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Inactive__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

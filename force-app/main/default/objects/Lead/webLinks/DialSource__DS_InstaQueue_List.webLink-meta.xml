@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DialSource__DS_InstaQueue_List</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>DS InstaQueue List</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/40.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/40.0/apex.js&quot;)}
+var records = {!GETRECORDIDS($ObjectType.Lead)}; 
+var aid = &quot;{!JSENCODE($Organization.Id)}&quot;; 
+var uid = &quot;{!JSENCODE($User.Id)}&quot;; 
+var phoneField = &quot;Phone&quot;; 
+var list = records.join(); 
+var type = &quot;Lead&quot;; 
+var nameField = &quot;Name&quot;; 
+
+if (records[0] == null) { 
+alert(&quot;Please select at least one Account to submit.&quot;); 
+} 
+else{ 
+
+var result = sforce.apex.execute(&quot;DialSource.addToQueue&quot;,&quot;httpPOSTlist&quot;, 
+{phoneField : phoneField, nameField : nameField, recordIDs : list, objectType : type, uid : uid, aid : aid}); 
+window.alert(&apos;Records successfully queued&apos;); 
+} 
+
+if(result !=&quot;&quot;){ 
+alert(&quot;Records Not Added to Queue: \n&quot; + result); 
+}</url>
+</WebLink>

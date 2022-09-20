@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pardot_Campaign_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Pardot Campaign Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Core</fullName>
+                <default>false</default>
+                <label>Core</label>
+            </value>
+            <value>
+                <fullName>WSJ Showcase I</fullName>
+                <default>false</default>
+                <label>WSJ Showcase I</label>
+            </value>
+            <value>
+                <fullName>WSJ Showcase II</fullName>
+                <default>false</default>
+                <label>WSJ Showcase II</label>
+            </value>
+            <value>
+                <fullName>WiW WSJ Showcase I</fullName>
+                <default>false</default>
+                <label>WiW WSJ Showcase I</label>
+            </value>
+            <value>
+                <fullName>WiW WSJ Showcase II</fullName>
+                <default>false</default>
+                <label>WiW WSJ Showcase II</label>
+            </value>
+            <value>
+                <fullName>WiW MAG Showcase I</fullName>
+                <default>false</default>
+                <label>WiW MAG Showcase I</label>
+            </value>
+            <value>
+                <fullName>Forbes Investment Guide I</fullName>
+                <default>false</default>
+                <label>Forbes Investment Guide I</label>
+            </value>
+            <value>
+                <fullName>Forbes Investment Guide II</fullName>
+                <default>false</default>
+                <label>Forbes Investment Guide II</label>
+            </value>
+            <value>
+                <fullName>BFF Showcase</fullName>
+                <default>false</default>
+                <label>BFF Showcase</label>
+            </value>
+            <value>
+                <fullName>Digital Showcase I</fullName>
+                <default>false</default>
+                <label>Digital Showcase I</label>
+            </value>
+            <value>
+                <fullName>Digital Showcase II</fullName>
+                <default>false</default>
+                <label>Digital Showcase II</label>
+            </value>
+            <value>
+                <fullName>Alumni Showcase I</fullName>
+                <default>false</default>
+                <label>Alumni Showcase I</label>
+            </value>
+            <value>
+                <fullName>Alumni Showcase II</fullName>
+                <default>false</default>
+                <label>Alumni Showcase II</label>
+            </value>
+            <value>
+                <fullName>Relocation Guide I</fullName>
+                <default>false</default>
+                <label>Relocation Guide I</label>
+            </value>
+            <value>
+                <fullName>Relocation Guide II</fullName>
+                <default>false</default>
+                <label>Relocation Guide II</label>
+            </value>
+            <value>
+                <fullName>Airline Mag Showcase I</fullName>
+                <default>false</default>
+                <label>Airline Mag Showcase I</label>
+            </value>
+            <value>
+                <fullName>Other Alt Media I</fullName>
+                <default>false</default>
+                <label>Other Alt Media I</label>
+            </value>
+            <value>
+                <fullName>Other Alt Media II</fullName>
+                <default>false</default>
+                <label>Other Alt Media II</label>
+            </value>
+            <value>
+                <fullName>Post-market</fullName>
+                <default>false</default>
+                <label>Post-market</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Complaint_Order__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.Complaint_Order__c</formula>
+    <formula>Boom_Order__r.Complaint_Order__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Complaint Order</label>
     <trackHistory>false</trackHistory>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>TT: More Information RE.MP.HA</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>TT: More Information RE.MP.HA</name>
+    <style>none</style>
+    <subject>Follow Up : {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} Candidate Information</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Per our conversation, I am sending you this email with some more information about the {!Opportunity.Program_Name__c} award. Our company, Five Star Professional, is a research and award company partnered with {!Opportunity.Email_Templates_Magazine__c} to recognize professionals that provide outstanding service to their clients. We are the providers of the Five Star {!Opportunity.Email_Templates_Profession__c} Award, the largest and most widely published award program in the industry. We have been in business for over 10 years recognizing professionals in over 45 markets across the United States and in Canada.
+
+A short Youtube video of the process.
+
+A couple of notes about the magazine:
+- We have been partnered with {!Opportunity.Email_Templates_Magazine__c} for {!Opportunity.Yrs_with_Mag__c} years!
+- {!Opportunity.Email_Templates_Magazine__c} has about {!Opportunity.Magazine_Readership__c} readers.
+
+FAQ&apos;s:
+How was the research conducted?
+We reach out to recent home buyers in your area and ask them to complete a customer satisfaction survey based on a set of criteria for {!Opportunity.Profession_Type__c} that they have worked with. How we got your name, is at the time of the survey they give us the name of the professional they would like to be recognized.
+
+What&apos;s the next step?
+At this point we are still in the research phase. The reason I am reaching out to you is your clients had great things to say about you and scored you highly on the customer service criteria. To be considered for the award all candidates must complete a candidate form - candidates must satisfy minimum experience and production criteria. This information is kept internally and is used in the selection process. Once you have submitted your form you will be eligible to be selected.
+
+What&apos;s the cost?
+There is no obligation to make a purchase, to be considered or to be named a {!Opportunity.Email_Templates_Publication_Year__c} Five Star {!Opportunity.Email_Templates_Profession__c}. Award winners will be published on our website for one year..
+
+What&apos;s the catch?
+There is no catch. Our company offers a variety of tools that become available to award winners that are designed to create new opportunities by leveraging and marketing the award. By participating there is no obligation to purchase any of these products should you be named an award winner. Please note that purchase of these products has no bearing what-so-ever on whether someone wins the award or not.
+
+How can I complete my form?
+It will only take a few minutes to complete!
+Please click here to complete your candidate form.
+(The deadline for submission is 11:59 PM Eastern Time on {!Opportunity.ACDF_Deadline__c}.)
+
+When will I know if I was selected?
+Award winners are scheduled to be notified within 3 weeks after the deadline above.
+
+Who can answer my additional questions?
+I can! I am your research representative and my role is to address any questions/concerns and help you complete the candidate form so that you can be considered for the award. Feel free to email me or call me.
+Email: {!User.Email}
+Direct: {!User.Phone}
+
+We look forward to announcing this stand out group of professionals to the readers of {!Opportunity.Email_Templates_Magazine__c}! I hope to hear from you soon.
+
+Kind regards,
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

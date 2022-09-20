@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Research_Result_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Research Result Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Data Issue - No Longer With Company</fullName>
+                <default>false</default>
+                <label>Data Issue - No Longer With Company</label>
+            </value>
+            <value>
+                <fullName>Data Issue - Bad Contact Info</fullName>
+                <default>false</default>
+                <label>Data Issue - Bad Contact Info</label>
+            </value>
+            <value>
+                <fullName>Not Interested - DNC</fullName>
+                <default>false</default>
+                <label>Not Interested - DNC</label>
+            </value>
+            <value>
+                <fullName>Not Interested - DNE</fullName>
+                <default>false</default>
+                <label>Not Interested - DNE</label>
+            </value>
+            <value>
+                <fullName>Not Interested - This Year Only?</fullName>
+                <default>false</default>
+                <label>Not Interested - This Year Only?</label>
+            </value>
+            <value>
+                <fullName>Not Interested - Never</fullName>
+                <default>false</default>
+                <label>Not Interested - Never</label>
+            </value>
+            <value>
+                <fullName>TT - More Information</fullName>
+                <default>false</default>
+                <label>TT - More Information</label>
+            </value>
+            <value>
+                <fullName>TT - Generic Follow-up</fullName>
+                <default>false</default>
+                <label>TT - Generic Follow-up</label>
+            </value>
+            <value>
+                <fullName>TT - Brief</fullName>
+                <default>false</default>
+                <label>TT - Brief</label>
+            </value>
+            <value>
+                <fullName>Asst - More Information</fullName>
+                <default>false</default>
+                <label>Asst - More Information</label>
+            </value>
+            <value>
+                <fullName>Asst - Generic Follow-up</fullName>
+                <default>false</default>
+                <label>Asst - Generic Follow-up</label>
+            </value>
+            <value>
+                <fullName>Asst - Brief</fullName>
+                <default>false</default>
+                <label>Asst - Brief</label>
+            </value>
+            <value>
+                <fullName>Asst Send To Candidate</fullName>
+                <default>false</default>
+                <label>Asst Send To Candidate</label>
+            </value>
+            <value>
+                <fullName>Trouble With Form</fullName>
+                <default>false</default>
+                <label>Trouble With Form</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

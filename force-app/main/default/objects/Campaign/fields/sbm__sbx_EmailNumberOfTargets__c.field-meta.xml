@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailNumberOfTargets__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Summary field of the count of the campaign members in a Soapbox Mailer email campaign that have a status of &quot;Targeted&quot;.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The number of targeted recipients for this email campaign (the number of campaign members with the status of &quot;Targeted&quot;).</inlineHelpText>
+    <label># Targets</label>
+    <summaryFilterItems>
+        <field>CampaignMember.Status</field>
+        <operation>equals</operation>
+        <value>Targeted</value>
+    </summaryFilterItems>
+    <summaryForeignKey>CampaignMember.CampaignId</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Landing_Page__c</fullName>
+    <description>If the campaign takes the lead/contact to a landing page, link to it here</description>
+    <externalId>false</externalId>
+    <label>Landing Page</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

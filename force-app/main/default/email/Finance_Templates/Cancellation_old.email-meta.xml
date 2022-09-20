@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Cancellation_old</name>
+    <style>freeForm</style>
+    <subject>Five Star Cancellation Info</subject>
+    <textOnly>Dear {!kugo2p__SalesOrder__c.kugo2p__ContactBuying__c},
+
+
+We have a three day cancellation period.  Your order was placed on {!kugo2p__SalesOrder__c.kugo2p__OrderDate__c} and we are past the three days.  You were published in the {!kugo2p__SalesOrder__c.Publication_Month__c} issue of {!kugo2p__SalesOrder__c.Market_Publication__c} as a Five Star winner.
+
+
+We cannot cancel your order due to all the products that have been delivered or are in process at this time.  Your order was placed on a finance free twelve month payment plan per your request.  You have made * of the twelve payments.  You can pay the balance due of {!kugo2p__SalesOrder__c.kugo2p__BalanceDueAmount__c} at any time. To be clear, this is a payment plan on a product package that you purchased it is not a monthly subscription you can cancel at any time.
+
+
+I have attached a copy of your invoice and copied your Customer Success Representative and Account Manager in case you have questions for them about the products or use of them.
+
+
+There is a great value in using the award you won as part of your marketing plan.
+
+
+Thank you for your business and have a great day.
+
+
+Accounts Receivable
+
+Five Star Professional
+
+Phone: (888) 608-7161
+
+Email: billing@fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -38,8 +38,8 @@
     </filters>
     <filters>
         <field>Publish_Date__c</field>
-        <operation>greaterThan</operation>
-        <value>9/6/2021</value>
+        <operation>greaterOrEqual</operation>
+        <value>LAST_N_DAYS:45</value>
     </filters>
     <label>Testimonials to Post</label>
 </ListView>

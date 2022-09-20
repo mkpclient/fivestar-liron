@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sumoapp__RecurringEvent</fullName>
+    <active>true</active>
+    <label>Recurring Event</label>
+    <picklistValues>
+        <picklist>Activity_Type__c</picklist>
+        <values>
+            <fullName>Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>AdProd_Disposition__c</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ad_Prod_Status__c</picklist>
+        <values>
+            <fullName>Approved Ready to Fulfill</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed No Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collect Content</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collect Revisions Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Create Profile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Final Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Make Proof Edits</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Make Revisions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Profile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Change In Status</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>No New Proof</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Photo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profile Approved CLOSED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof Edit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof Submission</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Initial Proof</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Login</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Revised Proof</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>With Client</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Call_Disposition__c</picklist>
+        <values>
+            <fullName>Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conversation appt call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inbound -- Response to Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inbound -- Returned Recorded VM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inbound -- Returned VM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Left Auto VM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Left Message with Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Left Personal VM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Able to Connect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Too Busy - Reconnect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>General_Task_Picklist__c</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof Follow Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Task</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Interaction_Type__c</picklist>
+        <values>
+            <fullName>Callback With Voicemail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In-Office Discussion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Text Message</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Last_Call_Type__c</picklist>
+        <values>
+            <fullName>10th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2nd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3rd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Back</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow Up Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gold Sale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Silver Sale</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Next_Call_Goal__c</picklist>
+        <values>
+            <fullName>2nd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3rd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bronze</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Back</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow Up Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Platinum</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Silver</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Research_Call_Result__c</picklist>
+        <values>
+            <fullName>Appointment Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment LVM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Try Again</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Callback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Left VM %28Cell%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Left VM %28Office%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Left message w%2Fassistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miami Final Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miami LVM WM FS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miami VM Follow-Up More Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NA %3A Explain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TAMPA Generic Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT %3A Busy ATM%2C CB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT %3A Busy%2C sent EM for follow up call%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT %3A Completed over phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT %3A Explained prog%2E Think will complete%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT %3A Hung up%2FTry again</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT %3A Not interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT %3A Said would complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tampa Final Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tampa VM Follow-UP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trouble with Form</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Research_Call_Type__c</picklist>
+        <values>
+            <fullName>2nd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3rd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment LVM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment No Interest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Try Again</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Back</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow Up Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Market</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subject</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Letter%2FQuote</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>dialforce__RD_Disposition__c</picklist>
+        <values>
+            <fullName>Alt Media LM W%2F Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alt Media LVM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alt Media Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alt Media Too Busy Reconnect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Left Message with Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Left VM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Scheduled Appointment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Try Again Later</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP Data Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP LVM 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP LVM 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP LVM 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP LVM 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP LVM Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP LVM No Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP No Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP Set Callback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP Trouble With Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA Data Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA LVM 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA LVM 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA LVM 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA LVM 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA LVM Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA LVM No Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA No Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA Set Callback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HA Trouble With Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP Data Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP LVM 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP LVM 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP LVM 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP LVM 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP LVM Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP LVM No Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP No Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP Set Callback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MP Trouble With Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miami Final Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miami LVM WM FS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miami VM Follow-Up More Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business Connected Call Back</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business DNC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business Dead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business Did not Connect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business LVM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE Data Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE LVM 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE LVM 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE LVM 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE LVM 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE LVM Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE LVM No Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE No Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE Set Callback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE Trouble With Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recycle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TAMPA LVM WM FS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tampa Final Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tampa VM Follow-UP More Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM Data Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM LVM 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM LVM 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM LVM 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM LVM 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM LVM Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM LVM No Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM No Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM Set Callback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM Trouble With Form</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>forcebrain__Email_Reminder__c</picklist>
+        <values>
+            <fullName>1 Day Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Send Reminder</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>forcebrain__Phone_Reminder__c</picklist>
+        <values>
+            <fullName>1 Day Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Send Reminder</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>forcebrain__Second_Text_Reminder__c</picklist>
+        <values>
+            <fullName>1 Day Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Send Reminder</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>forcebrain__Text_Reminder__c</picklist>
+        <values>
+            <fullName>1 Day Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7 Days Prior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Send Reminder</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>rcsfl__hvs_disposition__c</picklist>
+        <values>
+            <fullName>Call Back Later</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Left Voicemail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meaningful Connect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unqualified</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

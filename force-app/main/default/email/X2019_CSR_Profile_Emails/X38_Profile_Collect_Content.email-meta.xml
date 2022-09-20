@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Profile collect content</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>08: Profile Collect Content</name>
+    <style>freeForm</style>
+    <subject>We need you to submit your profile content!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+We need you to log in to your Five Star account and submit content for your magazine profile. It is important that you log in at your earliest convenience so we can put together your 1st profile proof and keep you on track for approving your profile in time for our print deadline.
+
+The deadline to submit your materials is &lt;MATERIALS DEADLINE - ROUND 1&gt;.
+
+Your final approval of your profile is needed by &lt;CLIENT APPROVAL DEADLINE&gt;.
+
+(Please note that any revisions to your profile will require production time. It is important to provide materials at your earliest convenience to ensure we can complete the profile by the print deadline)
+
+You can access your Five Star account at www.fivestarprofessional.com/login. Here is your login information:
+
+Username: {!Fulfillment__c.Web_Username__c}
+
+Passcode: {!Fulfillment__c.Login_Code__c}
+
+If you have any questions, please don&apos;t hesitate to contact me directly.
+
+Thank you,
+
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

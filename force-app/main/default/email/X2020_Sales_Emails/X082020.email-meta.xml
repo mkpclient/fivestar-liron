@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Ran out of time to review Mktg/Recommendation Slides</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>08: Post Certification Follow Up - Ran out of time</name>
+    <style>freeForm</style>
+    <subject>Leveraging Your Five Star Award -- Follow Up Appointment</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+It was great speaking with you! Congratulations, again, on being named a Five Star award winner!
+
+I would love to talk to you more about your marketing strategy and how the Five Star award can fit into that plan.
+
+Many of my clients have found that our marketing packages significantly augment their client retention and referral efforts, and in particular help them improve the strength of their client presentations, helping them win more new prospective clients.
+
+Please call me at {!User.Phone} or if you prefer click here to set an appointment with me to finalize your plan for the year. Normally, the best times for follow up appointments for me are noon to 2pm central time, but please select any time that works for you. If you are unable to find a spot in my schedule, email with some suggested times that work for you.
+
+
+I look forward to speaking with you again!
+
+Thank you,
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

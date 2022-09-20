@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>TaxSalesRate__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( TaxableSale__c, IF(OR(SalesOrder__r.Account__r.ShippingState = &quot;Minnesota&quot;, SalesOrder__r.Account__r.ShippingState = &quot;MN&quot;), $CustomMetadata.Sales_Tax__mdt.Default_MN.Rate__c / 100,0), 0)</formula>
+    <formula>IF( TaxableSale__c,  IF( ISBLANK( State_Tax_Rate__c ), 0,   State_Tax_Rate__c), 0)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Tax Sales Rate</label>
     <precision>18</precision>

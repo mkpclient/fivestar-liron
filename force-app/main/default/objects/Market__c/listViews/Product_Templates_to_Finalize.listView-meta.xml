@@ -27,7 +27,8 @@
         <field>Winners_in_Market__c</field>
         <operation>notEqual</operation>
     </filters>
-    <label>__1. MONDAY Product Templates toFinalize</label>
+    <label>__1. MONDAY Templates to Finalize</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Fulfillment_Team</group>

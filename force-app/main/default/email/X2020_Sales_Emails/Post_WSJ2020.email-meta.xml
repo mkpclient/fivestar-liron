@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Follow-up email for WSJ offer</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Post: WSJ follow-up</name>
+    <style>freeForm</style>
+    <subject>Participating in Wall Street Journal or Fortune Magazine?</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Just following up on my call to you just now! We have an exclusive opportunity for you to appear in one of the most respected media brands in the nation – Wall Street Journal and/or Fortune Magazine!  This section is selective, as it will only highlight the award-winning wealth managers in the {!Contact.Core_Market_city__c} area.
+
+If you would like to review our options available, please Click Here.
+
+It may be easier to schedule a specific time to connect. Please copy and paste this link into your web browser: {!Contact.AM_Follow_Up_Link__c} to schedule a 15 minute follow up appointment on my calendar.
+
+Or, please give me a call back to discuss as soon as possible!
+
+Looking forward to speaking with you.
+
+Best wishes,
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

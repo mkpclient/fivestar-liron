@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Follow up to final call/vm</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>02: Schedule Certification Appointment</name>
+    <style>freeForm</style>
+    <subject>Incomplete Five Star Award Status - Final Communication</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+This is my last attempt to contact you. Our deadline is fast approaching, and if you would like to be considered for the Five Star award this year, you must complete the certification appointment. Please use the tool below to schedule a 30-minute meeting:
+
+
+*If you are unable to click the button above, please Click Here
+
+This additional certification step has been added for the following reasons:
+
+To make sure candidates verify their regulatory/customer complaint history (from the time they provided their initial candidate information until now).
+To ensure candidates/winners understand the award process and criteria - we have found that there are winners who are unsure why they were selected and then misrepresent the award.
+To review research changes including more stringent criteria and how this has resulted in fewer winners.
+To review award usage guidelines to make sure that winners do not misstate or misuse the award, and by doing so damage the overall credibility of the Five Star award/brand.
+
+I expect that you have worked very hard to develop your reputation and protect your personal brand. The certification process (requiring only 30 minutes of your time) is one additional step we have implemented to make sure that the Five Star brand is protected and properly represented.
+
+I hope this provides you a better understanding of the certification process and I hope to hear back from you soon about completing your certification appointment.
+
+If you have any questions, please contact me at any time.
+
+Thank you,
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

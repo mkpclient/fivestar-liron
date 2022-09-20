@@ -40,9 +40,27 @@ public without sharing class LWC {
       upsert record;
       return record;
     } catch (Exception e) {
+      System.debug(e.getMessage());
       throw new AuraHandledException(e.getMessage());
     }
   }
+
+  @AuraEnabled
+  public static Boolean unlockRecord(String recordId) {
+    if(Approval.isLocked(recordId)) {
+      Approval.unlock(recordId);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @AuraEnabled
+  public static void lockRecord(String recordId){
+    Approval.lock(recordId);
+  }
+  
+
 
   @AuraEnabled
   public static List<SObject> saveMultipleRecords(List<SObject> records){

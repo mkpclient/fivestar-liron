@@ -1,0 +1,27 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<font face="Arial, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font size="3" style="color: rgb(0, 0, 0);">Hello&nbsp;</font>{!Opportunity.Email_Templates_Informalname__c},</font><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif"><br></font></div><div><font face="Arial, sans-serif"><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Don't miss your
+opportunity to be considered for the&nbsp;</span><font face="arial" size="3">{!Opportunity.Email_Templates_Publication_Year__c}</font><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;Five Star</span><font face="arial" size="3">&nbsp;{!Opportunity.Email_Templates_Profession__c}&nbsp;Award.&nbsp;An exclusive
+group of&nbsp;{!Opportunity.Email_Templates_Profession__c}&nbsp;will receive the&nbsp;{!Opportunity.Email_Templates_Publication_Year__c} award and be featured&nbsp;in
+the</font><font size="3" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;</font>{!Opportunity.Email_Templates_Month__c}<font face="arial" size="3">&nbsp;issue of&nbsp;</font><i style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">{!Opportunity.Email_Templates_Magazine__c}</i><em style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;</em><font face="arial" size="3">and on </font><a href="http://www.fivestarprofessional.com" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">www.fivestarprofessional.com</a><font face="arial" size="3">.</font><strong style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;There is no cost to be
+considered or published as an award winner.</strong></font></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif"><br></font></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><p><font face="Arial, sans-serif"><strong style="color: rgb(0, 0, 0);">Eligible
+professionals</strong>:<strong style="color: rgb(0, 0, 0);">&nbsp;&nbsp;</strong>Client-facing
+SEC and/or State registered investment advisory representatives and registered
+investment advisors are eligible.<br>
+<br>
+<strong style="color: rgb(0, 0, 0);">Action required</strong>:
+To be considered for the award, you must provide additional information about
+you and your practice by the <strong style="color: rgb(0, 0, 0);">submission
+deadline of&nbsp;</strong><b>{!Opportunity.CloseDate}</b>. &nbsp;Complete the secure online
+form in minutes by going to:<strong style="color: rgb(0, 0, 0);">&nbsp;</strong></font></p></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif"><br></font></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><p style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><a href="{!Opportunity.Research_Form_URL__c}">{!Opportunity.Research_Form_URL__c}</a></font></p><p style="color: rgb(0, 0, 0);"><strong><font face="Arial, sans-serif"><br></font></strong></p><p style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><strong>Evaluation process:</strong>&nbsp;Award candidates will be evaluated on 10 criteria aligned with providing
+quality service to clients<em><b>.
+&nbsp;</b></em>Only those who differentiate themselves based on the
+criteria will be named a&nbsp;{!Opportunity.Email_Templates_Publication_Year__c}&nbsp;Five Star&nbsp;{!Opportunity.Email_Templates_Profession__c}.&nbsp; (Criteria includes
+client retention rates, industry designations, consumer complaint history
+review, assets under management, etc.)<br>
+<br>
+Award winners are scheduled to be notified within three weeks of the deadline.
+Thank you and have a nice day.</font></p><p><br></p><p><b><u>Other resources you may find helpful</u></b></p><p><br></p><p><a href="http://www.fivestarprofessional.com/{!Opportunity.00Nd0000007C2XC}SummaryandResearch14.pdf">Research Methodology (details)</a></p></div>]]></td>
+</tr>
+</table>

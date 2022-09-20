@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Need client to submit information for FML reprints</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Fortune Reprints Expanded - Action Needed</name>
+    <style>freeForm</style>
+    <subject>We need some information for your Fortune Market Leader products!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+We need you to submit some information for your Fortune Listing Reprint - Expanded.
+
+You can access your content form here (copy and paste URL into your browser):
+
+http://fivestar.9b5d24a3ccf0.sgizmo.com/s3/?FID={!Fulfillment__c.Full_ID__c}
+
+We will not be able to get started on your Fortune Listing Reprints without this information. If you have any questions, please don&apos;t hesitate to contact me directly.
+
+You can also schedule an appointment with me using the scheduling link below: {!Fulfillment__c.CSR_Sumo_Link__c}
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

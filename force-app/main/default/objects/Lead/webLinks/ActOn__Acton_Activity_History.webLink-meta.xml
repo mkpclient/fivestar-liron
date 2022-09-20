@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ActOn__Acton_Activity_History</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>sControl</linkType>
+    <masterLabel>Act-On Activity History</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <scontrol>ActOn__ActonActivityHistory</scontrol>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <width>900</width>
+</WebLink>

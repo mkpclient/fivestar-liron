@@ -157,7 +157,7 @@
     <label>Boom Order</label>
     <nameField>
         <displayFormat>SO{YYMMDD}-{0000000}</displayFormat>
-        <label>Sales Order Name</label>
+        <label>Boom Order Number</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>

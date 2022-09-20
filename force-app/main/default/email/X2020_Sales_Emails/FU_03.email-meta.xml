@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent after missed F/U Appt.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>09: F/U 03: Follow Up to My Call</name>
+    <style>freeForm</style>
+    <subject>Follow Up to my Call</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+I am checking in as it has been a little while since we last spoke. Please let me know when we can connect to finalize the tools you&apos;d like to use this year to drive referral activity and make an impact on client acquisition.
+
+The Package you were considering can be found here: (AM Insert Proposal Link)
+
+Please let me know of a better time to connect with you so I can ensure you are well taken care of.
+
+Thank you,
+
+{!User.Name}
+Account Manager
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

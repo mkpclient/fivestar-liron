@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>test_sales_xfer_field__c</fullName>
+    <description>Not visible to anyone, used by flow to transfer information from stage picklist to actual stage field on sales opps</description>
+    <externalId>false</externalId>
+    <label>test sales xfer field</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Must Select</fullName>
+                <default>false</default>
+                <label>Must Select</label>
+            </value>
+            <value>
+                <fullName>Pre-Winner</fullName>
+                <default>false</default>
+                <label>Pre-Winner</label>
+            </value>
+            <value>
+                <fullName>Cert Appt Scheduled</fullName>
+                <default>false</default>
+                <label>Cert Appt Scheduled</label>
+            </value>
+            <value>
+                <fullName>Follow Up - Appointment Scheduled</fullName>
+                <default>false</default>
+                <label>Follow Up - Appointment Scheduled</label>
+            </value>
+            <value>
+                <fullName>Follow Up - Group</fullName>
+                <default>false</default>
+                <label>Follow Up - Group</label>
+            </value>
+            <value>
+                <fullName>Follow Up - Low Interest</fullName>
+                <default>false</default>
+                <label>Follow Up - Low Interest</label>
+            </value>
+            <value>
+                <fullName>Purchased</fullName>
+                <default>false</default>
+                <label>Purchased</label>
+            </value>
+            <value>
+                <fullName>Purchased - Follow up needed</fullName>
+                <default>false</default>
+                <label>Purchased - Follow up needed</label>
+            </value>
+            <value>
+                <fullName>NON PURCHASER - No Response</fullName>
+                <default>false</default>
+                <label>NON PURCHASER - No Response</label>
+            </value>
+            <value>
+                <fullName>NON PURCHASER - Not Interested</fullName>
+                <default>false</default>
+                <label>NON PURCHASER - Not Interested</label>
+            </value>
+            <value>
+                <fullName>Dead -- Cert Appt Target Calls Made</fullName>
+                <default>false</default>
+                <label>Dead -- Cert Appt Target Calls Made</label>
+            </value>
+            <value>
+                <fullName>Dead - Connected but did not agree to Cert</fullName>
+                <default>false</default>
+                <label>Dead - Connected but did not agree to Cert</label>
+            </value>
+            <value>
+                <fullName>Dead -- Failed Certification</fullName>
+                <default>false</default>
+                <label>Dead -- Failed Certification</label>
+            </value>
+            <value>
+                <fullName>Open/Needs Attention</fullName>
+                <default>false</default>
+                <label>Open/Needs Attention</label>
+            </value>
+            <value>
+                <fullName>Recommended For Removal</fullName>
+                <default>false</default>
+                <label>Recommended For Removal</label>
+            </value>
+            <value>
+                <fullName>Alive</fullName>
+                <default>false</default>
+                <label>Alive</label>
+            </value>
+            <value>
+                <fullName>Alive A</fullName>
+                <default>false</default>
+                <label>Alive A</label>
+            </value>
+            <value>
+                <fullName>Alive B</fullName>
+                <default>false</default>
+                <label>Alive B</label>
+            </value>
+            <value>
+                <fullName>Alive C</fullName>
+                <default>false</default>
+                <label>Alive C</label>
+            </value>
+            <value>
+                <fullName>Alive D</fullName>
+                <default>false</default>
+                <label>Alive D</label>
+            </value>
+            <value>
+                <fullName>Alt Alive</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Alt Alive</label>
+            </value>
+            <value>
+                <fullName>Appointment Follow Up</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Appointment Follow Up</label>
+            </value>
+            <value>
+                <fullName>Bad Contact Info</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bad Contact Info</label>
+            </value>
+            <value>
+                <fullName>Bronze</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bronze</label>
+            </value>
+            <value>
+                <fullName>Compliance Concerns</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Compliance Concerns</label>
+            </value>
+            <value>
+                <fullName>Dead</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead</label>
+            </value>
+            <value>
+                <fullName>Dead - Compliance Doesn&apos;t Allow</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Compliance Doesn&apos;t Allow</label>
+            </value>
+            <value>
+                <fullName>Dead - Deceased</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Deceased</label>
+            </value>
+            <value>
+                <fullName>Dead - Market Closed</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Market Closed</label>
+            </value>
+            <value>
+                <fullName>Dead - Not Interested</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Not Interested</label>
+            </value>
+            <value>
+                <fullName>Dead - Out of Area</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Out of Area</label>
+            </value>
+            <value>
+                <fullName>Dead - Remove Permanently</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Remove Permanently</label>
+            </value>
+            <value>
+                <fullName>Dead - Retired</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Retired</label>
+            </value>
+            <value>
+                <fullName>Dead - Target Calls Made</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Target Calls Made</label>
+            </value>
+            <value>
+                <fullName>Dead - Timing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead - Timing</label>
+            </value>
+            <value>
+                <fullName>Dead -- Cert Winner No response to follow up calls</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dead -- Cert Winner No response to follow up calls</label>
+            </value>
+            <value>
+                <fullName>Did not Connect</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Did not Connect</label>
+            </value>
+            <value>
+                <fullName>Explore</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Explore</label>
+            </value>
+            <value>
+                <fullName>Follow Up - No Scheduled Appointment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Follow Up - No Scheduled Appointment</label>
+            </value>
+            <value>
+                <fullName>Gold</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gold</label>
+            </value>
+            <value>
+                <fullName>Meaningful Connect but Interest Unqualified</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Meaningful Connect but Interest Unqualified</label>
+            </value>
+            <value>
+                <fullName>No Appointment Follow Up</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No Appointment Follow Up</label>
+            </value>
+            <value>
+                <fullName>No Change</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No Change</label>
+            </value>
+            <value>
+                <fullName>No Planned Follow up (Low interest)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No Planned Follow up (Low interest)</label>
+            </value>
+            <value>
+                <fullName>Not Interested</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not Interested</label>
+            </value>
+            <value>
+                <fullName>Parked</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Parked</label>
+            </value>
+            <value>
+                <fullName>Platinum</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Platinum</label>
+            </value>
+            <value>
+                <fullName>Post-Host Alive</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Post-Host Alive</label>
+            </value>
+            <value>
+                <fullName>Post-Host Closed</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Post-Host Closed</label>
+            </value>
+            <value>
+                <fullName>Present</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Present</label>
+            </value>
+            <value>
+                <fullName>Proposal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Proposal</label>
+            </value>
+            <value>
+                <fullName>Qualified - Tin</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Qualified - Tin</label>
+            </value>
+            <value>
+                <fullName>Silver</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Silver</label>
+            </value>
+            <value>
+                <fullName>Waiting</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waiting</label>
+            </value>
+            <value>
+                <fullName>Waiting – Not Primary Decision Maker</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waiting – Not Primary Decision Maker</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

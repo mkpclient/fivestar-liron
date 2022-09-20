@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>kugo2p__GenerateOrder</customButtons>
-    <customButtons>Send_Emails</customButtons>
     <customButtons>Generate_Sales_Order</customButtons>
+    <customButtons>Send_Emails</customButtons>
+    <customButtons>New_Appointment</customButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -325,6 +325,30 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Roadmap_to_Success_URL__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Do_Not_Reassign__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Referred_By_ID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Market_Go_Live__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Never_Winner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Non_Winner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>New_Winner_Fortune_Listing__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -772,6 +796,21 @@
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>OrderDate__c</fields>
+        <fields>Release_Date__c</fields>
+        <fields>NAME</fields>
+        <fields>ContactBuying__c</fields>
+        <fields>TotalAmount__c</fields>
+        <fields>NetAmount__c</fields>
+        <fields>CompletedPayments__c</fields>
+        <fields>BalanceDueAmount__c</fields>
+        <fields>Status_Picklist__c</fields>
+        <fields>Subscription__c</fields>
+        <relatedList>SalesOrder__c.Opportunity__c</relatedList>
+        <sortField>OrderDate__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
         <fields>kugo2p__OrderName__c</fields>
         <fields>kugo2p__Account__c</fields>
@@ -782,10 +821,6 @@
         <fields>kugo2p__RecordStatus__c</fields>
         <fields>kugo2p__PaymentStatus2__c</fields>
         <relatedList>kugo2p__SalesOrder__c.kugo2p__Opportunity__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Order_Form__c.Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -801,6 +836,7 @@
         <relatedList>Marketing_Service__c.Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>forcebrain__EventType__c</fields>
         <fields>forcebrain__RecurrenceEvent__c</fields>

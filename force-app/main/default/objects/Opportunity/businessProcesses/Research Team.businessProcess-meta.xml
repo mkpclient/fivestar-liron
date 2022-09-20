@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Research Team</fullName>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Alive</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Central Contact</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed %E2%80%93 Do not find value in award%2Fpublication</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed %E2%80%93 Not licensed with SEC%2FState%2FNo Assets</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Bad past experience with Five S</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Compliance%2FFirm issues with pro</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Deceased</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Do not call</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Hung up</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Not Interested this year</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Out of Area</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Retiring %28no longer practicing%29</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Will not win based on Criteria</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Wrong %23</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Completed Form</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Not Ready</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Open</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

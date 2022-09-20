@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cert_Deck_Url__c</fullName>
+    <description>Url for this Opportunities Cert Deck. This is a formula field and does not mean the Cert Deck exists in the webapp for this Opportunity.</description>
+    <externalId>false</externalId>
+    <formula>&quot;https://www.fivestarprofessional.com/ago/&quot;&amp;casesafeid(Id)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Url for this Opportunities Cert Deck. This is a formula field and does not mean the Cert Deck exists in the webapp for this Opportunity.</inlineHelpText>
+    <label>Cert Deck Url</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

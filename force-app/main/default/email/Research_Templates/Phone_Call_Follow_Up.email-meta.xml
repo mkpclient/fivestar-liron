@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Brief All Professions</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Phone Call Follow Up -Brief</name>
+    <style>none</style>
+    <subject>Phone Call Follow Up - Five Star Award Candidate Information</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Regarding our conversation earlier today. I wanted to provide you with the link to your candidate evaluation form. You are a candidate for the {!Market__c.Publication_Year__c} {!Market__c.Program_Name__c} award for {!Opportunity.Email_Templates_Magazine__c}.
+
+You can access your secure, online link below, to complete your candidate evaluation form. All candidates must complete the evaluation form to be considered for the {!Market__c.Publication_Year__c} award. The form only takes a few minutes to complete. If you would like to complete your information over the phone, you can contact me at, {!Opportunity.OwnerPhone}.
+
+2015 Award Candidate Evaluation Form - Click Here to Complete
+The deadline to submit is end of day,  {!Market__c.ACDF_Deadline__c}
+
+Award winners are scheduled to be notified within 4-6 week of the deadline, If you have any questions please feel free to give me a call or send me an email.
+
+Kind Regards,
+
+{!User.Name}
+Research Assistant
+
+Five Star Professional
+2900 Lone Oak Parkway Suite 120
+Eagan, MN 55121
+Direct: {!User.Phone} I Main: 1-888-438-5782 I Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,5 @@
+Hello,
+
+This message is to inform you that the team order you recently submitted for approval has been processed, please view it here:
+
+https://na52.salesforce.com/{!kugo2p__SalesOrder__c.Id}

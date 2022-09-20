@@ -121,7 +121,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 	</head>
 
-	<apex:composition template="SiteTemplate">
+	<apex:composition template="{!if(salesOrder.Price_Book__r.Business_Unit__c == 'Essential Engine' && allowEssentialEmails == true, 'EssentialEngineSiteTemplate', 'SiteTemplate')}">
 		<apex:define name="body">
 			<div id="body">
 				<div class="pageMessage">
@@ -130,7 +130,12 @@
 					</apex:outputPanel>
 				</div>
 				<apex:outputPanel id="onlineOrderOP">
-					<c:SalesOrderPDF recId="{!salesOrder.Id}" isOnlineOrder="true" id="onlineOrderCompId" />
+					<apex:outputPanel rendered="{!salesOrder.Price_Book__r.Business_Unit__c == 'Essential Engine' && allowEssentialEmails == true}">
+						<c:EssentialEngineInvoicePdf recId="{!salesOrder.Id}" />
+					</apex:outputPanel>
+					<apex:outputPanel rendered="{!salesOrder.Price_Book__r.Business_Unit__c != 'Essential Engine' || allowEssentialEmails == false}">
+						<c:SalesOrderPDF recId="{!salesOrder.Id}" isOnlineOrder="true" id="onlineOrderCompId" />
+					</apex:outputPanel>
 					<br/>
 					<apex:form rendered="{!and(salesOrder.PaymentStatus2__c != 'Paid', TermsAcceptedBy != '')}" id="onlineOrderformId">
 						<apex:outputPanel rendered="{!salesOrder.PaymentStatus2__c != 'Paid'}">

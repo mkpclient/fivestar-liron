@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MSPWM19POSTHOST</fullName>
+    <columns>Logged_Calls__c</columns>
+    <columns>Percent_Chance__c</columns>
+    <columns>Estimated_Purchase__c</columns>
+    <columns>Winner__c</columns>
+    <columns>Client_Type__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>phone__c</columns>
+    <columns>ACDF_Branch_Office__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Next_call_date__c</columns>
+    <columns>Last_Call_Date__c</columns>
+    <columns>Open_Call_Comments__c</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Pardot_Lead_Score__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>equals</operation>
+        <value>MSPWM19: Post-Host,MSPIP19: Post-Host</value>
+    </filters>
+    <label>MSPWM-IP 2019 Post-Host</label>
+    <sharedTo>
+        <group>SAMS</group>
+    </sharedTo>
+</ListView>

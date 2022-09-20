@@ -162,6 +162,7 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Sales Order Product Lines</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <searchLayouts>
         <lookupDialogsAdditionalFields>LineDescription__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>KitBundle__c</lookupDialogsAdditionalFields>

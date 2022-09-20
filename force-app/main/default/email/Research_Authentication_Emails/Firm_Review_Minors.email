@@ -1,0 +1,24 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="margin-left: 0.5in;"><font face="Arial, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Hello&nbsp;</font><font face="Arial, sans-serif">{!Firm_Approval__c.Compliance_First_name__c}</font><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 12pt;">,</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 0.5in;"><font face="Arial, sans-serif">The research process for the Five Star Professional Wealth Manager
+award is nearly complete in {!Firm_Approval__c.Publication_Market__c}&nbsp;markets; all of which are {!Firm_Approval__c.Publication_Month__c}{!Firm_Approval__c.Publication_Year__c} regional publications.<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 0.5in;"><o:p><font face="Arial, sans-serif">&nbsp;</font></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 0.5in;"><font face="Arial, sans-serif">Attached is a list of advisors for your firm’s review. These potential award recipients have completed the
+candidate application process for&nbsp;</font><span style="font-family: Arial, sans-serif;">{!Firm_Approval__c.Publication_Market__c}</span><span style="font-family: Arial, sans-serif;">{!Firm_Approval__c.Publication_Year__c}</span><span style="font-family: Arial, sans-serif; font-size: 12pt;">&nbsp;and, having
+met the award criteria, will be named Five&nbsp;Star
+Wealth Manager award winners pending your review.</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 0.5in;"><o:p><font face="Arial, sans-serif">&nbsp;</font></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 0.5in;"><font face="Arial, sans-serif">Please let us know by&nbsp;{!Firm_Approval__c.Approval_Deadline__c} if there are any advisors on the list who, based on your requirements, should not be named Five Star Wealth Managers for&nbsp;</font><span style="font-family: Arial, sans-serif; font-size: 12pt;">{!Firm_Approval__c.Publication_Year__c}</span><span style="font-family: Arial, sans-serif; font-size: 12pt;">. Your review is optional and no action is required. All of these advisors will receive the award if you do not respond by&nbsp;</span><span style="font-size: 12pt; font-family: Arial, sans-serif;">{!Firm_Approval__c.Approval_Deadline__c}.</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 0.5in;"><o:p><font face="Arial, sans-serif">&nbsp;</font></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin-left: 0.5in;"><font face="Arial, sans-serif">Thank you for your assistance.&nbsp;</font><font face="arial" style="color: rgb(0, 0, 0); font-size: 12pt;"><o:p></o:p></font></p>]]></td>
+</tr>
+</table>

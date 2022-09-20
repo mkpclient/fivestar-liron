@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Image Builder Package</name>
+    <style>freeForm</style>
+    <subject>Five Star Professional&apos;s Image Builder Package</subject>
+    <textOnly>RESEARCH | AWARD GUIDE | FIVESTARPROFESSIONAL.COM
+
+
+
+Hello, {!Contact.ACDF_FName__c}!
+
+
+
+
+It was great speaking with you today! To follow-up on our conversation, I would like to offer you our Image Builder Package which includes:
+
+Full-page profile
+Award emblem
+100 two-page reprints of your magazine profile appearance
+Digital spotlight profile (Click here to see a sample!)
+
+The list price for this package is over $XXXX, but I can offer it to you for 15% off!
+
+
+
+
+
+As we&apos;ve discussed, this package gives you the biggest impact in print, digitally and in your own network.
+
+The full-page profile gives you fantastic exposure in {!Opportunity.Email_Templates_Magazine__c} and boosts your brand by associating your business with both the Five Star award and your local media.
+Use the award emblem digitally and in print as a mark of differentiation.
+Reprints are the no. 1 way to make your appearance in the magazine work for you. Include them in client handouts, direct-mail pieces, or at open houses.
+Use the digital spotlight to improve your SEO and expand your digital footprint. Share it on your social media accounts to direct clients, prospects and referral partners to learn more about you.
+
+Ready to get started? Click here to schedule an appointment to place your order.
+
+
+
+
+{!Opportunity.OwnerFullName}
+
+Account Manager
+
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+
+{!Opportunity.OwnerEmail}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Final Notice</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Updated Final Notice</name>
+    <style>freeForm</style>
+    <subject>{!kugo2p__SalesOrder__c.Name} - {!kugo2p__SalesOrder__c.kugo2p__ContactBilling__c} ** Collection Notice **</subject>
+    <textOnly>Dear {!kugo2p__SalesOrder__c.kugo2p__ContactBilling__c},
+
+We do value your business, but are concerned that your past due balance of {!kugo2p__SalesOrder__c.kugo2p__BalanceDueAmount__c} on {!kugo2p__SalesOrder__c.Name} has not been paid.  Your account is now more than 90 days overdue.
+
+
+This account will be marked for collection if it is not resolved by &lt;date&gt;. You may send a check to Five Star Professional 2900 Lone Oak Parkway Ste 120 Eagan MN 55121 or call us directly at 651-259-1969 to arrange a credit card payment.
+
+
+Please note that your account will be referred to our law firm and they will make collections on our behalf.  Our law firm representative is:
+
+
+Moret Law Office
+
+5430 E. Beverly Boulevard
+
+Suite 250
+
+Los Angeles, CA 90022
+
+
+We regret that we find it necessary to proceed in this manner.  We have already exhausted multiple efforts to resolve your account.
+
+
+Regards,
+
+
+Accounts Receivable
+
+Five Star Professional
+
+2900 Lone Oak Parkway, Ste. 120
+
+Eagan, MN 55121
+
+Phone: (888)608-7161 | Email: billing@fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

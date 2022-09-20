@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Free Announcement Service for Ns</name>
+    <style>freeForm</style>
+    <subject>A free gift for you to welcome you to the club!</subject>
+    <textOnly>RESEARCH | AWARD GUIDE | FIVESTARPROFESSIONAL.COM
+
+
+
+Hello, {!Contact.ACDF_FName__c}!
+
+
+
+
+
+I’ve got some exciting news to share with you about your Five Star award! For a limited time, I’m able to offer my first-year winners a special Welcome Package I’ve put together to optimize your social media buzz around the award. The service normally sells for $129, but I want to welcome you as a Five Star winner by giving it to you free of charge.
+
+Below are a few details about the service:
+
+Our announcement service is a convenient email and social media tool with a handy feedback loop for getting the word out on your business and achievements. It’s also a tool to help generate testimonials and referrals.
+Benefit from a third-party announcement of your award through email and social media
+Employ a simple and direct means for clients to provide feedback, testimonials and referrals
+Receive a presentation-ready report of testimonials, comments and referrals
+See the effectiveness of your campaign with detailed response metrics including open rates and social interactions
+
+
+To claim this Welcome Package, give me a call or click here to schedule an appointment. I&apos;ll set you up!
+
+
+
+
+{!Opportunity.OwnerFullName}
+
+Account Manager
+
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+
+{!Opportunity.OwnerEmail}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

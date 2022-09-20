@@ -14,9 +14,6 @@
     <columns>Fulfillment_Owner__c</columns>
     <columns>Market__c</columns>
     <columns>Upload_Date__c</columns>
-    <columns>CSR_Follow_Up_1_Date__c</columns>
-    <columns>CSR_Follow_Up_2_Date__c</columns>
-    <columns>CSR_Follow_Up_3_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Product_Name__c</field>
@@ -37,21 +34,6 @@
         <field>Status__c</field>
         <operation>equals</operation>
         <value>CSR Follow Up 2 Complete</value>
-    </filters>
-    <filters>
-        <field>CSR_Follow_Up_1_Date__c</field>
-        <operation>lessOrEqual</operation>
-        <value>THIS_MONTH</value>
-    </filters>
-    <filters>
-        <field>CSR_Follow_Up_2_Date__c</field>
-        <operation>lessOrEqual</operation>
-        <value>THIS_MONTH</value>
-    </filters>
-    <filters>
-        <field>CSR_Follow_Up_3_Date__c</field>
-        <operation>lessOrEqual</operation>
-        <value>THIS_MONTH</value>
     </filters>
     <label>__4. CST CALLS - THIS MONTH</label>
     <sharedTo>

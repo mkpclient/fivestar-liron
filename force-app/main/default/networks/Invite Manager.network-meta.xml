@@ -41,6 +41,7 @@
     <selfRegistration>false</selfRegistration>
     <sendWelcomeEmail>false</sendWelcomeEmail>
     <site>Invite_Manager</site>
+    <siteArchiveStatus>NotArchived</siteArchiveStatus>
     <status>Live</status>
     <tabs>
         <defaultTab>home</defaultTab>

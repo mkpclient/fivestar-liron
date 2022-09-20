@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>When a work shift is modified, send this to the provider.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Work Shift Modified - Provider</name>
+    <style>formalLetter</style>
+    <subject>{!Organization.Name} - Work Shift Updated</subject>
+    <textOnly>Hi {!forcebrain__ProviderWorkShift__c.forcebrain__Provider__c},
+
+Your Work Shift has been updated with the following new details.
+
+Days of Week: {!forcebrain__ProviderWorkShift__c.forcebrain__Day_Of_Week_Selected__c}
+Start Date / Time: {!forcebrain__ProviderWorkShift__c.forcebrain__UserStartDateTime__c}
+End Date/Time: {!forcebrain__ProviderWorkShift__c.forcebrain__UserEndDateTime__c}
+Location: {!forcebrain__ProviderWorkShift__c.forcebrain__Location_sumo__c}
+
+Thank you,
+{!$User.FirstName} 
+-----------------------------
+{!Organization.Name}
+{!$User.FirstName} {!$User.LastName}
+{!$User.Title}
+{!$User.Phone}
+{!$User.Email}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

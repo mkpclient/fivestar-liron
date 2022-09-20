@@ -17,7 +17,12 @@
     <filters>
         <field>Status__c</field>
         <operation>equals</operation>
-        <value>Scheduled</value>
+        <value>Scheduled,Error</value>
+    </filters>
+    <filters>
+        <field>Scheduled_Payment_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>4/30/2022</value>
     </filters>
     <label>Unprocessed Scheduled Payments</label>
 </ListView>

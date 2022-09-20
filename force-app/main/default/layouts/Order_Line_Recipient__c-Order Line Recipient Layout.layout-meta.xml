@@ -63,6 +63,10 @@
                 <behavior>Readonly</behavior>
                 <field>Fulfillment_Owner__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Recipient_Full_ID__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -107,6 +111,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Order_Fulfillment__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Fulfillment__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

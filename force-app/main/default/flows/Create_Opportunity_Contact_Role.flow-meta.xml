@@ -147,6 +147,43 @@
                     <stringValue>012d0000002204yAAA</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideReferenceTo</name>
+                    <value>
+                        <stringValue>RecordType</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012d0000000ww7KAAQ</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myWait_myRule_1</targetReference>
             </connector>
@@ -264,6 +301,43 @@
                     <stringValue>012d0000002204yAAA</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideReferenceTo</name>
+                    <value>
+                        <stringValue>RecordType</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012d0000000ww7KAAQ</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
@@ -271,7 +345,7 @@
         </rules>
     </decisions>
     <description>Fill in &quot;Contact Roles&quot; on new opportunities as they are created so Marketing Cloud can see and use them.</description>
-    <interviewLabel>Create_Opportunity_Contact_Role-2_InterviewLabel</interviewLabel>
+    <interviewLabel>Create_Opportunity_Contact_Role-3_InterviewLabel</interviewLabel>
     <label>Create Opportunity Contact Role</label>
     <processMetadataValues>
         <name>ObjectType</name>

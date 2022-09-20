@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cover_1_choice__c</fullName>
+    <description>The cover 1 selection in the webapp. Changing this field in Salesforce will not update the webapp&apos;s cover 1 choice.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The cover 1 selection in the webapp. Changing this field in Salesforce will not update the webapp&apos;s cover 1 choice.</inlineHelpText>
+    <label>Cover 1 choice</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

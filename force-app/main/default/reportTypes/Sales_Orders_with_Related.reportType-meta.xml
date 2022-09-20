@@ -1888,12 +1888,42 @@
             <field>Sample_Product__c</field>
             <table>SalesOrder__c.Sales_Order_Product_Lines__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Order_Status__c</field>
+            <table>SalesOrder__c.Sales_Order_Product_Lines__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Related_Subscription__c</field>
+            <table>SalesOrder__c.Sales_Order_Product_Lines__r</table>
+        </columns>
         <masterLabel>Sales Order Product Lines</masterLabel>
     </sections>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Sample_ELM_Copy__c</field>
+            <table>SalesOrder__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Subscription_Id__c</field>
+            <table>SalesOrder__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricebook_Business_Unit__c</field>
+            <table>SalesOrder__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Email_Subject_Organization__c</field>
+            <table>SalesOrder__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Email_Signature_Organization__c</field>
             <table>SalesOrder__c</table>
         </columns>
         <masterLabel>Boom Orders</masterLabel>

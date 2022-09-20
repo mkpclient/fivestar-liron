@@ -2,19 +2,19 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>WF_SWP_proofs</fullName>
     <columns>NAME</columns>
-    <columns>Official_Order_Date__c</columns>
-    <columns>ACDF_Company__c</columns>
-    <columns>ACDF_Parent_Company__c</columns>
-    <columns>Product_Delivered_Link__c</columns>
+    <columns>Market__c</columns>
+    <columns>Product_Award_Year__c</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
+    <columns>WP_Board_Color__c</columns>
+    <columns>WP_Background_Color__c</columns>
+    <columns>WP_Text_Color__c</columns>
+    <columns>ACDF_Company__c</columns>
     <columns>Stage_Change_Date__c</columns>
     <columns>Upload_Date__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
-    <columns>Market__c</columns>
     <columns>Product_Name__c</columns>
-    <columns>UPDATEDBY_USER</columns>
-    <columns>Production_Owner__c</columns>
     <columns>Date_Sent_to_Vendor__c</columns>
     <filterScope>Everything</filterScope>
     <filters>

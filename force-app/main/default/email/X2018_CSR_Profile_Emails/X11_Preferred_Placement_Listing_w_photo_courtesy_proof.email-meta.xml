@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Preferred Placement Listing w/ photo courtesy proof</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>11: Preferred Placement Listing w/ photo courtesy proof</name>
+    <style>freeForm</style>
+    <subject>Courtesy proof of your preferred placement listing is ready</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Attached is a courtesy proof of your preferred placement listing for your reference. 
+
+If you have any questions or changes, please let me know.
+
+Thank you,
+
+{!Contact.CSR_Full_Name__c}
+Client Success Representative
+Five Star Professional
+{!Contact.CSR_Phone__c}
+{!Contact.CSR_Email__c}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

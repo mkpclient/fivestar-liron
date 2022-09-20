@@ -1,0 +1,1 @@
+Your request for a discount was approved by {!ApprovalRequest.Process_Approver}.  You can now proceed with order: {!kugo2p__SalesOrder__c.Name}.

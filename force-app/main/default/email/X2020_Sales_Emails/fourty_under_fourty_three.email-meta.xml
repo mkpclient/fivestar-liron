@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Special Section: WM Under 40 - Fortune Email 3</name>
+    <style>freeForm</style>
+    <subject>Your appearance in the under 40 special section of Fortune magazine</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+
+As a Five Star award winner, we know that you are among the best at what you do. You also occupy a unique space in the wealth management industry as someone who has achieved great success before the age of 40.
+
+
+
+We will be featuring under 40 wealth managers in a special section of the February/March 2023 issue of Fortune magazine. Packages start at $999, please click here for more information.
+
+
+
+{!Contact.AM_Follow_Up_Link__c}
+
+
+
+I look forward to hearing from you!
+
+
+Regards,
+
+
+{!Contact.OwnerFullName}
+
+Account Manager
+
+Five Star Professional
+
+{!Contact.OwnerPhone}
+
+{!Contact.OwnerEmail}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

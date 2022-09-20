@@ -14,11 +14,13 @@ public without sharing class BoomOrderInvoiceWithAttachment {
   )
   public static void sendEmailWithAttachment(List<id> listofSalesOrderIds) {
     DateTime todayDate = Datetime.now();
-    if (HOURS != null) {
+    if (HOURS != null && !System.isBatch()) {
       todayDate = todayDate.addHours(Integer.valueOf(HOURS));
     }
-    if (MINUTES != null) {
+    if (MINUTES != null && !System.isBatch()) {
       todayDate = todayDate.addMinutes(Integer.valueOf(MINUTES));
+    } else {
+      todayDate = todayDate.addSeconds(15);
     }
 
     system.debug('listofSalesOrderIds==' + listofSalesOrderIds);
@@ -47,9 +49,9 @@ public without sharing class BoomOrderInvoiceWithAttachment {
     mapSoIdToScName = getJobMap();
     System.debug('@@mapSoIdToScName===' + mapSoIdToScName);
     if (
-      (!mapSoIdToScName.containskey(listofSalesOrderIds[0])) ||
+      ((!mapSoIdToScName.containskey(listofSalesOrderIds[0])) ||
       (mapSoIdToScName.containskey(listofSalesOrderIds[0]) &&
-      mapSoIdToScName.get(listofSalesOrderIds[0]).state == 'DELETED')
+      mapSoIdToScName.get(listofSalesOrderIds[0]).state == 'DELETED'))
     ) {
       String jobID = System.schedule(
         scheduleName,

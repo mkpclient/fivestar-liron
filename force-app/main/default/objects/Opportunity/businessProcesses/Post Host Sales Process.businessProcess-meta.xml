@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Post Host Sales Process</fullName>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Alive</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Follow Up - Appointment Scheduled</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Follow Up - Group</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Follow Up - No Appointment Scheduled</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>NON PURCHASER - No Response</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>NON PURCHASER - Not Interested</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Propose</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Purchased</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Purchased - Follow up needed</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

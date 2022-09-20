@@ -1,0 +1,4 @@
+free financing has been requested for order {!kugo2p__SalesOrder__c.Name}
+
+
+Find the order here: https://na14.salesforce.com/{!kugo2p__SalesOrder__c.Id}

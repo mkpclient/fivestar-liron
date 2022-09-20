@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Follow up to 1st/2nd/3rd phone call/vm</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>01: Schedule Certification Appointment</name>
+    <style>freeForm</style>
+    <subject>Incomplete Five Star Award Status - Please Call to Resolve</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+Just following up on my call to you just now! We look forward to speaking with you about the Five Star award to finalize your award status this year! Please click on the button below to schedule your certification appointment:
+
+
+*If you are unable to click the button above, please Click Here
+
+You will need access to a computer for this meeting. In our meeting, we will review the award selection process, award criteria, marketing usage guidelines, and confirm your eligibility. Without this 30-minute phone meeting, your award winner status will remain incomplete and we will NOT be able to name you as a winner this year.
+
+If you have any questions, please contact me at any time.
+
+Thank you,
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

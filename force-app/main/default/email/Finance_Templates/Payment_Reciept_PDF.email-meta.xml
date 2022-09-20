@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Payment Reciepts VF Page, uses PaymentVF visualforce page on site default</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Payment Reciept PDF</name>
+    <style>freeForm</style>
+    <subject>Five Star Professional Payment Receipt</subject>
+    <textOnly>Dear {!kugo2p__PaymentX__c.kugo2p__Contact__c}, 
+
+A credit card transaction for {!kugo2p__PaymentX__c.kugo2p__Amount__c} has been processed on {!kugo2p__PaymentX__c.Order_Release_Date__c} for your order {!kugo2p__PaymentX__c.kugo2p__SalesOrder__c} placed on {!kugo2p__PaymentX__c.Order_Release_Date__c}.
+
+View your receipt here: (Click or Copy and Paste entire link into your browser to view)
+
+{!kugo2p__PaymentX__c.Receipt_Link__c}
+
+Feel free to contact us if you have any questions. Once again, we appreciate your business!
+
+Kind regards,
+
+Accounts Receivable
+Five Star Professional
+O: (888)608-7161 | Email: billing@fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

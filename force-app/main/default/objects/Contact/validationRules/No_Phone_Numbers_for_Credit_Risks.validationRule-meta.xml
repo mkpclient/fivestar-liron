@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Phone_Numbers_for_Credit_Risks</fullName>
+    <active>false</active>
+    <description>No Email or Phone information can be visible for credit risk contacts</description>
+    <errorConditionFormula>Credit_Risk__c = TRUE &amp;&amp;  (ISBLANK(Phone) = FALSE) ||
+Credit_Risk__c = TRUE &amp;&amp;  (ISBLANK(MobilePhone) = FALSE) ||
+Credit_Risk__c = TRUE &amp;&amp;  (ISBLANK(Email) = FALSE) ||
+Credit_Risk__c = TRUE &amp;&amp;  (ISBLANK(Email_2__c) = FALSE)</errorConditionFormula>
+    <errorMessage>This contact is a credit risk, credit risks cannot have visible contact information.</errorMessage>
+</ValidationRule>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Line_Description__c</fullName>
+    <description>OrderProductLine__r.kugo2p__LineDescription__c</description>
     <externalId>false</externalId>
-    <formula>OrderProductLine__r.kugo2p__LineDescription__c</formula>
+    <formula>Boom_Order_Product_Line__r.LineDescription__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Line Description</label>
     <required>false</required>

@@ -482,6 +482,18 @@
                 <behavior>Edit</behavior>
                 <field>Do_Not_Call_for_NAMS_F_U__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Essential_Engine_Friend_Capture__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Mobile_SMS_Format__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RS_Manager_Broker__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -710,6 +722,7 @@
         <fields>TASK.STATUS</fields>
         <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
+        <fields>EVENT.START_DATE_TIME</fields>
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -720,11 +733,11 @@
         <fields>ACTIVITY.TASK</fields>
         <fields>TASK.WHAT_NAME</fields>
         <fields>TASK.DUE_DATE</fields>
+        <fields>SUMO_Status__c</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <fields>TASK.LAST_UPDATE</fields>
         <fields>Research_Call_Notes__c</fields>
         <fields>Comments__c</fields>
-        <fields>Years_Winner__c</fields>
         <fields>AdProd_Comments__c</fields>
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
@@ -744,7 +757,6 @@
     <relatedLists>
         <fields>Product_Name__c</fields>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>Status__c</fields>
         <fields>Renewal_Date__c</fields>
         <fields>Fulfillment_Owner__c</fields>
@@ -765,12 +777,15 @@
         <relatedList>Facebook_User__c.Contact_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>Boom_Order__c</fields>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>
+        <fields>Official_Order_Date__c</fields>
         <relatedList>Fulfillment__c.Contact__c</relatedList>
+        <sortField>Official_Order_Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

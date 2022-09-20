@@ -1,0 +1,5 @@
+Payment: {!kugo2p__PaymentX__c.Name}
+
+Order: {!kugo2p__PaymentX__c.kugo2p__SalesOrderId__c}
+
+Payments Taken Process Builder Fired.

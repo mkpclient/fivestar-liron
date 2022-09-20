@@ -167,6 +167,7 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
       this.toastMessage = "This amount is invalid.";
       this.toastTitle = "Error";
       this.showNotification = true;
+      this.isLoading = false;
       return;
     }
     if (isFromVoid) {
@@ -182,7 +183,6 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
           "?"
       )
     ) {
-      this.isLoading = true;
       this.disableRefundButton = true;
       const newRefundPayment = {
         paymentToken: this.paymentInfo.Payment_Token__c,
@@ -230,14 +230,17 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
           if (returnedVal.errorMessage) {
             this.errorMessage = returnedVal.errorMessage;
             console.error(returnedVal.errorMessage);
+            this.isLoading = false;
             return;
           }
         }
       } catch (err) {
         console.error(err);
         this.errorMessage = "A server error has occured.";
+        this.isLoading = false;
       }
     }
+    this.isLoading = false;
   }
 
   async handleClick(evt) {
@@ -252,6 +255,7 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
       this.isRefund = false;
       this.isVoid = true;
     } else if (title == "completeRefund") {
+      this.isLoading = true;
       await this.handleRefund();
     } else if (title == "voidPayment") {
       await this.handleVoid();

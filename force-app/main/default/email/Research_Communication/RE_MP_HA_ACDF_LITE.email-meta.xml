@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>RE_ ACDF_LITE_GENERIC_LVM _TT</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>RE - ACDF Lite: Generic</name>
+    <style>none</style>
+    <subject>{!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} Candidate Information</subject>
+    <textOnly>Hello {!Opportunity.Email_Templates_Informalname__c},
+
+You have been brought forward as a candidate for the {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} award. Candidates are brought forward through client nomination.
+
+
+Being selected as an award winner will allow you to appear in a special {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of the Five Star Magazine that will be inserted into an issue of the {!Opportunity.Email_Templates_Magazine__c}. Award winners will appear, with a complimentary listing of their name and company name, in the alphabetical section recognizing an exclusive group of {!Opportunity.Profession_Type__c} that provide exceptional customer satisfaction and demonstrate superior industry excellence in the {!Opportunity.Award_Area__c} area.
+
+In order to be considered for the award, you must complete a short online evaluation form - candidates must satisfy minimum experience and eligibility criteria, as well as satisfy completion of the Blue Ribbon Panel review. Fewer than 7% of the professionals in your area will be selected.
+
+
+Candidate Evaluation Form - Click Here to Complete .
+
+The deadline for submission is end of day, {!Opportunity.ACDF_Deadline__c}.
+
+For more information regarding Five Star Professional:
+Five Star Professional - Research Overview.
+
+Award winners are scheduled to be notified within 4-6 weeks of the deadline.
+If you have any questions please feel free to contact me below.
+
+Kind Regards,
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway, Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

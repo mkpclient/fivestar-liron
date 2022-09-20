@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Do_Not_Call_for_NAMS_F_U__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is available to be checked on the rare occasion that a client is upset with the quantity of calls they are receiving regarding marketing products we have available.</description>
+    <externalId>false</externalId>
+    <label>Do Not Call for NAMS F/U</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AUS_DAL_95_Post_Host</fullName>
+    <columns>Target_Calls__c</columns>
+    <columns>Logged_Calls__c</columns>
+    <columns>Winner__c</columns>
+    <columns>Client_Type__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>phone__c</columns>
+    <columns>ACDF_Branch_Office__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Next_call_date__c</columns>
+    <columns>Last_Call_Date__c</columns>
+    <columns>Open_Call_Comments__c</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Pardot_Lead_Score__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Not Ready</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>equals</operation>
+        <value>AUSRE18: Post-Host,DALRE18: Post-Host</value>
+    </filters>
+    <label>AUS-DAL $95 Post-Host Packages</label>
+    <sharedTo></sharedTo>
+</ListView>

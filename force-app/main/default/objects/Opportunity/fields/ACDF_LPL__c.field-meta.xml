@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACDF_LPL__c</fullName>
+    <description>The completed candidate form for the LPL Advisor, Links to Response IDs will be located on the 23.253.174.20 server in the fsp_prod folder in the fsp_lpl folder. https://www.fivestarprofessional.com/fsp_lpl/ will be the first part of all URLS and the pdf name will be the second part. Full URL example https://www.fivestarprofessional.com/fsp_lpl/PDFResponse-07632.pdf</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Talk to Debbie Noll and Brianna LOL</inlineHelpText>
+    <label>ACDF LPL</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -7,13 +7,14 @@
     <columns>Primary_Recipient__c</columns>
     <columns>Status__c</columns>
     <columns>Text__c</columns>
-    <columns>Create_Date__c</columns>
     <columns>Publish_Date__c</columns>
     <columns>Image_Location__c</columns>
     <columns>Preview__c</columns>
     <columns>Landing_Page__c</columns>
     <columns>Email_Alert_Sent__c</columns>
     <columns>Contact__c</columns>
+    <columns>CREATEDBY_USER</columns>
     <filterScope>Everything</filterScope>
     <label>Client Testimonial Capture and Broadcast</label>
+    <language>en_US</language>
 </ListView>

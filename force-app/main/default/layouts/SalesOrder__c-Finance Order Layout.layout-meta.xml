@@ -9,7 +9,9 @@
     <customButtons>View_Invoice</customButtons>
     <customButtons>Email_Link</customButtons>
     <customButtons>Attach_Invoice</customButtons>
-    <customButtons>Clone_Boom_Order</customButtons>
+    <customButtons>Update_Address_Fields</customButtons>
+    <customButtons>Cancel_Scheduled_Payments</customButtons>
+    <customButtons>Payment_Processor</customButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <layoutSections>
@@ -44,7 +46,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DateReleased__c</field>
+                <field>Release_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -83,10 +85,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Salesperson__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FinanceOverride__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -142,6 +140,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ContactShipping__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Contact_Billing_First_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Contact_Billing_Full_ID__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -280,6 +286,10 @@
                 <behavior>Edit</behavior>
                 <field>DiscountPercent__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Subscription__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -315,7 +325,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Subscription_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>UpdateAdditionalAccountInfoContacts__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FinanceOverride__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -409,6 +427,26 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Share</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>ChangeRecordType</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>10</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>11</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Delete</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>12</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>SalesOrder__c.Manage_Lines</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
@@ -453,31 +491,6 @@
             <actionType>StandardButton</actionType>
             <sortOrder>8</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Share</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>9</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>ChangeRecordType</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>10</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>11</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>IsotopeSubscription</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>12</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Delete</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>13</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -504,7 +517,28 @@
     </quickActionList>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Open_Date__c</fields>
+        <fields>Request_Type__c</fields>
+        <fields>Status__c</fields>
+        <fields>Request_Description__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>Close_Date__c</fields>
         <relatedList>Change_Request__c.Sales_Order__c</relatedList>
+        <sortField>Open_Date__c</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Renewal_Product__c</fields>
+        <fields>Renewal_Date_Day_of_Month__c</fields>
+        <fields>Renewal_Price__c</fields>
+        <fields>Renewal_Quantity__c</fields>
+        <fields>Status__c</fields>
+        <fields>Subscription_Fulfillment__c</fields>
+        <fields>Cancelled_Date__c</fields>
+        <fields>Re_start_Date__c</fields>
+        <fields>End_Date__c</fields>
+        <relatedList>Subscription__c.Original_Subscription_Boom_Order__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
@@ -526,8 +560,10 @@
         <excludeButtons>New</excludeButtons>
         <fields>Line__c</fields>
         <fields>Product__c</fields>
+        <fields>LineDescription__c</fields>
         <fields>Quantity__c</fields>
         <fields>ListPrice__c</fields>
+        <fields>SalesPrice__c</fields>
         <fields>Actual_Price__c</fields>
         <fields>NAME</fields>
         <fields>Line_Effective_Date__c</fields>
@@ -546,17 +582,18 @@
         <fields>Recipient_Split_Amount__c</fields>
         <fields>Market_Project__c</fields>
         <relatedList>Order_Line_Recipient__c.Order__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>
-        <fields>Market__c</fields>
-        <fields>Fulfillment_Owner__c</fields>
-        <fields>CREATED_DATE</fields>
         <fields>Subscription__c</fields>
-        <relatedList>Order_Fulfillment__c.OrderNumber__c</relatedList>
+        <fields>CREATED_DATE</fields>
+        <fields>Fulfillment_Owner__c</fields>
+        <relatedList>Fulfillment__c.Boom_Order__c</relatedList>
     </relatedLists>
     <relatedLists>
         <customButtons>New_Payment</customButtons>
@@ -606,6 +643,32 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Synchronized_At__c</fields>
+        <fields>Error__c</fields>
+        <fields>Error_Log__c</fields>
+        <fields>Net_Amount__c</fields>
+        <fields>Line_Effective_Date__c</fields>
+        <relatedList>Intacct_Log__c.BoomOrder__c</relatedList>
+        <sortField>Synchronized_At__c</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>BoomPayment__c</fields>
+        <fields>Error__c</fields>
+        <fields>Error_Log__c</fields>
+        <fields>Amount__c</fields>
+        <relatedList>Intacct_Payment_Log__c.BoomOrder__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>AM_Assigned__c</fields>
+        <fields>CSR_Assigned__c</fields>
+        <fields>Cancellation_Reason__c</fields>
+        <relatedList>Cancellation__c.Boom_Order__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

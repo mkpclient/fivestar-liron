@@ -101,6 +101,11 @@
             <field>Release_Date__c</field>
             <table>LineRecipient__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Full_ID__c</field>
+            <table>LineRecipient__c</table>
+        </columns>
         <masterLabel>Line Recipients</masterLabel>
     </sections>
 </ReportType>

@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ACC_ID__c</fullName>
     <externalId>false</externalId>
-    <formula>CASESAFEID( Order_Additional_Charge_Credit__r.Id )</formula>
+    <formula>CASESAFEID( BoomOrderAdditonalChargeCredit__r.Id )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>ACC ID</label>
     <required>false</required>

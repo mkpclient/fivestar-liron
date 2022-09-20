@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Spotlight email one</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Spotlight Email one</name>
+    <style>freeForm</style>
+    <subject>Exclusive offer, don&apos;t miss out!</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+
+It was a pleasure speaking with you.
+
+
+Based on our conversation, I feel that the Five Star Award Winner Brochure would be a great fit for you. This versatile piece highlights you as an award winner and positions you as part of an exclusive group of professionals. It includes your photo, contact information and an article on the award and research methodology.
+
+
+
+
+When you share the news of your award, it validates your credibility and makes you more referable. Here are just a few examples of how you can make the Award Winner Brochure work for you:
+
+
+
+
+
+Incorporate in client and prospect presentations, brochures and informational binders
+Hand out when starting the home buying/selling process, after the close and/or during client appreciation events
+Provide five to each client and ask them to distribute to family and friends when referring you
+Send to your past and current clients with a note thanking them for their loyalty, support and referrals; your achievements and success wouldn’t be possible without them
+Have copies available at open houses
+Mail as part of a follow-up to warm prospects or as a first touch to prospective households in key lead generation areas
+Hand out or mail to colleagues in your professional network as a way to share the news and ask for cross-professional referrals
+
+
+If you have any questions, please do not hesitate to contact me.
+
+
+
+Thank you.
+
+
+
+
+
+{!User.Name}
+
+Account Manager
+
+Five Star Professional
+
+Direct: {!User.Phone}
+
+Main: 1-888-438-5782
+
+Fax: 651-259-1940
+
+{!User.Email}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

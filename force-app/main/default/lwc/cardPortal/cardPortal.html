@@ -1,0 +1,118 @@
+<template>
+    <div class="portal-container">
+    <template if:false={isLoading}>
+      <template if:true={loadingErrorMessage}>
+        <template if:true={errorMessage}>
+          <div class="slds-notify slds-notify_alert slds-alert_error" style="background-color:red" role="alert">
+            <span class="slds-assistive-text">error</span>
+              <lightning-icon icon-name="utility:error" size="small" variant="inverse"></lightning-icon>
+            <h1>&nbsp;{errorMessage}
+            </h1>
+          </div>
+        </template>
+      </template>
+      <template if:false={loadingErrorMessage}>
+        <div class="portal-header">
+          <img src={logoUrl} alt="Fivestar Logo" style="height: 5vh; object-fit: scale-down;"  />
+          <p>{header}</p>
+        </div>
+        <div class="portal-body">
+          <template if:true={errorMessage}>
+            <div class="slds-notify slds-notify_alert slds-alert_error" style="background-color:red" role="alert">
+              <span class="slds-assistive-text">error</span>
+                <lightning-icon icon-name="utility:error" size="small" variant="inverse"></lightning-icon>
+              <h1>&nbsp;{errorMessage}
+              </h1>
+            </div>
+          </template>
+          <template if:true={paymentAmount}>
+            <div class="payment-amount">
+              <p>Payment Amount: <span><strong><lightning-formatted-number value={paymentAmount} format-style="currency" currency-code="USD"></lightning-formatted-number></strong></span></p> 
+            </div>
+          </template>
+          <div class="section-header">
+            <p>{sectionHeader}</p>
+          </div>
+          <div class="form-container">
+            <lightning-layout multiple-rows if:true={isBilling}>
+              <lightning-layout-item size="6" medium-device-size="6" large-device-size="6" small-device-size="12">
+                <lightning-input label="First Name" data-stage="billing" data-field="Billing_First_Name__c" value={pmData.Billing_First_Name__c} required></lightning-input>
+              </lightning-layout-item>
+              <lightning-layout-item size="6" medium-device-size="6" large-device-size="6" small-device-size="12">
+                <lightning-input label="Last Name" data-stage="billing" data-field="Billing_Last_Name__c" value={pmData.Billing_Last_Name__c} required></lightning-input>
+              </lightning-layout-item>
+              <lightning-layout-item size="12">
+                <lightning-input label="Street Address" data-stage="billing" data-field="Billing_Street__c" value={pmData.Billing_Street__c} required></lightning-input>
+              </lightning-layout-item>
+              <lightning-layout-item size="8" medium-device-size="8" large-device-size="6" small-device-size="12">
+                <lightning-input label="City" data-stage="billing" data-field="Billing_City__c" value={pmData.Billing_City__c} required></lightning-input>
+              </lightning-layout-item>
+              <lightning-layout-item size="4" medium-device-size="4" large-device-size="6" small-device-size="12">
+                <lightning-combobox class="combobox" label="State" data-stage="billing" data-field="Billing_State__c" value={pmData.Billing_State__c} placeholder="Choose State" options={stateOptions} required></lightning-combobox>
+              </lightning-layout-item>
+              <lightning-layout-item size="4" medium-device-size="4" large-device-size="6" small-device-size="12">
+                <lightning-input label="Postal Code" data-stage="billing" data-field="Billing_Postal_Code__c" value={pmData.Billing_Postal_Code__c} required></lightning-input>
+              </lightning-layout-item>
+              <lightning-layout-item size="8" medium-device-size="8" large-device-size="6" small-device-size="12">
+                <lightning-input label="Country" data-stage="billing" data-field="Billing_Country__c" value={pmData.Billing_Country__c} required></lightning-input>
+              </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout multiple-rows if:true={isPayment}>
+              <lightning-layout-item size="4" medium-device-size="4" large-device-size="6" small-device-size="12">
+                <lightning-combobox class="combobox" required label="Card Type" data-stage="payment" data-field="Card_Type__c" value={pmData.Card_Type__c} placeholder="Choose Card Type" options={cardOptions}></lightning-combobox>
+              </lightning-layout-item>
+              <lightning-layout-item size="8" medium-device-size="8" large-device-size="6" small-device-size="12">
+                <lightning-input required label="Credit Card Number" data-stage="payment" data-field="_cardNumber" value={pmData._cardNumber} placeholder="Please enter your card number"></lightning-input>
+              </lightning-layout-item>
+              <lightning-layout-item size="6" medium-device-size="6" large-device-size="6" small-device-size="12">
+                <lightning-combobox class="combobox" required label="Expiration Month" data-stage="payment" data-field="_expMonth" value={pmData._expMonth} placeholder="Choose Expiration Month" options={monthOptions}></lightning-combobox>
+              </lightning-layout-item>
+              <lightning-layout-item size="6" medium-device-size="6" large-device-size="6" small-device-size="12">
+                <lightning-combobox class="combobox" required label="Expiration Year" data-stage="payment" data-field="_expYear" value={pmData._expYear} placeholder="Choose Expiration Year" options={yearOptions}></lightning-combobox>
+              </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout multiple-rows if:true={isReview}>
+              <template for:each={reviewData} for:item="rd">
+                <lightning-layout-item size="6" medium-device-size="6" large-device-size="6" small-device-size="12" key={rd.label}>
+                  <div class="review-container">
+                    <div class="review-value">
+                      {rd.value}
+                    </div>
+                    <div class="review-label">
+                      {rd.label}
+                    </div>
+                  </div>
+                </lightning-layout-item>
+              </template>
+            </lightning-layout>
+            <template if:true={isSuccess}>
+              <div class="success-container">
+                <div class="success-icon">
+                  <lightning-icon icon-name="utility:success" size="large" ></lightning-icon>
+                </div>
+                <div class="success-message">
+                  <h1>{successHeader}</h1>
+                  <p>{successBody}</p>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div class="portal-footer">
+          <ul class="slds-button-group-row" if:false={isSuccess}>
+            <li class="slds-button-group-item">
+              <button data-name="previous" class="slds-button slds-button_neutral" disabled={isBilling} onclick={handleClick}>Previous</button>
+            </li>
+            <li class="slds-button-group-item">
+              <button data-name="next" onclick={handleClick} class="slds-button slds-button_brand">{nextButtonLabel}</button>
+            </li>
+          </ul>
+        </div>
+      </template>
+    </template>
+    <template if:true={isLoading}>
+      <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </template>
+    
+    </div>
+</template>

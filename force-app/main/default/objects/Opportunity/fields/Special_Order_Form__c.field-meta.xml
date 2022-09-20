@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Special_Order_Form__c</fullName>
+    <description>This field is used to store a URL to an offline Special Order Form for non FSP projects. It should only be found on the Opportunity Record Type Non FSP Projects</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is used to store a URL to an offline Special Order Form for non FSP projects. It should only be found on the Opportunity Record Type Non FSP Projects</inlineHelpText>
+    <label>Special Order Form</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

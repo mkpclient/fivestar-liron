@@ -750,11 +750,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Research_Professional_ID__c</field>
-            <table>Client_Experience__c.Activities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>rcsfl__RC_Logging_Type__c</field>
             <table>Client_Experience__c.Activities</table>
         </columns>
@@ -860,7 +855,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Call_Recording__c</field>
+            <field>Full_ID__c</field>
+            <table>Client_Experience__c.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SUMO_Status__c</field>
+            <table>Client_Experience__c.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>X1_HOUR_TRIGGER__c</field>
             <table>Client_Experience__c.Activities</table>
         </columns>
         <masterLabel>Activities</masterLabel>

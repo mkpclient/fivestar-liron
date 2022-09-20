@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Renewal_Month__c</fullName>
+    <description>Numerical Month of Renewal. I.E. 01 - January, 02 - February, etc.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Numerical value for the renewal month. I.E. for a range of 1/15 - 2/14 with a renewal date of April 2nd, the value for this field would be 4, from 4/2.</inlineHelpText>
+    <label>Renewal Month</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

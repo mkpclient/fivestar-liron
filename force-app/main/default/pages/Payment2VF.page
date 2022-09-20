@@ -1,5 +1,5 @@
-<apex:page Controller="Payment2ReceiptController" showHeader="false" renderAs="PDF">
-    <div class="container" width="950">
+<apex:page Controller="Payment2ReceiptController" showHeader="false" renderAs="PDF" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+    <!-- <div class="container" width="950">
         <body>
             <table width="100%">
                 <tr>
@@ -174,5 +174,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <c:BoomPaymentReceiptComponent pmtId="{!$CurrentPage.parameters.pmtId}" soId="{!$CurrentPage.parameters.soId}"/>
 </apex:page>

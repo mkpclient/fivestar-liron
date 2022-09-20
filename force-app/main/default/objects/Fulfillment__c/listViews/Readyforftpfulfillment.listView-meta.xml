@@ -3,14 +3,17 @@
     <fullName>Readyforftpfulfillment</fullName>
     <columns>NAME</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>Title__c</columns>
+    <columns>Years_Winner__c</columns>
+    <columns>Profession__c</columns>
     <columns>Proof_Location__c</columns>
+    <columns>Product_Delivered_Link__c</columns>
     <columns>Product_Name__c</columns>
     <columns>ACDF_Company__c</columns>
     <columns>Upload_Date__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
     <columns>Market__c</columns>
-    <columns>UPDATEDBY_USER</columns>
     <columns>Next_Action_Date__c</columns>
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
@@ -30,6 +33,7 @@
         <value>Send Proof</value>
     </filters>
     <label>__0. Ready for FTP Fulfillment</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Fulfillment_Team</group>
     </sharedTo>

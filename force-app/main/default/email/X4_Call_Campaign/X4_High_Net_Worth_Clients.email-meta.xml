@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>4 - High Net Worth Clients</name>
+    <style>freeForm</style>
+    <subject>RE: Here&apos;s how to attract high-net-worth clients</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+I just left you a voicemail detailing how I can help you engage high-net-worth clients using the marketing tools offered by Five Star Professional.
+
+
+
+I&apos;ve spoken to some of the top-producing professionals around the country, helping them attract high-value clients, stand out from the competition, and maximize referrals. I would like to connect with you sometime over the next couple of days to talk about how you can do the same.
+
+
+
+2015 Five Star {!Opportunity.Email_Templates_Profession_c} Award Guide
+
+
+
+Thoughts?
+
+
+
+
+
+{!User.Name}
+
+Account Manager
+Five Star Professional
+
+2900 Lone Oak Parkway Suite 120,
+Eagan, MN 55121
+
+Direct: {!User.Phone}
+
+{!User.Email}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

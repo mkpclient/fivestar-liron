@@ -12,5 +12,11 @@
     <columns>Sales_Start_Date__c</columns>
     <columns>Sales_End_Date__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>104</value>
+    </filters>
     <label>Essential Living Magazine - All</label>
+    <language>en_US</language>
 </ListView>

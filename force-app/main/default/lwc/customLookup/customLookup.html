@@ -1,0 +1,110 @@
+<template>
+  <div class="slds-form-element">
+    <template if:true={showFieldLabel}>
+      <label class="slds-form-element__label" for="comboLookup">
+        <template if:true={required}>
+          <abbr class="slds-required" title="required">*</abbr>
+        </template>
+        <strong>{fieldLabel}</strong>
+      </label>
+    </template>
+    <div class={formClass}>
+      <div class={comboBoxContainerClass}>
+        <div
+          class={comboBoxClass}
+          aria-expanded={ariaExpanded}
+          aria-haspopup="listbox"
+          role="combobox"
+        >
+          <div class={parentDivClass} role="none">
+            <template if:true={isOptionSelected}>
+              <span
+                class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon"
+              >
+                <lightning-icon
+                  class="slds-icon slds-icon_x-small"
+                  icon-name={iconName}
+                  alternative-text="icon"
+                ></lightning-icon>
+              </span>
+            </template>
+            <input
+              type="text"
+              class={inputClass}
+              id="comboLookup"
+              aria-autocomplete="list"
+              aria-controls="comboLookup"
+              autocomplete="off"
+              role="textbox"
+              placeholder={searchPlaceholder}
+              value={inputLabel}
+              onclick={handleInputClick}
+              oninput={handleKeyUp}
+              onblur={handleOutEvent}
+              readonly={isOptionSelected}
+            />
+            <span
+              if:true={showSearchIcon}
+              class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right"
+            >
+              <lightning-icon
+                class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+                icon-name="utility:search"
+                size="x-small"
+                alternative-text="icon"
+              ></lightning-icon>
+            </span>
+            <div
+              if:true={showCloseIcon}
+              class="slds-input__icon-group slds-input__icon-group_right"
+            >
+              <button
+                class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+                onclick={handleSelectRemoval}
+                type="button"
+              >
+                <lightning-icon
+                  class="slds-button__icon"
+                  icon-name="utility:close"
+                  size="x-small"
+                  alternative-text="icon"
+                ></lightning-icon>
+              </button>
+            </div>
+          </div>
+          <div
+            id="comboListBox"
+            class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+            role="listbox"
+            onmouseout={outList}
+            onmouseover={overList}
+          >
+            <div if:true={noResultsReturned}>No results found.</div>
+            <div if:true={isSearchInProgress}>Loading...</div>
+            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+              <template for:each={listItems} for:item="listItem">
+                <li
+                  role="presentation"
+                  key={listItem.value}
+                  class="slds-listbox__item"
+                >
+                  <c-custom-lookup-item
+                    item={listItem}
+                    onselected={selectionChanged}
+                    iconname={iconName}
+                  ></c-custom-lookup-item>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        class="slds-form-element__help"
+        if:true={hasError}
+      >
+        Complete this field.
+      </div>
+    </div>
+  </div>
+</template>

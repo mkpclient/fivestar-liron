@@ -1,0 +1,35 @@
+<p>Hello {!Opportunity.Email_Templates_Informalname__c},<p>
+
+You have been brought forward as a candidate for the <b>{!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Email_Templates_Profession__c}</b>. Candidates are identified and brought forward through a client nomination, peer nomination or based on your demonstration of superior production history.<p>
+
+<p>Being selected as an award winner will allow you to appear in the {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of <b><i>{!Opportunity.Email_Templates_Magazine__c}</b></i>. Award winners will appear, with a complimentary listing, in a special {!Opportunity.Email_Templates_Issue_s__c} recognizing an exclusive group of {!Opportunity.Profession_Type__c} that provide exceptional customer satisfaction and demonstrate superior industry excellence in the {!Opportunity.Award_Area__c} area.
+
+<p>In order to be considered for the award, you must complete a short online evaluation form - candidates must satisfy minimum experience and eligibility criteria, as well as, satisfy completion of the Blue Ribbon Panel review. Fewer than 7% of the professionals in your area will be selected. For more information regarding the research overview - <a href="{!Opportunity.Email_Templates_Award_Guide__c}">Click Here.</a><p>
+
+<b><p><a href="{!Opportunity.Research_Form_URL__c}">Candidate Evaluation Form - Click Here to Complete .</a><br>
+The deadline for submission is end of day {!Opportunity.ACDF_Deadline__c}</b>
+
+<p>Award winners are scheduled to be notified within 4-6 weeks of the deadline.<p>
+
+If you have any questions please feel free to give me a call or send me an email. </p>
+
+<p>Sincerely,</p>
+
+<p>{!User.Name}<br>
+<i><b>Research Assistant</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway, 
+Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+<a href=mailto:{!User.Email}>{!User.Email}</a><br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>kugadd__DisableBillingShippingAddressSync__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>If checked, the automatic sync function is disabled with the Billing Address and Shipping Address fields. 
+
+If unchecked, the Shipping Address fields are automatically updated when the Billing Address has been updated and was previously in sync.</inlineHelpText>
+    <label>Disable Billing/Shipping Address Sync</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

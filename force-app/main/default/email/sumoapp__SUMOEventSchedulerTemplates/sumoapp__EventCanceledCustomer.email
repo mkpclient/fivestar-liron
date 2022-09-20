@@ -1,0 +1,50 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="300" >
+<tr valign="top" height="300" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">Hi &lt;%attendeeName%&gt;,&nbsp;</span></font><div style="">
+    <br>
+    <div style="">
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            The following event you are registered is canceled.
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <br>
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            &lt;%cancellationReason%&gt;
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <b>Event Name:</b>&nbsp;<span>{!Event.Subject}</span>
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <b>Date/Time:</b>&nbsp;<span>&lt;%datetime%&gt;</span>
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <b>Duration:</b>&nbsp;<span>{!Event.DurationInMinutes} min</span>
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            &lt;%locationFields%&gt;
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <b># of Seats Registered:</b>&nbsp;<span>&lt;%numberOfSeats%&gt;</span>
+        </div>
+        <div style="font-size: 12pt;">
+            <b>Price per Seat:</b>&nbsp;<span>&lt;%price%&gt;</span>
+        </div>
+
+        <div style="color: rgb(0, 0, 0); font-size: 12pt;"><hr/></div>
+
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <div style="font-size: 12pt;">&lt;%description%&gt;</div>
+            <div style="font-size: 12pt;">&lt;%locationDetails%&gt;</div>
+        </div>
+
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Thank you,</div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="arial">{!Event.sumoapp__OrganizerFullName__c}</font></div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="arial">{!Event.sumoapp__OrganizerTitle__c}</font></div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">{!Organization.Name}</span></div>
+    </div>
+</div>]]></td>
+</tr>
+</table>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Use this template for our &quot;flex&quot; cert or &quot;wait list&quot; cert scheduling</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Flex Cert Scheduling</name>
+    <style>freeForm</style>
+    <subject>Five Star Appointment - Sorry We Missed You!</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+You have not yet finalized the 2021 Five Star award. The next step in the process is to connect with an account manager and complete a certification appointment. To do so, there are a couple options:
+
+If you’re available today – and will have access to a computer – we should be able to find an account manager to connect with you. Do any of the timeframes below work for you?  If so, please select the one that works best, and we’ll reach out to you in that timeframe once an account manager is able to connect with you.
+
+9 – 11 am CST
+1 – 3 pm CST
+3 – 5 pm CST
+
+If you’d prefer to schedule an appointment with your account manager for a day/time in the future, you can use the appointment scheduling link below to schedule an appointment with your account manager in the coming weeks:
+
+{!Contact.Full_Link__c}
+
+The appointment will take approximately 30 minutes – we look forward to connecting with you soon!
+
+Best wishes,
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -142,11 +142,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Call_Recording__c</field>
-            <table>Opportunity.Activities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Asst_Ext__c</field>
             <table>Opportunity</table>
         </columns>
@@ -2150,6 +2145,46 @@
             <field>AM_WIW_SS_Follow_Up_Link__c</field>
             <table>Opportunity</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Special_Section_Client_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Do_Not_Reassign__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Referred_by__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Referred_By_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Market_Go_Live__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Never_Winner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Non_Winner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Winner_Fortune_Listing__c</field>
+            <table>Opportunity</table>
+        </columns>
         <masterLabel>Opportunities</masterLabel>
     </sections>
     <sections>
@@ -2410,11 +2445,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Research_Professional_ID__c</field>
-            <table>Opportunity.Activities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Research_Call_Comments__c</field>
             <table>Opportunity.Activities</table>
         </columns>
@@ -2451,6 +2481,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Years_Winner__c</field>
+            <table>Opportunity.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Full_ID__c</field>
+            <table>Opportunity.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SUMO_Status__c</field>
+            <table>Opportunity.Activities</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>X1_HOUR_TRIGGER__c</field>
             <table>Opportunity.Activities</table>
         </columns>
         <masterLabel>Activities</masterLabel>

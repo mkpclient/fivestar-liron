@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>FML RE Follow Up for 3rd and 4th call</name>
+    <style>freeForm</style>
+    <subject>Are you participating in The 500 List? -- Forbes Market Leaders</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+
+Don&apos;t miss out on the opportunity to appear in Forbes Magazine, in our upcoming Forbes Market Leaders - The 500 List, section.  Only 500 real estate agents will be recognized nationally, across 35 metro areas.  Packages start at $599, please click the link below for more information.
+
+
+http://postmarket.fivestarprofessional.com/20/fml_feb_re.html
+
+
+I look forward to hearing from you!
+
+
+Regards,
+
+
+{!Contact.OwnerFullName}
+
+Account Manager
+
+Five Star Professional
+
+{!Contact.OwnerPhone}
+
+{!Contact.OwnerEmail}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

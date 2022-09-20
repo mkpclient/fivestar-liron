@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Related_Core_Market__c</fullName>
     <externalId>false</externalId>
-    <formula>PrimaryRecipient__r.Core_Market_project__c</formula>
+    <formula>PrimaryRecipient__r.Market_Name__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Related Core Market</label>
     <required>false</required>

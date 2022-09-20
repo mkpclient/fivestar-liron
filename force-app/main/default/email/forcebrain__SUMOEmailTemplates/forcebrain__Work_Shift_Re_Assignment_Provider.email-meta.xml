@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>When a work shift is swapped, send this to both providers.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Work Shift Re-Assignment - Provider</name>
+    <style>formalLetter</style>
+    <subject>{!Organization.Name} - Work Shift Re-Assignment</subject>
+    <textOnly>Hi {!forcebrain__ProviderWorkShift__c.forcebrain__PreviousProvider__c},
+
+The following work shift has been swapped from &quot;{!forcebrain__ProviderWorkShift__c.forcebrain__PreviousProvider__c}&quot; to &quot;{!forcebrain__ProviderWorkShift__c.forcebrain__Provider__c}&quot;.
+
+Days of Week: {!forcebrain__ProviderWorkShift__c.forcebrain__Day_Of_Week_Selected__c}
+Start Date / Time: {!forcebrain__ProviderWorkShift__c.forcebrain__NewUserStartDateTime__c}
+End Date/Time: {!forcebrain__ProviderWorkShift__c.forcebrain__NewUserEndDateTime__c}
+Location: {!forcebrain__ProviderWorkShift__c.forcebrain__Location_sumo__c}
+
+Thank you,
+{!$User.FirstName} 
+-----------------------------
+{!Organization.Name}
+{!$User.FirstName} {!$User.LastName}
+{!$User.Title}
+{!$User.Phone}
+{!$User.Email}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>EmailPaymentPDF</customButtons>
+    <customButtons>PaymentPDF</customButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Edit</excludeButtons>
@@ -17,6 +19,10 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Sales_Order__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Full_ID__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -58,10 +64,10 @@
         <label>Refund Payment</label>
         <layoutColumns>
             <layoutItems>
-                <height>200</height>
+                <height>500</height>
                 <page>refundScreenVf</page>
                 <showLabel>false</showLabel>
-                <showScrollbars>false</showScrollbars>
+                <showScrollbars>true</showScrollbars>
                 <width>100%</width>
             </layoutItems>
         </layoutColumns>

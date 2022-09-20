@@ -360,6 +360,11 @@
             <field>RecurringChargeStatus__c</field>
             <table>kugo2p__PaymentX__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contact_ID__c</field>
+            <table>kugo2p__PaymentX__c</table>
+        </columns>
         <masterLabel>Payments</masterLabel>
     </sections>
     <sections>

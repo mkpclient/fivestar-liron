@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Markets_missing_info</fullName>
+    <booleanFilter>2 AND 5 AND (1 OR 3 OR 4)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Market__c</columns>
+    <columns>Sales_Start__c</columns>
+    <columns>Sales_Close__c</columns>
+    <columns>Web_Listings_Go_Live__c</columns>
+    <columns>Web_Listings_Turn_Off__c</columns>
+    <columns>Publication_Month__c</columns>
+    <columns>New_Final_Upload__c</columns>
+    <columns>Market_Start_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Web_Listings_Go_Live__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>5/1/2018 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>New_Final_Upload__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Publication_Month__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Canceled__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Markets missing info</label>
+    <language>en_US</language>
+</ListView>

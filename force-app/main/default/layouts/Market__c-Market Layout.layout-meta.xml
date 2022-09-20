@@ -173,6 +173,14 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Fortune_Section__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LY_Fortune_Section__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Pre_Winners_by_Years_Won__c</field>
             </layoutItems>
             <layoutItems>

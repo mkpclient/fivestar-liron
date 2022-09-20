@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ELM_Onboarded__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND(NOT(
+ISBLANK(Contact_Block_Name__c)||
+ISBLANK(Contact_Block_Photo__c)
+),
+
+Contact_List_Count__c &gt; 9)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>ELM Onboarded</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

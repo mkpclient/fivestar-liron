@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>FML RE Follow Up Email 1st and 2nd Call</name>
+    <style>freeForm</style>
+    <subject>&quot;The 500 List&quot; Forbes Market Leaders - are you participating?</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+You have an exclusive opportunity to appear in one of the most respected media brands in the nation -- Forbes Magazine! A small group of Five Star award winners in the nation -- up to 500 Real Estate Agents -- will be recognized in the February 2020 issue of Forbes Magazine. Participants will appear in a section called &quot;The 500 List&quot; Market Leaders. Prior Real Estate Market Leaders sections published in Forbes have been enormously successful.
+
+There are many benefits to participating:
+
+1) You receive national exposure. You are able to leverage your personal brand with one of the most-respected media and financial brands in the nation. Your friends, family and clients alike, throughout the entire country, will be able to see you in Forbes!
+
+2) A Forbes Banner for your email, websites, marketing material and more! This will allow you to leverage the brand power and name recognition of Forbes year-round!
+
+3) NEW ITEM!! - Announcement Video social post. Share this social post to your Facebook or LinkedIn connections for expanded exposure of your Forbes appearance.
+
+4) Up to 100 physical reprints and a magazine issue to use at listing presentations and open houses -- and of course with your current and past clients to gain referrals!
+
+
+Who wouldn&apos;t want to work with someone seen in Forbes? These are customized reprints, including your photo. Past Forbes participants have found these reprints to be one of the most effective marketing tools they have ever used.
+
+There are a limited number of spots available and they are selling fast. I&apos;d hate to see you get left out. If you&apos;d like to participate, call me as soon as possible to reserve your place!
+
+Thank you,
+
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

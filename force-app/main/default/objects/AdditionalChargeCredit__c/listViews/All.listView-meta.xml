@@ -5,6 +5,8 @@
     <columns>IsActive__c</columns>
     <columns>Description__c</columns>
     <columns>UnitPrice__c</columns>
+    <columns>SKU__c</columns>
+    <columns>Discount_SKU__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

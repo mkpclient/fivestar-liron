@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send to N clients</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>04: N Clients: Schedule Certification Appointment</name>
+    <style>freeForm</style>
+    <subject>Incomplete Five Star Award Status - Please Call to Resolve</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+We recently reached out to inform that you were brought forward and being considered for the Five Star Award. At that time, you submitted your candidate information, and we have since completed our evaluation process. Everything looks great – you’re now a finalist! The last step in being named a Five Star Award winner is completing your award certification appointment. You can click on the calendar link below to get scheduled.
+
+The certification appointment is required for the following reasons:
+
+
+To verify Five Star award finalists’ regulatory/customer complaint history (from the time they provided their initial candidate information until now.)
+To ensure award finalists understand the award process/criteria – without this step winners may be unsure why they were selected and misrepresent the award.
+To review award usage guidelines to make sure that winners do not misstate or misuse the award, and thereby damage the overall credibility of the Five Star award brand.
+
+
+
+
+*If you are unable to click the button above, please Click Here
+
+Please note: You will need access to a computer for this meeting. Without this 30-minute phone meeting, we cannot finalize your Five Star award status and you will not be named a winner this year.
+
+We know your time is valuable so feel free to reach out to me if you need any assistance.
+
+Thank you,
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

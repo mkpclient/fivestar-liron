@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSR_Appt_Link_for_Wild_Card_Appointment__c</fullName>
+    <description>Wildcard CSR appointment - round robbin</description>
+    <externalId>false</externalId>
+    <formula>&quot;https://fivestarprofessional-experience.force.com/s/onlinescheduler?processId=a5F6T0000034moGUAQ&amp;clientId=&quot;+Id</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>***FOR INTERNAL USE ONLY***
+Wild Card CSR appointment for when the dedicated CSR is unavailble</inlineHelpText>
+    <label>CSR Appt. Link for Wild Card Appointment</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recurring_Discount__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When checked, this product is a recurring discount used for subscription automation</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When checked, this product is a recurring discount used for subscription automation</inlineHelpText>
+    <label>Recurring Discount</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

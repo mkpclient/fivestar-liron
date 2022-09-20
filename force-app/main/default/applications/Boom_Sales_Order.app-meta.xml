@@ -8,6 +8,7 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Boom Sales Order</label>
     <navType>Standard</navType>
     <tabs>standard-Account</tabs>
@@ -19,6 +20,8 @@
     <tabs>standard-Product2</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-report</tabs>
+    <tabs>sumoapp__Email__c</tabs>
+    <tabs>Cancellation__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Boom_Sales_Order_UtilityBar</utilityBar>
 </CustomApplication>

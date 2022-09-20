@@ -1,0 +1,62 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Hi Dr.&nbsp;</font><font face="Arial, sans-serif">{!Account.ACDF_Lname__c}</font><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 12pt;">,</span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">Nice talking to you again. It
+was extremely helpful to learn more about how we can work together to make the
+most of your selection as a Five Star award winner. <o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">Based on our discussion and
+my experience working with professionals like you, I put together
+recommendations for building on the awareness created by the announcement in
+the magazine. Please review the proposal and let me know if you have any
+questions or suggestions.<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">I’ll call you to follow up
+and discuss next steps. Thank you for considering the proposal and I look
+forward to talking to you soon.<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoHeader" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">See your proposal below:<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif"><b>{!User.Name}</b><o:p></o:p></font></p>
+
+<font face="Arial, sans-serif" style="font-family: arial; font-size: 12pt;"><u1:p></u1:p>
+
+</font><p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif"><b>Account Manager<u1:p></u1:p></b><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif"><b>Five Star Professional</b><u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif">2900 Lone Oak Parkway</font></p><p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif">Suite 120</font></p><p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif">Eagan, MN 55121</font></p>
+
+<p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">Direct:<span class="apple-converted-space">&nbsp;</span>{!User.Phone}<u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">Main:<span class="apple-converted-space">&nbsp;</span><a href="tel:1-888-438-5782" target="_blank" value="+18884385782">1-888-438-5782</a><u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">Fax:<span class="apple-converted-space">&nbsp;</span><a href="tel:651-259-1940" target="_blank" value="+16512591940">651-259-1940</a><u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">{!User.Email}<u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif"><a href="http://www.fivestarprofessional.com/" target="_blank" title="http://www.fivestarprofessional.com"><font color="#000000">www.fivestarprofessional.com</font></a><font color="#1155cc"><u1:p></u1:p></font><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background-color: white;"><font face="Arial, sans-serif"><b><span style="color: maroon;">Award candidates and award winners: Please tell us</span></b><span style="color: rgb(80, 0, 80);"><o:p></o:p></span></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background-color: white;"><font face="Arial, sans-serif"><b><span style="color: maroon;">about your experience with Five Star Professional</span></b><span style="color: maroon;">.</span><span style="color: rgb(80, 0, 80);"><o:p></o:p></span></font></p><a href="http://sgiz.mobi/s3/edb67d8ee977" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font color="#3333ff" face="Arial, sans-serif">Take Survey<br></font></a><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background-color: white;"><br></p>]]></td>
+</tr>
+</table>

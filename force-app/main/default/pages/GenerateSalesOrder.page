@@ -6,7 +6,7 @@
 <apex:inputHidden value="{!opportunity.AccountId}"/>
 <apex:inputHidden value="{!opportunity.Market_Project__r.Price_Book__c}"/>
 <apex:inputHidden value="{!opportunity.Market_Project__r.Name}"/>
-<apex:inputHidden value="{!opportunity.ContactId}"/>
+<apex:inputHidden value="{!opportunity.Contact__r.Id}"/>
 <apex:inputHidden value="{!opportunity.Account.Name}"/>
 <apex:inputHidden value="{!opportunity.Contact__r.MailingCity}"/>
 <apex:inputHidden value="{!opportunity.Contact__r.MailingCountry}"/>

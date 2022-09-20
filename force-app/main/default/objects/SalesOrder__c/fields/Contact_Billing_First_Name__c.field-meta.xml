@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contact_Billing_First_Name__c</fullName>
     <externalId>false</externalId>
-    <formula>ContactBilling__r.ACDF_FName__c</formula>
+    <formula>ContactBilling__r.FirstName</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Contact Billing First Name</label>
     <required>false</required>

@@ -11,7 +11,6 @@
     <columns>Product_Name__c</columns>
     <columns>Production_Owner__c</columns>
     <columns>UPDATEDBY_USER</columns>
-    <columns>CSR_Follow_Up_1_Date__c</columns>
     <columns>Stage_Change_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>

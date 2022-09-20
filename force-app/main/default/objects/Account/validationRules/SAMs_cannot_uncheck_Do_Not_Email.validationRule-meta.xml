@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SAMs_cannot_uncheck_Do_Not_Email</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( AND(  $User.ProfileId=&quot;00ed00000019BZY&quot;,  FORMULA_Do_Not_Email__c  = True,   Do_Not_Email__c  =FALSE), TRUE, FALSE)</errorConditionFormula>
+    <errorMessage>You are not allowed to uncheck the do not email box.  Contact Research.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HGTV_Market_Leaders_October_2019</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Client_Type__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Next_call_date__c</columns>
+    <columns>Last_Call_Date__c</columns>
+    <columns>Open_Call_Comments__c</columns>
+    <columns>Logged_Calls__c</columns>
+    <columns>Target_Calls__c</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Percent_Chance__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>HGTV</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notContain</operation>
+        <value>NON PURCHASER - No Response,NON PURCHASER - Not Interested,Purchased</value>
+    </filters>
+    <label>HGTV Market Leaders - October 2019</label>
+    <sharedTo>
+        <group>SAMS</group>
+    </sharedTo>
+</ListView>

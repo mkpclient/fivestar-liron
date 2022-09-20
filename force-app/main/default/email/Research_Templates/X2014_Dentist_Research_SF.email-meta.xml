@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>2014 Dentist_SF</name>
+    <style>freeForm</style>
+    <subject>2014 Five Star Dentist Award - You&apos;ve been nominated by your peers and patients.</subject>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ActOn__Send_Act_On_Email</fullName>
+    <availability>online</availability>
+    <description>Send email to current Lead</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send Act-On Email</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/32.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/32.0/apex.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/ActOn__ActOnLib&quot;)}
+
+invokeWithActOnServerUrl( function(url) 
+{ 
+url += &apos;/acton/sforce/sendSforceContactOrLead.jsp?id={!Lead.Id}&amp;server={!API.Partner_Server_URL_190}&amp;session={!API.Session_ID}&apos;; 
+	window.open(url,&quot;_blank&quot;, &quot;width=1200,height=768&quot;); 
+});</url>
+</WebLink>

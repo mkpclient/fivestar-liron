@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>10: Client Check In Follow Up</name>
+    <style>freeForm</style>
+    <subject>Follow Up to my Check In Call</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+I am following up on my call to you moments ago. We had planned to connect for a short check in meeting to ensure you are progressing toward this years goals with your marketing efforts.
+
+If you have any questions or would like to connect, please contact me at any time. I am always happy to help!
+
+Have a great day,
+
+{!User.User_Full_Name__c}
+Account Manager
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

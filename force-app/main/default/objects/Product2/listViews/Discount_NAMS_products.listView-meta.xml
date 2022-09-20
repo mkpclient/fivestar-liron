@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discount_NAMS_products</fullName>
+    <columns>PRODUCT2.NAME</columns>
+    <columns>PRODUCT2.DESCRIPTION</columns>
+    <columns>Recurring_Discount__c</columns>
+    <columns>Is_Discount__c</columns>
+    <columns>Full_ID__c</columns>
+    <columns>Discount_Frequency__c</columns>
+    <columns>PRODUCT2.ACTIVE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>Discount</value>
+    </filters>
+    <filters>
+        <field>DSR_Product_Category__c</field>
+        <operation>equals</operation>
+        <value>Marketing Services-Setup Fee/Marketing Discounts</value>
+    </filters>
+    <label>Discount NAMS products</label>
+    <language>en_US</language>
+</ListView>

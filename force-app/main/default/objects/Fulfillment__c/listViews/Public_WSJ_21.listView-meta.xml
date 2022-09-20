@@ -23,7 +23,7 @@
     <filters>
         <field>WSJ_Upload__c</field>
         <operation>greaterOrEqual</operation>
-        <value>5/1/2020</value>
+        <value>1/1/2022</value>
     </filters>
     <filters>
         <field>Product_Name__c</field>
@@ -40,7 +40,7 @@
         <operation>notContain</operation>
         <value>2020</value>
     </filters>
-    <label>(Public) WSJ - 21</label>
+    <label>(Public) WSJ - 22</label>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Allen_Wardell</group>

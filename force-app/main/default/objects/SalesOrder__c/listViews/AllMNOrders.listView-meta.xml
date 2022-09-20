@@ -10,7 +10,7 @@
     <columns>TotalTaxAmount__c</columns>
     <columns>NetAmount__c</columns>
     <columns>BalanceDueAmount__c</columns>
-    <columns>RecordStatus__c</columns>
+    <columns>Status_Picklist__c</columns>
     <columns>PaymentStatus2__c</columns>
     <columns>Payments_Made__c</columns>
     <filterScope>Everything</filterScope>

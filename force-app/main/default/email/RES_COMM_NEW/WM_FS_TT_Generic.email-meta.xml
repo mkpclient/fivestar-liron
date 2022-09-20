@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>TT_WM_FS_Generic</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Z WM/FS TT: Generic</name>
+    <style>none</style>
+    <subject>Phone Call Follow Up - {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c}</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+I hope that you are having a good day, I am following up regarding our recent conversation today. I wanted to provide you with some additional information and the link to your candidate evaluation from.
+
+You have been identified as a candidate for the {!Market__c.Publication_Year__c} {!Market__c.Program_Name__c} Award! An exclusive group of wealth managers will receive the {!Market__c.Publication_Year__c} award and be featured with a complimentary listing in a special {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c}.
+
+As a candidate, we need additional information in order to evaluate you based on our 10 objective criteria and move you forward in the research process. The deadline for submission is end of day, {!Market__c.ACDF_Deadline__c}.
+
+To submit your information, please go to the secure, online link below and complete the form questionnaire.  This only takes a few minutes of your time to complete.
+
+Candidate Evaluation Form - Click Here to Complete.
+
+Evaluation Process: Candidates will be evaluated on 10 criteria aligned with providing quality service and professional excellence. Only those candidates who differentiate themselves based on the criteria will be named a {!Market__c.Publication_Year__c}{!Market__c.Program_Name__c}. Our 10 evaluative criteria include client retention rates, professional designations, a consumer complaint history review, and other criteria detailed in the Five Star Professional - Research Overview.
+
+
+Award winners are scheduled to be notified 4 weeks after the deadline date posted above.
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

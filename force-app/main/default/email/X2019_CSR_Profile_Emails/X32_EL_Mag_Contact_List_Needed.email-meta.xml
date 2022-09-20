@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>EL Mag contact list needed!</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>32. EL Mag Contact List Needed</name>
+    <style>freeForm</style>
+    <subject>Reminder: We still need your mailing list for Essential Living Magazine!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+I just wanted to remind you that we still need your contact mailing list so we can send out your first issue of Essential Living Magazine on your behalf! You can either login to your account using the information below, or you can send me your list in an excel or .csv file via email and I will get that updated in our system for you. 
+
+You can access your Five Star account by going to: www.fivestarprofessional.com/login. 
+
+Here is your login information:
+
+                       Username: {!Fulfillment__c.Web_Username__c}
+
+                       Passcode: {!Fulfillment__c.Login_Code__c}
+
+REMINDER: The deadline for your to submit your information and select your ad templates for the first issue is &lt;MONTH&gt; 1st. 
+
+Please contact me if you have any questions, or if you need assistance with any of this. I am here to help you!
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

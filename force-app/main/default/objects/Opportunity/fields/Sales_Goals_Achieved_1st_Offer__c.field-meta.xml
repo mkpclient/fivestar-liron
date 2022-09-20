@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Goals_Achieved_1st_Offer__c</fullName>
+    <externalId>false</externalId>
+    <label>Sales Goals Achieved - 1st Offer</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1- Congratulations</fullName>
+                <default>false</default>
+                <label>1- Congratulations</label>
+            </value>
+            <value>
+                <fullName>2- Research</fullName>
+                <default>false</default>
+                <label>2- Research</label>
+            </value>
+            <value>
+                <fullName>3-Magazine/Section</fullName>
+                <default>false</default>
+                <label>3-Magazine/Section</label>
+            </value>
+            <value>
+                <fullName>4-Value Proposition/Examples</fullName>
+                <default>false</default>
+                <label>4-Value Proposition/Examples</label>
+            </value>
+            <value>
+                <fullName>5-Qualify/Learn</fullName>
+                <default>false</default>
+                <label>5-Qualify/Learn</label>
+            </value>
+            <value>
+                <fullName>6-Make recommendation</fullName>
+                <default>false</default>
+                <label>6-Make recommendation</label>
+            </value>
+            <value>
+                <fullName>7-Review Award Guide</fullName>
+                <default>false</default>
+                <label>7-Review Award Guide</label>
+            </value>
+            <value>
+                <fullName>8-Send Proposal</fullName>
+                <default>false</default>
+                <label>8-Send Proposal</label>
+            </value>
+            <value>
+                <fullName>9-Close/On the clock</fullName>
+                <default>false</default>
+                <label>9-Close/On the clock</label>
+            </value>
+            <value>
+                <fullName>10-Closed Won</fullName>
+                <default>false</default>
+                <label>10-Closed Won</label>
+            </value>
+            <value>
+                <fullName>Dead - Company doesn&apos;t allow participation</fullName>
+                <default>false</default>
+                <label>Dead - Company doesn&apos;t allow participation</label>
+            </value>
+            <value>
+                <fullName>Dead - Connected but no story</fullName>
+                <default>false</default>
+                <label>Dead - Connected but no story</label>
+            </value>
+            <value>
+                <fullName>Dead - Cost/Price/Budget</fullName>
+                <default>false</default>
+                <label>Dead - Cost/Price/Budget</label>
+            </value>
+            <value>
+                <fullName>Dead - Did not connect</fullName>
+                <default>false</default>
+                <label>Dead - Did not connect</label>
+            </value>
+            <value>
+                <fullName>Dead - MPS interest</fullName>
+                <default>false</default>
+                <label>Dead - MPS interest</label>
+            </value>
+            <value>
+                <fullName>Dead - Didn&apos;t work</fullName>
+                <default>false</default>
+                <label>Dead - Didn&apos;t work</label>
+            </value>
+            <value>
+                <fullName>Dead - No contact info</fullName>
+                <default>false</default>
+                <label>Dead - No contact info</label>
+            </value>
+            <value>
+                <fullName>Dead - No value</fullName>
+                <default>false</default>
+                <label>Dead - No value</label>
+            </value>
+            <value>
+                <fullName>Dead - Not my plan</fullName>
+                <default>false</default>
+                <label>Dead - Not my plan</label>
+            </value>
+            <value>
+                <fullName>Dead - Scam</fullName>
+                <default>false</default>
+                <label>Dead - Scam</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

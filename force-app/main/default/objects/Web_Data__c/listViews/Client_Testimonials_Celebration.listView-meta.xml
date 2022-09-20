@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Testimonials_Celebration</fullName>
+    <columns>Fulfillment__c</columns>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Testimonial__c</columns>
+    <columns>Client_Name__c</columns>
+    <columns>Testimonial_Status__c</columns>
+    <columns>TestimonialSnippett__c</columns>
+    <columns>Revised_Testimonial__c</columns>
+    <columns>ASemailcsv__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>Celebration Survey</value>
+    </filters>
+    <label>Client Testimonials - All Celebration</label>
+    <language>en_US</language>
+</ListView>

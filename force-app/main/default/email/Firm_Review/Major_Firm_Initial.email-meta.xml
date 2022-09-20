@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Major Firm Initial</name>
+    <style>none</style>
+    <subject>Firm Review Request - Deadline {!Firm_Review__c.Firm_Review_Deadline__c}</subject>
+    <textOnly>Hello {!Firm_Review__c.Primary_contact_first_name__c}:
+
+Research for following Five Star Professional award(s) is nearly complete:
+
+Market area: {!Firm_Review__c.Market_area__c}
+Award year: {!Firm_Review__c.Award_year__c}
+Publication month: {!Firm_Review__c.Publication_Month__c}
+Publication: {!Firm_Review__c.Publication__c}
+
+Attached is a list of advisors for your firm’s review. Please let me know which advisors are approved and which are not by {!Firm_Review__c.Firm_Review_Deadline__c}.
+
+Thank you,
+
+Ashley Zellmer
+Five Star Professional
+ashley.zellmer@fivestarprofessional.com
+(651) 259-1157</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

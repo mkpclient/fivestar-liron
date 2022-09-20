@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage_Comment__c</fullName>
+    <externalId>false</externalId>
+    <label>Stage Comment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Continue to receive emails</fullName>
+                <default>false</default>
+                <label>Continue to receive emails</label>
+            </value>
+            <value>
+                <fullName>Remove from email campaigns</fullName>
+                <default>false</default>
+                <label>Remove from email campaigns</label>
+            </value>
+            <value>
+                <fullName>Do not contact me regarding other promotions this year</fullName>
+                <default>false</default>
+                <label>Do not contact me regarding other promotions this year</label>
+            </value>
+            <value>
+                <fullName>Contact me about future promotions</fullName>
+                <default>false</default>
+                <label>Contact me about future promotions</label>
+            </value>
+            <value>
+                <fullName>Remove contact permanently</fullName>
+                <default>false</default>
+                <label>Remove contact permanently</label>
+            </value>
+            <value>
+                <fullName>Retired</fullName>
+                <default>false</default>
+                <label>Retired</label>
+            </value>
+            <value>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+                <label>Deceased</label>
+            </value>
+            <value>
+                <fullName>Out of Area</fullName>
+                <default>false</default>
+                <label>Out of Area</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

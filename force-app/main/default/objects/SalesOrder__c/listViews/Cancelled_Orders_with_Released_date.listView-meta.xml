@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancelled_Orders_with_Released_date</fullName>
+    <booleanFilter>(1 OR 2) AND 3 AND 4</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Status_Picklist__c</columns>
+    <columns>Release_Date__c</columns>
+    <columns>Released__c</columns>
+    <columns>NetAmount__c</columns>
+    <columns>CompletedPayments__c</columns>
+    <columns>Net_Due__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Released__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Release_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Status_Picklist__c</field>
+        <operation>equals</operation>
+        <value>Subscription Cancelled</value>
+    </filters>
+    <filters>
+        <field>OrderDate__c</field>
+        <operation>greaterThan</operation>
+        <value>1/1/2022</value>
+    </filters>
+    <label>Cancelled Orders with Released date</label>
+</ListView>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__Get_Geocode</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Get Geocode</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&apos;/soap/ajax/27.0/connection.js&apos;)} 
+{!REQUIRESCRIPT(&apos;https://maps.google.com/maps/api/js?sensor=false&apos;)} 
+ 
+var address = &apos;&apos;;
+var latitude;
+var longitude;
+
+var geocoder = new google.maps.Geocoder();
+var street = &apos;{!Contact.MailingStreet}&apos;;
+var city = &apos;{!Contact.MailingCity}&apos;;
+var state = &apos;{!Contact.MailingState}&apos;;
+var country = &apos;{!Contact.MailingCountry}&apos;;
+var zipCode =  &apos;{!Contact.MailingPostalCode}&apos;;
+
+if( street != undefined  ){
+  		address += street ;
+        		
+        	}
+        	if(city != undefined ){
+        	        address += &apos;,&apos;+ city;
+        	}
+        	if(state != undefined  ){
+        		address += &apos;,&apos; + state ;
+        	}
+        	if(country != undefined ){
+        		address += &apos;,&apos;+ country ;
+        	}
+        	if(zipCode != undefined ){
+        		address += &apos;,&apos;+ zipCode ;
+        	}
+        	//alert(address);
+
+if(address != &quot;&quot;){
+ if ( geocoder) {
+  geocoder.geocode({ &apos;address&apos;: address }, function (results, status) {
+  
+  if (status == google.maps.GeocoderStatus.OK) {               
+	//alert(results[0].geometry.location + &apos;&apos;);
+         
+        latitude = results[0].geometry.location.lat();
+        longitude = results[0].geometry.location.lng();
+        
+        var a = new sforce.SObject(&quot;Contact&quot;); 
+          a.Id = &apos;{!Contact.Id}&apos;; 
+
+		if(longitude!= undefined ){
+			a.forcebrain__Longitude__c  = longitude;
+		}
+		else{
+			a.forcebrain__Longitude__c = null;
+		}
+		//alert(&apos;a.Longitude__c&apos;+a.Longitude__c);
+
+		if(latitude!= undefined ){
+			a.forcebrain__Latitude__c = latitude;
+		}
+		else{
+			a.forcebrain__Latitude__c = null;
+		}
+
+		//alert(&apos;a.Latitude__c&apos;+a.Latitude__c); 
+
+		sforce.connection.update([a]); 
+		location.reload(true);
+
+                          
+	}
+  else {
+          console.log(&quot;Geocoding failed: &quot; + status);
+          alert(&apos;SUMO is unable to calculate the geocode latitude and longitude, which is required to perform a proximity search in Advanced Search.  Please confirm the address has been entered in correctly and click the &quot;Get Geocode&quot; button again.&apos;);
+           var a = new sforce.SObject(&quot;Contact&quot;); 
+           a.Id = &apos;{!Contact.Id}&apos;; 
+
+		a.forcebrain__Longitude__c = null;
+		a.forcebrain__Latitude__c = null;
+		
+		sforce.connection.update([a]); 
+		location.reload(true);
+       }
+    });
+  }
+}</url>
+</WebLink>

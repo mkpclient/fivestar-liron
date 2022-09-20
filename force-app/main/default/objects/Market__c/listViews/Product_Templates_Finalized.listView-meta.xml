@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Templates_Finalized</fullName>
+    <columns>NAME</columns>
+    <columns>Production_Owner__c</columns>
+    <columns>Publication_Year__c</columns>
+    <columns>Product_Templates_Created__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
+    <columns>Publication_Month__c</columns>
+    <columns>Index_Pull_Date1__c</columns>
+    <columns>Magazine_Text__c</columns>
+    <columns>Web_Listings_Go_Live__c</columns>
+    <columns>New_Final_Upload__c</columns>
+    <columns>Sales_Close__c</columns>
+    <columns>Actual_Upload_Date__c</columns>
+    <columns>Market_Disclosure__c</columns>
+    <columns>Winners_in_Market__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Templates_Finalized__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>LAST_WEEK</value>
+    </filters>
+    <label>__3. MONDAY Finalized Templates</label>
+    <language>en_US</language>
+    <sharedTo>
+        <group>Ad_Prod</group>
+        <group>Fulfillment_Team</group>
+        <group>Graphics</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+        <group>Olivia_Snyder</group>
+    </sharedTo>
+</ListView>

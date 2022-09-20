@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Order__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This client has an active order with outstanding payments. This field is used as a flag in the deduping process to alert Research.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This client has an active order with outstanding payments. This field is used as a flag in the deduping process to alert Research.</inlineHelpText>
+    <label>Active Order</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

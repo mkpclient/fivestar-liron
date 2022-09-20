@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACT_ACDF_Return_Date__c</fullName>
+    <description>This was the last time the contact filled out their form in ACT.  This field is now tracked on the Opportunity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This was the last time the contact filled out their form in ACT.  This field is now tracked on the Opportunity.</inlineHelpText>
+    <label>ACDF Return Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

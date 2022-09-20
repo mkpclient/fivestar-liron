@@ -2085,16 +2085,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_Back_Cover_Ad_Template__c</field>
-            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_Back_Cover_Inside_Ad_Templ__c</field>
-            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Status_Change_Date__c</field>
             <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
         </columns>
@@ -2106,16 +2096,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Custom_Back_Cover_Ad__c</field>
-            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_Custom_Back_Cover_Inside__c</field>
-            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_Custom_Back_Cover_Ad__c</field>
             <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
         </columns>
         <columns>
@@ -2246,6 +2226,51 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>EL_Boxed_Copies__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Back_Cover_Updated__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Back_Cover_Inside_Updated__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Front_Cover_Inside_Ad_Updated__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_Block__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_Block_Updated__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Publication_Code__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Client_Last_Name__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Publication_Issue_Number__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_choice__c</field>
             <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
         </columns>
         <masterLabel>Essential Living Issues</masterLabel>

@@ -1,0 +1,17 @@
+<apex:page standardController="SalesOrder__c">
+    <apex:includeLightning />    
+    <div id="LightningComponentid" />   
+<!-- the Id of div tag which will be used to render your LWC component  -->
+    <script>
+        $Lightning.use("c:newPaymentTerminalApp", function() {
+            $Lightning.createComponent("c:newPaymentTerminal",
+            { 
+                recordId : '{!$CurrentPage.parameters.id}'
+            },
+            "LightningComponentid", // the Id of div tag where your component will be rendered
+            function(cmp) {
+                console.log('Calling the LWC Component');
+            });
+        });
+    </script>
+</apex:page>

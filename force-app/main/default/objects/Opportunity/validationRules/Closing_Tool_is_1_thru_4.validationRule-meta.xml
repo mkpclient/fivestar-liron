@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closing_Tool_is_1_thru_4</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(OR (ISNULL(  Closing_Tool__c   ),(AND(  Closing_Tool__c  &lt;5,   Closing_Tool__c  &gt;0))))</errorConditionFormula>
+    <errorMessage>Closing Tool must be a number between 1-4</errorMessage>
+</ValidationRule>

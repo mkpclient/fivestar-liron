@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>kugo2p__SyncSource__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Source Record of Opportunity Amount or Opportunity Product Line Sync. Value is set automatically per Kugamon Settings.
+
+Requires Kugamon Settings &apos;Sync Primary Quote to Opportunity&apos; and/or &apos;Sync Primary Order to Opportunity&apos; functions to be  enabled.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Source Record of Opportunity Amount or Opportunity Product Line Sync. Value is set automatically per Kugamon Settings</inlineHelpText>
+    <label>Sync Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Primary Quote</fullName>
+                <default>false</default>
+                <label>Primary Quote</label>
+            </value>
+            <value>
+                <fullName>Primary Order</fullName>
+                <default>false</default>
+                <label>Primary Order</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

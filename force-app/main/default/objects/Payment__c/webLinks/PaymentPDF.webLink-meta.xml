@@ -16,5 +16,5 @@
     <protected>false</protected>
     <showsLocation>false</showsLocation>
     <showsStatus>false</showsStatus>
-    <url>/apex/Payment2AttachPDF?orderId={!Payment__c.Sales_Order__c}&amp;paymentId={!Payment__c.Id}</url>
+    <url>/apex/Payment2AttachPDF?orderId={!Payment__c.Sales_OrderId__c}&amp;paymentId={!Payment__c.Id}</url>
 </WebLink>

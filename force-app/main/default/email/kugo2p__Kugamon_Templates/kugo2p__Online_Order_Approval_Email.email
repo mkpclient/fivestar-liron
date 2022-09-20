@@ -1,0 +1,13 @@
+Dear {!kugo2p__SalesOrder__c.kugo2p__ContactBilling__c},
+
+As we talked about, you may review the proposed Five Star order we discussed, as well as submit payment through the secure link below.
+
+{!$Setup.kugo2p__Terminal_Settings__c.kugo2p__Sites_URL__c}/CustomOnlineOrder?id={!kugo2p__SalesOrder__c.Id}&key={!kugo2p__SalesOrder__c.kugo2p__OnlineApprovalKey__c}
+
+Please let me know when you submit the order so I can confirm that it came through and walk you through the next steps. Let me know if you have any questions and thank you for the business!
+
+Thank you,
+
+{!$User.FirstName} {!$User.LastName}
+{!$Organization.Name}
+{!$User.Phone} | Email: {!$User.Email}

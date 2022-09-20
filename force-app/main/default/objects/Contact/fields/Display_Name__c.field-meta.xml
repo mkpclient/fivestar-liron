@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Display_Name__c</fullName>
+    <description>This field is now a read-only field that is populated by combining the Display First and Display Last Name fields.</description>
+    <externalId>false</externalId>
+    <formula>Display_First_Name__c &amp; &quot; &quot; &amp;  Display_Last_Name__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This field is now a read-only field that is populated by combining the Display First and Display Last Name fields.</inlineHelpText>
+    <label>Display Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

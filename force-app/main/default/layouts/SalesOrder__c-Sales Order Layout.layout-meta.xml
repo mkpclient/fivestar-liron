@@ -2,12 +2,12 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Manage_Lines_Classic</customButtons>
     <customButtons>Manage_Charges_and_Credits</customButtons>
-    <customButtons>New_Payment</customButtons>
+    <customButtons>Payment_Processor</customButtons>
     <customButtons>Email_Invoice</customButtons>
     <customButtons>View_Invoice</customButtons>
     <customButtons>Email_Link</customButtons>
     <customButtons>Attach_Invoice</customButtons>
-    <customButtons>Clone_Boom_Order</customButtons>
+    <customButtons>Update_Address_Fields</customButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <layoutSections>
@@ -23,6 +23,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Subscription__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -65,6 +69,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Invoice_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Complaint_Order__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -289,9 +297,39 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Submit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.ContentPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>3</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.PollPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.LinkPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>PrintableView</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SalesOrder__c.Manage_Lines</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>RecordShareHierarchy</actionName>
@@ -319,44 +357,9 @@
             <sortOrder>11</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>IsotopeSubscription</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>12</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>13</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SalesOrder__c.Manage_Lines</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Submit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.ContentPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.PollPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.LinkPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
+            <sortOrder>12</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -384,7 +387,29 @@
     </quickActionList>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Open_Date__c</fields>
+        <fields>Request_Type__c</fields>
+        <fields>Status__c</fields>
+        <fields>Request_Description__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>Close_Date__c</fields>
         <relatedList>Change_Request__c.Sales_Order__c</relatedList>
+        <sortField>Open_Date__c</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Status__c</fields>
+        <fields>Subscription_Fulfillment__c</fields>
+        <fields>Start_Date__c</fields>
+        <fields>Renewal_Product__c</fields>
+        <fields>Renewal_Quantity__c</fields>
+        <fields>Renewal_Price__c</fields>
+        <fields>Renewal_Date_Day_of_Month__c</fields>
+        <fields>Cancelled_Date__c</fields>
+        <relatedList>Subscription__c.Original_Subscription_Boom_Order__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
@@ -406,8 +431,10 @@
         <excludeButtons>New</excludeButtons>
         <fields>Line__c</fields>
         <fields>Product__c</fields>
+        <fields>LineDescription__c</fields>
         <fields>Quantity__c</fields>
         <fields>ListPrice__c</fields>
+        <fields>SalesPrice__c</fields>
         <fields>Actual_Price__c</fields>
         <fields>NAME</fields>
         <fields>Line_Effective_Date__c</fields>
@@ -426,17 +453,18 @@
         <fields>Recipient_Split_Amount__c</fields>
         <fields>Market_Project__c</fields>
         <relatedList>Order_Line_Recipient__c.Order__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>
-        <fields>Market__c</fields>
-        <fields>Fulfillment_Owner__c</fields>
-        <fields>CREATED_DATE</fields>
         <fields>Subscription__c</fields>
-        <relatedList>Order_Fulfillment__c.OrderNumber__c</relatedList>
+        <fields>CREATED_DATE</fields>
+        <fields>Fulfillment_Owner__c</fields>
+        <relatedList>Fulfillment__c.Boom_Order__c</relatedList>
     </relatedLists>
     <relatedLists>
         <customButtons>New_Payment</customButtons>
@@ -486,6 +514,13 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>AM_Assigned__c</fields>
+        <fields>CSR_Assigned__c</fields>
+        <fields>Cancellation_Reason__c</fields>
+        <relatedList>Cancellation__c.Boom_Order__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

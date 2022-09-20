@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <decisions>
+        <name>E_Magazine_Yes_or_No</name>
+        <label>E-Magazine Yes or No</label>
+        <locationX>1106</locationX>
+        <locationY>1511</locationY>
+        <defaultConnectorLabel>No E-Magazine</defaultConnectorLabel>
+        <rules>
+            <name>Has_E_Magazine</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Boom_Order__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>ELM_E_Magazine_Check.Boom_Order__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>E_Mag_Purchaser_Checkbox</targetReference>
+            </connector>
+            <label>Has E-Magazine</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>E_Magazine_Yes_or_No_0</name>
+        <label>E-Magazine Yes or No</label>
+        <locationX>666</locationX>
+        <locationY>1511</locationY>
+        <defaultConnectorLabel>No E-Magazine</defaultConnectorLabel>
+        <rules>
+            <name>Has_E_Magazine_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Boom_Order__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Escapes_E_Magazine_Check.Boom_Order__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>E_Mag_Purchaser_Checkbox</targetReference>
+            </connector>
+            <label>Has E-Magazine</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Escapes_Experiences_Split</name>
+        <label>Escapes Experiences Split</label>
+        <locationX>468</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>Create_first_ELM_Issue</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome - ELM</defaultConnectorLabel>
+        <rules>
+            <name>Escapes_Fulfillment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Product_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Escapes</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_first_Escapes_issue</targetReference>
+            </connector>
+            <label>Escapes Fulfillment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Escapes_Experiences_Split_0</name>
+        <label>Escapes Experiences Split</label>
+        <locationX>886</locationX>
+        <locationY>1271</locationY>
+        <defaultConnector>
+            <targetReference>ELM_E_Magazine_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome - ELM</defaultConnectorLabel>
+        <rules>
+            <name>Escapes_Fulfillment_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Product_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Escapes</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Escapes_E_Magazine_Check</targetReference>
+            </connector>
+            <label>Escapes Fulfillment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>mailing style to separate Direct Mail from Print Only</description>
+        <name>Escapes_Mailing_Style_Split</name>
+        <label>Escapes Mailing Style Split</label>
+        <locationX>50</locationX>
+        <locationY>935</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Direct_Mail_Flexmail</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Direct_to_Client_Stamped_and_Boxed_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Escapes_Copies_Type_and_Quantity.Product_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Escapes and Experiences Magazine Monthly Subscription Stamped and Boxed Copies</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Mailing_Style_Boxed_and_Stamped</targetReference>
+            </connector>
+            <label>Direct to Client - Stamped and Boxed</label>
+        </rules>
+        <rules>
+            <name>Direct_to_Client_Boxed_Copies_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Escapes_Copies_Type_and_Quantity.Product_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Escapes and Experiences Magazine Monthly Subscription Boxed Copies</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Mailing_Style_Boxed_Copies</targetReference>
+            </connector>
+            <label>Direct to Client - Boxed Copies</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>mailing style to separate Direct Mail from Print Only</description>
+        <name>Mailing_Style</name>
+        <label>Mailing Style</label>
+        <locationX>886</locationX>
+        <locationY>935</locationY>
+        <defaultConnector>
+            <targetReference>Direct_Mail_Flexmail</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Direct_to_Client_Stamped_and_Boxed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_ELM_Copies_Quantity.Product_Name__c</leftValueReference>
+                <operator>EndsWith</operator>
+                <rightValue>
+                    <stringValue>Subscription Stamped and Boxed Copies</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mailing_Style_Boxed_and_Stamped</targetReference>
+            </connector>
+            <label>Direct to Client - Stamped and Boxed</label>
+        </rules>
+        <rules>
+            <name>Direct_to_Client_Boxed_Copies</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_ELM_Copies_Quantity.Product_Name__c</leftValueReference>
+                <operator>EndsWith</operator>
+                <rightValue>
+                    <stringValue>Subscription Boxed Copies</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mailing_Style_Boxed_Copies</targetReference>
+            </connector>
+            <label>Direct to Client - Boxed Copies</label>
+        </rules>
+    </decisions>
+    <description>When Fulfillment is created and New, a new publication issue will be created. Fulfillment will be stamped with quantity, if e-mag, and first issue deadline</description>
+    <environments>Default</environments>
+    <interviewLabel>Create First Essential Living Issue {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create First Personal Magazine Subscription Issue</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates ELM issue</description>
+        <name>Create_first_ELM_Issue</name>
+        <label>Create first ELM Issue</label>
+        <locationX>886</locationX>
+        <locationY>455</locationY>
+        <connector>
+            <targetReference>Get_ELM_Copies_Quantity</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.Customer_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Fulfillment__c</field>
+            <value>
+                <elementReference>$Record.Full_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Essential_Living_Issue__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Creates Escapes issue</description>
+        <name>Create_first_Escapes_issue</name>
+        <label>Create first Escapes issue</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <connector>
+            <targetReference>Get_Escapes_Copies_Type_and_Quantity</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.Customer_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Fulfillment__c</field>
+            <value>
+                <elementReference>$Record.Full_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Essential_Living_Issue__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get ELM E-Magazine information</description>
+        <name>ELM_E_Magazine_Check</name>
+        <label>ELM E-Magazine Check</label>
+        <locationX>1106</locationX>
+        <locationY>1391</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>E_Magazine_Yes_or_No</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>E-Magazine</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Subscription Cancelled,Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Boom_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Boom_Order__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Product_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Essential Living</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Fulfillment__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Product_Name__c</queriedFields>
+        <queriedFields>Boom_Order__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get E-Magazine information</description>
+        <name>Escapes_E_Magazine_Check</name>
+        <label>Escapes E-Magazine Check</label>
+        <locationX>666</locationX>
+        <locationY>1391</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>E_Magazine_Yes_or_No_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>E-Magazine</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Subscription Cancelled,Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Boom_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Boom_Order__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Product_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Escapes</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Fulfillment__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Product_Name__c</queriedFields>
+        <queriedFields>Boom_Order__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Find quantity of subscription copies on same order</description>
+        <name>Get_ELM_Copies_Quantity</name>
+        <label>Get ELM Copies Type and Quantity</label>
+        <locationX>886</locationX>
+        <locationY>575</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_first_issue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Subscription Copies</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Subscription Cancelled,Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Boom_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Boom_Order__r.Full_Order_ID__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Product_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Essential Living</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Fulfillment__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Quantity__c</queriedFields>
+        <queriedFields>Product_Name__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Find quantity of escapes subscription copies on same order</description>
+        <name>Get_Escapes_Copies_Type_and_Quantity</name>
+        <label>Get Escapes Copies Type and Quantity</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_first_escapes_issue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Subscription Copies</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Subscription Cancelled,Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Boom_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Boom_Order__r.Full_Order_ID__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Product_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Escapes</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Fulfillment__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Quantity__c</queriedFields>
+        <queriedFields>Product_Name__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>get first issue to find first issue deadline</description>
+        <name>Get_first_escapes_issue</name>
+        <label>Get first escapes issue</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Fulfillment_update_quantity_and_deadline</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Fulfillment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Full_ID__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Publication_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>ESC</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Essential_Living_Issue__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>get first issue to find first issue deadline</description>
+        <name>Get_first_issue</name>
+        <label>Get first issue</label>
+        <locationX>886</locationX>
+        <locationY>695</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Fulfillment_update_quantity_and_deadline_ELM</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Fulfillment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Full_ID__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Publication_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>ELM</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Essential_Living_Issue__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Mailing style updated to Direct Mail - Flexmail</description>
+        <name>Direct_Mail_Flexmail</name>
+        <label>Direct Mail - Flexmail</label>
+        <locationX>1150</locationX>
+        <locationY>1055</locationY>
+        <connector>
+            <targetReference>Escapes_Experiences_Split_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Mailing_Style__c</field>
+            <value>
+                <stringValue>Direct Mail - Flexmail</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>checks box for e-mag</description>
+        <name>E_Mag_Purchaser_Checkbox</name>
+        <label>E-Mag Purchaser Checkbox</label>
+        <locationX>886</locationX>
+        <locationY>1943</locationY>
+        <inputAssignments>
+            <field>EL_E_Magazine_Purchaser__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Fulfillment update quantity and deadline</description>
+        <name>Fulfillment_update_quantity_and_deadline</name>
+        <label>Fulfillment update quantity and deadline</label>
+        <locationX>50</locationX>
+        <locationY>815</locationY>
+        <connector>
+            <targetReference>Escapes_Mailing_Style_Split</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ELM_Onboard_Deadline__c</field>
+            <value>
+                <elementReference>Get_first_escapes_issue.Last_day_to_submit_changes__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>EL_Quantity__c</field>
+            <value>
+                <elementReference>Get_Escapes_Copies_Type_and_Quantity.Quantity__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Fulfillment update quantity and deadline ELM</description>
+        <name>Fulfillment_update_quantity_and_deadline_ELM</name>
+        <label>Fulfillment update quantity and deadline ELM</label>
+        <locationX>886</locationX>
+        <locationY>815</locationY>
+        <connector>
+            <targetReference>Mailing_Style</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ELM_Onboard_Deadline__c</field>
+            <value>
+                <elementReference>Get_first_issue.Last_day_to_submit_changes__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>EL_Quantity__c</field>
+            <value>
+                <elementReference>Get_ELM_Copies_Quantity.Quantity__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update mailing style &quot;Direct to Client - Pre Stamped&quot;</description>
+        <name>Mailing_Style_Boxed_and_Stamped</name>
+        <label>Mailing Style Boxed and Stamped</label>
+        <locationX>622</locationX>
+        <locationY>1055</locationY>
+        <connector>
+            <targetReference>Escapes_Experiences_Split_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Mailing_Style__c</field>
+            <value>
+                <stringValue>Direct to Client - Pre Stamped</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Mailing Style &quot;Direct to Client - Pre Stamped&quot;</description>
+        <name>Mailing_Style_Boxed_Copies</name>
+        <label>Mailing Style Boxed Copies</label>
+        <locationX>886</locationX>
+        <locationY>1055</locationY>
+        <connector>
+            <targetReference>Escapes_Experiences_Split_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Mailing_Style__c</field>
+            <value>
+                <stringValue>Direct to Client - Pre Stamped</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>342</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Escapes_Experiences_Split</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Base_Product__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Personal Magazine Subscription</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </filters>
+        <object>Fulfillment__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

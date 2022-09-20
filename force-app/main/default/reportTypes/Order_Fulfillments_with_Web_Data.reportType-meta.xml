@@ -3208,6 +3208,11 @@
             <field>ENL_Style__c</field>
             <table>Order_Fulfillment__c.Web_Data__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ENL_Disclosure__c</field>
+            <table>Order_Fulfillment__c.Web_Data__r</table>
+        </columns>
         <masterLabel>Web Data</masterLabel>
     </sections>
 </ReportType>

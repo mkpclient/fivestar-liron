@@ -1,25 +1,34 @@
 public without sharing class OrderLineRecipientsHelper {
   public static void beforeInsert(List<Order_Line_Recipient__c> newRecipients) {
     Set<Id> salesOrderIds = new Set<Id>();
+    List<Id> recipientIds = new List<Id>();
+
     for (Order_Line_Recipient__c r : newRecipients) {
-      if (String.isEmpty(r.Legacy_Id__c)) {
-        salesOrderIds.add(r.Order__c);
-      }
+      salesOrderIds.add(r.Order__c);
+      recipientIds.add(r.Recipient__c);
+      
     }
 
     Map<Id, SalesOrder__c> parentSalesOrders = generateSalesOrders(
       salesOrderIds
     );
 
-    for (Order_Line_Recipient__c r : newRecipients) {
-      if (String.isEmpty(r.Legacy_Id__c)) {
-        if (r.Market__c == null) {
-          r.Market__c = parentSalesOrders.get(r.Order__c).Market__c;
-        }
+    Map<Id, Contact> recipientsMap = generateOppToContactMap(
+      recipientIds
+    );
 
-        if (r.AccountManager__c == null) {
+
+    for (Order_Line_Recipient__c r : newRecipients) {
+      if (r.Market__c == null) {
+        r.Market__c = parentSalesOrders.get(r.Order__c).Market__c;
+      }
+
+      if (r.AccountManager__c == null) {
+        if(r.Recipient__c == parentSalesOrders.get(r.Order__c).ContactBuying__c) {
           r.AccountManager__c = parentSalesOrders.get(r.Order__c)
-            .Opportunity__r.OwnerId;
+          .Opportunity__r.OwnerId;
+        } else {
+          r.AccountManager__c = recipientsMap.get(r.Recipient__c).OwnerId;
         }
       }
     }
@@ -30,22 +39,20 @@ public without sharing class OrderLineRecipientsHelper {
     Map<Id, List<Order_Line_Recipient__c>> addToChildren = new Map<Id, List<Order_Line_Recipient__c>>();
     List<Id> referenceIds = new List<Id>();
     for (Order_Line_Recipient__c r : newRecipients) {
-      if(String.isEmpty(r.Legacy_Id__c)) {
-        orderLineIds.add(r.OrderProductLine__c);
-        if (r.Is_Kit_Bundle__c == true) {
-          referenceIds.add(r.Id);
-          if (addToChildren.containsKey(r.OrderProductLine__c)) {
-            List<Order_Line_Recipient__c> recips = addToChildren.get(
-              r.OrderProductLine__c
-            );
-            recips.add(r);
-            addToChildren.put(r.OrderProductLine__c, recips);
-          } else {
-            addToChildren.put(
-              r.OrderProductLine__c,
-              new List<Order_Line_Recipient__c>{ r }
-            );
-          }
+      orderLineIds.add(r.OrderProductLine__c);
+      if (r.Is_Kit_Bundle__c == true) {
+        referenceIds.add(r.Recipient__c);
+        if (addToChildren.containsKey(r.OrderProductLine__c)) {
+          List<Order_Line_Recipient__c> recips = addToChildren.get(
+            r.OrderProductLine__c
+          );
+          recips.add(r);
+          addToChildren.put(r.OrderProductLine__c, recips);
+        } else {
+          addToChildren.put(
+            r.OrderProductLine__c,
+            new List<Order_Line_Recipient__c>{ r }
+          );
         }
       }
       
@@ -67,19 +74,30 @@ public without sharing class OrderLineRecipientsHelper {
   ) {
     Set<Id> orderLineIds = new Set<Id>();
 
+    List<Id> parentProdLineIds = new List<Id>();
+    List<Order_Line_Recipient__c> updatedPrimaries = new List<Order_Line_Recipient__c>();
+
     for (Id key : newRecipients.keySet()) {
       if (
         oldRecipients.get(key).OrderProductLine__c !=
-        newRecipients.get(key).OrderProductLine__c &&
-        String.isEmpty(newRecipients.get(key).Legacy_Id__c)
+        newRecipients.get(key).OrderProductLine__c
       ) {
         orderLineIds.add(oldRecipients.get(key).OrderProductLine__c);
         orderLineIds.add(newRecipients.get(key).OrderProductLine__c);
+      }
+
+      if(oldRecipients.get(key).Primary__c != newRecipients.get(key).Primary__c) {
+        parentProdLineIds.add(oldRecipients.get(key).OrderProductLine__c);
+        updatedPrimaries.add(newRecipients.get(key));
       }
     }
 
     if(orderLineIds.size() > 0){ 
       updateParentOrderLine(orderLineIds);
+    }
+
+    if(updatedPrimaries.size() > 0 && parentProdLineIds.size() > 0){
+      updateChildrenPrimary(parentProdLineIds, updatedPrimaries);
     }
   }
 
@@ -90,24 +108,23 @@ public without sharing class OrderLineRecipientsHelper {
 
     for (Order_Line_Recipient__c ol : oldList) {
 
-      if(String.isEmpty(ol.Legacy_Id__c)) {
-        orderLineIds.add(ol.OrderProductLine__c);
-        if (ol.Is_Kit_Bundle__c == true) {
-          referenceIds.add(ol.Recipient__c);
-          if (deleteChildren.containsKey(ol.OrderProductLine__c)) {
-            List<Order_Line_Recipient__c> recips = deleteChildren.get(
-              ol.OrderProductLine__c
-            );
-            recips.add(ol);
-            deleteChildren.put(ol.OrderProductLine__c, recips);
-          } else {
-            deleteChildren.put(
-              ol.OrderProductLine__c,
-              new List<Order_Line_Recipient__c>{ ol }
-            );
-          }
+      orderLineIds.add(ol.OrderProductLine__c);
+      if (ol.Is_Kit_Bundle__c == true) {
+        referenceIds.add(ol.Recipient__c);
+        if (deleteChildren.containsKey(ol.OrderProductLine__c)) {
+          List<Order_Line_Recipient__c> recips = deleteChildren.get(
+            ol.OrderProductLine__c
+          );
+          recips.add(ol);
+          deleteChildren.put(ol.OrderProductLine__c, recips);
+        } else {
+          deleteChildren.put(
+            ol.OrderProductLine__c,
+            new List<Order_Line_Recipient__c>{ ol }
+          );
         }
       }
+      
       
     }
 
@@ -125,13 +142,23 @@ public without sharing class OrderLineRecipientsHelper {
   ) {
     Map<Id, SalesOrder__c> salesOrders = new Map<Id, SalesOrder__c>(
       [
-        SELECT Id, Account__r.OwnerId, Market__c, Opportunity__r.OwnerId
+        SELECT Id, Account__r.OwnerId, Market__c, Opportunity__r.OwnerId, ContactBuying__c
         FROM SalesOrder__c
         WHERE Id IN :salesOrderIds
       ]
     );
-
+    
     return salesOrders;
+  }
+
+  public static Map<Id, Contact> generateOppToContactMap(List<Id> contactIds) {
+    Map<Id, Contact> returnedMap = new Map<Id, Contact>([
+      SELECT Id, OwnerId
+      FROM Contact
+      WHERE Id IN :contactIds
+    ]);
+
+    return returnedMap;
   }
 
   public static void updateParentOrderLine(Set<Id> orderLineIds) {
@@ -140,7 +167,6 @@ public without sharing class OrderLineRecipientsHelper {
       SELECT Id, Recipient_Count__c, (SELECT Id FROM Order_Line_Recipients__r WHERE OrderProductLine__c != null)
       FROM SalesOrderProductLine__c
       WHERE Id IN :orderLineIds
-      AND Legacy_Id__c = null
     ];
 
     for (SalesOrderProductLine__c sopl : SOPLs) {
@@ -152,7 +178,7 @@ public without sharing class OrderLineRecipientsHelper {
     }
 
     try {
-      Database.update(SOPLs, false);
+      update SOPLs;
     } catch (DmlException err) {
       System.debug('RECIPIENT COUNT UPDATE ERROR :::' + err.getMessage());
     }
@@ -183,9 +209,15 @@ public without sharing class OrderLineRecipientsHelper {
       SELECT Id, KitBundleLine__c
       FROM SalesOrderProductLine__c
       WHERE KitBundleLine__c IN :parentMap.keySet()
+      AND Id NOT IN (SELECT OrderProductLine__c FROM Order_Line_Recipient__c WHERE Recipient__c IN :referenceIds)
     ];
 
+    System.debug(Json.serializePretty(childrenRecords));
+
     List<Order_Line_Recipient__c> newRecipients = new List<Order_Line_Recipient__c>();
+    
+    Set<Id> primaryRecipients = new Set<Id>();
+    Set<Id> prodLinesOfPrimaries = new Set<Id>();
 
     for (SalesOrderProductLine__c c : childrenRecords) {
       List<Order_Line_Recipient__c> olr = parentMap.get(c.KitBundleLine__c);
@@ -197,11 +229,47 @@ public without sharing class OrderLineRecipientsHelper {
           false,
           false
         );
+        if(o.Primary__c == true) {
+          primaryRecipients.add(o.Recipient__c);
+          prodLinesOfPrimaries.add(o.OrderProductLine__c);
+        }
         newRecipient.OrderProductLine__c = c.Id;
         newRecipients.add(newRecipient);
       }
     }
 
-    insert newRecipients;
+    for(Order_Line_Recipient__c o : [SELECT Id FROM Order_Line_Recipient__c WHERE Primary__c = false AND Recipient__c IN :primaryRecipients AND OrderProductLine__c NOT IN :prodLinesOfPrimaries]) {
+      o.Primary__c = true;
+      newRecipients.add(o);
+    }
+
+    upsert newRecipients;
   }
+
+  public static void updateChildrenPrimary(List<Id> parentProdLineIds, List<Order_Line_Recipient__c> updatedOrderLineRecipients) {
+    List<Order_Line_Recipient__c> recipientsToUpdate = [
+      SELECT Id, Recipient__c
+      FROM Order_Line_Recipient__c
+      WHERE
+        OrderProductLine__r.KitBundleLine__c IN :parentProdLineIds
+    ];
+
+    Map<Id, Order_Line_Recipient__c> recipientMap = new Map<Id, Order_Line_Recipient__c>();
+
+    for (Order_Line_Recipient__c o : updatedOrderLineRecipients) {
+      recipientMap.put(o.Recipient__c, o);
+    }
+
+    for (Order_Line_Recipient__c o : recipientsToUpdate) {
+      
+      if (recipientMap.containsKey(o.Recipient__c)) {
+        o.Primary__c = recipientMap.get(o.Recipient__c).Primary__c;
+      }
+    }
+
+    update recipientsToUpdate;
+    
+    
+  }
+
 }

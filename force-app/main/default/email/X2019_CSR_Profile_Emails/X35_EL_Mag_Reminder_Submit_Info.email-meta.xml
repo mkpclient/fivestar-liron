@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Reminder to client to submit their info for first ELM issue</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>35. EL Mag Reminder Submit Info</name>
+    <style>freeForm</style>
+    <subject>Reminder: You need to complete the setup of your Essential Living Magazine subscription!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+I just wanted to remind you that we need you to sign-in to your Five Star account and submit/verify your information for your first issue of Essential Living Magazine subscription!
+
+You can access your Five Star account by going to: www.fivestarprofessional.com/login.
+
+Here is your login information:
+
+Username: {!Fulfillment__c.Web_Username__c}
+
+Passcode: {!Fulfillment__c.Login_Code__c}
+
+Once you are signed in, you will want to click on the red &quot;View Products&quot; button under &quot;General Marketing Products&quot;. From there, click &quot;View&quot; on the Essential Living Magazine Subscription to access your information.
+
+REMINDER: The deadline for your to submit your information and select your ad templates for the first issue is &lt;MONTH&gt; 2nd.
+
+If you don&apos;t make your selections by the deadline, we will pull information about you that we have on file to create them and so we can get your copies printed and shipped out to you on time.
+
+Please contact me if you have any questions, or if you need assistance with any of this. I am here to help you!
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

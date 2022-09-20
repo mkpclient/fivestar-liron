@@ -16,7 +16,6 @@
     <columns>Market_Final_Upload__c</columns>
     <columns>Fulfillment_Owner__c</columns>
     <columns>Upload_Date__c</columns>
-    <columns>CSR_Follow_Up_1_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Product_Name__c</field>
@@ -27,16 +26,6 @@
         <field>Status__c</field>
         <operation>notContain</operation>
         <value>Follow Up 1,Needed,Cancelled,Experience Complete,Request,New,Scheduled</value>
-    </filters>
-    <filters>
-        <field>CSR_Follow_Up_1_Date__c</field>
-        <operation>greaterOrEqual</operation>
-        <value>8/1/2018</value>
-    </filters>
-    <filters>
-        <field>CSR_Follow_Up_1_Date__c</field>
-        <operation>lessOrEqual</operation>
-        <value>2/29/2020</value>
     </filters>
     <filters>
         <field>Client_Tier__c</field>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_SendEmail</fullName>
+    <availability>online</availability>
+    <description>Displays an alert box confirming request to send email, and if OK is selected, sends email to all targets</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>if (confirm(&apos;Are you sure you want to send this email?&apos;)) {
+  // Fire away!
+window.location.href = &quot;/apex/sbm__sbx_BatchEmailBlast?scontrolCaching=1&amp;id={!Campaign.Id}&quot;;
+} else {
+  // Go back to the Campaign page
+}</url>
+</WebLink>

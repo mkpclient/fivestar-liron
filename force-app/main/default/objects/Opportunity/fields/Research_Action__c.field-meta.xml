@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Research_Action__c</fullName>
+    <externalId>false</externalId>
+    <label>Research Action</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Send VM 1</fullName>
+                <default>false</default>
+                <label>Send VM 1</label>
+            </value>
+            <value>
+                <fullName>Send VM 2</fullName>
+                <default>false</default>
+                <label>Send VM 2</label>
+            </value>
+            <value>
+                <fullName>Send VM 3</fullName>
+                <default>false</default>
+                <label>Send VM 3</label>
+            </value>
+            <value>
+                <fullName>Send VM 4</fullName>
+                <default>false</default>
+                <label>Send VM 4</label>
+            </value>
+            <value>
+                <fullName>Send VM 5</fullName>
+                <default>false</default>
+                <label>Send VM 5</label>
+            </value>
+            <value>
+                <fullName>Send Asst Brief</fullName>
+                <default>false</default>
+                <label>Send Asst Brief</label>
+            </value>
+            <value>
+                <fullName>Send Asst More Info</fullName>
+                <default>false</default>
+                <label>Send Asst More Info</label>
+            </value>
+            <value>
+                <fullName>Send Asst More Info Generic</fullName>
+                <default>false</default>
+                <label>Send Asst More Info Generic</label>
+            </value>
+            <value>
+                <fullName>Send Data Issue No Longer with Company</fullName>
+                <default>false</default>
+                <label>Send Data Issue No Longer with Company</label>
+            </value>
+            <value>
+                <fullName>Send More Info</fullName>
+                <default>false</default>
+                <label>Send More Info</label>
+            </value>
+            <value>
+                <fullName>Send More Info Generic</fullName>
+                <default>false</default>
+                <label>Send More Info Generic</label>
+            </value>
+            <value>
+                <fullName>Send More Info Brief</fullName>
+                <default>false</default>
+                <label>Send More Info Brief</label>
+            </value>
+            <value>
+                <fullName>Send Not Interested DNC</fullName>
+                <default>false</default>
+                <label>Send Not Interested DNC</label>
+            </value>
+            <value>
+                <fullName>Send Not Interested Year Question</fullName>
+                <default>false</default>
+                <label>Send Not Interested Year Question</label>
+            </value>
+            <value>
+                <fullName>Conversation</fullName>
+                <default>false</default>
+                <label>Conversation</label>
+            </value>
+            <value>
+                <fullName>Set Callback</fullName>
+                <default>false</default>
+                <label>Set Callback</label>
+            </value>
+            <value>
+                <fullName>Complete</fullName>
+                <default>false</default>
+                <label>Complete</label>
+            </value>
+            <value>
+                <fullName>Assistant</fullName>
+                <default>false</default>
+                <label>Assistant</label>
+            </value>
+            <value>
+                <fullName>Data Issue</fullName>
+                <default>false</default>
+                <label>Data Issue</label>
+            </value>
+            <value>
+                <fullName>Trouble with Form</fullName>
+                <default>false</default>
+                <label>Trouble with Form</label>
+            </value>
+            <value>
+                <fullName>No Contact</fullName>
+                <default>false</default>
+                <label>No Contact</label>
+            </value>
+            <value>
+                <fullName>No Email</fullName>
+                <default>false</default>
+                <label>No Email</label>
+            </value>
+            <value>
+                <fullName>Send Final</fullName>
+                <default>false</default>
+                <label>Send Final</label>
+            </value>
+            <value>
+                <fullName>Appointment Left VM</fullName>
+                <default>false</default>
+                <label>Appointment Left VM</label>
+            </value>
+            <value>
+                <fullName>Appointment Left Message With Assistant</fullName>
+                <default>false</default>
+                <label>Appointment Left Message With Assistant</label>
+            </value>
+            <value>
+                <fullName>Appointment Not Interested</fullName>
+                <default>false</default>
+                <label>Appointment Not Interested</label>
+            </value>
+            <value>
+                <fullName>Appointment Scheduled Appointment</fullName>
+                <default>false</default>
+                <label>Appointment Scheduled Appointment</label>
+            </value>
+            <value>
+                <fullName>Appointment Try Again Later</fullName>
+                <default>false</default>
+                <label>Appointment Try Again Later</label>
+            </value>
+            <value>
+                <fullName>TAMPA Generic Email</fullName>
+                <default>false</default>
+                <label>TAMPA Generic Email</label>
+            </value>
+            <value>
+                <fullName>Tampa VM Follow-UP</fullName>
+                <default>false</default>
+                <label>Tampa VM Follow-UP</label>
+            </value>
+            <value>
+                <fullName>Tampa Final Call</fullName>
+                <default>false</default>
+                <label>Tampa Final Call</label>
+            </value>
+            <value>
+                <fullName>Miami LVM WM FS</fullName>
+                <default>false</default>
+                <label>Miami LVM WM FS</label>
+            </value>
+            <value>
+                <fullName>Miami VM Follow-Up More Information</fullName>
+                <default>false</default>
+                <label>Miami VM Follow-Up More Information</label>
+            </value>
+            <value>
+                <fullName>Miami Final Call</fullName>
+                <default>false</default>
+                <label>Miami Final Call</label>
+            </value>
+            <value>
+                <fullName>test email</fullName>
+                <default>false</default>
+                <label>test email</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

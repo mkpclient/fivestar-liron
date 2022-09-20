@@ -1,0 +1,6 @@
+Hello {!kugo2p__SalesOrder__c.CreatedBy},
+
+Graphics has requested information for the inscription of the plaque/emblem on order {!Fulfillment__c.00Nd0000008JoPx}. Please look the item over and reach out to {!Fulfillment__c.PrimaryRecipient__c} for inscription line information and update the product accordingly,
+
+Thank you!
+- Graphics

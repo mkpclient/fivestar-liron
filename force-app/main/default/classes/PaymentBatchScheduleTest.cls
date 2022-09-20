@@ -22,6 +22,13 @@ private with sharing class PaymentBatchScheduleTest {
       testContact.Id
     );
     SalesOrder__c testSo = BoomTestHelpers.generateTestBoomOrder(testOpp.Id);
+    List<SalesOrder__c> testSoList = new List<SalesOrder__c>();
+
+    for(Integer i = 0; i < 50; i++) {
+      testSoList.add(testSo.clone(false, true, false, false));
+    }
+
+    insert testSoList;
     SalesOrderProductLine__c testSoProd = BoomTestHelpers.generateBoomProductLine(
       testSo.Id,
       testPbe
@@ -42,11 +49,19 @@ private with sharing class PaymentBatchScheduleTest {
     testPayment.Scheduled_Payment_Date__c = Date.today();
 
     update testPayment;
+    List<Payment__c> testPaymentList = new List<Payment__c>();
+    for(SalesOrder__c so : testSoList) {
+      Payment__c dupePayment = testPayment.clone(false, true, false, false);
+      dupePayment.Sales_Order__c = so.Id;
+      testPaymentList.add(dupePayment);
+    }
+    insert testPaymentList;
+
   }
   static testMethod void testSchedule() {
     Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
 
-    String cronExpr = '0 0 0 15 3 ? 2022';
+    String cronExpr = '0 0 0 15 3 ? 2060';
     List<AsyncApexJob> jobsBefore = [
       SELECT Id, ApexClassID, ApexClass.Name, Status, JobType
       FROM AsyncApexJob
@@ -88,16 +103,14 @@ private with sharing class PaymentBatchScheduleTest {
       jobsApexBatch[0].ApexClass.Name,
       'expecting specific batch job'
     );
+    
   }
   static testMethod void testBatch() {
     Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
 
     Test.startTest();
 
-    String queryString = 'SELECT Id, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Status__c = \'Scheduled\' AND Scheduled_Payment_Date__c <= TODAY LIMIT 1';
-
-    Payment__c samplePayment = Database.query(queryString);
-    PaymentBatchableHelper.sendEmail('Declined', samplePayment.Id, samplePayment.Contact__c, samplePayment.Contact__r.Email, samplePayment.Sales_Order__c, true);
+    String queryString = 'SELECT Id, Sales_Order__r.Price_Book__r.Business_Unit__c, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Status__c = \'Scheduled\' AND Scheduled_Payment_Date__c <= TODAY LIMIT 1';
     EmailTemplate e = new EmailTemplate(
       developerName = 'test',
       FolderId = UserInfo.getUserId(),
@@ -105,7 +118,9 @@ private with sharing class PaymentBatchScheduleTest {
       Name = 'New_Credit_Card_Declined'
     );
     insert e;
-    Database.executeBatch(new PaymentBatchable());
+    Payment__c samplePayment = Database.query(queryString);
+    PaymentBatchableHelper.sendEmail('Declined', samplePayment.Id, samplePayment.Contact__c, samplePayment.Contact__r.Email, samplePayment.Sales_Order__c, true);
+   
     Test.stopTest();
   }
 
@@ -114,7 +129,7 @@ private with sharing class PaymentBatchScheduleTest {
 
     Test.startTest();
 
-    String queryString = 'SELECT Id, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Status__c = \'Scheduled\' AND Scheduled_Payment_Date__c <= TODAY LIMIT 1';
+    String queryString = 'SELECT Id, Sales_Order__r.Price_Book__r.Business_Unit__c, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Status__c = \'Scheduled\' AND Scheduled_Payment_Date__c <= TODAY LIMIT 1';
     
     Payment__c samplePayment = Database.query(queryString);
     SalesOrder__c testOrder = [SELECT Id FROM SalesOrder__c WHERE Id = :samplePayment.Sales_Order__c];
@@ -125,7 +140,27 @@ private with sharing class PaymentBatchScheduleTest {
 
     PaymentBatchableHelper.sendEmail('Approved', samplePayment.Id, samplePayment.Contact__c, samplePayment.Contact__r.Email, samplePayment.Sales_Order__c, true);
     
-    Database.executeBatch(new PaymentBatchable());
+    Database.executeBatch(new PaymentBatchable(), 100);
     Test.stopTest();
+    Payment__c updatedPayment = [SELECT Id, Status__c FROM Payment__c WHERE Id = :samplePayment.Id];
+
+    System.assertEquals('Completed', updatedPayment.Status__c, 'expecting payment to be completed');
+    
+  }
+
+  static testMethod void testQueuable() {
+    String queryString = 'SELECT Id, Sales_Order__r.Price_Book__r.Business_Unit__c, Sales_Order__r.Name,Status__c, Sales_Order__r.Alternate_Contact_Email__c, Sales_Order__r.Send_Invoice_to_Alternate_Contact__c, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Scheduled_Payment_Date__c <= TODAY AND Payment_Method__c != null LIMIT 1';
+    
+    Payment__c samplePayment = Database.query(queryString);
+
+    if(samplePayment.Status__c != 'Completed') {
+      samplePayment.Status__c = 'Completed';
+    }
+    update samplePayment;
+
+    Test.startTest();
+    System.enqueueJob(new BoomScheduledPaymentEmailsQueuable(new List<Payment__c>{samplePayment}));
+    Test.stopTest();
+
   }
 }

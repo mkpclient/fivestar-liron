@@ -76,6 +76,22 @@
         <template>Ad_Prod_Templates/customer_follow_up</template>
     </alerts>
     <alerts>
+        <fullName>Essential_Living_Order_with_No_List_Source</fullName>
+        <description>Essential Living Order with No List Source</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>charlie.wesser@fivestarprofessional.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jon.gaiter@fivestarprofessional.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>notification@essentialengine.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Essential_Living_No_List_Source_Provided</template>
+    </alerts>
+    <alerts>
         <fullName>Fulfillment</fullName>
         <description>Fulfillment</description>
         <protected>false</protected>
@@ -1026,17 +1042,6 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Order_Update</fullName>
-        <field>Fulfillment_Survey_Sent__c</field>
-        <literalValue>1</literalValue>
-        <name>Order Update</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-        <targetObject>OrderNumber__c</targetObject>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Owner_Katie</fullName>
         <description>Changes fulfillment owner to katie Dolan</description>
         <field>Fulfillment_Owner__c</field>
@@ -1073,7 +1078,7 @@
         <fullName>Update_Order_Creator_Email</fullName>
         <description>Updates order creator email field on fulfillment to the creator of the order</description>
         <field>Order_Creator_Email__c</field>
-        <formula>OrderNumber__r.CreatedBy.Email</formula>
+        <formula>Boom_Order__r.CreatedBy.Email</formula>
         <name>Update Order Creator Email</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_Pertinent_Subject_Line__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Subject line wasn&apos;t helpful, for analytics</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Subject line was not helpful</inlineHelpText>
+    <label>Non-Pertinent Subject Line</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

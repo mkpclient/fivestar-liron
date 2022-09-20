@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Update_Needed_Orders_w_Pmt</fullName>
+    <columns>NAME</columns>
+    <columns>Opportunity__c</columns>
+    <columns>ContactBuying__c</columns>
+    <columns>OrderDate__c</columns>
+    <columns>Net_Due__c</columns>
+    <columns>PaymentStatus2__c</columns>
+    <columns>Status_Picklist__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status_Picklist__c</field>
+        <operation>equals</operation>
+        <value>Payment Update Needed</value>
+    </filters>
+    <label>Payment Update Needed Orders</label>
+    <language>en_US</language>
+</ListView>

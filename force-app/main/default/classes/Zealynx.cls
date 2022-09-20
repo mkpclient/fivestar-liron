@@ -83,6 +83,7 @@ public without sharing class Zealynx {
     HttpRequest req = new HttpRequest();
     req.setMethod(method);
     req.setEndpoint(endpoint);
+    req.setTimeout(120000);
     if ( headers == null ){
       headers = new List<List<String>>();
       headers.add(new List<String>{'Content-Type','application/json'});
@@ -102,7 +103,11 @@ public without sharing class Zealynx {
       return res;       
     } catch (Exception e) {
       system.debug(e);
-      throw new AuraHandledException(e.getMessage());
+      if(System.isBatch() || System.isFuture() || System.isQueueable() || System.isScheduled() || ApexPages.currentPage() == null) {
+        throw new CalloutException(e.getMessage() + ' on line ' + e.getLineNumber());
+      } else {
+        throw new AuraHandledException(e.getMessage());
+      }
     }
      
   } 
@@ -311,6 +316,7 @@ public without sharing class Zealynx {
       bodyMap.put('zealynx_sourceOperation','Upsert');
       bodyMap.put('zealynx_sourceObject','Payment');
       bodyMap.put('records', new List<PaymentResource>{this});
+      System.debug('IN PAYMENT SAVE BEFORE CALLOUT');
       HttpResponse res = callout('POST',endpoint,null,JSON.serialize(bodyMap));
       ZealynxResponseResource ZealynxResponse = (ZealynxResponseResource)JSON.deserialize(res.getBody(), ZealynxResponseResource.class);
       System.debug(ZealynxResponse.responses);
@@ -345,6 +351,7 @@ public without sharing class Zealynx {
       bodyMap.put('zealynx_sourceOperation','Refund');
       bodyMap.put('zealynx_sourceObject','Payment');
       bodyMap.put('records', new List<PaymentResource>{this});
+      System.debug('IN REFUND BEFORE CALLOUT');
       HttpResponse res = callout('POST',endpoint,null,JSON.serialize(bodyMap));
       ZealynxResponseResource ZealynxResponse = (ZealynxResponseResource)JSON.deserialize(res.getBody(), ZealynxResponseResource.class);
       if ( 

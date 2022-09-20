@@ -1,0 +1,8 @@
+Hello Finance Team,
+
+{!Change_Request__c.CreatedBy} has created a change request on order {!Change_Request__c.Order__c}, view the order and change request here:
+
+https://na14.salesforce.com/{!Change_Request__c.OrderId__c}
+https://na14.salesforce.com/{!Change_Request__c.Id}
+
+Thank you!

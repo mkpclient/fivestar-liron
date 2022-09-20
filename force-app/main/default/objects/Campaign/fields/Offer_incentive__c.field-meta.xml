@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Offer_incentive__c</fullName>
+    <description>Any offers or incentives included in the campaign</description>
+    <externalId>false</externalId>
+    <label>Offer/incentive</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

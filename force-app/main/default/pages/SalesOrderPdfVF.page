@@ -1,0 +1,4 @@
+<apex:page standardController="SalesOrder__c" renderas="pdf" showHeader="false" sidebar="false"
+  standardStylesheets="false" cache="false">
+  <c:SalesOrderPdfAttachment recId="{!$CurrentPage.parameters.id}" />
+</apex:page>

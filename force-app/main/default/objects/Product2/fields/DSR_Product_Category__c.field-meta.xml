@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DSR_Product_Category__c</fullName>
+    <description>Used for Reporting Due to complexities with default categories and package manager flow</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used for reporting</inlineHelpText>
+    <label>DSR Product Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Host Digital Media</fullName>
+                <default>false</default>
+                <label>Host Digital Media</label>
+            </value>
+            <value>
+                <fullName>Host Digital Tools</fullName>
+                <default>false</default>
+                <label>Host Digital Tools</label>
+            </value>
+            <value>
+                <fullName>Host MPS</fullName>
+                <default>false</default>
+                <label>Host MPS</label>
+            </value>
+            <value>
+                <fullName>Host Print Media</fullName>
+                <default>false</default>
+                <label>Host Print Media</label>
+            </value>
+            <value>
+                <fullName>Special Digital Media</fullName>
+                <default>false</default>
+                <label>Special Digital Media</label>
+            </value>
+            <value>
+                <fullName>Special Digital Tools</fullName>
+                <default>false</default>
+                <label>Special Digital Tools</label>
+            </value>
+            <value>
+                <fullName>Special MPS</fullName>
+                <default>false</default>
+                <label>Special MPS</label>
+            </value>
+            <value>
+                <fullName>Special Print Media</fullName>
+                <default>false</default>
+                <label>Special Print Media</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Other</fullName>
+                <default>false</default>
+                <label>Marketing Services-Other</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Print</fullName>
+                <default>false</default>
+                <label>Marketing Services-Print</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Digital</fullName>
+                <default>false</default>
+                <label>Marketing Services-Digital</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Print Retention</fullName>
+                <default>false</default>
+                <label>Marketing Services-Print Retention</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Other Retention</fullName>
+                <default>false</default>
+                <label>Marketing Services-Other Retention</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Digital Retention</fullName>
+                <default>false</default>
+                <label>Marketing Services-Digital Retention</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Print Renewal</fullName>
+                <default>false</default>
+                <label>Marketing Services-Print Renewal</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Other Renewal</fullName>
+                <default>false</default>
+                <label>Marketing Services-Other Renewal</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Digital Renewal</fullName>
+                <default>false</default>
+                <label>Marketing Services-Digital Renewal</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Setup Fee/Marketing Discounts</fullName>
+                <default>false</default>
+                <label>Marketing Services-Setup Fee/Marketing Discounts</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Print Monthly</fullName>
+                <default>false</default>
+                <label>Marketing Services-Print Monthly</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Print Annual</fullName>
+                <default>false</default>
+                <label>Marketing Services-Print Annual</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Digital Monthly</fullName>
+                <default>false</default>
+                <label>Marketing Services-Digital Monthly</label>
+            </value>
+            <value>
+                <fullName>Marketing Services-Digital Annual</fullName>
+                <default>false</default>
+                <label>Marketing Services-Digital Annual</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

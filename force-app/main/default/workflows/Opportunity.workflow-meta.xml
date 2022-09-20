@@ -1593,8 +1593,8 @@
         </criteriaItems>
         <criteriaItems>
             <field>Opportunity.Research_Client_Type__c</field>
-            <operation>equals</operation>
-            <value>BPD,BD,BP,NB+,B</value>
+            <operation>contains</operation>
+            <value>PW-,PW+,B</value>
         </criteriaItems>
         <description>When opportunity stage is Closed - Not Interested this year send email to candidate</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -1633,8 +1633,8 @@
         <active>true</active>
         <criteriaItems>
             <field>Opportunity.StageName</field>
-            <operation>equals</operation>
-            <value>Closed - Not Interested this year</value>
+            <operation>contains</operation>
+            <value>Closed - Not Interested</value>
         </criteriaItems>
         <criteriaItems>
             <field>Opportunity.Profession__c</field>
@@ -1643,8 +1643,8 @@
         </criteriaItems>
         <criteriaItems>
             <field>Opportunity.Research_Client_Type__c</field>
-            <operation>equals</operation>
-            <value>BPD,BD,BP,NB+,B</value>
+            <operation>contains</operation>
+            <value>B</value>
         </criteriaItems>
         <description>When opportunity stage is Closed - Not Interested this year send email to candidate</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>

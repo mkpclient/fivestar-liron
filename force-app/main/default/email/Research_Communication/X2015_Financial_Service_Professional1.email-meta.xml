@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>TT: More Information_ WM_FS</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>TT: More Information WM.FS</name>
+    <style>none</style>
+    <subject>Phone Call Follow Up - Five Star Award Candidate Information</subject>
+    <textOnly>Hello {!Opportunity.Email_Templates_Informalname__c},
+
+I am following up regarding our recent conversation today to provide you with some additional information about the {!Opportunity.Email_Templates_Publication_Year__c} award.
+
+You have been identified as a candidate for the {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} award! An exclusive group of {!Opportunity.Profession_Type__c} will receive the {!Opportunity.Email_Templates_Publication_Year__c} award and be featured in a special {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c}.
+
+As a candidate, we need additional information in order to evaluate you based on our eligibility and evaluation criteria, to move you forward in the research process.
+
+To submit your information, please go to the secure online link below and complete the form questionnaire. This only takes a few minutes of your time to complete.
+
+Candidate Evaluation Form -  Click Here to Complete.
+The deadline for submission is end of day {!Opportunity.ACDF_Deadline__c}.
+
+Evaluation Process: Candidates will be evaluated on 10 objective criteria aligned with providing quality service and professional excellence. Only those candidates who differentiate themselves based on the criteria will be named a {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} recipient. Our 10 evaluative criteria include client retention rates, education and professional designations, a consumer complaint history review, industry board certifications and six other important criteria. For More information regarding the research and evaluation process please review the additional information below:
+
+Five Star Professional - Research Overview
+
+View a Sample of the Award Winner Announcement.
+
+
+Award winners are scheduled to be notified 4-6 weeks after the deadline date posted above.
+
+If you have any additional questions or if you need assistance with your candidate information please contact me at, {!User.Phone}.
+
+Regards,
+
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway, Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

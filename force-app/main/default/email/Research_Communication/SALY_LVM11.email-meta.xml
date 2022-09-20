@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>SALY: LVM1_WM.FS</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SALY LVM1</name>
+    <style>none</style>
+    <subject>Your review needed - Five Star Professional Award</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+We have started our research process for the annual Five Star {!Opportunity.Email_Templates_Profession__c} Award!
+
+We know how busy you are, for easy reference we uploaded your responses from last year, to make it easier for you to complete your candidate form. I also wanted to let you know of new criteria* we have added to our program for the 2017 award program.
+
+
+All candidates need to complete a candidate form to be considered for the award. Award winners will be featured with a complimentary listing on the Five Star Professional website, www.fivestarprofessional.com, and have the opportunity to appear in a special section of the  {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c}.
+
+To complete your evaluation, you can access the link by clicking on &quot;Your Form&quot; below.
+
+
+Candidate Evaluation Form - Click Here to Complete
+The deadline to submit is end of day  {!Opportunity.ACDF_Deadline__c}
+
+Award winners are scheduled to be notified within six to eight weeks of the deadline.
+
+If you have any questions please feel free to give me a call or send me an email.
+
+*10-minute Award Winner Certification appointment  - Our new final step in our research process is a 10-minute Award Winner Certification appointment to determine that there have been no changes to your candidate form and also review the Award Usage Guidelines.
+
+
+Thanks,
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

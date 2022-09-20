@@ -161,7 +161,13 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Essential Living Publications</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchResultsAdditionalFields>Publication_Month_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Last_day_to_submit_changes__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Sales_Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Delivery_Start__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <startsWith>Vowel</startsWith>
     <visibility>Public</visibility>

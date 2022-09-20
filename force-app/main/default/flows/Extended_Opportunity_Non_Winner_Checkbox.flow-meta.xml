@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <decisions>
+        <description>Checks years won and checks &quot;non-winner&quot; checkbox if they haven&apos;t won in 2022 or 2023</description>
+        <name>Non_Winner_Checkbox</name>
+        <label>Non-Winner Checkbox</label>
+        <locationX>176</locationX>
+        <locationY>455</locationY>
+        <defaultConnector>
+            <targetReference>Check_Non_Winner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Non-Winner</defaultConnectorLabel>
+        <rules>
+            <name>Winner</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Contact.Years_Won_List__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>2022</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Find_Contact.Years_Won_List__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>2023</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Winner</label>
+        </rules>
+    </decisions>
+    <description>checks the &quot;non-winner&quot; checkbox if contact hasn&apos;t won in 2022 or 2023</description>
+    <environments>Default</environments>
+    <interviewLabel>Extended Opportunity Non-Winner Checkbox {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Extended Opportunity Non-Winner Checkbox</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Pull years won</description>
+        <name>Find_Contact</name>
+        <label>Find Contact</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Non_Winner_Checkbox</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Full_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Contact__r.Full_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Years_Won_List__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>checks non-winner box</description>
+        <name>Check_Non_Winner</name>
+        <label>Check Non-Winner</label>
+        <locationX>308</locationX>
+        <locationY>575</locationY>
+        <inputAssignments>
+            <field>Non_Winner__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Find_Contact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0120W000001pRIB</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

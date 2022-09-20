@@ -32,7 +32,7 @@
     <filters>
         <field>Publication_month__c</field>
         <operation>equals</operation>
-        <value>JUNE</value>
+        <value>June</value>
     </filters>
     <label>Announcement Band - PUB MONTH_6</label>
     <sharedTo>

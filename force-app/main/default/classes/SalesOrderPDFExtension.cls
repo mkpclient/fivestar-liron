@@ -5,6 +5,13 @@ global without sharing class SalesOrderPDFExtension {
   global String acceptedBy { get; set; }
   global SalesOrder__c salesOrder { get; set; }
   global Boolean showTermsErrorBlock { get; set; }
+
+  global Boolean allowEssentialEmails {
+    get {
+      return FivestarSetting__mdt.getInstance('Universal') != null &&
+      FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
+    } private set;
+  }
   global SalesOrderPDFExtension() {
     system.debug('Default Constructor');
     if (
@@ -58,9 +65,17 @@ global without sharing class SalesOrderPDFExtension {
   }
 
   global PageReference attachPDF() {
+    
+
     SalesOrder__c salesOrder = querySalesOrder(orderId);
-    PageReference p = Page.SalesOrderPDF;
-    p.getParameters().put('id', orderId);
+    String vfPageName = 'salesorderpdfvf';
+
+    if(salesOrder.Price_Book__r.Business_Unit__c == 'Essential Engine' && allowEssentialEmails) {
+      vfPageName = 'EssentialEngineOrderPdfVf';
+    }
+    String url = URL.getSalesforceBaseUrl().toExternalForm() + '/apex/' + vfPageName + '?id=' + orderId;
+
+    PageReference p = new PageReference(url);
 
     Blob body;
 
@@ -95,6 +110,7 @@ global without sharing class SalesOrderPDFExtension {
     fieldNames.add('ContactBilling__r.Phone');
     fieldNames.add('ContactBilling__r.Fax');
     fieldNames.add('Account__r.Name');
+    fieldNames.add('Price_Book__r.Business_Unit__c');
 
     String queryString =
       ' SELECT ' +
@@ -118,7 +134,7 @@ global without sharing class SalesOrderPDFExtension {
   global String getTermsAcceptedBy() {
     return acceptedBy != null
       ? acceptedBy
-      : Order != null ? Order.ContactBilling__r.Name : '';
+      : orderId != null && Order != new SalesOrder__c() ? Order.ContactBilling__r.Name : '';
   }
 
   global String getTermsAcceptedDate() {
@@ -149,7 +165,7 @@ global without sharing class SalesOrderPDFExtension {
 
   global string InitialedBy {
     get {
-      if (String.isEmpty(InitialedBy) && Order != null && Order != new SalesOrder__c()) {
+      if (String.isEmpty(InitialedBy) && orderId != null && Order != null && Order != new SalesOrder__c()) {
         InitialedBy = Order.ContactBilling__r.Name;
       }
       return InitialedBy;
@@ -257,6 +273,7 @@ global without sharing class SalesOrderPDFExtension {
             Id,
             Display_Name_for_Invoice__c,
             Product__r.Name,
+            Product__r.Product_Display_Name__c,
             ListPrice__c,
             Name,
             LineDescription__c,
@@ -315,10 +332,13 @@ global without sharing class SalesOrderPDFExtension {
         '\n ### toExternalForm ' + URL.getSalesforceBaseUrl().toExternalForm()
       );
       system.debug('\n ### getHost ' + URL.getSalesforceBaseUrl().getHost());
-
+      String pageName = 'SalesOrderPDF';
+      if(Order.Price_Book__r.Business_Unit__c == 'Essential Engine' && allowEssentialEmails) {
+        pageName = 'EssentialEngineOrderPdfVf';
+      }
       String url =
         URL.getSalesforceBaseUrl().toExternalForm() +
-        '/apex/SalesOrderPDF?id=' +
+        '/apex/' + pageName + '?id=' +
         Order.Id +
         '&p=1';
 
@@ -337,8 +357,9 @@ global without sharing class SalesOrderPDFExtension {
   global PageReference acceptAndPayOnline() {
     String orderRecordStatus = this.Order.Status_Picklist__c;
     // this will be the page reference to the payment screen
+    Boolean isEssential = allowEssentialEmails && Order.Price_Book__r.Business_Unit__c == 'Essential Engine';
     PageReference pr = new PageReference(
-      '/apex/publicPaymentVfPage?id=' + orderId
+      '/apex/publicPaymentVfPage?id=' + orderId + '&isEssential=' + isEssential
     );
 
     if (attachmentId == null) {
@@ -463,6 +484,8 @@ global without sharing class SalesOrderPDFExtension {
             Id,
             OrderLine__c,
             OrderProductLine__r.Product__r.Name,
+            OrderProductLine__r.Product__r.Product_Display_Name__c,
+            OrderProductLine__r.Display_Name_for_Invoice__c,
             Recipient__r.Name,
             Primary__c
           FROM Order_Line_Recipient__c

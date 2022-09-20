@@ -1,0 +1,28 @@
+<p>Hi {!Contact.FirstName},</p>
+<p>Just following up with our conversation on the phone earlier and provide you with the link to your candidate form. You have been identified as a candidate for the 2015 Five Star {!Opportunity.Email_Templates_Profession__c} Award either by a peer nomination, firm nomination or pre-qualification based on industry credentials.  An exclusive group of {!Opportunity.Email_Templates_Profession__c}s will be recognized in a special {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c} with a complimentary listing. In order to be considered for the award, you must complete a short online evaluation form - candidates will be evaluated based on 10 objective criteria associated with providing quality customer service.</p>
+<p>Please click on the link below to complete your online form:</p>
+<p><a href="{!Opportunity.Research_Form_URL__c}">Please click here to complete your candidate form.</a></p>
+<p><u><b>The deadline for submission is 11:59 PM Eastern Time on {!Opportunity.CloseDate}. </b></u><br>
+Award winners are scheduled to be notified within four weeks of the deadline.<br>
+If you have any questions please feel free to give me a call or send me an email. </p>
+<p>Thanks,</p>
+
+
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway<br>
+Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

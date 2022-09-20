@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DialSource__Get_Recording</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Get Recording</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/apex.js&quot;)} 
+{!REQUIRESCRIPT(&apos;//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js&apos;)}
+{!REQUIRESCRIPT(&apos;//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js&apos;)}
+var sid = &quot;{!$Api.Session_ID}&quot;;
+var loc = &quot;{!$Api.Partner_Server_URL_80}&quot;;
+var uuid = &quot;{!Task.DialSource__Recording_ID_DS__c}&quot;;
+var oid = &quot;{!$Organization.Id}&quot;;
+
+var url = &apos;https://in.dialsource.com/getRecordingURL?file=&apos;+uuid+&apos;&amp;sessionID=&apos;+sid+&apos;&amp;serverUrl=&apos;+loc+&apos;&amp;orgID=&apos;+oid;
+
+var url = sforce.apex.execute(&quot;DialSource.getRecording&quot;,&quot;getRecordingInfo&quot;, {urlParams : url});
+var context = new (window.AudioContext || window.webkitAudioContext)();
+var audioSrc = url;
+fetch(audioSrc, onSuccess)
+
+function fetch (url, resolve) {
+  var request = new XMLHttpRequest();
+  request.open(&apos;GET&apos;, url[0], true);
+    request.onprogress = updateProgress;
+  if (url[0].indexOf(&apos;amz-server-side-encryption-customer-algorithm&apos;) &gt; -1) {
+    request.setRequestHeader(&apos;x-amz-server-side-encryption-customer-algorithm&apos;, &apos;AES256&apos;);
+    request.setRequestHeader(&apos;x-amz-server-side-encryption-customer-key&apos;,url[1]);
+    request.responseType = &apos;arraybuffer&apos;;
+        request.onload = function ()
+    { 
+      resolve(request) 
+    }
+        addProgressBar(request);        
+    request.send()
+  }
+  else{
+    if(url[0] == &apos;Unauthorized&apos;) {
+      window.alert(&apos;Unauthorized, you may not view this recording&apos;);
+    }
+    else {
+      window.open(String(url[0]));
+    }
+  }
+}
+
+function onSuccess (request)
+{ 
+  if(request.status === 200)
+  {
+    var blob = new Blob([request.response], {type: &quot;audio/x-wav&quot;});
+    var a = document.createElement(&apos;a&apos;);
+    url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = uuid;
+    a.click();
+    jQuery( &quot;#dialog&quot; ).dialog( &quot;close&quot; );
+    window.URL.revokeObjectURL(url);    
+  }
+  else
+  {
+    alert(&apos;Error with Recording: &apos; + request.statusText);
+  }
+
+}
+
+function updateProgress(evt) 
+{
+  if (evt.lengthComputable) 
+  {
+    var percentComplete = (evt.loaded / evt.total) * 100;  
+    $(&apos;#progressbar&apos;).progressbar( &quot;option&quot;, &quot;value&quot;, percentComplete );
+  } 
+}
+
+function addProgressBar(request) 
+{
+try{
+    jQuery(function() {
+      jQuery(&apos;head&apos;).append(&apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/start/jquery-ui.css&quot; type=&quot;text/css&quot; /&gt;&apos;);
+      
+      var html = &apos;&lt;div id=&quot;dialog&quot; title=&quot;Downloading&quot;&gt;&lt;p&gt;Downloading Encrypted Recording&lt;/p&gt;&lt;/div&gt;&apos;;
+      
+      if(!jQuery(&apos;[id=dialog]&apos;).size()){
+        jQuery(&apos;body&apos;).append(html);
+      }    
+
+     jQuery( &quot;#dialog&quot; ) .dialog({
+        autoOpen: true,
+        modal: true,
+        show: {
+        },
+        hide: {
+        },
+        close: function () {request.abort();},
+        buttons: {
+          Cancel: function() {
+            request.abort();
+            jQuery( this ).dialog( &quot;close&quot; );
+          }
+        }
+      });
+     var html2 = &apos;&lt;div id=&quot;progressbar&quot;&gt;&lt;/div&gt;&apos;;
+     jQuery( &quot;#dialog&quot; ).append(html2);
+     jQuery(&quot;#progressbar&quot;).progressbar({value: 0});
+    }); 
+  }
+  catch(e){
+  alert(&apos;An Error has Occured. Error: &apos; + e);
+  }
+}</url>
+</WebLink>

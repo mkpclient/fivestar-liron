@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_Living_Magazine_Active</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Issue_Sample__c</columns>
+    <columns>Last_day_to_submit_changes__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Essential Living Magazine – Active</label>
+    <language>en_US</language>
+</ListView>

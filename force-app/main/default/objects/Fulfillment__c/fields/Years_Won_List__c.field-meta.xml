@@ -21,7 +21,8 @@ IF(INCLUDES( PrimaryRecipient__r.Years_Won_List__c , &quot;2018&quot;), &quot;20
 IF(INCLUDES( PrimaryRecipient__r.Years_Won_List__c , &quot;2019&quot;), &quot;2019&quot; + &quot;, &quot; , NULL) +  
 IF(INCLUDES( PrimaryRecipient__r.Years_Won_List__c , &quot;2020&quot;), &quot;2020&quot; + &quot;, &quot; , NULL) +
 IF(INCLUDES( PrimaryRecipient__r.Years_Won_List__c , &quot;2021&quot;), &quot;2021&quot; + &quot;, &quot; , NULL) +
-IF(INCLUDES( PrimaryRecipient__r.Years_Won_List__c , &quot;2022&quot;), &quot;2022&quot; , NULL)</formula>
+IF(INCLUDES( PrimaryRecipient__r.Years_Won_List__c , &quot;2022&quot;), &quot;2022&quot; + &quot;, &quot; , NULL) +
+IF(INCLUDES( PrimaryRecipient__r.Years_Won_List__c , &quot;2023&quot;), &quot;2023&quot; , NULL)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Years Won List</label>
     <required>false</required>

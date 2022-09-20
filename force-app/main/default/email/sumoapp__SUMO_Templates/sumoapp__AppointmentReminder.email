@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div style=""><font face="arial">Hi {!User.FirstName},</font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial">You have been scheduled for the following appointment.</font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial"><b>Appointment:</b> {!Event.Subject}</font></div><div style=""><font face="arial"><b>Location:</b> {!CASE(Event.sumoapp__LocationType__c, "VID_CONFERENCE", "Video Conference", "PHONE", "Phone", "IN_PERSON", Event.Location, "IN_HOUSE", Event.Location, "OUR_LOCATION", Event.Location, "PHONE_INBOUND", "Phone - You will call us", "")}</font></div><div style=""><font face="arial"><b>Date/Time:</b> {!Event.sumoapp__StartDateTimeTimezone__c}</font></div><div style=""><font face="arial"><b>Duration:</b> {!Event.DurationInMinutes} min</font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial">Thank you,</font></div><div style=""><font face="arial">{!Organization.Name}</font></div>]]></td>
+</tr>
+</table>

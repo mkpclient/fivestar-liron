@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Description_for_needs_attention</fullName>
+    <active>true</active>
+    <errorConditionFormula>text(StageName)= &quot;Open/Needs Attention&quot; &amp;&amp; ISBLANK(Open_Ended_Stage_Description__c)</errorConditionFormula>
+    <errorMessage>Please enter a description in the &quot;Open ended stage description&quot; field for this stage.</errorMessage>
+</ValidationRule>

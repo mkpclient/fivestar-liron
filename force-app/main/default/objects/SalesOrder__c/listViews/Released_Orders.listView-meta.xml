@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Released_Orders</fullName>
+    <columns>NAME</columns>
+    <columns>OrderName__c</columns>
+    <columns>Account__c</columns>
+    <columns>ContactBuying__c</columns>
+    <columns>Release_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>ProductAmount__c</columns>
+    <columns>AdditionalChargeCreditAmount__c</columns>
+    <columns>TotalTaxAmount__c</columns>
+    <columns>NetAmount__c</columns>
+    <columns>CompletedPayments__c</columns>
+    <columns>BalanceDueAmount__c</columns>
+    <columns>ScheduledPayments__c</columns>
+    <columns>Net_Due__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status_Picklist__c</field>
+        <operation>equals</operation>
+        <value>Released</value>
+    </filters>
+    <label>Released Orders</label>
+</ListView>

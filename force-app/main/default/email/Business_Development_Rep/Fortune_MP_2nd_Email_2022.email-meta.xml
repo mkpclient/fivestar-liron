@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Fortune ML MP Email #2</name>
+    <style>freeForm</style>
+    <subject>Fortune Market Leaders - are you participating?</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+You have an exclusive opportunity to appear in one of the most respected media brands in the nation -- Fortune magazine! In the February/March issue of Fortune magazine, we will be highlighting a list of market leaders across 35 metro areas. Each region will have a limited availability, so don&apos;t miss out!
+
+There are many benefits to participating:
+
+1) You receive national exposure. You are able to leverage your personal brand with one of the most-respected media and financial brands in the nation. Your friends, family and clients alike, throughout the entire country, will be able to see you in Fortune magazine!
+
+2) A Fortune Headliner/Banner for your email, websites, marketing material and more! This will allow you to leverage the brand power and name recognition of Fortune year-round!
+
+3) An Announcement Video social post. Share this social post to your Facebook or LinkedIn connections for expanded exposure of your Fortune magazine appearance.
+
+4) 100 physical reprints and a cover wrapped magazine issue to use at listing presentations and open houses -- and of course with your current and past clients to gain referrals!
+
+If you&apos;d like to participate, call me as soon as possible to reserve your place!
+
+Thank you,
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

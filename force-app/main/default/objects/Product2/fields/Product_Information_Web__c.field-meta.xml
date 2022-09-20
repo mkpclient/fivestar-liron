@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Information_Web__c</fullName>
+    <description>product info that shows on the my orders page exactly as it&apos;s seen here</description>
+    <externalId>false</externalId>
+    <inlineHelpText>product info that shows on the my orders page exactly as it&apos;s seen here</inlineHelpText>
+    <label>Product Information Web</label>
+    <length>131072</length>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

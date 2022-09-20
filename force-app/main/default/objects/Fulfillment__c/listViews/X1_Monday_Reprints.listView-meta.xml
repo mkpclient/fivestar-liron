@@ -5,18 +5,18 @@
     <columns>NAME</columns>
     <columns>Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>Product_Name__c</columns>
     <columns>Complaint_Order__c</columns>
     <columns>Customization__c</columns>
-    <columns>Ad_Prod_Alternate_Notes__c</columns>
-    <columns>Notes_for_Ad_Prod__c</columns>
-    <columns>Order_Special_Notes__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
     <columns>Date_Sent_to_Vendor__c</columns>
-    <columns>Publication_month__c</columns>
-    <columns>Product_Name__c</columns>
     <columns>Base_Product__c</columns>
-    <columns>Product_Templates_Finalized__c</columns>
+    <columns>Actual_Upload_Date__c</columns>
+    <columns>Forbes_Upload_Date__c</columns>
+    <columns>Fortune_Upload_Date__c</columns>
+    <columns>WSJ_Upload__c</columns>
+    <columns>Publication_month__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>
@@ -69,6 +69,7 @@
         <value>Forbes</value>
     </filters>
     <label>__1. Monday - Reprints</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Brianna_Jahangir</group>

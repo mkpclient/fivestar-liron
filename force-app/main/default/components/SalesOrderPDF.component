@@ -265,7 +265,10 @@
     <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!ProductLines}" var="line">
       <apex:column headerClass="colheader">
         <apex:facet name="header">Product</apex:facet>
-        <apex:outputText value="{!line.Product__r.Name}" />
+        <apex:outputText value="{!line.Product__r.Name}" rendered="{!AND(line.Product__r.Product_Display_Name__c = null, line.Display_Name_for_Invoice__c = null)}" />
+        <apex:outputText value="{!line.Display_Name_for_Invoice__c}" rendered="{!line.Display_Name_for_Invoice__c != null}" />
+        <apex:outputText value="{!line.Product__r.Product_Display_Name__c}" rendered="{!AND(line.Product__r.Product_Display_Name__c != null, line.Display_Name_for_Invoice__c = null)}" />
+
       </apex:column>
       <apex:column headerClass="colheader" rendered="{!productsHaveDescriptions}">
         <apex:facet name="header">Description</apex:facet>
@@ -277,11 +280,11 @@
         <apex:outputText value="{!line.TaxVAT__c}" />
       </apex:column>
 -->
-      <apex:column headerClass="colheader">
+      <!-- <apex:column headerClass="colheader">
         <apex:facet name="header">Date
           <br/>Available</apex:facet>
         <apex:outputField value="{!line.DateAvailableToPromise__c}" />
-      </apex:column>
+      </apex:column> -->
       <apex:column headerClass="colheader alignRight" style="text-align: right">
         <apex:facet name="header">Quantity</apex:facet>
         <apex:outputText value="{0, number, ###,##0.00}">
@@ -446,13 +449,15 @@
     <apex:outputPanel rendered="{!isOnlineOrder}">
       <br/>
     </apex:outputPanel>
-    <h2 style="display:block"><font color ="#999999">Payment Schedule</font></h2>
+    <h2 style="display:block">
+      <font color="#999999">Payment Schedule</font>
+    </h2>
     <apex:dataTable width="100%" styleClass="border" footerClass="productFooter" value="{!PaymentSchedules}" var="ps">
       <apex:column headerClass="colheader">
         <apex:facet name="header">Billing Name</apex:facet>
         <apex:outputField value="{!ps.Billing_Name__c}" />
-      </apex:column>  
-    <apex:column headerClass="colheader">
+      </apex:column>
+      <apex:column headerClass="colheader">
         <apex:facet name="header">Due Date</apex:facet>
         <apex:outputField value="{!ps.Scheduled_Payment_Date__c}" />
       </apex:column>
@@ -503,7 +508,10 @@
         <tr>
           <td valign="top">
             <!-- <apex:outputField value="{!if(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Name, lr.OrderServiceLine__r.Name)}" /> -->
-            <apex:outputField value="{!lr.OrderProductLine__r.Product__r.Name}" rendered="{!lr.OrderProductLine__c != null}" />
+            <apex:outputField value="{!lr.OrderProductLine__r.Product__r.Name}" rendered="{!AND(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Display_Name_for_Invoice__c = null, lr.OrderProductLine__r.Product__r.Product_Display_Name__c = null)}" />
+            <apex:outputField value="{!lr.OrderProductLine__r.Display_Name_for_Invoice__c}" rendered="{!AND(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Display_Name_for_Invoice__c != null)}" />
+            <apex:outputField value="{!lr.OrderProductLine__r.Product__r.Product_Display_Name__c}" rendered="{!AND(lr.OrderProductLine__c != null, lr.OrderProductLine__r.Display_Name_for_Invoice__c = null, lr.OrderProductLine__r.Product__r.Product_Display_Name__c != null)}" />
+
           </td>
           <td valign="top">
             <apex:outputField value="{!lr.Recipient__r.Name}" />
@@ -710,25 +718,28 @@
     <table cellpadding="2" cellspacing="0" class="noborder">
       <tr style="display:{!IF(attachmentId != null,'','none')}">
         <td>
-          <img src="{!URLFOR($Action.Attachment.Download, attachmentId)}" />
+            <apex:image url="{!URLFOR($Action.Attachment.Download, attachmentId)}" rendered="{!NOT(ISBLANK(attachmentId))}" />
         </td>
       </tr>
       <tr>
         <td>
-          <apex:outputText >
-            <b>Terms Accepted By:&nbsp;</b>{!TermsAcceptedBy}</apex:outputText>
+          <apex:outputText rendered="{!TermsAcceptedBy != null}">
+            <b>Terms Accepted By:&nbsp;</b>{!TermsAcceptedBy}
+          </apex:outputText>
         </td>
       </tr>
       <tr>
         <td>
-          <apex:outputText >
-            <b>On Date:&nbsp;</b>{!TermsAcceptedDate}</apex:outputText>
+          <apex:outputText rendered="{!TermsAcceptedDate != null}">
+            <b>On Date:&nbsp;</b>{!TermsAcceptedDate}
+          </apex:outputText>
         </td>
       </tr>
       <tr>
         <td>
-          <apex:outputText >
-            <b>From IP Address:&nbsp;</b>{!TermsAcceptedFromIPAddress}</apex:outputText>
+          <apex:outputText rendered="{!TermsAcceptedFromIPAddress != null}">
+            <b>From IP Address:&nbsp;</b>{!TermsAcceptedFromIPAddress}
+          </apex:outputText>
         </td>
       </tr>
     </table>

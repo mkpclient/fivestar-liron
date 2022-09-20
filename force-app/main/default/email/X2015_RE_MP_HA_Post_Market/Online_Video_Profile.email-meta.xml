@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>More information about the online video profile</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Online Video Profile</name>
+    <style>freeForm</style>
+    <subject>Follow up: Five Star Online Video Profile</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+It was nice connecting with you today.
+
+I wanted to follow-up with some additional information on our new Online Video Profile. This is a great tool for increasing your visibility online and showcasing your achievements. The Online Video Profile consists of an enhanced profile page with a personalized video that easily embeds in social media platforms, blogs, e-mail signatures and more. 
+
+Here are a few easy ways to use the Online Video Profile:
+
+Paste the link or embed the video directly in the awards, news, blog or other sections of your company or personal website.
+E-mail a link to your clients and prospects and/or include a consistent link in your e-mail signature.
+Instantly share on Linkedin, Twitter, Facebook and other social networking platforms.
+Upload your video on Youtube (the #1 place people watch video and the #2 search engine).
+Incorporate in prospect and client presentations.
+
+Remember, you can provide custom bullets highlighting your specialties, two personalized photos and links to your listings, website and social media pages.
+
+If you have any questions, please do not hesitate to contact me.
+
+
+Thank you.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

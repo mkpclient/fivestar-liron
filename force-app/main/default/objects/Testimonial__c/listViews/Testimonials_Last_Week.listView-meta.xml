@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Testimonials_Last_Week</fullName>
+    <columns>NAME</columns>
+    <columns>Fulfillment__c</columns>
+    <columns>Primary_Recipient__c</columns>
+    <columns>From_Survey_Response__c</columns>
+    <columns>Posted_to_Social_Media__c</columns>
+    <columns>Image_Location__c</columns>
+    <columns>Preview__c</columns>
+    <columns>Text__c</columns>
+    <columns>Publish_Date__c</columns>
+    <columns>Landing_Page__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Status__c</columns>
+    <columns>Fulfillment_Social_Post_Sharing__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Fulfillment_Status__c</field>
+        <operation>notContain</operation>
+        <value>Cancelled,product created</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Draft</value>
+    </filters>
+    <filters>
+        <field>Publish_Date__c</field>
+        <operation>equals</operation>
+        <value>LAST_WEEK</value>
+    </filters>
+    <label>Testimonials - Last Week</label>
+    <language>en_US</language>
+</ListView>

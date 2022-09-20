@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>ELM Sample - Did you received your copy?</name>
+    <style>freeForm</style>
+    <subject>Essential Living Magazine - Did you receive your copy?</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+I am following up on my call and our mailing of a sample Essential Living Magazine that you should have received recently. If you are able, please confirm if have received your copy. If you would like to learn more about how to get your own magazine delivered to clients personally, please use the link below to schedule a 15 minute follow up appointment.
+
+
+Schedule a 15-minute Appointment: {!Opportunity.AM_Follow_Up_Link__c}
+
+Essential Living is a monthly magazine that you can send to your clients. This will help to differentiate you and keep you top of mind throughout each month with your best clients!
+
+Please feel free to reach out to me directly at the info below if you have any further questions.
+
+Regards,
+
+{!User.Name}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

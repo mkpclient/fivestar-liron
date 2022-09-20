@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ProductTotalAmount__c</fullName>
     <externalId>false</externalId>
-    <formula>round(ProductAmount__c - ProductDiscountAmount__c,2)</formula>
+    <formula>round(ProductAmount__c - BLANKVALUE(ProductDiscountAmount__c, Product_Discount_Amount__c),2)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Product Total Amount</label>
     <precision>18</precision>

@@ -3,10 +3,10 @@
     <fullName>X1_Monday_EReprints_Expanded</fullName>
     <columns>NAME</columns>
     <columns>Market__c</columns>
+    <columns>PrimaryRecipient__c</columns>
+    <columns>E_Reprint_PDF_location__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Base_Product__c</columns>
-    <columns>Product_Templates_Finalized__c</columns>
-    <columns>PrimaryRecipient__c</columns>
     <columns>Publication_month__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
@@ -15,7 +15,7 @@
     <columns>Fortune_Upload_Date__c</columns>
     <columns>WSJ_Upload__c</columns>
     <columns>Notes_for_Ad_Prod__c</columns>
-    <columns>Actual_Upload_Date__c</columns>
+    <columns>Product_Templates_Finalized__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>
@@ -25,14 +25,15 @@
     <filters>
         <field>Upload_Date__c</field>
         <operation>lessThan</operation>
-        <value>NEXT_N_DAYS:15</value>
+        <value>NEXT_90_DAYS</value>
     </filters>
     <filters>
         <field>Status__c</field>
         <operation>notContain</operation>
-        <value>Closed,Subscription Cancelled,Cancelled,Product Created,On Hold</value>
+        <value>Closed,Subscription Cancelled,Cancelled,Product Created,On Hold,In Revision</value>
     </filters>
     <label>__1. Monday - E-Reprints Expanded</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Brianna_Jahangir</group>

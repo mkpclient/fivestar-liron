@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Open_Cancellations</fullName>
+    <columns>NAME</columns>
+    <columns>AM_Assigned__c</columns>
+    <columns>Boom_Order__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Fulfillment__c</columns>
+    <columns>Market__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_ACTIVITY</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Open,In_-_Progress</value>
+    </filters>
+    <label>All Open Cancellations</label>
+    <language>en_US</language>
+</ListView>

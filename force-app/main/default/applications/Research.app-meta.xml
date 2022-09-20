@@ -5,6 +5,7 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Research</label>
     <tabs>standard-Account</tabs>
     <tabs>Market__c</tabs>
@@ -28,4 +29,5 @@
     <tabs>Essential_Living_Issue__c</tabs>
     <tabs>Essential_Living_Publication__c</tabs>
     <tabs>Client_Experience__c</tabs>
+    <tabs>sumoapp__Email__c</tabs>
 </CustomApplication>

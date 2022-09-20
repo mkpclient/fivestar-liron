@@ -34,11 +34,6 @@
         <operation>equals</operation>
         <value>May</value>
     </filters>
-    <filters>
-        <field>Award_Year__c</field>
-        <operation>notContain</operation>
-        <value>2020</value>
-    </filters>
     <label>Announcement Band - PUB MONTH_5</label>
     <sharedTo>
         <group>Ad_Prod</group>

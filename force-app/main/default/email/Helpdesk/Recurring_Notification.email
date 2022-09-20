@@ -1,0 +1,5 @@
+Subscription: {!kugo2p__Payment_Profile__c.Id}
+
+Order: {!kugo2p__Payment_Profile__c.kugo2p__SalesOrderId__c}
+
+Subscription Created Process Builder Fired.

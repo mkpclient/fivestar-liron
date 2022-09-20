@@ -97,6 +97,11 @@
                 <label>Print Prep</label>
             </value>
             <value>
+                <fullName>Deliver</fullName>
+                <default>false</default>
+                <label>Deliver</label>
+            </value>
+            <value>
                 <fullName>In Batch</fullName>
                 <default>false</default>
                 <label>In Batch</label>

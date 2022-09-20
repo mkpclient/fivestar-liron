@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Remove_from_newsletters__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Added for marketing cloud on contact object for all profile page layouts that had a pardot area.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>(check if client asks to be removed)</inlineHelpText>
+    <label>Remove from newsletters</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

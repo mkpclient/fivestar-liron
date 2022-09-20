@@ -1,4 +1,7 @@
-public with sharing class BoomOrderCloneController {
+public without sharing class BoomOrderCloneController {
+  public static final String FINANCE_FEE_ACC = 'a5X6T00000IrsqV';
+  public static final String DISC_PRODUCTID = '01t0W000005jbNq';
+
   @AuraEnabled
   public static Id cloneBoomOrder(Id recordId) {
     Savepoint sp = Database.setSavepoint();
@@ -12,6 +15,7 @@ public with sharing class BoomOrderCloneController {
         '\' LIMIT 1';
       SalesOrder__c boomOrder = Database.query(soql);
       SalesOrder__c clonedOrder = boomOrder.clone(false, true, false, false);
+      clonedOrder.Down_Payment__c= 0;
       clonedOrder.Approval_Status__c = 'Pending';
       clonedOrder.Status_Picklist__c = 'Draft';
       clonedOrder.Release_Status__c = null;
@@ -20,14 +24,19 @@ public with sharing class BoomOrderCloneController {
       clonedOrder.DateCancelled__c = null;
       clonedOrder.DateSent__c = null;
       clonedOrder.Release_Date__c = null;
-      clonedOrder.OrderDate__c = Date.today();
+      clonedOrder.OrderDate__c = System.today();
       clonedOrder.Released__c = null;
+      clonedOrder.FulfillOrder__c = false;
+      clonedOrder.FinanceOverride__c = false;
+      clonedOrder.Legacy_Id__c = null;
+      clonedOrder.Initial_Invoice_Sent__c = false;
       insert clonedOrder;
       cloneOrderProductLines(recordId, clonedOrder.Id);
       cloneAdditionalChargeCredit(recordId, clonedOrder.Id);
       return clonedOrder.Id;
     } catch (Exception e) {
       Database.rollback(sp);
+      System.debug('Line '+ e.getLineNumber() + ':' + e.getMessage());
       throw new AuraHandledException(e.getMessage());
     }
   }
@@ -37,6 +46,7 @@ public with sharing class BoomOrderCloneController {
     Id newBoomOrderId
   ) {
     Savepoint sp = Database.setSavepoint();
+    List<AdditionalChargeCredit__c> acc = [SELECT Id FROM AdditionalChargeCredit__c WHERE Id = :FINANCE_FEE_ACC AND IsActive__c = true LIMIT 1];
     try {
       String editableFields = getEditableFields(
         'SalesOrderAdditionalChargeCredit__c'
@@ -51,8 +61,14 @@ public with sharing class BoomOrderCloneController {
       if (oldACCs.size() > 0) {
         List<SalesOrderAdditionalChargeCredit__c> newACCs = new List<SalesOrderAdditionalChargeCredit__c>();
         for (SalesOrderAdditionalChargeCredit__c oA : oldACCs) {
+          if(acc.size() > 0 && oA.Additional_Charge_Credit__c == acc[0].Id){
+            continue;
+          }
             SalesOrderAdditionalChargeCredit__c nA = oA.clone(false, true, false, false);
             nA.SalesOrder__c = newBoomOrderId;
+            nA.Adjustment_Date__c = null;
+            nA.Intacct_Sync_Complete__c = false;
+            nA.Legacy_Id__c = null;
             newACCs.add(nA);
         }
         insert newACCs;
@@ -68,6 +84,8 @@ public with sharing class BoomOrderCloneController {
     Id newBoomOrderId
   ) {
     Savepoint sp = Database.setSavepoint();
+    List<Product2> discProd = [SELECT Id FROM Product2 WHERE Id = :DISC_PRODUCTID AND IsActive = true LIMIT 1];
+
     try {
       String editableFields = getEditableFields('SalesOrderProductLine__c');
       String soql =
@@ -82,10 +100,13 @@ public with sharing class BoomOrderCloneController {
       );
       if (oldOrderProductLines.size() > 0) {
         Map<Id, SalesOrderProductLine__c> clonedOrderProductLines = new Map<Id, SalesOrderProductLine__c>();
-        Map<Id, Order_Line_Recipient__c> oldOrderLineRecipients = new Map<Id, Order_Line_Recipient__c>();
+        Map<Id, List<Order_Line_Recipient__c>> oldOrderLineRecipients = new Map<Id, List<Order_Line_Recipient__c>>();
         for (
           SalesOrderProductLine__c oldOrderProductLine : oldOrderProductLines
         ) {
+          if(discProd.size() > 0 && oldOrderProductLine.Product__c == discProd[0].Id) {
+            continue;
+          }
           if (oldOrderProductLine.KitBundleLine__c == null) {
             SalesOrderProductLine__c clonedOrderProductLine = oldOrderProductLine.clone(
               false,
@@ -109,14 +130,25 @@ public with sharing class BoomOrderCloneController {
             );
             clonedOrderProductLine.SalesOrder__c = newBoomOrderId;
             clonedOrderProductLine.Recipient_Count__c = 0;
-            clonedOrderProductLine.DateRequired__c = Date.today();
+            clonedOrderProductLine.DateRequired__c = System.today();
+            clonedOrderProductLine.Void_Date__c = null;
+            clonedOrderProductLine.Legacy_Id__c = null;
+            clonedOrderProductLine.Intacct_Sync_Complete__c = false;
             clonedOrderProductLines.put(
               oldOrderProductLine.Id,
               clonedOrderProductLine
             );
           }
         }
-        insert clonedOrderProductLines.values();
+
+        try {
+          insert clonedOrderProductLines.values();
+        } catch (DmlException err) {
+          System.debug('Error on cloning product lines: ' + err.getMessage());
+          throw err;
+        }
+
+
         List<Order_Line_Recipient__c> autoGeneratedRecipients = [
           SELECT Id
           FROM Order_Line_Recipient__c
@@ -124,21 +156,37 @@ public with sharing class BoomOrderCloneController {
         ];
 
         // delete automatically generated recipients generated by trigger
-        delete autoGeneratedRecipients;
+        
+        try {
+          delete autoGeneratedRecipients;
+        } catch (DmlException err) {
+          System.debug('From deleting recipients generated by trigger: ' + err.getMessage());
+          throw err;
+        }
+
         List<Order_Line_Recipient__c> newRecipients = new List<Order_Line_Recipient__c>();
         for (Id oldId : clonedOrderProductLines.keySet()) {
           SalesOrderProductLine__c clonedPL = clonedOrderProductLines.get(
             oldId
           );
-          Order_Line_Recipient__c newRecipient = new Order_Line_Recipient__c();
-          newRecipient.Recipient__c = oldOrderLineRecipients.get(oldId).Recipient__c;
-          newRecipient.Order__c = newBoomOrderId;
-          newRecipient.OrderProductLine__c = clonedPL.Id;
-          newRecipient.Primary__c = oldOrderLineRecipients.get(oldId)
-            .Primary__c;
-          newRecipients.add(newRecipient);
+          for(Order_Line_Recipient__c oldRecipient : oldOrderLineRecipients.get(oldId)) {
+            Order_Line_Recipient__c newRecipient = new Order_Line_Recipient__c();
+            newRecipient.Recipient__c = oldRecipient.Recipient__c;
+            newRecipient.Order__c = newBoomOrderId;
+            newRecipient.OrderProductLine__c = clonedPL.Id;
+            newRecipient.Primary__c = oldRecipient.Primary__c;
+            newRecipient.Legacy_Id__c = null;
+            newRecipients.add(newRecipient);
+          }
         }
-        insert newRecipients;
+
+        try {
+          insert newRecipients;
+        } catch (DmlException err) {
+          System.debug('From inserting new recipients '+ err.getLineNumber() + ':' + err.getMessage());
+          throw err;
+        }
+        
       }
     } catch (Exception e) {
       Database.rollback(sp);

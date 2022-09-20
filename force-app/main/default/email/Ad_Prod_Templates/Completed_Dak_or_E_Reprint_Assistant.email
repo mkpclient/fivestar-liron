@@ -1,0 +1,41 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">Hello&nbsp;</span></font><font face="Tahoma, sans-serif"><span style="font-size: 13.3333px;">{!Fulfillment__c.Alternate_Contact__c}</span></font><span style="color: rgb(0, 0, 0); font-family: Tahoma, sans-serif; font-size: 10pt;">,</span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+<br><font face="Tahoma, sans-serif" style=""><span style="font-size: 13.3333px;">{!Fulfillment__c.PrimaryRecipient__c}'s&nbsp;</span><font face="arial"><span style="font-size: 13.3333px;">{!Fulfillment__c.Product_Name__c}</span></font><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 10pt;">&nbsp;is ready! To access it, log in to their account on our
+website. <o:p></o:p></span></font></p>
+
+<ul type="disc" style="">
+ <li class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:
+     10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">To
+     log on, go to <a href="http://www.fivestarprofessional.com/login">fivestarprofessional.com</a><a href="http://fivestarprofessional.com/login">/login&nbsp;</a> <o:p></o:p></span></li>
+ <ul type="circle" style="">
+  <li class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><strong style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:
+      &quot;Times New Roman&quot;">Username:&nbsp;</span></strong><font face="Tahoma, sans-serif"><span style="font-size: 13.3333px;"><b>{!Fulfillment__c.Web_Username__c}</b></span></font></li>
+  <li class="MsoNormal" style=""><strong style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:
+      &quot;Times New Roman&quot;">Password:&nbsp;</span></strong><b style="font-family: Tahoma, sans-serif; font-size: 13.3333px;">{!Fulfillment__c.Login_Code__c}</b></li><li class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><strong style="font-size: 12pt;"><span style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:
+       &quot;Times New Roman&quot;">NOTE: </span></strong><span style="font-size: 10pt; font-family: Tahoma, sans-serif;">if
+       you've already set your password, use that rather than this login code</span></li>
+ </ul>
+ <li class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:
+     10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">Check
+     the My Orders section on the right hand-side of the page for the Digital
+     Announcement Kit <o:p></o:p></span></li>
+ <ul type="circle" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+  <li class="MsoNormal" style=""><font face="Tahoma, sans-serif"><span style="font-size: 10pt;">If you don't see the </span><span style="font-size: 13.3333px;">{!Fulfillment__c.Product_Name__c}</span><span style="font-size: 10pt;">&nbsp;on the first
+      page, click the grey bar at the bottom where it says "To view your
+      complete list of orders click here"<o:p></o:p></span></font></li>
+ </ul>
+</ul>
+
+<font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">Please feel free to reach out to me with any
+questions – my email address and phone number are below. </span></font><br>
+<br><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">
+Thank you,</span></font><br>
+<br><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 13.3333px;">{!Fulfillment__c.Fulfillment_Owner__c}</span></font><br><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">
+Client Services Coordinator</span></font><br><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">
+Five Star Professional</span></font><br><font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 13.3333px;">{!Fulfillment__c.CSR_Phone_Number__c}</span></font><br><font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 13.3333px;">{!Fulfillment__c.CSR_Email__c}</span></font><br>
+<!--[if !supportLineBreakNewLine]--><br>
+<!--[endif]-->]]></td>
+</tr>
+</table>

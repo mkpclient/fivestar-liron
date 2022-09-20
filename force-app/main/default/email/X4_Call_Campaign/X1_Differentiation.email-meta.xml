@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>1 - Differentiation</name>
+    <style>freeForm</style>
+    <subject>RE: Differentiate yourself from the competition!</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+I just left you a voicemail detailing how you can gain credibility with prospects and differentiate yourself from the competition using some of Five Star Professional&apos;s marketing tools.
+
+
+
+I&apos;ve helped some of the top-producing professionals in the {!Opportunity.Email_Templates_Market_City__c} area. I&apos;d like to connect with you some time over the next couple of days to talk about how you can use some of those same strategies to grow your business.
+
+
+
+2015 Five Star {!Opportunity.Email_Templates_Profession_c} Award Guide
+
+
+
+Thoughts?
+
+
+
+
+
+{!User.Name}
+
+Account Manager
+Five Star Professional
+
+2900 Lone Oak Parkway
+
+Suite 120, Eagan, MN 55121
+
+Direct: {!User.Phone}
+
+{!User.Email}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

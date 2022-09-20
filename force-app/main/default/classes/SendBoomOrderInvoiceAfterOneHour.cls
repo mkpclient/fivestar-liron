@@ -1,9 +1,50 @@
 global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedulable {
   global List<Id> soIds;
-  public static final String PAYMENT_EMAIL_TEMPLATE = 'New_Payment_Reciept_PDF';
+  public static final String ESSENTIAL_ENG = 'Essential Engine';
+  public static final String PAYMENT_EMAIL_TEMPLATE = 'Boom_Payment_VF_Template';
+
+  public static final Map<String, EmailTemplate> PMT_EMAIL_TEMP_MAP = new Map<String, EmailTemplate> {
+    'Five Star' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Boom_Payment_VF_Template'
+    ],
+    'Essential' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Essential_Payment_VF_Template'
+    ]
+  };
+
+  public static final Map<String, EmailTemplate> EMAIL_TEMP_MAP = new Map<String, EmailTemplate> {
+    'Five Star' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Five_Star_Standard_Email_Template'
+    ],
+    'Essential' => [
+      SELECT Id
+      FROM EmailTemplate
+      WHERE DeveloperName = 'Essential_Engine_Email_Template'
+    ]
+  };
+  public static final Map<String,OrgWideEmailAddress> ORGWIDE_EMAIL_MAP = new Map<String, OrgWideEmailAddress> {
+    'Five Star' => [
+      SELECT Id
+      FROM OrgWideEmailAddress
+      WHERE Address = 'billing@fivestarprofessional.com'
+    ],
+    'Essential' => [
+      SELECT Id
+      FROM OrgWideEmailAddress
+      WHERE Address = 'billing@essentialengine.com'
+    ]
+  };
 
   public static Boolean isSandbox = [SELECT IsSandbox FROM Organization LIMIT 1]
   .IsSandbox;
+
+  // public static Boolean isSandbox = false;
 
   public SendBoomOrderInvoiceAfterOneHour(List<id> listofSalesOrderIds) {
     soIds = listofSalesOrderIds;
@@ -17,7 +58,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     }
   }
 
-  public static void SendEmail(List<id> listofSalesOrderIds) {
+  global static void SendEmail(List<id> listofSalesOrderIds) {
+
     List<SalesOrder__c> lstOrders = [
       SELECT
         Id,
@@ -29,7 +71,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         Email_To_Send__c,
         NetAmount__c,
         Alternate_Contact_Email__c,
-        Send_Invoice_to_Alternate_Contact__c
+        Send_Invoice_to_Alternate_Contact__c,
+        Price_Book__r.Business_Unit__c
       FROM SalesOrder__c
       WHERE Id IN :listofSalesOrderIds
     ];
@@ -40,8 +83,10 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         Contact__c,
         Contact__r.Email,
         Sales_Order__c,
+        Sales_Order__r.Name,
         Sales_Order__r.Send_Invoice_to_Alternate_Contact__c,
-        Sales_Order__r.Alternate_Contact_Email__c
+        Sales_Order__r.Alternate_Contact_Email__c,
+        Sales_Order__r.Price_Book__r.Business_Unit__c
       FROM Payment__c
       WHERE Sales_Order__c IN :listofSalesOrderIds AND Status__c = 'Completed'
     ];
@@ -63,46 +108,50 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       payments
     );
 
-    Map<String, Attachment> mapOrderIdToAttachment = new Map<String, Attachment>();
-    for (SalesOrder__c order : lstOrdersToSend) {
-      Attachment attach = new Attachment();
-      attach.ParentId = order.Id;
-      PageReference pref = page.SalesOrderPDF;
-      pref.getParameters().put('id', order.Id);
-      pref.setRedirect(true);
-      if (!test.isRunningTest()) {
-        Blob b = pref.getContentAsPDF();
-        attach.Body = b;
-      }
-      if (test.isRunningTest()) {
-        Blob b = blob.valueof('Test error');
-        attach.Body = b;
-      }
-      attach.Name = order.Name + '.pdf';
-      mapOrderIdToAttachment.put(order.Id, attach);
-    }
-    system.debug('mapOrderIdToAttachment===' + mapOrderIdToAttachment);
-    if (mapOrderIdToAttachment.size() > 0) {
-      insert mapOrderIdToAttachment.values();
-    }
-    system.debug(
-      'After Insert mapOrderIdToAttachment===' + mapOrderIdToAttachment
-    );
+    // Map<String, Attachment> mapOrderIdToAttachment = new Map<String, Attachment>();
+    // for (SalesOrder__c order : lstOrdersToSend) {
+    //   Attachment attach = new Attachment();
+    //   attach.ParentId = order.Id;
+    //   PageReference pref = Page.SalesOrderInvoicePDF;
+    //   pref.getParameters().put('id', (String) order.Id);
+     
+    //   pref.setRedirect(true);
+    //   if (!test.isRunningTest()) {
+    //     Blob b = pref.getContentAsPDF();
+    //     attach.Body = b;
+    //   }
+    //   if (test.isRunningTest()) {
+    //     Blob b = blob.valueof('Test error');
+    //     attach.Body = b;
+    //   }
+    //   attach.Name = order.Name + '.pdf';
+    //   mapOrderIdToAttachment.put(order.Id, attach);
+    // }
+
+    // system.debug('mapOrderIdToAttachment===' + mapOrderIdToAttachment);
+    // if (mapOrderIdToAttachment.size() > 0) {
+    //   insert mapOrderIdToAttachment.values();
+    // }
+    // system.debug(
+    //   'After Insert mapOrderIdToAttachment===' + mapOrderIdToAttachment
+    // );
+
+    Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null &&
+          FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c;
+
     for (SalesOrder__c order : lstOrders) {
+      String bizType = 'Five Star';
+
+      if(order.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
+        bizType = 'Essential';
+      } else if (order.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && !allowEssentialEmails) {
+        continue;
+      }
       String Orderid = order.Id;
-      String emailTemplateName = 'Boom_Order_Invoice';
-      EmailTemplate et = [
-        SELECT Id
-        FROM EmailTemplate
-        WHERE DeveloperName = :emailTemplateName
-      ];
+      EmailTemplate et = EMAIL_TEMP_MAP.get(bizType);
       List<string> toAddress = new List<string>();
       List<string> cCAddress = new List<string>();
-      OrgWideEmailAddress[] anOrgWideEmailAddress = [
-        SELECT Id
-        FROM OrgWideEmailAddress
-        WHERE Address = 'accounts.receivable@fivestarprofessional.com'
-      ];
+      OrgWideEmailAddress anOrgWideEmailAddress = ORGWIDE_EMAIL_MAP.get(bizType);
 
       if (
         order.Send_Invoice_to_Alternate_Contact__c == true &&
@@ -113,38 +162,43 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         toAddress.add(order.ContactBuying__r.Email);
       }
 
-      cCAddress.add('billing@fivestarprofessional.com');
+      if(bizType == 'Essential') {
+        cCAddress.add('billing@essentialengine.com');
+      } else {
+      cCAddress.add('accounts.receivable@fivestarprofessional.com');
+      }
+
       Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
       mail.setTemplateId(et.Id);
-      if (anOrgWideEmailAddress != null && anOrgWideEmailAddress.size() > 0) {
-        mail.setOrgWideEmailAddressId(anOrgWideEmailAddress.get(0).Id);
+      if (anOrgWideEmailAddress != null) {
+        mail.setOrgWideEmailAddressId(anOrgWideEmailAddress.Id);
       }
       mail.setCCAddresses(cCAddress);
       mail.setToAddresses(toAddress);
       mail.setTreatTargetObjectAsRecipient(false);
       mail.setTargetObjectId(order.ContactBilling__c);
       mail.setWhatId(Orderid);
-      Messaging.EmailFileAttachment attach = new Messaging.EmailFileAttachment();
-      if (!test.isRunningTest()) {
-        if (mapOrderIdToAttachment.containsKey(Orderid)) {
-          Blob b = mapOrderIdToAttachment.get(Orderid).Body;
-          system.debug('Blob b===' + b);
-          attach.setBody(b);
-        }
-      } else {
-        attach.setBody(Blob.valueOf('Test'));
-      }
-      attach.setFileName(order.Name + '.pdf');
-      mail.setFileAttachments(
-        new List<Messaging.EmailFileAttachment>{ attach }
-      );
+      // Messaging.EmailFileAttachment attach = new Messaging.EmailFileAttachment();
+      // if (!test.isRunningTest()) {
+      //   if (mapOrderIdToAttachment.containsKey(Orderid)) {
+      //     Blob b = mapOrderIdToAttachment.get(Orderid).Body;
+      //     system.debug('Blob b===' + b);
+      //     attach.setBody(b);
+      //   }
+      // } else {
+      //   attach.setBody(Blob.valueOf('Test'));
+      // }
+      // attach.setFileName(order.Name + '.pdf');
+      // mail.setFileAttachments(
+      //   new List<Messaging.EmailFileAttachment>{ attach }
+      // );
       system.debug('mail==' + mail);
 
       allmsg.add(mail);
     }
     try {
       system.debug('Emails===' + allmsg);
-      if (isSandbox || test.isRunningTest()) {
+      if (test.isRunningTest()) {
         System.debug('inside sandbox, skipping email');
         System.debug(JSON.serializePretty(lstOrders));
         return;
@@ -161,7 +215,7 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       System.debug(e.getMessage());
     }
   }
-  public static void EmailSent(List<SalesOrder__c> lstOrders) {
+  global static void EmailSent(List<SalesOrder__c> lstOrders) {
     List<SalesOrder__c> lstOrdersToUpdate = new List<SalesOrder__c>();
     for (SalesOrder__c so : lstOrders) {
       if (so.Initial_Invoice_Sent__c == false) {
@@ -173,18 +227,18 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
     update lstOrdersToUpdate;
   }
 
-  public static void sendPaymentEmails(
+  global static void sendPaymentEmails(
     List<Payment__c> payments
   ) {
-    Id templateId = [
-      SELECT Id, DeveloperName
-      FROM EmailTemplate
-      WHERE DeveloperName = :PAYMENT_EMAIL_TEMPLATE
-      LIMIT 1
-    ]
-    .Id;
+    
+
+    Boolean allowEssentialEmails = FivestarSetting__mdt.getInstance('Universal') != null &&
+    FivestarSetting__mdt.getInstance('Universal').Send_Essential_Engine_Payment_Receipts__c;
+
 
     Messaging.SingleEmailMessage[] messages = new List<Messaging.SingleEmailMessage>();
+
+    // List<Attachment> attachments = new List<Attachment>();
 
     for (Payment__c pmt : payments) {
       Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
@@ -200,10 +254,19 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         emailAddress = pmt.Contact__r.Email;
       }
 
+      String bizType = 'Five Star';
+
+      if(pmt.Sales_Order__r.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
+        bizType = 'Essential';
+      }
+
+      Id templateId = PMT_EMAIL_TEMP_MAP.get(bizType).Id;
+
       message.setTargetObjectId(pmt.Contact__c);
       message.setTreatTargetObjectAsRecipient(false);
-      message.setSenderDisplayName('Five Star Billing');
-      message.setReplyTo('billing@fivestarprofessional.com');
+      if(ORGWIDE_EMAIL_MAP.get(bizType) != null) {
+        message.setOrgWideEmailAddressId(ORGWIDE_EMAIL_MAP.get(bizType).Id);
+      }
       message.setUseSignature(false);
       message.setBccSender(false);
       message.setSaveAsActivity(false);
@@ -211,26 +274,34 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
       message.setWhatId(pmt.Id);
       message.toAddresses = new List<String>{ emailAddress };
 
-      PageReference pdf = Page.Payment2VF;
+      // Attachment attach = new Attachment();
+      // attach.ParentId = pmt.Id;
 
-      pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
-      pdf.getParameters().put('paymentId', (String) pmt.Id);
+      // PageReference pdf = Page.Payment2VF;
 
-      // Take the PDF content
-      Blob b;
-      if (Test.isRunningTest()) {
-        b = Blob.valueOf('testbody');
-      } else {
-        b = pdf.getContent();
-      }
-      // Create the email attachment
-      Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
-      efa.setFileName('Payment_Invoice.pdf');
-      efa.setBody(b);
+      // pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
+      // pdf.getParameters().put('paymentId', (String) pmt.Id);
 
-      message.setFileAttachments(
-        new List<Messaging.EmailFileAttachment>{ efa }
-      );
+      // pdf.setRedirect(true);
+
+      // // Take the PDF content
+      // Blob b;
+      // if (Test.isRunningTest()) {
+      //   b = Blob.valueOf('testbody');
+      // } else {
+      //   b = pdf.getContentAsPdf();
+      // }
+      // attach.Body = b;
+      // attach.Name = 'Payment_For_' + pmt.Sales_Order__r.Name + '.pdf';
+      // attachments.add(attach);
+
+      // Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
+      // efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
+      // efa.setBody(b);
+
+      // message.setFileAttachments(
+      //   new List<Messaging.EmailFileAttachment>{ efa }
+      // );
 
       messages.add(message);
     }
@@ -241,6 +312,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
         System.debug(JSON.serializePretty(messages));
         return;
       }
+
+      // Database.insert(attachments, false);
       Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
 
       system.debug('results ===' + results);

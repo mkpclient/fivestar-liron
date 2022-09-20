@@ -1,0 +1,32 @@
+<p>Hello {!Contact.FirstName},</p>
+
+<p>In regards to the recent message that I left at your office, I wanted to quickly follow up to ensure that you have received the recent information sent letting you know that you have been identified as a candidate for the <b>{!Market__c.Publication_Year__c}</b></b> </b>{!Market__c.Program_Name__c}</b>! An exclusive group of <b>{!Market__c.Profession_Type__c}'s</b> will receive the <b>{!Market__c.Publication_Year__c}</b>award and be featured with a complimentary listing in a special <b>{!Market__c.Publication_Month__c}</b> {!Opportunity.Email_Templates_Issue_s__c} of <b><i>{!Opportunity.Email_Templates_Magazine__c}</i></b>.<p> As a candidate, we need additional information in order to verify that you meet the eligibility and evaluation criteria and move you forward in the research process.  <b></b></u>
+
+<br>To complete your information: please go to your secure, online link below and complete the short candidate evaluation form,  This will only takes a few minutes  to complete and if you have any questions feel free to contact me. </p>
+
+<p><b><a href="{!Opportunity.Research_Form_URL__c}">2015 Five Star Award Candidate Evaluation Form - Click Here to Complete.</a></b><br><b>The deadline for submission is end of day, {!Market__c.ACDF_Deadline__c}.</b>
+
+<p>Evaluation Process: Candidates will be evaluated on 10 criteria aligned with providing quality service and professional excellence. Only those candidates who differentiate themselves based on the criteria will be named a {!Market__c.Publication_Year__c} {!Market__c.Program_Name__c}. For more information about the evaluation and eligibility criteria please review - <b><a href="{!Market__c.AG_URL_as_Text__c}"> Five Star Professional - Research Overview .</a></b><br>
+
+Award winners are scheduled to be notified 4 weeks after the deadline date posted above.</p> 
+
+If you have any questions or if you need any help with your candidate information, please contact me at, <b>{!User.Phone}</b>.<p>
+
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway<br>
+Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+<a href=mailto:{!User.Email}>{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

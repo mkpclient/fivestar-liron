@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>05: Running Late for Appointment</name>
+    <style>freeForm</style>
+    <subject>Five Star Appointment - Running a few minutes late!</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+I wanted to reach out in advance of our appointment in a few minutes, I am running about 5 minutes late for our scheduled appointment. I will call as soon as possible!
+
+Thank you for your patience!
+
+{!User.User_Full_Name__c}
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

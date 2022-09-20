@@ -1,0 +1,21 @@
+<messaging:emailTemplate subject="Your Order: {!relatedTo.Name}" 
+recipientType="Contact" relatedToType="kugo2p__SalesOrder__c">
+
+    <messaging:plainTextEmailBody >
+Dear  {!relatedTo.ContactBilling__r.Name},                
+        
+Thank you for your interest in our offering. Please review and sign the attached order.
+        
+Feel free to contact me if you have any questions.
+        
+Regards,
+        
+{!$User.FirstName} {!$User.LastName}
+    </messaging:plainTextEmailBody>
+    
+    <messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">    
+        <c:OrderPDF orderId="{!relatedTo.Id}" />                           
+    </messaging:attachment>
+    
+
+</messaging:emailTemplate>

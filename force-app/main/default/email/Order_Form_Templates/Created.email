@@ -1,0 +1,5 @@
+Hi 
+
+Your new order form for {!Order_Form__c.Contact__c} has been assigned to {!Order_Form__c.user_entering__c}, check the status here:
+
+https://na14.salesforce.com/{!Order_Form__c.Id}

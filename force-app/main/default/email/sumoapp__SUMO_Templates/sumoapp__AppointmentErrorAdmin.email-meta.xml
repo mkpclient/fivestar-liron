@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>sumoapp__AppointmentError</letterhead>
+    <name>Appointment Error Admin</name>
+    <style>freeForm</style>
+    <subject>{!Organization.Name} - Canceled Appointment Details</subject>
+    <textOnly>Hi Sumo Administrator,
+
+The following Client attempted to schedule an appointment which failed. This failed as a result of an invalid WHOID being passed into the scheduling process link.
+
+&lt;%clientUrl%&gt;
+Process: {!sumoapp__Process__c.sumoapp__Name__c}
+
+The User below is not available on the Process.
+
+User: &lt;%userName%&gt;
+UserId: &lt;%userId%&gt;
+
+Is this an active user? If not, you may need to update any automation that you are using to pass in the whoid (Custom Code, Flow) to remove this user from automation.
+Is this user part of the scheduling process? To check the process please do the following.
+Navigate to SUMO Admin Settings
+Click on Online Scheduler
+Edit Scheduling process: {!sumoapp__Process__c.sumoapp__Name__c}
+Navigate to the WHO tab
+Add &lt;%userName%&gt; to the process
+Click Save.
+
+Thank you,
+SUMO CEP Team</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -4,7 +4,17 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Opportunity Name</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Opportunity.Contact__r.AccountId</field>
+            <operation>equals</operation>
+            <valueField>$Source.Account__c</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
     <referenceTo>Opportunity</referenceTo>
+    <relationshipLabel>Boom Orders</relationshipLabel>
     <relationshipName>Sales_Orders</relationshipName>
     <required>false</required>
     <trackHistory>true</trackHistory>

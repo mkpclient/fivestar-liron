@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__All_Providers</fullName>
+    <columns>CONTACT.SALUTATION</columns>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.TITLE</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>forcebrain__CurrentlyWorking__c</columns>
+    <columns>forcebrain__User__c</columns>
+    <columns>CONTACT.CREATED_DATE</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>forcebrain__IsProvider__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>All Providers</label>
+</ListView>

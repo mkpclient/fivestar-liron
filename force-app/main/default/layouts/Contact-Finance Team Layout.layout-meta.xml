@@ -23,10 +23,6 @@
                 <field>Nickname__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Owner_ID__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Years_Winner__c</field>
             </layoutItems>
@@ -44,11 +40,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Dual_Market__c</field>
+                <field>Profession__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Full_ID__c</field>
+                <behavior>Edit</behavior>
+                <field>Dual_Market__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -76,15 +72,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Opportunity_stage__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Login_Code__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Social_Post_URL__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -100,23 +88,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>CSR_Appt_Link__c</field>
+                <field>Full_ID__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>WM_Asst_Link__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>CSR_Send_Proof__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CSR_PID__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Proof_Sent_Automatically__c</field>
+                <field>Display_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -127,28 +103,12 @@
                 <field>Display_Team__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CSR_Appt_Link_for_Wild_Card_Appointment__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Display_First_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Display_Last_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Display_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CSR_Appt_Link_for_Marketing_Services__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Business_Dev_Rep__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -183,42 +143,38 @@
                 <field>Prospecting_Branding_Digital_AD__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Other_Product_Interest__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Property_Advertising_RE_Only__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Fee_Only__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>No_Interest_Identified__c</field>
+                <behavior>Readonly</behavior>
+                <field>ELM_referral_share_page__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>AM_WIW_SS_Follow_Up_Link__c</field>
+                <field>ELM_referral_form__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>AM_Client_Check_In_Link__c</field>
+                <field>PaymentMethodLink__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Essential_Engine_Friend_Capture__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Mobile_SMS_Format__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Profession__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Do_Not_Call_for_NAMS_F_U__c</field>
+                <field>RS_Manager_Broker__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Owner_ID__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -287,6 +243,74 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Credit_Awarded_Description__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CSR_Appt_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>WM_Asst_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CSR_Appt_Link_for_Wild_Card_Appointment__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CSR_Appt_Link_for_Marketing_Services__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>CSR_PID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CSR_Send_Proof__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Proof_Sent_Automatically__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_WIW_SS_Follow_Up_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_Client_Check_In_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Opportunity_stage__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Do_Not_Call_for_NAMS_F_U__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Fee_Only__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Property_Advertising_RE_Only__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>No_Interest_Identified__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Other_Product_Interest__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Business_Dev_Rep__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Social_Post_URL__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -362,15 +386,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Central_Contact_Phone__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Central_Contact_Email__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Central_Contact_Note__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -410,83 +426,13 @@
                 <behavior>Edit</behavior>
                 <field>HasOptedOutOfEmail</field>
             </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Match My Email</label>
-        <layoutColumns>
-            <layoutItems>
-                <height>400</height>
-                <page>MME__EmailMessagesContact</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>true</showScrollbars>
-                <width>100%</width>
-            </layoutItems>
-        </layoutColumns>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Marketing Cloud</label>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Remove_from_sales_offers__c</field>
+                <field>Central_Contact_Phone__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Remove_from_research_requests__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Remove_from_newsletters__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Last Year Link</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Last_year_link__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>WSJ Info</label>
-        <layoutColumns/>
-        <layoutColumns/>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Order Related Information</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Market_Project__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Awarded_Years__c</field>
+                <field>Central_Contact_Note__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -566,6 +512,84 @@
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Order Related Information</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Market_Project__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Awarded_Years__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Match My Email</label>
+        <layoutColumns>
+            <layoutItems>
+                <height>400</height>
+                <page>MME__EmailMessagesContact</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>true</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Marketing Cloud</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Remove_from_sales_offers__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Remove_from_research_requests__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Remove_from_newsletters__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Last Year Link</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Last_year_link__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>WSJ Info</label>
+        <layoutColumns/>
+        <layoutColumns/>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
@@ -584,6 +608,7 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <customButtons>New_Boom_Payment_Method</customButtons>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
@@ -593,24 +618,29 @@
         <fields>Billing_First_Name__c</fields>
         <fields>Billing_Last_Name__c</fields>
         <fields>Default__c</fields>
+        <fields>Billing_Street__c</fields>
+        <fields>Billing_State__c</fields>
+        <fields>Inactive__c</fields>
         <relatedList>Payment_Method__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>kugo2p__Set_Default_Method</customButtons>
         <fields>NAME</fields>
-        <fields>kugo2p__Type__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>kugo2p__IsActive__c</fields>
-        <fields>kugo2p__Card_Type__c</fields>
-        <fields>kugo2p__Last_4_Digits__c</fields>
-        <fields>kugo2p__Expiration_Month__c</fields>
-        <fields>kugo2p__Expiration_Year__c</fields>
-        <fields>kugo2p__Default__c</fields>
-        <relatedList>kugo2p__Payment_Method__c.kugo2p__Contact__c</relatedList>
+        <fields>Status__c</fields>
+        <fields>Subscription_Fulfillment__c</fields>
+        <fields>Original_Subscription_Boom_Order__c</fields>
+        <fields>Start_Date__c</fields>
+        <fields>Renewal_Product__c</fields>
+        <fields>Renewal_Quantity__c</fields>
+        <fields>Renewal_Price__c</fields>
+        <fields>Renewal_Date_Day_of_Month__c</fields>
+        <fields>Cancelled_Date__c</fields>
+        <relatedList>Subscription__c.Contact__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
+        <fields>Boom_Order__c</fields>
         <fields>Market__c</fields>
         <fields>Status__c</fields>
         <fields>Next_Action__c</fields>
@@ -618,7 +648,7 @@
         <fields>Subscription__c</fields>
         <fields>Fulfillment_Owner__c</fields>
         <fields>Official_Order_Date__c</fields>
-        <fields>Posting_Number__c</fields>
+        <fields>Renewal_Date__c</fields>
         <relatedList>Fulfillment__c.PrimaryRecipient__c</relatedList>
         <sortField>Official_Order_Date__c</sortField>
         <sortOrder>Desc</sortOrder>
@@ -647,6 +677,7 @@
         <fields>TASK.STATUS</fields>
         <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
+        <fields>EVENT.START_DATE_TIME</fields>
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -654,29 +685,25 @@
         <fields>ACTIVITY.TASK</fields>
         <fields>TASK.WHAT_NAME</fields>
         <fields>TASK.DUE_DATE</fields>
+        <fields>SUMO_Status__c</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <fields>TASK.LAST_UPDATE</fields>
         <fields>Research_Call_Notes__c</fields>
         <fields>Comments__c</fields>
-        <fields>Years_Winner__c</fields>
         <fields>AdProd_Comments__c</fields>
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>kugo2p__Account__c</fields>
-        <fields>kugo2p__NetAmount__c</fields>
-        <fields>kugo2p__BalanceDueAmount__c</fields>
-        <fields>kugo2p__PaymentTerms__c</fields>
-        <fields>kugo2p__InvoiceDate__c</fields>
-        <fields>kugo2p__InvoiceDueDate__c</fields>
-        <fields>kugo2p__Age__c</fields>
-        <fields>kugo2p__RecordStatus__c</fields>
-        <fields>kugo2p__PaymentStatus__c</fields>
-        <relatedList>kugo2p__KugamonInvoice__c.kugo2p__ContactBilling__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
+        <fields>Complaint_Description__c</fields>
+        <fields>Date_Opened__c</fields>
+        <fields>Internal_notes__c</fields>
+        <fields>LAST_ACTIVITY</fields>
+        <fields>Next_Action_Date__c</fields>
+        <fields>Original_Order__c</fields>
+        <fields>OWNER.ALIAS</fields>
+        <fields>Resolution_Description__c</fields>
+        <fields>Resolved_Date__c</fields>
         <relatedList>Complaint__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -714,11 +741,10 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
-        <fields>OrderLine__c</fields>
-        <fields>PrimaryRecipient__c</fields>
-        <fields>Status__c</fields>
-        <relatedList>Fulfillment__c.Contact__c</relatedList>
+        <fields>AM_Assigned__c</fields>
+        <fields>CSR_Assigned__c</fields>
+        <fields>Cancellation_Reason__c</fields>
+        <relatedList>Cancellation__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

@@ -658,6 +658,11 @@
             <field>kugo2p__Trigger_Tax_Calc__c</field>
             <table>kugo2p__KugamonInvoice__c.kugo2p__Payments__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contact_ID__c</field>
+            <table>kugo2p__KugamonInvoice__c.kugo2p__Payments__r</table>
+        </columns>
         <masterLabel>Payments</masterLabel>
     </sections>
 </ReportType>

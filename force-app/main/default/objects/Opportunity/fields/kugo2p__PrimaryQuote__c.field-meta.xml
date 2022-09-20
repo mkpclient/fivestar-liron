@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>kugo2p__PrimaryQuote__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Primary Quote assigned to the Opportunity. Only one related Quote can be designated as Primary.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Primary Quote assigned to the Opportunity. Only one related Quote can be designated as Primary</inlineHelpText>
+    <label>Primary Quote</label>
+    <referenceTo>kugo2p__SalesQuote__c</referenceTo>
+    <relationshipLabel>Opportunities</relationshipLabel>
+    <relationshipName>Opportunities</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

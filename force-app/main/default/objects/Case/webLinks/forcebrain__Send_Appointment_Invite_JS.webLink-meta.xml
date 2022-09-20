@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__Send_Appointment_Invite_JS</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send Appointment Invite</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/forcebrain__sendInviteJS&quot;)}
+
+{!REQUIRESCRIPT(&quot;/support/console/30.0/integration.js&quot;)} 
+
+function requireCssFile(filename){ 
+	var fileref = document.createElement(&apos;link&apos;); 
+	fileref.setAttribute(&apos;rel&apos;, &apos;stylesheet&apos;); 
+	fileref.setAttribute(&apos;type&apos;, &apos;text/css&apos;); 
+	fileref.setAttribute(&apos;href&apos;, filename); 
+	document.getElementsByTagName(&apos;head&apos;)[0].appendChild(fileref); 
+}
+var templateId =getTemplateId(&quot;Case_Self_Schedule_Invite&quot;);
+var currentUserContactId = getProviderIdFromUser(&apos;{!$User.Id}&apos;);
+var errorMessage = &quot;Oops! There is a problem with this case.&quot;;
+var recordTypeName = getRecordTypeName(&apos;{!Case.Id}&apos;);
+setGlobalVariableId(&apos;{!Case.Id}&apos;,&apos;{!$User.Id}&apos;,&apos;{!Case.ContactId}&apos;,templateId,errorMessage,recordTypeName);
+var modalToShow = null;
+var caseOwnerError = getCaseOwnerError(&apos;{!Case.OwnerId}&apos;);
+var caseContactError = getCaseErrors();
+if(caseOwnerError != null || caseContactError != null){
+modalToShow = caseOwnerError != null ? caseOwnerError : caseContactError;
+}else{
+// Validating Future appointment validation
+var futureApptViolation = getFutureValidAppointmentValidation(&apos;{!Case.Id}&apos;);
+if(futureApptViolation == null){
+	// No future appointment violation on the same record
+	var otherFutureApptViolation = getFutureValidAppointmentValidationOther(&apos;{!Case.Id}&apos;,&apos;{!Case.ContactId}&apos;);
+	if(otherFutureApptViolation == null){
+		// No future appointment violation on the other records
+		var apptInviteViolation = getAppointmentInvitationsValidation(&apos;{!Case.Id}&apos;);
+		if(apptInviteViolation == null){
+			//No appointment invitation violation
+			modalToShow = getServicePopUpModal(recordTypeName,&apos;Case&apos;);
+		}else{
+			// There is appointment invitation violation
+			modalToShow = apptInviteViolation;
+		}
+	}else{
+		// There is future appointment violation on the other records
+		modalToShow = otherFutureApptViolation;
+	}
+}else{
+// There is future appointment violation on the same record
+modalToShow = futureApptViolation;
+}
+}
+if(modalToShow != null){
+	requireCssFile(&apos;/resource/forcebrain__LDS/assets/styles/salesforce-lightning-design-system.min.css&apos;);
+	if($(&quot;.slds-backdrop&quot;).length == 0){
+		$(&quot;body&quot;).append(&apos;&lt;div class=&quot;slds-backdrop slds-backdrop--open&quot;&gt;&lt;/div&gt;&apos;);
+	}else{
+		$(&apos;.slds-backdrop&apos;).addClass(&apos;slds-backdrop--open&apos;);
+	}
+        if($(&quot;#sldsSpinner&quot;).length == 0){		
+            $(&quot;body&quot;).append(getSpinnerBody());		
+        }		
+        $(&quot;#sldsSpinner&quot;).hide();
+	$(&quot;body&quot;).append(modalToShow);
+}</url>
+</WebLink>

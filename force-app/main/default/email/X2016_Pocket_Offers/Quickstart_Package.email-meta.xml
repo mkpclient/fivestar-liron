@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Quickstart Package</name>
+    <style>freeForm</style>
+    <subject>Five Star Professional&apos;s Quickstart Package</subject>
+    <textOnly>RESEARCH | AWARD GUIDE | FIVESTARPROFESSIONAL.COM
+
+
+
+Hello, {!Contact.ACDF_FName__c}!
+
+It was great speaking with you today! To follow-up on our conversation, I would like to offer you our Quickstart Package which includes:
+
+Eighteenth-page profile
+Digital spotlight profile (Click here to see a sample!)
+50 two-page reprints of your magazine profile appearance
+
+The list price for this package is over $900, but it is available to you for only $775!
+
+
+
+As we&apos;ve discussed, this package is a great way to dip your toe into the water while covering all your marketing bases!
+
+The eighteenth-page profile gives you fantastic exposure in Magazine Name and boosts your brand by associating your business with both the Five Star award and your local media.
+Use the digital spotlight to improve your SEO and expand your digital footprint. Share it on your social media accounts to direct clients, prospects and referral partners to learn more about you!
+Reprints are the no. 1 way to make your appearance in the magazine work for you. Include them in client handouts, direct-mai pieces, or at open houses.
+
+Ready to get started? Click here to schedule an appointment to place your order.
+
+
+
+{!Opportunity.OwnerFullName}
+
+Account Manager
+
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+
+{!Opportunity.OwnerEmail}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

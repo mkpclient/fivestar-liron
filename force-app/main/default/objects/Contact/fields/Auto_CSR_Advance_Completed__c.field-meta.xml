@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_CSR_Advance_Completed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Not on page layouts
+
+Used as a flag to stop the CSR date advance automation from firing multiple times if an order is unreleased and re released.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If you can see this field notify an admin, it should not be on any page layouts.</inlineHelpText>
+    <label>Auto CSR Advance Completed</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

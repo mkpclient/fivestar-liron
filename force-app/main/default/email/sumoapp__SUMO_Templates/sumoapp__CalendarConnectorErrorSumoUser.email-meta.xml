@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to Sumo user if his calendar connection fails</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>sumoapp__AppointmentError</letterhead>
+    <name>Calendar Connector Error Sumo User</name>
+    <style>freeForm</style>
+    <subject>Please check your SUMO Calendar Connection</subject>
+    <textOnly>We have detected an error with your SUMO Calendar Connection. Please follow the below steps to disconnect and reconnect your calendar to resolve the error.
+
+Navigate to User Settings
+Click on Calendar Connector
+Locate the + sign to the left of your User Name and click on it
+Click Disconnect
+Connect Your Calendar
+
+Thank you,
+
+SUMO Support Team</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,32 @@
+<center><img src="https://c.na14.content.force.com/servlet/servlet.ImageServer?id=015d0000001JhWS&oid=00Dd0000000gsfl&lastMod=1363105245000" height="119" width="223"></center>
+Hi {!Opportunity.Email_Templates_Informalname__c},<br><br>
+
+Now that you have officially been named a 2014 Five Star {!Opportunity.Email_Templates_Profession__c},  I’d like to share more details about the special advertising section and how you will be listed in the {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of <b><em>{!Opportunity.Email_Templates_Magazine__c}</em></b>. We can also help determine the best way to share the good news about your award.<br><br>
+
+Here’s a link to a sample magazine section so you can see how you’ll appear as a Five Star award winner:<br><br>
+
+<em><b><center><a href={!Opportunity.Email_Templates_Magazine_Section__c}>Magazine Section</a></center><br></b></em>
+
+I’ll follow up with you in a couple of days – in the meantime, please contact me if I can answer any questions.<br><br>
+
+For more about how you were selected, how you will appear in <b><em>{!Opportunity.Email_Templates_Magazine__c}</em></b> and more options available to you, go to our Award Guide:<br><br>
+
+<em><b><center><a href={!Opportunity.Email_Templates_Award_Guide__c}>2014 Five Star {!Opportunity.Email_Templates_Profession__c} Award Guide</a></center><br></b></em>
+
+Please note: Only Five Star Professional can name you a Five Star award winner. Five Star Professional is the only approved provider of official plaques and other products related to your award. Trophy companies and other online vendors do not comply with industry regulatory requirements or firm compliance requirements and may be violating trademarks or copyrights.<br><br>
+
+<b>{!User.Name}<br>
+Account Manager<br><br></b>
+ 
+<b>Five Star Professional<br></b>
+2900 Lone Oak Parkway, Suite 120<br>
+Eagan, MN 55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+{!User.Email}<br>
+<a href="http://www.fivestarprofessional.com">www.fivestarprofessional.com</a><p>
+
+
+Please tell us about your experience with Five Star Professional.<br>
+<a href="http://sgiz.mobi/s3/edb67d8ee977" style="font-family: Arial, sans-serif; background-color: rgb(255, 255, 255); font-size: 12pt;">Take Survey</a>

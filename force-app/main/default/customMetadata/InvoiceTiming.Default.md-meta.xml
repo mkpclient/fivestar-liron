@@ -4,10 +4,10 @@
     <protected>false</protected>
     <values>
         <field>Hours__c</field>
-        <value xsi:type="xsd:double">1.0</value>
+        <value xsi:type="xsd:double">0.0</value>
     </values>
     <values>
         <field>Minutes__c</field>
-        <value xsi:type="xsd:double">0.0</value>
+        <value xsi:type="xsd:double">15.0</value>
     </values>
 </CustomMetadata>

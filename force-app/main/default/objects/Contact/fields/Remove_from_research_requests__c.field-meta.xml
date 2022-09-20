@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Remove_from_research_requests__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Added to marketing cloud area on contact object for all profile page layouts that had a Pardot area.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>(check if client asks to be removed; this is for HEAT, BRP, etc. requests and not for ACDF)</inlineHelpText>
+    <label>Remove from research requests</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

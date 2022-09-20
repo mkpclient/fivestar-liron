@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subscriptions_with_No_Payment_Methods</fullName>
+    <columns>NAME</columns>
+    <columns>Original_Subscription_Boom_Order__c</columns>
+    <columns>Status__c</columns>
+    <columns>Subscription_Fulfillment__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Payment_Method__c</columns>
+    <columns>Renewal_Product__c</columns>
+    <columns>Renewal_Quantity__c</columns>
+    <columns>Renewal_Price__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Payment_Method__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Paused</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>notContain</operation>
+        <value>ADD</value>
+    </filters>
+    <filters>
+        <field>Contact__c</field>
+        <operation>notContain</operation>
+        <value>Zdon</value>
+    </filters>
+    <label>Subscriptions with No Payment Methods</label>
+</ListView>

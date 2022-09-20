@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Not_Interested</fullName>
+    <active>false</active>
+    <description>IF the sales stage is not interested, must select valid stage comment</description>
+    <errorConditionFormula>OR(AND(ISPICKVAL( StageName , &quot;Not Interested&quot;),NOT(OR(ISPICKVAL(  Stage_Comment__c , &quot;Do not contact me regarding other promotions this year&quot;),ISPICKVAL(  Stage_Comment__c , &quot;Contact me about future promotions&quot;),ISPICKVAL(Stage_Comment__c, &quot;Out of Area&quot;)))))</errorConditionFormula>
+    <errorMessage>Stage Not Interested requires Stage comment of either Not interested in promoting this award year or Contact me about future promotions</errorMessage>
+</ValidationRule>

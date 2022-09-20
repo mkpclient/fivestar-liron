@@ -32,6 +32,26 @@ public with sharing class LWCTest {
         
         Account updatedAcct = (Account) LWC.doQuery('SELECT Id, Name FROM Account WHERE Id = \'' + singleTestAcct.Id + '\'')[0];
         System.assertEquals(true, updatedAcct.Name.startsWith('New Test Name'), 'Account name should start with "New Test Name"');
+        String uniqueUserName = 'standarduser' + DateTime.now().getTime() + '@testorg.com';
+
+        Profile p = [SELECT Id FROM Profile WHERE Name='FSP - Traffic'];
+        User u = new User(Alias = 'standt', Email='standarduser@testorg.com',
+        EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US', ProfileId = p.Id,
+        TimeZoneSidKey='America/Los_Angeles',
+         UserName=uniqueUserName);
+
+        System.runAs(u) {
+            LWC.lockRecord(updatedAcct.Id);
+
+            System.assertEquals(true, Approval.isLocked(updatedAcct.Id), 'Record should be locked');
+    
+            LWC.unlockRecord(updatedAcct.Id);
+    
+            System.assertEquals(false, Approval.isLocked(updatedAcct.Id), 'Record should not be locked');    
+        }
+
+
         
         LWC.attachPDF(singleTestAcct.Id, 'testFile');
         List<Attachment> testAttachments = [SELECT ParentId FROM Attachment WHERE ParentId = :singleTestAcct.Id];

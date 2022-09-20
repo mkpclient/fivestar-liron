@@ -1,0 +1,35 @@
+<p>Hi {!Opportunity.Email_Templates_Informalname__c},</p>
+
+<p>We have started our research process for the annual Five Star {!Opportunity.Email_Templates_Profession__c} Award!</p>
+
+<p>We know how busy you are, for easy reference we uploaded your responses from last year, to make it easier for you to complete your candidate form. I also wanted to let you know of new criteria* we have added to our program for the 2017 award program.<p> 
+
+<p>All candidates need to complete a candidate form to be considered for the award. Award winners will be featured with a complimentary listing on the Five Star Professional website, www.fivestarprofessional.com, and have the opportunity to appear in a special section of the  {!Opportunity.Email_Templates_Month__c} issue of <i>{!Opportunity.Email_Templates_Magazine__c}</i>.<p>
+
+<b><font color=red>To complete your evaluation, you can access the link by clicking on "Your Form" below. </font color=red><p> 
+ 
+<b><center><a href="{!Opportunity.Research_Form_URL__c}"> Candidate Evaluation Form - Click Here to Complete</a></b><br><i>The deadline to submit is end of day  {!Opportunity.ACDF_Deadline__c}</i></b></center><p>
+
+Award winners are scheduled to be notified within six to eight weeks of the deadline.<p>
+If you have any questions please feel free to give me a call or send me an email. </p>
+
+<p>*10-minute Award Winner Certification appointment  - Our new final step in our research process is a 10-minute Award Winner Certification appointment to determine that there have been no changes to your candidate form and also review the Award Usage Guidelines.<p>
+
+
+<p>Thanks,</p>
+
+
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway<br>
+Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+<a href=mailto:{!User.Email}>{!User.Email}</a><br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>

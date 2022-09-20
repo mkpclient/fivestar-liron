@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to teresa via email alert when a complaint type request is created</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Complaint CR Created</name>
+    <style>none</style>
+    <subject>Complaint On Order {!Change_Request__c.Order__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

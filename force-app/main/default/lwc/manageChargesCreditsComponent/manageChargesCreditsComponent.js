@@ -107,7 +107,7 @@ export default class ManageChargesCreditsComponent extends LightningElement {
     if(error) {
       console.error(error);
     } else if(data) {
-      this.allowEdit = ["Draft", "Unreleased"].includes(data.fields.Status_Picklist__c.value);
+      this.allowEdit = ["Draft", "Unreleased", "Pending Renewal"].includes(data.fields.Status_Picklist__c.value);
     }
   }
 
@@ -149,7 +149,7 @@ export default class ManageChargesCreditsComponent extends LightningElement {
       ...parsedOrderCharges.map((c) => ({
         ...c,
         LineURL: `/${c.Id}`,
-        LineName: c.Additional_Charge_Credit__r.Name
+        LineName: c.hasOwnProperty('Additional_Charge_Credit__r') ? c.Additional_Charge_Credit__r.Name : ''
       }))
     ];
   };
@@ -387,18 +387,20 @@ export default class ManageChargesCreditsComponent extends LightningElement {
     };
 
     if (
-      (currLine.Additional_Charge_Credit__r.LockLineDescription__c &&
+      currLine.hasOwnProperty('Additional_Charge_Credit__r') &&
+      ((currLine.Additional_Charge_Credit__r.LockLineDescription__c &&
         newValues.LineDescription__c) ||
       (currLine.Additional_Charge_Credit__r.LockQuantity__c &&
         newValues.Quantity__c) ||
       (currLine.Additional_Charge_Credit__r.LockUnitPrice__c &&
-        newValues.SalesPrice__c)
+        newValues.SalesPrice__c))
     ) {
       error.title = "Restricted Field";
       error.message = "This field cannot be edited.";
     }
 
     if (
+      currLine.hasOwnProperty('Additional_Charge_Credit__r') &&
       newValues.Quantity__c &&
       newValues.Quantity__c >
         currLine.Additional_Charge_Credit__r.MaximumQuantity__c
@@ -408,6 +410,7 @@ export default class ManageChargesCreditsComponent extends LightningElement {
         "New quantity exceeds credit/charge's maximum quantity value.";
     }
     if (
+      currLine.hasOwnProperty('Additional_Charge_Credit__r') &&
       newValues.Quantity__c &&
       newValues.Quantity__c <
         currLine.Additional_Charge_Credit__r.MinimumQuantity__c
@@ -434,7 +437,7 @@ export default class ManageChargesCreditsComponent extends LightningElement {
         const processedData = {
           ...Data[0],
           LineURL: `/${Data[0].Id}`,
-          LineName: Data[0].Additional_Charge_Credit__r.Name
+          LineName: Data[0].hasOwnProperty('Additional_Charge_Credit__r') ? Data[0].Additional_Charge_Credit__r.Name : "",
         };
         this.lineData = this.lineData.map((d) =>
           d.Id === processedData.Id ? processedData : d
@@ -471,7 +474,7 @@ export default class ManageChargesCreditsComponent extends LightningElement {
       const processedData = {
         ...Data[0],
         LineURL: `/${Data[0].Id}`,
-        LineName: Data[0].Additional_Charge_Credit__r.Name
+        LineName: Data[0].hasOwnProperty('Additional_Charge_Credit__r') ? Data[0].Additional_Charge_Credit__r.Name : ''
       };
       this.lineData = [...this.lineData, processedData];
       //this.calculateTotalAmount();

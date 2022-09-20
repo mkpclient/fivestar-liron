@@ -18,7 +18,7 @@
             </value>
             <value>
                 <fullName>New</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>New</label>
             </value>
             <value>
@@ -30,6 +30,16 @@
                 <fullName>Changes Submitted - Needs Proof</fullName>
                 <default>false</default>
                 <label>Changes Submitted - Needs Proof</label>
+            </value>
+            <value>
+                <fullName>Changes Submitted - Revisions Needed</fullName>
+                <default>false</default>
+                <label>Changes Submitted - Revisions Needed</label>
+            </value>
+            <value>
+                <fullName>Changes Submitted - Custom Design</fullName>
+                <default>false</default>
+                <label>Changes Submitted - Custom Design</label>
             </value>
             <value>
                 <fullName>Reviewed by Production</fullName>

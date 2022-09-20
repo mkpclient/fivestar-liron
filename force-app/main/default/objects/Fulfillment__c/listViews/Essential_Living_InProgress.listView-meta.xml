@@ -8,6 +8,10 @@
     <columns>Fulfillment_Owner__c</columns>
     <columns>Contact_Block_Name__c</columns>
     <columns>Contact_Block_Company__c</columns>
+    <columns>List_Source__c</columns>
+    <columns>List_Retrieval_Date__c</columns>
+    <columns>List_Source_Other__c</columns>
+    <columns>CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>
@@ -17,7 +21,8 @@
     <filters>
         <field>Status__c</field>
         <operation>notContain</operation>
-        <value>New,On Hold,Subscription Cancelled,Cancelled</value>
+        <value>On Hold,Subscription Cancelled,Cancelled</value>
     </filters>
     <label>(Public) Essential Living Mag - Live</label>
+    <language>en_US</language>
 </ListView>

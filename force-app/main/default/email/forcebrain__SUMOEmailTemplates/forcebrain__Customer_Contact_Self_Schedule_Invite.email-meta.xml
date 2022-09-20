@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email template is sent to a customer (contact) inviting them to schedule an appointment.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Customer (Contact) - Self-Schedule Invite</name>
+    <style>formalLetter</style>
+    <subject>Appointment Invitation with {!$User.FirstName}</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+Per our discussion, I would love to meet with you regarding __________.
+
+Please click this link and choose a time that works with your schedule.
+
+{!Contact.forcebrain__Schedule_Now_URL_Text__c}
+
+I will then send you a confirmation email with a link to add the appointment to your calendar.
+
+I look forward to meeting with you.
+
+Thank you,
+{!$User.FirstName}
+-----------------------------
+{!Organization.Name}
+{!forcebrain__EventParticipant__c.forcebrain__Email_Signature_Formula__c}
+{!$User.Title}
+{!$User.Phone}
+{!$User.Email}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

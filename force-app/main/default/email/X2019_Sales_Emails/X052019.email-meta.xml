@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>05: Certification Deck</name>
+    <style>freeForm</style>
+    <subject>Links for today&apos;s meeting</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Please click here to view the presentation that will help guide our conversation today!
+
+{!Market__c.Award_Guide__c}
+
+After our meeting today, please take this one-question survey and let me know how I am doing.
+
+http://fivestar.49f002d8d2ee.sgizmo.com/s3/?CID={!Contact.Id}
+
+Thank you,
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template sent out when a DAK or EReprint is Closed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Proof Ready Assistant</name>
+    <style>freeForm</style>
+    <subject>Subject: Your Five Star Professional {!Fulfillment__c.Product_Name__c} proof is ready</subject>
+    <textOnly>Hello {!Fulfillment__c.Alternate_Contact__c},
+
+Your {!Fulfillment__c.Product_Name__c} proof is ready!
+
+To review and approve your proof, log in to your account on our website. Please submit your approval or edits as soon as possible.
+
+    To log on, go to fivestarprofessional.com/login
+    Username: {!Fulfillment__c.Web_Username__c} 
+    Passcode: {!Fulfillment__c.Login_Code__c}
+              NOTE: if you’ve already set your password, use that rather than this passcode.
+
+Click on your current award year to view your list of products and navigate to {!Fulfillment__c.Product_Name__c}. 
+
+Please feel free to reach out to me with any questions – my email address and phone number are below.
+
+Thank you,
+
+{!Fulfillment__c.Fulfillment_Owner__c} 
+Client Success Representative 
+Five Star Professional 
+{!Fulfillment__c.Fulfillment_Owner_Email__c}
+{!Fulfillment__c.Fulfillment_Owner_Phone__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

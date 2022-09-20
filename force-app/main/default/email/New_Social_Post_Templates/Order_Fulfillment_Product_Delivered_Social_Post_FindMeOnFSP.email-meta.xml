@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Order Fulfillment Product Delivered - Social Post_Find me on FSP</name>
+    <style>formalLetter</style>
+    <subject>Your Five Star Professional premium digital profile social post has been published!</subject>
+    <textOnly>Hello {!Order_Fulfillment__c.Display_Contact_First_Name__c}:
+
+A new social post has been published for you! Please check out your new post online and share it directly to your network to optimize the views and interactions.
+
+Your post can be viewed here: {!Order_Fulfillment__c.Product_Delivered_Link__c}
+
+Additionally, we encourage you to share the following announcement email with your clients and network. Just copy/paste the content below into an email or other digital announcement platform to share.
+
+If you have any questions, please don&apos;t hesitate to reach out to your Client Success Representative, {!Order_Fulfillment__c.Fulfillment_Owner_Fullname__c}, at {!Order_Fulfillment__c.Fulfillment_Owner_Phone__c} or by email at {!Order_Fulfillment__c.Fulfillment_Owner_Email__c}.
+
+Thank you,
+Five Star Professional Client Success Team
+As a {!Order_Fulfillment__c.Market_Award_Year__c} Five Star Professional award winner in the {!Order_Fulfillment__c.Market_Region__c} area, {!NullValue(Order_Fulfillment__c.Display_Contact_First_Name__c&quot;)} {!NullValue(Order_Fulfillment__c.Display_Contact_Last_Name__c&quot;)} stands out from the competition! {!NullValue(Order_Fulfillment__c.Display_Contact_First_Name__c&quot;)} has been recognized in {!Order_Fulfillment__c.Core_Publication__c} for providing excellent customer service.
+
+Check out {!Order_Fulfillment__c.Display_Contact_First_Name__c} here and click through to the professional profile page on FiveStarProfessional.com. Share {!NullValue(Order_Fulfillment__c.Display_Contact_First_Name__c&quot;)}&apos;s contact information and success story with your friends and connections who are in search of outstanding professionals.
+
+Five Star winners like {!Order_Fulfillment__c.Display_Contact_First_Name__c} excel in providing excellent services to their clients, and this is just one more point of contact they have to make it easy to get in touch.
+
+Congratulations once again to {!Order_Fulfillment__c.Display_Contact_First_Name__c}!
+Jonathan Wesser
+Five Star Professional
+VP, Research</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

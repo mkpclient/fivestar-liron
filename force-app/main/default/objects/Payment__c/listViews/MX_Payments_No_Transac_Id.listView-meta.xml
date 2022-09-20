@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MX_Payments_No_Transac_Id</fullName>
+    <columns>NAME</columns>
+    <columns>Amount__c</columns>
+    <columns>Billing_Name__c</columns>
+    <columns>Transaction_Id__c</columns>
+    <columns>NetAmount__c</columns>
+    <columns>Payment_Processor__c</columns>
+    <columns>Status__c</columns>
+    <columns>Sales_Order__c</columns>
+    <columns>OBJECT_ID</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Transaction_Id__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Completed</value>
+    </filters>
+    <filters>
+        <field>Payment_Processor__c</field>
+        <operation>equals</operation>
+        <value>MX Merchant</value>
+    </filters>
+    <filters>
+        <field>Payment_Type__c</field>
+        <operation>equals</operation>
+        <value>Credit Card</value>
+    </filters>
+    <filters>
+        <field>Legacy_Id__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>MX Payments No Transac Id</label>
+</ListView>

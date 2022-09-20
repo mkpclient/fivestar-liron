@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__validateContactsAccount</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+	forcebrain__IsPersonalAccount__c = FALSE,
+	forcebrain__IsProvider__c = FALSE,
+	OR(
+		OR(ISBLANK(AccountId),ISNULL(AccountId)),
+		Account.forcebrain__IsPersonalAccount__c = TRUE,
+		Account.forcebrain__IsProvider__c = TRUE
+	)
+)</errorConditionFormula>
+    <errorMessage>Standard Contacts must be related to a Standard Accounts.</errorMessage>
+</ValidationRule>

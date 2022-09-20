@@ -233,14 +233,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>WSJ_Listing__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Fortune_Listing__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
                 <field>Profession__c</field>
             </layoutItems>
         </layoutColumns>
@@ -575,19 +567,6 @@
         <fields>Market_Project__c</fields>
         <fields>Market__c</fields>
         <relatedList>LineRecipient__c.Order__c</relatedList>
-        <sortField>OrderLine__c</sortField>
-        <sortOrder>Asc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>OrderLine__c</fields>
-        <fields>PrimaryRecipient__c</fields>
-        <fields>Status__c</fields>
-        <fields>Market__c</fields>
-        <fields>Fulfillment_Owner__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Fulfillment__c.OrderNumber__c</relatedList>
         <sortField>OrderLine__c</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>

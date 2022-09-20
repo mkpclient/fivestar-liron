@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Reprints_is_for_Reprints_onl</fullName>
+    <active>false</active>
+    <description>If Postcards are not a selected product, then there should not be a number entered in the number of postcards field.</description>
+    <errorConditionFormula>AND(
+NOT(
+OR(
+INCLUDES(Products__c, &quot;Profile reprints&quot;),
+INCLUDES(Products__c,&quot;4 page reprints&quot;)
+)
+),
+ Number_of_Reprints__c &gt;0
+)</errorConditionFormula>
+    <errorMessage>Only enter &quot;Number of Reprints&quot; if &quot;Profile reprints&quot; or &quot;4 page reprints&quot; is a selected Product!</errorMessage>
+</ValidationRule>

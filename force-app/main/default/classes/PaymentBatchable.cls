@@ -1,15 +1,13 @@
 global class PaymentBatchable implements Database.Batchable<sObject>, Database.AllowsCallouts,Database.Stateful {
   global String queryString;
-  global List<Payment__c> newPayments;
 
   global paymentBatchable() {
-    newPayments = new List<Payment__c>();
     if (String.isBlank(queryString)) {
-      queryString = 'SELECT Id, Sales_Order__r.Name, Sales_Order__r.Alternate_Contact_Email__c, Sales_Order__r.Send_Invoice_to_Alternate_Contact__c, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Status__c = \'Scheduled\' AND Scheduled_Payment_Date__c <= TODAY AND Payment_Method__c != null';
+      queryString = 'SELECT Id, Sales_Order__r.Name, Sales_Order__r.Alternate_Contact_Email__c, Sales_Order__r.Send_Invoice_to_Alternate_Contact__c, Sales_Order__r.Price_Book__r.Business_Unit__c, Sales_Order__c, Contact__c, Contact__r.Email, Payment_Method__r.Merchant_Token__c, Amount__c FROM Payment__c WHERE Status__c = \'Scheduled\' AND Scheduled_Payment_Date__c <= TODAY AND Payment_Method__c != null AND Sales_Order__r.BalanceDueAmount__c > 0';
     }
-    if (Test.isRunningTest()) {
-      queryString += ' LIMIT 1';
-    }
+    // if (Test.isRunningTest()) {
+    //   queryString += ' LIMIT 1';
+    // }
   }
 
   global Database.QueryLocator start(Database.BatchableContext BC) {
@@ -25,87 +23,53 @@ global class PaymentBatchable implements Database.Batchable<sObject>, Database.A
       paymentRecord.entryClass = 'WEB';
       paymentRecord.cardAccountToken = s.Payment_Method__r.Merchant_Token__c;
 
-      paymentRecord.clientReference = s.Sales_Order__r.Name;
-      paymentRecord.invoice = s.Sales_Order__r.Name;
+      paymentRecord.clientReference = s.Sales_Order__r.Name.length() > 16 ? s.Sales_Order__r.Name.replaceFirst('-', '') : s.Sales_Order__r.Name;
+      paymentRecord.invoice = s.Sales_Order__r.Name.length() > 16 ? s.Sales_Order__r.Name.replaceFirst('-', '') : s.Sales_Order__r.Name;
 
       System.debug(paymentRecord);
-      Map<String, Object> res = (Map<String, Object>) Zealynx.makePayment(
-        paymentRecord
-      );
-      Zealynx.PaymentResource paymentObj = (Zealynx.PaymentResource) res.get(
-        'payment'
-      );
-      if ((String) paymentObj.status == 'Approved') {
-        s.Status__c = 'Completed';
-        s.Date__c = (Date) system.today();
-
-        if(!test.isRunningTest()) {
-          s.Authorization_Id__c = '' + paymentObj.authCode;    
+      try {
+        Map<String, Object> res = (Map<String, Object>) Zealynx.makePayment(
+          paymentRecord
+        );
+        Zealynx.PaymentResource paymentObj = (Zealynx.PaymentResource) res.get(
+          'payment'
+        );
+        if ((String) paymentObj.status == 'Approved') {
+          s.Status__c = 'Completed';
+          s.Date__c = (Date) system.today();
+  
+          if(!test.isRunningTest()) {
+            s.Authorization_Id__c = '' + paymentObj.authCode;    
+          }
+          
+        } else if (
+          (String) paymentObj.status == 'Declined'
+        ) {
+          s.Status__c = 'Declined';
+          s.Date__c = (Date) system.today();
+        } else {
+          s.Status__c = 'Error';
+          System.debug('An error has occured in the payment batch process.');
         }
-        
-      } else if (
-        (String) paymentObj.status == 'Declined'
-      ) {
-        s.Status__c = 'Declined';
-        s.Date__c = (Date) system.today();
-      } else {
+        s.MX_Payment_Id__c = '' + paymentObj.id;
+        s.Transaction_Type__c = 'Payment';
+        s.Payment_Token__c = (String) paymentObj.paymentToken;
+        s.Transaction_Id__c = '' + paymentObj.reference;
+  
+        paymentsLocal.add(s);
+      } catch (Exception err) {
+        System.debug(err.getMessage());
         s.Status__c = 'Error';
-        System.debug('An error has occured in the payment batch process.');
+        s.Memo__c = 'Error: ' + err.getMessage();
+        paymentsLocal.add(s);
+        continue;
       }
-      s.MX_Payment_Id__c = '' + paymentObj.id;
-      s.Transaction_Type__c = 'Payment';
-      s.Payment_Token__c = (String) paymentObj.paymentToken;
-      s.Transaction_Id__c = '' + paymentObj.reference;
-
-      paymentsLocal.add(s);
     }
 
-    newPayments.addAll(paymentsLocal);
+    System.enqueueJob(new BoomSubscriptionPaymentsQueuable(paymentsLocal, true));
   }
 
   global void finish(Database.BatchableContext info) {
-    System.debug('Finished batch process.');
-    System.debug(JSON.serializePretty(newPayments));
-
-    if (newPayments.size() > 0) {
-      for (Payment__c s : newPayments) {
-        String emailAddress = '';
-
-        if (
-          s.Sales_Order__r.Send_Invoice_to_Alternate_Contact__c == true &&
-          String.isNotEmpty(s.Sales_Order__r.Alternate_Contact_Email__c)
-        ) {
-          emailAddress = s.Sales_Order__r.Alternate_Contact_Email__c;
-        } else {
-          emailAddress = s.Contact__r.Email;
-        }
-
-        if (String.isNotEmpty(emailAddress)) {
-
-          if(s.Status__c == 'Completed') {
-            PaymentBatchableHelper.sendEmail(
-            'Approved',
-            s.Id,
-            s.Contact__c,
-            emailAddress,
-            s.Sales_Order__c,
-            true
-          );
-          } else if (s.Status__c == 'Declined') {
-            PaymentBatchableHelper.sendEmail(
-            'Declined',
-            s.Id,
-            s.Contact__c,
-            emailAddress,
-            s.Sales_Order__c,
-            true
-          );
-          }
-          
-        }
-
-      }
-      update newPayments;
-    }
+    
   }
 }

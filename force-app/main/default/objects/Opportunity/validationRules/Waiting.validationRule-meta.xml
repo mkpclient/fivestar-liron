@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Waiting</fullName>
+    <active>false</active>
+    <description>IF the sales stage is waiting, must select valid stage comment</description>
+    <errorConditionFormula>OR(AND(ISPICKVAL( StageName , &quot;Waiting&quot;),NOT(OR(ISPICKVAL(  Stage_Comment__c , &quot;Continue to receive emails&quot;),ISPICKVAL(  Stage_Comment__c , &quot;Remove from email campaigns&quot;)))))</errorConditionFormula>
+    <errorMessage>Stage Waiting requires Stage comment of either Continue to receive emails or Remove from email campaigns</errorMessage>
+</ValidationRule>

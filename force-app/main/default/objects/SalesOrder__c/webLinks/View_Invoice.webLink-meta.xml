@@ -7,11 +7,33 @@
     <masterLabel>View Invoice</masterLabel>
     <openType>onClickJavaScript</openType>
     <protected>false</protected>
-    <url>var validStatuses = [&quot;Released&quot;, &quot;Unreleased&quot;, &quot;Approved&quot;];
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/24.0/apex.js&quot;)} 
+
+
+var validStatuses = [&quot;Released&quot;, &quot;Unreleased&quot;, &quot;Approved&quot;];
 
 if(validStatuses.includes(&quot;{!SalesOrder__c.Status_Picklist__c}&quot;)) {
 
-window.open(&apos;/apex/SalesOrderInvoicePDF?id={!SalesOrder__c.Id}&apos;, &apos;_blank&apos;);
+var essentEngineRecord = sforce.connection.query(&quot;SELECT Allow_Essential_Engine_Emails__c from FivestarSetting__mdt where DeveloperName = &apos;Universal&apos; limit 1&quot;);
+
+records = essentEngineRecord.getArray(&quot;records&quot;); 
+
+var allowEssEng = records[0].Allow_Essential_Engine_Emails__c; 
+
+var vfPage = &apos;SalesOrderPdfVF&apos;;
+
+if(allowEssEng) {
+
+var isEssEng = &apos;{!SalesOrder__c.Pricebook_Business_Unit__c}&apos; == &apos;Essential Engine&apos;; 
+
+if(isEssEng) {
+vfPage = &apos;EssentialEngineOrderPdfVf&apos;;
+}
+
+}
+
+window.open(&apos;/apex/&apos; + vfPage + &apos;?id={!SalesOrder__c.Id}&apos;, &apos;_blank&apos;);
 
 } else {
 alert(&quot;This order has not been approved.&quot;);

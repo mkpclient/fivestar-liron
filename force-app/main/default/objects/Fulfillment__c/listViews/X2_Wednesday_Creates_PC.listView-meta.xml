@@ -4,6 +4,7 @@
     <booleanFilter>(1 AND 2 AND 3) OR (2 AND 4 and 5 and 7) OR (4 AND 2 AND 6) OR (2 AND 4 and 8 and 7 and 3)</booleanFilter>
     <columns>NAME</columns>
     <columns>Market__c</columns>
+    <columns>Related_Core_Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
     <columns>Product_Style__c</columns>
     <columns>Product_Name__c</columns>
@@ -16,7 +17,6 @@
     <columns>Next_Action__c</columns>
     <columns>Market_Final_Upload_Date__c</columns>
     <columns>Postcard_Delivery_Month__c</columns>
-    <columns>CFP__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>
@@ -59,6 +59,7 @@
         <value>Announcement</value>
     </filters>
     <label>__2. Create - Postcards</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Fulfillment_Team</group>
         <group>Jonathan_Wesser</group>

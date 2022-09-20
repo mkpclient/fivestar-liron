@@ -1,0 +1,36 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Tahoma, sans-serif"><span style="font-size: 10pt;">Hello </span><span style="font-size: 13.3333px;">{!Fulfillment__c.PrimaryRecipient__c}</span><span style="font-size: 10pt;">,</span></font><br>
+<br><font face="Tahoma, sans-serif"><span style="font-size: 10pt;">
+Your </span><span style="font-size: 13.3333px;">{!Fulfillment__c.Product_Name__c} product&nbsp;</span><span style="font-size: 10pt;">is ready! To access it, log in to your account on our
+website. <o:p></o:p></span></font></p>
+
+<ul type="disc" style="">
+ <li class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:
+     10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">To
+     log on, go to <a href="http://www.fivestarprofessional.com/login">fivestarprofessional.com</a><a href="http://fivestarprofessional.com/login">/login&nbsp;</a> <o:p></o:p></span></li>
+ <ul type="circle" style="">
+  <li class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><strong style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:
+      &quot;Times New Roman&quot;">Username:&nbsp;</span></strong><font face="Tahoma, sans-serif"><span style="font-size: 13.3333px;"><b>{!Fulfillment__c.Web_Username__c}</b></span></font></li>
+  <li class="MsoNormal" style=""><strong style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:
+      &quot;Times New Roman&quot;">Password:&nbsp;</span></strong><b style="font-family: Tahoma, sans-serif; font-size: 13.3333px;">{!Fulfillment__c.Login_Code__c}</b></li>
+  <ul type="square" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+   <li class="MsoNormal"><strong><span style="font-size:10.0pt;font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:
+       &quot;Times New Roman&quot;">NOTE: </span></strong><span style="font-size:10.0pt;
+       font-family:&quot;Tahoma&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">if
+       you've already set your password, use that rather than this login code</span></li></ul></ul></ul><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><ul style="font-family: Tahoma; font-size: 13.3333px; text-size-adjust: auto;"><li>Go to My Orders on the right side of&nbsp;your Five Star account and look for "Five Star Monthly HEAT Index."</li><li>If you don't see it right away, click the grey bar at the bottom that says "To view your complete list of orders click here!"</li><li>Click "view" to view and download your HEAT Index to share with your clients. By doing this, you'll display your market knowledge and stand out from the competition.<ul><li>If you don't see your picture on your customized HEAT Index, be sure to upload one to your Five Star Professional profile so it appears on next month's HEAT Index.</li></ul></li></ul></div><ul type="disc" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><ul type="circle" style="font-family: arial; font-size: 12pt;">
+ </ul>
+</ul>
+
+<font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">Please feel free to reach out to me with any
+questions – my email address and phone number are below. </span></font><br>
+<br><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">
+Thank you,</span></font><br>
+<br><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 13.3333px;">{!Fulfillment__c.Fulfillment_Owner__c}</span></font><br><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">
+Client Services Coordinator</span></font><br><font face="Tahoma, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 10pt;">
+Five Star Professional</span></font><br><font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 13.3333px;">{!Fulfillment__c.CSR_Phone_Number__c}</span></font><br><font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 13.3333px;">{!Fulfillment__c.CSR_Email__c}</span></font><br>
+<!--[if !supportLineBreakNewLine]--><br>
+<!--[endif]-->]]></td>
+</tr>
+</table>

@@ -1,0 +1,26 @@
+<apex:page showHeader="false" standardStylesheets="false" lightningStylesheets="true">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  </head>
+    <apex:includeLightning />
+    <div id="lwcContainer" />
+
+    <script src="https://fivestarprofessional-experience.force.com/lightning/lightning.out.js"></script>
+    <script>
+        $Lightning.use("c:publicCardTerminalApp", function() {
+            $Lightning.createComponent(
+                "c:publicPaymentMethod",
+                {recordId: '{!$CurrentPage.parameters.id}', orderId: '{!$CurrentPage.parameters.orderId}'},
+                "lwcContainer",
+                function(cmp) {
+                    console.log('LWC Component Created. {!$User.UserName}');
+                }
+            );
+        }
+        , 'https://fivestarprofessional-experience.force.com/'
+        );
+    </script>
+
+</apex:page>

@@ -8,11 +8,11 @@
     <columns>Product_Name__c</columns>
     <columns>Date_Sent_to_Vendor__c</columns>
     <columns>Quantity__c</columns>
+    <columns>Contact_List_Count__c</columns>
     <columns>Postcard_Delivery_Month__c</columns>
     <columns>Ship_Date__c</columns>
     <columns>Product_Style__c</columns>
     <columns>Status__c</columns>
-    <columns>Next_Action__c</columns>
     <columns>Notes_for_Ad_Prod__c</columns>
     <columns>Client_Contact_List__c</columns>
     <columns>Preferred_Delivery_Area__c</columns>

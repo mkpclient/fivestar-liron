@@ -24,6 +24,11 @@
         <operation>notContain</operation>
         <value>-page Profile</value>
     </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notContain</operation>
+        <value>Closed,Closed No Response,Cancelled</value>
+    </filters>
     <label>Outstanding Proofs to Deliver</label>
     <sharedTo>
         <group>Allen_Wardell</group>

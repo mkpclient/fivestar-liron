@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"> <body style="padding: 0px; margin: 0px; background: none repeat scroll 0% 0% rgb(224,224,224);">
+<p/>
+<table style="PADDING-BOTTOM: 20px; MARGIN: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; BACKGROUND: rgb(224,224,224); PADDING-TOP: 20px" bgcolor="#E0E0E0" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td>
+<table style="FONT-FAMILY: 'verdana'" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" width="600">
+<tbody>
+<tr>
+<td class="webview" bgcolor="#18517E">&nbsp;</td>
+</tr>
+<tr>
+<td height="127">
+<table summary="" style="border-bottom: 17px solid rgb(24, 81, 126); margin: 0px;" align="center" border="0" cellpadding="3" cellspacing="4" width="600" height="127">
+<tbody>
+<tr height="136">
+<td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 12px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" align="center" valign="middle" width="90" height="50">
+<img src=https://c.na14.content.force.com/servlet/servlet.ImageServer?id=015d0000002Yoo8&oid=00Dd0000000gsfl height="80" width="430">
+<br/>
+</td>
+<td align="center" valign="middle">
+<h1 style="text-align: left; padding: 10px 0px; line-height: 32px; margin: 0px; font-family: 'arial'; letter-spacing: -2px; color: rgb(0, 51, 102); font-size: 35px; font-weight: normal;">
+</h1>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; PADDING-TOP: 0px" valign="top" width="67%">
+<br/>
+</div> <span style="FONT-FAMILY: arial,helvetica,sans-serif">
+<span style="FONT-SIZE: 14px">
+<br/> 
+{!Opportunity.ACDF_Fname__c} {!Opportunity.ACDF_Lname__c}
+<br/> 
+<br/> 
+We are pleased to inform you that you have been named a 2013 Five Star {!Opportunity.Email_Templates_Profession__c}. Congratulations on being selected as part of this exclusive group of professionals in your area.
+<br/> 
+<br/> 
+You are being recognized by the largest and most widely published award program in the industry. Your selection is the result of a rigorous research process that included a regulatory and consumer complaint review, and an evaluation of objective criteria associated with those who provide quality services to their clients.
+<br/> 
+<br/>
+We will contact you shortly to discuss options and opportunities available to you as a Five Star {!Opportunity.Email_Templates_Profession__c}. In the meantime, you may contact us at 888-438-5782 with any questions.
+<br/> 
+<br/>
+You are receiving an honor that reflects your hard work and dedication. We look forward to working with you to share your good news.
+<br/> 
+<br/>
+Sincerely,
+<br/> 
+<br/>
+Jim Olson, CEO
+<br/> 
+Five Star Professional
+<br/>
+</span>
+</span> <span style="font-family: arial,helvetica,sans-serif;">
+<br/>
+<br/>
+<br/> <span style="FONT-FAMILY: arial,helvetica,sans-serif"/>
+</span>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="TEXT-ALIGN: center; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(237,237,237); PADDING-TOP: 10px">
+<span style="font-size: 14px;">
+<span style="font-family: arial,helvetica,sans-serif;">
+<strong>Five Star Professional</strong>
+<br/> 2900 Lone Oak Parkway, Suite 120<br/> Eagan, MN 55121<br/> <a href="http://www.fivestarprofessional.com/">www.fivestarprofessional.com</a>
+</span>
+</span> <span style="font-size: 14px;">
+<span style="font-family: arial,helvetica,sans-serif;">
+<br/>
+<br/>
+</span>
+</span>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px" bgcolor="#E0E0E0">
+<span style="FONT-SIZE: 12px">
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<br/>
+</body></html></p>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSR_Status_Xfer__c</fullName>
+    <description>Used by CSR log a call button flow to transfer statuses with the no change option</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Should not be visible</inlineHelpText>
+    <label>CSR Status Xfer</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NO CHANGE</fullName>
+                <default>false</default>
+                <label>NO CHANGE</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Scheduled on Sumo</fullName>
+                <default>false</default>
+                <label>CS Appointment Scheduled on Sumo</label>
+            </value>
+            <value>
+                <fullName>New - No CS Appointment Scheduled on Sumo</fullName>
+                <default>false</default>
+                <label>New - No CS Appointment Scheduled on Sumo</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Incomplete - 1st Request</fullName>
+                <default>false</default>
+                <label>CS Appointment Incomplete - 1st Request</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Incomplete - 2nd Request</fullName>
+                <default>false</default>
+                <label>CS Appointment Incomplete - 2nd Request</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Incomplete - 3rd Request</fullName>
+                <default>false</default>
+                <label>CS Appointment Incomplete - 3rd Request</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Incomplete - Closed</fullName>
+                <default>false</default>
+                <label>CS Appointment Incomplete - Closed</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Follow-Up Needed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Follow-Up Needed</label>
+            </value>
+            <value>
+                <fullName>Post-Market Appointment Scheduled on Sumo</fullName>
+                <default>false</default>
+                <label>Post-Market Appointment Scheduled on Sumo</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Content Needed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Content Needed</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Approval Needed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Approval Needed</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Urgent Response Needed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Urgent Response Needed</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Closed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Closed</label>
+            </value>
+            <value>
+                <fullName>CS appointment NOT scheduled</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CS appointment NOT scheduled</label>
+            </value>
+            <value>
+                <fullName>CSR appointment scheduled</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CSR appointment scheduled</label>
+            </value>
+            <value>
+                <fullName>CSR follow-up appointment scheduled</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CSR follow-up appointment scheduled</label>
+            </value>
+            <value>
+                <fullName>Closed: Client success complete</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Closed: Client success complete</label>
+            </value>
+            <value>
+                <fullName>Closed: Client success target calls made</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Closed: Client success target calls made</label>
+            </value>
+            <value>
+                <fullName>Closed: Remove from queue</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Closed: Remove from queue</label>
+            </value>
+            <value>
+                <fullName>Collect content (non-profile)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Collect content (non-profile)</label>
+            </value>
+            <value>
+                <fullName>Collect content (profile)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Collect content (profile)</label>
+            </value>
+            <value>
+                <fullName>Follow-up needed: 1st call made</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Follow-up needed: 1st call made</label>
+            </value>
+            <value>
+                <fullName>Follow-up needed: 2nd call made</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Follow-up needed: 2nd call made</label>
+            </value>
+            <value>
+                <fullName>Follow-up needed: 3rd call made</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Follow-up needed: 3rd call made</label>
+            </value>
+            <value>
+                <fullName>Follow-up needed: 4th call made</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Follow-up needed: 4th call made</label>
+            </value>
+            <value>
+                <fullName>Follow-up needed: 5th call made</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Follow-up needed: 5th call made</label>
+            </value>
+            <value>
+                <fullName>Follow-up needed: Client engaged</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Follow-up needed: Client engaged</label>
+            </value>
+            <value>
+                <fullName>Follow-up needed: No contact yet</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Follow-up needed: No contact yet</label>
+            </value>
+            <value>
+                <fullName>Get approval (non-profile)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Get approval (non-profile)</label>
+            </value>
+            <value>
+                <fullName>Get approval (profile)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Get approval (profile)</label>
+            </value>
+            <value>
+                <fullName>Post-market follow-up</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Post-market follow-up</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

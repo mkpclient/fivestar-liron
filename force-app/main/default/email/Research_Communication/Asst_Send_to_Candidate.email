@@ -1,0 +1,27 @@
+<p>Hello {!Opportunity.Email_Templates_Informalname__c},<p>
+
+Regarding the message that I left at your office today, I wanted to provide you with some information and a link to your candidate form. You have been nominated as a candidate for the <b>{!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c}</b> award. Being selected as a Five Star Professional allows you to be recognized in a special {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of <b><i>{!Opportunity.Email_Templates_Magazine__c}</i></b> with a complimentary listing. In order to be considered for the {!Opportunity.Email_Templates_Publication_Year__c} award, all candidates must complete a short online candidate evaluation form verifying that you do meet the minimum experience and eligibility criteria to be considered. The form takes just a few minutes to complete and the link to your candidate evaluation form is listed below. <p>
+
+<b><a href="{!Opportunity.Research_Form_URL__c}"> Candidate Evaluation Form - Click Here to Complete</a></b><br><b>The deadline to submit is end of day  {!Opportunity.ACDF_Deadline__c}</b><p>
+
+Award winners are scheduled to be notified within 4-6 weeks of the deadline. If you have any questions please feel free to email or give me a call at, <b>{!User.Phone}</b>.<p>
+
+<p>Kind Regards,<p>
+
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway, Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: American Registry and other firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

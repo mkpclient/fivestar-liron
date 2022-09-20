@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Inscription Line info Needed</name>
+    <style>none</style>
+    <subject>Inscription Information Needed, Order {!Fulfillment__c.00Nd0000008JoPx}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

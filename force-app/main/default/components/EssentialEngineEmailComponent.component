@@ -1,0 +1,50 @@
+<apex:component controller="EssentialEngineEmailController" access="global">
+  <apex:attribute name="SalesOrder__c" type="SalesOrder__c" description="Related Sales Order" />
+  <apex:attribute name="contactRecipient" type="Contact" description="Recipient Record" />
+  <div style="background-color: #FFFFFF; padding:10px;">
+    <div>
+      <center>
+        <img src="{!logoUrl}" alt="Essential Engine Logo" height="3%" />
+      </center>
+    </div>
+    <div style="font-family: Helvetica, sans-serif">
+      <p>
+        <apex:outputText value="Hello {0},">
+          <apex:param value="{!contactRecipient.FirstName}" />
+        </apex:outputText>
+      </p>
+      <br />
+      <p>
+        <apex:outputText value="Great news! We have processed your order on {0,date,MM/dd/yyyy}.">
+          <apex:param value="{!SalesOrder__c.Release_Date__c}" />
+        </apex:outputText>
+      </p>
+      <br />
+      <p>
+        <apex:outputText value="You are all set to use your marketing tools in pursuit of your business objectives." />
+      </p>
+      <br />
+      <p>
+        <apex:outputText value="To view your invoice or to download a PDF copy for your records, please find the attached
+    document {0}.">
+          <apex:param value="{!SalesOrder__c.Name}" />
+        </apex:outputText>
+      </p>
+      <br />
+      <p>
+        <apex:outputText value="We appreciate your business and are excited about our partnership!" />
+      </p>
+      <br />
+      <br />
+      <apex:outputText value="Kind Regards, " />
+      <br />
+      <p>Essential Engine
+        <br /> Email: billing@essentialengine.com | Phone: (888) 308-7350
+        <br />
+        <a href="www.essentialengine.com" target="_blank">www.essentialengine.com</a>
+        <br /> 2117 Cliff Drive
+        <br /> Eagan, MN 55122
+      </p>
+    </div>
+  </div>
+</apex:component>

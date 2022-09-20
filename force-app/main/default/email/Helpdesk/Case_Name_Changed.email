@@ -1,0 +1,5 @@
+Hello,
+
+Your case name has been updated from {!Case.Original_Subject_Line__c} to {!Case.Subject}, usually case names are updated so that the IT team can keep an eye on trends in ticket types.
+
+Thank you!

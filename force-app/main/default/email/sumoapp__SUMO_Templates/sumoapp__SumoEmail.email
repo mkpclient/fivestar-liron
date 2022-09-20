@@ -1,0 +1,2 @@
+<style>{!sumoapp__Email__c.sumoapp__Styles__c}</style>
+{!sumoapp__Email__c.sumoapp__HtmlBody__c}

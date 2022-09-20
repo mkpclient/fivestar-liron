@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailRequireSenderAddress</fullName>
+    <active>true</active>
+    <description>This requires the user to choose a sender email address before saving a Soapbox Mailer campaign.</description>
+    <errorConditionFormula>AND(sbm__sbx_EmailSender__c = null, $RecordType.DeveloperName = &quot;sbx_SoapboxMailer_Campaign&quot;)</errorConditionFormula>
+    <errorDisplayField>sbm__sbx_EmailSender__c</errorDisplayField>
+    <errorMessage>Please choose a sender email address.</errorMessage>
+</ValidationRule>

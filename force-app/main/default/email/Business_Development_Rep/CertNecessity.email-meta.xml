@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>05: Certification Necessity</name>
+    <style>freeForm</style>
+    <subject>Five Star Award - Purpose of Certification Appointment</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+I understand you have a hesitation about scheduling your Five Star Award certification appointment. As a reminder, this is a follow-up to our recent connect when you were brought forward for the award. You have already submitted your candidate form, and since that time, we’ve completed our evaluation process. You are now a finalist!
+
+To give you an idea of what you can expect on the call, below are the 4 areas we will be covering when we connect to finalize your status. So you don’t miss out, I also included a calendar link below for you to click on and choose a time that works best for you.
+
+To make sure candidates verify their regulatory/customer complaint history (from the time they provided their initial candidate information until now).
+To ensure candidates/winners understand the award process/criteria - we have found that there are winners who are unsure why they were selected and then misrepresent the award.
+To review research changes including more stringent criteria and how this has resulted in fewer winners.
+To review award usage guidelines to make sure that winners do not misstate or misuse the award, and by doing so damage the overall credibility of the Five Star award / brand.
+
+We understand that you’ve worked very hard to develop your reputation in providing the best in client satisfaction. We want to make sure the Five Star brand helps elevate your personal brand and help you stand out from the competition. That is one of the reasons all award winners must complete the certification process. Other candidates have told us they appreciate the fact that we’ve implemented this step, because they have seen misuses/misstatements regarding the Five Star award in the past. The new certification process is one additional step to protect the Five Star brand and the personal brand of all of our winners.
+
+I hope this provides you a better understanding of the certification process and I hope to hear back from you soon about completing your certification appointment.
+
+If you have any questions, please contact me at any time.
+
+
+
+
+Thank you,
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

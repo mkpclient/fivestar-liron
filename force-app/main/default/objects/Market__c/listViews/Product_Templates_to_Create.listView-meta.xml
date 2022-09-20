@@ -7,16 +7,16 @@
     <columns>Percent_Winners_in_Market__c</columns>
     <columns>Product_Templates_Created__c</columns>
     <columns>New_Final_Upload__c</columns>
+    <columns>Magazine_Text__c</columns>
     <columns>Publication_Month__c</columns>
     <columns>Publication_Year__c</columns>
-    <columns>Market_Disclosure__c</columns>
     <columns>Product_Templates_Finalized__c</columns>
     <columns>Index_Pull_Date1__c</columns>
-    <columns>Auto_Round_One_Date__c</columns>
-    <columns>Magazine_Text__c</columns>
-    <columns>Web_Listings_Go_Live__c</columns>
-    <columns>Actual_Upload_Date__c</columns>
     <columns>Sales_Close__c</columns>
+    <columns>Auto_Round_One_Date__c</columns>
+    <columns>Actual_Upload_Date__c</columns>
+    <columns>New_Space_Reservation__c</columns>
+    <columns>Web_Listings_Go_Live__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Product_Templates_Created__c</field>
@@ -47,7 +47,8 @@
         <operation>notEqual</operation>
         <value>1</value>
     </filters>
-    <label>__5. FRIDAY Product Templates to Create</label>
+    <label>__5. FRIDAY Templates to Create</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Fulfillment_Team</group>

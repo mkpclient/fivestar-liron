@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email 4 of standard campaign (Appointment)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Marketing Email 4</name>
+    <style>formalLetter</style>
+    <subject>Make marketing easy: Set your appointment today</subject>
+    <textOnly>Hello {!Contact.ACDF_FName__c},
+
+We help outstanding professionals cut down on the busy work and do what they do best: Service their clients. Now, we can offer you simple, turnkey marketing and visibility solutions that let you focus your time on your clients.
+
+To hear more about how we help you differentiate yourself, set up an appointment today. It’s the fastest, most hassle-free way to explore your marketing options and stay focused on your business.
+
+Thank you,
+
+{!Opportunity.OwnerFullName}
+Account Manager
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+{!Opportunity.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

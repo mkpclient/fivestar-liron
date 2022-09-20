@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>End of Market Push - LY Buyer - Benefits</name>
+    <style>freeForm</style>
+    <subject>You are going to miss out on the benefits of this year’s Five Star award</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+It’s your last chance to take full advantage of this year’s Five Star award, and I am concerned that you will miss out.
+
+
+Here is a copy of your personal Client Success Tracker report, which documents the results of your Five Star campaign from last year. 
+
+{!Contact.Client_Success_Tracker_URL__c}
+
+Based on its results, I believe you will be missing out on significant value this year (not to mention, you will not see the enhancements we have made to the offering this year – including VIDEO!).
+
+
+
+Please review the link above. Once you take a look, please give me a call at the number below!
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

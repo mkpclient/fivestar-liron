@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>kugo2p__GenerateOrder</customButtons>
+    <customButtons>Generate_Sales_Order</customButtons>
     <customButtons>Log_a_Call2</customButtons>
     <customButtons>Log_an_Interaction</customButtons>
     <customButtons>Send_Emails</customButtons>
-    <customButtons>Generate_Sales_Order</customButtons>
+    <customButtons>New_Appointment</customButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -21,8 +21,14 @@
                 <field>LastModifiedById</field>
             </layoutItems>
             <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>RecordTypeId</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -36,16 +42,8 @@
                 <field>Contact__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Years_Won_List_new__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>First_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Last_Name__c</field>
+                <behavior>Required</behavior>
+                <field>AccountId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -56,8 +54,8 @@
                 <field>Pronunciation__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Market__c</field>
+                <behavior>Readonly</behavior>
+                <field>Years_winner_formula__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -68,19 +66,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Primary_Phone__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>phone__c</field>
+                <field>Phone_X__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Mobile__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Mobile_Formula__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -95,21 +85,13 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Related_Journey__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>AM_Certification_Link__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Roadmap_to_Success_URL__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>AccountId</field>
+                <behavior>Readonly</behavior>
+                <field>SF_ID__c</field>
             </layoutItems>
             <layoutItems>
                 <emptySpace>true</emptySpace>
@@ -141,10 +123,6 @@
                 <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Custom_Segmentation__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>StageName</field>
             </layoutItems>
@@ -155,6 +133,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Last_Call_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Special_Section_Client_Type__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -172,47 +154,70 @@
                 <field>CloseDate</field>
             </layoutItems>
             <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>No_Interest_Reason_Category__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Contact_SF_ID__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SF_ID__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Web_Username__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Login_Code__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Client_Success_Tracker_URL__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LeadSource</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>BDR_Follow_Up__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>AM_REMPHARS_Wild_Card_Certification_Link__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>AM_WMIP_Wild_Card_Certification_Link__c</field>
+                <behavior>Edit</behavior>
+                <field>Related_Journey__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
+        <label>Appointment Scheduling Links</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_Client_Check_In_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_Follow_Up_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_LSS_Follow_Up_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_MLSS_Follow_Up_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_Postcards_Follow_Up_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_SMM_Follow_Up_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_U_40_SS_Follow_Up_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>AM_WIW_SS_Follow_Up_Link__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns/>
+        <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -291,16 +296,19 @@
         <relatedList>RelatedOpportunityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>OrderDate__c</fields>
+        <fields>Release_Date__c</fields>
         <fields>NAME</fields>
-        <fields>kugo2p__OrderName__c</fields>
-        <fields>kugo2p__Account__c</fields>
-        <fields>kugo2p__ProductTotalAmount__c</fields>
-        <fields>kugo2p__ServiceTotalAmount__c</fields>
-        <fields>kugo2p__NetAmount__c</fields>
-        <fields>kugo2p__BalanceDueAmount__c</fields>
-        <fields>kugo2p__RecordStatus__c</fields>
-        <fields>kugo2p__PaymentStatus2__c</fields>
-        <relatedList>kugo2p__SalesOrder__c.kugo2p__Opportunity__c</relatedList>
+        <fields>ContactBuying__c</fields>
+        <fields>TotalAmount__c</fields>
+        <fields>NetAmount__c</fields>
+        <fields>CompletedPayments__c</fields>
+        <fields>BalanceDueAmount__c</fields>
+        <fields>Status_Picklist__c</fields>
+        <fields>Subscription__c</fields>
+        <relatedList>SalesOrder__c.Opportunity__c</relatedList>
+        <sortField>OrderDate__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -326,6 +334,7 @@
         <relatedList>RelatedContactRoleList</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>forcebrain__EventType__c</fields>
         <fields>forcebrain__RecurrenceEvent__c</fields>

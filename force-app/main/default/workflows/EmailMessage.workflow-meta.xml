@@ -17,7 +17,7 @@
             <name>forcebrain__To_Populate_Last_Email_Field_of_the_case</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <formula>Incoming</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

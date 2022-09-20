@@ -1,0 +1,35 @@
+<!------------------------------------------------------------->
+<!--   Kugamon Custom Order PDF Email Template by Kugamon    -->
+<!--   Copyright: Kugamon LLC                                -->
+<!--   http://www.kugamon.com                                -->
+<!--   NO SUPPORT PROVIDED                                   -->
+<!--   DO NOT COPY, STEAL, SELL THIS CODE                    -->
+<!------------------------------------------------------------->
+
+<messaging:emailTemplate subject="Leveraging Your Five Star Award -- Proposal: {!relatedTo.Name}" 
+recipientType="Contact" relatedToType="kugo2p__SalesOrder__c">
+
+<messaging:plainTextEmailBody >
+Dear  {!relatedTo.kugo2p__ContactBilling__r.Name},                
+
+It was great speaking with you! Congratulations, again, on being named a Five Star award winner!
+
+As we discussed, I have attached my proposal. I think my proposed Five Star award marketing package will significantly augment your client retention and referral efforts, and in particular help you improve the strength of your client presentations, to help you win more new prospective clients.
+
+We'll talk over these options at our appointment at (AM to enter TIME (CST), DATE).
+
+Feel free to contact me if you have any questions. 
+
+Regards, 
+
+{!$User.FirstName} {!$User.LastName}
+{!$Organization.Name} 
+{!$User.Phone}
+{!$User.Email}
+</messaging:plainTextEmailBody>
+
+<messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">    
+    <c:CustomOrderPDF orderId="{!relatedTo.Id}" />                           
+</messaging:attachment>
+  
+</messaging:emailTemplate>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AM_WMIP_Wild_Card_Certification_Link__c</fullName>
+    <description>Used for AM Wild Card Certification Appointment</description>
+    <externalId>false</externalId>
+    <formula>&quot;https://fivestarprofessional-experience.force.com/s/onlinescheduler?processId=a5F6T0000030K6WUAU&amp;clientId=&quot;+Contact_SF_ID__c +&quot;&amp;relatedId=&quot;+Id</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Use this to see all available calendar openings for all AMs whom sell WM/IP.</inlineHelpText>
+    <label>Wealth Mgmt/IP WildCard Cert Link</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Specific_AG__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(CONTAINS(ACDF_Branch_Office__c, &quot;Wells Fargo&quot;),  Pardot_Friendly_WF_AG_Link__c , IF(CONTAINS(ACDF_Branch_Office__c, &quot;Morgan Stanley&quot;),  Pardot_Friendly_MS_AG_Link__c ,  Pardot_Friendly_AG_Link__c ))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Company Specific AG</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACDF_Certification_Contact_Preference__c</fullName>
+    <externalId>false</externalId>
+    <label>ACDF Certification Contact Preference</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Please send my appointment invitation by email.</fullName>
+                <default>false</default>
+                <label>Please send my appointment invitation by email.</label>
+            </value>
+            <value>
+                <fullName>Please send my appointment invitation by text.</fullName>
+                <default>false</default>
+                <label>Please send my appointment invitation by text.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

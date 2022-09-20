@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__Send_Appt_Invite_Email</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send Appt Invite Email</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/resource/forcebrain__jquerydatatable/jQueryDialog/jquery-ui.js&quot;)} 
+requireCssFile(&apos;//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css&apos;); 
+function requireCssFile(filename) { 
+var fileref = document.createElement(&apos;link&apos;); 
+fileref.setAttribute(&apos;rel&apos;, &apos;stylesheet&apos;); 
+fileref.setAttribute(&apos;type&apos;, &apos;text/css&apos;); 
+fileref.setAttribute(&apos;href&apos;, filename); 
+document.getElementsByTagName(&apos;head&apos;)[0].appendChild(fileref); 
+} 
+var templateId = &apos;&apos;; 
+var templateList = sforce.connection.query(&quot;SELECT Id from EmailTemplate where developername=&apos;Case_Self_Schedule_Invite&apos;&quot;).getArray(&quot;records&quot;); 
+if (templateList.length &gt; 0) { 
+templateId = templateList[0].Id; 
+} 
+var contactList = sforce.connection.query(&quot;SELECT Id,Name from contact where forcebrain__IsProvider__c=true and forcebrain__User__c=&apos;{!$User.Id}&apos;&quot;); 
+var contactRecords = contactList.getArray(&quot;records&quot;); 
+var currentUserContactId = &apos;&apos;; 
+if (contactRecords.length &gt; 0) { 
+currentUserContactId = contactRecords[0].Id; 
+} 
+console.log(&apos;-----------&apos; + currentUserContactId); 
+var siteList = sforce.connection.query(&quot;SELECT Id,forcebrain__Name__c,forcebrain__Hard_Code_Lookup__c,forcebrain__Who_Options__c,forcebrain__Schedule_Now_URL__c FROM forcebrain__Self_Scheduling_Site_Settings__c WHERE forcebrain__Active__c=true&quot;); 
+var records = siteList.getArray(&quot;records&quot;); 
+var dlgDiv = &apos;&lt;div id=&quot;dlgDiv&quot; title=&quot;Choose a Self-Scheduling Process&quot;&gt;&lt;table style=&quot;margin-top:20px;&quot;&gt;&lt;tr&gt;&lt;td&gt; &lt;b&gt;Select Process:&amp;nbsp;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;select id=&quot;process&quot; style=&quot;width:250px;&quot;&gt;&apos;; 
+var selectedProcess = &apos;&apos;; 
+var ProcessURL = &apos;&apos;; 
+for (var i = 0; i &lt; records.length; i++) { 
+if (currentUserContactId == records[i].forcebrain__Hard_Code_Lookup__c &amp;&amp; records[i].forcebrain__Who_Options__c == &apos;Hard Code&apos;) 
+selectedProcess = records[i].Id; 
+dlgDiv += &apos;&lt;option value=&quot;&apos; + records[i].Id + &apos;&quot;&gt;&apos; + records[i].forcebrain__Name__c + &apos;&lt;/option&gt;&apos;; 
+} 
+dlgDiv += &apos;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&apos;; 
+$(&quot;body&quot;).append(dlgDiv); 
+if (selectedProcess != &apos;&apos;) { 
+$(&quot;#process&quot;).val(selectedProcess); 
+} 
+$(&quot;#dlgDiv&quot;).dialog({ 
+autoOpen: true, 
+height: 190, 
+width: 400, 
+modal: true, 
+buttons: { 
+&quot;Send Appt Invite Email&quot;: function() { 
+var processId = $(&quot;#process&quot;).val(); 
+var siteList1 = sforce.connection.query(&quot;SELECT Id,forcebrain__Name__c,forcebrain__Hard_Code_Lookup__c,forcebrain__Who_Options__c,forcebrain__Schedule_Now_URL__c FROM forcebrain__Self_Scheduling_Site_Settings__c WHERE Id=&quot; + &quot;&apos;&quot; + processId + &quot;&apos;&quot;); 
+var records1 = siteList1.getArray(&quot;records&quot;); 
+var siteURL = records1[0].forcebrain__Schedule_Now_URL__c; 
+siteURL = siteURL + &quot;&amp;ContactId={!Case.ContactId}&amp;CaseId={!Case.Id}&quot;; 
+var sURL = sforce.apex.execute(&quot;forcebrain.RestClass&quot;, &quot;CreateAppointmentInvite&quot;, {CaseId:&quot;{!Case.Id}&quot;,ProcessId: processId, URLForProcess: siteURL}); 
+var caseList = sforce.connection.query(&quot;SELECT Id from Case Where Id = &apos;{!Case.Id}&apos;&quot;); 
+var caseRecords = caseList.getArray(&apos;records&apos;); 
+var caseObj = caseRecords[0]; 
+caseObj.forcebrain__Self_Scheduling_Site_Setting__c = processId; 
+caseObj.forcebrain__EncryptURL__c = &apos;NULL&apos;; 
+var result = sforce.connection.update([caseObj]); 
+if (result[0].getBoolean(&quot;success&quot;)) { 
+$(this).dialog(&apos;close&apos;); 
+window.location.href = &apos;_ui/core/email/author/EmailAuthor?p2_lkid={!Case.ContactId}&amp;rtype=003&amp;p3_lkid={!Case.Id}&amp;retURL=%2F{!Case.Id}&amp;template_id=&apos; + templateId; 
+} else { 
+alert(result[0].get(&quot;errors&quot;).get(&apos;message&apos;)); 
+} 
+}, 
+Cancel: function() { 
+$(this).dialog(&apos;close&apos;); 
+} 
+} 
+});</url>
+</WebLink>

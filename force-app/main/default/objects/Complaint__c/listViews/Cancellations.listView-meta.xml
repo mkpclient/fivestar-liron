@@ -9,6 +9,7 @@
     <columns>Days_Open__c</columns>
     <columns>Markets__c</columns>
     <columns>Date_Opened__c</columns>
+    <columns>LAST_ACTIVITY</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Complaint_Status__c</field>

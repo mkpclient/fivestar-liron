@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>2015 Wealth Manager</name>
+    <style>none</style>
+    <subject>2016 Five Star Wealth Manager Award - Candidate Information</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+You have been identified as a candidate for the 2016 Five Star Wealth Manager award! An exclusive group of wealth managers will receive the 2016 award and be featured at no cost in the {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c}.
+
+As a candidate, we need additional information in order to evaluate you based on our 10 objective criteria and move you forward in the research process. The deadline for submission is 11:59 PM Eastern Time on {!Opportunity.CloseDate}.
+
+To submit your information, please go to the secure, online link below and complete the form questionnaire.  This only takes a few minutes of your time to complete.
+
+Please click here to complete your candidate form.
+
+Evaluation Process: Candidates will be evaluated on 10 criteria aligned with providing quality service to clients. Only those candidates who differentiate themselves based on the criteria will be named a 2016 Five Star Wealth Manager. Our 10 evaluative criteria include client retention rates, assets under management, professional designations, a consumer complaint history review, a fulfilled firm review, and other criteria detailed in our methodology link.
+
+Award winners are scheduled to be notified 4 weeks after the deadline date posted above.
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

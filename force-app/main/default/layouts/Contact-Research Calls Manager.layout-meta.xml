@@ -561,6 +561,18 @@
                 <behavior>Edit</behavior>
                 <field>Do_Not_Call_for_NAMS_F_U__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Essential_Engine_Friend_Capture__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Mobile_SMS_Format__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RS_Manager_Broker__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -885,6 +897,7 @@
         <fields>TASK.STATUS</fields>
         <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
+        <fields>EVENT.START_DATE_TIME</fields>
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -895,11 +908,11 @@
         <fields>ACTIVITY.TASK</fields>
         <fields>TASK.WHAT_NAME</fields>
         <fields>TASK.DUE_DATE</fields>
+        <fields>SUMO_Status__c</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <fields>TASK.LAST_UPDATE</fields>
         <fields>Research_Call_Notes__c</fields>
         <fields>Comments__c</fields>
-        <fields>Years_Winner__c</fields>
         <fields>AdProd_Comments__c</fields>
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
@@ -929,6 +942,15 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Complaint_Description__c</fields>
+        <fields>Date_Opened__c</fields>
+        <fields>Internal_notes__c</fields>
+        <fields>LAST_ACTIVITY</fields>
+        <fields>Next_Action_Date__c</fields>
+        <fields>Original_Order__c</fields>
+        <fields>OWNER.ALIAS</fields>
+        <fields>Resolution_Description__c</fields>
+        <fields>Resolved_Date__c</fields>
         <relatedList>Complaint__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -942,12 +964,15 @@
         <relatedList>Facebook_User__c.Contact_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>Boom_Order__c</fields>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>
+        <fields>Official_Order_Date__c</fields>
         <relatedList>Fulfillment__c.Contact__c</relatedList>
+        <sortField>Official_Order_Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

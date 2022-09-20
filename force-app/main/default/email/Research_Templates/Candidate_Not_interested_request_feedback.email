@@ -1,0 +1,27 @@
+<p>Hello,</p>
+
+<p>I have a candidate that is not interested in participating in the research this year.  Could you please follow up for feedback?</p>
+
+<p>{!Person Account. First Name} {!Person Account. Last name}<br>
+{!research company}<br>
+{!Person Account. Mailing Street}<br>
+{!Person Account. Mailing city}, {!Person Account. Mailing State} {!Person Account. Mailing Zip code} <br>
+{!Custom Phone}<br>
+{!Custom Email}<br>
+
+<p> Thanks,<p>
+
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway<br>
+Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+<a href=mailto:{!User.Email}>{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>

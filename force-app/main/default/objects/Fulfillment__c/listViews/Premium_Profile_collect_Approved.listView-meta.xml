@@ -30,7 +30,13 @@
         <value>Cancelled</value>
     </filters>
     <label>Premium Digital Profile - Publish</label>
+    <language>en_US</language>
     <sharedTo>
+        <group>Adrianna_Loesch</group>
+        <group>Arizona_Bitler</group>
         <group>Graphics</group>
+        <group>Julie_Nguyen</group>
+        <group>Samantha_Burton</group>
+        <group>Teresa_Hemingson</group>
     </sharedTo>
 </ListView>

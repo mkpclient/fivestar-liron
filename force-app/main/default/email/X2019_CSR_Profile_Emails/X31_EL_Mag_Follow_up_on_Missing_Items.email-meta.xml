@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Follow-up needed on EL Mag (missing items)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>31. EL Mag Follow-up on Missing Items</name>
+    <style>freeForm</style>
+    <subject>You have outstanding items for your first issue of Essential Living Magazine!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+You have some outstanding items that are needed for your first issue of Essential Living Magazine and we need you to log in to your Five Star account and submit/verify your information as soon as possible! 
+
+You can access your Five Star account by going to: www.fivestarprofessional.com/login. 
+
+Here is your login information:
+
+                       Username: {!Fulfillment__c.Web_Username__c}
+
+                       Passcode: {!Fulfillment__c.Login_Code__c}
+
+REMINDER: The deadline for your to submit your information and select your ad templates for the first issue is &lt;MONTH&gt; 1st. 
+
+Please contact me if you have any questions, or if you need assistance with any of this. I am here to help you!
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

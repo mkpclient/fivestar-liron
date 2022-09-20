@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Proof_Sent_Automatically__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked by process builder &quot;Send Proof Auto Email Handler&quot; when a fulfillment is set to both send proof and product created, used to flag customers for list views so that next action dates can be updated</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Customer has automatically been sent their proof</inlineHelpText>
+    <label>Proof Sent Automatically</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

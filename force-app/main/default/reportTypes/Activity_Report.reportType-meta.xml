@@ -148,11 +148,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Call_Recording__c</field>
-            <table>Activity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>CallDisposition</field>
             <table>Activity</table>
         </columns>
@@ -503,11 +498,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Research_Professional_ID__c</field>
-            <table>Activity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Research_Call_Comments__c</field>
             <table>Activity</table>
         </columns>
@@ -574,6 +564,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CreatedBy.Profile</field>
+            <table>Activity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Full_ID__c</field>
+            <table>Activity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SUMO_Status__c</field>
+            <table>Activity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>X1_HOUR_TRIGGER__c</field>
             <table>Activity</table>
         </columns>
         <masterLabel>Activities</masterLabel>

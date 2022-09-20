@@ -145,6 +145,16 @@
             <field>Final_Index__c</field>
             <table>Market__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Fortune_Section__c</field>
+            <table>Market__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LY_Fortune_Section__c</field>
+            <table>Market__c</table>
+        </columns>
         <masterLabel>Markets</masterLabel>
     </sections>
     <sections>
@@ -776,6 +786,46 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>AM_WIW_SS_Follow_Up_Link__c</field>
+            <table>Market__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Special_Section_Client_Type__c</field>
+            <table>Market__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Do_Not_Reassign__c</field>
+            <table>Market__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Referred_by__c</field>
+            <table>Market__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Referred_By_ID__c</field>
+            <table>Market__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Market_Go_Live__c</field>
+            <table>Market__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Never_Winner__c</field>
+            <table>Market__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Non_Winner__c</field>
+            <table>Market__c.Opportunities__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Winner_Fortune_Listing__c</field>
             <table>Market__c.Opportunities__r</table>
         </columns>
         <masterLabel>Opportunities</masterLabel>

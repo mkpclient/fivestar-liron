@@ -9,12 +9,12 @@
     <columns>Profession__c</columns>
     <columns>Go_Live_Date__c</columns>
     <columns>Product_Name__c</columns>
+    <columns>Proof_Notes_for_Client__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
     <columns>Next_Action_Date__c</columns>
     <columns>Product_Templates_Finalized__c</columns>
     <columns>Market_Final_Upload_Date__c</columns>
-    <columns>Production_Owner__c</columns>
     <columns>Proof_Location__c</columns>
     <filterScope>Everything</filterScope>
     <filters>

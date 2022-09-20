@@ -263,6 +263,11 @@
                 <label>CSR Client Success Experience Complete</label>
             </value>
             <value>
+                <fullName>Returned Mail</fullName>
+                <default>false</default>
+                <label>Returned Mail</label>
+            </value>
+            <value>
                 <fullName>Ready for AE</fullName>
                 <color>#419249</color>
                 <default>false</default>
@@ -284,6 +289,11 @@
                 <fullName>Subscription Paused</fullName>
                 <default>false</default>
                 <label>Subscription Paused</label>
+            </value>
+            <value>
+                <fullName>Not On-boarded</fullName>
+                <default>false</default>
+                <label>Not On-boarded</label>
             </value>
             <value>
                 <fullName>Setup Pending</fullName>

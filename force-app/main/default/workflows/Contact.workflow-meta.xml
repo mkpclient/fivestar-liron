@@ -147,7 +147,7 @@
             <name>forcebrain__Set_Longitude_Blank</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <formula>OR( PRIORVALUE( MailingStreet ) &lt;&gt; MailingStreet, PRIORVALUE(MailingPostalCode) &lt;&gt; MailingPostalCode, PRIORVALUE( MailingState ) &lt;&gt;MailingState, PRIORVALUE( MailingCountry )&lt;&gt; MailingCountry , PRIORVALUE( MailingCity ) &lt;&gt; MailingCity )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -157,7 +157,7 @@
             <name>forcebrain__UpdateUserId</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <formula>true</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

@@ -16,6 +16,11 @@
                 <label>Payment Plan</label>
             </value>
             <value>
+                <fullName>ELM Quantity Change</fullName>
+                <default>false</default>
+                <label>ELM Quantity Change</label>
+            </value>
+            <value>
                 <fullName>Cancel-Subscription</fullName>
                 <default>false</default>
                 <label>Cancel-Subscription</label>

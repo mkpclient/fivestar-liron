@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_On_Subscriptions</fullName>
+    <columns>NAME</columns>
+    <columns>Original_Subscription_Boom_Order__c</columns>
+    <columns>Base_Product__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Parent_Subscription__c</columns>
+    <columns>Renewal_Product__c</columns>
+    <columns>Status__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>Subscription_Fulfillment__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Account_Manager__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>ADD</value>
+    </filters>
+    <label>Add On Subscriptions</label>
+</ListView>

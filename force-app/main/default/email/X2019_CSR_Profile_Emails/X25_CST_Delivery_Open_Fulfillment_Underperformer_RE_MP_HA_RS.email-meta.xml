@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>For RE/MP/HA/RS clients in status of &quot;CSR Appointment Complete - Open Fulfillment&quot; and they do NOT have good social stats</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>25. CST Delivery Open Fulfillment Underperformer (RE/MP/HA/RS)</name>
+    <style>freeForm</style>
+    <subject>Your Five Star Professional client success tracker is ready!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+We’ve created a new report that shows you the list of your Five Star Professional marketing tools. You can view your tracker by clicking here: {!Fulfillment__c.Client_Success_Tracker_URL__c}
+
+The Client Success Tracker is designed to help you track your Five Star Professional marketing tools by reminding you about your tools that you purchased and includes best practices for how to utilize your tools to help get the most out the campaign.
+
+It looks like the engagement numbers on your social posts could use some help. Remember, the best way to get the most engagement out of your social posts is to share them so your friends, family and connections can like, comment and share your post to expand your network even further!
+
+Also, it looks like you have some outstanding products that we need to collect some information on from you in order for us to fulfill this for you. Please login to your My Orders page using the information below to take action on these products:
+
+URL: https://fivestarprofessional.com/account/login
+Username: {!Fulfillment__c.Web_Username__c}
+Passcode: {!Fulfillment__c.Login_Code__c}
+
+Please take a look and don’t hesitate to reach out to me with questions regarding the report or your Five Star Professional marketing tools.
+
+You can also set up an appointment to discuss and review your tools in more detail with your dedicated Client Success Representative by clicking here: {!Fulfillment__c.CSR_Sumo_Link__c}
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

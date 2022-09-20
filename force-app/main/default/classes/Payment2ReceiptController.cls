@@ -1,6 +1,37 @@
 public class Payment2ReceiptController {
+  public Id paymentId {get; set;}
+  public Id orderId {get; set;}
+
+  public Boolean isEssential {
+    get {
+      if(orderId != null) {
+        return (
+          FivestarSetting__mdt.getInstance('Universal') != null &&
+          FivestarSetting__mdt.getInstance('Universal').Allow_Essential_Engine_Emails__c &&
+          SalesOrder.Price_Book__r.Business_Unit__c == 'Essential Engine'
+        );
+      } else {
+        return false;
+      }
+    } private set;
+  }
+
+  public String essentialLogo {
+    get {
+        return (
+            FivestarSetting__mdt.getInstance('Universal') != null &&
+            String.isNotEmpty(FivestarSetting__mdt.getInstance('Universal').EssentialEngLogoUrl__c) ?
+            FivestarSetting__mdt.getInstance('Universal').EssentialEngLogoUrl__c :
+            ''
+        );
+    } private set;
+  }
+
   public SalesOrder__c SalesOrder {
     get {
+      if(orderId == null) {
+        return null;
+      }
       List<SalesOrder__c> resultsList = [
         SELECT
           Id,
@@ -11,9 +42,10 @@ public class Payment2ReceiptController {
           BillToCity__c,
           BillToStateProvince__c,
           BillToZipPostalCode__c,
-          ContactBuying__r.ACDF_Branch_Office__c
+          ContactBuying__r.ACDF_Branch_Office__c,
+          Price_Book__r.Business_Unit__c
         FROM SalesOrder__c
-        WHERE id = :ApexPages.currentPage().getParameters().get('orderId')
+        WHERE id = :orderId
       ];
 
       SalesOrder = resultsList.isEmpty() == false
@@ -27,10 +59,9 @@ public class Payment2ReceiptController {
 
   public list<Payment__c> OrderPayments {
     get {
-      String paymentId = ApexPages.currentPage()
-        .getParameters()
-        .get('paymentId');
-
+      if(paymentId == null) {
+        return null;
+      }
       OrderPayments = [
         SELECT
           Id,
@@ -44,7 +75,9 @@ public class Payment2ReceiptController {
           Billing_Name__c,
           Status__c,
           Authorization_Id__c,
-          Payment_Method__c
+          Payment_Method__c,
+          Payment_Type__c,
+          Check_Number__c
         FROM Payment__c
         WHERE Id = :paymentId
       ];
@@ -83,12 +116,17 @@ public class Payment2ReceiptController {
   }
 
   public PageReference attachPDF() {
+    paymentId = ApexPages.currentPage().getParameters().get('paymentId');
+    orderId = ApexPages.currentPage().getParameters().get('orderId');
     PageReference p = Page.Payment2VF;
+    if(isEssential) {
+     p = Page.EssentialEnginePaymentVF;
+    }
     p.getParameters()
-      .put('orderId', ApexPages.currentPage().getParameters().get('orderId'));
+      .put('soId', ApexPages.currentPage().getParameters().get('orderId'));
     p.getParameters()
       .put(
-        'paymentId',
+        'pmtId',
         ApexPages.currentPage().getParameters().get('paymentId')
       );
 

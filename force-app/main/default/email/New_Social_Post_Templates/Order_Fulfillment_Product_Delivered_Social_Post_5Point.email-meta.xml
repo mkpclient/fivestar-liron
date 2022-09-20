@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>5 Point Mag Pub social post</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Order Fulfillment Product Delivered - Social Post_5 Point</name>
+    <style>formalLetter</style>
+    <subject>Your Five Star Professional social post for Five Point magazine has been published!</subject>
+    <textOnly>Hello {!Order_Fulfillment__c.Display_Contact_First_Name__c}:
+
+A new social post has been published for you! Please check out your new post online and share it directly to your network to optimize the views and interactions.
+
+Your post can be viewed here: {!Order_Fulfillment__c.Product_Delivered_Link__c}
+
+Additionally, we encourage you to share the following announcement email with your clients and network. Just copy/paste the content below into an email or other digital announcement platform to share.
+
+If you have any questions, please don&apos;t hesitate to reach out to your Client Success Representative, {!Order_Fulfillment__c.Fulfillment_Owner_Fullname__c}, at {!Order_Fulfillment__c.Fulfillment_Owner_Phone__c} or by email at {!Order_Fulfillment__c.Fulfillment_Owner_Email__c}.
+
+Thank you,
+Five Star Professional Client Success Team
+Great News! Five Point magazine is out in the {!Order_Fulfillment__c.Market_Region__c} area! Five Point magazine is a guide to help you build a professional network in the {!Order_Fulfillment__c.Market_Region__c} area. Reach out to some of the award-winning professionals featured in this issue, including {!Order_Fulfillment__c.Display_Contact_First_Name__c} {!Order_Fulfillment__c.Display_Contact_Last_Name__c}.
+
+{!Order_Fulfillment__c.Display_Contact_First_Name__c} can be found in Five Point magazine and also online on FiveStarProfessional.com. Click through to {!Order_Fulfillment__c.Display_Contact_First_Name__c}&apos;s social post here to learn more and share in their success!
+Jonathan Wesser
+Five Star Professional
+VP, Research</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -3,8 +3,9 @@
     <fullName>Contact_Block_Disclosure__c</fullName>
     <externalId>false</externalId>
     <label>Contact Block Disclosure</label>
-    <required>false</required>
+    <length>10000</length>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>TextArea</type>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
 </CustomField>

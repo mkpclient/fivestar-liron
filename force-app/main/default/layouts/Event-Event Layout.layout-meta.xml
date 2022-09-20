@@ -50,6 +50,10 @@
                 <behavior>Readonly</behavior>
                 <field>Creation_Timestamp__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>X1_HOUR_TRIGGER__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -63,6 +67,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>IsPrivate</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>forcebrain__Appointment_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>forcebrain__AppointmentId__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

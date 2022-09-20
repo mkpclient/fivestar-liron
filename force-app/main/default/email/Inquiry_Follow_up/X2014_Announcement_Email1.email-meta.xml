@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>2014 Announcement (all segments except E)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>2014 Announcement (all segments except E)</name>
+    <style>none</style>
+    <subject>2014 Five Star {!Opportunity.Email_Templates_Profession__c} award announcement</subject>
+    <textOnly>We are pleased to inform you that you have been named a 2014 Five Star {!Opportunity.Email_Templates_Profession__c}. Congratulations on being selected as part of this exclusive group of professionals in your area.
+
+You are being recognized by the largest and most widely published award program in the industry. Your selection is the result of a rigorous research process that included a regulatory and consumer complaint review, and an evaluation of objective criteria associated with those who provide quality services to their clients.
+
+We will contact you shortly to discuss options and opportunities available to you as a Five Star {!Opportunity.Email_Templates_Profession__c}. In the meantime, you may contact us at 888-438-5782 with any questions.
+
+You are receiving an honor that reflects your hard work and dedication. We look forward to working with you to share your good news.
+
+Sincerely,
+
+Jim Olson, CEO
+
+
+Five Star Professional
+2900 Lone Oak Parkway, Suite 120
+Eagan, MN 55121
+www.fivestarprofessional.com</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

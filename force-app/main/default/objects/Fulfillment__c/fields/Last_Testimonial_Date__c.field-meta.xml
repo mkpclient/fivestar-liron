@@ -9,7 +9,7 @@
     <summaryFilterItems>
         <field>Testimonial__c.Status__c</field>
         <operation>equals</operation>
-        <value>Published</value>
+        <value>Ready to Publish, Published</value>
     </summaryFilterItems>
     <summaryForeignKey>Testimonial__c.Fulfillment__c</summaryForeignKey>
     <summaryOperation>max</summaryOperation>

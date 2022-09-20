@@ -15,7 +15,8 @@
     <filters>
         <field>NAME</field>
         <operation>contains</operation>
-        <value>RE</value>
+        <value>re</value>
     </filters>
-    <label>PHILWM22</label>
+    <label>PORRS</label>
+    <language>en_US</language>
 </ListView>

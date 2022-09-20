@@ -139,8 +139,11 @@
             <apex:outputPanel rendered="{!o.Display_Name_for_Invoice__c != null}">
               {!o.Display_Name_for_Invoice__c }
             </apex:outputPanel>
-            <apex:outputPanel rendered="{!o.Display_Name_for_Invoice__c == null}">
+            <apex:outputPanel rendered="{!AND(o.Display_Name_for_Invoice__c == null, o.Product__r.Product_Display_Name__c == null)}">
               {!o.Product__r.Name}
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!AND(o.Product__r.Product_Display_Name__c != null, o.Display_Name_for_Invoice__c == null)}">
+              {!o.Product__r.Product_Display_Name__c}
             </apex:outputPanel>
           </td>
           <td align="right">
@@ -168,7 +171,7 @@
     </div>
     <div class="row">
       <div align="right">
-        Products Total:
+        Products Total:&nbsp;
         <apex:outputField value="{!SalesOrder__c.ProductTotalAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
         <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
           <apex:param value="{!SalesOrder__c.ProductTotalAmount__c}" />
@@ -179,59 +182,62 @@
           <hr/>
         </div>
       </div>
-      <table width="100%" class="{!if(SalesOrder__c.Sales_Order_Additional_Charges_Credits__r != null," slds-visibly ","slds-hidden
-        ")}">
-        <tr>
-          <td>
-            <strong>Additional Charges/Credits:</strong>
-          </td>
-          <td align="left">
-            <strong>Line Description</strong>
-          </td>
-          <td align="right">
-            <strong>Quantity</strong>
-          </td>
-          <td align="right">
-            <strong>Amount</strong>
-          </td>
-        </tr>
-        <apex:repeat value="{!SalesOrder__c.Sales_Order_Additional_Charges_Credits__r}" var="a" rendered="true">
+
+      <apex:outputPanel rendered="{!AND(SalesOrder__c.Sales_Order_Additional_Charges_Credits__r != null, ACCLines.size > 0)}">
+        <table width="100%">
           <tr>
-            <td>{!a.Additional_Charge_Credit__r.Name}</td>
-            <td align="left">{!a.LineDescription__c}</td>
-            <td align="right">
-              <apex:outputText value="{0, number, integer}">
-                <apex:param value="{!a.Quantity__c}" />
-              </apex:outputText>
+            <td>
+              <strong>Additional Charges/Credits:</strong>
+            </td>
+            <td align="left">
+              <strong>Line Description</strong>
             </td>
             <td align="right">
-            <apex:outputField value="{!a.SalesPrice__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
-            <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
-              <apex:param value="{!a.SalesPrice__c}" />
-            </apex:outputText>
-          </td>
+              <strong>Quantity</strong>
+            </td>
+            <td align="right">
+              <strong>Amount</strong>
+            </td>
           </tr>
-        </apex:repeat>
-      </table>
-
-      <div class="col-md-12">
-        <br/>
-      </div>
-      <div align="right">
-        Additional Charges/Credits Total: 
-        <span>
-          <apex:outputField value="{!SalesOrder__c.AdditionalChargeCreditAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
-          <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
-            <apex:param value="{!SalesOrder__c.AdditionalChargeCreditAmount__c}" />
-          </apex:outputText>
-        </span>
-      </div>
-
-      <div class="row">
+          <apex:repeat value="{!SalesOrder__c.Sales_Order_Additional_Charges_Credits__r}" var="a" rendered="true">
+            <tr>
+              <td>{!a.Additional_Charge_Credit__r.Name}</td>
+              <td align="left">{!a.LineDescription__c}</td>
+              <td align="right">
+                <apex:outputText value="{0, number, integer}">
+                  <apex:param value="{!a.Quantity__c}" />
+                </apex:outputText>
+              </td>
+              <td align="right">
+              <apex:outputField value="{!a.SalesPrice__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+              <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+                <apex:param value="{!a.SalesPrice__c}" />
+              </apex:outputText>
+            </td>
+            </tr>
+          </apex:repeat>
+        </table>
+      
         <div class="col-md-12">
-          <hr/>
+          <br/>
         </div>
-      </div>
+        <div align="right">
+          Additional Charges/Credits Total: 
+          <span>
+            <apex:outputField value="{!SalesOrder__c.AdditionalChargeCreditAmount__c}" rendered="{!(!isMultiCurrencyEnabled)}" />
+            <apex:outputText value="{!ISOCurrencyCode}{0, number, ###,##0.00}" rendered="{!(isMultiCurrencyEnabled)}">
+              <apex:param value="{!SalesOrder__c.AdditionalChargeCreditAmount__c}" />
+            </apex:outputText>
+          </span>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr/>
+          </div>
+        </div>
+
+      </apex:outputPanel>
       <div align="right">
         Net Amount: 
         <span>
@@ -351,14 +357,14 @@
       </div>
 
       <div class='col-md-12'>
-        <h4>
-          <u>Order For:</u>
-        </h4>
+        <!-- <h4> -->
+          <!-- <u>Order For:</u> -->
+        <!-- </h4>
         <apex:outputPanel rendered="{!UniqueLineRecipients != null}">
           <apex:repeat value="{!UniqueLineRecipients}" var="lr" id="lineRecipientsUnique">
             {!lr} <br />
           </apex:repeat>
-        </apex:outputPanel>
+        </apex:outputPanel> -->
         <br/>
         <apex:outputPanel rendered="{!SalesOrder__c.Memo__c != null}">
           <div style='margin-top: 9px'>

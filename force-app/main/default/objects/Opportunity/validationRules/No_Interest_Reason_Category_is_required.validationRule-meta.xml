@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Interest_Reason_Category_is_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL( StageName ,&apos;NON PURCHASER - Not Interested&apos;),ISPICKVAL( No_Interest_Reason_Category__c,&apos;&apos;))</errorConditionFormula>
+    <errorDisplayField>No_Interest_Reason_Category__c</errorDisplayField>
+    <errorMessage>Please enter the value in &apos;No Interest Reason Category&apos;</errorMessage>
+</ValidationRule>

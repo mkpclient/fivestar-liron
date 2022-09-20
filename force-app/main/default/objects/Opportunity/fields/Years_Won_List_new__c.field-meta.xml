@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Years_Won_List_new__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2004&quot;), &quot;2004;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2005&quot;), &quot;2005;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2006&quot;), &quot;2006;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2007&quot;), &quot;2007;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2008&quot;), &quot;2008;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2009&quot;), &quot;2009;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2010&quot;), &quot;2010;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2011&quot;), &quot;2011;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2012&quot;), &quot;2012;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2013&quot;), &quot;2013;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2014&quot;), &quot;2014;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2015&quot;), &quot;2015;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2016&quot;), &quot;2016;&quot;, NULL) +
+IF(INCLUDES( Contact__r.Years_Won_List__c , &quot;2017&quot;), &quot;2017;&quot;, NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Years Won List</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -49,7 +49,8 @@ export default class ManageLinesRecipientSearch extends LightningElement {
     marketId: null,
     publicationYear: null,
     contactIdFromOpp: null,
-    accountId: null
+    accountId: null,
+    accountName: null
   };
   @track errorMessage;
   @track onAddRecipient = false;
@@ -196,13 +197,10 @@ export default class ManageLinesRecipientSearch extends LightningElement {
     const hasConditions = this.queryItems.accountId != null;
     let whereCondition = null;
     if (hasConditions) {
-      whereCondition = `WHERE AccountId = '${this.queryItems.accountId}'`;
-
+      whereCondition = `WHERE Id = '${this.queryItems.contactIdFromOpp}' OR Account.Name = '${(this.queryItems.accountName).replace(/'/g, "\\'")}' OR AccountId = '${this.queryItems.accountId}'`;
       // whereCondition = `WHERE (Market_Project__c = '${this.queryItems.marketId}' AND Awarded_Years__c INCLUDES('${this.queryItems.publicationYear}')) OR Id='${this.queryItems.contactIdFromOpp}'`;
-    } else {
-      whereCondition = "LIMIT 100";
     }
-    whereCondition += " ORDER BY LastName";
+    whereCondition += " ORDER BY LastName LIMIT 10000";
     const [contacts, error] = await getMLRecord({
       getFunction: doQuery,
       objectType: "Contact",
@@ -212,9 +210,26 @@ export default class ManageLinesRecipientSearch extends LightningElement {
     });
     if (error !== null) {
       console.error("CONTACT GET ERROR :" + JSON.stringify(error));
+      return;
     } else {
-      // console.log(contacts);
+
       return contacts;
+      // const [soleContact, err] = await getMLRecord({
+      //   getFunction: doQuery,
+      //   objectType: "Contact",
+      //   fields: "Id, Name, Account.Name",
+      //   hasConditions: true,
+      //   conditions: `WHERE Id = '${this.queryItems.contactIdFromOpp}' LIMIT 1`
+      // });
+      // // console.log(contacts);
+      
+      // if (err) {
+      //   console.error("CONTACT GET ERROR :" + JSON.stringify(err));
+      //   return;
+      // } else if (soleContact) {
+      //     contacts.unshift(soleContact[0]);
+      //     return contacts;
+      // }
     }
   };
 

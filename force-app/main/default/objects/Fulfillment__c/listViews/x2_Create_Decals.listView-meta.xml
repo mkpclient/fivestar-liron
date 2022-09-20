@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>x2_Create_Decals</fullName>
-    <booleanFilter>1 AND 2 AND 3 AND ((4 AND 7) OR (5 AND 9) OR (6 AND 8))</booleanFilter>
     <columns>NAME</columns>
     <columns>Market__c</columns>
+    <columns>Profession__c</columns>
     <columns>PrimaryRecipient__c</columns>
     <columns>Proof_Location__c</columns>
+    <columns>ACDF_Company__c</columns>
     <columns>Years_Winner__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Status__c</columns>
@@ -14,8 +15,6 @@
     <columns>Product_Templates_Finalized__c</columns>
     <columns>Stage_Change_Date__c</columns>
     <columns>Market_Final_Upload_Date__c</columns>
-    <columns>ACDF_Company__c</columns>
-    <columns>ACDF_Parent_Company__c</columns>
     <columns>Fortune_Upload_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
@@ -30,40 +29,16 @@
     </filters>
     <filters>
         <field>Status__c</field>
-        <operation>notContain</operation>
-        <value>Closed,Cancelled</value>
+        <operation>equals</operation>
+        <value>Content Received</value>
     </filters>
     <filters>
-        <field>Actual_Upload_Date__c</field>
+        <field>Product_Templates_Finalized__c</field>
         <operation>lessOrEqual</operation>
         <value>TODAY</value>
-    </filters>
-    <filters>
-        <field>Forbes_Upload_Date__c</field>
-        <operation>lessOrEqual</operation>
-        <value>TODAY</value>
-    </filters>
-    <filters>
-        <field>Fortune_Upload_Date__c</field>
-        <operation>lessOrEqual</operation>
-        <value>TODAY</value>
-    </filters>
-    <filters>
-        <field>Product_Name__c</field>
-        <operation>notContain</operation>
-        <value>fortune,forbes</value>
-    </filters>
-    <filters>
-        <field>Product_Name__c</field>
-        <operation>contains</operation>
-        <value>fortune</value>
-    </filters>
-    <filters>
-        <field>Product_Name__c</field>
-        <operation>contains</operation>
-        <value>forbes</value>
     </filters>
     <label>__2. Create - Decals</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Brianna_Jahangir</group>
         <group>Fulfillment_Team</group>

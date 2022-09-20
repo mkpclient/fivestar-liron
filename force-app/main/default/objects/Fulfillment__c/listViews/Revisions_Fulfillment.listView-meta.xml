@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Revisions_Fulfillment</fullName>
-    <booleanFilter>(1 AND 2 AND 3 AND 5) OR (1 AND 3 AND 4)</booleanFilter>
+    <booleanFilter>(1 AND 2 AND 3 AND 5 and 6) OR (1 AND 3 AND 4)</booleanFilter>
     <columns>NAME</columns>
     <columns>PrimaryRecipient__c</columns>
     <columns>Market__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
     <columns>Stage_Change_Date__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Go_Live_Date__c</columns>
     <columns>Market_Award_Year__c</columns>
-    <columns>Status__c</columns>
-    <columns>Next_Action__c</columns>
     <columns>Next_Action_Date__c</columns>
     <columns>Market_Final_Upload_Date__c</columns>
     <columns>UPDATEDBY_USER</columns>
@@ -39,7 +39,13 @@
     <filters>
         <field>Product_Name__c</field>
         <operation>notContain</operation>
-        <value>Client Success Representative,Copywriting Services,E-Newsletter,Testimonial,Esse</value>
+        <value>Client Success Representative,Copywriting Services,E-Newsletter,Testimonial</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>Digital Ad,Essential</value>
     </filters>
     <label>__0. Daily Fulfillment Revisions</label>
+    <language>en_US</language>
 </ListView>

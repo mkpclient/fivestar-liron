@@ -11,6 +11,44 @@ public without sharing class BoomTestHelpers {
     return pro;
   }
 
+  public static Product2 createSubscriptionProduct(Product2 p, String magazineType, String freq) {
+    Product2 pro = new Product2(
+      Name = 'Test Product Subscription 1',
+      Family = 'Test',
+      isActive = true,
+      CreateOrderFulfillment__c = true,
+      Set_Up_Subscription__c = true,
+      Renewal_Product__c = p.Id,
+      Renewal_Frequency__c = freq,
+      Magazine_Type__c = magazineType
+    );
+    insert pro;
+    return pro;
+
+  }
+
+  public static Product2 createAddonProduct() {
+    Product2 pro = new Product2(
+      Name = 'Test Product Addon 1',
+      Family = 'Test',
+      isActive = true,
+      CreateOrderFulfillment__c = true
+    );
+    insert pro;
+
+    Product2 pro1 = new Product2(
+      Name = 'Test Product Subscription Addon 1',
+      Family = 'Test',
+      isActive = true,
+      CreateOrderFulfillment__c = true,
+      Set_Up_Subscription__c = true,
+      Renewal_Product__c = pro.Id,
+      Renewal_Frequency__c = 'Monthly',
+      Is_Subscription_Addon__c = true
+    );
+    insert pro1;
+    return pro1;
+  }
   public static PricebookEntry generatePriceBookEntry(Id productId) {
     Pricebook2 standardPricebook = new Pricebook2(
       Id = Test.getStandardPricebookId(),
@@ -106,7 +144,8 @@ public without sharing class BoomTestHelpers {
       Type = 'New Business',
       Description = 'Test Opportunity',
       Market_Project__c = marketId,
-      ContactId = contId
+      ContactId = contId,
+      Contact__c = contId
     );
     insert opportunity;
     return opportunity;

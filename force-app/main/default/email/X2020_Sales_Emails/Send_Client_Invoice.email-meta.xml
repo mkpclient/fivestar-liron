@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Please use this template when you are sending a client their invoice. You must click Generate Invoice on the order, save the invoice, and then attach it to your email.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Send Client Invoice</name>
+    <style>freeForm</style>
+    <subject>Five Star Professional - Invoice</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+As you requested, I have attached your invoice to this email. Please let me know if you have any further questions.
+
+Thank you!
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

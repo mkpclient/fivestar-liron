@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSTFollowUpTannerF</fullName>
+    <columns>CST_Follow_Up_Call_Complete__c</columns>
+    <columns>BLITZ__c</columns>
+    <columns>Winner__c</columns>
+    <columns>Client_Type__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>phone__c</columns>
+    <columns>ACDF_Branch_Office__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Next_call_date__c</columns>
+    <columns>Last_Call_Date__c</columns>
+    <columns>Open_Call_Comments__c</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Pardot_Lead_Score__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>BLITZ__c</field>
+        <operation>contains</operation>
+        <value>CST 3.14.19</value>
+    </filters>
+    <filters>
+        <field>BLITZ__c</field>
+        <operation>contains</operation>
+        <value>Tanner,Carson</value>
+    </filters>
+    <filters>
+        <field>CST_Follow_Up_Call_Complete__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>__CST Follow Up Calls - Tanner F</label>
+    <sharedTo>
+        <group>Mark_Douglass</group>
+    </sharedTo>
+</ListView>

@@ -50,6 +50,10 @@
                 <behavior>Edit</behavior>
                 <field>AdProd_Next_Call_Date__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Full_ID__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

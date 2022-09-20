@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailNumberOfRecipients__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Number of campaign members that have received this email (campaign members that were sent the email minus those campaign members that bounced).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of campaign members that have received this email (campaign members that were sent the email minus those campaign members that bounced).</inlineHelpText>
+    <label># Recipients</label>
+    <summaryFilterItems>
+        <field>CampaignMember.Status</field>
+        <operation>equals</operation>
+        <value>Sent</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>CampaignMember.sbm__sbx_EmailBounced__c</field>
+        <operation>equals</operation>
+        <value>False</value>
+    </summaryFilterItems>
+    <summaryForeignKey>CampaignMember.CampaignId</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <type>Summary</type>
+</CustomField>

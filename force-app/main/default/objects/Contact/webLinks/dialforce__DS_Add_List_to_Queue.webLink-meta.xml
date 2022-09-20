@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dialforce__DS_Add_List_to_Queue</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>DS Add List to Queue</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/apex.js&quot;)}
+var records = {!GETRECORDIDS($ObjectType.Contact)};
+var uid = &quot;{! $User.Id }&quot;;
+var type = &quot;Contact&quot;;
+var list = records.join();
+var pType = &quot;Phone&quot;;
+
+if (records[0] == null) {
+alert(&quot;Please select at least one Contact to Submit.&quot;);
+} else {
+var result = sforce.apex.execute(&quot;dialforce.DSPriorityQueue&quot;,&quot;wsSubmitCallBackList&quot;,
+{sfdcUserId:uid, sfdcObjectType:type, DSCallBackListIds:list, isGlobal:false, phoneType:pType});
+window.alert(&quot;Contact(s) Queued for DS Call.&quot;);
+}</url>
+</WebLink>

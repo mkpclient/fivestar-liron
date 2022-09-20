@@ -283,22 +283,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_Back_Cover_Inside_Ad_Templ__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Fulfillment_Contact_Block_Name__c</field>
             <table>Essential_Living_Issue__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Fulfillment_Client_Contact_List__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_Back_Cover_Ad_Template__c</field>
             <table>Essential_Living_Issue__c</table>
         </columns>
         <columns>
@@ -358,11 +348,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_Custom_Back_Cover_Inside__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Fulfillment_Contact_Block_License__c</field>
             <table>Essential_Living_Issue__c</table>
         </columns>
@@ -389,11 +374,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Fulfillment_Contact_Block_Zip__c</field>
-            <table>Essential_Living_Issue__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fulfillment_Custom_Back_Cover_Ad__c</field>
             <table>Essential_Living_Issue__c</table>
         </columns>
         <columns>
@@ -504,6 +484,56 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>EL_Boxed_Copies__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Fulfillment__c.Has_Contact_List__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Back_Cover_Updated__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Back_Cover_Inside_Updated__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Front_Cover_Inside_Ad_Updated__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_Block__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_Block_Updated__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Publication_Code__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Client_Last_Name__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Publication_Issue_Number__c</field>
+            <table>Essential_Living_Issue__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_choice__c</field>
             <table>Essential_Living_Issue__c</table>
         </columns>
         <masterLabel>Essential Living Issues</masterLabel>

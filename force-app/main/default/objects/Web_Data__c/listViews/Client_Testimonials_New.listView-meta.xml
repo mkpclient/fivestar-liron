@@ -4,17 +4,17 @@
     <columns>Fulfillment__c</columns>
     <columns>NAME</columns>
     <columns>Testimonial_Status__c</columns>
+    <columns>CREATED_DATE</columns>
     <columns>Testimonial__c</columns>
     <columns>Client_Name__c</columns>
     <columns>TestimonialSnippett__c</columns>
     <columns>Revised_Testimonial__c</columns>
     <columns>ASemailcsv__c</columns>
-    <columns>CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>NAME</field>
         <operation>contains</operation>
-        <value>Testimonial Survey</value>
+        <value>Testimonial Survey,Celebration Survey</value>
     </filters>
-    <label>Client Testimonials - New</label>
+    <label>Client Testimonials - All</label>
 </ListView>

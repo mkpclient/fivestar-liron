@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pending_Renewal_Orders_ELM</fullName>
+    <columns>NAME</columns>
+    <columns>OrderName__c</columns>
+    <columns>Opportunity__c</columns>
+    <columns>Price_Book__c</columns>
+    <columns>Market__c</columns>
+    <columns>Subscription__c</columns>
+    <columns>Account__c</columns>
+    <columns>ContactBuying__c</columns>
+    <columns>OrderDate__c</columns>
+    <columns>Status_Picklist__c</columns>
+    <columns>PaymentStatus2__c</columns>
+    <columns>NetAmount__c</columns>
+    <columns>BalanceDueAmount__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status_Picklist__c</field>
+        <operation>equals</operation>
+        <value>Pending Renewal</value>
+    </filters>
+    <filters>
+        <field>Opportunity__c</field>
+        <operation>contains</operation>
+        <value>Living</value>
+    </filters>
+    <label>Pending Renewal Orders-ELM</label>
+</ListView>

@@ -4,18 +4,18 @@
     <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 7) OR (6 AND 8) OR (9 AND 10))</booleanFilter>
     <columns>NAME</columns>
     <columns>Product_Name__c</columns>
+    <columns>Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>ACDF_Company__c</columns>
     <columns>Product_Delivered_Link__c</columns>
     <columns>Related_Core_Market__c</columns>
     <columns>Publication_month__c</columns>
-    <columns>Display_Name__c</columns>
-    <columns>ACDF_Company__c</columns>
-    <columns>Market__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
-    <columns>Next_Action_Date__c</columns>
     <columns>Product_Templates_Finalized__c</columns>
     <columns>Stage_Change_Date__c</columns>
+    <columns>Forbes_Upload_Date__c</columns>
+    <columns>Fortune_Upload_Date__c</columns>
     <columns>Market_Final_Upload_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailsOpenedAggregate__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This is the total number of all the times the system tracked that an email was opened in this email campaign.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the total number of all the times the system tracked that an email was opened in this email campaign.</inlineHelpText>
+    <label>Emails Opened Aggregate</label>
+    <summarizedField>CampaignMember.sbm__sbx_EmailOpenCount__c</summarizedField>
+    <summaryForeignKey>CampaignMember.CampaignId</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,7 @@
+Hello,
+
+A new team order has been created, please view it here:
+
+https://na52.salesforce.com/{!kugo2p__SalesOrder__c.Id}
+
+Thank you!

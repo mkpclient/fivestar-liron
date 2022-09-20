@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Award_Promotion_Reasons__c</fullName>
+    <externalId>false</externalId>
+    <label>Award Promotion Reasons</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Product</fullName>
+                <default>false</default>
+                <label>Product</label>
+            </value>
+            <value>
+                <fullName>Price</fullName>
+                <default>false</default>
+                <label>Price</label>
+            </value>
+            <value>
+                <fullName>Value</fullName>
+                <default>false</default>
+                <label>Value</label>
+            </value>
+            <value>
+                <fullName>Time</fullName>
+                <default>false</default>
+                <label>Time</label>
+            </value>
+            <value>
+                <fullName>DIY</fullName>
+                <default>false</default>
+                <label>DIY</label>
+            </value>
+            <value>
+                <fullName>Group Influence</fullName>
+                <default>false</default>
+                <label>Group Influence</label>
+            </value>
+            <value>
+                <fullName>Research</fullName>
+                <default>false</default>
+                <label>Research</label>
+            </value>
+            <value>
+                <fullName>Mag Ad</fullName>
+                <default>false</default>
+                <label>Mag Ad</label>
+            </value>
+            <value>
+                <fullName>No Biz Dev</fullName>
+                <default>false</default>
+                <label>No Biz Dev</label>
+            </value>
+            <value>
+                <fullName>Didn&apos;t Work</fullName>
+                <default>false</default>
+                <label>Didn&apos;t Work</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

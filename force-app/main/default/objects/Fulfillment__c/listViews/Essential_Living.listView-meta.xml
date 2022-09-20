@@ -6,16 +6,16 @@
     <columns>Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
     <columns>Status__c</columns>
-    <columns>ACDF_Company__c</columns>
+    <columns>Next_Action__c</columns>
     <columns>Contact_Block_Logo__c</columns>
     <columns>Contact_Block_Photo__c</columns>
     <columns>Contact_Block_Name__c</columns>
-    <columns>Contact_Block_Company__c</columns>
     <columns>EL_Quantity__c</columns>
+    <columns>Years_Won_List__c</columns>
     <columns>EL_E_Magazine_Purchaser__c</columns>
     <columns>Fulfillment_Owner__c</columns>
-    <columns>EL_Boxed_Copies__c</columns>
     <columns>CREATED_DATE</columns>
+    <columns>Stage_Change_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>

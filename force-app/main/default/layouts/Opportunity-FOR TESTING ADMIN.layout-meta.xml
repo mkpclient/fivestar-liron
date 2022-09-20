@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>kugo2p__GenerateOrder</customButtons>
+    <customButtons>Generate_Sales_Order</customButtons>
     <customButtons>Log_a_Call2</customButtons>
     <customButtons>Send_Emails</customButtons>
-    <customButtons>Generate_Sales_Order</customButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
@@ -617,10 +616,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>BDR_Follow_Up__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
                 <field>AM_Certification_Link__c</field>
             </layoutItems>
             <layoutItems>
@@ -670,6 +665,26 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>AM_WIW_SS_Follow_Up_Link__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Do_Not_Reassign__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Market_Go_Live__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Never_Winner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Non_Winner__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>New_Winner_Fortune_Listing__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -1167,24 +1182,9 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>13</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>IsotopeSubscription</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>14</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>FeedItem.TextPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>kugo2p__GenerateOrder</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>15</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>FeedItem.PollPost</actionName>
@@ -1192,19 +1192,9 @@
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Log_a_Call2</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>16</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>FeedItem.LinkPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Send_Emails</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>17</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>FeedItem.ContentPost</actionName>
@@ -1255,6 +1245,26 @@
             <actionName>ChangeRecordType</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>12</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Clone</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>13</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>kugo2p__GenerateOrder</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>14</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Log_a_Call2</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>15</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Send_Emails</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>16</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -1314,16 +1324,19 @@
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
+        <fields>OrderDate__c</fields>
         <fields>Release_Date__c</fields>
         <fields>NAME</fields>
-        <fields>Order_Number__c</fields>
-        <fields>Account__c</fields>
-        <fields>ProductTotalAmount__c</fields>
+        <fields>ContactBuying__c</fields>
+        <fields>TotalAmount__c</fields>
         <fields>NetAmount__c</fields>
+        <fields>CompletedPayments__c</fields>
         <fields>BalanceDueAmount__c</fields>
         <fields>Status_Picklist__c</fields>
-        <fields>PaymentStatus2__c</fields>
+        <fields>Subscription__c</fields>
         <relatedList>SalesOrder__c.Opportunity__c</relatedList>
+        <sortField>OrderDate__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <customButtons>kugo2p__Generate_Order_Opportunity</customButtons>

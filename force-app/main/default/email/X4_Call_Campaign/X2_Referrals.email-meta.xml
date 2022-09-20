@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>2 - Referrals</name>
+    <style>freeForm</style>
+    <subject>RE: Maximize your referrals!</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+ 
+I just left you a voicemail detailing how you can use some of Five Star Professional&apos;s tools to leverage your status as an award winner, and gain more referrals
+
+I&apos;ve helped some of the top producing professionals in {!Opportunity.Email_Templates_Market_City__c} use Five Star&apos;s services to maximize their referrals and differentiate themselves from the competition. I&apos;d like to connect with you sometime over the next couple of days to talk about how you can use some of those same strategies to grow your business.
+ 
+2015 Five Star {!Opportunity.Email_Templates_Profession_c} Award Guide
+
+Please let me know of a time that works best to connect you!
+
+
+{!User.Name}
+Account Manager
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120, Eagan, MN 55121
+Direct: {!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

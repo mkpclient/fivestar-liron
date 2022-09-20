@@ -36,7 +36,7 @@
     <filters>
         <field>Product_Name__c</field>
         <operation>contains</operation>
-        <value>reprints</value>
+        <value>reprints,Listing Reprints - Expanded</value>
     </filters>
     <filters>
         <field>Status__c</field>
@@ -54,4 +54,5 @@
         <value>new</value>
     </filters>
     <label>(Public) To print - Daily</label>
+    <language>en_US</language>
 </ListView>

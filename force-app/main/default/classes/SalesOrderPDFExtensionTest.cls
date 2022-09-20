@@ -87,7 +87,7 @@ public with sharing class SalesOrderPDFExtensionTest {
     );
 
     Pagereference testOnlineTerminalRef = new PageReference(
-      '/apex/publicPaymentVfPage?id=' + testSo.Id
+      '/apex/publicPaymentVfPage?id=' + testSo.Id + '&isEssential=false'
     );
     Pagereference returnedOnlineTerminalRef = controller.acceptAndPayOnline();
 

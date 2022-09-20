@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Follow up about the Emblems</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Emblems</name>
+    <style>freeForm</style>
+    <subject>Follow up: Five Star Emblems</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+It was good talking to you today.
+
+Per our conversation, the Five Star Award emblem is an excellent solution for you to promote and leverage your award on and off line. We offer three types of emblems with varied degrees of personalization to align with your marketing goals and your budget.
+
+Each emblem is provided in a print and digital format for maximum versatility. 
+
+Regardless of which emblem you choose, there are dozens of ways to incorporate it into your marketing efforts:
+
+
+Digital:
+Place it on the homepage of your company website or on your personal page within the site
+Post it in your social media accounts (Facebook, Twitter, LinkedIn, etc.) or your blog
+Include in your e-mail signature and/or e-mail blasts
+Provide the image to local online media for advertising
+Publish as part of your profile on zillow.com and other home search sites
+
+Print:
+Include in client and prospect presentations, brochures and informational packets
+Incorporate in direct mail marketing (letters, postcards, event invitations, etc.)
+Include in advertisements (magazine and newspaper ads, billboards, yellow pages, etc.)
+Add to stationary, letterhead, appointment cards and business cards
+
+If you have any questions or would like to place your order, please do not hesitate to contact me.
+
+
+
+Thank you.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

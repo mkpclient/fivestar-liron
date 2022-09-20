@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Fortune ML MP Email #3</name>
+    <style>freeForm</style>
+    <subject>Are you participating in Fortune Market Leaders?</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+
+
+Don&apos;t miss out on the opportunity to appear in Fortune Market Leaders - The list that will be published in the February/March 2022 issue of Fortune magazine. The list will be limited to a small number of Mortgage Professionals across 35 metro areas.  Packages start at $699, please click here for more information.
+
+
+
+I look forward to hearing from you!
+
+
+Thank you,
+
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -14,8 +14,8 @@
     <columns>Customization__c</columns>
     <columns>Fortune_Upload_Date__c</columns>
     <columns>WSJ_Upload__c</columns>
-    <columns>Notes_for_Ad_Prod__c</columns>
-    <columns>Actual_Upload_Date__c</columns>
+    <columns>Stage_Change_Date__c</columns>
+    <columns>Upload_Date__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>
@@ -30,7 +30,7 @@
     <filters>
         <field>Upload_Date__c</field>
         <operation>lessOrEqual</operation>
-        <value>NEXT_N_DAYS:15</value>
+        <value>NEXT_N_DAYS:30</value>
     </filters>
     <filters>
         <field>Status__c</field>
@@ -38,6 +38,7 @@
         <value>Cancelled</value>
     </filters>
     <label>__1. Monday - Reprints Expanded</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Brianna_Jahangir</group>

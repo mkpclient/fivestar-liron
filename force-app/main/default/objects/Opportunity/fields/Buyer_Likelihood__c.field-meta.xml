@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Buyer_Likelihood__c</fullName>
+    <externalId>false</externalId>
+    <label>Buyer Likelihood</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1 - Said they will not buy</fullName>
+                <default>false</default>
+                <label>1 - Said they will not buy</label>
+            </value>
+            <value>
+                <fullName>2 - Unlikely to buy</fullName>
+                <default>false</default>
+                <label>2 - Unlikely to buy</label>
+            </value>
+            <value>
+                <fullName>3 - Unknown</fullName>
+                <default>false</default>
+                <label>3 - Unknown</label>
+            </value>
+            <value>
+                <fullName>4 - Likely open to buy</fullName>
+                <default>false</default>
+                <label>4 - Likely open to buy</label>
+            </value>
+            <value>
+                <fullName>5 - Said they will buy</fullName>
+                <default>false</default>
+                <label>5 - Said they will buy</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

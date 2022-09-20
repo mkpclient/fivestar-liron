@@ -9,14 +9,14 @@
     <columns>Product_Engagement_Status__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Base_Product__c</columns>
-    <columns>Quantity__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
     <columns>Next_Action_Date__c</columns>
     <columns>Fulfillment_Owner__c</columns>
     <columns>CREATED_DATE</columns>
-    <columns>LAST_UPDATE</columns>
     <columns>Stage_Change_Date__c</columns>
+    <columns>Social_Media_Platform__c</columns>
+    <columns>Service_Tier__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>
@@ -43,10 +43,12 @@
         <operation>contains</operation>
         <value>Fulfill</value>
     </filters>
-    <label>_Managed Social - In Progress</label>
+    <label>_Managed Social - Active</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Allen_Wardell</group>
+        <group>Essential_Engine</group>
         <group>Jonathan_Wesser</group>
         <group>Mindy_Stansbarger</group>
     </sharedTo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Web_Username__c</fullName>
+    <description>This is the username assigned by the webapp when the customer account was created for the contact. This is also updated when the customer changes their username through the webapp.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the username assigned by the webapp when the customer account was created for the contact. This is also updated when the customer changes their username through the webapp.</inlineHelpText>
+    <label>Web Username</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

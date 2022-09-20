@@ -68,7 +68,7 @@ const generateColumns = (isEditable) => [
     fieldName: "Quantity__c",
     type: "number",
     sortable: true,
-    fixedWidth: 72,
+    fixedWidth: 100,
     editable: isEditable,
     cellAttributes: { class: isEditable ? { fieldName: "disableEdit" } : "" }
   },
@@ -232,6 +232,7 @@ export default class ManageLinesRecipients extends NavigationMixin(
 ) {
   @api salesOrder;
   lineRecipients = null;
+  shouldRender = true;
   addRecipientsActive = false;
   discountPercent;
   isRendered = false;
@@ -350,7 +351,9 @@ export default class ManageLinesRecipients extends NavigationMixin(
   @api async transformData(newLine = false) {
     if (newLine) {
       this.isRendered = false;
+      this.shouldRender = true;
       await this.renderedCallback();
+
       // let processLine = { ...newLine };
       // processLine.Product__r = { ...newLine.Product__r };
       // processLine.ProductUrl = `/lightning/r/SalesOrderProductLine__c/${processLine.Id}/view`;
@@ -424,16 +427,11 @@ export default class ManageLinesRecipients extends NavigationMixin(
         line.Product__r.Minimum_Quantity__c,
       Default_Quantity__c:
         line.Product__r.Default_Quantity__c &&
-        line.Product__r.Default_Quantity__c,
+      line.Product__r.Default_Quantity__c,
       Recipient_Limit__c:
         line.Product__r.Recipient_Limit__c &&
         line.Product__r.Recipient_Limit__c,
-      disableEdit:
-        line.AllowQuantityChange__c == true
-          ? ""
-          : line.Kit_Bundle_Member__c == true
-          ? "child-disable-edit"
-          : "disable-edit",
+      disableEdit: "",
       expandIconName: line.expandIconName
         ? line.expandIconName
         : line.KitBundle__c == true &&
@@ -454,6 +452,7 @@ export default class ManageLinesRecipients extends NavigationMixin(
           ? generateActions(false, false)
           : generateActions(true, this.hasAdminPermissions)
     }));
+
   }
 
   @api async clearData() {
@@ -609,7 +608,8 @@ export default class ManageLinesRecipients extends NavigationMixin(
 
   async renderedCallback() {
     console.log("Not rendered");
-    if (this.isRendered === false && this.salesOrder) {
+    if (this.isRendered === false && this.salesOrder && this.shouldRender) {
+
       if (!this.stylesLoaded) {
         Promise.all([loadStyle(this, ModalWidthCSS)])
           .then(() => {
@@ -637,16 +637,24 @@ export default class ManageLinesRecipients extends NavigationMixin(
       this.searchRecipientQueryItems.accountId = !this.salesOrder.Account__c
         ? null
         : this.salesOrder.Account__c;
+      this.searchRecipientQueryItems.accountName = !this.salesOrder.hasOwnProperty('Account__r')
+        ? null
+        : this.salesOrder.Account__r.Name;
       this.searchRecipientQueryItems.isLoaded = true;
       this.discountPercent = this.discountPercent
         ? this.discountPercent
         : this.salesOrder.DiscountPercent__c;
-      console.log([...this.orderProductLines]);
-      console.log([...this.lineRecipients]);
-      await this.transformData();
+      // console.log([...this.orderProductLines]);
+      // console.log([...this.lineRecipients]);
+      if(!this.salesOrder.Account__c) {
+        alert('We are unable to find an account associated with this order and it may cause possible issues when searching for recipients. Please check the order and the opportunity.');
+      }
+      this.shouldRender = false;
       this.columns = generateColumns(this.isEditable);
-      this.isRendered = true;
+      await this.transformData();
       console.log("Finished render");
+      this.isRendered = true;
+
     }
   }
 
@@ -729,8 +737,8 @@ export default class ManageLinesRecipients extends NavigationMixin(
   };
 
   handleAddRecipient = async (evt) => {
-    this.toggleAddRecipient(null);
     this.isRendered = false;
+    this.toggleAddRecipient(null);
     this.existingOrderLineRecipients = [];
     this.data = [];
     this.orderProductLines = [];
@@ -884,6 +892,10 @@ export default class ManageLinesRecipients extends NavigationMixin(
         newData.TotalAmount__c =
           quantity *
           (salesPrice * ((100 - (totalDiscount + lineDiscount)) / 100));
+
+        if (newData.Sales_Order_Product_Lines__r && newData.Sales_Order_Product_Lines__r.length > 0) { 
+          newData.Sales_Order_Product_Lines__r.forEach(so => {so.Quantity__c = quantity; so.DateRequired__c = newData.DateRequired__c;});
+        }
         return {
           ...newData
         };
@@ -904,6 +916,6 @@ export default class ManageLinesRecipients extends NavigationMixin(
   };
 
   get disableDiscount() {
-    return !this.isEditable;
+    return !this.isEditable || !this.hasAdminPermissions;
   }
 }

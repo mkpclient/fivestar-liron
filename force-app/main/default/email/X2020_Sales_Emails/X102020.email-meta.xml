@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>11: Order Follow Up - Appointment already scheduled</name>
+    <style>freeForm</style>
+    <subject>Your Five Star Customer Service Rep Appointment</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+It’s been a pleasure working with you! Thank you for taking the time to determine the best ways to increase the impact of your Five Star award.
+
+Your Client Success Rep appointment is scheduled for DATE TIME. (AM INPUTS)
+
+Here&apos;s what you can look forward to next:
+
+Your Client Success Rep appointment: You will meet with your Client Success Rep to discuss the steps you need to take to submit materials, access your tools and get ideas for how to use your tools.
+Invoice: You will receive an invoice for the items you purchased by the next business day following your order.
+
+The best part of my job is working with great people like you, and I’m excited to see the results of our efforts. As always, please feel free to contact me with any questions. Thank you for your time and partnership throughout the process!
+
+Thank you,
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

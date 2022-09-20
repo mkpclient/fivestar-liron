@@ -3,6 +3,7 @@
     <defaultLandingTab>standard-home</defaultLandingTab>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Boom Sales Order</label>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
@@ -13,4 +14,7 @@
     <tabs>standard-Product2</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-report</tabs>
+    <tabs>Subscription__c</tabs>
+    <tabs>sumoapp__Email__c</tabs>
+    <tabs>Cancellation__c</tabs>
 </CustomApplication>

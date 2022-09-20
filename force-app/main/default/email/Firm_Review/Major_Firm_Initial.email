@@ -1,0 +1,15 @@
+Hello {!Firm_Review__c.Primary_contact_first_name__c}: <br><br>
+
+Research for following Five Star Professional award(s) is nearly complete:<br><br>
+<b>Market area</b>: {!Firm_Review__c.Market_area__c}<br>
+<b>Award year</b>: {!Firm_Review__c.Award_year__c}<br>
+<b>Publication month</b>: {!Firm_Review__c.Publication_Month__c}<br>
+<b>Publication</b>: {!Firm_Review__c.Publication__c}<br><br>
+Attached is a list of advisors for your firm’s review. Please let me know which advisors are approved and which are not by <b>{!Firm_Review__c.Firm_Review_Deadline__c}</b>.<br><br>
+
+Thank you,<br><br>
+
+Ashley Zellmer<br>
+Five Star Professional<br>
+ashley.zellmer@fivestarprofessional.com<br>
+(651) 259-1157

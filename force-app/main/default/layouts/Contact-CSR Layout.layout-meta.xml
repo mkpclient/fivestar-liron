@@ -166,6 +166,26 @@
                 <behavior>Edit</behavior>
                 <field>Do_Not_Call_for_NAMS_F_U__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>ELM_referral_share_page__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>ELM_referral_form__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Essential_Engine_Friend_Capture__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Mobile_SMS_Format__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RS_Manager_Broker__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -569,7 +589,7 @@
     </relatedContent>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
+        <fields>Boom_Order__c</fields>
         <fields>Market__c</fields>
         <fields>Status__c</fields>
         <fields>Next_Action__c</fields>
@@ -577,7 +597,7 @@
         <fields>Subscription__c</fields>
         <fields>Fulfillment_Owner__c</fields>
         <fields>Official_Order_Date__c</fields>
-        <fields>Posting_Number__c</fields>
+        <fields>Renewal_Date__c</fields>
         <relatedList>Fulfillment__c.PrimaryRecipient__c</relatedList>
         <sortField>Official_Order_Date__c</sortField>
         <sortOrder>Desc</sortOrder>
@@ -594,16 +614,19 @@
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
-        <fields>ACTIVITY.TASK</fields>
         <fields>TASK.WHAT_NAME</fields>
         <fields>TASK.DUE_DATE</fields>
+        <fields>SUMO_Status__c</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
         <fields>TASK.LAST_UPDATE</fields>
         <fields>Research_Call_Notes__c</fields>
         <fields>Comments__c</fields>
-        <fields>Years_Winner__c</fields>
         <fields>AdProd_Comments__c</fields>
         <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>et4ae5__IndividualEmailResult__c.et4ae5__Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>NewEvent</excludeButtons>
@@ -615,6 +638,7 @@
         <fields>TASK.STATUS</fields>
         <fields>TASK.PRIORITY</fields>
         <fields>CORE.USERS.FULL_NAME</fields>
+        <fields>EVENT.START_DATE_TIME</fields>
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -633,6 +657,15 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Complaint_Description__c</fields>
+        <fields>Date_Opened__c</fields>
+        <fields>Internal_notes__c</fields>
+        <fields>LAST_ACTIVITY</fields>
+        <fields>Next_Action_Date__c</fields>
+        <fields>Original_Order__c</fields>
+        <fields>OWNER.ALIAS</fields>
+        <fields>Resolution_Description__c</fields>
+        <fields>Resolved_Date__c</fields>
         <relatedList>Complaint__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -643,20 +676,52 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>kugo2p__Type__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>kugo2p__Payment_Method__c.kugo2p__Contact__c</relatedList>
+        <fields>Card_Type__c</fields>
+        <fields>Expiration_Date__c</fields>
+        <fields>Last_4_Digits_of_Card__c</fields>
+        <relatedList>Payment_Method__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>OrderNumber__c</fields>
+        <fields>Status__c</fields>
+        <fields>Subscription_Fulfillment__c</fields>
+        <fields>Original_Subscription_Boom_Order__c</fields>
+        <fields>Start_Date__c</fields>
+        <fields>Renewal_Product__c</fields>
+        <fields>Renewal_Quantity__c</fields>
+        <fields>Renewal_Price__c</fields>
+        <fields>Renewal_Date_Day_of_Month__c</fields>
+        <fields>Cancelled_Date__c</fields>
+        <relatedList>Subscription__c.Contact__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>Boom_Order__c</fields>
+        <fields>NAME</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>
+        <fields>Official_Order_Date__c</fields>
         <relatedList>Fulfillment__c.Contact__c</relatedList>
+        <sortField>Official_Order_Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>OPPORTUNITY.CLOSE_DATE</fields>
+        <relatedList>Opportunity.Referred_by__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>AM_Assigned__c</fields>
+        <fields>CSR_Assigned__c</fields>
+        <fields>Cancellation_Reason__c</fields>
+        <relatedList>Cancellation__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

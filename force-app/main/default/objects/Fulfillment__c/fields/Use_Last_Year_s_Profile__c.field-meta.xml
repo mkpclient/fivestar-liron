@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Use_Last_Year_s_Profile__c</fullName>
     <externalId>false</externalId>
-    <formula>OrderNumber__r.Use_Last_Year_s_Profile__c</formula>
+    <formula>Boom_Order__r.Use_Last_Year_s_Profile__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Use Last Year&apos;s Profile</label>
     <trackHistory>false</trackHistory>

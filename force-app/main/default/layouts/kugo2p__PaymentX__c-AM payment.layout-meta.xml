@@ -57,6 +57,10 @@
                 <behavior>Edit</behavior>
                 <field>Intacct_Sync_Complete__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Contact_ID__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

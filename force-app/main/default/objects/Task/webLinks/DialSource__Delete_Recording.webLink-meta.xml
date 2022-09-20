@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DialSource__Delete_Recording</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Delete Recording</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/41.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/41.0/apex.js&quot;)} 
+var sid = &quot;{!$Api.Session_ID}&quot;; 
+var loc = &quot;{!$Api.Partner_Server_URL_80}&quot;; 
+var filename = &quot;{!Task.DialSource__Recording_ID_DS__c}&quot;; 
+var oid = &quot;{!$Organization.Id}&quot;; 
+var url = &apos;https://in.dialsource.com/deleteRecording?file=&apos;+filename+&apos;&amp;sessionID=&apos;+sid+&apos;&amp;serverUrl=&apos;+loc+&apos;&amp;orgID=&apos;+oid; 
+
+var result = sforce.apex.execute(&quot;DialSource.deleteRecording&quot;,&quot;deleteRecording&quot;, 
+{url : url}); 
+if(result == &apos;Success&apos;){ 
+window.alert(&apos;Recording Deleted!&apos;); 
+var t = new sforce.SObject(&apos;Task&apos;); 
+t.id = &quot;{!Task.Id}&quot;; 
+t.DialSource__Recording_ID_DS__c = &quot; &quot;; 
+result = sforce.connection.update([t]); 
+location.reload(true); 
+} 
+else if(result == &apos;Unauthorized&apos;) { 
+window.alert(&apos;Unauthorized, you may not delete this recording&apos;); 
+} 
+else { 
+window.alert(result); 
+}</url>
+</WebLink>

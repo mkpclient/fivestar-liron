@@ -22,7 +22,7 @@
     <filters>
         <field>Market__c</field>
         <operation>contains</operation>
-        <value>BOSWM22,BOSIP22</value>
+        <value>INDWM22,INDIP22</value>
     </filters>
     <filters>
         <field>Product_Name__c</field>
@@ -34,7 +34,8 @@
         <operation>equals</operation>
         <value>profile</value>
     </filters>
-    <label>(Public)_BOSWM22</label>
+    <label>(Public)_INDWM22</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Adrianna_Loesch</group>

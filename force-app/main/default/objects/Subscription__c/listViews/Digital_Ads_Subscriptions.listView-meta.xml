@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Digital_Ads_Subscriptions</fullName>
+    <columns>NAME</columns>
+    <columns>Original_Subscription_Boom_Order__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>Subscription_Fulfillment__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Renewal_Date_Day_of_Month__c</columns>
+    <columns>Renewal_Quantity__c</columns>
+    <columns>Renewal_Price__c</columns>
+    <columns>Renewal_Product__c</columns>
+    <columns>Payment_Method__c</columns>
+    <columns>Status__c</columns>
+    <columns>Pause_Date__c</columns>
+    <columns>Re_start_Date__c</columns>
+    <columns>End_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Cancelled</value>
+    </filters>
+    <filters>
+        <field>Renewal_Product__c</field>
+        <operation>contains</operation>
+        <value>Digital Ad</value>
+    </filters>
+    <label>Digital Ads Subscriptions</label>
+</ListView>

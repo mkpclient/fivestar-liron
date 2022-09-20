@@ -1,0 +1,20 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p style="color: rgb(0, 0, 0); background-color: rgb(242, 242, 242);"><font face="Verdana, Helvetica, sans-serif"><font style="color: rgb(0, 0, 0);"><span style="line-height: 1.5;">Hello&nbsp;</span></font><font><span style="line-height: 18px;">{!Fulfillment__c.FName__c}</span></font><span style="color: rgb(0, 0, 0); line-height: 24px;">,</span></font></p><p style="color: rgb(0, 0, 0); background-color: rgb(242, 242, 242);"><span style="line-height: 24px;"><font face="Verdana, Helvetica, sans-serif"><br></font></span></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Thank you for your recent purchase from Five Star Professional.<o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><br></font></p><p class="MsoNormal"><font face="Verdana, Helvetica, sans-serif"><font style="color: rgb(0, 0, 0);">Our goal is to ensure
+you are completely satisfied with your product and your experience from Five
+Star Professional and would very much appreciate your feedback.&nbsp;</font></font></p><p class="MsoNormal"><font face="Verdana, Helvetica, sans-serif"><font style="color: rgb(0, 0, 0);">Please take a
+moment to complete a quick customer feedback survey </font><span style="color: rgb(0, 0, 0);"><u style="font-weight: bold;"><a href="https://fivestarprofessional.tfaforms.net/19?fulfid={!Fulfillment__c.Full_ID__c}">HERE</a></u>&nbsp;</span></font></p><p class="MsoNormal"><font face="Verdana, Helvetica, sans-serif"><br></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Again, thank you for
+your business and we look forward to serving you in the future.<o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><br></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">With much respect,<o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Teresa Hemingson</font></p><p style="color: rgb(0, 0, 0); background-color: rgb(242, 242, 242);">
+
+
+
+
+
+
+
+
+
+</p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Manager, Client Experience and Delivery</font></p><p style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0); line-height: 1.5; background-color: rgb(242, 242, 242);"></p><p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><u1:p></u1:p></font></p>]]></td>
+</tr>
+</table>

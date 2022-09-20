@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Next_call_goal__c</fullName>
+    <externalId>false</externalId>
+    <label>Next call goal</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>VM1</fullName>
+                <default>false</default>
+                <label>VM1</label>
+            </value>
+            <value>
+                <fullName>VM2</fullName>
+                <default>false</default>
+                <label>VM2</label>
+            </value>
+            <value>
+                <fullName>Schedule Discovery Appt.</fullName>
+                <default>false</default>
+                <label>Schedule Discovery Appt.</label>
+            </value>
+            <value>
+                <fullName>Present Award Guide</fullName>
+                <default>false</default>
+                <label>Present Award Guide</label>
+            </value>
+            <value>
+                <fullName>Proposal</fullName>
+                <default>false</default>
+                <label>Proposal</label>
+            </value>
+            <value>
+                <fullName>Close</fullName>
+                <default>false</default>
+                <label>Close</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

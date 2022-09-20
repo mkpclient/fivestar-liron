@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Most_Urgent_Buyer_Calls</fullName>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>Primary_Phone__c</columns>
+    <columns>Mobile__c</columns>
+    <columns>Client_Type__c</columns>
+    <columns>Logged_Calls__c</columns>
+    <columns>Target_Calls__c</columns>
+    <columns>Next_call_date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.CLOSE_DATE</field>
+        <operation>equals</operation>
+        <value>3/6/2020</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>equals</operation>
+        <value>Pre-Winner</value>
+    </filters>
+    <filters>
+        <field>Logged_Calls__c</field>
+        <operation>lessOrEqual</operation>
+        <value>2</value>
+    </filters>
+    <filters>
+        <field>Client_Type__c</field>
+        <operation>equals</operation>
+        <value>BPD,BD,N</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.LAST_ACTIVITY</field>
+        <operation>notEqual</operation>
+        <value>TODAY,YESTERDAY</value>
+    </filters>
+    <label>Most Urgent Buyer Calls</label>
+    <sharedTo>
+        <group>Julie_Martignacco</group>
+    </sharedTo>
+</ListView>

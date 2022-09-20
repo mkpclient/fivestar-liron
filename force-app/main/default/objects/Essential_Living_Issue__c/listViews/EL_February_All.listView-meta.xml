@@ -20,12 +20,12 @@
     <filters>
         <field>NAME</field>
         <operation>contains</operation>
-        <value>February</value>
+        <value>February 2022</value>
     </filters>
     <filters>
         <field>Status__c</field>
         <operation>notContain</operation>
         <value>Draft</value>
     </filters>
-    <label>EL February - All</label>
+    <label>EL February 2022 - All</label>
 </ListView>

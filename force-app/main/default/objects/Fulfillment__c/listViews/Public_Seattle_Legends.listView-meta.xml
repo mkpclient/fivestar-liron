@@ -27,7 +27,7 @@
     <filters>
         <field>Product_Name__c</field>
         <operation>notContain</operation>
-        <value>award winner profile</value>
+        <value>award winner profile,package</value>
     </filters>
     <filters>
         <field>Base_Product__c</field>

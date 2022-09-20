@@ -1,0 +1,28 @@
+Hello {!Opportunity.Email_Templates_Informalname__c}, <p>
+
+You have been identified as a candidate for the<b> {!Opportunity.Email_Templates_Publication_Year__c}</b> <b>{!Opportunity.Program_Name__c}</b>. An exclusive group of {!Opportunity.Profession_Type__c} in the greater Miami area will receive the {!Opportunity.Email_Templates_Publication_Year__c} award. Award recipients will receive a complimentary listing of their name and company name that will be featured not only on FiveStarProfessional.com  but will also be featured in the fall publication of Five Star Magazine that will be inserted into an edition of the Wall Street Journal</i></b>. As a candidate, we need you to provide additional information in order to evaluate you based on our eligibility and evaluation criteria.<p>
+To submit your information, please go to your secure online link below and complete the short candidate evaluation form. This only takes a few minutes of your time to complete. <p>
+
+<b><a href="{!Opportunity.Research_Form_URL__c}"> Candidate Evaluation Form - Click Here to Complete</a></b><br><b>The deadline to submit is end of day  {!Opportunity.ACDF_Deadline__c}</b><p>
+
+Evaluation Process: Candidates are evaluated on 10 criteria associated with providing quality service and demonstrating professional industry excellence. Only candidates that differentiate themselves based on the evaluation and eligibility criteria will be named {!Opportunity.Email_Templates_Publication_Year__c} Five Star Professional award winners. For more information about the Five Star Professional Award and the research behind the candidate evaluation and selection process, please review, <b><a href="{!Opportunity.Email_Templates_Award_Guide__c}"> Five Star Professional - Research Overview</a></b><p>
+Award winners are scheduled to be notified 4-6 weeks after the deadline date posted above.<p>
+If you have any questions of if you need any assistance with your information please contact me at <b>{!User.Phone}</b>. <p>
+
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway, Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

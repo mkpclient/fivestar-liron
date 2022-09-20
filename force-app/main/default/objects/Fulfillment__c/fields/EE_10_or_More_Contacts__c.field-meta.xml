@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EE_10_or_More_Contacts__c</fullName>
+    <description>This box is checked when there are 10 or more contacts in the EE contact database.</description>
+    <externalId>false</externalId>
+    <formula>Contact_List_Count__c &gt; 9</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This box is checked when there are 10 or more contacts in the EE contact database.</inlineHelpText>
+    <label>EE 10 or More Contacts</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

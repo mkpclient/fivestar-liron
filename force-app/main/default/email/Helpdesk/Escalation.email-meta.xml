@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Escalation</name>
+    <style>none</style>
+    <subject>Case: {!Case.CaseNumber} has been escalated</subject>
+    <textOnly>Case {!Case.CaseNumber} has been escalated to {!Case.OwnerFullName} for further assistance.  You should expect to receive an update shortly as to the status and resolution ETA.  
+
+Thanks, 
+{!Case.OwnerFullName}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

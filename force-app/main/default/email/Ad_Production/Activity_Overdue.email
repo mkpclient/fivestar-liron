@@ -1,0 +1,5 @@
+Hello {!Fulfillment__c.Graphics_Assigned__c},
+
+Review your activities as, {!Fulfillment__c.Name} is {!Fulfillment__c.Activity_Days_Overdue__c} days overdue.
+
+Thank you!

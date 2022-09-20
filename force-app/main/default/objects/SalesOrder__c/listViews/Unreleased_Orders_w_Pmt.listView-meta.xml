@@ -11,31 +11,16 @@
     <columns>FulfillOrder__c</columns>
     <columns>NetAmount__c</columns>
     <columns>AppliedPaymentAmount__c</columns>
-    <columns>RecordStatus__c</columns>
     <columns>PaymentStatus2__c</columns>
+    <columns>Status_Picklist__c</columns>
     <columns>Payments_Made__c</columns>
     <columns>CREATEDBY_USER</columns>
     <columns>OnlinePaymentExpirationDate__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>RecordStatus__c</field>
+        <field>Status_Picklist__c</field>
         <operation>equals</operation>
-        <value>Approved</value>
+        <value>Unreleased</value>
     </filters>
-    <filters>
-        <field>PaymentStatus2__c</field>
-        <operation>equals</operation>
-        <value>Paid,Partially Paid</value>
-    </filters>
-    <filters>
-        <field>FulfillOrder__c</field>
-        <operation>notEqual</operation>
-        <value>1</value>
-    </filters>
-    <filters>
-        <field>OrderDate__c</field>
-        <operation>greaterOrEqual</operation>
-        <value>1/1/2021</value>
-    </filters>
-    <label>Unreleased Orders w Pmt</label>
+    <label>Unreleased Orders</label>
 </ListView>

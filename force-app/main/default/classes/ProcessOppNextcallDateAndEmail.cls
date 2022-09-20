@@ -39,7 +39,8 @@ global class ProcessOppNextcallDateAndEmail implements Database.Batchable<sObjec
                 }
                 String scheduleName = 'Send1hourpriorreminderEmail Job' + System.now().format('mm/dd/yyyy') + string.valueOf(dt1.second()) + '&'+ opp.Id;
                 system.debug('scheduleName =='+scheduleName);
-                System.schedule(scheduleName,strSchedule, new Send1hourpriorreminderEmail(new List<Id>{opp.Id}));
+                // edit on may 20, 2022 - disabling the 1 hour reminder email
+                // System.schedule(scheduleName,strSchedule, new Send1hourpriorreminderEmail(new List<Id>{opp.Id}));
             }
                              
         }

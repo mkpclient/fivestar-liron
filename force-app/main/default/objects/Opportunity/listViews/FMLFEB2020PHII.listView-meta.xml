@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FMLFEB2020PHII</fullName>
+    <columns>Target_Calls__c</columns>
+    <columns>Logged_Calls__c</columns>
+    <columns>Winner__c</columns>
+    <columns>Client_Type__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>phone__c</columns>
+    <columns>ACDF_Branch_Office__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Next_call_date__c</columns>
+    <columns>Last_Call_Date__c</columns>
+    <columns>Last_Call_Notes__c</columns>
+    <columns>Open_Call_Comments__c</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Pardot_Lead_Score__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notContain</operation>
+        <value>Dead,Purchase,Close</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>FML February 2020</value>
+    </filters>
+    <label>FML February 2020 Phase II</label>
+    <sharedTo>
+        <group>Sales_Team</group>
+    </sharedTo>
+</ListView>

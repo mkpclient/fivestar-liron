@@ -1,0 +1,34 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoPlainText" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin: 0in 0in 0.0001pt;"><font face="Arial, sans-serif" style="">Dear
+{!kugo2p__PaymentX__c.kugo2p__Contact__c},&nbsp;<o:p></o:p></font></p><p class="MsoPlainText" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin: 0in 0in 0.0001pt;"><font face="Arial, sans-serif">&nbsp;</font></p><p class="MsoPlainText" style="margin: 0in 0in 0.0001pt;"><font face="Arial, sans-serif" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">A
+credit card transaction for&nbsp;{!kugo2p__PaymentX__c.kugo2p__Amount__c} has been processed on
+</font><font face="Arial, sans-serif">{!kugo2p__PaymentX__c.kugo2p__Date__c}</font><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 12pt;">&nbsp;for your
+order&nbsp;{!kugo2p__PaymentX__c.kugo2p__SalesOrder__c}&nbsp;placed
+on&nbsp;{!kugo2p__PaymentX__c.Order_Release_Date__c}.</span></p><p class="MsoPlainText" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin: 0in 0in 0.0001pt;"><font face="Arial, sans-serif" style="">
+<br>
+</font><font face="Arial, sans-serif" style="">View
+your receipt here: (Click or Copy and Paste entire link into your browser to
+view)<br>
+<br>
+{!kugo2p__PaymentX__c.Receipt_Link__c}</font><br>
+<br>
+<span style="font-size: 12pt; font-family: Arial, sans-serif;">Feel free to
+contact us if you have any questions. Once again, we appreciate your business!<br>
+<br>
+Kind regards,<br>
+<br>
+Accounts Receivable</span><span style="font-size: 13.5pt; font-family: arial;"><o:p></o:p></span></p><p class="MsoPlainText" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; margin: 0in 0in 0.0001pt;"><u1:p></u1:p><span style="font-family: Arial, sans-serif;">Five
+Star Professional<o:p></o:p></span><u1:p></u1:p></p><p class="MsoPlainText" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+
+
+
+
+
+
+
+<span style="font-size: 11pt; font-family: Arial, sans-serif;">O: (888)608-7161 |
+Email:&nbsp;<a href="mailto:billing@fivestarprofessional.com">billing@fivestarprofessional.com</a></span></p>]]></td>
+</tr>
+</table>

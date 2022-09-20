@@ -4,14 +4,15 @@
     <booleanFilter>(1 AND 2) OR (1 AND 3 AND 4)</booleanFilter>
     <columns>NAME</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>Status__c</columns>
+    <columns>Next_Action__c</columns>
     <columns>Product_Name__c</columns>
     <columns>CREATED_DATE</columns>
     <columns>Market__c</columns>
-    <columns>Status__c</columns>
-    <columns>Next_Action__c</columns>
     <columns>Client_Contact_List__c</columns>
     <columns>Fulfillment_Owner__c</columns>
     <columns>LAST_UPDATE</columns>
+    <columns>Contact_List_Count__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>
@@ -34,4 +35,5 @@
         <value>cancelled</value>
     </filters>
     <label>(Public) Essential Living Mag - Digital</label>
+    <language>en_US</language>
 </ListView>

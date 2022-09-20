@@ -22,7 +22,7 @@ import voidPayment from "@salesforce/apex/Zealynx.voidPayment";
 const labelNameMap = {
   Amount: "amount",
   "Card Number": "cardNumber",
-  cvv: "cvv",
+  // cvv: "cvv",
   "First Name": "firstName",
   "Billing Street": "billingStreet",
   "Billing Postal Code": "billingPostalCode"
@@ -80,7 +80,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   enablePayments = true;
   userData = {};
   paymentMethods = [];
-  selectedPaymentMethod = { Contact__c: null, cardNumber: null };
+  selectedPaymentMethod = { Contact__c: null, cardNumber: null, isDefault: true };
   showNewPaymentMethod = true;
   showNewCardScreen = false;
   showAmountScreen = false;
@@ -150,7 +150,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     if (data) {
       if (
         data.fields.Status_Picklist__c.value == "Draft" ||
-        data.fields.Status_Picklist__c.value == "Submitted for Approval"
+        data.fields.Status_Picklist__c.value == "Submitted"
       ) {
         this.enablePayments = false;
         alert("Unable to make payments on unapproved sales orders.");
@@ -209,7 +209,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
             billingCity: d.MailingCity,
             billingCountry: d.MailingCountry,
             billingState: d.MailingState,
-            isDefault: false,
+            isDefault: true,
             Contact__c: d.Id,
             MX_Customer_Id__c: d.MX_Customer_Id__c
           };
@@ -268,9 +268,9 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   async queryExistingMethods() {
     let queryString = "SELECT " + paymentMethodFields.join(",");
     queryString +=
-      " FROM Payment_Method__c WHERE Contact__r.AccountId = '" +
+      " FROM Payment_Method__c WHERE Inactive__c = false AND (Contact__c = '" + this.salesOrder.ContactBilling__c + "' OR Contact__r.AccountId = '" +
       this.salesOrder.Account__c +
-      "'";
+      "')";
     try {
       const res = await doQuery({ queryString: queryString });
       // console.log(res);
@@ -283,7 +283,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   async getRelatedContacts() {
     let queryString = "SELECT " + contactFields.join(",");
     queryString +=
-      " FROM Contact WHERE AccountId = '" + this.salesOrder.Account__c + "'";
+      " FROM Contact WHERE Id = '" + this.salesOrder.ContactBilling__c + "' OR AccountId = '" + this.salesOrder.Account__c + "'";
     try {
       const res = await doQuery({ queryString: queryString });
       // console.log(res);
@@ -321,15 +321,17 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   async handleOnClick(event) {
     let label = event.target.label;
     // console.log(label);
-    if (label === "New Payment Method") {
+    if (label === "Add Credit Card to Vault") {
       this.showNewCardScreen = true;
       this.showNewPaymentMethod = false;
+      this.selectedPaymentMethod =  { ... this.selectedPaymentMethod, isDefault: true};
     } else if (label === "Cancel") {
       this.showNewCardScreen = false;
       this.showNewPaymentMethod = true;
     } else if (label === "Save Payment Method") {
       await this.savePaymentMethod();
     } else if (label === "Submit Transaction") {
+      this.isSubmittingTransaction = true;
       await this.savePayment();
     } else if (label === "Return to Order") {
       window.location.pathname = "/" + this.salesOrder.Id;
@@ -466,7 +468,6 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   // }
 
   async savePayment() {
-    this.isSubmittingTransaction = true;
     let newRecords = [];
     if (
       (Number(this.payment.amount) < 0.01 && !this.payment.isMultiple) ||
@@ -592,7 +593,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       entryClass: "WEB",
       cardAccountToken: this.selectedPaymentMethod.Merchant_Token__c,
       clientReference: this.salesOrder.Name,
-      invoice: this.salesOrder.Name
+      invoice: this.salesOrder.Name.length > 16 ? this.salesOrder.Name.replace('-', '') : this.salesOrder.Name
       // customerId: parseInt(this.accountContacts[this.selectedPaymentMethod.Contact__c]
       //     .MX_Customer_Id__c)
     };
@@ -617,9 +618,11 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       }
     );
 
+    // console.log(pmtData);
 
     if(caughtError) {
       await saveRecord({ record: savedRecord });
+      this.displayError();
       return;
     }
 
@@ -713,7 +716,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       expiryYear: "" + paymentMethodCopy.expiryYear,
       name: paymentMethodCopy.firstName + " " + paymentMethodCopy.lastName,
       avsStreet: "" + paymentMethodCopy.billingStreet,
-      avsZip: "" + paymentMethodCopy.billingPostalCode,
+      avsZip: paymentMethodCopy.billingPostalCode.length == 5 ? "" +  paymentMethodCopy.billingPostalCode : "0" + paymentMethodCopy.billingPostalCode,
       REPLACE_number: "" + paymentMethodCopy.cardNumber,
       alias:
         paymentMethodCopy.firstName +
@@ -721,7 +724,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
         paymentMethodCopy.lastName +
         " " +
         paymentMethodCopy.cardType,
-      cvv: "" + paymentMethodCopy.cvv
+      // cvv: "" + paymentMethodCopy.cvv
     };
     // console.log(CreditCardResource);
     try {
@@ -752,7 +755,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       address2: "",
       city: contactRecord.billingCity,
       state: contactRecord.billingState,
-      zip: contactRecord.billingPostalCode,
+      zip: contactRecord.billingPostalCode.length == 5 ? contactRecord.billingPostalCode : "0" + contactRecord.billingPostalCode,
       customerType: "Business"
     };
     // console.log(CustomerResource);
@@ -762,9 +765,16 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       if (!res.isSuccess) {
         if (res.errorMessage && res.errorCode) {
           console.error(res.errorCode + " : " + res.errorMessage);
+          
           return;
         }
       }
+
+      if(!res.customer.id) {
+        alert("Error: Customer cannot be created. Please make sure that all fields have been filled out correctly.");
+        return;
+      }
+
       const updatedContact = {
         sobjectType: "Contact",
         MX_Customer_Id__c: res.customer.id + "",
@@ -828,6 +838,15 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     const cardData = await this.handleZealynxSavePaymentMethod(
       newRecord.Last_4_Digits_of_Card__c
     );
+
+    if(this.paymentMethods.some(pm => pm.Merchant_Token__c == cardData.token)) {
+      this.toastVariant = "error";
+      this.toastTitle = "Error";
+      this.toastMessage = "This payment method already exists.";
+      this.unhideToast = true;
+      console.error(error);
+      return;
+  }
     // console.log("cardData", cardData);
     newRecord.ExternalId__c = "" + cardData.id;
     newRecord.Merchant_Token__c = "" + cardData.token;
@@ -866,8 +885,8 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
         if (row.Contact__r.MX_Customer_Id__c && row.ExternalId__c) {
           await deletePaymentMethod({
             creditCard: {
-              id: row.Contact__r.MX_Customer_Id__c,
-              subId: row.ExternalId__c
+              customerId: row.Contact__r.MX_Customer_Id__c,
+              id: row.ExternalId__c
             }
           });
         }
@@ -923,7 +942,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
 
   get yearOptions() {
     let options = [];
-    for (let i = 1; i < 6; i++) {
+    for (let i = 0; i < 11; i++) {
       let y = new Date().getFullYear() + i;
       options.push({ label: "" + y, value: "" + y });
     }
@@ -1019,5 +1038,9 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       { label: "WI", value: "WI" },
       { label: "WY", value: "WY" }
     ];
+  }
+
+  get noPaymentMethods() {
+    return this.paymentMethods.length === 0;
   }
 }

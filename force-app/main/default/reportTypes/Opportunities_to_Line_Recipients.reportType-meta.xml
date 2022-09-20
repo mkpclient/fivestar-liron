@@ -2014,6 +2014,46 @@
             <field>AM_WIW_SS_Follow_Up_Link__c</field>
             <table>Opportunity</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Special_Section_Client_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Do_Not_Reassign__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Referred_by__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Referred_By_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Market_Go_Live__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Never_Winner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Non_Winner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Winner_Fortune_Listing__c</field>
+            <table>Opportunity</table>
+        </columns>
         <masterLabel>Opportunities</masterLabel>
     </sections>
     <sections>
@@ -3084,16 +3124,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>WSJ_Listing__c</field>
-            <table>Opportunity.kugo2p__Sales_Orders__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fortune_Listing__c</field>
-            <table>Opportunity.kugo2p__Sales_Orders__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Alchemer_Web_Order_ID__c</field>
             <table>Opportunity.kugo2p__Sales_Orders__r</table>
         </columns>
@@ -3283,6 +3313,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Fulfillment_Owner__c</field>
+            <table>Opportunity.kugo2p__Sales_Orders__r.Order_Line_Recipients__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Full_ID__c</field>
             <table>Opportunity.kugo2p__Sales_Orders__r.Order_Line_Recipients__r</table>
         </columns>
         <masterLabel>Line Recipients</masterLabel>

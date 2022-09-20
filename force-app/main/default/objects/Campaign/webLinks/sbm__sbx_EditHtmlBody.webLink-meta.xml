@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EditHtmlBody</fullName>
+    <availability>online</availability>
+    <description>This takes the user to a page that allows them to edit the body for the HTML version of the email in this campaign.</description>
+    <displayType>button</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Edit HTML Body</masterLabel>
+    <openType>sidebar</openType>
+    <page>sbm__sbx_EmailBodyHTMLEditor</page>
+    <protected>false</protected>
+</WebLink>

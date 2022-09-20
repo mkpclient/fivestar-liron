@@ -7,7 +7,6 @@
     <columns>PrimaryRecipient__c</columns>
     <columns>Status__c</columns>
     <columns>NAME</columns>
-    <columns>CSR_Follow_Up_2_Date__c</columns>
     <columns>Next_Action_Date__c</columns>
     <columns>Last_Contact__c</columns>
     <columns>Phone__c</columns>
@@ -27,16 +26,6 @@
         <field>Status__c</field>
         <operation>notContain</operation>
         <value>Follow Up 2,Needed,Cancelled,Experience Complete,Request,New,Scheduled,LONG TERM</value>
-    </filters>
-    <filters>
-        <field>CSR_Follow_Up_2_Date__c</field>
-        <operation>greaterOrEqual</operation>
-        <value>8/1/2018</value>
-    </filters>
-    <filters>
-        <field>CSR_Follow_Up_2_Date__c</field>
-        <operation>lessOrEqual</operation>
-        <value>2/29/2020</value>
     </filters>
     <filters>
         <field>Client_Tier__c</field>

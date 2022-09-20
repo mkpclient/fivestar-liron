@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Research summary</name>
+    <style>freeForm</style>
+    <subject>About our research process</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Nice talking to you again. If you haven’t already visited our web site, it’s a great resource for all things Five Star Professional, including detailed information about our research process.
+
+Award candidates must be nominated by their firm or peers to be considered for the Five Star {!Opportunity.Email_Templates_Profession__c} award. Nominees are evaluated against 10 objective criteria including education and professional designations and a favorable regulatory and complaint history. The resulting list of Five Star {!Opportunity.Email_Templates_Profession__c}s represents an exclusive group of area {!Opportunity.Email_Templates_Profession__c}s who provide quality services to their clients.
+
+You can go to the Research section of our web site to learn more. Let me know if I can provide any more information.
+
+www.fivestarprofessional.com/awards/research.php
+
+{!User.Name}
+Account Manager
+
+Five Star Professional 
+2900 Lone Oak Parkway, Suite 120 
+Eagan, MN 55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

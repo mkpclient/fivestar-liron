@@ -1,0 +1,76 @@
+<messaging:emailTemplate subject="Essential Engine Payment Receipt" recipientType="Contact" relatedToType="Payment__c">
+  <messaging:plainTextEmailBody >
+    <apex:outputText rendered="{!relatedTo.Contact__r.Name != null}" value="">
+      Dear {!relatedTo.Contact__r.Name},
+      {!''}
+      {!''}
+    </apex:outputText>
+
+    <apex:outputText value="A {0} {1} for {2, Number, Currency} has been processed on {3,date,MM/dd/yy} for your order {4} placed on {5,date,MM/dd/yy}.">
+      <apex:param value="{!relatedTo.Payment_Type__c}" />
+      <apex:param value="{!relatedTo.Transaction_Type__c}" />
+      <apex:param value="{!relatedTo.Amount__c}" />
+      <apex:param value="{!relatedTo.Date__c}" />
+      <apex:param value="{!relatedTo.Sales_Order__r.Name}" />
+      <apex:param value="{!relatedTo.Order_Release_Date__c}" />
+    </apex:outputText>
+
+    <apex:outputText rendered="{!relatedTo.Contact__r.Name != null}" value="">
+
+      Attached is a copy of your receipt.
+      
+      Feel free to contact us if you have any questions. Once again, we appreciate your business!
+      {!''}
+      {!''}
+    </apex:outputText>
+    
+    <apex:outputText rendered="{!relatedTo.Contact__r.Name != null}" value="">
+      Kind regards,
+      Billing Department
+      Essential Engine
+      O: (888)308-6350 | Email: billing@essentialengine.com
+    </apex:outputText>
+     
+    
+  </messaging:plainTextEmailBody>
+    <messaging:htmlEmailBody >
+    <div style="background-color: #FFFFFF; padding: 10px;">
+    <div>
+      <center><img src="https://fivestarprofessional--c.na169.content.force.com/servlet/servlet.ImageServer?id=0156T00000FQVEd&oid=00Dd0000000gsfl&lastMod=1652888171000" alt="Essential Engine Logo" height="5%" /></center>
+    </div>
+    <div style="font-family: Helvetica, sans-serif;">
+      <p>
+        <apex:outputText value="Dear {0},">
+          <apex:param value="{!relatedTo.Contact__r.Name}" />
+        </apex:outputText>
+      </p>
+      <p>
+    <apex:outputText value="A {0} {1} for {2, Number, Currency} has been processed on {3,date,MM/dd/yy} for your order {4} placed on {5,date,MM/dd/yy}.">
+      <apex:param value="{!relatedTo.Payment_Type__c}" />
+      <apex:param value="{!relatedTo.Transaction_Type__c}" />
+      <apex:param value="{!relatedTo.Amount__c}" />
+      <apex:param value="{!relatedTo.Date__c}" />
+      <apex:param value="{!relatedTo.Sales_Order__r.Name}" />
+      <apex:param value="{!relatedTo.Order_Release_Date__c}" />
+    </apex:outputText>
+      </p>
+      <p>
+        <apex:outputText value="Attached is a copy of your receipt." />
+      </p>
+      <p>
+        <apex:outputText value="Feel free to contact us if you have any questions. Once again, we appreciate your business!">
+        </apex:outputText>
+      </p>
+      <apex:outputText value="Kind Regards, " />
+      <br />
+      <p>Billing Department
+        <br />Essential Engine
+        <br />O: (888)308-6350 | Email: billing@essentialengine.com
+      </p>
+    </div>
+  </div>
+  </messaging:htmlEmailBody>
+  <messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">
+    <c:EssentialEnginePaymentReceipt pmtId="{!relatedTo.Id}" soId="{!relatedTo.Sales_Order__c}" />
+  </messaging:attachment>
+</messaging:emailTemplate>

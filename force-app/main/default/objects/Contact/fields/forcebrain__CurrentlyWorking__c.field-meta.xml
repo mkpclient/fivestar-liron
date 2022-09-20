@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__CurrentlyWorking__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>This check box will automatically get checked upon creating a work shift that is not in the past. Upon unchecking this check box, the user will no longer show up on the Work Shift Calendar. Conversely, if a work shift goes into the past, then the “Currently Working” check box will become unchecked.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This checkbox will get auto-checked upon creating a work shift that is not in the past. Upon unchecking, the user will no longer show up on the Work Shift Calendar. If a work shift is in the past, then Currently Working will become unchecked.</inlineHelpText>
+    <label>Currently Working</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

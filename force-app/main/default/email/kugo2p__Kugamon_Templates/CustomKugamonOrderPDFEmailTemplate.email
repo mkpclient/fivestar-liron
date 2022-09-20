@@ -1,0 +1,30 @@
+<!------------------------------------------------------------->
+<!--   Kugamon Custom Order PDF Email Template by Kugamon    -->
+<!--   Copyright: Kugamon LLC                                -->
+<!--   http://www.kugamon.com                                -->
+<!--   NO SUPPORT PROVIDED                                   -->
+<!--   DO NOT COPY, STEAL, SELL THIS CODE                    -->
+<!------------------------------------------------------------->
+
+<messaging:emailTemplate subject="Five Star Professional Invoice: {!relatedTo.Name}" 
+recipientType="Contact" relatedToType="kugo2p__SalesOrder__c">
+
+<messaging:plainTextEmailBody >
+Dear  {!relatedTo.kugo2p__ContactBilling__r.Name},                
+
+Here is your invoice receipt for your records. Please note that the balance due amount does not include any future payments scheduled as part of a payment plan.
+
+Feel free to contact me if you have any questions. 
+
+Regards, 
+
+Accounts Receivable 
+{!$Organization.Name} 
+O: (888)608-7161 | Email: billing@fivestarprofessional.com
+</messaging:plainTextEmailBody>
+
+<messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">    
+    <c:CustomOrderPDF orderId="{!relatedTo.Id}" />                           
+</messaging:attachment>
+  
+</messaging:emailTemplate>

@@ -3,6 +3,8 @@ import { LightningElement, api, wire } from "lwc";
 import saveCustomer from "@salesforce/apex/Zealynx.saveCustomer";
 import savePaymentMethod from "@salesforce/apex/Zealynx.savePaymentMethod";
 import saveRecord from "@salesforce/apex/LWC.saveRecord";
+import doQuery from "@salesforce/apex/LWC.doQuery";
+
 
 const FIELDS = [
   "Contact.MX_Customer_Id__c",
@@ -43,6 +45,9 @@ export default class PaymentMethodForm extends LightningElement {
         localRecord[key] = value.value;
       }
       console.log(localRecord);
+      if(!localRecord["MailingCountry"]) {
+        localRecord["MailingCountry"] = "United States";
+      }
       this.localDefaultState = localRecord.MailingState;
       this.record = localRecord;
       this.showForm = true;
@@ -101,7 +106,7 @@ export default class PaymentMethodForm extends LightningElement {
       expiryYear: "" + record.expiryYear,
       name: record.Billing_First_Name__c + " " + record.Billing_Last_Name__c,
       avsStreet: "" + record.Billing_Street__c,
-      avsZip: "" + record.Billing_Postal_Code__c,
+      avsZip: "" + record.Billing_Postal_Code__c.length == 5 ? record.Billing_Postal_Code__c : "0" + record.Billing_Postal_Code__c,
       ...(this.isNew && { REPLACE_number: "" + record.cardNumber }),
       ...(this.isNew && {
         alias:
@@ -111,7 +116,7 @@ export default class PaymentMethodForm extends LightningElement {
           " " +
           record.Card_Type__c
       }),
-      ...(record.cvv && { cvv: "" + record.cvv })
+      // ...(record.cvv && { cvv: "" + record.cvv })
     };
     console.log(CreditCardResource);
 
@@ -121,6 +126,8 @@ export default class PaymentMethodForm extends LightningElement {
 
       return res.creditCard;
     } catch (err) {
+      alert('An error has occurred. Please verify that all fields have been entered correctly.');
+      this.disableButton = false;
       console.error(err);
       throw new Error(err);
     }
@@ -138,7 +145,7 @@ export default class PaymentMethodForm extends LightningElement {
       address2: "",
       city: contactRecord.MailingCity,
       state: contactRecord.MailingState,
-      zip: contactRecord.MailingPostalCode,
+      zip: contactRecord.MailingPostalCode.length == 5 ? contactRecord.MailingPostalCode : "0" + contactRecord.MailingPostalCode,
       customerType: "Business"
     };
     console.log(CustomerResource);
@@ -149,6 +156,11 @@ export default class PaymentMethodForm extends LightningElement {
         console.error(res.errorCode + " : " + res.errorMessage);
         return;
       }
+    }
+
+    if(!res.customer.id) {
+      alert("Unable to save customer on merchant's portal. Please make sure that the formats (i.e. Zip Code) are correct. ");
+      return;
     }
 
     const updatedContact = {
@@ -183,7 +195,7 @@ export default class PaymentMethodForm extends LightningElement {
       expiryMonth: "",
       expiryYear: "",
       cardNumber: "",
-      cvv: "",
+      // cvv: "",
       billingState: ""
     };
 
@@ -226,12 +238,36 @@ export default class PaymentMethodForm extends LightningElement {
         ...fields,
         ...customRecords
       });
+      
+      
+      let doPrompt = false;
+      
+
       if (this.isNew) {
-        fields.ExternalId__c = "" + cardData.id;
-        fields.Merchant_Token__c = "" + cardData.token;
-        fields.Billing_State__c = customRecords.billingState;
-        fields.Last_4_Digits_of_Card__c = customRecords.cardNumber.slice(-4);
+        
+        if(!cardData.token || !cardData.id) {
+          alert("Unable to retrieve data from merchant's database. Please try again.");
+          this.disableButton = false;
+          return;
+        }
+          
+        const queryString = `SELECT Id FROM Payment_Method__c WHERE Merchant_Token__c= '${cardData.token}'`;
+        const queryResult = await doQuery({ queryString: queryString });
+        
+        if(queryResult.length > 0) {
+          this.paymentMethodId = queryResult[0].Id;
+          fields.Id = queryResult[0].Id;
+          doPrompt = true;
+        }
+
+        if(!doPrompt) {
+          fields.ExternalId__c = "" + cardData.id;
+          fields.Merchant_Token__c = "" + cardData.token;
+          fields.Billing_State__c = customRecords.billingState;
+          fields.Last_4_Digits_of_Card__c = customRecords.cardNumber.slice(-4);         
+        }
       }
+
       const expDate = new Date(
         customRecords.expiryMonth +
           "-" +
@@ -250,9 +286,27 @@ export default class PaymentMethodForm extends LightningElement {
         fields.Billing_First_Name__c + " " + fields.Billing_Last_Name__c;
       console.log(fields);
       console.log('on saving to salesforce db');
-      this.template.querySelector("lightning-record-edit-form").submit(fields);
+      
+
+      if(!doPrompt) { 
+        this.template.querySelector("lightning-record-edit-form").submit(fields);
+      } else if (doPrompt && confirm('This payment method already exists. Do you want to update it instead?'))  {
+        fields.Expiration_Date__c = new Date(fields.Expiration_Date__c);
+        await saveRecord({ record: {... fields} });
+        this.handleSuccess(null);
+      } else {
+        alert('You will now be redirected back to the contact record');
+        const url = "/" +  this.recordId;
+        location.replace(url);    
+      }
     } catch (err) {
-      console.error(err);
+      let errorMessage = err;
+      if(err.body && err.body.message) {
+        errorMessage = err.body.message;
+      }
+      alert('An error has occured: ' + errorMessage);
+      console.error(errorMessage);
+      this.disableButton = false;
     }
   }
 
@@ -292,7 +346,7 @@ export default class PaymentMethodForm extends LightningElement {
 
   get yearOptions() {
     let options = [];
-    for (let i = 1; i < 6; i++) {
+    for (let i = 0; i <= 10; i++) {
       let y = new Date().getFullYear() + i;
       options.push({ label: "" + y, value: "" + y });
     }

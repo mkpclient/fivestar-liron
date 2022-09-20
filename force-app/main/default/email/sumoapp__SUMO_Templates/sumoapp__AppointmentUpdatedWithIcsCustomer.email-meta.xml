@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>sumoapp__AppointmentUpdated</letterhead>
+    <name>Appointment Updated With ICS (Customer)</name>
+    <style>freeForm</style>
+    <subject>{!Organization.Name} - New Appointment Details</subject>
+    <textOnly>Hi &lt;%attendeeName%&gt;,
+
+You have been scheduled for the following appointment.
+
+Appointment: {!Event.Subject}
+Location: {!CASE(Event.sumoapp__LocationType__c, &quot;VID_CONFERENCE&quot;, &quot;Video Conference&quot;, &quot;PHONE&quot;, &quot;Phone&quot;, &quot;IN_PERSON&quot;, Event.Location, &quot;IN_HOUSE&quot;, Event.Location, &quot;OUR_LOCATION&quot;, Event.Location, &quot;PHONE_INBOUND&quot;, &quot;Phone - You will call us&quot;, &quot;&quot;)}
+Date/Time: {!Event.sumoapp__StartDateTimeTimezone__c}
+Duration: {!Event.DurationInMinutes} min
+
+&lt;%description%&gt;
+
+Thank you,
+{!Event.sumoapp__OrganizerFullName__c}
+{!Event.sumoapp__OrganizerTitle__c}
+{!Organization.Name}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

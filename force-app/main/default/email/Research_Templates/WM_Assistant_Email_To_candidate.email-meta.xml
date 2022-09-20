@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>WM Assistant Email (To Candidate Only-Not the Assistant)</name>
+    <style>none</style>
+    <subject>You are a candidate for the Five Star Wealth Manager Award in {!Opportunity.Email_Templates_Magazine__c}</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

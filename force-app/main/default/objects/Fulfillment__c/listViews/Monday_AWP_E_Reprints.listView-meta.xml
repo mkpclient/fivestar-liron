@@ -4,10 +4,10 @@
     <columns>NAME</columns>
     <columns>Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
+    <columns>E_Reprint_PDF_location__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
-    <columns>E_Reprint_PDF_location__c</columns>
     <columns>Display_Name__c</columns>
     <columns>Publication_month__c</columns>
     <columns>Product_Templates_Finalized__c</columns>

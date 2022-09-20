@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Advance_Research_Call__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used to trigger research call advance workflow</description>
+    <externalId>false</externalId>
+    <label>Advance Research Call</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

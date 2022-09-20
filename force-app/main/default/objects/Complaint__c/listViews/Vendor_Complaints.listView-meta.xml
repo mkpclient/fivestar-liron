@@ -15,8 +15,9 @@
     <filterScope>Everything</filterScope>
     <filters>
         <field>Complaint_Department__c</field>
-        <operation>equals</operation>
-        <value>Fulfillment vendor – Mindy</value>
+        <operation>contains</operation>
+        <value>Vendor</value>
     </filters>
     <label>Vendor Complaints</label>
+    <language>en_US</language>
 </ListView>

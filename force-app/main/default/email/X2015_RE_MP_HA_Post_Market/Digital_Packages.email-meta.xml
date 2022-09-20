@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Digital packaging images (no discount)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Digital Packages</name>
+    <style>freeForm</style>
+    <subject>Increase your online presence!</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+It was nice connecting with you today!
+
+
+I wanted to provide you with some more information on our digital announcement packages which are designed to enhance your online presence and get you noticed. We offer three different packages to align with your marketing goals and your budget.
+
+
+Each package includes the Five Star Professional Emblem and Press Release Service.
+
+
+The personalized Emblem allows you to visually promote your award and achievements on and off line. (visual data is processed 60,000 times faster by the brain than text!) It can be placed on your website, posted to your social sites, incorporated in your e-mail signature and printed on brochures, stationary and direct mail pieces.
+
+
+The Press Release Service consists of an official news release customized with your photo, quote and up to six attachments. (73% of reporters think press releases should contain images!) It is distributed via PRWeb to all major search engines, hundreds of premium news sites and thousands of journalists and bloggers, and specially built for the web with search engine optimization and an easy sharing toolbar.
+
+
+Depending on the package you choose, you will also receive an Online Profile or Online Video Profile.
+
+
+The Online Profile is your personalized award page on fivestarprofessional.com with premium placement in a searchable listing of award winners. It provides a digital hub to showcase your business and achievements and connect clients and prospects to you through your website, e-mail and social accounts.
+
+
+The Online Video Profile includes all of the benefits of the Online Profile with a personalized video that dynamically promotes your business and why you were chosen as an award recipient. The video can also be embedded onto your website, social media accounts and more. (videos on landing pages increase conversations by 86%!)
+
+
+If you have any questions or would like to get started, please do not hesitate to contact me.
+
+
+
+Thank you.
+
+
+
+
+
+Thanks!
+
+
+{!User.Name}
+
+Account Manager</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

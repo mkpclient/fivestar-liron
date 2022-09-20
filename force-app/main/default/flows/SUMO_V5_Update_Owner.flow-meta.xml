@@ -17,10 +17,34 @@
             <name>myRule_1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_1</leftValueReference>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.forcebrain__EventType__r.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>Five Star Certification Appointment</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -29,12 +53,8 @@
             <label>SUMO v5 Update Owner</label>
         </rules>
     </decisions>
-    <formulas>
-        <name>formula_myRule_1</name>
-        <dataType>Boolean</dataType>
-        <expression>true</expression>
-    </formulas>
-    <interviewLabel>SUMO_V5_Update_Owner-1_InterviewLabel</interviewLabel>
+    <description>Version 2 - set criteria for appointment type</description>
+    <interviewLabel>SUMO_V5_Update_Owner-2_InterviewLabel</interviewLabel>
     <label>SUMO V5 Update Owner</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -149,7 +169,7 @@
         <object>forcebrain__Event__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

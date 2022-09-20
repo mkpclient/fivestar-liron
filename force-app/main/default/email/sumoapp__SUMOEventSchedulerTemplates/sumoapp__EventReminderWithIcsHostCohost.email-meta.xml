@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sumo Event Reminder</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>sumoapp__EventReminder</letterhead>
+    <name>Event Reminder With ICS (Host/Co-host)</name>
+    <style>freeForm</style>
+    <subject>IMPORTANT - Reminder for {!Event.Subject}</subject>
+    <textOnly>Hi &lt;%attendeeName%&gt;,
+
+This is a reminder that you are scheduled to host the following event.
+
+Event Name: {!Event.Subject}
+Date/Time: &lt;%datetime%&gt;
+Duration: {!Event.DurationInMinutes} min
+&lt;%locationFields%&gt;
+Event Capacity: &lt;%capacity%&gt;
+&lt;%description%&gt;
+&lt;%locationDetails%&gt;
+&lt;%addToCalendarLinks%&gt;
+
+Thank you,
+{!Organization.Name}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

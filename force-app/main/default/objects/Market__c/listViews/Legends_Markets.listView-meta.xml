@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legends_Markets</fullName>
+    <columns>NAME</columns>
+    <columns>Web_Listings_Go_Live__c</columns>
+    <columns>Launch_Market__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Web_Listings_Go_Live__c</field>
+        <operation>lessOrEqual</operation>
+        <value>NEXT_MONTH</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>Legends 2022,Forbes 2022</value>
+    </filters>
+    <label>Legends Markets - Upcoming</label>
+    <language>en_US</language>
+</ListView>

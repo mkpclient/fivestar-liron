@@ -33,6 +33,7 @@
     <sharedTo>
         <group>Ad_Prod</group>
         <group>Allen_Wardell</group>
+        <group>Essential_Engine</group>
         <group>Jonathan_Wesser</group>
         <group>Mindy_Stansbarger</group>
     </sharedTo>

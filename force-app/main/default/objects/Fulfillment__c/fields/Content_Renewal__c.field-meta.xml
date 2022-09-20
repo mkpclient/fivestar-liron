@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Content_Renewal__c</fullName>
+    <description>Date we should ask for renewed content</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Content submission + 11 months. Date we should ask for renewed content for E-Newsletter</inlineHelpText>
+    <label>Content Renewal</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

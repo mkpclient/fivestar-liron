@@ -8,16 +8,15 @@ public without sharing class SalesOrderProductLineHelper {
 
   public static void beforeInsert(List<SalesOrderProductLine__c> newObjs) {
     for (SalesOrderProductLine__c sopl : newObjs) {
-      if (String.isEmpty(sopl.Legacy_Id__c)) {
 
-        if (sopl.Kit_Bundle_Product__c == true) {
-          sopl.KitBundle__c = true;
-        }
-
-        if (sopl.DateRequired__c == null) {
-          sopl.DateRequired__c = System.today();
-        }
+      if (sopl.Kit_Bundle_Product__c == true) {
+        sopl.KitBundle__c = true;
       }
+
+      if (sopl.DateRequired__c == null) {
+        sopl.DateRequired__c = System.today();
+      }
+      
     }
 
     System.debug('BEFORE INSERT');
@@ -30,40 +29,50 @@ public without sharing class SalesOrderProductLineHelper {
     List<SalesOrderProductLine__c> taxableLines = new List<SalesOrderProductLine__c>();
     Set<Id> sampleOrders = new Set<Id>();
     Set<Id> desampleOrders = new Set<Id>();
+    Set<Id> noFeeOrders = new Set<Id>();
+    Set<Id> removeNoFeeOrders = new Set<Id>();
+
 
     for (SalesOrderProductLine__c sopl : newLines.values()) {
-      if (String.isEmpty(sopl.Legacy_Id__c)) {
 
-        if (
-          String.isNotEmpty(sopl.ShipToStateProvince__c) &&
-          Sales_Tax__mdt.getInstance(sopl.ShipToStateProvince__c) != null
-        ) {
-          SalesOrderProductLine__c taxSopl = new SalesOrderProductLine__c();
-          taxSopl.Id = sopl.Id;
-          taxSopl.State_Tax_Rate__c = Sales_Tax__mdt.getInstance(
-              sopl.ShipToStateProvince__c
-            )
-            .Rate__c;
-          taxableLines.add(taxSopl);
-        }
-
-        if(sopl.Sample_Product__c == true) {
-          sampleOrders.add(sopl.SalesOrder__c);
-        }
-
-        if(sopl.Sample_Parent_Order__c == true && sopl.Sample_Product__c != true) {
-          desampleOrders.add(sopl.SalesOrder__c);
-        }
-
-        if (sopl.Kit_Bundle_Product__c == true) {
-          parentLines.put(sopl.Id, sopl);
-        } else if (sopl.Kit_Bundle_Member__c != true) {
-          nonBundles.add(sopl);
-        }
-        if (sopl.DiscountAmount__c != null && sopl.DiscountAmount__c > 0) {
-          orderIds.add(sopl.SalesOrder__c);
-        }
+      if (
+        String.isNotEmpty(sopl.ShipToStateProvince__c) &&
+        Sales_Tax__mdt.getInstance(sopl.ShipToStateProvince__c) != null
+      ) {
+        SalesOrderProductLine__c taxSopl = new SalesOrderProductLine__c();
+        taxSopl.Id = sopl.Id;
+        taxSopl.State_Tax_Rate__c = Sales_Tax__mdt.getInstance(
+            sopl.ShipToStateProvince__c
+          )
+          .Rate__c;
+        taxableLines.add(taxSopl);
       }
+
+      if(sopl.No_Fee_Plan__c == true && sopl.No_Fee_Order__c == false && sopl.KitBundleLine__c == null) {
+        noFeeOrders.add(sopl.SalesOrder__c);
+      }
+
+      if(sopl.No_Fee_Plan__c == false && sopl.No_Fee_Order__c == true && sopl.KitBundleLine__c == null) {
+        removeNoFeeOrders.add(sopl.SalesOrder__c);
+      }
+
+      if(sopl.Sample_Product__c == true) {
+        sampleOrders.add(sopl.SalesOrder__c);
+      }
+
+      if(sopl.Sample_Parent_Order__c == true && sopl.Sample_Product__c != true && sopl.ListPrice__c != 0) {
+        desampleOrders.add(sopl.SalesOrder__c);
+      }
+
+      if (sopl.Kit_Bundle_Product__c == true) {
+        parentLines.put(sopl.Id, sopl);
+      } else if (sopl.Kit_Bundle_Member__c != true) {
+        nonBundles.add(sopl);
+      }
+      if (sopl.DiscountAmount__c != null && sopl.DiscountAmount__c > 0) {
+        orderIds.add(sopl.SalesOrder__c);
+      }
+      
     }
 
     if (parentLines.size() > 0) {
@@ -84,6 +93,14 @@ public without sharing class SalesOrderProductLineHelper {
 
     if(desampleOrders.size() > 0) {
       unsetSampleOrders(desampleOrders);
+    }
+
+    if(noFeeOrders.size() > 0) {
+      updateNoFeeOrders(noFeeOrders, true, new Set<Id>());
+    }
+
+    if(removeNoFeeOrders.size() > 0) {
+      updateNoFeeOrders(removeNoFeeOrders, false, new Set<Id>());
     }
   }
 
@@ -109,10 +126,10 @@ public without sharing class SalesOrderProductLineHelper {
     List<SalesOrderProductLine__c> newList
   ) {
     List<SalesOrderProductLine__c> taxUpdated = new List<SalesOrderProductLine__c>();
+    Map<Id,SalesOrderProductLine__c> updChildren = new Map<Id,SalesOrderProductLine__c>();
 
     for (Integer i = 0; i < newList.size(); i++) {
       if (
-        String.isEmpty(newList[i].Legacy_Id__c) &&
         String.isNotEmpty(newList[i].ShipToStateProvince__c) &&
         Sales_Tax__mdt.getInstance(newList[i].ShipToStateProvince__c) != null &&
         (newList[i].ShipToStateProvince__c !=
@@ -128,10 +145,19 @@ public without sharing class SalesOrderProductLineHelper {
           .Rate__c;
         taxUpdated.add(taxSopl);
       }
+
+      if((newList[i].Quantity__c != oldList[i].Quantity__c || newList[i].DateRequired__c != oldList[i].DateRequired__c) && newList[i].Kit_Bundle_Product__c == true) {
+        updChildren.put(newList[i].Id, newList[i]);
+      }
+
     }
 
     if (taxUpdated.size() > 0) {
       update taxUpdated;
+    }
+
+    if (updChildren.size() > 0) {
+      updateChildren(updChildren);
     }
   }
 
@@ -141,25 +167,37 @@ public without sharing class SalesOrderProductLineHelper {
 
     Set<Id> forFulfillments = new Set<Id>();
     Map<Id, Id> sampleMap = new Map<Id, Id>();
-
+    Map<Id,Id> forNoFee = new Map<Id,Id>();
     for (Id id : oldMap.keySet()) {
-      if (String.isEmpty(oldMap.get(id).Legacy_Id__c)) {
-        forFulfillments.add(id);
 
-        if (oldMap.get(id).Kit_Bundle_Product__c == true) {
-          kitBundles.add(id);
-        }
+      forFulfillments.add(id);
 
-        if (oldMap.get(id).Recipient_Count__c > 0) {
-          withRecipients.add(id);
-        }
-
-        if(oldMap.get(id).Sample_Product__c == true && oldMap.get(id).Sample_Parent_Order__c == true) {
-          sampleMap.put(id, oldMap.get(id).SalesOrder__c);
-        }
+      if(oldMap.get(id).Order_Status__c == 'Released' || oldMap.get(id).Order_Status__c == 'Approved') {
+        oldMap.get(id).addError('You are not allowed to delete this record because it has already been approved.');
       }
-    }
 
+      if (oldMap.get(id).Kit_Bundle_Product__c == true) {
+        kitBundles.add(id);
+      }
+
+      if (oldMap.get(id).Recipient_Count__c > 0) {
+        withRecipients.add(id);
+      }
+
+      if(oldMap.get(id).Sample_Product__c == true && oldMap.get(id).Sample_Parent_Order__c == true) {
+        sampleMap.put(id, oldMap.get(id).SalesOrder__c);
+      }
+
+      if(oldMap.get(id).No_Fee_Plan__c == false && oldMap.get(id).KitBundleLine__c == null) {
+        forNoFee.put(id, oldMap.get(id).SalesOrder__c);
+      }
+      
+    }
+    if(forNoFee.size() > 0) {
+      Set<Id> noFeeOrders = new Set<Id>();
+      noFeeOrders.addAll(forNoFee.values());
+      updateNoFeeOrders(noFeeOrders, true, forNoFee.keySet());
+    }
     if (kitBundles.size() > 0) {
       deleteChildren(kitBundles);
     }
@@ -172,8 +210,33 @@ public without sharing class SalesOrderProductLineHelper {
     }
 
     if (forFulfillments.size() > 0) {
-      // deleteFulfillments(forFulfillments);
+      deleteFulfillments(forFulfillments);
     }
+  }
+  
+  public static void updateNoFeeOrders(Set<Id> orderIds, Boolean isNoFee, Set<Id> soplIds) {
+    List<SalesOrder__c> orders = new List<SalesOrder__c>();
+    Map<Id,SalesOrder__c> orderMap = new Map<Id,SalesOrder__c>();
+    if(isNoFee) {
+      orderMap = new Map<Id,SalesOrder__c>([
+       SELECT Id,
+       (SELECT Id FROM Sales_Order_Product_Lines__r WHERE No_Fee_Plan__c = false AND KitBundleLine__c = null AND Id NOT IN :soplIds)
+       FROM SalesOrder__c
+       WHERE Id IN :orderIds
+      ]);
+    }
+
+    for(Id id : orderIds) {
+      if(isNoFee == true && orderMap.containsKey(id) && orderMap.get(id).Sales_Order_Product_Lines__r != null && orderMap.get(id).Sales_Order_Product_Lines__r.size() > 0) {
+        continue;
+      }
+      orders.add(new SalesOrder__c(
+        Id = id,
+        No_Fee_Plan__c = isNoFee
+      ));
+    }
+
+    update orders;
   }
 
   public static void deleteChildren(Set<Id> kitBundles) {
@@ -191,6 +254,22 @@ public without sharing class SalesOrderProductLineHelper {
       System.debug('ON DELETE CHILDREN OF SALES ORDER PROD LINES ERROR ::: ');
       System.debug(err.getMessage());
     }
+  }
+
+  public static void updateChildren(Map<Id, SalesOrderProductLine__c> soplMap) {
+    List<SalesOrderProductLine__c> recs = [
+      SELECT Id, Quantity__c, KitBundleLine__c, DateRequired__c
+      FROM SalesOrderProductLine__c 
+      WHERE KitBundleLine__c IN :soplMap.keySet()
+    ];
+
+    for(SalesOrderProductLine__c r : recs) {
+      r.Quantity__c = soplMap.get(r.KitBundleLine__c).Quantity__c;
+      r.DateRequired__c = soplMap.get(r.KitBundleLine__c).DateRequired__c;
+    }
+
+    update recs;
+    
   }
 
   public static void deleteRecipients(Set<Id> withRecipients) {
@@ -384,15 +463,15 @@ public without sharing class SalesOrderProductLineHelper {
     }
   }
 
-  // public static void deleteFulfillments(Set<Id> soplIds) {
-  //   List<Fulfillment__c> fulfillments = [
-  //     SELECT Id
-  //     FROM Fulfillment__c
-  //     WHERE Boom_Order_Product_Line__c IN :soplIds
-  //   ];
+  public static void deleteFulfillments(Set<Id> soplIds) {
+    List<Fulfillment__c> fulfillments = [
+      SELECT Id
+      FROM Fulfillment__c
+      WHERE Boom_Order_Product_Line__c IN :soplIds
+    ];
 
-  //   if (fulfillments.size() > 0) {
-  //     delete fulfillments;
-  //   }
-  // }
+    if (fulfillments.size() > 0) {
+      delete fulfillments;
+    }
+  }
 }

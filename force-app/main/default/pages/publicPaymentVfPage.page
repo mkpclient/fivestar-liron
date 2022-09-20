@@ -7,7 +7,7 @@
         $Lightning.use("c:publicPaymentApp", function() {
             $Lightning.createComponent(
                 "c:publicPaymentTerminal",
-                {orderId: '{!$CurrentPage.parameters.id}'},
+                {orderId: '{!$CurrentPage.parameters.id}', isEssential: '{!$CurrentPage.parameters.isEssential}'},
                 "lwcContainer",
                 function(cmp) {
                     console.log('LWC Component Created. {!$User.UserName}');

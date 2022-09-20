@@ -52,7 +52,7 @@ export default class ManageLinesComponent extends LightningElement {
       getFunction: doQuery,
       objectType: "SalesOrder__c",
       fields:
-        "Name, Account__c, Id, ContactBilling__c, Price_Book__c, Opportunity__r.Contact__c, DiscountPercent__c, Status_Picklist__c, Market__r.Publication_Year__c, Market__c",
+        "Name, Account__c, Account__r.Name, Id, ContactBilling__c, Price_Book__c, Opportunity__r.Contact__c, DiscountPercent__c, Status_Picklist__c, Market__r.Publication_Year__c, Market__c",
       hasConditions: true,
       conditions: `WHERE Id='${this.recordId}'`
     });
@@ -72,7 +72,7 @@ export default class ManageLinesComponent extends LightningElement {
       if (
         salesOrder &&
         salesOrder[0].Status_Picklist__c &&
-        (salesOrder[0].Status_Picklist__c != "Draft" && salesOrder[0].Status_Picklist__c != "Unreleased")
+        (salesOrder[0].Status_Picklist__c != "Draft" && salesOrder[0].Status_Picklist__c != "Unreleased" && salesOrder[0].Status_Picklist__c != "Pending Renewal")
       ) {
         this.isEditable = false;
         this.headerTitle =

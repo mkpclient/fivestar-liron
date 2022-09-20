@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Updated HTML version of the invoice template</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>FSP Invoice HTML</name>
+    <style>freeForm</style>
+    <subject>Five Star Professional Invoice</subject>
+    <textOnly>Hello {!kugo2p__SalesOrder__c.kugo2p__ContactBilling__c},
+
+
+Great news! We have processed your order on {!kugo2p__SalesOrder__c.Release_Date__c}.
+
+You are all set to use your marketing tools in pursuit of your business objectives.
+
+To view your invoice or to download a PDF copy for your records, please find the attached document {!kugo2p__SalesOrder__c.Name}.
+
+We appreciate your business and are fired up about our partnership!
+
+Kind regards,
+
+Five Star Professional
+888-438-5782 Option 2 | Email: billing@fivestarprofessional.com
+2117 Cliff Drive
+Eagan, MN 55122</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

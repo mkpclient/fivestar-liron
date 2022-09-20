@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Overdue activity reminder</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Activity Overdue</name>
+    <style>none</style>
+    <subject>{!Fulfillment__c.Name} is {!Fulfillment__c.Activity_Days_Overdue__c} days Overdue!</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

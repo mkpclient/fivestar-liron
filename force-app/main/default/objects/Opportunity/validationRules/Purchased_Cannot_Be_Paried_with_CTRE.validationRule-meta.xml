@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Purchased_Cannot_Be_Paried_with_CTRE</fullName>
+    <active>false</active>
+    <description>Purchased cannot be paired with continue to receive emails</description>
+    <errorConditionFormula>(ISPICKVAL( StageName , &quot;Purchased&quot;))&amp;&amp;(ISPICKVAL( Stage_Comment__c , &quot;Continue to Receive Emails&quot;))</errorConditionFormula>
+    <errorMessage>Cannot Save Opportunity: Stage Comment &quot;Continue to Receive Emails&quot; Cannot be Paired with Stage &quot;Purchased&quot;</errorMessage>
+</ValidationRule>

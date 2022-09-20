@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Approved_Send_to_Print</fullName>
-    <booleanFilter>((1 AND 2 AND 4 AND 6) OR (2 and 3) OR (1 and 2 and 5))</booleanFilter>
+    <booleanFilter>((1 AND 2 AND 4 AND 6) OR (2 and 3) OR (1 and 2 and 5) OR (8 AND 9)) AND 7</booleanFilter>
     <columns>NAME</columns>
     <columns>Stage_Change_Date__c</columns>
     <columns>Market__c</columns>
@@ -9,10 +9,10 @@
     <columns>Product_Name__c</columns>
     <columns>Related_Core_Market__c</columns>
     <columns>Proof_Location__c</columns>
+    <columns>Actual_Upload_Date__c</columns>
     <columns>Date_Sent_to_Vendor__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
-    <columns>Ad_Prod_Alternate_Notes__c</columns>
     <columns>Quantity__c</columns>
     <columns>Postcard_Delivery_Month__c</columns>
     <columns>Ship_Date__c</columns>
@@ -48,7 +48,23 @@
         <operation>notContain</operation>
         <value>Award Winner Profile</value>
     </filters>
+    <filters>
+        <field>Stage_Change_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>THIS_WEEK</value>
+    </filters>
+    <filters>
+        <field>Base_Product__c</field>
+        <operation>equals</operation>
+        <value>coverband</value>
+    </filters>
+    <filters>
+        <field>Actual_Upload_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
     <label>__0. Approved - Send to Print</label>
+    <language>en_US</language>
     <sharedTo>
         <group>Fulfillment_Team</group>
         <group>Jonathan_Wesser</group>

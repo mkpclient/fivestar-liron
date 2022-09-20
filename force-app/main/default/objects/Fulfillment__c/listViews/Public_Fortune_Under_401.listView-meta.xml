@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Public_Fortune_Under_401</fullName>
-    <booleanFilter>1 AND 2</booleanFilter>
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
     <columns>NAME</columns>
     <columns>Status__c</columns>
     <columns>Fulfillment_Owner__c</columns>
@@ -23,7 +23,13 @@
     <filters>
         <field>Market__c</field>
         <operation>contains</operation>
-        <value>Legends</value>
+        <value>Forbes Five Star Legends 2022</value>
     </filters>
-    <label>(Public) Forbes Legends 2021</label>
+    <filters>
+        <field>Market__c</field>
+        <operation>notContain</operation>
+        <value>Seattle,Chicago</value>
+    </filters>
+    <label>(Public) Forbes Legends 2022</label>
+    <language>en_US</language>
 </ListView>

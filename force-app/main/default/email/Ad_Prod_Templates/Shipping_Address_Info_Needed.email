@@ -1,0 +1,7 @@
+Hello {!kugo2p__SalesOrder__c.CreatedBy},
+
+Graphics has requested that the shipping info on order {!kugo2p__SalesOrder__c.Name} be updated, please reach out to {!kugo2p__SalesOrder__c.kugo2p__ContactBilling__c} for updated info.
+
+Link: https://na14.salesforce.com/{!kugo2p__SalesOrder__c.Id}
+Thank you!
+- Graphics

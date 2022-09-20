@@ -4,7 +4,6 @@
     <columns>NAME</columns>
     <columns>Market__c</columns>
     <columns>PrimaryRecipient__c</columns>
-    <columns>ACDF_Company__c</columns>
     <columns>Product_Name__c</columns>
     <columns>Status__c</columns>
     <columns>Next_Action__c</columns>
@@ -16,6 +15,7 @@
     <columns>Email_Announcement_Service__c</columns>
     <columns>Auto_Post__c</columns>
     <columns>Number_Testimonial_Posts__c</columns>
+    <columns>Profession__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Base_Product__c</field>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>$95 PM Package Social Media collect</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>10: $95 PM Package Social Media collect</name>
+    <style>freeForm</style>
+    <subject>We need you to submit information for you Five Star social media post!</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+We need some information from you to create your Five Star social media post.
+
+Please login to your Five Star account at www.fivestarprofessional.com/login. Here is your login information:
+
+                       Username: {!Contact.Web_Username__c}
+
+                       Passcode: {!Contact.Login_Code__c}
+
+Once you are logged in to your account, click on the red &quot;View Products&quot; button for the 2018 award year, and then click on the &quot;Get Started&quot; button and follow the prompts in the form to submit your information to us so we can create your post for you. 
+
+If you have any questions, please don&apos;t hesitate to contact me directly.
+
+Thank you,
+
+{!Contact.CSR_Full_Name__c}
+Client Success Representative
+Five Star Professional
+{!Contact.CSR_Phone__c}
+{!Contact.CSR_Email__c}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

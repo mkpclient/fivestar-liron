@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>LVM_2_WM.FS</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>LVM 2</name>
+    <style>none</style>
+    <subject>{!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} - Candidate Information</subject>
+    <textOnly>Hello {!Opportunity.Email_Templates_Informalname__c},
+
+Regarding the recent message that I left at your office, I wanted to quickly follow up to ensure that you have received the recent information letting you know that you have been identified as a candidate for the {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} award. An exclusive group of {!Opportunity.Profession_Type__c} will receive the {!Opportunity.Email_Templates_Publication_Year__c} award. Being selected as an award winner allows you to be featured with a complimentary listing of your name and company name on the Five Star Professional website, www.fivestarprofessional.com and in the published award announcement section of the upcoming {!Opportunity.Publication_Month__c} issue of {!Opportunity.Magazine__c}.
+
+As a candidate, we need you to provide additional information in order to verify that you meet the eligibility and evaluation criteria to move you forward in the research process.
+
+To complete your information, please go to your secure online link below and complete the short candidate evaluation form. This will only takes a few minutes  to complete and if you have any questions feel free to contact me.
+
+
+Candidate Evaluation Form - Click Here to Complete.
+The deadline for submission is end of day {!Opportunity.CloseDate}
+
+
+Evaluation Process: Candidates will be evaluated on 10 criteria aligned with providing quality service and professional excellence. Only those candidates who differentiate themselves based on the criteria will be named a {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c}. For more information about the evaluation and eligibility criteria, please review -  Five Star Professional - Research Overview .
+
+Candidates are scheduled to be notified to set up their certification appointment 6-8 weeks after the deadline date posted above.
+
+For questions or assistance with your candidate evaluation from, please feel free to give me a call at {!User.Phone} or you can email me with any questions that you may have.
+
+Kind Regards,
+
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2117 Cliff Dr
+Eagan, MN  55122
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.
+
+unsubscribe from this list
+
+Or you can reply back, STOP, to this email to unsubscribe</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

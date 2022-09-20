@@ -27,7 +27,7 @@
         </template>
         <template if:true={showNewPaymentMethod}>
           <lightning-button
-            label="New Payment Method"
+            label="Add Credit Card to Vault"
             onclick={handleOnClick}
             variant="brand-outline"
           ></lightning-button>
@@ -95,7 +95,14 @@
         columns={paymentMethodColumns}
         onrowselection={handleRowSelection}
         onrowaction={handleRowAction}
+        max-row-selection="1"
       ></lightning-datatable>
+
+
+      <template if:true={noPaymentMethods}>
+        No payment method vaulted. Please vault a new one.
+      </template>
+
 
       <template if:true={showNewCardScreen}>
         <lightning-layout multiple-rows="true">
@@ -150,14 +157,14 @@
             ></lightning-combobox>
           </lightning-layout-item>
           <lightning-layout-item padding="around-small" size="3">
-            <lightning-input
+            <!-- <lightning-input
               type="text"
               label="cvv"
               name="cvv"
               data-objectname="paymentMethod"
               onchange={handleOnChange}
               required
-            ></lightning-input>
+            ></lightning-input> -->
           </lightning-layout-item>
           <template if:true={contactOptions.length}>
             <lightning-layout-item padding="around-small" size="6">
@@ -177,6 +184,7 @@
                 label="Set this Card as this person's Default"
                 name="isDefault"
                 value={selectedPaymentMethod.isDefault}
+                checked={selectedPaymentMethod.isDefault}
                 data-objectname="paymentMethod"
                 onchange={handleOnChange}
               >

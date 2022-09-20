@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IDS_Complaints_Fulfillment</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>NAME</columns>
+    <columns>Complaint_Description__c</columns>
+    <columns>Original_Fulfillment_Product_Name__c</columns>
+    <columns>Fulfillment_Primary_Recipient__c</columns>
+    <columns>Complaint_Status__c</columns>
+    <columns>Complaint_Department__c</columns>
+    <columns>Assigned__c</columns>
+    <columns>Internal_notes__c</columns>
+    <columns>Original_Fulfillment__c</columns>
+    <columns>Complaint_Type__c</columns>
+    <columns>IDS_Complete__c</columns>
+    <columns>IDS_Notes__c</columns>
+    <columns>IDS_Owner__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Complaint_Department__c</field>
+        <operation>contains</operation>
+        <value>Fulfillment Digital - Brianna,Fulfillment Print – Brianna,Fulfillment Vendor –</value>
+    </filters>
+    <filters>
+        <field>IDS_Complete__c</field>
+        <operation>notEqual</operation>
+        <value>1</value>
+    </filters>
+    <label>IDS Complaints - Fulfillment</label>
+    <language>en_US</language>
+    <sharedTo>
+        <group>Ad_Prod</group>
+    </sharedTo>
+</ListView>

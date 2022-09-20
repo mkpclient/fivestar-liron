@@ -16,6 +16,10 @@
                 <field>IsActive__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Discount_SKU__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Description__c</field>
             </layoutItems>
@@ -28,6 +32,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>DefaultLineDescription__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SKU__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

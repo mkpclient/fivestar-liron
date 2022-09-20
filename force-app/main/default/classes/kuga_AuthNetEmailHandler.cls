@@ -314,6 +314,7 @@ global class kuga_AuthNetEmailHandler implements Messaging.InboundEmailHandler {
 																	   kugo2p__Auth_Amount__c = kuga_ImportHelper.convert(kuga_ImportHelper.getFieldValue(fieldValues, mapColumnPosition.get(amountLabel)), 0),
 																	   kugo2p__Currency_ISO_Code__c = kuga_ImportHelper.getFieldValue(fieldValues, mapColumnPosition.get(currencyLabel)),
 																	   kugo2p__Date__c = system.today(),
+																		 kugo2p__Subscription_Id__c = kuga_ImportHelper.getFieldValue(fieldValues, mapColumnPosition.get(subscriptionIDLabel)),
 																	   kugo2p__Status__c = (isSuccessFile ? 'Completed' : 'Declined'),
 																	   kugo2p__Transaction_Id__c = kuga_ImportHelper.getFieldValue(fieldValues, mapColumnPosition.get(transactionIDLabel)),
 																	   kugo2p__Account__c = (pp==null ? null : pp.kugo2p__Account__c),
