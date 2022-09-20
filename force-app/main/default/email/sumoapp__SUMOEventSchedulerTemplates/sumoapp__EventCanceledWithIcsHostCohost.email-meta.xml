@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sumo Event Canceled</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>sumoapp__EventCanceled</letterhead>
+    <name>Event Canceled With ICS (Host/Co-host)</name>
+    <style>freeForm</style>
+    <subject>Event Canceled Subject (Host)</subject>
+    <textOnly>Hi {!Event.sumoapp__OrganizerFullName__c},
+
+The following event you are hosting is canceled.
+
+&lt;%cancellationReason%&gt;
+Event Name: {!Event.Subject}
+Date/Time: &lt;%datetime%&gt;
+Duration: {!Event.DurationInMinutes} min
+&lt;%locationFields%&gt;
+Event Capacity: &lt;%capacity%&gt;
+&lt;%description%&gt;
+&lt;%locationDetails%&gt;
+
+Thank you,
+{!Organization.Name}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

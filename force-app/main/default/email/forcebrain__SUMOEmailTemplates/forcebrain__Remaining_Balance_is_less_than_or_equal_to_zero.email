@@ -1,0 +1,14 @@
+<table height="400" width="600" cellpadding="5" border="0" cellspacing="5" >
+<tr height="50" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[Hi {!forcebrain__Billing__c.Name},]]></td>
+</tr>
+<tr height="300" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r2" locked="0" aEditID="c1r2" >
+<![CDATA[<div>Your remaining balance for your SUMO Text and Phone&nbsp; Notifications is below $0. &nbsp;<font color="#ff0000">SUMO will no longer send text and phone reminders.</font></div><div style="color: rgb(0, 0, 0);"><br></div><div style="color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-size: 12pt;">You may purchase more credits in the SUMO App.</span></div><div style="color: rgb(0, 0, 0); font-size: 12pt;"><ol><li><span style="font-size: 12pt;">Click on the + on the far right of the tab menu.</span></li><li><span style="font-size: 12pt;">Click on SUMO Settings.</span></li><li><span style="font-size: 12pt;">Click on the Text &amp; Phone Settings.</span></li><li><span style="font-size: 12pt;">Click on the Payment tab.</span></li><li><span style="font-size: 12pt;">Complete the form to add funds.</span></li></ol></div><div style="color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-size: 12pt;">Alternatively, you may contact your&nbsp;</span><u style="font-size: 12pt;">ForceBrain.com</u><span style="font-size: 12pt;">&nbsp;representative immediately to purchase more credits.&nbsp;</span></div><div style="color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-size: 12pt;"><br></span></div><div style="color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-size: 12pt;">Thank you,</span></div><div style="color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-size: 12pt;">SUMO Support</span></div><div style="color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-size: 12pt;">800-708-1790</span></div>]]></td>
+</tr>
+<tr height="50" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r3" locked="0" aEditID="c1r3" >
+<![CDATA[]]></td>
+</tr>
+</table>

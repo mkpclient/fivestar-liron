@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>ELM Sample - VM F/U</name>
+    <style>freeForm</style>
+    <subject>Sorry I missed you, please call!</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+I am following up on the voicemail I left you regarding our personally branded magazine, Essential Living.
+
+About Essential Living:
+
+You would be the sole sponsor and get four pages to customize with your image and message
+Essential Living is a monthly connect to clients, keeping you top of mind
+The Essential Living Digital Magazine lets you get your message out to an even wider audience through email and social media
+
+Did you know that typically only 29% of past clients will refer? The sooner we connect, the sooner you can more effectively activate your referral network and boost referrals! Please call my direct line today or you can use the line below to schedule a short 15-minute conversation with me.
+
+Schedule a 15 minute meeting!
+
+I look forward to hearing from you.
+
+Regards,
+
+{!User.Name}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

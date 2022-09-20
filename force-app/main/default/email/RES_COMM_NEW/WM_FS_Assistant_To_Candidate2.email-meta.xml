@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Spoke with Assistant Said send to Candidate - All Professions Friendly</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Z Asst: Send to Candidate</name>
+    <style>none</style>
+    <subject>Regarding Message Left Today - 2015 Five Star Award Candidate Information</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+After speaking with {!Contact.AssistantName} at your office, I wanted to provide you with some information and a link to your candidate form. Your clients have scored you highly based on the service you provide and have nominated you for the {!Market__c.Publication_Year__c}{!Market__c.Program_Name__c} award. Being selected as an award winner allows you to be recognized in a special {!Market__c.Publication_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c} with a complimentary listing. In order to be considered for the {!Market__c.Publication_Year__c}  award, a short online evaluation form must be completed - candidates must satisfy minimum experience and eligibility criteria to be considered.
+
+
+Please click on the personalized link below to complete the online form:
+
+2015 Award Candidate Evaluation Form - Click Here to Complete
+The deadline to submit is end of day,  {!Market__c.ACDF_Deadline__c}
+
+Award winners are scheduled to be notified within the following 4-6 weeks of the deadline. If you have any questions please feel free to email or give me a call at, {!User.Phone} .
+
+Thanks,
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: American Registry and other firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

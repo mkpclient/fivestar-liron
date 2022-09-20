@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__Customer</fullName>
+    <description>In the customer list view page. This are the colums of the table</description>
+    <label>Customer</label>
+</FieldSet>

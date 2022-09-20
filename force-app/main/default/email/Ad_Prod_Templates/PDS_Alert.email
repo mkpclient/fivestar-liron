@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div>Hello,<br></div><div><br></div><div>We have published a new summary report that shows the progress and results of your current subscription:</div><div><br></div><div><b>{!Product_Delivery_Summary__c.Fulfillment_Product_Name__c}</b></div><div><br></div><div>You can login to your account using the credentials below to see the report:</div><div><br></div><div>Go to <b>https://fivestarprofessional.com/account/login</b>.</div><div><br></div><div>Username: <b>{!Product_Delivery_Summary__c.Web_Username__c}</b><br></div><div>Passcode: <b>{!Product_Delivery_Summary__c.Login_Code__c}</b><br></div><div><br></div><div>If you have any questions, please feel free to call or email me -- I am here to help!</div><div><br></div><div>Thank you!</div><div><br></div><div>{!Product_Delivery_Summary__c.Fulfillment_Owner_Name__c}</div><div>Client Success Representative<br></div><div>{!Product_Delivery_Summary__c.Fulfillment_Owner_Phone__c}{!Product_Delivery_Summary__c.Fulfillment_Owner_Email__c}</div><div><br></div><div><br></div><div><br></div>]]></td>
+</tr>
+</table>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>kugo2p__GenerateOrder</customButtons>
     <customButtons>Generate_Sales_Order</customButtons>
     <customButtons>Log_a_Call2</customButtons>
     <customButtons>Log_an_Interaction</customButtons>
+    <customButtons>Send_Emails</customButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>SendEmail</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
@@ -322,18 +322,19 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>kugo2p__Generate_Order_Opportunity</customButtons>
-        <fields>Release_Date__c</fields>
         <fields>NAME</fields>
-        <fields>kugo2p__OrderName__c</fields>
-        <fields>kugo2p__Account__c</fields>
-        <fields>kugo2p__ProductTotalAmount__c</fields>
-        <fields>kugo2p__ServiceTotalAmount__c</fields>
-        <fields>kugo2p__NetAmount__c</fields>
-        <fields>kugo2p__BalanceDueAmount__c</fields>
-        <fields>kugo2p__RecordStatus__c</fields>
-        <fields>kugo2p__PaymentStatus2__c</fields>
-        <relatedList>kugo2p__SalesOrder__c.kugo2p__Opportunity__c</relatedList>
+        <fields>Account__c</fields>
+        <fields>OrderName__c</fields>
+        <fields>Order_Number__c</fields>
+        <fields>OrderDate__c</fields>
+        <fields>Status_Picklist__c</fields>
+        <fields>ProductTotalAmount__c</fields>
+        <fields>NetAmount__c</fields>
+        <fields>CompletedPayments__c</fields>
+        <fields>BalanceDueAmount__c</fields>
+        <relatedList>SalesOrder__c.Opportunity__c</relatedList>
+        <sortField>OrderDate__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -349,15 +350,19 @@
         <relatedList>RelatedOpportunityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>QUOTE.QUOTENUMBER</fields>
-        <fields>QUOTE.NAME</fields>
-        <fields>QUOTE.ISSYNCING</fields>
-        <fields>QUOTE.EXPIRATIONDATE</fields>
-        <fields>QUOTE.SUBTOTAL</fields>
-        <fields>QUOTE.TOTALPRICE</fields>
-        <fields>CreatedBy</fields>
-        <relatedList>RelatedQuoteList</relatedList>
+        <fields>NAME</fields>
+        <fields>forcebrain__EventType__c</fields>
+        <fields>forcebrain__RecurrenceEvent__c</fields>
+        <fields>forcebrain__Status__c</fields>
+        <fields>forcebrain__StartDateTime__c</fields>
+        <fields>forcebrain__EndDateTime__c</fields>
+        <fields>forcebrain__Event_Id__c</fields>
+        <fields>forcebrain__IsAllDayEvent__c</fields>
+        <fields>RECORDTYPE</fields>
+        <fields>forcebrain__IsRecurrence__c</fields>
+        <relatedList>forcebrain__Event__c.Opportunity__c</relatedList>
     </relatedLists>
+    <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

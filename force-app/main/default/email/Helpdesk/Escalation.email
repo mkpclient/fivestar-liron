@@ -1,0 +1,4 @@
+Case {!Case.CaseNumber} has been escalated to {!Case.OwnerFullName} for further assistance.  You should expect to receive an update shortly as to the status and resolution ETA.
+
+Thanks,
+{!Case.OwnerFullName}

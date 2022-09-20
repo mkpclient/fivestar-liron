@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<font size="3" style="font-size: 12pt;">Hello&nbsp;{!Contact.FirstName},</font><div style="font-size: 12pt;"><br></div><div style="font-size: 12pt;"><p style="line-height:15.75pt"><span style="font-size:10.5pt;font-family:&quot;Calibri&quot;,sans-serif;
+mso-ascii-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-theme-font:
+minor-latin">I am following up on the voicemail I left you regarding your
+appearance in our Seattle Five Star Legends section. The appearance will be in the May/June issue of <i>Seattle&nbsp;</i>magazine, only available to Five Star winners with 10 or more years of receiving the award. This is very exclusive!<o:p></o:p></span></p><p style="line-height:15.75pt"><span style="font-family: Calibri, sans-serif; font-size: 10.5pt;"><br></span></p><p style="line-height:15.75pt"><span style="font-family: Calibri, sans-serif; font-size: 10.5pt;">As
+a Five Star award winner you are among the best at what you do. Communicating that you are a Five Star Legend and have received the Five Star Professional award for 10+ years will provide a positive impact on your client relationships.&nbsp;</span></p></div><div style="font-size: 12pt;"><br></div><div style="font-size: 12pt;"><br></div><div style="text-align: left; font-size: 12pt;"><span style="white-space:pre">					</span><a href="https://fivestarprofessional.com/AGO/sealegends/seare21">Click Here for more information!</a></div><div style="font-size: 12pt;"><br></div><div style="font-size: 12pt;"><p style="line-height:15.75pt"><a name="_Hlk42094312"><span style="font-size:
+10.5pt;font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:minor-latin;
+mso-hansi-theme-font:minor-latin;mso-bidi-theme-font:minor-latin">Please <strong>call my
+direct line below&nbsp;</strong>to learn more about this opportunity.&nbsp;</span></a><span style="font-size:10.5pt;font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:
+minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-theme-font:minor-latin"><o:p></o:p></span></p></div><div style="font-size: 12pt;"><br></div><div style="font-size: 12pt;"><div style="font-size: 16px;"><div style="font-size: medium;"><div>{!User.Name}</div><div><span style="font-family: arial, helvetica, sans-serif; background-color: rgb(255, 255, 255);">{!User.Title}</span></div><div>Five Star Professional</div><div>{!User.Phone}</div><div>{!User.Email}</div><div>www.fivestarprofessional.com</div></div></div></div>]]></td>
+</tr>
+</table>

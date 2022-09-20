@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Embedded link</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>BOSTON MP/HA (ONLY BOSTON)</name>
+    <style>none</style>
+    <subject>2015 Award Candidate Information – Appearing in the {!Opportunity.Email_Templates_Magazine__c}</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Your clients have scored you highly based on the service you provide and have nominated you for the 2014 Five Star {!Opportunity.Email_Templates_Profession__c} award. Being selected as an award winner allows you to be recognized in this special {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c} at no cost. In order to be considered for the award, you must complete a short online evaluation form - candidates must satisfy minimum experience and production criteria. Fewer than 7% of the professionals in your area will be selected.
+
+Please click the link below to complete your candidate form:
+http://{!Opportunity.Research_Form_URL__c}
+
+The deadline for submission is 11:59 PM Eastern Time on {!Opportunity.CloseDate}.
+Award winners are scheduled to be notified within three weeks of the deadline.
+If you have any questions please feel free to give me a call or send me an email.
+
+Thanks,
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: American Registry and other firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

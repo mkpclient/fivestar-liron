@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>2014 Wealth Manager issues check</name>
+    <style>none</style>
+    <subject>You have an opportunity to appear in {!Opportunity.Email_Templates_Magazine__c} as a Five Star Wealth Manager</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -16,7 +16,7 @@ public without sharing class BoomTestHelpers {
       Name = 'Test Product Subscription 1',
       Family = 'Test',
       isActive = true,
-    CreateOrderFulfillment__c = true,
+      CreateOrderFulfillment__c = true,
       Set_Up_Subscription__c = true,
       Renewal_Product__c = p.Id,
       Renewal_Frequency__c = freq,

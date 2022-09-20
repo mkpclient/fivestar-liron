@@ -1,0 +1,43 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black;background:white">Hello&nbsp;{!Contact.FirstName},</span><o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style=""><font face="Arial, sans-serif">You have an exclusive opportunity to appear in one of the most respected media brands in the nation – <i>Fortune</i> magazine! Five Star award winners, under the age of 40, will be recognized in a special section of the February/March 2023 issue..&nbsp;</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">Benefits of participating, include:</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">1)<span style="white-space:pre">	</span>Leveraging your personal brand with one of the most-respected media brands in the nation. Your friends, family and clients alike, throughout the entire country, will be able to see you in Fortune!</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">2)<span style="white-space:pre">	</span>100 physical reprints, an electronic reprint, and a copy of the magazine highlighting your appearance. These are a very impactful at new client presentations and with your current and past clients to gain referrals!&nbsp;</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">3)<span style="white-space:pre">	</span>An announcement letter highlighting your appearance. Share this letter with your client and professional network for expanded exposure of your <i>Fortune</i> appearance.</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">Millennials’ assets are projected to grow from $1.4 trillion in 2015 to $11.3 trillion in 2030. Given your unique position, as a Five Star award winner and as someone who is part of the younger generation, you are uniquely positioned to connect with this growing, affluent group.&nbsp; &nbsp;</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif; font-size: 12pt;"><br></span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif; font-size: 12pt;"><b>This is an exclusive offer.</b>&nbsp;Please call my direct line today or you can use the link below to schedule a short 15-minute conversation with me. The section is limited to wealth managers under 40.</span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif;"><br></span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; text-align: center;"><o:p style=""><font face="Arial, sans-serif">{!Contact.AM_Follow_Up_Link__c}</font></o:p></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p><br></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black">I look forward to hearing from you!<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black">Regards<i>,</i><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerFullName}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">Account Manager<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">Five Star Professional<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerPhone}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerEmail}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black"><a href="http://www.fivestarprofessional.com">www.fivestarprofessional.com</a><o:p></o:p></span></p><br>]]></td>
+</tr>
+</table>

@@ -45,6 +45,11 @@
                 <default>false</default>
                 <label>Payment Update Needed</label>
             </value>
+            <value>
+                <fullName>Subscription Cancelled</fullName>
+                <default>false</default>
+                <label>Subscription Cancelled</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

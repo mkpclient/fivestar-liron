@@ -1,0 +1,5 @@
+Hello,
+
+You are assigned to rush fulfillment {!Order_Fulfillment__c.Name}, please view the fulfillment here and act accordingly:
+
+https://na52.salesforce.com/{!Order_Fulfillment__c.Full_ID__c}

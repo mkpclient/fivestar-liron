@@ -21,7 +21,87 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Testimonial_Display_Count__c</field>
+                <field>Boom_Order__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Boom_Order_Product_Line__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Reason_for_not_providing_a_list__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Custom_Back_Cover_Inside_Updated__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Custom_Back_Cover_Updated__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Set_Up_Subscription__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Is_Subscription_Addon__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Date_Contact_List__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Contact_List_Source__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Contact_List_Source_Other__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Upload_Your_Photo__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Upload_Your_Contacts__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Date_Contact_List_EE__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>List_Retrieval_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>List_Source__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>List_Source_Other__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Calendar_Marked__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Has_Testimonial_Photo__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Has_Testimonial_Logo__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Testimonial_Contact_Count__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Service_Tier__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -57,10 +137,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Product_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>OrderNumber__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -429,6 +505,10 @@
                 <behavior>Edit</behavior>
                 <field>Renewal_Date__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Content_Renewal__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -600,6 +680,18 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CTA_Message__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Has_Contact_List__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Contact_List_Count__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Contact_List_Updated__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -1034,13 +1126,11 @@
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
         <fields>Recipient__c</fields>
-        <fields>Primary__c</fields>
         <fields>Market_Project__c</fields>
-        <relatedList>LineRecipient__c.Fulfillment__c</relatedList>
-        <sortField>Primary__c</sortField>
-        <sortOrder>Asc</sortOrder>
+        <fields>Primary__c</fields>
+        <relatedList>Order_Line_Recipient__c.Fulfillment__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
@@ -1065,9 +1155,9 @@
         <fields>Landing_Page__c</fields>
         <fields>Preview__c</fields>
         <fields>Text__c</fields>
-        <fields>Create_Date__c</fields>
         <fields>Publish_Date__c</fields>
         <fields>Image_Location__c</fields>
+        <fields>Posted_to_Social_Media__c</fields>
         <relatedList>Testimonial__c.Fulfillment__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -1103,7 +1193,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Order_Line_Recipient__c.Fulfillment__c</relatedList>
+        <relatedList>Subscription__c.Subscription_Fulfillment__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

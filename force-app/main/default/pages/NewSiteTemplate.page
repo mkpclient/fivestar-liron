@@ -26,7 +26,7 @@
   <div id="background">
    <div id="box">
   <apex:insert name="header">
-   <img src="{!$Site.BaseUrl}/servlet/servlet.ImageServer?id=015d00000060AVl&amp;oid=00Dd0000000gsfl" alt="{!$Organization.Name}" />
+    <img src="{!$Site.BaseUrl}/servlet/servlet.ImageServer?id=015d00000060AVlAAM&oid=00Dd0000000gsflEAA" alt="{!$Organization.Name}" />
   <br/><br/>
   </apex:insert>
  

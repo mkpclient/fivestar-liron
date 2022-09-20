@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Info_Session_Choice_is_valid</fullName>
+    <active>true</active>
+    <description>Checks that the Info Session RSVP is valid, as compared to the sessions available to that Market.</description>
+    <errorConditionFormula>AND(
+NOT(ISBLANK( Info_Session_RSVP__c )),
+NOT(CONTAINS( Market_Project__r.Info_Sessions_Available__c ,Info_Session_RSVP__c))
+)</errorConditionFormula>
+    <errorMessage>Please enter the number (single digit) of an available Info Session</errorMessage>
+</ValidationRule>

@@ -1,0 +1,7 @@
+Hello {!Order_Form__c.user_entering__c},
+
+{!Order_Form__c.OwnerFullName} has approved order form {!Order_Form__c.Name}. You may now proceed with processing payment.
+
+https://na14.salesforce.com/{!Order_Form__c.Id}
+
+Thank you!

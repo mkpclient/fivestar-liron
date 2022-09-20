@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This email template will be sent to the scheduler when the remaining balance for Text &amp; Phone Reminders is less than or equal to zero dollars.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Remaining Balance is less than or equal to zero</name>
+    <style>formalLetter</style>
+    <subject>WARNING: SUMO Notifications are deactivated due to insufficiant funds</subject>
+    <textOnly>Hi {!forcebrain__Billing__c.Name},
+
+Your remaining balance for your SUMO Text and Phone Notifications is below $0. SUMO will no longer send text and Phone reminders.
+
+You may purchase more credits in the SUMO App.
+
+1. Click on the + on the far right of the tab menu.
+2. Click on SUMO Settings.
+3. Click on the Text &amp; Phone Settings.
+4. Click on the Payment tab.
+5. Complete the form to add funds.
+
+Alternatively, you may contact your ForceBrain.com representative immediately to purchase more credits.
+
+Thank you,
+SUMO Support
+800-708-1790</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

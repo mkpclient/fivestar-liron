@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Client website social post</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Product Delivered - Social Post_Client Website</name>
+    <style>formalLetter</style>
+    <subject>Your Five Star Professional social post with website has been published!</subject>
+    <textOnly>Hello {!Fulfillment__c.Display_Contact_First_Name__c}:
+
+A new social post has been published for you! Please check out your new post online and share it directly to your network to optimize the views and interactions.
+
+Your post can be viewed here: {!Fulfillment__c.Product_Delivered_Link__c}
+
+Additionally, we encourage you to share the following announcement email with your clients and network. Just copy/paste the content below into an email or other digital announcement platform to share.
+
+If you have any questions, please don&apos;t hesitate to reach out to your Client Success Representative, {!Fulfillment__c.Fulfillment_Owner_Fullname__c}, at {!Fulfillment__c.Fulfillment_Owner_Phone__c} or by email at {!Fulfillment__c.Fulfillment_Owner_Email__c}.
+
+Thank you,
+Five Star Professional Client Success Team
+
+_________________________________
+
+
+At Five Star Professional, we work hard to recognize outstanding professionals from across the country each year. One winner that I would like to call special attention to is {!Fulfillment__c.Display_Contact_First_Name__c} {!Fulfillment__c.Display_Contact_Last_Name__c}. {!Fulfillment__c.Display_Contact_First_Name__c} is a {!Fulfillment__c.Market_Award_Year__c} winner of our {!Fulfillment__c.Associated_With__c} award in {!Fulfillment__c.Market_Region__c}.
+
+One attribute all of our {!Fulfillment__c.Associated_With__c} &apos;s have in common is a dedication to service. {!Fulfillment__c.Display_Contact_First_Name__c}&apos;s commitment to clients goes above and beyond the norm. For more information on {!Fulfillment__c.Display_Contact_First_Name__c}, check out the below social post by copying and pasting into your browser.
+
+{!Fulfillment__c.Product_Delivered_Link__c}
+
+Jonathan Wesser
+Five Star Professional
+VP, Research</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

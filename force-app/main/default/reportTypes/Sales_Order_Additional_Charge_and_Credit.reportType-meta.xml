@@ -276,6 +276,11 @@
             <field>WebOrderAdditionalChargeCredit__c</field>
             <table>SalesOrderAdditionalChargeCredit__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SKU__c</field>
+            <table>SalesOrderAdditionalChargeCredit__c</table>
+        </columns>
         <masterLabel>Order Additional Charges and Credits</masterLabel>
     </sections>
 </ReportType>

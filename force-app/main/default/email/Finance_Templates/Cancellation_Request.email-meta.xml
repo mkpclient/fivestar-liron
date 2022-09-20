@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send to customer upon receiving cancellation request</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Cancellation Request</name>
+    <style>freeForm</style>
+    <subject>Five Star Cancellation Info</subject>
+    <textOnly>Dear {!kugo2p__SalesOrder__c.kugo2p__ContactBuying__c},
+
+We have received your request to cancel your Five Star Professional order {!kugo2p__SalesOrder__c.Name} placed on {!kugo2p__SalesOrder__c.Release_Date__c}.  
+
+· If your request to cancel is due to a compliance issue then we will need a letter from your compliance department before we can process the cancellation.
+
+· If your request to cancel is within the five business day cancellation period then we will be processing your request within two business days.  You will receive an email when the cancellation has been processed. Please note this does not include show cases. Show cases are non-cancellable.
+
+· If your request is received after the five business day cancellation period then we will be contacting you regarding the products that have already been delivered or are in process.  Depending on these statuses we may not be able to cancel or may only be able to offer a partial refund. 
+
+We thank you for your business.
+
+Kind regards,
+
+Accounts Receivable
+Five Star Professional
+Phone: (888) 608-7161 | Email: billing@fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

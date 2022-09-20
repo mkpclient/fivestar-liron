@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__Send_Appt_Invite</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send Appointment Invite</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)} 
+{!REQUIRESCRIPT(&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/resource/forcebrain__sendInviteJsContact&quot;)}
+{!REQUIRESCRIPT(&quot;/support/console/30.0/integration.js&quot;)} 
+function requireCssFile(filename){ 
+var fileref = document.createElement(&apos;link&apos;); 
+fileref.setAttribute(&apos;rel&apos;, &apos;stylesheet&apos;); 
+fileref.setAttribute(&apos;type&apos;, &apos;text/css&apos;); 
+fileref.setAttribute(&apos;href&apos;, filename); 
+document.getElementsByTagName(&apos;head&apos;)[0].appendChild(fileref); 
+} 
+var templateId =getTemplateId(&quot;Customer_Contact_Self_Schedule_Invite&quot;); 
+var currentUserContactId = getProviderIdFromUser(&apos;{!$User.Id}&apos;); 
+var errorMessage = &quot;Oops! There is a problem with this contact.&quot;; 
+var recordTypeName = getRecordTypeName(&apos;{!Contact.Id}&apos;); 
+setGlobalVariableId(&apos;{!Contact.Id}&apos;,&apos;{!$User.Id}&apos;,templateId,errorMessage,recordTypeName); 
+var modalToShow = null; 
+var ContactErrors = getContactErrors(); 
+// Validating Future appointment validation 
+
+var contactOwnerError = getContactOwnerError(&apos;{!Contact.OwnerId}&apos;); 
+if(contactOwnerError != null || ContactErrors != null){ 
+modalToShow = contactOwnerError != null ? contactOwnerError : ContactErrors; 
+} 
+else{ 
+var futureApptViolation = getFutureValidAppointmentValidation(&apos;{!Contact.Id}&apos;); 
+if(futureApptViolation == null){ 
+// No future appointment violation on the same record 
+
+var apptInviteViolation = getAppointmentInvitationsValidation(&apos;{!Contact.Id}&apos;); 
+if(apptInviteViolation == null){ 
+//No appointment invitation violation 
+modalToShow = getServicePopUpModal(recordTypeName,&apos;Contact&apos;); 
+}else{ 
+// There is appointment invitation violation 
+modalToShow = apptInviteViolation; 
+} 
+}else{ 
+// There is future appointment violation on the same record 
+modalToShow = futureApptViolation; 
+} 
+} 
+
+if(modalToShow != null){ 
+requireCssFile(&apos;/resource/forcebrain__LDS/assets/styles/salesforce-lightning-design-system.min.css&apos;); 
+if($(&quot;.slds-backdrop&quot;).length == 0){ 
+$(&quot;body&quot;).append(&apos;&lt;div class=&quot;slds-backdrop slds-backdrop--open&quot;&gt;&lt;/div&gt;&apos;); 
+}else{ 
+$(&apos;.slds-backdrop&apos;).addClass(&apos;slds-backdrop--open&apos;); 
+} 
+if($(&quot;#sldsSpinner&quot;).length == 0){ 
+$(&quot;body&quot;).append(getSpinnerBody()); 
+} 
+$(&quot;#sldsSpinner&quot;).hide(); 
+$(&quot;body&quot;).append(modalToShow); 
+}</url>
+</WebLink>

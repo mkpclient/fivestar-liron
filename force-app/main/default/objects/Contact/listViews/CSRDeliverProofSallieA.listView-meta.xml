@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSRDeliverProofSallieA</fullName>
+    <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+    <columns>CSR_Status__c</columns>
+    <columns>CSR_Send_Proof__c</columns>
+    <columns>Proof_Sent_Automatically__c</columns>
+    <columns>CSR_Next_Action_Date__c</columns>
+    <columns>CSR_Last_Contact_Date__c</columns>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>Web_Account_Url__c</columns>
+    <columns>Date_of_most_recent_login__c</columns>
+    <columns>Market_Project__c</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>Core_Opportunity_owner_full_name__c</columns>
+    <columns>CSR_Owner__c</columns>
+    <columns>Market_Upload_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CSR_Send_Proof__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>CSR_Owner__c</field>
+        <operation>contains</operation>
+        <value>Sallie A</value>
+    </filters>
+    <filters>
+        <field>Proof_Sent_Automatically__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>__1. CSR: Deliver Proof - SA</label>
+    <sharedTo>
+        <group>Allen_Wardell</group>
+        <group>Jonathan_Wesser</group>
+        <group>Mindy_Stansbarger</group>
+    </sharedTo>
+</ListView>

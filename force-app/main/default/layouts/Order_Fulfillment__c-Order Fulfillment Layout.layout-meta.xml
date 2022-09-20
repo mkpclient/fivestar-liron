@@ -64,16 +64,48 @@
                 <field>Date_FB_Post_Updated__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Client_Success_Tracker_URL__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Fulfillment_Owner_Fullname__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Subscription__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Campaign_End_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Campaign_Start_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CC_Editor_Product__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CC_Editor_Template__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CTA_Message__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Managed_Social_Media_Platform__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Order_Service_Line__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Renewal_Amount__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Subscription_Status__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -817,10 +849,6 @@
         <label>System Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Profile_Layout__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>X5_POINT_Upload_Date__c</field>
             </layoutItems>
@@ -1149,10 +1177,6 @@
         <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Order_Line_Recipient__c.Order_Fulfillment__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>TASK.WHO_NAME</fields>
         <fields>ACTIVITY.TASK</fields>
@@ -1164,11 +1188,11 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>FB_Post__c.Order_Fulfillment__c</relatedList>
+        <relatedList>Essential_Living_Issue__c.Order_Fulfillment__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Web_Data__c.Order_Fulfillment__c</relatedList>
+        <relatedList>FB_Post__c.Order_Fulfillment__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -1176,24 +1200,11 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>Fulfillment__c</fields>
-        <fields>Status__c</fields>
-        <fields>Landing_Page__c</fields>
-        <fields>Preview__c</fields>
-        <fields>Text__c</fields>
-        <fields>Create_Date__c</fields>
-        <fields>Publish_Date__c</fields>
-        <fields>Image_Location__c</fields>
-        <relatedList>Testimonial__c.Order_Fulfillment__c</relatedList>
+        <relatedList>Notes__c.Order_Fulfillment__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Product_Delivery_Summary__c.Order_Fulfillment__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Essential_Living_Issue__c.Order_Fulfillment__c</relatedList>
+        <relatedList>Web_Data__c.Order_Fulfillment__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

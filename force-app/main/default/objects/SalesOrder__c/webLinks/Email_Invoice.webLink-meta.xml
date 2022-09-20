@@ -13,8 +13,24 @@
 var allowedStatuses = [&quot;Approved&quot;, &quot;Released&quot;, &quot;Unreleased&quot;];
 
 if(allowedStatuses.includes(&quot;{!SalesOrder__c.Status_Picklist__c}&quot;)) {
+var essentEngineRecord = sforce.connection.query(&quot;SELECT Allow_Essential_Engine_Emails__c from FivestarSetting__mdt where DeveloperName = &apos;Universal&apos; limit 1&quot;);
 
-var qr = sforce.connection.query(&quot;SELECT id from EmailTemplate WHERE DeveloperName = &apos;Five_Star_Standard_Email_Template&apos; and TemplateType = &apos;visualforce&apos;&quot;);
+records = essentEngineRecord.getArray(&quot;records&quot;); 
+
+var allowEssEng = records[0].Allow_Essential_Engine_Emails__c; 
+
+var tempName = &apos;Five_Star_Standard_Email_Template&apos;;
+
+if(allowEssEng) {
+
+var isEssEng = &apos;{!SalesOrder__c.Pricebook_Business_Unit__c}&apos; == &apos;Essential Engine&apos;; 
+
+if(isEssEng) {
+tempName = &apos;Essential_Engine_Email_Template&apos;;
+}
+}
+
+var qr = sforce.connection.query(&quot;SELECT id from EmailTemplate WHERE DeveloperName = &apos;&quot; + tempName + &quot;&apos; and TemplateType = &apos;visualforce&apos;&quot;);
 
 if ( qr.size &lt; 1 ) {
   alert(&apos;Please contact your SF Administrator to create Sales Order VF Email Template &apos;);

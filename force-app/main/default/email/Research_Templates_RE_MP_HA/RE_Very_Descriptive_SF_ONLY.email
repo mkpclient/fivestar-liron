@@ -1,0 +1,49 @@
+Hi {!Opportunity.Email_Templates_Informalname__c},<br><br>
+<b>Today is the final day to respond to your clients' nomination and submit your candidate form.</b> If you are not familiar with the program I would encourage you to take a minute or two to read the information below.<BR><BR>Our company, Five Star Professional, is a research and award company partnered with <i>{!Opportunity.Email_Templates_Magazine__c}</i> to recognize professionals that provide outstanding service to their clients. We are the providers of the Five Star {!Opportunity.Email_Templates_Profession__c} Award, the largest and most widely published award program in the industry. We have been in business for over 10 years recognizing professionals in over 45 markets across the United States and in Canada.<br><br>
+<a href="http://youtu.be/LYG7AJDXIuM">A short Youtube video of the process.</a><br><br>
+<b><u>A couple of notes about the magazine:</u></b><br>
+- This is our first year partnered with <i>{!Opportunity.Email_Templates_Magazine__c}</i>!<br>
+- <i>{!Opportunity.Email_Templates_Magazine__c}</i> has about {!Opportunity.Magazine_Readership__c} readers.<br>
+- Award winners are recognized in the {!Opportunity.Email_Templates_Month__c} issue of <i>{!Opportunity.Email_Templates_Magazine__c}</i> at no cost.<br>
+- <a href="{!Opportunity.Magazine_Website__c}"><i>{!Opportunity.Email_Templates_Magazine__c}'s</i> website</a><br><br><br>
+<b>FAQ's</b>:</b><br><br>
+<b><u>How was the research conducted?</u></b><br>
+We reach out to recent homebuyers in the greater {!Opportunity.Market_Name__c} area and ask them to put forward the real estate agent that they worked with. That is how we get your name, is they identified you as their real estate agent and then they rated your service on 10 criteria.<br><br>
+<b><u>What's the next step?</u></b><br>
+At this point we are still in the research phase. The reason I am reaching out to you is your clients had great things to say about you and scored you highly on the 10 customer service criteria. To be considered for the award all candidates must complete a candidate form - candidates must satisfy minimum experience and production criteria. This information is kept internally and is used in the selection process. Once you have submitted your form you will be eligible to be selected.<br><br>
+<b><u>What's the cost?</u></b><br>
+There is <b><u>no cost</u></b> to be considered or to be named a {!Opportunity.Email_Templates_Publication_Year__c} Five Star {!Opportunity.Email_Templates_Profession__c}. Award winners will be published on our website and in the {!Opportunity.Email_Templates_Month__c} issue of <i>{!Opportunity.Email_Templates_Magazine__c}</i> at no cost as well.<br><br>
+<b><u>What's the catch?</u></b><br>
+There is no catch. Our company offers a variety of tools that become available to award winners that are designed to create new opportunities by leveraging and marketing the award. By participating there is no obligation to purchase any of these products should you be named an award winner. Please note that purchase of these products has no bearing what-so-ever on whether someone wins the award or not.<br><br>
+<b><u>How can I complete my form?</u></b><br>
+
+It only takes a few minutes!<br><br><a href="{!Opportunity.Research_Form_URL__c}">Please click here to complete your candidate form.</a><br>
+(The deadline for submission is 11:59 PM Eastern Time on {!Opportunity.CloseDate}.)</b><br><br>
+<b><u>When will I know if I was selected?</u></b><br>
+Award winners are scheduled to be notified within 3 weeks after the deadline above.<br><br>
+<b><u>Who can answer my additional questions?</u></b><br>
+I can! I am your research representative and my role is to address any questions/concerns and help you complete the candidate form so that you can be considered for the award. Feel free to email me or call me.<br>
+Email: <a href=mailto:{!User.Email}>{!User.Email}</a><br>
+Direct: {!User.Phone}<br><br><br>
+We look forward to announcing this stand out group of professionals to the readers of <i>{!Opportunity.Email_Templates_Magazine__c}!</i> I hope to hear from you soon.<br><br>
+<p>Thanks,</p>
+
+
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway<br>
+Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+<a href=mailto:{!User.Email}>{!User.Email}</a><br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

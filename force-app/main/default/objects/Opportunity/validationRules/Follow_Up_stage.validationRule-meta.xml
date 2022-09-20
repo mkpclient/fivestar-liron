@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Follow_Up_stage</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL(StageName, &quot;No Appointment Follow Up&quot;) &amp;&amp;  ISNULL(text(Percent_Chance__c)) ||
+
+ISPICKVAL(StageName, &quot;No Appointment Follow Up&quot;) &amp;&amp; ISNULL(Estimated_Purchase__c) ||
+
+ISPICKVAL(StageName, &quot;Appointment Follow Up&quot;) &amp;&amp;  ISNULL(text(Percent_Chance__c)) ||
+
+ISPICKVAL(StageName, &quot;Appointment Follow Up&quot;) &amp;&amp;
+ISNULL(Estimated_Purchase__c) ||
+
+ISPICKVAL(StageName, &quot;No Planned Follow up (low interest)&quot;) &amp;&amp; ISNULL(text(Percent_Chance__c)) ||
+
+ISPICKVAL(StageName, &quot;No Planned Follow up (low interest)&quot;)
+&amp;&amp; ISNULL(Estimated_Purchase__c)</errorConditionFormula>
+    <errorMessage>Must enter percent chance and expected amount when selecting an appointment follow up stage</errorMessage>
+</ValidationRule>

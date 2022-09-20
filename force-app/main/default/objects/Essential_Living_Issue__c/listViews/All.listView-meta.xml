@@ -12,6 +12,8 @@
     <columns>Fulfillment_Back_Cover_Ad_Template__c</columns>
     <columns>Fulfillment_Contact_Block_Photo__c</columns>
     <columns>Fulfillment_Market_Project__c</columns>
+    <columns>Contact__c</columns>
+    <columns>CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

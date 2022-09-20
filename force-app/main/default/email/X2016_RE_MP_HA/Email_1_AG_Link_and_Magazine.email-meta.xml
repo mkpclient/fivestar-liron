@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Email 1 - AG Link and Magazine</name>
+    <style>freeForm</style>
+    <subject>Your 2016 Five Star {!Opportunity.Email_Templates_Profession__c} award</subject>
+    <textOnly>Hi {!Contact.ACDF_FName__c},
+
+
+Now that you have officially been named a 2016 Five Star {!Opportunity.Email_Templates_Profession__c}, I’d like to share more details about the special section that will appear in the{!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c}. We can also help determine the best way to share the good news about your award.
+
+
+I’ll follow up with you in a couple of days. In the meantime, you can:
+
+
+Check out last year&apos;s award section for a better idea of how award winners are featured
+Review the award guide to find out more about the award and the marketing tools available to you
+
+I look forward to speaking with you soon!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

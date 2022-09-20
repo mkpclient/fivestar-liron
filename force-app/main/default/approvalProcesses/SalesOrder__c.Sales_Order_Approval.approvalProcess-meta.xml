@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>true</active>
+    <active>false</active>
     <allowRecall>false</allowRecall>
     <allowedSubmitters>
         <type>owner</type>
@@ -78,11 +78,6 @@
                 <field>SalesOrder__c.Held_Team_Order__c</field>
                 <operation>equals</operation>
                 <value>True</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>SalesOrder__c.Team_Order_Processed__c</field>
-                <operation>equals</operation>
-                <value>False</value>
             </criteriaItems>
         </entryCriteria>
         <label>Team Order</label>

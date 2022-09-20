@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACDF_Highest_Level_of_Ed__c</fullName>
+    <externalId>false</externalId>
+    <label>ACDF Highest Level of Ed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>High School</fullName>
+                <default>false</default>
+                <label>High School</label>
+            </value>
+            <value>
+                <fullName>Some College</fullName>
+                <default>false</default>
+                <label>Some College</label>
+            </value>
+            <value>
+                <fullName>Associates Degree</fullName>
+                <default>false</default>
+                <label>Associates Degree</label>
+            </value>
+            <value>
+                <fullName>Bachelors Degree</fullName>
+                <default>false</default>
+                <label>Bachelors Degree</label>
+            </value>
+            <value>
+                <fullName>Master Degree or Higher</fullName>
+                <default>false</default>
+                <label>Master Degree or Higher</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

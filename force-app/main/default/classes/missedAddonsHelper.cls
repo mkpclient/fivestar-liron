@@ -1,4 +1,4 @@
-public without sharing class missedAddonsHelper {
+public with sharing class missedAddonsHelper {
   public class MissedAddonResource {
     @AuraEnabled
     public List<SalesOrder__c> salesorders { get; set; }
@@ -6,7 +6,7 @@ public without sharing class missedAddonsHelper {
     public Subscription__c subscription { get; set; }
   }
 
-  @AuraEnabled
+  @AuraEnabled(cacheable=true)
   public static List<MissedAddonResource> retrieveMissingAddons() {
     try {
       Map<Id, Subscription__c> subs = new Map<Id, Subscription__c>(
@@ -36,8 +36,6 @@ public without sharing class missedAddonsHelper {
         WHERE subscription__c IN :subs.keySet()
       ];
 
-      Map<Subscription__c, List<SalesOrder__c>> orderMap = new Map<Subscription__c, List<SalesOrder__c>>();
-
       for (SalesOrder__c o : orders) {
         Subscription__c s = subs.get(o.Subscription__c);
         List<SalesOrderProductLine__c> sopls = o.Sales_Order_Product_Lines__r;
@@ -46,23 +44,22 @@ public without sharing class missedAddonsHelper {
         for (SalesOrderProductLine__c pl : sopls) {
           prodIds.add(pl.Product__c);
         }
+        List<SalesOrder__c> relatedSos = new List<SalesOrder__c>();
+        MissedAddonResource m = new MissedAddonResource();
         for (Subscription__c ao : addons) {
-          List<SalesOrder__c> aos = orderMap.containsKey(ao) ? orderMap.get(ao) : new List<SalesOrder__c>();
           if (!prodIds.contains(ao.Renewal_Product__c)) {
-            aos.add(o);
-            orderMap.put(ao, aos);
+            relatedSos.add(o);
           } else {
             prodIds.remove(prodIds.indexOf(ao.Renewal_Product__c));
           }
+          m.subscription = ao;
+        }
+        m.salesorders = relatedSos;
+        if(m.subscription != null) {
+          retVal.add(m);
         }
       }
-      for(Subscription__c s : orderMap.keySet()) {
-        MissedAddonResource m = new MissedAddonResource();
-        m.subscription = s;
-        m.salesorders = orderMap.get(s);
-        retVal.add(m);
-      }
-      return retVal;
+        return retVal;
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }

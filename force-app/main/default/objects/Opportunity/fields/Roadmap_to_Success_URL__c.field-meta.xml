@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Roadmap_to_Success_URL__c</fullName>
+    <description>This field is for a url to a PDF version of the Roadmap to Success document associated with this opportunity</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is for a url to a PDF version of the Roadmap to Success document associated with this opportunity</inlineHelpText>
+    <label>Roadmap to Success URL</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

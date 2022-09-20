@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email for post market follow-up to a voicemail message</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Follow-up to voicemail</name>
+    <style>freeForm</style>
+    <subject>Follow-up to my message</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+I just left you a message regarding the tools available to you to take your Five Star award to the next level.
+
+
+If you are interested in learning more about how to use our tools to improve retention, generate referrals and differentiate yourself from your competition, give me a call or shoot me an email with a time that works best for you. I am here to help you leverage your elite status as a Five Star award winner!
+
+
+We have many different tools to match your marketing plan, as well as your budget. Click here to learn more about them.
+
+
+
+Looking forward to hearing from you,
+
+
+
+
+
+
+
+
+{!User.Name}
+
+Account Manager
+
+
+Five Star Professional
+
+Direct: {!User.Phone}
+
+Main: 1-888-438-5782
+
+{!User.Email}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

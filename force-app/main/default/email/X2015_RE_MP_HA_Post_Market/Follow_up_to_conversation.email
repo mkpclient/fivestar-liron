@@ -1,0 +1,34 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><span style="color: rgb(0, 0, 0);">Hi&nbsp;<font><o:p></o:p></font></span><font>{!Opportunity.Email_Templates_Informalname__c},</font></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">It was great speaking with you today about your business and ways the Five Star award can help you achieve your business objectives.&nbsp;</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">If you are interested in learning more about how to use our tools to improve retention, generate referrals and&nbsp;differentiate&nbsp;yourself from your competition, give me a call or shoot me an email with a time that works best for you. I am here to help you leverage your elite status as a Five Star award winner!</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">Looking forward to hearing from you,</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><br></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); background-color: white;"></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><b><font face="Arial, sans-serif">{!User.Name}<o:p></o:p></font></b></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><b>Account Manager</b><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><b>Five Star Professional</b><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">2900 Lone Oak Parkway</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Suite 120</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Eagan, MN 55121</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Direct:<span class="apple-converted-space">&nbsp;</span>{!User.Phone}<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Main:<span class="apple-converted-space">&nbsp;</span><a href="tel:1-888-438-5782" target="_blank" value="+18884385782">1-888-438-5782</a><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Fax:<span class="apple-converted-space">&nbsp;</span><a href="tel:651-259-1940" target="_blank" value="+16512591940">651-259-1940</a><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">{!User.Email}<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><a href="http://www.fivestarprofessional.com/" target="_blank" title="http://www.fivestarprofessional.com">www.fivestarprofessional.com</a><o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><span style="color: rgb(80, 0, 80);"><font face="Arial, sans-serif"><br></font></span></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"></p><p class="MsoNormal" style="color: rgb(80, 0, 80); margin-right: 0px; margin-left: 0px; background-color: rgb(255, 255, 255);"><br></p><p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"></p><p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"></p><p style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"></p>]]></td>
+</tr>
+</table>

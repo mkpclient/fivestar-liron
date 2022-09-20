@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Announcement Social Post</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Order Fulfillment Product Delivered - Social Post_Announcement</name>
+    <style>formalLetter</style>
+    <subject>Your Five Star Professional announcement post has been published!</subject>
+    <textOnly>Hello {!Order_Fulfillment__c.Display_Contact_First_Name__c}:
+
+A new social post has been published for you! Please check out your new post online and share it directly to your network to optimize the views and interactions.
+
+Your post can be viewed here: {!Order_Fulfillment__c.Product_Delivered_Link__c}
+
+Additionally, we encourage you to share the following announcement email with your clients and network. Just copy/paste the content below into an email or other digital announcement platform to share.
+
+If you have any questions, please don&apos;t hesitate to reach out to your Client Success Representative, {!Order_Fulfillment__c.Fulfillment_Owner_Fullname__c}, at {!Order_Fulfillment__c.Fulfillment_Owner_Phone__c} or by email at {!Order_Fulfillment__c.Fulfillment_Owner_Email__c}.
+
+Thank you,
+Five Star Professional Client Success Team
+Five Star Professional is pleased to announce that {!NullValue(Order_Fulfillment__c.Display_Contact_First_Name__c&quot;)} {!NullValue(Order_Fulfillment__c.Display_Contact_Last_Name__c&quot;)} is a {!NullValue(Order_Fulfillment__c.Market_Award_Year__c&quot;)} {!NullValue(Order_Fulfillment__c.Associated_With__c&quot;)}! {!NullValue(Order_Fulfillment__c.Display_Contact_First_Name__c&quot;)} is among an elite group of professionals honored with the Five Star award in the {!NullValue(Order_Fulfillment__c.Market_Region__c&quot;)} area.
+
+The {!NullValue(Order_Fulfillment__c.Associated_With__c&quot;)} award recognizes professionals who excel in client satisfaction. All award winners are chosen after undergoing rigorous research, including client nominations and evaluations, regulatory requirements, and a review by an industry Blue Ribbon Panel. After satisfying all of our research requirements, {!NullValue(Order_Fulfillment__c.Display_Contact_First_Name__c&quot;)} has been named a {!Fulfillment__c.Associated_With__c}!
+
+Please join me in congratulating {!NullValue(Order_Fulfillment__c.Display_Contact_First_Name__c&quot;)} {!NullValue(Order_Fulfillment__c.Display_Contact_Last_Name__c&quot;)} on this incredible accomplishment. You can see a congratulations post here!
+Jonathan Wesser
+Five Star Professional
+VP, Research</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

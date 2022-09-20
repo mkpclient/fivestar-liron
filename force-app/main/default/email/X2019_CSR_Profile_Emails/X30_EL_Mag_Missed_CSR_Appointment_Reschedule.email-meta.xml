@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Missed CSR for EL Mag</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>30. EL Mag Missed CSR Appointment - Reschedule</name>
+    <style>freeForm</style>
+    <subject>Sorry we missed you, let&apos;s re-schedule your Essential Living Magazine appointment!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+I&apos;m following up on our scheduled appointment for today to get you set up with your Essential Living Magazine subscription. I&apos;m sorry we missed you! We need to re-schedule with you as soon as possible for another time. Please use the tool below to schedule another appointment with me:
+
+{!Fulfillment__c.CSR_Sumo_Link__c} 
+
+You can also sign into your account right away on your own and start updating your information for the first issue, select your ad templates, make changes to your Editor&apos;s Letter, upload your photo and logo, and provide us with your contact list. 
+
+You can login to your account and start doing this now by going to: www.fivestarprofessional.com/login
+
+Username: {!Fulfillment__c.Web_Username__c}                       			 
+Passcode: {!Fulfillment__c.Login_Code__c}
+
+REMINDER: The deadline for your to submit your information and select your ad templates for the first issue is &lt;MONTH&gt; 1st. 
+
+Please contact me if you have any questions, or if you need assistance with any of this. I am here to help you!
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

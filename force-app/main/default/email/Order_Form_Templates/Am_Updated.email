@@ -1,0 +1,8 @@
+Hi,
+
+Order Form {!Order_Form__c.Name}  has been updated by the account manager, you may proceed with further work.
+
+https://na14.salesforce.com/{!Order_Form__c.Id}
+
+
+Thank you!

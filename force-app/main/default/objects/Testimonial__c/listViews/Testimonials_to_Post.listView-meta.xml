@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Testimonials_to_Post</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
     <columns>NAME</columns>
     <columns>Fulfillment__c</columns>
     <columns>Primary_Recipient__c</columns>
+    <columns>Managed_Social_Media_Platform__c</columns>
+    <columns>Social_Media_Account__c</columns>
     <columns>Posted_to_Social_Media__c</columns>
     <columns>Image_Location__c</columns>
     <columns>Preview__c</columns>
@@ -16,7 +19,7 @@
     <filters>
         <field>Fulfillment_Status__c</field>
         <operation>notContain</operation>
-        <value>Cancelled</value>
+        <value>Cancelled,product created,in progress</value>
     </filters>
     <filters>
         <field>Posted_to_Social_Media__c</field>

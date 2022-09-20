@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Kugamon Sales HTML Email Template for Sales 2018</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Proposal email with Order Link</name>
+    <style>freeForm</style>
+    <subject>Leveraging your Five Star award - Proposal: {!kugo2p__SalesOrder__c.Name}</subject>
+    <textOnly>Hello {!kugo2p__SalesOrder__c.kugo2p__ContactBilling__c},
+
+As we talked about, you may review the proposed Five Star order we discussed, as well as submit payment by copy and pasting the secure link below into your browser.
+
+{!$Setup.kugo2p__Terminal_Settings__c.kugo2p__Sites_URL__c}/CustomOnlineOrder?id={!kugo2p__SalesOrder__c.Id}&amp;key={!kugo2p__SalesOrder__c.kugo2p__OnlineApprovalKey__c}
+
+Please let me know when you submit the order so I can confirm that it came through and walk you through the next steps. Let me know if you have any questions and thank you for the business!
+
+Thank you,
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

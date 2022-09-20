@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>testing html template</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>01 – Award Guide &amp; magazine link html</name>
+    <style>none</style>
+    <subject>How you will appear as a Five Star {!Opportunity.Email_Templates_Profession__c}</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

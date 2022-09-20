@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>12: Fulfillment Created</name>
+    <style>freeForm</style>
+    <subject>Get started with your Five Star marketing tools</subject>
+    <textOnly>Hello {!Fulfillment__c.PrimaryRecipient__c},
+
+My name is {!Fulfillment__c.Fulfillment_Owner__c} and I am your dedicated Client Success Representative at Five Star Professional. Feel free to contact me at any time moving forward.
+
+It’s important that we connect for your client success appointment, so I can give you an overview of your account page and where you will be able to access the items you purchased as part of your package. I’ll walk you through each product to make sure you are set up to be successful! If you have not set up a client success appointment yet, please do so by viewing my schedule here: {!Fulfillment__c.CSR_Sumo_Link__c}.
+
+You can access your Five Star account at fivestarprofessional.com/login.
+Username: {!Fulfillment__c.Web_Username__c}
+Passcode*: {!Fulfillment__c.Login_Code__c}
+
+*If you have already set a new password, please use that to log into your account page.
+
+Look for your products in the My Order section. Some products are ready to use right now! For other products, we’ll need you to submit some information to help us get started. Submitting your information is easy – just follow the prompts!
+
+Thank you!
+
+!Fulfillment__c.Fulfillment_Owner__c}
+Client Success Representative
+Five Star Professional
+{!Fulfillment__c.Owner_Phone__c}
+{!Fulfillment__c.Owner_Email__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

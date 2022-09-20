@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailTemplate__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>This field allows you to choose which email template will be associated with this campaign.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field allows you to choose which email template will be associated with this campaign.</inlineHelpText>
+    <label>Email Template</label>
+    <referenceTo>sbm__EmailTemplate__c</referenceTo>
+    <relationshipLabel>Campaigns</relationshipLabel>
+    <relationshipName>Campaigns</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

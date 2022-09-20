@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Follow up email about the postcards</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Postcards</name>
+    <style>freeForm</style>
+    <subject>Follow up: Five Star postcards</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+Thank you for your time today!  I enjoyed speaking with you.
+
+Per our conversation, I recommend the Five Star postcard as an effective marketing piece to help you stay connected with key clients, introduce yourself to prospects, and keep your colleagues informed of relevant insight. This direct mail piece showcases you as a current Five Star award winner and is customized with your individual or team photo, company logo, and contact information. The postcard also offers adequate space for you to include a personalized or targeted communications message.
+
+We also offer a convenient mail service to help you save time and get your personalized postcards in the hands of your audience sooner. Your mail file is kept confidential and is not used for any other purposes.
+
+Here are just a few examples of when to send the postcard:
+
+· Mail to current clients:
+
+o Announce your Five Star award
+
+o Thank clients for their business and continued loyalty; your achievements and success would not be possible without them
+
+o Remind clients of an appointment or that it is time to schedule one
+
+o Invite clients to an upcoming client appreciation event
+
+o Communicate a referral incentive to your highly influential clients
+
+o Recognize client birthdays, home anniversaries or other life events by writing a personal message
+
+· Mail to prospects:
+
+o First touch to households supporting your lead generation efforts
+
+o Follow-up to warm prospects
+
+o Introduce yourself to new audiences; get noticed!
+
+· Mail to colleagues within related industries:
+
+Share the news and encourage cross-professional referrals
+Inform or educate colleagues on relevant industry topics via delivery of a quick postcard message
+
+If you would like to precede with the postcards and mail service, please let me know and we can get started right away.
+
+
+
+Thanks!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

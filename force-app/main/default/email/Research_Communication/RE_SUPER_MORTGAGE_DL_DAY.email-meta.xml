@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>MSPRE21 SUPER MORTGAGE PROFESSIONAL AWARD</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>MP SUPER MORTGAGE DL DAY</name>
+    <style>none</style>
+    <subject>Final Day to complete your form 2021 Super Mortgage Professional award MSP/TCB magazine</subject>
+    <textOnly>Hello {!Opportunity.Email_Templates_Informalname__c},
+
+Deadline day has been extended to Friday, June 11, 2021 to complete your candidate form for the 2021 Super Mortgage Professional™ award.
+
+To be considered this year, you must submit additional information about your business practice. Candidates must meet minimum experience and production criteria. Your response is required by, Friday, June 11, 2021 to ensure you are considered for this year’s recognition.
+
+
+To access and complete your evaluation form, click on this link: {!Opportunity.Research_Form_URL__c} , and enter your code: {!Opportunity.Research_Stage__c} (The code is key sensitive) If the link to the survey does not work, simply copy and paste the link into a web URL and click &quot;enter&quot;
+
+If selected as an award winner, you will receive information on how you can leverage this honor through an expanded profile. Again, congratulations on being identified as a candidate for the 2021 Super Mortgage Professional™ award.
+
+Please contact us at 651-259-1865, if you have questions or need help.
+
+Kind regards,
+
+{!User.Name}
+
+Crescendo Business Services
+2117 Cliff Dr
+Eagan, MN  55122
+Direct: 651-259-1865
+debbie.noll@fivestarprofessional.com
+
+unsubscribe from this list</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

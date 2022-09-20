@@ -321,11 +321,6 @@
             <field>Final_Index__c</field>
             <table>Market__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Price_Book__c</field>
-            <table>Market__c</table>
-        </columns>
         <masterLabel>Markets</masterLabel>
     </sections>
 </ReportType>

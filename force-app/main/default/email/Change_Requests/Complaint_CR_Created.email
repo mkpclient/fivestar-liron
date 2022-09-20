@@ -1,0 +1,7 @@
+Hello,
+
+A change request has been logged on order {!Change_Request__c.Order__c}, please view the change request here for details: https://na52.salesforce.com/{!Change_Request__c.Id}
+
+Order Link: https://na52.salesforce.com/{!Change_Request__c.OrderId__c}
+
+Thank you!

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email template to deliver CST</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Order Fulfillment Send CST</name>
+    <style>freeForm</style>
+    <subject>Your Client Success Tracker report is ready!</subject>
+    <textOnly>Hello {!Fulfillment__c.Display_Contact_First_Name__c},
+
+I wanted to check in with you to make sure you are getting the most value out of your Five Star marketing tools and campaign! You can view your latest products, results, and some ideas on how to continue to use your tools by accessing your Client Success Tracker report.
+
+To view your report, please copy/paste this url into a web browser:
+{!Fulfillment__c.Client_Success_Tracker_URL__c}
+
+The report is designed to help you track your Five Star marketing tools by showing you results when appropriate and highlighting additional things you can do to get the most out the marketing tools.
+
+My goal is to make sure you are having success with your tools achieving your business objectives! Please take a look at your report and don’t hesitate to reach out to me with questions regarding your Five Star marketing tools.
+
+
+Thank you,
+
+{!Fulfillment__c.Fulfillment_Owner__c}
+Client Success Representative
+Five Star Professional
+{!Fulfillment__c.Fulfillment_Owner_Email__c}
+{!Fulfillment__c.Fulfillment_Owner_Phone__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

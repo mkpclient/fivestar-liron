@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>CHIRO14 05 – No response; no further contact</name>
+    <style>freeForm</style>
+    <subject>Your 2014 Five Star {!Opportunity.Email_Templates_Profession__c} award</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+I’ve been trying to reach you regarding your appearance in the upcoming {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c} as a 2013 Five Star {!Opportunity.Email_Templates_Profession__c}. You’ll be listed at no cost in a special advertising section of the magazine. I want to make sure you have every opportunity to increase your presence in the magazine and make the most of your selection.
+
+I want to be respectful of your time, so I will leave the next steps in your hands. Let me know if I can answer any questions.
+
+
+{!User.Name}
+Account Manager
+
+Five Star Professional
+2117 Cliff Drive
+Eagan, MN 55122
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+www.fivestarprofessional.com
+
+Award candidates and award winners: Please tell us
+about your experience with Five Star Professional.
+http://fivestar.98d1e644fe2e.sgizmo.com/s3/</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

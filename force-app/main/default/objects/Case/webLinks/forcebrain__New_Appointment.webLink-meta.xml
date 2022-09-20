@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__New_Appointment</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Appointment</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/xdomain/xdomain.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/26.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/support/console/30.0/integration.js&quot;)} 
+
+if (sforce.console.isInConsole()) { 
+srcUp(&apos;/apex/forcebrain__eventEdit?caseid={!Case.Id}&amp;isdtp=vw&amp;whatId={!Case.Id}&amp;partId={!Case.ContactId}&amp;tab=1&amp;casetz={!Case.forcebrain__Time_Zone__c}&amp;retUrl={!$Site.BaseUrl}/{!Case.Id}&amp;addIcon=1&apos;);
+}
+else{
+window.location.href = &apos;/apex/forcebrain__eventEdit?caseid={!Case.Id}&amp;whatId={!Case.Id}&amp;partId={!Case.ContactId}&amp;tab=1&amp;casetz={!Case.forcebrain__Time_Zone__c}&amp;retUrl={!$Site.BaseUrl}/{!Case.Id}&apos;;
+}</url>
+</WebLink>

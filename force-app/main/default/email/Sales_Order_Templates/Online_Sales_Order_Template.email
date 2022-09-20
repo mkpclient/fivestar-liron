@@ -1,0 +1,13 @@
+Dear {!SalesOrder__c.ContactBilling__c},
+
+As we talked about, you may review the proposed Five Star order we discussed, as well as submit payment through the secure link below.
+
+https://fivestarprofessional.secure.force.com/OnlineOrderVf?id={!SalesOrder__c.Id}
+
+Please let me know when you submit the order so I can confirm that it came through and walk you through the next steps. Let me know if you have any questions and thank you for the business!
+
+Thank you,
+
+{!$User.FirstName} {!$User.LastName}
+{!$Organization.Name}
+{!$User.Phone} | Email: {!$User.Email}

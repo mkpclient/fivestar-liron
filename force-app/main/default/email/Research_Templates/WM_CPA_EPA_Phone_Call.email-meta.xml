@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>WM/CPA/EPA Phone Call Follow Up</name>
+    <style>none</style>
+    <subject>Phone call follow up - {!Opportunity.Email_Templates_Publication_Year__c} Five Star Wealth Manager Award</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Just following up with our conversation on the phone earlier and provide you with your link to your form. You have been identified as a candidate for the 2015 Five Star {!Opportunity.Email_Templates_Profession__c} award either by a peer nomination, firm nomination or pre-qualification based on industry credentials.  An exclusive group of {!Opportunity.Email_Templates_Profession__c}s will be recognized in this special {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c} at no cost. In order to be considered for the award, you must complete a short online evaluation form - candidates will be evaluated based on 10 objective criteria associated with providing quality customer service.
+
+Please click on the link below to complete your online form:
+
+Please click here to complete your candidate form.
+
+The deadline for submission is 11:59 PM Eastern Time on {!Opportunity.CloseDate}.
+Award winners are scheduled to be notified within three weeks of the deadline.
+If you have any questions please feel free to give me a call or send me an email.
+
+Thanks,
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

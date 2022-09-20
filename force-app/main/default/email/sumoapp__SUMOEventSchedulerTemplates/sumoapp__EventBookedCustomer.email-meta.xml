@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sumo Event Booked</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>sumoapp__EventRegistrationConfirmation</letterhead>
+    <name>Event Booked (Customer)</name>
+    <style>freeForm</style>
+    <subject>{!Organization.Name} - Registration Confirmation</subject>
+    <textOnly>Hi &lt;%attendeeName%&gt;,
+
+You are registered to attend the following event.
+
+Confirmation #: &lt;%confirmationNumber%&gt;
+Event Name: {!Event.Subject}
+Date/Time: &lt;%datetime%&gt;
+Duration: {!Event.DurationInMinutes} min
+&lt;%locationFields%&gt;
+# of Seats Registered: &lt;%numberOfSeats%&gt;
+Price per Seat: &lt;%price%&gt;
+&lt;%description%&gt;
+&lt;%locationDetails%&gt;
+&lt;%declineLink%&gt;
+&lt;%addToCalendarLinks%&gt;
+
+Thank you,
+{!Event.sumoapp__OrganizerFullName__c}
+{!Event.sumoapp__OrganizerTitle__c}
+{!Organization.Name}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -4,6 +4,7 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <tabs>standard-Chatter</tabs>
     <tabs>standard-UserProfile</tabs>
     <tabs>standard-CollaborationGroup</tabs>
@@ -31,5 +32,6 @@
     <tabs>Essential_Living_Issue__c</tabs>
     <tabs>Essential_Living_Publication__c</tabs>
     <tabs>Client_Experience__c</tabs>
-    <tabs>SalesOrder__c</tabs>
+    <tabs>Subscription__c</tabs>
+    <tabs>sumoapp__Email__c</tabs>
 </CustomApplication>

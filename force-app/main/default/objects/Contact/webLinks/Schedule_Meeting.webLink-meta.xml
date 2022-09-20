@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Schedule_Meeting</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Schedule Meeting</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>window.open(&quot;https://secure.scheduleonce.com/{!User.ScheduleOnceBookingName__c}&amp;sosfLeadId={!Lead.Id}&amp;sosfContactId={!Contact.Id}&amp;sosfCaseId={!Case.Id}&quot;, &quot;_blank&quot;, &quot;toolbar=yes, scrollbars=yes, resizable=yes, top=200, left=200, width=900, height=600&quot;)</url>
+</WebLink>

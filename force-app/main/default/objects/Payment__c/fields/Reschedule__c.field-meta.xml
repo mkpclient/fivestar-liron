@@ -6,7 +6,6 @@
     <externalId>false</externalId>
     <inlineHelpText>Setup the next scheduled native subscription payment when this payment is completed.</inlineHelpText>
     <label>Reschedule</label>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

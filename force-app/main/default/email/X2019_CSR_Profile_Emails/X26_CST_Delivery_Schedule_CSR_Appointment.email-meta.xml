@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>For clients who are in the status of &quot;CSR Appointment NOT Complete - Closed&quot;</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>26. CST Delivery Schedule CSR Appointment</name>
+    <style>freeForm</style>
+    <subject>Your Five Star Professional client success tracker - schedule an appointment!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+We’ve created a new report that shows you the list of your Five Star Professional marketing tools. You can view your tracker by clicking here: {!Fulfillment__c.Client_Success_Tracker_URL__c}
+
+The Client Success Tracker is designed to help you track your Five Star Professional marketing tools by reminding you about your tools that you purchased and includes best practices for how to utilize your tools to help get the most out the campaign.
+
+In reviewing the notes on your account, I see that you have not completed your Client Success appointment to review your marketing tools that you purchased. It&apos;s very important that we connect and schedule your Five Star Client Success appointment to make sure you are set up for success with your tools and that you get the most out of your products. Please use the link below to schedule your 20-minute client success meeting with us as soon as possible: {!Fulfillment__c.CSR_Sumo_Link__c}
+
+You will need access to a computer for this meeting. In our meeting, we will discuss the steps you need to take to submit materials, access your tools and ideas for how to use your tools.
+
+We will review your available products and the materials you need to submit on your Five Star account at www.fivestarprofessional.com/login
+
+Username: {!Fulfillment__c.Web_Username__c}   Passcode: {!Fulfillment__c.Login_Code__c}
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sync_with_Marketing_Cloud__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field determines whether a Contact record should be synced and/or imported into Marketing Cloud</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field determines whether a Contact record should be synced and/or imported into Marketing Cloud</inlineHelpText>
+    <label>Sync with Marketing Cloud</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

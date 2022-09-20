@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Order_Product_Line_ID__c</fullName>
     <externalId>false</externalId>
-    <formula>CASESAFEID(Order_Product_Line__r.Id)</formula>
+    <formula>CASESAFEID(BoomOrderProductLine__r.Id)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Order Product Line ID</label>
     <required>false</required>

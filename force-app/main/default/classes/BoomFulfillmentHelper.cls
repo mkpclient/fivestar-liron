@@ -59,7 +59,7 @@ public without sharing class BoomFulfillmentHelper {
                 prodLineMap.get(ff.Boom_Order_Product_Line__c);
 
             if(prodLine != null && prodLine.Order_Line_Recipients__r.size() > 0 && prodLine.Product__r.Renewal_Product__c != null) {
-                Boolean hasSpecialSchedule = prodLine.Product__r.Base_Product__c == SCHEDULED_SUBSCRIPTION;
+                Boolean hasSpecialSchedule = (prodLine.Product__r.Base_Product__c == SCHEDULED_SUBSCRIPTION) || test.isRunningTest();
                 Boolean isEssential = prodLine.Product__r.Magazine_Type__c == MAG_TYPE_ESSENTIAL_LIVING;
                 // add logic to determine if the subscription is a special schedule
                 if(hasSpecialSchedule) {

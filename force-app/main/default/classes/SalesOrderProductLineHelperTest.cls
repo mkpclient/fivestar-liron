@@ -48,7 +48,6 @@ public with sharing class SalesOrderProductLineHelperTest {
 
   @isTest
   private static void testInsert() {
-    Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
     SalesOrderProductLine__c insertedProdLine = [
       SELECT KitBundle__c, Id, SalesOrder__c
       FROM SalesOrderProductLine__c
@@ -107,7 +106,6 @@ public with sharing class SalesOrderProductLineHelperTest {
 
   @isTest
   private static void testSampleProdInsert() {
-    Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
     Product2 sampleProd = BoomTestHelpers.generateProduct();
     sampleProd.Sample_Product__c = true;
     update sampleProd;
@@ -205,7 +203,6 @@ public with sharing class SalesOrderProductLineHelperTest {
 
   @isTest
   private static void testUpdate() {
-    Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
     SalesOrderProductLine__c prodLineToUpdate = [
       SELECT KitBundle__c, Id
       FROM SalesOrderProductLine__c
@@ -244,7 +241,6 @@ public with sharing class SalesOrderProductLineHelperTest {
 
   @isTest
   private static void testDelete() {
-    Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
     SalesOrderProductLine__c prodLineToDelete = [
       SELECT KitBundle__c, Id,SalesOrder__c
       FROM SalesOrderProductLine__c
@@ -333,7 +329,6 @@ public with sharing class SalesOrderProductLineHelperTest {
 
   @isTest
   private static void testTaxes() {
-    Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
     Account testAcc = BoomTestHelpers.generateAccount();
     Contact testCtc = BoomTestHelpers.generateContact(testAcc.Id);
     SalesOrderProductLine__c prodLineToUpdate = [

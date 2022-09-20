@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Embedded link</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>RE Very Descriptive</name>
+    <style>none</style>
+    <subject>You are a candidate the Five Star Real Estate Award in {!Opportunity.Email_Templates_Magazine__c}</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Just wanted to send you an email with some more information about what this is all about. Our company, Five Star Professional, is a research and award company partnered with {!Opportunity.Email_Templates_Magazine__c} to recognize professionals that provide outstanding service to their clients. We are the providers of the 2014 Five Star {!Opportunity.Email_Templates_Profession__c}, the largest and most widely published award program in the industry. We have been in business for over 10 years recognizing professionals in over 45 markets across the United States and in Canada.
+
+A short Youtube video of the process.
+
+A couple of notes about the magazine:
+- We have been partnered with {!Opportunity.Email_Templates_Magazine__c} going on our {!Opportunity.Yrs_with_Mag__c}th year!
+- {!Opportunity.Email_Templates_Magazine__c} has about {!Opportunity.Magazine_Readership__c} readers.
+- Award winners are recognized in the {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c} at no cost.
+- {!Opportunity.Email_Templates_Magazine__c}&apos;s website
+- What did last year&apos;s award section look like?
+
+
+FAQ&apos;s:
+
+How was the research conducted?
+We reach out to recent homebuyers in the greater {!Opportunity.Market_Name__c} area and ask them to put forward the real estate agent that they worked with. That is how we get your name, is they identified you as their real estate agent and then they rated your service on 10 criteria.
+
+What&apos;s the next step?
+At this point we are still in the research phase. The reason I am reaching out to you is your clients had great things to say about you and scored you highly on the 10 customer service criteria. To be considered for the award all candidates must complete a candidate form - candidates must satisfy minimum experience and production criteria. This information is kept internally and is used in the selection process. Once you have submitted your form you will be eligible to be selected.
+
+What&apos;s the cost?
+There is no cost to be considered or to be named a 2014 Five Star {!Opportunity.Email_Templates_Profession__c} winner. Award winners will be published on our website and in the {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c} at no cost as well.
+
+What&apos;s the catch?
+There is no catch. Our company offers a variety of tools that become available to award winners that are designed to create new opportunities by leveraging and marketing the award. By participating there is no obligation to purchase any of these products should you be named an award winner. Please note that purchase of these products has no bearing what-so-ever on whether someone wins the award or not.
+
+How can I complete my form?
+It only takes a few minutes!
+
+Please click the link below to complete your candidate form:
+http://{!Opportunity.Research_Form_URL__c}
+(The deadline for submission is 11:59 PM Eastern Time on {!Opportunity.CloseDate}.)
+
+When will I know if I was selected?
+Award winners are scheduled to be notified within 3 weeks after the deadline above.
+
+Who can answer my additional questions?
+I can! I am your research representative and my role is to address any questions/concerns and help you complete the candidate form so that you can be considered for the award. Feel free to email me or call me.
+Email: {!User.Email}
+Direct: {!User.Phone}
+
+
+We look forward to announcing this stand out group of professionals to the readers of {!Opportunity.Email_Templates_Magazine__c}! I hope to hear from you soon.
+
+Thanks,
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: American Registry and other firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

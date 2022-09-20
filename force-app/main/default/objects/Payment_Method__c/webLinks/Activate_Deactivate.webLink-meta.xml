@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activate_Deactivate</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Activate/Deactivate</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+
+var p = new sforce.SObject(&apos;Payment_Method__c&apos;);
+p.id = &quot;{!Payment_Method__c.Id}&quot;;
+p.Inactive__c = &quot;{!!Payment_Method__c.Inactive__c}&quot;;
+result = sforce.connection.update([p]);
+location.reload(true);</url>
+</WebLink>

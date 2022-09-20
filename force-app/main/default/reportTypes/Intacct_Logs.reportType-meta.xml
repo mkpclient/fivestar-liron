@@ -126,6 +126,21 @@
             <field>Synchronized_At__c</field>
             <table>Intacct_Log__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BoomOrder__c</field>
+            <table>Intacct_Log__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BoomOrderProductLine__c</field>
+            <table>Intacct_Log__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BoomOrderAdditonalChargeCredit__c</field>
+            <table>Intacct_Log__c</table>
+        </columns>
         <masterLabel>Intacct Logs</masterLabel>
     </sections>
 </ReportType>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Email focusing on not missing out, including a sample of the CST</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>End of Market Push - Sample CST</name>
+    <style>freeForm</style>
+    <subject>You are going to miss out on the benefits of this year’s Five Star award</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+I am following up on our last conversation. It’s your last chance to take full advantage of this year’s Five Star award, and I am concerned that you will miss out.
+
+Below is a sample Client Success Tracker report, which documents the results of a sample Five Star campaign. The results of every campaign is tracked and reported back to purchasers throughout the campaign year.
+
+
+
+
+I don’t want you to miss out on generating the results you need to achieve your business and growth objectives. Please give me a call at the number below!
+
+
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

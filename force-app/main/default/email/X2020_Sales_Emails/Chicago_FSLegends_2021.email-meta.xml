@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Legends - Chicago Email #1</name>
+    <style>freeForm</style>
+    <subject>Highlight your long standing client service excellence in Chicago Legends!</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+I am following up on the voicemail I left you regarding an appearance in our Chicago Five Star Legends section. The appearance will be in the May 2022 issue of Chicago Magazine, only available to Five Star winners with 10 or more years of receiving the award. This is very exclusive and the section will include an opportunity to be 1 of 5 Legends to purchase a Profile Package - these will sell quickly, so please call as soon as you are able!
+
+
+Click Here for more information!
+
+Please call my direct line below to learn more about this opportunity.
+
+
+{!User.Name}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

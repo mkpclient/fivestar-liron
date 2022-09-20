@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Specific_Disclosure__c</fullName>
+    <description>Company-specific disclosure language required by this company, in addition to any FSP disclosures already present.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Company-specific disclosure language required by this company, in addition to any FSP disclosures already present.</inlineHelpText>
+    <label>Company Specific Disclosure</label>
+    <length>10000</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

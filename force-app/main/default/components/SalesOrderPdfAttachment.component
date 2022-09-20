@@ -1,6 +1,7 @@
 <apex:component access="global" Controller="BoomEmailController" allowDml="true" id="orderCompId">
   <apex:attribute name="recId" type="Id" assignTo="{!orderId}" description="Id of the Order" access="global" />
-  <apex:attribute name="renderAs" type="string" description="The format this component will be rendered to." access="global" />
+  <apex:attribute name="renderAs" type="string" description="The format this component will be rendered to." access="global"
+  />
 
   <head>
     <style>
@@ -15,7 +16,7 @@
       }
 
       td {
-        /* height: 50px; */
+        height: 50px;
       }
     </style>
   </head>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confidence_Range</fullName>
+    <active>true</active>
+    <description>1-10</description>
+    <errorConditionFormula>NOT(OR (ISNULL(Confidence__c),(AND(Confidence__c&lt;11, Confidence__c&gt;0))))</errorConditionFormula>
+    <errorMessage>Confidence level must be a number between 1-10</errorMessage>
+</ValidationRule>

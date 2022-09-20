@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Follow up email about the press release</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Press Release</name>
+    <style>freeForm</style>
+    <subject>Follow up: Five Star press release service</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Thank you for your time today. Per our conversation, I think our Press Release Service would be a perfect fit for you. It is an official Five Star press release built for the web to expand your reach and get you noticed by clients and prospects
+.
+
+Content
+
+· - An official award announcement customized with your information and personal quote
+
+· - Your individual or group photo with caption (search optimized for Google Images, etc.)
+
+· - Your embedded website and a text link to your site (helping drive web traffic)
+
+· Up to 6 attachments to your logo, videos, team photo, listings, etc.
+
+
+Features
+
+· - Search optimized and tagged with SEO key words to make it easier for online viewers - to find you using search engines and PRWeb
+
+· - Equipped with instant social media sharing tools and seamless e-mail, print and pdf functionality
+
+· - Reporting that tracks activity, engagement and traffic sources (See sample report here)
+
+
+Distribution
+
+Permanent hosting and news release distribution via PR Web (the world’s most highly rated news release service) to:
+
+· - All major search engines (Google, Yahoo, Bing, etc.)
+
+· - Hundreds of major news sites like Google News, Yahoo Finance, etc. (See distribution list here)
+
+· - Industry and regional news feeds
+
+· - 250,000+ PR Web subscribers and 30,000+ journalists and bloggers
+
+
+Please let me know if you have any questions and when you’re ready to get started. It’s an easy, affordable and effective way to promote your award and increase your online visibility.
+
+
+Thanks!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

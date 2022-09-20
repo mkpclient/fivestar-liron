@@ -1,0 +1,34 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Hi {!Opportunity.Email_Templates_Informalname__c},<font size="3"><o:p></o:p></font></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font size="3" face="Verdana, Helvetica, sans-serif">I just left you a voicemail detailing how I can help you engage high-net-worth clients using the marketing tools offered by Five Star Professional.&nbsp;</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font style="background-color: rgb(255, 255, 255);" face="Verdana, Helvetica, sans-serif"><br></font></p><p class="MsoNormal"><font face="Verdana, Helvetica, sans-serif"><font><font style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">I've spoken to some of the top-producing professionals</font><font size="3">&nbsp;around the country, helping them attract high-value clients,&nbsp;</font>stand<font size="3">&nbsp;out from the competition, and&nbsp;maximize referrals</font></font><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"><font size="3">. I would like to connect with you sometime over the next couple of days to talk about how you can do the same.</font></span></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" align="center" style="color: rgb(0, 0, 0); text-align: center;"><b><u><span style="color: blue; background-color: rgb(255, 255, 255);"><a href="{!Opportunity.Email_Templates_MSSB_Award_Guide__c}"><font face="Verdana, Helvetica, sans-serif">2015 Five Star {!Opportunity.Email_Templates_Profession_c} Award Guide</font></a></span></u></b></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><br></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Thoughts?</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><br></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><br></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><b>{!User.Name}</b><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Account
+Manager<br>Five Star
+Professional</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">2900 Lone Oak Parkway</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Suite 120,&nbsp;Eagan, MN 55121</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">Direct:<span class="apple-converted-space">&nbsp;</span>{!User.Phone}</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">{!User.Email}<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><a href="http://www.fivestarprofessional.com/" target="_blank" title="http://www.fivestarprofessional.com">www.fivestarprofessional.com</a><font><o:p></o:p></font></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif">&nbsp;</font></p><p style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"></p>]]></td>
+</tr>
+</table>

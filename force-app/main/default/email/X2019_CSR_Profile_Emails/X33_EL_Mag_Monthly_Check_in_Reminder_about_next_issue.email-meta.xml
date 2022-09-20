@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>EL Mag monthly check-in/reminder about next issue</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>33. EL Mag Monthly Check-in/Reminder about next issue</name>
+    <style>freeForm</style>
+    <subject>Reminder: Your next issue of Essential Living Magazine will be shipping out soon!</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+I just wanted to follow-up with you from the voicemail I just left with you to make sure you received last month&apos;s copy of Essential Living Magazine? I also wanted to remind you that your next issue will be shipping out soon. 
+
+If you would like to make any changes to your information, or select new ad templates, or review the new Editor&apos;s Letter, you can login to your account using the information below and make those changes now.
+
+You can access your Five Star account by going to: www.fivestarprofessional.com/login. 
+
+Here is your login information:
+
+                       Username: {!Fulfillment__c.Web_Username__c}
+
+                       Passcode: {!Fulfillment__c.Login_Code__c}
+
+REMINDER: The deadline for your to submit your information and select your ad templates for the next issue is &lt;MONTH&gt; 1st. 
+
+Please contact me if you have any questions, or if you need assistance with any of this. I am here to help you!
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

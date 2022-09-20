@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send this to MP Industry Clients as a follow up to your call</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>HGTV MP Follow Up Email</name>
+    <style>freeForm</style>
+    <subject>HGTV Real Estate Market Leaders - are you participating?</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+I am following up on my voicemail that I left you.
+
+I would like to position you among only 5 Five Star Mortgage Professionals in a HGTV Magazine special section entitled Real Estate Market Leaders. Highlighted market leaders are grouped by major metropolitan city within the State of California and the section will appear in the October, 2019 issue.
+
+I think this is an exceptional opportunity that when marketed, will help activate your referral network and help you win more prospective client presentations.
+
+Please call me to discuss.
+
+
+Thank you,
+
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

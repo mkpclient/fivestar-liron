@@ -100,6 +100,9 @@ global class SubscriptionOrdersBatch implements Database.Batchable<sObject>, Dat
         if(updatedSalesOrders.size() > 0) {
           upsert updatedSalesOrders;
         }
+
+        
+        
       }
     
       global void finish(Database.BatchableContext info) {

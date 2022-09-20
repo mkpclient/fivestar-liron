@@ -485,11 +485,14 @@
             <field>Final_Index__c</field>
             <table>Market__c</table>
         </columns>
+        <masterLabel>Markets</masterLabel>
+    </sections>
+    <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Price_Book__c</field>
-            <table>Market__c</table>
+            <field>Full_ID__c</field>
+            <table>Market__c.Line_Recipients__r</table>
         </columns>
-        <masterLabel>Markets</masterLabel>
+        <masterLabel>Line Recipients</masterLabel>
     </sections>
 </ReportType>

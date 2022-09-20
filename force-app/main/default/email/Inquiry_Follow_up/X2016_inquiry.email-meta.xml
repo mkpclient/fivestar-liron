@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>2016 inquiry follow up</name>
+    <style>freeForm</style>
+    <subject>We want to hear from you – your feedback is important to us!</subject>
+    <textOnly>Thank you for the opportunity to assist you with your recent inquiry. We would very much appreciate your feedback regarding your experience with Five Star Professional. Please take a moment to complete our brief survey and let us know how we did.
+
+
+We thank you in advance for sharing your thoughts with us. If you have any questions about this survey, or if you need further assistance, please don’t hesitate to contact us.
+
+
+Kind regards,
+
+
+Teresa Hemingson
+
+Manager, Client Experience and Delivery
+Five Star Professional
+
+Phone: 888-438-5782
+
+Email: clientservices@fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

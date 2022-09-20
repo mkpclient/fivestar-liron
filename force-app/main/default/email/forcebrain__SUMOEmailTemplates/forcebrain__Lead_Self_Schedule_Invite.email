@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Hi {!Lead.FirstName},]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div style="color: rgb(0, 0, 0); font-size: 12pt; font-family: arial;">Per our discussion, I would love to meet with you regarding __________.</div><div style="color: rgb(0, 0, 0); font-size: 12pt; font-family: arial;"><br></div><div style="color: rgb(0, 0, 0); font-size: 12pt; font-family: arial;">Please click this link and choose a time that works with your schedule.</div><div style="font-family: arial;"><ul><li><font color="#3333ff" size="4"><b>{!Lead.forcebrain__Schedule_Now_URL__c}</b></font></li></ul></div><div style="color: rgb(0, 0, 0); font-size: 12pt;"><span style="font-size: 12pt;">I will then send you a confirmation email with a link to add the appointment to your c</span><span style="font-size: 12pt;">alendar.</span></div><div style="color: rgb(0, 0, 0); font-size: 12pt; font-family: arial;"><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;"><br></span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">I look forward to meeting with you.</span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;"><br></span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">Thank you,</span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;" size="3">{!$User.FirstName}<br>-----------------------------<br></font><font style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;" size="3">{!Organization.Name}</font><br><font style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;" size="3">{!forcebrain__EventParticipant__c.forcebrain__Email_Signature_Formula__c}<br>{!$User.Title}<br>{!$User.Phone}<br>{!$User.Email}</font></div></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="1" >
+<![CDATA[<font color="#ffffff"><font face="arial" size="3" style="font-family: arial; font-size: 12pt;">Event ID:</font><font face="arial">{!forcebrain__EventParticipant__c.forcebrain__EventId__c}</font></font>]]></td>
+</tr>
+</table>

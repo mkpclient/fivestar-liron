@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dead</fullName>
+    <active>false</active>
+    <description>IF the sales stage is dead, must select valid stage comment</description>
+    <errorConditionFormula>OR(AND(ISPICKVAL( StageName , &quot;Dead&quot;),NOT(OR(ISPICKVAL(  Stage_Comment__c , &quot;Remove contact permanently&quot;),ISPICKVAL(  Stage_Comment__c , &quot;Retired&quot;),ISPICKVAL(  Stage_Comment__c , &quot;Deceased&quot;)))))</errorConditionFormula>
+    <errorMessage>Stage Dead requires Stage comment of either Remove Contact Permanently or Retired or Deceased</errorMessage>
+</ValidationRule>

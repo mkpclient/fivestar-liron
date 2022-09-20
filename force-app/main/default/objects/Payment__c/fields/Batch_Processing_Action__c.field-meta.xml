@@ -6,7 +6,6 @@
     <inlineHelpText>For Scheduled payments.  Type of action to perform when batch processing the scheduled payment.</inlineHelpText>
     <label>Batch Processing Action</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>

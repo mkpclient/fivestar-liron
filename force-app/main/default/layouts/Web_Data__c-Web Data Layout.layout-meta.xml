@@ -1078,6 +1078,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>ENL_Disclosure__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>ENL_Style__c</field>
             </layoutItems>
             <layoutItems>

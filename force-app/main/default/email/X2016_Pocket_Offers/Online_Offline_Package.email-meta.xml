@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Online/Offline Package</name>
+    <style>freeForm</style>
+    <subject>Five Star Professional&apos;s Online/Offline Marketing Package</subject>
+    <textOnly>Hello {!Contact.ACDF_FName__c}!
+
+It was great speaking with you today. Based on our conversation, I believe our online/offline marketing package would be a perfect fit for you and your business! This package includes:
+
+Award emblem
+Digital spotlight profile (Click here to see a sample!)
+50 two-page reprints of your digital spotlight content
+
+The list price for this package is $800, but it is available to you for only $649.
+
+
+
+How to use this package to drive referrals, retention and new business opportunities:
+
+Use the digital spotlight to improve your SEO and expand your digital footprint. Share it on your social media accounts to direct clients, prospects and referral partners to learn more about you
+Add the award emblem to your email signature and on your website
+
+Bonus tip: Make your award emblem a hyperlink to your digital spotlight profile to drive traffic and increase your SEO!
+
+Include your spotlight reprints in client handouts, mailings or as leave-behinds at open houses
+
+Ready to get started? Click here to schedule an appointment to place your order!
+
+
+
+{!Opportunity.OwnerFullName}
+
+Account Manager
+
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+
+{!Opportunity.OwnerEmail}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

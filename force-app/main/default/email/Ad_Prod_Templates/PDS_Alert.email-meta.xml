@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>PDS Alert</name>
+    <style>freeForm</style>
+    <subject>Check out the most recent results for your current marketing service subscription!</subject>
+    <textOnly>Hello,
+
+We have published a new summary report that shows the progress and results of your current subscription:
+
+{!Product_Delivery_Summary__c.Fulfillment_Product_Name__c}
+
+You can login to your account using the credentials below to see the report:
+
+Go to https://fivestarprofessional.com/account/login.
+
+Username: {!Product_Delivery_Summary__c.Web_Username__c}
+Passcode: {!Product_Delivery_Summary__c.Login_Code__c}
+
+If you have any questions, please feel free to call or email me -- I am here to help!
+
+Thank you!
+
+{!Product_Delivery_Summary__c.Fulfillment_Owner_Name__c}
+Client Success Representative
+{!Product_Delivery_Summary__c.Fulfillment_Owner_Phone__c}{!Product_Delivery_Summary__c.Fulfillment_Owner_Email__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

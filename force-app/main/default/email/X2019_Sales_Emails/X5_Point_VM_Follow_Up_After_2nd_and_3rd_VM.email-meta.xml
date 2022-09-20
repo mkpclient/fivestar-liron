@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Use this for follow up to VM&apos;s left with 5 Point opportunities</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>5 Point MP Follow Up - After 2nd VM</name>
+    <style>freeForm</style>
+    <subject>Five Point Magazine - Be One of Three to be Featured</subject>
+    <textOnly>(Insert Market)
+
+Hello {!Contact.FirstName},
+
+In the (Insert Market) edition of Five Point Magazine, which will be published in June, you will be listed as a Five Star Mortgage Professional. There is no cost for you to be listed among other winners in the publication, it is just another benefit of being selected as a Five Star award winner.
+
+As a Five Star Mortgage Professional, getting in front of more than (Insert Distribution) real estate agents in (Insert Market) is a unique opportunity. If you have any desire to solidify or expand your professional referral network you might want to consider an expanded presence in Five Point Magazine beyond your free listing. Only 3 professionals will be featured in advertorials. If you have a few minutes I can quickly review opportunities available to you.
+
+Please call me to discuss or click below to schedule an appointment:
+
+{!Contact.AM_Follow_Up_Link__c}
+
+
+
+Thank you,
+
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

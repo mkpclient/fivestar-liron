@@ -510,11 +510,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Call_Type__c</field>
-            <table>Client_Experience__c.Activities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>RingCentral__RC_Logging_Type__c</field>
             <table>Client_Experience__c.Activities</table>
         </columns>
@@ -581,11 +576,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Research_Call_Type__c</field>
-            <table>Client_Experience__c.Activities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Call_Recording_Response__c</field>
             <table>Client_Experience__c.Activities</table>
         </columns>
         <columns>
@@ -870,17 +860,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>pi__pardot_source_id__c</field>
-            <table>Client_Experience__c.Activities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Call_Recording__c</field>
-            <table>Client_Experience__c.Activities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Related_Contact_Name__c</field>
             <table>Client_Experience__c.Activities</table>
         </columns>
         <masterLabel>Activities</masterLabel>

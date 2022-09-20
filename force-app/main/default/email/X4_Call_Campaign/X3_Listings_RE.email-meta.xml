@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>3 - Listings RE</name>
+    <style>freeForm</style>
+    <subject>RE: Retaining clients isn&apos;t enough!</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+I just left you a message detailing how I can help gain high-profile listings using some of Five Star Professional&apos;s tools.
+
+
+
+I&apos;ve helped some of the top-producing professionals in {!Opportunity.Email_Templates_Market_City__c} use Five Star&apos;s services to gain new business. I also specialize in helping my clients differentiate themselves and maximize referrals.
+
+
+
+2015 Five Star {!Opportunity.Email_Templates_Profession_c} Award Guide
+
+
+
+Thoughts?
+
+
+
+
+
+{!User.Name}
+
+Account Manager
+Five Star Professional
+
+2900 Lone Oak Parkway
+
+Suite 120, Eagan, MN 55121
+
+Direct: {!User.Phone}
+
+{!User.Email}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

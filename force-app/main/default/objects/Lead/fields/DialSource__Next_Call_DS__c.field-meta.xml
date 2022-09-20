@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DialSource__Next_Call_DS__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Datetime field used to set the next call datetime for reference in automation or Reports/List Views</description>
+    <externalId>false</externalId>
+    <label>Next Call</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>DateTime</type>
+</CustomField>

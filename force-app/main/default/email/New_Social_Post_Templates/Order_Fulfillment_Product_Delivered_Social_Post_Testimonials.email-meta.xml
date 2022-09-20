@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Order Fulfillment Product Delivered - Social Post_Testimonials</name>
+    <style>formalLetter</style>
+    <subject>Your Five Star Professional testimonial social post has been published!</subject>
+    <textOnly>Hello {!Fulfillment__c.Display_Contact_First_Name__c}:
+
+A new social post has been published for you! Please check out your new post online and share it directly to your network to optimize the views and interactions.
+
+Your post can be viewed here: {!Fulfillment__c.Product_Delivered_Link__c}
+
+Additionally, we encourage you to share the following announcement email with your clients and network. Just copy/paste the content below into an email or other digital announcement platform to share.
+
+If you have any questions, please don&apos;t hesitate to reach out to your Client Success Representative, {!Fulfillment__c.Fulfillment_Owner_Fullname__c}, at {!Fulfillment__c.Fulfillment_Owner_Phone__c} or by email at {!Fulfillment__c.Fulfillment_Owner_Email__c}.
+
+Thank you,
+Five Star Professional Client Success Team
+
+____________________________
+
+
+{!Fulfillment__c.Display_Contact_First_Name__c} {!Fulfillment__c.Display_Contact_Last_Name__c} is once again being praised by clients for dedication and service as a {!Fulfillment__c.Market_Award_Year__c} Five Star award winner! Check out the recent testimonial post below! If you&apos;ve had a Five Star experience working with {!Fulfillment__c.Display_Contact_First_Name__c} {!Fulfillment__c.Display_Contact_Last_Name__c}, please offer up your recognition, too!
+
+{!Fulfillment__c.Product_Delivered_Link__c}
+(Copy and paste the link into your browser)
+
+Congratulations once again to {!Fulfillment__c.Display_Contact_First_Name__c} {!Fulfillment__c.Display_Contact_Last_Name__c} and all of our {!Fulfillment__c.Market_Award_Year__c} award winners!
+Jonathan Wesser
+Five Star Professional
+VP, Research</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

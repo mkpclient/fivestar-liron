@@ -1,0 +1,45 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black;background:white">Hello&nbsp;{!Contact.FirstName},</span><o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style=""><font face="Arial, sans-serif">I am following up on the voicemail I left you regarding your appearance in the under 40 special section that will be appearing in the February/March 2023 issue of Fortune magazine.</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">Millennials’ assets are projected to grow from $1.4 trillion in 2015 to $11.3 trillion in 2030. As a Five Star award winner you are among the best at what you do, and as someone who is part of the younger generation, you are uniquely positioned to connect with this growing, affluent group. Given your unique position, we have an exclusive opportunity to highlight you and your business in our Wealth Managers Under 40 section in Fortune magazine.&nbsp;</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">Fortune is one of the most widely recognized and respected media brands in the nation. Being featured in Fortune can help you grow your business and build deeper relationships with clients.</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:
+&quot;Arial&quot;,sans-serif"><span style="color:black"><br></span></span></p><p class="MsoNormal" style="text-align: center; color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:
+&quot;Arial&quot;,sans-serif"><span style="color:black">Click <a href="https://www.fivestarprofessional.com/AGO/u40f23/wm22">HERE</a><a href="https://www.fivestarprofessional.com/AGO/u40/conwm21"> </a>to learn more or p</span></span><span style="font-family: Arial, sans-serif; font-size: 12pt;">lease call as soon as possible.</span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif; font-size: 12pt;"><br></span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif; font-size: 12pt;"><b>This is an exclusive offer.</b>&nbsp;Please call my direct line today or you can use the link below to schedule a short 15-minute conversation with me. The section is limited to wealth managers under 40.</span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif;"><br></span></p><p class="MsoNormal" style="text-align: center; color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p style=""><font face="Arial, sans-serif">{!Contact.AM_Follow_Up_Link__c}</font></o:p></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p><br></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black">I look forward to hearing from you!<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black">Regards<i>,</i><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerFullName}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">Account Manager<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">Five Star Professional<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerPhone}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerEmail}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black"><a href="http://www.fivestarprofessional.com">www.fivestarprofessional.com</a><o:p></o:p></span></p><br>]]></td>
+</tr>
+</table>

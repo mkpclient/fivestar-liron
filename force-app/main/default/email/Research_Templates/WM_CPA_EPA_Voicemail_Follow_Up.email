@@ -1,0 +1,23 @@
+<p>Hello {!Opportunity.Email_Templates_Informalname__c},</p>
+<p>Just following up regarding the message that I left  at your office today and provide you with your candidate information. You have been identified and brought forward for the <b> 2015 Five Star {!Opportunity.Email_Templates_Profession__c}</b> award for <b><i>{!Opportunity.Email_Templates_Magazine__c} </i></b>. Candidates are identified and brought for the 2015 Five Star {!Opportunity.Email_Templates_Profession__c}</b> award either by a peer nomination, firm nomination or pre-qualification based on industry credentials.</p> A select group of {!Opportunity.Email_Templates_Profession__c}s will be recognized in a special section of the <b>{!Opportunity.Email_Templates_Month__c}</b> issue of<b><i> {!Opportunity.Email_Templates_Magazine__c}</i> with a complimentary listing. To complete the process  at this time there is additional information needed for you to be considered in the evaluation process for the 2015 award. Candidates will be evaluated based on 10 objective criteria associated with providing quality service to their clients and demonstrating superior industry excellence.</p><p>You can access your secure, online link below to complete your candidate evaluation form</b>. This only takes a few minutes, if you would like to complete your information over the phone to save time in your busy schedule, you may contact me at <b>{!Opportunity.OwnerPhone}</b><br>
+<p><a href="{!Opportunity.Research_Form_URL__c}"><b>Click Here - 2015 Award Candidate Evaluation Form</b></a></p>
+<u><b>The deadline for submission is 11:59 PM Eastern Time on {!Opportunity.CloseDate}.</b></u><br></p>
+<p>Please feel free to give me a call or send me an email if you have any questions at this time. Award winners are scheduled to be notified 4-6 weeks after the deadline date.</p></p>
+<p>Kind Regards,</p>
+
+
+<p>{!User.Name}<br>
+<i><b>Research Assistant</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway 
+Suite 120, Eagan, MN  55121<br>
+Direct: {!User.Phone} I Main: 1-888-438-5782 I Fax: 651-259-1940<br>
+{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

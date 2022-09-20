@@ -1,0 +1,3 @@
+Hello {!Fulfillment__c.PrimaryRecipient__c},
+
+Your {!Fulfillment__c.Product_Name__c} is being created by our production team, we'll let you know when we're packing it up!

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Firm Review</fullName>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Firm Review Complete - Approved</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Firm Review Complete - Not Approved</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Propose</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Review Pending</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

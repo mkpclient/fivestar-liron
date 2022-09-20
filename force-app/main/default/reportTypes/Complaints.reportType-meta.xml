@@ -201,6 +201,21 @@
             <field>Order_Fulfillment__c</field>
             <table>Complaint__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IDS_Owner__c</field>
+            <table>Complaint__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IDS_Notes__c</field>
+            <table>Complaint__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IDS_Complete__c</field>
+            <table>Complaint__c</table>
+        </columns>
         <masterLabel>Complaints</masterLabel>
     </sections>
 </ReportType>

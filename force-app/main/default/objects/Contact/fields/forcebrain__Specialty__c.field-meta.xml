@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__Specialty__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Specialty</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Specialty 1</fullName>
+                <default>false</default>
+                <label>Specialty 1</label>
+            </value>
+            <value>
+                <fullName>Specialty 2</fullName>
+                <default>false</default>
+                <label>Specialty 2</label>
+            </value>
+            <value>
+                <fullName>Specialty 3</fullName>
+                <default>false</default>
+                <label>Specialty 3</label>
+            </value>
+            <value>
+                <fullName>Specialty 4</fullName>
+                <default>false</default>
+                <label>Specialty 4</label>
+            </value>
+            <value>
+                <fullName>Specialty 5</fullName>
+                <default>false</default>
+                <label>Specialty 5</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

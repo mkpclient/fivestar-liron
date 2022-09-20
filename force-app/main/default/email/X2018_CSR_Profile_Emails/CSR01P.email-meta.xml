@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>1st request</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>01: Schedule CSR Appointment</name>
+    <style>freeForm</style>
+    <subject>Schedule your Five Star client success appointment</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Just following up on my call to you just now. I look forward to speaking with you about your Five Star award marketing products! It is important that we schedule this meeting at your earliest convenience. Please use the tool below to schedule your 20-minute client success meeting: {!Contact.Profile_Plus_Link__c}
+
+You will need access to a computer for this meeting. In our meeting, we will discuss the steps you need to take to submit materials, access your tools and ideas for how to use your tools.
+
+We will review your available products and the materials you need to submit on your Five Star account at www.fivestarprofessional.com/login
+
+Username: {!Contact.Web_Username__c}
+
+Passcode: {!Contact.Login_Code__c}
+
+Thank you,
+
+{!Contact.CSR_Full_Name__c}
+Account Manager
+Five Star Professional
+{!Contact.CSR_Phone__c}
+{!Contact.CSR_Email__c}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

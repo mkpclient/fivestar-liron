@@ -1,0 +1,9 @@
+Hello {!Change_Request__c.CreatedBy},
+
+Your change request on order {!Change_Request__c.Order__c} has been completed, below are links to the request and order.
+
+Request: https://na14.salesforce.com/{!Change_Request__c.Id}
+
+Order: https://na14.salesforce.com/{!Change_Request__c.OrderId__c}
+
+Thank you!

@@ -66,6 +66,21 @@ const actions = [
   { label: "Delete Record", name: "delete" }
 ];
 
+const getDefaultNextPaymentDate = () => {
+  const today = new Date();
+  let todayDate = today.getDate();
+  let nextMonth = Number(today.getMonth()) + 2;
+  nextMonth = nextMonth > 9 ? nextMonth : "0" + nextMonth;
+  const todayYear = today.getFullYear();
+  let maxDay = Number(new Date(todayYear, today.getMonth() + 1, 0).getDate());
+  if(todayDate > maxDay) {
+    todayDate = maxDay;
+  }
+  return `${todayYear}-${nextMonth}-${todayDate}`;
+}
+
+const DEFAULT_NEXT_PAYMENT = getDefaultNextPaymentDate();
+
 export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   @api recordId;
   @track salesOrder;
@@ -80,6 +95,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   enablePayments = true;
   userData = {};
   paymentMethods = [];
+  selectedContact = {};
   selectedPaymentMethod = { Contact__c: null, cardNumber: null, isDefault: true };
   showNewPaymentMethod = true;
   showNewCardScreen = false;
@@ -91,6 +107,10 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   existingPayments;
   isSubmittingTransaction = false;
   totalAmount;
+  currentMethodContact = {
+    Name: '',
+    Id: ''
+  };
   maxAllowed;
   payment = {
     amount: null,
@@ -99,7 +119,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     cardType: "",
     orderIds: [],
     isMultiple: false,
-    scheduledDate: null,
+    scheduledDate: DEFAULT_NEXT_PAYMENT,
     numberOfPayments: 0,
     contactId: null
   };
@@ -131,6 +151,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     fields: [
       "SalesOrder__c.Name",
       "SalesOrder__c.Account__c",
+      "SalesOrder__c.Account__r.Name",
       "SalesOrder__c.ContactBilling__c",
       "SalesOrder__c.ContactBilling__r.FirstName",
       "SalesOrder__c.ContactBilling__r.LastName",
@@ -167,8 +188,24 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
         Name: data.fields.Name.value,
         Account__c: data.fields.Account__c.value,
         ContactBilling__c: data.fields.ContactBilling__c.value,
-        Net_Due__c: data.fields.Net_Due__c.value
+        Net_Due__c: data.fields.Net_Due__c.value,
+        ContactBilling__r: {
+          Name: data.fields.ContactBilling__r.value.fields.FirstName.value + " " + data.fields.ContactBilling__r.value.fields.LastName.value
+        },
+        Account__r: {
+          Name: data.fields.Account__r.value.fields.Name.value
+        }
       };
+      this.currentMethodContact = {
+        Name: data.fields.ContactBilling__r.value.fields.FirstName.value + " " + data.fields.ContactBilling__r.value.fields.LastName.value,
+        Id: data.fields.ContactBilling__c.value
+      } 
+      const [relatedContact, error] = await this.getSelectedContact(data.fields.ContactBilling__c.value);
+      if (error) {
+        console.error(error);
+      } else {
+        this.selectedContact = relatedContact;
+      }
       // console.log("userData");
       this.selectedPaymentMethod = {
         Contact__c: data.fields.ContactBilling__c.value,
@@ -195,31 +232,31 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
         ).toFixed(2)
       );
       this.payment.orderIds.push(data.id);
-      const [contactsdata, contactserror] = await this.getRelatedContacts();
-      if (contactserror) {
-        console.error(contactserror);
-      } else if (contactsdata.length > 0) {
-        const contactsMap = {};
-        contactsdata.forEach((d) => {
-          contactsMap[d.Id] = {
-            firstName: d.FirstName,
-            lastName: d.LastName,
-            billingStreet: d.MailingStreet,
-            billingPostalCode: d.MailingPostalCode,
-            billingCity: d.MailingCity,
-            billingCountry: d.MailingCountry,
-            billingState: d.MailingState,
-            isDefault: true,
-            Contact__c: d.Id,
-            MX_Customer_Id__c: d.MX_Customer_Id__c
-          };
-        });
-        this.accountContacts = contactsMap;
-        this.contactOptions = contactsdata.map((d) => ({
-          label: d.Name,
-          value: d.Id
-        }));
-      }
+      // const [contactsdata, contactserror] = await this.getRelatedContacts();
+      // if (contactserror) {
+      //   console.error(contactserror);
+      // } else if (contactsdata.length > 0) {
+      //   const contactsMap = {};
+      //   contactsdata.forEach((d) => {
+      //     contactsMap[d.Id] = {
+      //       firstName: d.FirstName,
+      //       lastName: d.LastName,
+      //       billingStreet: d.MailingStreet,
+      //       billingPostalCode: d.MailingPostalCode,
+      //       billingCity: d.MailingCity,
+      //       billingCountry: d.MailingCountry,
+      //       billingState: d.MailingState,
+      //       isDefault: false,
+      //       Contact__c: d.Id,
+      //       MX_Customer_Id__c: d.MX_Customer_Id__c
+      //     };
+      //   });
+      //   this.accountContacts = contactsMap;
+      //   this.contactOptions = contactsdata.map((d) => ({
+      //     label: d.Name,
+      //     value: d.Id
+      //   }));
+      // }
       const [methodsdata, methodserror] = await this.queryExistingMethods();
       if (methodserror) {
         console.error(methodserror);
@@ -268,9 +305,8 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   async queryExistingMethods() {
     let queryString = "SELECT " + paymentMethodFields.join(",");
     queryString +=
-      " FROM Payment_Method__c WHERE Inactive__c = false AND (Contact__c = '" + this.salesOrder.ContactBilling__c + "' OR Contact__r.AccountId = '" +
-      this.salesOrder.Account__c +
-      "')";
+      " FROM Payment_Method__c WHERE Inactive__c = false AND Contact__c = '"
+      + this.currentMethodContact.Id + "'";
     try {
       const res = await doQuery({ queryString: queryString });
       // console.log(res);
@@ -288,6 +324,36 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       const res = await doQuery({ queryString: queryString });
       // console.log(res);
       return [res, null];
+    } catch (err) {
+      return [null, err];
+    }
+  }
+
+  async getSelectedContact(contactId) {
+    if(!contactId) {
+      return;
+    }
+    let queryString = "SELECT " + contactFields.join(",");
+    queryString += " FROM Contact WHERE Id = '" + contactId + "'";
+    try {
+      const res = await doQuery({ queryString });
+      if(res.length < 1) {
+        return [{} , null];
+      }
+      let d = res[0];
+      const retVal =  {
+            firstName: d.FirstName,
+            lastName: d.LastName,
+            billingStreet: d.MailingStreet,
+            billingPostalCode: d.MailingPostalCode,
+            billingCity: d.MailingCity,
+            billingCountry: d.MailingCountry || 'United States',
+            billingState: d.MailingState,
+            isDefault: false,
+            Contact__c: d.Id,
+            MX_Customer_Id__c: d.MX_Customer_Id__c
+          };
+      return [retVal, null];
     } catch (err) {
       return [null, err];
     }
@@ -331,7 +397,6 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     } else if (label === "Save Payment Method") {
       await this.savePaymentMethod();
     } else if (label === "Submit Transaction") {
-      this.isSubmittingTransaction = true;
       await this.savePayment();
     } else if (label === "Return to Order") {
       window.location.pathname = "/" + this.salesOrder.Id;
@@ -369,6 +434,64 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     this.dispatchEvent(event);
   }
 
+  async handleCustomLookupSelect(evt) {
+    const contactId = evt.detail.value;
+    const [ selectedContact, error ] = await this.getSelectedContact(contactId);
+    if (error) {
+      console.error(error)
+    } else if (selectedContact) {
+      this.selectedPaymentMethod = {
+        ...this.selectedPaymentMethod,
+        ...selectedContact
+      }
+      this.selectedContact = selectedContact;
+    }
+  }
+
+  async handlePaymentMethodCustomLookupSelect(evt) {
+    const contId = evt.detail.value;
+    const contName = evt.detail.label;
+    if(!contId) {
+      return;
+    }
+
+    this.currentMethodContact = {
+      Id: contId,
+      Name: contName
+    };
+    const [data, error] = await this.queryExistingMethods();
+    if (error) {
+      this.toastVariant = "error";
+      this.toastTitle = "Error";
+      this.toastMessage = "Unexpected error occured. Please refresh your page and try again.";
+      this.unhideToast = true;
+      console.error(error);
+      return;
+    } else {
+      this.showNewCardScreen = false;
+      this.showNewPaymentMethod = true;
+      this.paymentMethods = data.map((d) => ({
+        ...d,
+        __CardHolderName:
+          d.Billing_Last_Name__c &&
+          d.Billing_First_Name__c &&
+          d.Billing_First_Name__c + " " + d.Billing_Last_Name__c,
+        __ContactName: d.Contact__r.Name
+      }));
+
+      const [relatedContact, error] = await this.getSelectedContact(contId);
+      if (error) {
+        console.error(error);
+      } else {
+        this.selectedContact = relatedContact;
+        this.selectedPaymentMethod = {
+          ...this.selectedPaymentMethod,
+          ...relatedContact
+        }
+      }
+    }
+  }
+
   handleOnChange(event) {
     let name = event.target.name;
     if (!name) {
@@ -379,10 +502,10 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     // console.log(objectName, name, value);
     if (objectName === "paymentMethod") {
       if (name === "Contact__c") {
-        this.selectedPaymentMethod = {
-          ...this.selectedPaymentMethod,
-          ...this.accountContacts[value]
-        };
+        // this.selectedPaymentMethod = {
+        //   ...this.selectedPaymentMethod,
+        //   ...this.accountContacts[value]
+        // };
       } else {
         this.selectedPaymentMethod[name] =
           name === "isDefault" ? event.target.checked : value;
@@ -391,7 +514,12 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       if (name === "isMultiple") {
         this.payment[name] = event.target.checked;
         this.showScheduledPayment = event.target.checked;
-        this.totalScheduledPayment = this.allowedTotalScheduled;
+        if(event.target.checked) {
+          this.payment.amount = (this.totalAmount * 0.2).toFixed(2);
+          this.totalScheduledPayment = (this.totalAmount - this.payment.amount).toFixed(2);
+        } else {
+          this.payment.amount = this.totalAmount;
+        }
       } else if (name === "totalScheduledPayment") {
         // console.log(value);
         this.totalScheduledPayment = value;
@@ -468,6 +596,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   // }
 
   async savePayment() {
+    this.isSubmittingTransaction = true;
     let newRecords = [];
     if (
       (Number(this.payment.amount) < 0.01 && !this.payment.isMultiple) ||
@@ -493,7 +622,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
         this.isSubmittingTransaction = false;
         return;
       }
-      if (!this.payment.numberOfPayments || this.payment.numberOfPayments < 1) {
+      if (!this.payment.numberOfPayments || Number(this.payment.numberOfPayments) < 1) {
         this.toastTitle = "Error";
         this.toastMessage = "Please enter a valid number of payments.";
         this.toastVariant = "error";
@@ -519,7 +648,7 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       let year = fullDate.getFullYear();
       let month = fullDate.getMonth() + 1;
       let accumulatedPayments = 0;
-      for (let i = 0; i < this.payment.numberOfPayments; i++) {
+      for (let i = 0; i < Number(this.payment.numberOfPayments); i++) {
         let actualDay = day;
         if (month > 12) {
           year++;
@@ -573,9 +702,15 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       Payment_Type__c: "Credit Card"
     };
 
-    if (!this.accountContacts[newRecord.Contact__c].MX_Customer_Id__c) {
+    // if (!this.accountContacts[newRecord.Contact__c].MX_Customer_Id__c) {
+    //   const contactResult = await this.handleSaveCustomer(newRecord.Contact__c);
+    //   this.accountContacts[newRecord.Contact__c].MX_Customer_Id__c =
+    //     contactResult.MX_Customer_Id__c;
+    // }
+
+    if (!this.selectedContact.MX_Customer_Id__c) {
       const contactResult = await this.handleSaveCustomer(newRecord.Contact__c);
-      this.accountContacts[newRecord.Contact__c].MX_Customer_Id__c =
+      this.selectedContact.MX_Customer_Id__c =
         contactResult.MX_Customer_Id__c;
     }
 
@@ -708,8 +843,11 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
     const paymentMethodCopy = { ...this.selectedPaymentMethod };
     const CreditCardResource = {
       customerId: parseInt(
-        this.accountContacts[paymentMethodCopy.Contact__c].MX_Customer_Id__c
+        this.selectedContact.MX_Customer_Id__c
       ),
+      // customerId: parseInt(
+      //   this.accountContacts[paymentMethodCopy.Contact__c].MX_Customer_Id__c
+      // ),
       isDefault: !!paymentMethodCopy.isDefault, // convert to boolean if undefined
       // last4: last4,
       expiryMonth: "" + paymentMethodCopy.expiryMonth,
@@ -744,7 +882,8 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   }
 
   async handleSaveCustomer(contactId) {
-    const contactRecord = this.accountContacts[contactId];
+    // const contactRecord = this.accountContacts[contactId];
+    const contactRecord = this.selectedContact;
     // console.log(contactRecord);
     const CustomerResource = {
       name: contactRecord.firstName + " " + contactRecord.lastName,
@@ -830,16 +969,24 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
       )
     };
     //    Expiration_Date__c: this.selectedPaymentMethod.expiryYear+'-'+this.selectedPaymentMethod.expiryMonth+'-30',
-    if (!this.accountContacts[newRecord.Contact__c].MX_Customer_Id__c) {
+    // if (!this.accountContacts[newRecord.Contact__c].MX_Customer_Id__c) {
+    //   const contactResult = await this.handleSaveCustomer(newRecord.Contact__c);
+    //   this.accountContacts[newRecord.Contact__c].MX_Customer_Id__c =
+    //     contactResult.MX_Customer_Id__c;
+    // }
+
+    if (!this.selectedContact.MX_Customer_Id__c) {
       const contactResult = await this.handleSaveCustomer(newRecord.Contact__c);
-      this.accountContacts[newRecord.Contact__c].MX_Customer_Id__c =
+      this.selectedContact.MX_Customer_Id__c =
         contactResult.MX_Customer_Id__c;
     }
     const cardData = await this.handleZealynxSavePaymentMethod(
       newRecord.Last_4_Digits_of_Card__c
     );
 
-    if(this.paymentMethods.some(pm => pm.Merchant_Token__c == cardData.token)) {
+    console.log(cardData);
+
+    if(this.paymentMethods.some(pm => cardData['token'] && pm['Merchant_Token__c'] && pm.Merchant_Token__c == cardData.token)) {
       this.toastVariant = "error";
       this.toastTitle = "Error";
       this.toastMessage = "This payment method already exists.";
@@ -950,10 +1097,10 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
   }
 
   get scheduledPayment() {
-    return this.payment.numberOfPayments > 0
+    return Number(this.payment.numberOfPayments) > 0
       ? Number(
           (
-            Number(this.totalScheduledPayment) / this.payment.numberOfPayments
+            Number(this.totalScheduledPayment) / Number(this.payment.numberOfPayments)
           ).toFixed(2)
         )
       : 0;
@@ -1042,5 +1189,35 @@ export default class PaymentTerminal extends NavigationMixin(LightningElement) {
 
   get noPaymentMethods() {
     return this.paymentMethods.length === 0;
+  }
+
+  get financeFeePercent() {
+    if (!this.totalAmount) {
+      return 0;
+    }
+    
+    return (
+      Number(this.totalAmount) >= 500 && Number(this.totalAmount) < 1000 
+        ? 0.015 
+        : Number(this.totalAmount) >= 1000 
+        ? 0.03 
+        : 0
+        );
+  }
+
+  get numberOfSchedPaymentsOptions() {
+    const options = [
+      { label: "1 Scheduled Payment", value: "1" }
+    ];
+    
+    if(Number(this.totalAmount) >= 500) {
+      options.push({ label: "2 Scheduled Payments", value: "2" });
+    }
+
+    if(Number(this.totalAmount) >= 1000) {
+      options.push({ label: "5 Scheduled Payments", value: "5" });
+    }
+
+    return options;
   }
 }

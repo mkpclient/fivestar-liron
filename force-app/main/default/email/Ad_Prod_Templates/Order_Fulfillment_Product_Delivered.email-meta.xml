@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto email when product is delivered</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Order Fulfillment Product Delivered</name>
+    <style>freeForm</style>
+    <subject>Your Five Star Professional product is ready!</subject>
+    <textOnly>OrHello {!Order_Fulfillment__c.PrimaryRecipient__c},
+
+Your {!Order_Fulfillment__c.Product_Name__c} is ready!
+
+To access it, log in to your account on our website.
+NOTE: Please allow up to 24 hours for the product to appear on the account page.
+To log on, go to fivestarprofessional.com/login
+Username: {!Order_Fulfillment__c.Web_Username__c}
+Password: {!Order_Fulfillment__c.Login_Code__c}
+NOTE: if you&apos;ve already set your password, use that rather than this password.
+
+Click on your current award year to view your list of products and navigate to {!Order_Fulfillment__c.Product_Name__c}.
+
+Please feel free to reach out to me with any questions – my email address and phone number are below.
+
+Thank you,
+
+{!Order_Fulfillment__c.Fulfillment_Owner__c}
+Client Success Representative
+Five Star Professional
+{!Order_Fulfillment__c.Fulfillment_Owner_Email__c}
+{!Order_Fulfillment__c.Fulfillment_Owner_Phone__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

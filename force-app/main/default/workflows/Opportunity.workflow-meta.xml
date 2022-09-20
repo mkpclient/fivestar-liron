@@ -293,7 +293,7 @@
         <description>LPL Advisor Certified</description>
         <protected>false</protected>
         <recipients>
-            <recipient>debbie.noll@fivestarprofessional.com</recipient>
+            <recipient>sadie.simmons@fivestarprofessional.com</recipient>
             <type>user</type>
         </recipients>
         <senderAddress>debbie.noll@fivestarprofessional.com</senderAddress>
@@ -379,7 +379,7 @@
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>ALL/Nofigy_Mark_Douglass_of_PM_no_date</template>
+        <template>unfiled$public/Nofigy_Mark_Douglass_of_PM_no_date</template>
     </alerts>
     <alerts>
         <fullName>REMPHA_Not_Interested</fullName>
@@ -586,7 +586,7 @@
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>ALL/Remove_Permanently</template>
+        <template>unfiled$public/Remove_Permanently</template>
     </alerts>
     <alerts>
         <fullName>Remove_from_Contact_Verification</fullName>
@@ -648,7 +648,7 @@
         </recipients>
         <senderAddress>techsupport@fivestarprofessional.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>ALL/New_Sales_Appt</template>
+        <template>unfiled$public/New_Sales_Appt</template>
     </alerts>
     <alerts>
         <fullName>Send_RE_MP_HA_Trouble_with_form</fullName>

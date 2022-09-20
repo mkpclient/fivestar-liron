@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Postcards_is_for_Postcards_onl</fullName>
+    <active>false</active>
+    <description>If Postcards are not a selected product, then there should not be a number entered in the number of postcards field.</description>
+    <errorConditionFormula>AND(
+NOT(
+INCLUDES(Products__c, &quot;Postcards&quot;)
+),
+ Number_of_Postcards__c &gt;0
+)</errorConditionFormula>
+    <errorMessage>Only enter &quot;Number of Postcards&quot; if &quot;Postcards&quot; is a selected Product!</errorMessage>
+</ValidationRule>

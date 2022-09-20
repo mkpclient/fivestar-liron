@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>End of Market Push - LY Buyer - Your results attached</name>
+    <style>freeForm</style>
+    <subject>Five Star {!Contact.Core_Profession__c} - Your results are included</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+I wanted to reach out to you one last time to talk about your 2020 Five Star award. Reviewing your results from last year, it appears you got tremendous value from the award. Based on improvements we’ve made to our offering, I can promise you that 2020 will be even better.
+
+
+See for yourself – the results of your 2019 Five Star campaign are here. I’d be happy to review what’s possible for 2020 if you’re open to it.
+
+
+
+The deadline has arrived, though! Give me a call today and we can talk!
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

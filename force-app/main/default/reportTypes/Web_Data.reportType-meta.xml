@@ -756,6 +756,11 @@
             <field>Order_Fulfillment__c</field>
             <table>Web_Data__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ENL_Disclosure__c</field>
+            <table>Web_Data__c</table>
+        </columns>
         <masterLabel>Web Data</masterLabel>
     </sections>
 </ReportType>

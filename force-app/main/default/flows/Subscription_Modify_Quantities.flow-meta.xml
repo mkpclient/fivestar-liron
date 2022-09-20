@@ -4,7 +4,7 @@
     <assignments>
         <name>Calculate_Qty</name>
         <label>Calculate Qty</label>
-        <locationX>308</locationX>
+        <locationX>314</locationX>
         <locationY>695</locationY>
         <assignmentItems>
             <assignToReference>Quantity</assignToReference>
@@ -20,11 +20,11 @@
     <assignments>
         <name>Set_Quantity</name>
         <label>Set Quantity</label>
-        <locationX>308</locationX>
+        <locationX>314</locationX>
         <locationY>575</locationY>
         <assignmentItems>
             <assignToReference>Quantity</assignToReference>
-            <operator>Assign</operator>
+            <operator>Add</operator>
             <value>
                 <elementReference>$Record.Quantity__c</elementReference>
             </value>
@@ -36,7 +36,7 @@
     <decisions>
         <name>Check_if_related_prod_line_is_found</name>
         <label>Check if related prod line is found</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>455</locationY>
         <defaultConnector>
             <targetReference>Set_Quantity</targetReference>
@@ -52,9 +52,13 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>Update_Related_Subscription</targetReference>
+            </connector>
             <label>Related Prod Line is not found</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <interviewLabel>Subscription - Modify Quantities {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Subscription - Modify Quantities</label>
     <processMetadataValues>
@@ -79,7 +83,7 @@
     <recordLookups>
         <name>Get_related_product_line</name>
         <label>Get related product line</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>335</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -105,9 +109,30 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>Update_Related_Subscription</name>
+        <label>Update Related Subscription</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Related_Subscription__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Renewal_Quantity__c</field>
+            <value>
+                <elementReference>$Record.Quantity__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Subscription__c</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Subscription</name>
         <label>Update Subscription</label>
-        <locationX>308</locationX>
+        <locationX>314</locationX>
         <locationY>815</locationY>
         <filterLogic>and</filterLogic>
         <filters>
@@ -126,7 +151,7 @@
         <object>Subscription__c</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_related_product_line</targetReference>
@@ -143,5 +168,8 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <scale>2</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
     </variables>
 </Flow>

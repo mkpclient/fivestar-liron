@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RC_Incontact_Disposition__c</fullName>
+    <description>Automatically filled by incontact script when dispositioning calls, used in conjunction with profession to trigger sent emails</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Last research call disposition, set by incontact app</inlineHelpText>
+    <label>RC Incontact Disposition</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>LVM 1</fullName>
+                <default>false</default>
+                <label>LVM 1</label>
+            </value>
+            <value>
+                <fullName>LVM 2</fullName>
+                <default>false</default>
+                <label>LVM 2</label>
+            </value>
+            <value>
+                <fullName>LVM 3</fullName>
+                <default>false</default>
+                <label>LVM 3</label>
+            </value>
+            <value>
+                <fullName>LVM 4</fullName>
+                <default>false</default>
+                <label>LVM 4</label>
+            </value>
+            <value>
+                <fullName>LVM Final</fullName>
+                <default>false</default>
+                <label>LVM Final</label>
+            </value>
+            <value>
+                <fullName>LVM no email</fullName>
+                <default>false</default>
+                <label>LVM no email</label>
+            </value>
+            <value>
+                <fullName>Complete</fullName>
+                <default>false</default>
+                <label>Complete</label>
+            </value>
+            <value>
+                <fullName>Conversation</fullName>
+                <default>false</default>
+                <label>Conversation</label>
+            </value>
+            <value>
+                <fullName>Set Callback</fullName>
+                <default>false</default>
+                <label>Set Callback</label>
+            </value>
+            <value>
+                <fullName>Assistant</fullName>
+                <default>false</default>
+                <label>Assistant</label>
+            </value>
+            <value>
+                <fullName>No Contact</fullName>
+                <default>false</default>
+                <label>No Contact</label>
+            </value>
+            <value>
+                <fullName>Trouble With Form</fullName>
+                <default>false</default>
+                <label>Trouble With Form</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

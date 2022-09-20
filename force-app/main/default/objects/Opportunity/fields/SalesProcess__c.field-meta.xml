@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SalesProcess__c</fullName>
+    <defaultValue>&quot;0-Need to Call&quot;</defaultValue>
+    <description>Shows the story level that has been reached.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Shows the story level that has been reached.</inlineHelpText>
+    <label>Sales Process</label>
+    <length>50</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

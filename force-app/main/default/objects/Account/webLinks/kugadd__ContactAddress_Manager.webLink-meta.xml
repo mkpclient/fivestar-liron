@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>kugadd__ContactAddress_Manager</fullName>
+    <availability>online</availability>
+    <description>Kugamon Address</description>
+    <displayType>link</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Contact Address Manager</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>/apex/kugadd__ContactAddressUpdate?aId={! Account.Id }</url>
+</WebLink>

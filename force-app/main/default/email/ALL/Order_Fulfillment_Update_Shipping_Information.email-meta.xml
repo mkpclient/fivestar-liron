@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Used automatically when a shipping update is needed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Order Fulfillment Update Shipping Information</name>
+    <style>freeForm</style>
+    <subject>We&apos;re having an issue sending your package. Please contact us.</subject>
+    <textOnly>Hello {!Fulfillment__c.FName__c},
+
+We recently tried to send you a package but the package has been returned to our address or was unable to be delivered. Please give me a call so I can help resolve the issue. I apologize for the shipping delay; I&apos;ll make sure to have the package delivered as soon as possible once we have the issue resolved.
+
+You can reach me at: {!Fulfillment__c.Fulfillment_Owner_Phone__c}
+
+Thank You!
+
+{!Fulfillment__c.Fulfillment_Owner__c}
+{!Fulfillment__c.Fulfillment_Owner_Email__c}
+{!Fulfillment__c.Fulfillment_Owner_Phone__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

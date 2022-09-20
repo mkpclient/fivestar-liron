@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Connected early; no response since Morgan Stanley</name>
+    <style>freeForm</style>
+    <subject>Time is running out</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+We haven’t connected recently and I want to make sure you have every opportunity to take advantage of the options to increase your presence as a Five Star {!Opportunity.Email_Templates_Profession__c} in the upcoming {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c}.
+
+Time is almost up for confirming a profile ad in the special advertising section of the magazine. There are a number of options to choose from and I’d be happy to provide additional information to help you make a decision. For more about how you were selected, how you will appear in {!Opportunity.Email_Templates_Magazine__c} and more options available to you, here’s our Award Guide.
+
+2014 Five Star {!Opportunity.Email_Templates_Profession__c} Award Guide: {!Market__c.Award_Guide__c}
+
+Please note: Only Five Star Professional can name you a Five Star award winner. Five Star Professional is the only approved provider of official plaques and other products related to your award. Trophy companies and other online vendors do not comply with industry regulatory requirements or firm compliance requirements and may be violating trademarks or copyrights.
+
+{!User.Name}
+Account Manager
+
+Five Star Professional 
+2900 Lone Oak Parkway, Suite 120 
+Eagan, MN 55121 
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+www.fivestarprofessional.com
+
+
+Award candidates and award winners: Please tell us
+about your experience with Five Star Professional.
+http://fivestar.98d1e644fe2e.sgizmo.com/s3/</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

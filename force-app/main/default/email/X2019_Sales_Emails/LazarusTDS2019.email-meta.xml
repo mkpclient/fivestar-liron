@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Lazarus - Tiffany</name>
+    <style>freeForm</style>
+    <subject>Our commitment to improve your experience with Five Star Professional</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+
+I am following up on the voicemail I just left you.
+
+
+
+My understanding is that you were not fully satisfied with your experience with Five Star Professional last year. The pdf link below connects you to you Client Success Tracking Report:
+
+
+
+{!Contact.Client_Success_Tracker_URL__c}
+
+
+This report summarizes your order last year. I would appreciate the opportunity to review this report with you and address any shortfalls in your experience. I am committed to making sure you are fully satisfied with your Five Star Professional experience.
+
+
+Please give me a call at 651-259-1960. I look forward to speaking with you!
+
+Thank you,
+
+Tiffany Dollar-Simmons
+
+Account Manager
+Five Star Professional
+
+651-259-1960
+
+tiffany.dollar-simmons@fivestarprofessional.com
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

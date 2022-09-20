@@ -1,0 +1,61 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Hi {!Opportunity.Email_Templates_Informalname__c},<font size="3"><o:p></o:p></font></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Here is an overview of our
+products and our ad guidelines. I’d be happy to go over the products with you
+and answer any questions you might have.<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">I know that you’ve put a lot
+of thought into your business and your career, which has culminated in your
+selection as a Five Star&nbsp;</font><font style="font-family: Arial, sans-serif; background-color: rgb(255, 255, 255);">&nbsp;{!Opportunity.Email_Templates_Profession__c}</font><span style="font-family: Arial, sans-serif; background-color: rgb(255, 255, 255);">.</span><font face="Arial, sans-serif">&nbsp;You’ve also put a lot of thought into
+how your award can help meet your goals. Let me know if there’s anything more I
+can do to help you finalize your decision. I look forward to talking with you
+soon.<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" align="center" style="color: rgb(0, 0, 0); text-align: center;"><font face="Arial, sans-serif"><b><u><span style="color: blue; background-color: rgb(255, 255, 255);"><a href="{!Opportunity.Email_Templates_Overview_Guidelines__c}">Product overview and ad guidelines</a></span></u></b><u><span style="color: blue;"><o:p></o:p></span></u></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Please note: Only Five Star Professional can name you a Five Star award
+winner. Five Star Professional is the only approved provider of official
+plaques and other products related to your award. Trophy companies and other
+online vendors do not comply with industry regulatory requirements or firm
+compliance requirements and may be violating trademarks or copyrights.<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif"><b>{!User.Name}</b><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif"><b>Account
+Manager</b><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">&nbsp;<o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif"><b>Five Star
+Professional</b><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif">2900 Lone Oak Parkway</font></p><p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif">Suite 120</font></p><p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif">Eagan, MN 55121</font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Direct:<span class="apple-converted-space">&nbsp;</span>{!User.Phone}<o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Main:<span class="apple-converted-space">&nbsp;</span><a href="tel:1-888-438-5782" target="_blank">1-888-438-5782</a><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Fax:<span class="apple-converted-space">&nbsp;</span><a href="tel:651-259-1940" target="_blank">651-259-1940</a><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">{!User.Email}<o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif"><a href="http://www.fivestarprofessional.com/" target="_blank" title="http://www.fivestarprofessional.com"><font color="#000000">www.fivestarprofessional.com</font></a><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"></p><p class="MsoNormal" style="color: rgb(80, 0, 80); margin-right: 0px; margin-left: 0px; background-color: rgb(255, 255, 255);"><font face="Arial, sans-serif"><b><span style="color: maroon;">Award candidates and award winners: Please tell us</span></b><b><span style="color: maroon;"><u></u><u></u></span></b></font></p><p class="MsoNormal" style="color: rgb(80, 0, 80); margin-right: 0px; margin-left: 0px; background-color: rgb(255, 255, 255);"><font face="Arial, sans-serif"><b><span style="color: maroon;">about your experience with Five Star Professional</span></b><span style="color: maroon;">.</span></font></p><p class="MsoNormal" style="color: rgb(80, 0, 80); margin-right: 0px; margin-left: 0px; background-color: rgb(255, 255, 255);"><font face="Arial, sans-serif"><a href="http://sgiz.mobi/s3/edb67d8ee977">Take Survey</a></font></p><p style="color: rgb(0, 0, 0); font-size: 12pt; font-family: arial;"></p>]]></td>
+</tr>
+</table>

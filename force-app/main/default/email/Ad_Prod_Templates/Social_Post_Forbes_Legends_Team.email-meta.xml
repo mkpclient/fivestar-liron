@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Forbes Legends social post - Team</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Social Post - Forbes Legends - Team</name>
+    <style>formalLetter</style>
+    <subject>Your Five Star Legend social post has been published!</subject>
+    <textOnly>Hello {!Fulfillment__c.Display_Contact_First_Name__c}:
+
+A new social post has been published for you! Please check out your new post online and share it directly to your network to optimize the views and interactions.
+
+Your post can be viewed here: {!Fulfillment__c.Product_Delivered_Link__c}
+
+Additionally, we encourage you to share the following announcement email with your clients and network. Just copy/paste the content below into an email or other digital announcement platform to share.
+
+If you have any questions, please don&apos;t hesitate to reach out to your Client Success Representative, {!Fulfillment__c.Fulfillment_Owner_Fullname__c}, at {!Fulfillment__c.Fulfillment_Owner_Phone__c} or by email at {!Fulfillment__c.Fulfillment_Owner_Email__c}.
+
+Thank you,
+Five Star Professional Client Success Team
+
+___________________
+
+
+Make your way to newsstands to see {!Fulfillment__c.Display_Team_Name__c} featured as Five Star Legends in the {!Market__c.Publication_Month__c} issue of Forbes.
+
+Click through to {!Fulfillment__c.Display_Team_Name__c}&apos;s social post below to learn more about them and share in their success! 
+
+{!Fulfillment__c.Product_Delivered_Link__c}
+Copy and paste the link into your browser to navigate to the post.
+
+
+Jonathan Wesser
+Five Star Professional
+VP, Research</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

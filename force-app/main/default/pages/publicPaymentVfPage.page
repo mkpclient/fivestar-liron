@@ -2,7 +2,7 @@
     <apex:includeLightning />
     <div id="lwcContainer" />
 
-    <script src="https://fivestarprofessional-experience.force.com/lightning/lightning.out.js"></script>
+    <!-- <script src="https://fivestarprofessional-experience.force.com/lightning/lightning.out.js"></script> -->
     <script>
         $Lightning.use("c:publicPaymentApp", function() {
             $Lightning.createComponent(
@@ -13,7 +13,9 @@
                     console.log('LWC Component Created. {!$User.UserName}');
                 }
             );
-        }, 'https://fivestarprofessional-experience.force.com/');
+        }
+        // , 'https://fivestarprofessional-experience.force.com/'
+        );
     </script>
 
 </apex:page>

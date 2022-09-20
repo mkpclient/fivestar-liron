@@ -1,0 +1,7 @@
+Hello,
+
+{!Order_Form__c.user_entering__c} has finished your order form, please view order {!Order_Form__c.Order__c} to confirm that everything has been entered correctly. When done, set the status to "approved".
+
+Approve the order form here: https://na14.salesforce.com/{!Order_Form__c.Id}
+
+Thank you!

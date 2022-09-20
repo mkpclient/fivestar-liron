@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subscription__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is this product a subscription product?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used to check the subscription checkbox in related list views to help identify subscriptions.</inlineHelpText>
+    <label>Subscription</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,15 @@
+Dear {!kugo2p__KugamonInvoice__c.kugo2p__ContactBilling__c},
+
+Here is your {!$Organization.Name} invoice for your records.
+
+To view your invoice, or to download a PDF copy for your records, click the link below:
+
+{!$Setup.kugo2p__Terminal_Settings__c.kugo2p__Sites_URL__c}/CustomOnlineInvoice?id={!kugo2p__KugamonInvoice__c.Id}&key={!kugo2p__KugamonInvoice__c.kugo2p__OnlineApprovalKey__c}
+
+Feel free to contact me if you have any questions. 
+
+Regards, 
+
+Accounts Receivable
+{!$Organization.Name} 
+O: 651-259-1860 Option 4 | Email: billing@fivestarprofessional.com

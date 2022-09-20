@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Special Section: WM Under 40 - Fortune Email 2</name>
+    <style>freeForm</style>
+    <subject>Your appearance in the under 40 special section of Fortune magazine</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+
+You have an exclusive opportunity to appear in one of the most respected media brands in the nation – Fortune magazine! Five Star award winners, under the age of 40, will be recognized in a special section of the February/March 2023 issue..
+
+
+
+Benefits of participating, include:
+
+
+
+1) Leveraging your personal brand with one of the most-respected media brands in the nation. Your friends, family and clients alike, throughout the entire country, will be able to see you in Fortune!
+
+
+
+2) 100 physical reprints, an electronic reprint, and a copy of the magazine highlighting your appearance. These are a very impactful at new client presentations and with your current and past clients to gain referrals!
+
+
+
+3) An announcement letter highlighting your appearance. Share this letter with your client and professional network for expanded exposure of your Fortune appearance.
+
+
+
+Millennials’ assets are projected to grow from $1.4 trillion in 2015 to $11.3 trillion in 2030. Given your unique position, as a Five Star award winner and as someone who is part of the younger generation, you are uniquely positioned to connect with this growing, affluent group.
+
+
+
+This is an exclusive offer. Please call my direct line today or you can use the link below to schedule a short 15-minute conversation with me. The section is limited to wealth managers under 40.
+
+
+
+{!Contact.AM_Follow_Up_Link__c}
+
+
+
+I look forward to hearing from you!
+
+
+Regards,
+
+
+{!Contact.OwnerFullName}
+
+Account Manager
+
+Five Star Professional
+
+{!Contact.OwnerPhone}
+
+{!Contact.OwnerEmail}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

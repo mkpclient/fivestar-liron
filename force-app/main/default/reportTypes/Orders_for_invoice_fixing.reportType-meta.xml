@@ -1016,6 +1016,11 @@
             <field>Memo__c</field>
             <table>kugo2p__SalesOrder__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Alchemer_Web_Order_ID__c</field>
+            <table>kugo2p__SalesOrder__c</table>
+        </columns>
         <masterLabel>Orders</masterLabel>
     </sections>
 </ReportType>

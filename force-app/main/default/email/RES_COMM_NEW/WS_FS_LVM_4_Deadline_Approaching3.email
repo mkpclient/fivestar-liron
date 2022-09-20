@@ -1,0 +1,25 @@
+Hello {!Opportunity.Email_Templates_Informalname__c},<p>
+I hope that you are having a good day. In regards to the message that I left for you at your office today, I wanted to follow up and provide you with the link to your candidate evaluation form for the <b>{!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c}</b>. I understand that you do have a very busy schedule and to ensure that you have your information, I have provided you with the link to your secure online evaluation form.  The form takes just a few minute to complete and I would be happy to assist you with your information to save you sometime.<p> 
+<b><a href="{!Opportunity.Research_Form_URL__c}">Candidate Evaluation Form - Click Here to Complete</a></b><br>
+<b>The deadline to submit is end of day,  {{!Opportunity.ACDF_Deadline__c}</p></b></p>
+If you have any questions or if you would like to complete your information over the phone with me please contact me at, {!User.Phone}.<p>
+Thank you, 
+
+<p>{!User.Name}<br>
+<i><b>Research Assistant</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway, 
+Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

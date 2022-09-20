@@ -1,0 +1,5 @@
+Hello {!Fulfillment__c.PrimaryRecipient__c},
+
+Your product, {!Fulfillment__c.Product_Name__c}, has shipped! Your tracking number is: {!Fulfillment__c.Tracking__c} 
+
+Track your order here: {!Fulfillment__c.Tracking_URL__c}

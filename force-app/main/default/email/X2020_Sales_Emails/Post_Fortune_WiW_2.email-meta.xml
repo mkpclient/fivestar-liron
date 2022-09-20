@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>No more than 5 with link to offer</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Fortune WiW 2</name>
+    <style>freeForm</style>
+    <subject>Follow-up to my voicemail - Fortune Women in Wealth</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Don&apos;t miss out on the opportunity to appear in Fortune magazine as an outstanding women wealth manager in our exclusive Women in Wealth section appearing in the October/November issue. Packages start at $800, please click here for more information.
+
+If you&apos;d like to participate, call me as soon as possible to reserve your place!
+
+
+Thank you,
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

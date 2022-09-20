@@ -2,9 +2,8 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Schedule_Meeting</customButtons>
     <customButtons>Create_Extended_Sales_Opportunity</customButtons>
+    <customButtons>New_Boom_Payment_Method</customButtons>
     <excludeButtons>AddToList</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -55,6 +54,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Dual_Market__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Profession__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -160,6 +163,22 @@
                 <behavior>Edit</behavior>
                 <field>Sync_with_Marketing_Cloud__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Locale__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>ELM_referral_form__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>ELM_referral_share_page__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Essential_Engine_Friend_Capture__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -254,6 +273,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Email_2__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Do_Not_Call_for_NAMS_F_U__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -1143,20 +1166,18 @@
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>kugo2p__Set_Default_Method</customButtons>
+        <customButtons>New_Boom_Payment_Method</customButtons>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>kugo2p__Type__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>kugo2p__IsActive__c</fields>
-        <fields>kugo2p__Card_Type__c</fields>
-        <fields>kugo2p__Last_4_Digits__c</fields>
-        <fields>kugo2p__Expiration_Month__c</fields>
-        <fields>kugo2p__Expiration_Year__c</fields>
-        <fields>kugo2p__Default__c</fields>
-        <relatedList>kugo2p__Payment_Method__c.kugo2p__Contact__c</relatedList>
+        <fields>Card_Type__c</fields>
+        <fields>Expiration_Date__c</fields>
+        <fields>Last_4_Digits_of_Card__c</fields>
+        <relatedList>Payment_Method__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Boom_Order__c</fields>
         <fields>Market__c</fields>
         <fields>Status__c</fields>
         <fields>Next_Action__c</fields>
@@ -1164,7 +1185,7 @@
         <fields>Subscription__c</fields>
         <fields>Fulfillment_Owner__c</fields>
         <fields>Official_Order_Date__c</fields>
-        <fields>Posting_Number__c</fields>
+        <fields>Renewal_Date__c</fields>
         <relatedList>Fulfillment__c.PrimaryRecipient__c</relatedList>
         <sortField>Official_Order_Date__c</sortField>
         <sortOrder>Desc</sortOrder>
@@ -1175,6 +1196,8 @@
         <fields>et4ae5__Clicked__c</fields>
         <fields>et4ae5__Opened__c</fields>
         <relatedList>et4ae5__IndividualEmailResult__c.et4ae5__Contact__c</relatedList>
+        <sortField>et4ae5__DateSent__c</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -1225,10 +1248,10 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Card_Type__c</fields>
-        <fields>Last_4_Digits_of_Card__c</fields>
-        <fields>Expiration_Date__c</fields>
-        <relatedList>Payment_Method__c.Contact__c</relatedList>
+        <fields>Base_Product__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>Status__c</fields>
+        <relatedList>Subscription__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

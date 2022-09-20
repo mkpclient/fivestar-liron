@@ -1,6 +1,6 @@
 global class BoomPDFOneHourBatch implements Database.Batchable<sObject>, Database.allowsCallouts, Database.Stateful {
   private static String INVOICE_TEMPLATE = 'Boom_Order_Invoice';
-  private static String PAYMENT_TEMPLATE = 'New_Payment_Reciept_PDF';
+  private static String PAYMENT_TEMPLATE = 'Boom_Payment_VF_Template';
   private static String CC_EMAIL = 'billing@fivestarprofessional.com';
   public List<String> orderIds;
   public static Boolean isSandbox = [SELECT IsSandbox FROM Organization LIMIT 1]
@@ -147,37 +147,37 @@ global class BoomPDFOneHourBatch implements Database.Batchable<sObject>, Databas
       message.setSaveAsActivity(false);
       message.setTemplateID(templateId);
       message.setWhatId(pmt.Id);
-      // message.toAddresses = new List<String>{ emailAddress };
-      message.toAddresses = new List<String>{ 'angelochagoy@gmail.com', 'gregory.thatcher@gmail.com', 'shelly.martin@fivestarprofessional.com' };
+      message.toAddresses = new List<String>{ emailAddress };
+      // message.toAddresses = new List<String>{ 'angelochagoy@gmail.com', 'gregory.thatcher@gmail.com', 'shelly.martin@fivestarprofessional.com' };
 
-      Attachment attach = new Attachment();
-      attach.ParentId = pmt.Id;
+      // Attachment attach = new Attachment();
+      // attach.ParentId = pmt.Id;
 
-      PageReference pdf = Page.Payment2VF;
+      // PageReference pdf = Page.Payment2VF;
 
-      pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
-      pdf.getParameters().put('paymentId', (String) pmt.Id);
+      // pdf.getParameters().put('orderId', (String) pmt.Sales_Order__c);
+      // pdf.getParameters().put('paymentId', (String) pmt.Id);
 
-      pdf.setRedirect(true);
+      // pdf.setRedirect(true);
 
-      // Take the PDF content
-      Blob b;
-      if (Test.isRunningTest()) {
-        b = Blob.valueOf('testbody');
-      } else {
-        b = pdf.getContentAsPdf();
-      }
-      attach.Body = b;
-      attach.Name = 'Payment_For_' + pmt.Sales_Order__r.Name + '.pdf';
-      attachments.add(attach);
+      // // Take the PDF content
+      // Blob b;
+      // if (Test.isRunningTest()) {
+      //   b = Blob.valueOf('testbody');
+      // } else {
+      //   b = pdf.getContentAsPdf();
+      // }
+      // attach.Body = b;
+      // attach.Name = 'Payment_For_' + pmt.Sales_Order__r.Name + '.pdf';
+      // attachments.add(attach);
 
-      Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
-      efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
-      efa.setBody(b);
+      // Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
+      // efa.setFileName('Payment_For_' + pmt.Sales_Order__r.Name + '.pdf');
+      // efa.setBody(b);
 
-      message.setFileAttachments(
-        new List<Messaging.EmailFileAttachment>{ efa }
-      );
+      // message.setFileAttachments(
+      //   new List<Messaging.EmailFileAttachment>{ efa }
+      // );
 
       messages.add(message);
     }
@@ -191,8 +191,8 @@ global class BoomPDFOneHourBatch implements Database.Batchable<sObject>, Databas
 
       // disabled for testing
       // Database.insert(attachments, false);
-      // Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
-      // system.debug('results ===' + results);
+      Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
+      system.debug('results ===' + results);
       
     } catch (Exception e) {
       System.debug(e.getMessage());

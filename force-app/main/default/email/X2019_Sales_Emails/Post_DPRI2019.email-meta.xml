@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Follow-up email for post-market offer to Denver, Philly, and Rhode Island RE</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Post: DPRI Follow-Up Email</name>
+    <style>freeForm</style>
+    <subject>Follow-up to my voicemail</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+I just left you a voicemail about an exciting opportunity with Five Star Professional.
+
+
+For just $95:
+
+
+Get listed in {!Contact.Core_Magazine_name__c}
+Receive a congratulatory letter from our team that you can forward to your clients
+Get an announcement post from Five Star Professional on Facebook or LinkedIn
+
+
+Call me or email to finalize!
+
+Thank you,
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,28 @@
+<messaging:emailTemplate subject="Your Invoice: {!relatedTo.Name}" 
+recipientType="Contact" relatedToType="kugo2p__KugamonInvoice__c">
+
+    <messaging:plainTextEmailBody >
+        Dear  {!relatedTo.ContactBilling__r.Name},                
+        
+        Thank you for your business. Please process the attached invoice.
+        
+        Invoice Summary 
+        - Invoice Number: {!relatedTo.Name}
+        - Invoice Due Date:&nbsp;<apex:outputText value="{0,date,MM/dd/yyyy}"><apex:param value="{!relatedTo.kugo2p__InvoiceDueDate__c}" /></apex:outputText>
+        - Invoice Amount:&nbsp;<apex:outputText value="{0,number,$###,##0.00}"><apex:param value="{!relatedTo.kugo2p__BalanceDueAmount__c}" /></apex:outputText>
+        
+        Feel free to contact me if you have any questions. 
+
+        Regards, 
+
+        {!$User.FirstName} {!$User.LastName} 
+        {!$Organization.Name} 
+        {!$User.City} | O: {!$User.Phone} | Email: {!$User.Email}
+    </messaging:plainTextEmailBody>
+    
+    <messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">    
+        <c:InvoicePDF invoiceId="{!relatedTo.Id}" />                           
+    </messaging:attachment>
+    
+
+</messaging:emailTemplate>

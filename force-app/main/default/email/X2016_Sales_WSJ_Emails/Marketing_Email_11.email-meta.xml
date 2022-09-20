@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>WSJ Email 1 - Overview</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>WSJ Email 1 w/ Price</name>
+    <style>formalLetter</style>
+    <subject>The Wall Street Journal: Are you a wealth manager people need to know?</subject>
+    <textOnly>Hello {!Opportunity.ACDF_Fname__c},
+
+
+As a Five Star Wealth Manager, you have the exclusive opportunity to appear regionally in a full-page feature within The Wall Street Journal as one of the 10 Five Star Wealth Managers consumers need to know. This feature will run in The Wall Street Journal&apos;s Wealth Management Journal Report, a special section that runs six times a year and addresses the issues that matter most to affluent investors and advisors. Review offer details: {!Opportunity.Market_Guidebook_with_Price__c}
+
+This is a rare chance to reach a key group of prospects and differentiate yourself from other wealth managers in your area. Our Wall Street Journal showcase offerings are first-come, first-served, and only a handful of spots are available.
+
+I’m excited to be able to offer you this! To raise your visibility and secure your spot, or hear more about this offer, please call me at {!Opportunity.OwnerPhone} or request an appointment time.
+
+
+Thank you,
+
+{!Opportunity.OwnerFullName}
+Account Manager
+
+Five Star Professional
+{!Opportunity.OwnerPhone}
+{!Opportunity.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

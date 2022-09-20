@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Hello {!Fulfillment__c.FName__c},<div><br></div><div>We recently tried to send you a package but the package has been returned to our address or was unable to be delivered. Please give me a call so I can help resolve the issue. I apologize for the shipping delay; I'll make sure to have the package delivered as soon as possible once we have the issue resolved.<br></div><div><br></div><div>You can reach me at: {!Fulfillment__c.Fulfillment_Owner_Phone__c}<br></div><div><br></div><div>Thank You!</div><div><br></div><div>{!Fulfillment__c.Fulfillment_Owner__c}</div><div>{!Fulfillment__c.Fulfillment_Owner_Email__c}</div><div>{!Fulfillment__c.Fulfillment_Owner_Phone__c}<br></div><div><br></div><div><br></div>]]></td>
+</tr>
+</table>

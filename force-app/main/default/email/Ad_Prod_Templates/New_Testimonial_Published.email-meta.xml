@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>New Testimonial Published</name>
+    <style>freeForm</style>
+    <subject>You have a new testimonial post published by Essential Engine</subject>
+    <textOnly>Hello,
+
+You have a new testimonial post published by Five Star Professional. Click here to see the post and publish it directly to your social media page: {!Testimonial__c.Landing_Page__c}
+
+Your might need your Five Star Professional account page login:
+
+Username: {!Testimonial__c.Web_Username__c}
+Passcode: {!Testimonial__c.Client_Login_Code__c}
+
+Your Testimonial:
+
+{!Testimonial__c.Text__c}
+
+Congratulations on another excellent testimonial. Keep up the great work!
+
+Five Star Professional
+The Client Success Team</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,22 @@
+Hello {!Opportunity.Email_Templates_Informalname__c},<p>
+Thank you for following up with me today. I apologize that you are having trouble with the link to the candidate evaluation form. To ensure that you do not experience any further interruptions, I have included the link below to a PDF version of the candidate evaluation form. If you could simply complete the evaluation form and email it back to me.  I will enter the information within 24 hours and a confirmation email of the information submitted will be sent.<p><b><a href="{!Opportunity.Email_Templates_Research_Form_URL_1__c}"> Candidate Evaluation Form -  PDF </a></b><p>
+If you have any questions please feel free to reach out to me. I am happy to assist you at any time. You can contact me at <b> {!User.Phone}</b>.<p>
+
+Kind Regards,<p>
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+
+<p><b>Five Star Professional</b><br>
+2117 Cliff Dr<br>
+Eagan, MN  55122<br>
+Direct: {!User.Phone}<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

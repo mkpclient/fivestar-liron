@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>RE_MP_HA_Closed: Not Interested, DNC, DNE ( Not Visible to Call Team)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Closed No Interest : RE.MP.HA</name>
+    <style>none</style>
+    <subject>Please verify candidacy removal request: {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c}</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c},
+
+Thank you for responding. Just to help me better understand, is there any particular reason on why you have decided to not participate in the program this year since you have been a recipient of the award? I appreciate any feedback you can share with me, as we want to make sure we are offering a valuable award program for {!Opportunity.Profession_Type__c} and obviously we must be missing the mark somewhere.
+
+Just a reminder that you do not have to purchase anything to be considered for the award, or to be named an award winner. If you are named a 2022 award winner you still receive a complimentary listing on the Five Star Professional website;  www.fivestarprofessional.com for the year.
+
+If you do change your mind and would like to participate, the deadline is {!Opportunity.ACDF_Deadline__c}. You can use this link to complete your candidate form; {!Opportunity.Research_Form_URL__c}
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway, Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.
+
+
+unsubscribe from this list</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

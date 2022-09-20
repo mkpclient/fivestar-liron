@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case Resolved</name>
+    <style>none</style>
+    <subject>Case: {!Case.CaseNumber} Resolved</subject>
+    <textOnly>Your case has been resolved successfully.  If the problem reccurs please let us know and reference this Case.  
+
+Resolution Notes: {!Case.Case_Resolution__c}  
+
+Thanks, Five Star Helpdesk</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -889,6 +889,11 @@
             <field>Memo__c</field>
             <table>kugo2p__SalesOrder__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Alchemer_Web_Order_ID__c</field>
+            <table>kugo2p__SalesOrder__c</table>
+        </columns>
         <masterLabel>Orders</masterLabel>
     </sections>
     <sections>
@@ -1527,6 +1532,11 @@
             <field>Display_Name_for_Invoice__c</field>
             <table>kugo2p__SalesOrder__c.kugo2p__Sales_Order_Product_Lines__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Alchemer_Web_Order_ID__c</field>
+            <table>kugo2p__SalesOrder__c.kugo2p__Sales_Order_Product_Lines__r</table>
+        </columns>
         <masterLabel>Order Product Lines</masterLabel>
     </sections>
     <sections>
@@ -1658,6 +1668,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Split_Discount_Amount__c</field>
+            <table>kugo2p__SalesOrder__c.kugo2p__Sales_Order_Product_Lines__r.Order_Line_Recipients__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Full_ID__c</field>
             <table>kugo2p__SalesOrder__c.kugo2p__Sales_Order_Product_Lines__r.Order_Line_Recipients__r</table>
         </columns>
         <masterLabel>Line Recipients</masterLabel>

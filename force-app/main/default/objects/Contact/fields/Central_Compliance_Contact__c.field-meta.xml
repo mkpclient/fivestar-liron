@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Central_Compliance_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checkbox to indicate contact is a Live Compliance dept. contact used for firm reviews</description>
+    <externalId>false</externalId>
+    <label>Central Compliance Contact</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

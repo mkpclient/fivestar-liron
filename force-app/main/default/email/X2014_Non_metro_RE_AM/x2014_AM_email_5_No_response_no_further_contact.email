@@ -1,0 +1,49 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Hi {!Opportunity.Email_Templates_Informalname__c},<font size="3"><o:p></o:p></font></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif" style="font-family: arial;"><font size="3" style="font-size: 12pt;">I’ve been trying to reach you
+regarding your opportunity to appear in the upcoming&nbsp;</font><font size="3"><font size="3">{!Opportunity.Email_Templates_Issue_s__c}&nbsp;o</font>f&nbsp;</font><font style="color: rgb(0, 0, 0);"><i>{!Opportunity.Email_Templates_Magazine__c}</i></font><span style="color: rgb(0, 0, 0);">&nbsp;as a 2014 Five Star {!Opportunity.Email_Templates_Profession__c}.&nbsp;</span><span style="color: rgb(0, 0, 0);">&nbsp;</span></font><font face="Arial, sans-serif">You’ll be listed at no cost on
+fivestarprofessional.com.&nbsp;<span style="color: rgb(0, 0, 0);">&nbsp;I want to make sure you have every opportunity to
+increase your presence in the magazine and make the most of your selection.</span></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">I want to be respectful of
+your time, so I will leave the next steps in your hands. Let me know if I can
+answer any questions.<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><b><span style="color: rgb(102, 51, 102);">{!User.Name}</span></b><o:p></o:p></font></p>
+
+<font face="Arial, sans-serif" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><u1:p></u1:p>
+
+</font><p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><b><span style="color: rgb(102, 51, 102);">Account Manager<u1:p></u1:p></span></b><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;<o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><b><span style="color: rgb(80, 0, 80);">Five Star Professional</span></b><u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt;"><span style="color: rgb(80, 0, 80);"><font face="Arial, sans-serif">2900 Lone Oak Parkway</font></span></p><p class="MsoNormal" style="font-size: 12pt;"><span style="color: rgb(80, 0, 80);"><font face="Arial, sans-serif">Suite 120</font></span></p><p class="MsoNormal" style="font-size: 12pt;"><span style="color: rgb(80, 0, 80);"><font face="Arial, sans-serif">Eagan, MN 55121</font></span></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><span style="color: rgb(80, 0, 80);">Direct:<span class="apple-converted-space">&nbsp;</span>{!User.Phone}<u1:p></u1:p></span><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><span style="color: rgb(80, 0, 80);">Main:<span class="apple-converted-space">&nbsp;</span><a href="tel:1-888-438-5782" target="_blank" value="+18884385782"><span style="color:#1155CC">1-888-438-5782</span></a><u1:p></u1:p></span><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><span style="color: rgb(80, 0, 80);">Fax:<span class="apple-converted-space">&nbsp;</span><a href="tel:651-259-1940" target="_blank" value="+16512591940"><span style="color:#1155CC">651-259-1940</span></a><u1:p></u1:p></span><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><span style="color: rgb(31, 73, 125);">{!User.Email}<u1:p></u1:p></span><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><span style="color: rgb(17, 85, 204);"><a href="http://www.fivestarprofessional.com/" target="_blank" title="http://www.fivestarprofessional.com">www.fivestarprofessional.com</a><u1:p></u1:p></span><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0); background-color: white;"></p><p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><b><span style="color: maroon;">Award candidates and award winners: Please tell us</span></b><span style="color: rgb(80, 0, 80);"><o:p></o:p></span></font></p><p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><b><span style="color: maroon;">about your experience with Five Star Professional</span></b><span style="color: maroon;">.</span><span style="color: rgb(80, 0, 80);"><o:p></o:p></span></font></p><a href="http://sgiz.mobi/s3/edb67d8ee977" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font color="#3333ff"><font face="Arial, sans-serif">Take Survey</font></font></a><p style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"></p>]]></td>
+</tr>
+</table>

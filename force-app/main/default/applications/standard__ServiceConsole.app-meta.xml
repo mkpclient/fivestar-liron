@@ -162,6 +162,7 @@
     <defaultLandingTab>standard-home</defaultLandingTab>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isServiceCloudConsole>true</isServiceCloudConsole>
     <preferences>
         <enableCustomizeMyTabs>false</enableCustomizeMyTabs>
@@ -191,7 +192,7 @@
     <tabs>Essential_Living_Issue__c</tabs>
     <tabs>Essential_Living_Publication__c</tabs>
     <tabs>Client_Experience__c</tabs>
-    <tabs>SalesOrder__c</tabs>
+    <tabs>sumoapp__Email__c</tabs>
     <workspaceConfig>
         <mappings>
             <tab>Client_Experience__c</tab>
@@ -213,9 +214,6 @@
         </mappings>
         <mappings>
             <tab>Product_Delivery_Summary__c</tab>
-        </mappings>
-        <mappings>
-            <tab>SalesOrder__c</tab>
         </mappings>
         <mappings>
             <tab>Special_Order_Form__c</tab>
@@ -249,6 +247,9 @@
         <mappings>
             <fieldName>AccountId</fieldName>
             <tab>standard-Opportunity</tab>
+        </mappings>
+        <mappings>
+            <tab>sumoapp__Email__c</tab>
         </mappings>
     </workspaceConfig>
 </CustomApplication>

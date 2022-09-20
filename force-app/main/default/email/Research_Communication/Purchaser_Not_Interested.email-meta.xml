@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>when opportunity stage is not interested this year and is a purchaser</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Purchaser Not Interested</name>
+    <style>freeForm</style>
+    <subject>Purchaser not interested this year in completing a candidate form</subject>
+    <textOnly>Hello,
+
+The following purchaser has decided to not complete a candidate for the upcoming award year. Looking for feedback from candidate.
+
+Contact: {!Opportunity.Contact__c}
+
+Market Name: {!Opportunity.Market_Name__c}
+
+Thank you!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

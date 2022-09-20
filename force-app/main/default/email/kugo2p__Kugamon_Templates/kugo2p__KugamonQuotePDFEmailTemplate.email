@@ -1,0 +1,27 @@
+<messaging:emailTemplate subject="Your Quote: {!relatedTo.Name}" recipientType="Contact" relatedToType="kugo2p__SalesQuote__c">
+
+    <messaging:plainTextEmailBody >
+Dear  {!relatedTo.ContactBuying__r.Name},                
+        
+It was great speaking with you! Congratulations, again, on being named a Five Star award winner!
+
+As we discussed, I have attached my proposal. I think my proposed Five Star award marketing package will significantly augment your client retention and referral efforts, and in particular help you improve the strength of your client presentations, which will help you win more prospective clients.
+
+We'll talk over these options at our appointment on DATE at TIME.
+
+Please call me at {!$User.Phone} to set an appointment with me to finalize your plan for the year.
+
+I look forward to speaking with you!
+        
+{!$User.FirstName} {!$User.LastName}
+Five Star Professional
+{!$User.Phone}
+{!$User.Email}
+    </messaging:plainTextEmailBody>
+    
+    <messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">    
+        <c:QuotePDF quoteId="{!relatedTo.Id}" />                           
+    </messaging:attachment>
+    
+
+</messaging:emailTemplate>

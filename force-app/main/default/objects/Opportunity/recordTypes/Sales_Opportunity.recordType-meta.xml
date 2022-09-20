@@ -1,0 +1,1546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Opportunity</fullName>
+    <active>true</active>
+    <businessProcess>Sales Team</businessProcess>
+    <label>Sales Opportunity</label>
+    <picklistValues>
+        <picklist>ACDF_Submission_Method__c</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Alt_Media_Interest__c</picklist>
+        <values>
+            <fullName>Forbes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WIW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WSJ</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>AmReg_Stage__c</picklist>
+        <values>
+            <fullName>Test</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Award_Promotion_Reasons__c</picklist>
+        <values>
+            <fullName>DIY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Didn%27t Work</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Group Influence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mag Ad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Biz Dev</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Value</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Buyer_Likelihood__c</picklist>
+        <values>
+            <fullName>1 - Said they will not buy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 - Unlikely to buy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 - Unknown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4 - Likely open to buy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5 - Said they will buy</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Client_Business_Objectives__c</picklist>
+        <values>
+            <fullName>Expand geographical market presence and leads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Generate additional referrals from clients and professional network</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Increase number of new client listings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retain existing clients</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Win a greater percentage of prospective client presentations</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Community_Events__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Company_Communications__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Dialer_Ready__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Email__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ForecastCategoryName</picklist>
+        <values>
+            <fullName>Best Case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Form_Completed_By__c</picklist>
+        <values>
+            <fullName>Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Candidate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Research Admin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Research Caller</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Marketing Cloud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Meetings_InOffice__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Meetings_OffSite__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Newsletters__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Next_call_goal__c</picklist>
+        <values>
+            <fullName>Close</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Present Award Guide</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proposal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Schedule Discovery Appt%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VM1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VM2</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>No_Interest_Reason_Category__c</picklist>
+        <values>
+            <fullName>FSP products %E2%80%93don%E2%80%99t believe it did %2F or will help achieve business%2Fgrowth objectives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FSP service and%2For fulfillment %E2%80%93 unsatisfactory experience</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lack of client time availability to implement despite FSP CSR and Copywriter Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non FSP products %E2%80%93 believe other marketing investments provide better opportunity to achieve business%2Fgrowth objectives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regulatory%2Fcompany compliance issue</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Open_Houses__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pardot_Campaign_Type__c</picklist>
+        <values>
+            <fullName>Airline Mag Showcase I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alumni Showcase I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alumni Showcase II</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BFF Showcase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Core</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Showcase I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Showcase II</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forbes Investment Guide I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forbes Investment Guide II</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Alt Media I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Alt Media II</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Relocation Guide I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Relocation Guide II</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WSJ Showcase I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WSJ Showcase II</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WiW MAG Showcase I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WiW WSJ Showcase I</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WiW WSJ Showcase II</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Past_Purchaser__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Past_Winner__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Percent_Chance__c</picklist>
+        <values>
+            <fullName>10%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>25%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>50%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>75%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>90%25</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Phone_X__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Products__c</picklist>
+        <values>
+            <fullName>1%2F14 page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2F18 page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2F2 page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2F4 page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%2F9 page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4 page reprints</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Announcement Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Basic Package</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brochures</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client satisfaction reporting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desk award</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electronic reprints</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emblem license</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Full page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Interactive Photo Emblem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MLB Spotlight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Magazine copies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mailing Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online profile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personalized emblem license</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Photo Emblem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Platinum Package</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plus Package</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postcards</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Premium Package</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Press Release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profile re-use license</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profile reprints</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media Presence Package</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spotlight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spotlight Reprint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video profile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WIW Spotlight Package</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WSJ Digital Ad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WSJ Spotlight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wall plaque %E2%80%93 double</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wall plaque %E2%80%93 single</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yard sign</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RC_Incontact_Disposition__c</picklist>
+        <values>
+            <fullName>Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LVM no email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Set Callback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trouble With Form</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Receive_Marketing_Emails__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Research_Action__c</picklist>
+        <values>
+            <fullName>Appointment Left Message With Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Left VM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Scheduled Appointment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appointment Try Again Later</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Asst Brief</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Asst More Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Asst More Info Generic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Data Issue No Longer with Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send More Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send More Info Brief</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send More Info Generic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Not Interested DNC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Not Interested Year Question</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send VM 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send VM 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send VM 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send VM 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send VM 5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Set Callback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TAMPA Generic Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tampa Final Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tampa VM Follow-UP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trouble with Form</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Research_Result_Type__c</picklist>
+        <values>
+            <fullName>Asst - Brief</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asst - Generic Follow-up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asst - More Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Issue - Bad Contact Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Issue - No Longer With Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Interested - DNC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Interested - DNE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Interested - Never</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Interested - This Year Only%3F</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT - Brief</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT - Generic Follow-up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TT - More Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trouble With Form</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Research_Stage__c</picklist>
+        <values>
+            <fullName>10th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2nd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3rd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Back</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FollowUp Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Market</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sales_Goals_Achieved_1st_Offer__c</picklist>
+        <values>
+            <fullName>1- Congratulations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10-Closed Won</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2- Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3-Magazine%2FSection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4-Value Proposition%2FExamples</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5-Qualify%2FLearn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6-Make recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7-Review Award Guide</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8-Send Proposal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9-Close%2FOn the clock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Company doesn%27t allow participation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Connected but no story</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Cost%2FPrice%2FBudget</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Did not connect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Didn%27t work</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - MPS interest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - No contact info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - No value</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Not my plan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Scam</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sales_Process__c</picklist>
+        <values>
+            <fullName>1- Congratulations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10-Closed Won</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2- Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2nd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3-Magazine%2FSection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3rd Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4-Value Proposition%2FExamples</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5-Qualify%2FLearn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6-Make recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7-Review Award Guide</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8-Send Proposal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9-Close%2FOn the clock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9th Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Back</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gold Sale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Silver Sale</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Secondary_Offer_Stage__c</picklist>
+        <values>
+            <fullName>Follow-Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Seminars_Events__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Social_Media__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stage_Comment__c</picklist>
+        <values>
+            <fullName>Contact me about future promotions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Continue to receive emails</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deceased</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do not contact me regarding other promotions this year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out of Area</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remove contact permanently</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remove from email campaigns</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retired</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Survey__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Existing Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>USPS__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Video_Conferencing__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Webinars__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semi Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Frequency unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Winner__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Years_Winner_del__c</picklist>
+        <values>
+            <fullName>1 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>13 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>14 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>16 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>17 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>18 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>19 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8 Year Winner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9 Year Winner</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>kugo2p__SyncSource__c</picklist>
+        <values>
+            <fullName>Primary Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Primary Quote</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>test_sales_xfer_field__c</picklist>
+        <values>
+            <fullName>Cert Appt Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead - Connected but did not agree to Cert</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead -- Cert Appt Target Calls Made</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead -- Failed Certification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow Up - Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NON PURCHASER - No Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NON PURCHASER - Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Open%2FNeeds Attention</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased - Follow up needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommended For Removal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

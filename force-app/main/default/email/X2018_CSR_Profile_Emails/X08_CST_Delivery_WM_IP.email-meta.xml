@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>09: CST Delivery (WM/IP)</name>
+    <style>freeForm</style>
+    <subject>Your Five Star Professional client success tracker is ready!</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+We’ve created a new report that shows you the progress and results of your Five Star marketing campaigns. You can view your report by clicking here: {!Contact.Client_Success_Tracker_URL__c}
+
+The report is designed to help you track your Five Star marketing tools by showing you the engagement and interaction you’ve had so far and highlighting some additional things you can do to get the most out of the campaign. Please take a look and don’t hesitate to reach out to me with questions regarding the report or your Five Star marketing tools.
+
+Thank you,
+
+{!User.Name}
+Account Manager
+
+Five Star Professional
+
+{!User.Phone}
+
+{!User.Email}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

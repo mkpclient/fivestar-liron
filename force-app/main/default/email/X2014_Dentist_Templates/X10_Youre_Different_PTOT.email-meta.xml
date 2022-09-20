@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>10 -- You&apos;re Different (PT and OT)</name>
+    <style>freeForm</style>
+    <subject>How will you let others know you’re different?</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Congratulations on your selection as one of the 2013 Five Star Wealth Managers who will be included in the {!Opportunity.Email_Templates_Month__c}  issue of {!Opportunity.00Nd00000073Etr} {!Opportunity.Email_Templates_Magazine__c} {!Opportunity.00Nd00000073GjD}.
+
+We are excited that you have the opportunity to appear in the award section again this year. Last year we updated our research process to more fully align with the wants and needs of advisers, firms, consumers and regulatory bodies, and we received great feedback from other Five Star Wealth Managers.
+
+I want to answer any questions you have about the award. If you have a few minutes to talk, please send me an email with a time that works best for you, or call me at your convenience.
+
+I look forward to speaking with you soon.
+
+{!User.Name}
+Account Manager
+Five Star Professional
+2117 Cliff Drive
+Eagan, MN 55122
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+www.fivestarprofessional.com
+
+Award candidates and award winners: Please tell us
+about your experience with Five Star Professional.
+http://fivestar.98d1e644fe2e.sgizmo.com/s3/</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

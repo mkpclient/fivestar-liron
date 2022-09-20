@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>For Wells Fargo clients only</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>06: WF Post Certification Follow Up -- Appointment with Proposal</name>
+    <style>freeForm</style>
+    <subject>Leveraging Your Five Star Award - Recommendation Summary</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+It was great speaking with you! Congratulations, again, on being named a Five Star award winner!
+
+As we discussed, my recommendation for you is the:
+
+Basic/Plus/Pro digital award marketing package with a SIZE profile display package
+Total cost: COST
+
+Click here: (INSERT LINK FROM FOLLOWUP:PROPOSAL HERE) to review what&apos;s included in each of these packages. We&apos;ll talk over these options at our appointment on DATE at TIME.
+
+I think these marketing packages will significantly augment your client retention and referral efforts, and in particular help you improve the strength of your client presentations, to help you win more new prospective clients.
+
+I look forward to speaking with you again!
+
+Thank you,
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

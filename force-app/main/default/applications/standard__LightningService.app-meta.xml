@@ -4,6 +4,7 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Service Console</label>
     <navType>Console</navType>
     <setupExperience>service</setupExperience>
@@ -23,7 +24,7 @@
     <tabs>Essential_Living_Issue__c</tabs>
     <tabs>Essential_Living_Publication__c</tabs>
     <tabs>Client_Experience__c</tabs>
-    <tabs>SalesOrder__c</tabs>
+    <tabs>sumoapp__Email__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>LightningService_UtilityBar</utilityBar>
     <workspaceConfig>
@@ -44,9 +45,6 @@
         </mappings>
         <mappings>
             <tab>Product_Delivery_Summary__c</tab>
-        </mappings>
-        <mappings>
-            <tab>SalesOrder__c</tab>
         </mappings>
         <mappings>
             <tab>Special_Order_Form__c</tab>
@@ -77,6 +75,9 @@
         </mappings>
         <mappings>
             <tab>standard-report</tab>
+        </mappings>
+        <mappings>
+            <tab>sumoapp__Email__c</tab>
         </mappings>
     </workspaceConfig>
 </CustomApplication>

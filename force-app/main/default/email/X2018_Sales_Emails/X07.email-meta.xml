@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>07: Post Certification Follow Up -- No Appointment with Proposal</name>
+    <style>freeForm</style>
+    <subject>Leveraging Your Five Star Award - Recommendation Summary</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+It was great speaking with you! Congratulations, again, on being named a Five Star award winner!
+
+As we discussed, my two package recommendations for you are:
+
+Basic/Plus/Pro digital award marketing package and the SIZE profile display package
+Total cost: COST
+
+Click here ({!Contact.Packages_Link__c}) to review what&apos;s included in each of these packages.
+
+
+I think these marketing packages will significantly augment your client retention and referral efforts, and in particular help you improve the strength of your client presentations, helping you win more new prospective clients.
+
+Please call me at {!Contact.OwnerPhone} or, if you prefer, click here to set an appointment with me to finalize your plan for the year. Normally, the best times for follow up appointments for me are noon to 2 pm central time, but please select any time that works for you. If you are unable to find a spot on my calendar, reply to this email with some suggested times that work for you.
+
+I look forward to speaking with you again!
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

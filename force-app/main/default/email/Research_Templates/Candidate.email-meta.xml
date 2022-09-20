@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>You are a candidate for Five Star Professional award...</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Candidate</name>
+    <style>freeForm</style>
+    <subject>Appear in {!Opportunity.Email_Templates_Magazine__c} as a 2013 Five Star {!Opportunity.Email_Templates_Profession__c}</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+Your clients participated in our homeowner surveys and scored you highly on criteria related to the service you provide.   You are a candidate for the {!Opportunity.Email_Templates_Publication_Year__c} Five Star {!Opportunity.Email_Templates_Profession__c} award.
+
+
+Action required: In order to be considered for the award, you must complete an online evaluation form - candidates must satisfy minimum experience and production criteria.  Complete the secure, online form in minutes by going to {!Opportunity.Research_Form_URL__c}:   The deadline for submission is {!Opportunity.CloseDate}.
+
+
+If you are selected as an award winner, you will be published in a special section in the {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c}. There is no cost to be considered or awarded and fewer than 7% of the {!Opportunity.Email_Templates_Profession__c}s in your area will be selected.
+
+
+Other resources you may find helpful:
+
+Research Process Snapshot
+
+Research Methodology (details)
+
+
+
+
+
+
+
+Kind regards,
+
+{!User.Name}
+
+Account Manager
+
+
+Five Star Professional
+
+2117 Cliff Drive
+
+Eagan, MN 55122
+
+Direct: {!User.Phone}
+
+Main: 1-888-438-5782
+
+Fax: 651-259-1940
+
+{!User.Email}
+
+www.fivestarprofessional.com
+
+
+
+
+Award candidates and award winners: Please tell us
+
+about your experience with Five Star Professional.
+
+Take Survey</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -58,6 +58,7 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
       "Payment__c.Transaction_Id__c",
       "Payment__c.MX_Payment_Id__c",
       "Payment__c.Payment_Method__r.MX_Customer_Id__c",
+      "Payment__c.RemainingBalance__c"
     ]
   })
   wiredRecord({ error, data }) {
@@ -69,9 +70,9 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
     else if (data && (!data.fields.hasOwnProperty("Payment_Method__c") || data.fields.Payment_Method__c.value == null)) {
       this.showScreen = false;
     } else if (data && data.fields.hasOwnProperty("Payment_Method__c") && data.fields.Payment_Method__c.value != null) {
-      if(data.fields.Transaction_Type__c.value != "Payment" || data.fields.Status__c.value == "Voided") {
+      if(!(data.fields.Transaction_Type__c.value == "Payment" || data.fields.Transaction_Type__c.value == "Refund") || data.fields.Status__c.value == "Voided") {
         this.showScreen = false;
-      } else if (data.fields.Status__c.value != "Completed" && data.fields.Transaction_Type__c.value == "Payment" ) {
+      } else if (data.fields.Status__c.value != "Completed" && data.fields.Transaction_Type__c.value == "Payment") {
         this.sectionDisabled = true;
       } else {
         this.disallowUpdatePaymentMethod = true;
@@ -167,7 +168,6 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
       this.toastMessage = "This amount is invalid.";
       this.toastTitle = "Error";
       this.showNotification = true;
-      this.isLoading = false;
       return;
     }
     if (isFromVoid) {
@@ -183,6 +183,7 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
           "?"
       )
     ) {
+      this.isLoading = true;
       this.disableRefundButton = true;
       const newRefundPayment = {
         paymentToken: this.paymentInfo.Payment_Token__c,
@@ -227,20 +228,22 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
             this.isVoid = false;
           }
         } else {
+          this.isLoading = false;
           if (returnedVal.errorMessage) {
             this.errorMessage = returnedVal.errorMessage;
             console.error(returnedVal.errorMessage);
-            this.isLoading = false;
             return;
+          } else {
+            this.errorMessage = 'Unable to process this refund. Please check if a refund has already been processed for this payment.';
+            return; 
           }
         }
       } catch (err) {
         console.error(err);
-        this.errorMessage = "A server error has occured.";
         this.isLoading = false;
+        this.errorMessage = "A server error has occured.";
       }
     }
-    this.isLoading = false;
   }
 
   async handleClick(evt) {
@@ -255,7 +258,6 @@ export default class RefundScreen extends NavigationMixin(LightningElement) {
       this.isRefund = false;
       this.isVoid = true;
     } else if (title == "completeRefund") {
-      this.isLoading = true;
       await this.handleRefund();
     } else if (title == "voidPayment") {
       await this.handleVoid();

@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Invoice_Link__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( ISPICKVAL(Status_Picklist__c, &quot;Released&quot;),  &quot;https://fivestarprofessional.lightning.force.com/apex/SalesOrderPDF?id=&quot; + Id, &quot;Invoice not available until order is released&quot; )</formula>
+    <formula>IF( ISPICKVAL(Status_Picklist__c, &quot;Released&quot;),
+IF(AND( ISPICKVAL(Price_Book__r.Business_Unit__c, &apos;Essential Engine&apos;),  $CustomMetadata.FivestarSetting__mdt.Universal.Allow_Essential_Engine_Emails__c), HYPERLINK(&quot;/apex/EssentialEngineOrderPdfVf?id=&quot; + Id, &quot;Click Here for Invoice&quot;)
+, HYPERLINK(&quot;/apex/SalesOrderPDF?id=&quot; + Id, &quot;Click Here for Invoice&quot;)), &quot;Invoice not available until order is released&quot; )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Invoice Link</label>
     <required>false</required>

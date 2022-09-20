@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Publication email sent out 3 weeks before month of publication</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Publication Email</name>
+    <style>formalLetter</style>
+    <subject>Get ready to share your success!</subject>
+    <textOnly>Hello {!Contact.ACDF_FName__c},
+
+
+
+The {!Opportunity.Email_Templates_Month__c} issue of {{!Opportunity.Email_Templates_Magazine__c} featuring the {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Email_Templates_Market_City__c} Five Star {!Opportunity.Email_Templates_Profession__c}s will be on newsstands soon. I want to make sure you have all the tools you need to make the most of your award, which will help you grow your business and generate referrals.
+
+
+Here are some marketing ideas that have proven to help award winners successfully promote this unique recognition:
+
+Research: Understand the research and make sure you can explain to others how you won the award.
+Pre-announcement: Send a message to your clients approximately two weeks before the publication date to let them know you won the award.
+Formal announcement: If you appear in a magazine profile, send your clients a reprint during the publication month.
+Client engagement: Were you able to share and explain the research process to your clients? Make sure they are aware of how you qualified for the award, and ask them to refer you to others.
+Client follow-up: Approximately six months after the publication month has passed, follow-up with your clients and let them know that the research process is starting soon and to take the time to complete the survey if they are contacted by us.
+
+Remember to promote your award, follow-up with your clients and ask for referrals. Measure your results by tracking and recording any mentions, compliments and feedback you receive from clients, peers and prospects, and make sure you ask yourself the following:
+
+Did your retention rates increase during the award year?
+How many referrals did you get during the award year versus the previous two years?
+Did you get new referrals from clients that have never created referrals before?
+What is your current prospect close ratio? What was it during the award year?
+
+
+
+I am here to help you grow your business. Please contact me with any questions, or for additional tips on how to make the most of your award.
+Thank you,
+
+{!Opportunity.OwnerFullName}
+Account Manager
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+{!Opportunity.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

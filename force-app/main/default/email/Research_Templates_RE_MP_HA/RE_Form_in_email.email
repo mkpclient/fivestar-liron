@@ -1,0 +1,69 @@
+Hi {!Opportunity.Email_Templates_Informalname__c},<br><br>
+To complete the form you can reply to this email, update your contact information, and either (X) your responses or highlight them. All questions that are bold, underlined and have a <b>*</b> are required for the form to be accepted.<br><br>
+There is <b><u>no cost</b></u> to be considered or to be named an award winner and be published in the {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c}.<br><br>
+We are partnered with {!Opportunity.Email_Templates_Magazine__c} to identify outstanding real estate agents based on customer satisfaction. <b>Your clients have responded to our recent homebuyer surveys with great things to say about you and have brought your name forward as a candidate for the award.</b> To accept your clients' nomination and to be considered for the award, we need you to complete the form below - candidates must satisfy minimum experience and production criteria.<br><br>
+Don’t hesitate to call me if you have any questions:<b>{!User.Phone}</b><br><br><br>
+<b><u>2014 Five Star Real Estate Award Candidate Form:</b></u><br><br>
+Contact Info:<br><br>
+<b><u>First Name:*</b></u> {!Account.FirstName}<br>
+<b><u>Last Name:*</b></u> {!Account.LastName}<br>
+Preferred Name: {!Opportunity.Nickname__c}<br>
+<b><u>Company:*</b></u> {!Account.Research_Company__c}<br>
+Title:<br>
+<b><u>Street Address:*</b></u> {!Account.PersonMailingStreet}<br>
+Street Address 2:<br>
+<b><u>City:*</b></u> {!Account.PersonMailingCity}<br>
+<b><u>State:*</b></u> {!Account.PersonMailingState}<br>
+<b><u>Zip:*</b></u> {!Account.PersonMailingPostalCode}<br>
+<b><u>License #:*</b></u> {!Account.License__c}<br>
+<b><u>Office Phone:*</b></u> {!Account.Phone}<br>
+Ext: {!Account.ext__c}<br>
+<b><u>Cell Phone:*</b></u> {!Account.PersonMobilePhone}<br>
+<b><u>Email:*</b></u> {!Account.PersonEmail}<br>
+Website:<br><br>
+<b><u>How long have you been in the real estate industry?*</b></u><br>
+( ) Less than 3 years<br>
+( ) 3-5 years<br>
+( ) 6-9 years<br>
+( ) 10 years or more<br><br>
+<b><u>Do you certify you hold an active license and have had no disciplinary actions taken by the state or any other regulatory authority?*</b></u><br>
+( ) Yes, I certify this to be true.<br>
+( ) No, this is not true.<br><br>
+<b><u>How many transactions have you completed in the past 12 months (0-25+)?*</b></u><br>
+If less than 25 please put number here:<br>
+-OR-<br>
+( ) Check box for 25+<br><br>
+<b><u>What is the total gross sales value of those transactions?*</b></u><br>
+( ) $0 - $499,999<br>
+( ) $500,000 – $999,999<br>
+( ) $1,000,000 – $2,499,999<br>
+( ) $2,500,000 – $4,999,999<br>
+( ) $5,000,000 – $7,499,999<br>
+( ) $7,500,000 – $9,999,999<br>
+( ) $10,000,000+<br><br>
+<b><u>How many transactions have you completed in the past 36 months?*</b></u><br>
+( ) 0-9<br>
+( ) 10-19<br>
+( ) 20-29<br>
+( ) 30-39<br>
+( ) 40-49<br>
+( ) 50+<br><br>
+<b><u>What is the total gross sales value of the past 36 months of transactions?*</b></u><br>
+( ) $0 - $499,999<br>
+( ) $500,000 – $999,999<br>
+( ) $1,000,000 – $2,499,999<br>
+( ) $2,500,000 – $4,999,999<br>
+( ) $5,000,000 – $7,499,999<br>
+( ) $7,500,000 – $9,999,999<br>
+( ) $10,000,000+<br><br>
+<b><u>What would you consider your City of Focus *choose one* (if you service several areas, you may enter “All Areas)?<br>
+City of Focus:*</b></u><br><br>
+<b><u>Do you certify your responses are true and correct to the best of your knowledge?*</b></u><br>
+( ) Yes, I certify this to be true.<br>
+( ) No, this is not true.<br><br>
+<b><u>If awarded, I agree to the program terms and conditions as outlined in the <a href="http://www.fivestarprofessional.com/FiveStarAward-AcceptanceAgreement.pdf">Acceptance Agreement.</a>*</b></u><br>
+( ) Yes.<br>
+( ) No.<br><br>
+<b><u>If selected as an award winner, I would be interested in hearing more about what other award winners have done to leverage the award to generate referrals?*</b></u><br>
+( ) Yes.<br>
+( ) No.<br>

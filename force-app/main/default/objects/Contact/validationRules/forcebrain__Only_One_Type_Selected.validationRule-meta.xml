@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__Only_One_Type_Selected</fullName>
+    <active>true</active>
+    <errorConditionFormula>forcebrain__IsPersonalAccount__c &amp;&amp;  forcebrain__IsProvider__c</errorConditionFormula>
+    <errorMessage>A Contact can be &quot;Personal Account&quot; or &quot;Provider&quot; but not both.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__SUMO_Convert_Person_Acct</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Convert SUMO Person Acct</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>/apex/forcebrain__LeadConversion?id={!Lead.Id}&amp;btn=false</url>
+</WebLink>

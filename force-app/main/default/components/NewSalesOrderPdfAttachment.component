@@ -49,7 +49,7 @@
   <table cellpadding="3" cellspacing="0" class="noborder">
     <tr>
       <td width="50%">
-        <apex:outputPanel>
+        <apex:outputPanel >
           <b>Bill To:</b>
           <br/>
           <apex:outputPanel rendered="{!Order.BillToName__c != null}">

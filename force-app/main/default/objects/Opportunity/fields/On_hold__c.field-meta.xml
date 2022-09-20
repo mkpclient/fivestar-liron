@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>On_hold__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Opp is on hold due to Core market activity</description>
+    <externalId>false</externalId>
+    <label>On hold</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

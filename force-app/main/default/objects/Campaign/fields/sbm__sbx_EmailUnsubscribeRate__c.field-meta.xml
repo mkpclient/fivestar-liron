@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailUnsubscribeRate__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The number unsubscribed divided by the number of non-bounced recipients</description>
+    <externalId>false</externalId>
+    <formula>if ((sbm__sbx_EmailNumberOfRecipients__c) &gt; 0, sbm__sbx_EmailNumberUnsubscribedRollup__c /  (sbm__sbx_EmailNumberOfRecipients__c), 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The number unsubscribed divided by the number of non-bounced recipients</inlineHelpText>
+    <label>Unsubscribe Rate</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Percent</type>
+</CustomField>

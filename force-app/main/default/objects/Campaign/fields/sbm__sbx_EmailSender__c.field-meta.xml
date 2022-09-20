@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailSender__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>This is the email sender that will be the From address for this email.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the email sender that will be the From address for this email.</inlineHelpText>
+    <label>Email Sender</label>
+    <referenceTo>sbm__AWS_SES_Sender__c</referenceTo>
+    <relationshipLabel>Campaigns</relationshipLabel>
+    <relationshipName>Campaigns</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

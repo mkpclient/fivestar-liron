@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Interest_Reason_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>No Interest Reason Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FSP products –don’t believe it did / or will help achieve business/growth objectives</fullName>
+                <default>false</default>
+                <label>FSP products –don’t believe it did / or will help achieve business/growth objectives</label>
+            </value>
+            <value>
+                <fullName>Non FSP products – believe other marketing investments provide better opportunity to achieve business/growth objectives</fullName>
+                <default>false</default>
+                <label>Non FSP products – believe other marketing investments provide better opportunity to achieve business/growth objectives</label>
+            </value>
+            <value>
+                <fullName>FSP service and/or fulfillment – unsatisfactory experience</fullName>
+                <default>false</default>
+                <label>FSP service and/or fulfillment – unsatisfactory experience</label>
+            </value>
+            <value>
+                <fullName>Lack of client time availability to implement despite FSP CSR and Copywriter Support</fullName>
+                <default>false</default>
+                <label>Lack of client time availability to implement despite FSP CSR and Copywriter Support</label>
+            </value>
+            <value>
+                <fullName>Regulatory/company compliance issue</fullName>
+                <default>false</default>
+                <label>Regulatory/company compliance issue</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

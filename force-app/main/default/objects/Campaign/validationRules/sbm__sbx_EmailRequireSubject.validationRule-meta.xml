@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailRequireSubject</fullName>
+    <active>true</active>
+    <description>This requires the user to enter a subject line before saving a Soapbox Mailer campaign.</description>
+    <errorConditionFormula>AND(sbm__sbx_EmailSubject__c = null, $RecordType.DeveloperName = &quot;sbx_SoapboxMailer_Campaign&quot;)</errorConditionFormula>
+    <errorDisplayField>sbm__sbx_EmailSubject__c</errorDisplayField>
+    <errorMessage>Please enter a subject line.</errorMessage>
+</ValidationRule>

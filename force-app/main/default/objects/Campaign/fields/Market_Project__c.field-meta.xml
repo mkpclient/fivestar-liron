@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Market_Project__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <description>Market Project associated with the Campaign</description>
+    <externalId>false</externalId>
+    <label>Market Project</label>
+    <referenceTo>Market__c</referenceTo>
+    <relationshipLabel>Campaigns</relationshipLabel>
+    <relationshipName>Campaigns</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Newsletters</fullName>
+    <columns>Fulfillment__c</columns>
+    <columns>NAME</columns>
+    <columns>Testimonial_Status__c</columns>
+    <columns>ASemailcsv__c</columns>
+    <columns>Testimonial__c</columns>
+    <columns>TestimonialSnippett__c</columns>
+    <columns>Revised_Testimonial__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>Newsletter</value>
+    </filters>
+    <label>Newsletters</label>
+</ListView>

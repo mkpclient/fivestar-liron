@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send to customer when cancellation is denied</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Cancellation_Denied</name>
+    <style>freeForm</style>
+    <subject>Five Star Cancellation Info</subject>
+    <textOnly>Dear {!kugo2p__SalesOrder__c.kugo2p__ContactBuying__c},
+
+We have received your request to cancel your Five Star Professional order {!kugo2p__SalesOrder__c.Name} placed on {!kugo2p__SalesOrder__c.Release_Date__c}. 
+
+Unfortunately, we cannot cancel your order due to all the products that have either been delivered or are in process at this time.  
+
+I have attached a copy of your invoice and copied your Customer Success Representative and Account Manager in case you have questions for them about the products or use of them. 
+
+There is a great value in using the award you won as part of your marketing plan.  Your Customer Success Representative would be happy to discuss your products with you. *For questions about your products, please contact your Client Success Representative: 888-438-5782, option 1
+
+Thank you for your business and have a great day.
+
+Accounts Receivable
+Five Star Professional
+Phone: (888) 608-7161
+Email: billing@fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

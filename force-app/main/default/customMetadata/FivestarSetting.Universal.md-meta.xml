@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Universal</label>
+    <protected>false</protected>
+    <values>
+        <field>Allow_Essential_Engine_Emails__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Allow_Subscription_Payments__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Allow_Subscriptions__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>EssentialEngLogoUrl__c</field>
+        <value xsi:type="xsd:string">https://fivestarprofessional--replica--c.documentforce.com/servlet/servlet.ImageServer?id=0158F000000E9Cf&amp;oid=00D8F0000004cje&amp;lastMod=1645826087000</value>
+    </values>
+    <values>
+        <field>Send_Essential_Engine_Payment_Receipts__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+</CustomMetadata>

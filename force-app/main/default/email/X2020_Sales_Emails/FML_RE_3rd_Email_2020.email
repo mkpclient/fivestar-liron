@@ -1,0 +1,11 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="font-size: 12pt;"><span style="font-size: 12pt; font-family: Arial, sans-serif; background: white;">Hello&nbsp;{!Contact.FirstName},</span><o:p></o:p></p><p class="MsoNormal" style="font-size: 12pt;"><span style="font-size: 12pt; font-family: Arial, sans-serif;">&nbsp;</span></p><p class="MsoNormal"><font face="Arial, sans-serif">Don't miss out on the opportunity to appear in Forbes Market Leaders - The list that will be published in the December issue of Forbes magazine. The list will be limited to a small number of Real Estate Agents across 35 metro areas.&nbsp; Packages start at $699, please&nbsp;<a href="https://www.fivestarprofessional.com/AGO/fml22/re22">click here</a>&nbsp;for more information.</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">I look forward to hearing from you!</font></p><div style="font-size: 12pt;"><br></div><p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif">Thank you,</font></p><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<div style="font-size: medium;">{!Contact.OwnerFullName}</div><div style="font-size: medium;"><span style="font-family: arial, helvetica, sans-serif; background-color: rgb(255, 255, 255);">{!User.Title}</span></div><div style="font-size: medium;">Five Star Professional</div><div style="font-size: medium;">{!Contact.OwnerPhone}</div><div style="font-size: medium;">{!Contact.OwnerEmail}</div><div style="font-size: medium;">www.fivestarprofessional.com</div>]]></td>
+</tr>
+</table>

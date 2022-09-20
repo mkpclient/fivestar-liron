@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Buyer No Interest Survey</name>
+    <style>freeForm</style>
+    <subject>Please provide us your feedback and receive a $5 Starbucks Gift Card</subject>
+    <textOnly>Hello {!Opportunity.First_Name__c}
+
+Last year you leveraged your Five Star award by investing in one of the optional marketing packages we offer. This year you decided not to invest in an optional marketing package.
+
+We would like to understand why you decided not to invest in an optional package this year and how we can better serve you in the future. Please complete the following 1-minute survey.
+
+Please copy/paste the web link below to complete survey:
+http://fivestar.9c35789eb5a4.sgizmo.com/s3/?id={!Opportunity.SF_ID__c}
+
+Your feedback is very valued and appreciated and you will receive a $5 Starbucks gift card for completing the survey.
+
+
+Allen Wardell
+Client Success Manager
+Five Star Professional
+(651) 259-1976
+allen.wardell@fivestarprofessional.com
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

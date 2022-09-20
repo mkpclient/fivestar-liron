@@ -1,0 +1,16 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">Hi Sumo Administrator,</span></font><div style="">
+    <br>
+    <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">The following Client attempted to schedule an appointment which failed. This failed as a result of an invalid WHOID being passed into the scheduling process link.</div>
+    <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div>
+    <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="background-color: rgb(255, 255, 255); font-size: 12pt;">&lt;%clientUrl%&gt;</span></div>
+    <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>Process:</b> {!sumoapp__Process__c.sumoapp__Name__c}</div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">The User below is not available on the Process.</div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div>
+    <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>User:</b>&nbsp;<span style="background-color: rgb(255, 255, 255); font-size: 12pt;">&lt;%userName%&gt;</span></div>
+    <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>UserId:</b>&nbsp;<span style="background-color: rgb(255, 255, 255); font-size: 12pt;">&lt;%userId%&gt;</span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div><div style=""><ol><li><font face="arial">Is this an active user? If not, you may need to update any automation that you are using to pass in the whoid (Custom Code, Flow) to remove this user from automation.</font></li><li><font face="arial">Is this user part of the scheduling process? To check the process please do the following.</font></li></ol><div><ul><ul><li><font face="arial">Navigate to SUMO Admin Settings</font></li><li><font face="arial">Click on Online Scheduler</font></li><li><font face="arial">Edit Scheduling process: {!sumoapp__Process__c.sumoapp__Name__c}</font></li><li><font face="arial">Navigate to the WHO tab</font></li><li><font face="arial">Add &lt;%userName%&gt;&nbsp;to the process</font></li><li><font face="arial">Click Save.</font></li></ul></ul><div><font face="arial"><br></font></div></div></div>
+    <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Thank you,</div>
+    <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">SUMO CEP Team</div>
+</div>]]></td>
+</tr>
+</table>

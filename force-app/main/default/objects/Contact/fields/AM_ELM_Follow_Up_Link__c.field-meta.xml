@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AM_ELM_Follow_Up_Link__c</fullName>
+    <description>Essential Living Magazine Appointment for Marketing Cloud</description>
+    <externalId>false</externalId>
+    <formula>&quot;http://fivestarprofessional.force.com/SelfScheduling/forcebrain__LeadRegistration?ProcessId=a2Z6T000006FwZqUAK&amp;PId=&quot;+ Owner.Provider_ID__c +&quot;&amp;ContactID=&quot;+Id</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Essential Living Magazine 15 Minutes Appointment for Marketing Cloud</inlineHelpText>
+    <label>AM ELM Follow Up Link</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

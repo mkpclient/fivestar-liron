@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Profile_Plus__c</fullName>
+    <description>This is the assigned MS CSR</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the assigned MS CSR</inlineHelpText>
+    <label>Marketing Service CSR</label>
+    <relationshipName>Profile_Plus</relationshipName>
+    <restrictedAdminField>false</restrictedAdminField>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Hierarchy</type>
+</CustomField>

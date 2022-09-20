@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SUMO_Link__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Sumoscheduler link, MUST include &quot;PID&quot; to work.</inlineHelpText>
+    <label>SUMO Link</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Url</type>
+</CustomField>

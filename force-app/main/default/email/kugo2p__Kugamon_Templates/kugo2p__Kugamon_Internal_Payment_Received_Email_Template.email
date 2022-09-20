@@ -1,0 +1,105 @@
+<html>
+    <body>
+        <STYLE type="text/css">
+            th {font-size: 10px; font-family: Tahoma,Helvetica; background: #CCCCCC; border: 1px solid #CCCCCC; text-align: left;}
+            td {font-family: Tahoma,Helvetica; font-size: 10px;}
+a
+    </STYLE>
+
+    
+
+  <table style="width: 100%; background-color:#ffffff;" border="0" cellpadding="0" cellspacing="0">
+
+        <tr>
+        <td style="vertical-align: top; padding: 10px" align="center" valign="top">
+
+                <table style="width: 660px;text-align: left" border="0" cellpadding="0" cellspacing="0">
+
+                    <tr>
+                    <td rowspan="2">
+                        <table style="width: 41px;" border="0" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td></tr></table>
+                    </td>
+                    <td style="background-color: #298A08; vertical-align: top;">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                        <td>
+                          <img height="21" width="9" src="https://dl.dropboxusercontent.com/s/apr8jbjup4y0in5/cornerNW-white.png" alt=""/><br />
+                        </td>
+                          <td style="vertical-align: middle; text-align: right; color: #FFFFFF; font-family: Tahoma,Helvetica; font-size: 10px; line-height: 18px; width: 100%;">
+                             <div class="mktEditable" id="volume_title"> &nbsp; &nbsp;</div>
+
+                          </td>
+                          <td>
+                            <img height="21" width="9" src="https://dl.dropboxusercontent.com/s/yh3kuwe4ylp9k20/cornerNE-white.png" alt=""/><br />
+                          </td>
+                        </tr>
+                      </table>
+
+
+                    </td>
+
+                    <td rowspan="2">
+                        <table style="width: 40px;" border="0" cellpadding="0" cellspacing="0"><tr><td>&nbsp;</td></tr></table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: top;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+
+                          <td style="background-color: #f0f0f0;color: #45555f; font-family: Tahoma,Helvetica;font-size: 12px; line-height: 18px; vertical-align: top; padding: 20px;">
+
+<center><br/> <br/><div style="text-align:center; font-size:30px;">Payment Received</div></center>
+<br/> <br/>
+<div class="mktEditable" id="main_text">
+<p>{!kugo2p__PaymentX__c.kugo2p__Account__c} has made a <strong>Payment </strong>for {!kugo2p__PaymentX__c.kugo2p__Amount__c}.
+Click the link below to review the Payment.</p>
+<div style="text-align:center; font-size:20px;"><a href="{!kugo2p__PaymentX__c.Link}"> View Payment</a></div><br/>
+<i>Requires access to Kugamon</i><br/>
+<hr>
+<br/>
+<div style="font-size:16px;">Payment Details</div>
+<br/>
+<strong>Account Name</strong>: {!kugo2p__PaymentX__c.kugo2p__Account__c}<br/>
+<strong>Payment Amount</strong>: {!kugo2p__PaymentX__c.kugo2p__Amount__c} via {!kugo2p__PaymentX__c.kugo2p__Payment_Type__c}<br/>
+<br/>
+<strong>Related Order</strong>: {!kugo2p__PaymentX__c.kugo2p__SalesOrder__c}<br/>
+<strong>Related Invoice</strong>: {!kugo2p__PaymentX__c.kugo2p__Invoice__c}<br/>
+<br/>
+</p>
+</div>
+
+                          </td>
+                        </tr>
+
+                      </table>
+
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td style="vertical-align: top;" colspan="3">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+
+                          <td style="color: #45555f; font-family: Tahoma,Helvetica; font-size: 11px; line-height: 16px; vertical-align: top; text-align: center">
+                          <img height="99" width="660" src="https://dl.dropboxusercontent.com/s/16q2q55rmjj6nqb/bottomShadow.png" alt=""/><br />
+                           <div class="mktEditable" id="Contact">
+                            This is an internal email alert from <b>Kugamon</b>. Please contact your administrator for more information.</div>
+                          </td>
+                        </tr>
+                      </table>
+
+                    </td>
+
+                  </tr>
+                </table>
+
+        </td>
+
+      </tr>
+    </table>
+</body>
+</html>

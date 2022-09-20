@@ -1360,7 +1360,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>test__c</field>
+            <field>Contact_ID__c</field>
             <table>kugo2p__Payment_Profile__c.kugo2p__Payments__r</table>
         </columns>
         <masterLabel>Payments</masterLabel>

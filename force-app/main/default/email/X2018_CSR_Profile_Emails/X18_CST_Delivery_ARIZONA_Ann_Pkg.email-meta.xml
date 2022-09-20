@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>18. CST Delivery ARIZONA (Rec. Pkg. - RE)</name>
+    <style>freeForm</style>
+    <subject>Your Five Star Professional client success tracker is ready!</subject>
+    <textOnly>Hello {!Contact.Name}, 
+
+We created a report that shows you the progress of the social post that came as part of the Recognition package that you purchased. You can view your Client Success Tracker by clicking here: {!Contact.Client_Success_Tracker_URL__c}
+
+Your Client Success Tracker is designed to show you the engagements and interactions you’ve received so far. The impressions are how many people have viewed your social post, and the interactions are how many people have liked, commented, or shared your post. The link to your social post can be found near the bottom of your Client Success Tracker.  
+
+Please take a look and do not hesitate to reach out to us if you have any questions. 
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+651-460-9068
+arizona.bitler@fivestarprofessional.com
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

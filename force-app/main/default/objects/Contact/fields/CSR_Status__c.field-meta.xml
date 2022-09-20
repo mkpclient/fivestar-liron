@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSR_Status__c</fullName>
+    <defaultValue>&quot;New - No CS Appointment Scheduled on Sumo&quot;</defaultValue>
+    <externalId>false</externalId>
+    <label>CSR Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CS Appointment Scheduled on Sumo</fullName>
+                <default>false</default>
+                <label>CS Appointment Scheduled on Sumo</label>
+            </value>
+            <value>
+                <fullName>New - No CS Appointment Scheduled on Sumo</fullName>
+                <default>false</default>
+                <label>New - No CS Appointment Scheduled on Sumo</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Incomplete - 1st Request</fullName>
+                <default>false</default>
+                <label>CS Appointment Incomplete - 1st Request</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Incomplete - 2nd Request</fullName>
+                <default>false</default>
+                <label>CS Appointment Incomplete - 2nd Request</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Incomplete - 3rd Request</fullName>
+                <default>false</default>
+                <label>CS Appointment Incomplete - 3rd Request</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Incomplete - Closed</fullName>
+                <default>false</default>
+                <label>CS Appointment Incomplete - Closed</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Follow-Up Needed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Follow-Up Needed</label>
+            </value>
+            <value>
+                <fullName>Post-Market Appointment Scheduled on Sumo</fullName>
+                <default>false</default>
+                <label>Post-Market Appointment Scheduled on Sumo</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Content Needed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Content Needed</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Approval Needed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Approval Needed</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Urgent Response Needed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Urgent Response Needed</label>
+            </value>
+            <value>
+                <fullName>CS Appointment Complete - Closed</fullName>
+                <default>false</default>
+                <label>CS Appointment Complete - Closed</label>
+            </value>
+            <value>
+                <fullName>No action needed</fullName>
+                <default>false</default>
+                <label>No action needed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

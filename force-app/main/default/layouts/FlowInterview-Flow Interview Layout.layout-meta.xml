@@ -11,6 +11,18 @@
                 <field>Guid</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Required</behavior>
+                <field>InterviewStatus</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>MasterVersionProcessType</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>WasPausedFromScreen</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
             </layoutItems>
@@ -52,6 +64,9 @@
     </layoutSections>
     <miniLayout>
         <fields>Guid</fields>
+        <fields>InterviewStatus</fields>
+        <fields>MasterVersionProcessType</fields>
+        <fields>WasPausedFromScreen</fields>
     </miniLayout>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

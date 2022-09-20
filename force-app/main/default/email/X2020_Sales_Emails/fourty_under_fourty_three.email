@@ -1,0 +1,43 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black;background:white">Hello&nbsp;{!Contact.FirstName},</span><o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style=""><font face="Arial, sans-serif">As a Five Star award winner, we know that you are among the best at what you do. You also occupy a unique space in the wealth management industry as someone who has achieved great success before the age of 40.</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">We will be featuring under 40 wealth managers in a special section of the February/March 2023 issue of <i>Fortune</i> magazine. Packages start at $999, please <a href="https://www.fivestarprofessional.com/AGO/u40f23/wm22">click here</a> for more information.</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-family: Arial, sans-serif;"><br></span></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; text-align: center;"><o:p style=""><font face="Arial, sans-serif">{!Contact.AM_Follow_Up_Link__c}</font></o:p></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p><br></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black">I look forward to hearing from you!<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black">Regards<i>,</i><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerFullName}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">Account Manager<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">Five Star Professional<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerPhone}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black">{!Contact.OwnerEmail}<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; background: white;"><span style="font-size:12.0pt;
+font-family:&quot;Arial&quot;,sans-serif;color:black"><a href="http://www.fivestarprofessional.com">www.fivestarprofessional.com</a><o:p></o:p></span></p><br>]]></td>
+</tr>
+</table>

@@ -1,0 +1,10 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="p1" style="color: rgb(0, 0, 0);"><b><i><font face="Arial, sans-serif" size="2"><br></font></i></b></p><p class="p1"><font face="Arial, sans-serif" size="2">Hello&nbsp;{!Contact.ACDF_FName__c},</font></p><p class="p2" style="color: rgb(0, 0, 0);"><b><i><font face="Arial, sans-serif" size="2"><br></font></i></b></p>
+<p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2">Your order ({!Fulfillment__c.Product_Name__c}) has been processed. As soon as your package has been shipped, you can track its progress using this tracking number: {!Fulfillment__c.Tracking__c}.</font></p><p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2"><br></font></p>
+<p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2">If you have any questions in the meantime, please contact your account manager or project coordinator.</font></p><p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2"><br></font></p>
+<p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2">Sincerely,</font></p>
+<p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2">Five Star Professional</font></p><p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2">1-888-438-5782</font></p><p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2">info@fivestarprofessional.com</font></p><p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2"><br></font></p><p class="p3" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif" size="2"><br></font></p>]]></td>
+</tr>
+</table>

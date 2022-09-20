@@ -916,6 +916,6 @@ export default class ManageLinesRecipients extends NavigationMixin(
   };
 
   get disableDiscount() {
-    return !this.isEditable || !this.hasAdminPermissions;
+    return !this.isEditable;
   }
 }

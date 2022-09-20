@@ -1,7 +1,7 @@
 trigger onFulfillmentUpdated on Fulfillment__c (after update) {
 
     // if(Test.isRunningTest() ||( Limits.getFutureCalls() >= Limits.getLimitFutureCalls())){
-	if(( Limits.getFutureCalls() >= Limits.getLimitFutureCalls() || System.isFuture() || System.isBatch())){
+	if(( Limits.getFutureCalls() >= Limits.getLimitFutureCalls())){
    		system.debug(LoggingLevel.Error, 'Future method limit reached. Skipping WebappNotifyService');
         return;
     }

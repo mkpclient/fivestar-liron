@@ -213,7 +213,6 @@ public with sharing class SalesOrderHelperTest {
       FROM Fulfillment__c
       WHERE Boom_Order__c = :testSo.Id
       AND Status__c = 'Cancelled'
-      LIMIT 1
     ];
 
     System.assertEquals(1, fulfillments.size(), 'Fulfillment was not cancelled');

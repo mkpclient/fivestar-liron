@@ -2041,16 +2041,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>VP_of_Sales_Name__c</field>
-            <table>Contact</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>VP_of_Sales_Phone_Number__c</field>
-            <table>Contact</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>rcsfl__SMS_Number__c</field>
             <table>Contact</table>
         </columns>
@@ -2181,7 +2171,32 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Locale__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>MX_Customer_Id__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Do_Not_Call_for_NAMS_F_U__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ELM_referral_form__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ELM_referral_share_page__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Essential_Engine_Friend_Capture__c</field>
             <table>Contact</table>
         </columns>
         <masterLabel>Contacts</masterLabel>
@@ -2745,6 +2760,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Appointment_Length__c</field>
+            <table>Contact.forcebrain__Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity__c</field>
+            <table>Contact.forcebrain__Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Assigned_to_And_Owner_the_same__c</field>
             <table>Contact.forcebrain__Appointments__r</table>
         </columns>
         <masterLabel>Appointments</masterLabel>

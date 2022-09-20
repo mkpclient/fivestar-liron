@@ -43,7 +43,6 @@ global class PaymentMethodBatch implements Database.Batchable<sObject>, Database
           
           validPaymentMethods.add(s);
         } else {
-          
           invalidPaymentMethods.add(s);
         }
       }

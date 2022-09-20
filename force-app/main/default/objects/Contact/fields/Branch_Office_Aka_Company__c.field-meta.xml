@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Branch_Office_Aka_Company__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This is the local office the professional works out of primarily.</description>
+    <externalId>false</externalId>
+    <label>RETIRED: Branch Office Aka Company</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Professionals</relationshipLabel>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

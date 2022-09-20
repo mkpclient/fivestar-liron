@@ -681,6 +681,21 @@
         <template>Ad_Prod_Templates/Rush_Fulfillment</template>
     </alerts>
     <alerts>
+        <fullName>Sample_Essential_Living_Magazine_Sent</fullName>
+        <description>Sample Essential Living Magazine Sent</description>
+        <protected>false</protected>
+        <recipients>
+            <type>campaignMemberDerivedOwner</type>
+        </recipients>
+        <recipients>
+            <field>PrimaryRecipient__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>customerservice@fivestarprofessional.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Sample_Essential_Living_Magazine_Shipped</template>
+    </alerts>
+    <alerts>
         <fullName>Send_CST</fullName>
         <description>Send CST</description>
         <protected>false</protected>
@@ -755,6 +770,42 @@
         <senderAddress>techsupport@fivestarprofessional.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Ad_Prod_Templates/Shipping_Address_Info_Needed</template>
+    </alerts>
+    <alerts>
+        <fullName>Social_Post_Forbes_Legends</fullName>
+        <description>Social Post - Forbes Legends</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PrimaryRecipient__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <recipients>
+            <field>Fulfillment_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>customerservice@fivestarprofessional.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>New_Social_Post_Templates/Social_Post_Forbes_Legends</template>
+    </alerts>
+    <alerts>
+        <fullName>Social_Post_Forbes_Legends_Team</fullName>
+        <description>Social Post - Forbes Legends - Team</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PrimaryRecipient__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <recipients>
+            <field>Ad_Prod_Alternate_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Fulfillment_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>customerservice@fivestarprofessional.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Ad_Prod_Templates/Social_Post_Forbes_Legends_Team</template>
     </alerts>
     <alerts>
         <fullName>Update_Shipping_Information</fullName>
@@ -1009,11 +1060,9 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Update_Order_Creator_Email</fullName>
-        <description>Updates order creator email field on fulfillment to the creator of the order
-
-Used to be: OrderNumber__r.CreatedBy.Email</description>
+        <description>Updates order creator email field on fulfillment to the creator of the order</description>
         <field>Order_Creator_Email__c</field>
-        <formula>&quot;ORDER EMAIL HERE&quot;</formula>
+        <formula>Boom_Order__r.CreatedBy.Email</formula>
         <name>Update Order Creator Email</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -2019,6 +2068,82 @@ Used to be: OrderNumber__r.CreatedBy.Email</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Product delivered - Social Post Forbes Legends</fullName>
+        <actions>
+            <name>Social_Post_Forbes_Legends</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Fulfillment_Email_Template_to_None</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Fulfillment_Next_Action_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Fulfillment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Fulfillment__c.Next_Action__c</field>
+            <operation>equals</operation>
+            <value>Send Email</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Fulfillment__c.Email_Template__c</field>
+            <operation>equals</operation>
+            <value>Social Post - Forbes Legends</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Fulfillment__c.Product_Name__c</field>
+            <operation>notContain</operation>
+            <value>Team</value>
+        </criteriaItems>
+        <description>Forbes Legends</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Product delivered - Social Post Forbes Legends - Team</fullName>
+        <actions>
+            <name>Social_Post_Forbes_Legends_Team</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Fulfillment_Email_Template_to_None</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Fulfillment_Next_Action_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Fulfillment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Fulfillment__c.Next_Action__c</field>
+            <operation>equals</operation>
+            <value>Send Email</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Fulfillment__c.Email_Template__c</field>
+            <operation>equals</operation>
+            <value>Social Post - Forbes Legends</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Fulfillment__c.Product_Name__c</field>
+            <operation>contains</operation>
+            <value>Team</value>
+        </criteriaItems>
+        <description>Forbes Legends -  Team</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>Product delivered - Testimonials</fullName>
         <actions>
             <name>Product_delivered_Testimonials</name>
@@ -2183,6 +2308,30 @@ Used to be: OrderNumber__r.CreatedBy.Email</description>
             <value>True</value>
         </criteriaItems>
         <description>When a rush fulfillment is created or an existing fulfillment is set to rush, uses an email alert to notify the graphics assigned person</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Sample Essential Living Magazine Shipped</fullName>
+        <actions>
+            <name>Sample_Essential_Living_Magazine_Sent</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Fulfillment__c.Product_Name__c</field>
+            <operation>equals</operation>
+            <value>Essential Living Magazine Sample</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Fulfillment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Fulfillment__c.Next_Action__c</field>
+            <operation>equals</operation>
+            <value>Shipped</value>
+        </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

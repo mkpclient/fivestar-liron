@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Fortune ML HA Email #1</name>
+    <style>freeForm</style>
+    <subject>Your Appearance in Fortune Magazine</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+I am following up on the voicemail I left you regarding your appearance on the list of Fortune Market Leaders. The list will be appearing in the February/March issue of Fortune Magazine, with a limited number of insurance professionals in your market.
+
+
+
+Fortune is one of the most widely recognized and respected media brands in the nation. As a Five Star award winner you are among the best at what you do. Connecting your personal brand to the Fortune brand is an effective marketing strategy to help you win new prospective clients and build deeper relationships with your referral network.
+
+
+
+
+Please call my direct line to learn more about this opportunity.
+
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

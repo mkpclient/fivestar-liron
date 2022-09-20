@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Legends - Seattle Email #1</name>
+    <style>freeForm</style>
+    <subject>Highlight your long standing client service excellence in Seattle Legends!</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+I am following up on the voicemail I left you regarding your appearance in our Seattle Five Star Legends section. The appearance will be in the May/June issue of Seattle magazine, only available to Five Star winners with 10 or more years of receiving the award. This is very exclusive!
+
+
+
+As a Five Star award winner you are among the best at what you do. Communicating that you are a Five Star Legend and have received the Five Star Professional award for 10+ years will provide a positive impact on your client relationships.
+
+
+
+Click Here for more information!
+
+Please call my direct line below to learn more about this opportunity.
+
+
+{!User.Name}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

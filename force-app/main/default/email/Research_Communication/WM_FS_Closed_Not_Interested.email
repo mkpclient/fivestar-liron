@@ -1,0 +1,25 @@
+Hello {!Opportunity.First_Name__c},
+<p>
+Thank you for responding. Just to help me better understand, is there any particular reason on why you have decided to not participate in the program this year since you have been a recipient of the award? I appreciate any feedback you can share with me, as we want to make sure we are offering a valuable award program for {!Opportunity.Profession_Type__c} and obviously we must be missing the mark somewhere.</p>
+<p>
+Just a reminder that you do not have to purchase anything to be considered for the award, or to be named an award winner. If you are named a 2022 award winner you still receive a complimentary listing on the Five Star Professional website; www.fivestarprofessional.com for the year and in the {!Opportunity.Publication_Month__c} issue of {!Opportunity.Magazine__c}.</p>
+<p>
+<p>If you do change your mind and would like to participate, the deadline is {!Opportunity.ACDF_Deadline__c}. 
+You can use this link to complete your candidate form; {!Opportunity.Research_Form_URL__c}
+
+<p>{!User.Name}<br>
+<i><b>Research Representative</b></i></p>
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway, Suite 120<br>
+Eagan, MN  55121<br>
+Direct: {!User.Phone}<br>
+<a href=mailto:{!User.Email}>{!User.Email}<br>
+<a href=http://www.fivestarprofessional.com>http://www.fivestarprofessional.com</a></p>
+
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>
+<p>
+<font size="2"><p><a href="https://cl.s11.exct.net/subscription_center.aspx?me=fe3511717164057d7d1370&p=true#UnsubAll"> unsubscribe from this list </p>

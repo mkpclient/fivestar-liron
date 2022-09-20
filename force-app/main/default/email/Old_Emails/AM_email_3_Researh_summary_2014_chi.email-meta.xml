@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>CHIRO14 03 – Research summary</name>
+    <style>freeForm</style>
+    <subject>About our research process</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Nice talking to you again. If you haven’t already visited our web site, it’s a great resource for all things Five Star Professional, including detailed information about our research process.
+
+To receive the Five Star award, a {!Opportunity.Email_Templates_Profession__c} must be nominated and must satisfy five objective eligibility and evaluation criteria that are associated with {!Opportunity.Email_Templates_Profession__c}s who provide quality services to their clients. No more than 7 percent of the {!Opportunity.Email_Templates_Profession__c}s in the {!Opportunity.Email_Templates_Market_City__c} area were named 2013 Five Star {!Opportunity.Email_Templates_Profession__c}s.
+
+You can go to the Research section of our web site to learn more. Let me know if I can provide any more information.
+
+www.fivestarprofessional.com/2013/research.php
+
+
+{!User.Name}
+Account Manager
+
+Five Star Professional
+2117 Cliff Drive
+Eagan, MN 55122
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+www.fivestarprofessional.com
+
+Award candidates and award winners: Please tell us
+about your experience with Five Star Professional.
+http://fivestar.98d1e644fe2e.sgizmo.com/s3/</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>WM/FS: Completed form Final Email with nominations link</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>WM/FS: Completed Form ( Final Email)</name>
+    <style>none</style>
+    <subject>{!Market__c.Publication_Year__c} {!Market__c.Program_Name__c} Award - Thank You for Completing your Candidate Information</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Thank you for taking the time to complete your candidate evaluation form for the {!Market__c.Publication_Year__c} {!Market__c.Program_Name__c} Award. Award winners will be announced in the following 4-6 weeks upon completion of the evaluation process, we do have your completed information and will be moving your information forward for consideration for the {!Market__c.Publication_Year__c} award and there is no further action needed from you at this time.
+
+Additionally, at this time as a candidate moving forward you do have the opportunity to nominate a professional peer for consideration for the {!Market__c.Publication_Year__c} award. If you have a partner and/or member of your team that you feel should be recognized for their professional excellence.
+
+To nominate a professional peer: www.fivestarprofessional.com/nominations.
+
+If you have any questions please feel free to reach out to your Research Assistant {!User.Name}, Phone: {!User.Phone} Email:{!User.Email}.
+
+Thank you for your time,
+
+Debbie Noll
+Research Manager
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: 651-259-1108
+Main: 1-888-438-5782
+Fax: 651-259-1940
+Email: Debbie.noll@fivestarprofessional.com
+www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

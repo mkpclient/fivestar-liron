@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent after missed F/U Appt.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>09: F/U 05: Final Attempt</name>
+    <style>freeForm</style>
+    <subject>Final Attempt for Five Star Marketing - Deadline was last week!</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Our deadline to purchase Five Star marketing was Friday, last week! This will be my last attempt to connect with you and finalize your order for this year. Please call as soon as you are able to. I want to make sure that you don’t miss out this year!
+
+Thank you,
+
+{!User.Name}
+Account Manager
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

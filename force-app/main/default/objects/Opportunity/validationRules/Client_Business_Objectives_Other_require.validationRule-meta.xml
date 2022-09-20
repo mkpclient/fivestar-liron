@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Business_Objectives_Other_require</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISPICKVAL(Client_Business_Objectives__c ,&apos;Other&apos;),ISBLANK( Client_Business_Objectives_Others__c ))</errorConditionFormula>
+    <errorDisplayField>Client_Business_Objectives_Other__c</errorDisplayField>
+    <errorMessage>Please enter value in Client Business objective - Other field</errorMessage>
+</ValidationRule>

@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ACC_Sync__c</fullName>
     <externalId>false</externalId>
-    <formula>Order_Additional_Charge_Credit__r.Intacct_Sync_Complete__c</formula>
+    <formula>BoomOrderAdditonalChargeCredit__r.Intacct_Sync_Complete__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>ACC Sync</label>
     <trackHistory>false</trackHistory>

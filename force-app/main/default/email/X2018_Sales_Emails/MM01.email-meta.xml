@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to send before calling to mid-markets</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>Mid-Market Pre-Call Email</name>
+    <style>freeForm</style>
+    <subject>Finalizing your award eligibility</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Congratulations on being nominated by your clients for the Five Star award!
+
+Although the Five Star award is in all major metro markets and is the largest and longest-running award program for {!Contact.Core_Profession__c}s in the United States, I am sure you have questions, as it is new to the {!Contact.Core_Market_city__c} market.
+
+
+The Five Star award is not a pay to play award program. Award winners do not pay to be considered or to be named a winner. All winners of the award in the {!Contact.Core_Market_city__c} market will be listed on fivestarprofessional.com and will be listed at no cost in the {!Contact.Core_Publication_month__c} issue of {!Contact.Core_Magazine_name__c}.
+
+
+
+Later today I will call you to set up an over the phone appointment. The purpose of the appointment is to finalize your eligibility and selection as a 2018 Five Star {!Contact.Core_Profession__c}. During the appointment we will:
+
+
+·  Review the award process and criteria and how you became a finalist for the award
+
+·  Verify and update your regulatory/customer complaint history
+
+·  Review award usage guidelines
+
+·  Finalize how you wish to be listed (assuming we are able to certify/finalize your award eligibility and selection)
+
+Thank you!
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

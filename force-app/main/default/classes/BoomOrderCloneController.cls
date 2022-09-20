@@ -1,6 +1,6 @@
 public without sharing class BoomOrderCloneController {
-  public static final String FINANCE_FEE_ACC = 'a5X6T00000IrsqV';
-  public static final String DISC_PRODUCTID = '01t0W000005jbNq';
+  public static final String FINANCE_FEE_ACC = 'Multi payment Convenience Fee';
+  public static final String DISC_PRODUCTNAME = 'Discount Multi-Payment Convenience Fee';
 
   @AuraEnabled
   public static Id cloneBoomOrder(Id recordId) {
@@ -46,7 +46,7 @@ public without sharing class BoomOrderCloneController {
     Id newBoomOrderId
   ) {
     Savepoint sp = Database.setSavepoint();
-    List<AdditionalChargeCredit__c> acc = [SELECT Id FROM AdditionalChargeCredit__c WHERE Id = :FINANCE_FEE_ACC AND IsActive__c = true LIMIT 1];
+    List<AdditionalChargeCredit__c> acc = [SELECT Id FROM AdditionalChargeCredit__c WHERE Name = :FINANCE_FEE_ACC AND IsActive__c = true LIMIT 1];
     try {
       String editableFields = getEditableFields(
         'SalesOrderAdditionalChargeCredit__c'
@@ -84,7 +84,7 @@ public without sharing class BoomOrderCloneController {
     Id newBoomOrderId
   ) {
     Savepoint sp = Database.setSavepoint();
-    List<Product2> discProd = [SELECT Id FROM Product2 WHERE Id = :DISC_PRODUCTID AND IsActive = true LIMIT 1];
+    List<Product2> discProd = [SELECT Id FROM Product2 WHERE Name = :DISC_PRODUCTNAME AND IsActive = true LIMIT 1];
 
     try {
       String editableFields = getEditableFields('SalesOrderProductLine__c');

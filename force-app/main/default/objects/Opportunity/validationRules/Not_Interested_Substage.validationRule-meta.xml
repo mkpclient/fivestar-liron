@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Not_Interested_Substage</fullName>
+    <active>false</active>
+    <description>Substage for Not Interested MUST be selected</description>
+    <errorConditionFormula>OR(AND(ISPICKVAL( StageName , &quot;Dead&quot;),NOT(OR(ISPICKVAL(  Stage_Comment__c , &quot;Contact me about future promotions&quot;)))))</errorConditionFormula>
+    <errorMessage>Please Select &quot;Contact me about future promotions&quot; Stage Comment when using the &quot;Not Interested&quot; Stage.</errorMessage>
+</ValidationRule>

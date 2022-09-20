@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Info_Session_RSVP__c</fullName>
+    <description>Type the number of the Info Session that this candidate would like to attend, as listed in the &quot;Info Sessions Available&quot; field.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Type the number of the Info Session that this candidate would like to attend, as listed in the &quot;Info Sessions Available&quot; field.</inlineHelpText>
+    <label>Info Session RSVP</label>
+    <length>1</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

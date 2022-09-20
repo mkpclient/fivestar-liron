@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Email template #1 for WM/CPA/EPA.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>WM Candidate</name>
+    <style>freeForm</style>
+    <subject>2014 Five Star Wealth Manager Award</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c}:
+
+
+Don’t miss your opportunity to be considered for the Five Star Wealth Manager award.  An exclusive group of {!Opportunity.Email_Templates_Market_City__c} area wealth managers will receive the {!Opportunity.Email_Templates_Publication_Year__c} award and be featured at no cost in the {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c} and on fivestarprofessional.com.
+
+
+Action Required: To be considered for the award, you must provide additional information about you and your practice by the submission deadline of {!Opportunity.CloseDate}. Complete the secure, online form in minutes by going to: {!Opportunity.Research_Form_URL__c}
+
+
+
+Award eligibility and evaluation criteria:
+
+
+Eligible Professionals: Client-facing financial planners, investment advisors, tax advisors and estate planning attorneys are eligible. No more than 7% of wealth managers will be awarded.
+
+
+Evaluation Process: Award candidates will be evaluated against 10 objective criteria associated with providing quality services to clients, and only those who successfully meet all criteria will be named 2013 Five Star Wealth Managers.
+
+
+Other Resources You May Find Helpful
+
+
+
+2014 Research Methodology (detail)
+
+Sample Section in the Magazine
+
+
+
+Kind regards,
+
+{!User.Name}
+
+
+{!User.Phone}
+
+{!User.Email}
+
+Five Star Professional
+2117 Cliff Road
+Eagan, MN 55122
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

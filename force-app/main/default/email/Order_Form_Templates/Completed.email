@@ -1,0 +1,5 @@
+Hello,
+
+Order Form {!Order_Form__c.Name} has been completed, order {!Order_Form__c.Order__c} has been processed and should be on the sales dashboard very soon!
+
+Thank you!

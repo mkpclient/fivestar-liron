@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email 2 of standard campaign (Referrals)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Marketing Email 2</name>
+    <style>formalLetter</style>
+    <subject>You have worked hard — get recognized for it!</subject>
+    <textOnly>Hello {!Contact.ACDF_FName__c},
+
+You have worked hard to win the Five Star award, and we want you to be recognized for it!
+
+Five Star Professional offers proven strategies to help you announce your award, generate referrals and maximize new business opportunities.
+
+Cultivate referrals through a multi-channel marketing approach:
+
+Direct mail
+Digital and social
+In person
+
+If you rely on referrals for your business, I can help by sharing with you the most effective tactics used by some of the most successful professionals in your industry.
+
+Give me a call or request an appointment to learn more!
+Thank you,
+
+{!Opportunity.OwnerFullName}
+Account Manager
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+{!Opportunity.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

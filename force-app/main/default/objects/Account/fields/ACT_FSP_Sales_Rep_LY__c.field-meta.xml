@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACT_FSP_Sales_Rep_LY__c</fullName>
+    <description>This is a historical record of the penultimate sales rep assigned to this person in ACT.  Note that this functionality is replaced by Opportunity FSP Sales Rep tracking.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is a historical record of the penultimate sales rep assigned to this person in ACT.  Note that this functionality is replaced by Opportunity FSP Sales Rep tracking.</inlineHelpText>
+    <label>FSP Sales Rep LY</label>
+    <length>50</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

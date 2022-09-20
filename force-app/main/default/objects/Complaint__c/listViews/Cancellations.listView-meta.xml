@@ -3,10 +3,12 @@
     <fullName>Cancellations</fullName>
     <columns>NAME</columns>
     <columns>Complaint_Status__c</columns>
+    <columns>Contact__c</columns>
     <columns>Assigned__c</columns>
     <columns>Complaint_Department__c</columns>
     <columns>Days_Open__c</columns>
     <columns>Markets__c</columns>
+    <columns>Date_Opened__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Complaint_Status__c</field>

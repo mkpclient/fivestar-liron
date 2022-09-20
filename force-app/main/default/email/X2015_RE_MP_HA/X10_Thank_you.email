@@ -1,0 +1,76 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">Hi {!Opportunity.Email_Templates_Informalname__c},<font size="3"><o:p></o:p></font></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p style="margin-bottom: 12pt; background-color: white;"><font face="Arial, sans-serif">It has been a pleasure working with you! I am happy we were able
+to determine the best way to maximize your Five Star award.<br>
+<br>
+<b>Here is what you should expect within the next couple weeks:</b><font size="3"><u5:p></u5:p><o:p></o:p></font></font></p><ol start="1" type="1">
+ <li class="MsoNormal" style="background-color: white; background-position: initial initial; background-repeat: initial initial;"><font face="Arial, sans-serif"><u>Invoice</u>:
+     Within one business day, you will receive a copy of your invoice for the
+     item(s) purchased.<o:p></o:p></font></li>
+ <font face="Arial, sans-serif"><u5:p></u5:p>
+ </font><li class="MsoNormal" style="background-color: white; background-position: initial initial; background-repeat: initial initial;"><font face="Arial, sans-serif"><u>Magazine
+     Profile Creation</u>:&nbsp;The template for creating your magazine profile
+     will be sent within the next few days by your personal Advertising Project
+     Manager. General instructions are included on the template. If you have
+     immediate questions regarding the creation of your profile or need
+     assistance, please contact our graphics department directly at&nbsp;<a href="mailto:graphics@fivestarprofessional.com">graphics@fivestarprofessional.com</a><span class="apple-converted-space">&nbsp;</span>or call 651-414-6508. &nbsp;<o:p></o:p></font></li>
+ <font face="Arial, sans-serif"><u5:p></u5:p>
+ </font><li class="MsoNormal" style="background-color: white; background-position: initial initial; background-repeat: initial initial;"><font face="Arial, sans-serif"><u>Marketing
+     Tools:</u>&nbsp;Please note that marketing tools are delivered by
+     the 15<sup>th</sup><span class="apple-converted-space">&nbsp;</span>of the
+     magazine publication month.<o:p></o:p></font></li>
+</ol><p style="margin-bottom: 12pt; background-color: white;"><font face="Arial, sans-serif">&nbsp;<u5:p></u5:p><o:p></o:p></font></p><p style="margin-bottom: 12pt; background-color: white;"><font face="Arial, sans-serif">The
+best part of my job is working with people like you, and I’m excited to see the
+results of our efforts. Please let me know of the successes that you receive!<u5:p></u5:p><o:p></o:p></font></p><p style="margin-bottom: 12pt; background-color: white;"><font face="Arial, sans-serif">I
+am here to help you throughout the year, and to assist in maximizing the impact
+of your award and sharing your elite status with clients, prospects and
+peers.&nbsp;Feel free to reach out to me at any point o this process if you
+have any questions!<o:p></o:p></font></p><p class="MsoNormal">
+
+
+
+<font face="Arial, sans-serif"><u5:p></u5:p>
+
+
+
+
+
+
+
+</font></p><p style="margin-bottom: 12pt; background-color: white;"><font face="Arial, sans-serif"><br>
+Thank you,<u5:p></u5:p><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif"><b>{!User.Name}</b><o:p></o:p></font></p>
+
+<font face="Arial, sans-serif"><u1:p></u1:p>
+
+</font><p class="MsoNormal"><font face="Arial, sans-serif"><b>Account Manager<u1:p></u1:p></b><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">&nbsp;<o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif"><b>Five Star Professional</b><u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">2900 Lone Oak Parkway</font></p><p class="MsoNormal"><font face="Arial, sans-serif">Suite 120</font></p><p class="MsoNormal"><font face="Arial, sans-serif">Eagan, MN 55121</font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Direct:<span class="apple-converted-space">&nbsp;</span>{!User.Phone}<u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Main:<span class="apple-converted-space">&nbsp;</span><a href="tel:1-888-438-5782" target="_blank" value="+18884385782">1-888-438-5782</a><u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Fax:<span class="apple-converted-space">&nbsp;</span><a href="tel:651-259-1940" target="_blank" value="+16512591940">651-259-1940</a><u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">{!User.Email}<u1:p></u1:p><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif"><a href="http://www.fivestarprofessional.com/" target="_blank" title="http://www.fivestarprofessional.com"><font color="#000000">www.fivestarprofessional.com</font></a><font color="#1155cc" style="font-size: 12pt; font-family: arial;"><u1:p></u1:p></font><font face="arial" style="font-size: 12pt;"><o:p></o:p></font></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;<br></font></p>
+
+<p class="MsoNormal" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0); background-color: white;"></p><p style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"></p>]]></td>
+</tr>
+</table>

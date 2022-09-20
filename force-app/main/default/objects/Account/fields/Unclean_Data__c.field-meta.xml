@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unclean_Data__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Flag used to announce when the person account fails to update in the automated pull to the Five Star Professional website.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Flag used to announce when the person account fails to update in the automated pull to the Five Star Professional website.</inlineHelpText>
+    <label>Unclean Data</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

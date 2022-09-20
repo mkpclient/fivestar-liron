@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>08 – First time winners</name>
+    <style>freeForm</style>
+    <subject>Connecting on your Five Star Professional award</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Congratulations on your selection as one of the 2014 Five Star {!Opportunity.Email_Templates_Profession__c}s. The special section will be appearing in the {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c}.
+
+I want to answer any questions you have about how you were chosen for the award and the options that are available to you.
+
+If you have a few minutes to talk, please send me an email with a time that works best for you, or call me at your convenience.
+
+I look forward to speaking with you soon.
+
+{!User.Name}
+Account Manager
+
+Five Star Professional
+2900 Lone Oak Parkway
+Eagan, MN 55121
+Direct: {!User.Phone}
+Main: 888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+www.fivestarprofessional.com
+
+Award candidates and award winners: Please tell us
+about your experience with Five Star Professional.
+http://fivestar.98d1e644fe2e.sgizmo.com/s3/</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

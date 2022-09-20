@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RhodeIsland5PointPaul</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Pardot_Lead_Score__c</columns>
+    <columns>Last_Call_Date__c</columns>
+    <columns>Next_call_date__c</columns>
+    <columns>Client_Type__c</columns>
+    <columns>Open_Call_Comments__c</columns>
+    <columns>phone__c</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Branch_Office_aka_Company__c</columns>
+    <columns>Last_Call_Type__c</columns>
+    <columns>Open_Call_Type__c</columns>
+    <columns>SF_ID__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>RIRE19: 5 Point</value>
+    </filters>
+    <label>RI 5 Point Real Estate - Paul B</label>
+    <sharedTo>
+        <group>Jonathan_Wesser</group>
+    </sharedTo>
+</ListView>

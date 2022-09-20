@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailBounceRate__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Total number of bounced emails divided by total number of sent emails.</description>
+    <externalId>false</externalId>
+    <formula>if(sbm__sbx_EmailNumberSent__c &gt; 0, sbm__sbx_EmailNumberBouncedRollup__c / sbm__sbx_EmailNumberSent__c, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Total number of bounced emails divided by total number of sent emails.</inlineHelpText>
+    <label>Bounce Rate</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Percent</type>
+</CustomField>

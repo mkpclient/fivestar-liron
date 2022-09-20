@@ -4,7 +4,7 @@
     <label>Spotlight</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9snqYUvtJB1PKIJxVBRpflfQ_RfqvLpovA.WwbfWGsfRAAOl8VaRWwkO0B6c2dCs1ghHnFr_hB.0dH1TG</consumerKey>
+        <consumerKey>3MVG9lIH5nSM6mjR1sxnwiuAneak5FEjVZaBng5Vamim25hN.9a79guP_rI2LJO7q9AKN6_sRXzQupkiB1vC8</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>

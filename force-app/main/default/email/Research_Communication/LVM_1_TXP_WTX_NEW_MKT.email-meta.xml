@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>LVM_RE.MP.HA</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>.    VM 1 - TXP WTX NEW MKT</name>
+    <style>none</style>
+    <subject>{!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} - Candidate Information</subject>
+    <textOnly>Hello {!Opportunity.Email_Templates_Informalname__c},
+
+Exciting News! Your professionalism and commitment to service are being honored. You have been brought forward for the {!Opportunity.Email_Templates_Publication_Year__c} {!Opportunity.Program_Name__c} award. This Five Star award is an exclusive honor presented to only outstanding {!Opportunity.Profession_Type__c}. All award winners will appear in the June issue of Texas Monthly and on the Five Star Professional website; http://www.fivestarprofessional.com with a complimentary listing or your name and company name.
+
+To move forward in consideration, there is a short online candidate evaluation form that all candidates must complete to verify that you meet minimum experience and production requirements. Click below to accept the nomination.
+
+Candidate Evaluation Form - Click Here to Complete
+
+Recognizing professionals that go above and beyond for their clients.
+
+To find out more about Five Star Professional and the award programs. Please go to our website http://www.fivestarprofessional.com.
+
+Kind regards,
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2117 Cliff Dr
+Eagan, MN  55122
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.
+
+Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.
+
+To unsubscribe you can reply back, STOP, with this email.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

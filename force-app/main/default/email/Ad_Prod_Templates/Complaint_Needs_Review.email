@@ -1,0 +1,8 @@
+Hello,
+
+Complaint "{!Complaint__c.Name}" requires your attention, please review and look for potential procedural improvements.
+
+Link: https://na14.salesforce.com/{!Complaint__c.Id}
+
+Thank you!
+- System

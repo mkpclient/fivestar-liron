@@ -4,6 +4,7 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <tabs>standard-AppLauncher</tabs>
     <tabs>AmReg_Opportunity_Target__c</tabs>
     <tabs>AmReg_Order__c</tabs>
@@ -19,6 +20,5 @@
     <tabs>Essential_Living_Issue__c</tabs>
     <tabs>Essential_Living_Publication__c</tabs>
     <tabs>Client_Experience__c</tabs>
-    <tabs>standard-Quote</tabs>
-    <tabs>SalesOrder__c</tabs>
+    <tabs>sumoapp__Email__c</tabs>
 </CustomApplication>

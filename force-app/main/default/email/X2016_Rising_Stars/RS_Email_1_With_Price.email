@@ -1,0 +1,32 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<strong style="font-family: arial, helvetica, sans-serif; line-height: 26px; text-align: center; background-color: rgb(242, 242, 242);"><a title="Five Star Research" href="http://www.fivestarprofessional.com/research" style="color: rgb(40, 128, 187); line-height: 1.5;">RESEARCH</a>&nbsp;&nbsp;| &nbsp;</strong><strong style="font-family: arial, helvetica, sans-serif; text-align: center; background-color: rgb(242, 242, 242); line-height: 26.6667px;"><a href="{!Market__c.Guidebook__c}">EXCLUSIVE OFFER</a></strong><strong style="font-family: arial, helvetica, sans-serif; text-align: center; background-color: rgb(242, 242, 242);"><span style="line-height: 26px;">&nbsp; | &nbsp;</span><a title="Five Star Professional" href="http://www.fivestarprofessional.com/" style="line-height: 1.5; color: rgb(40, 128, 187);">FIVESTARPROFESSIONAL.COM</a></strong>]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<p style="background-color: rgb(242, 242, 242);"><font face="Arial, sans-serif"><span style="color: rgb(0, 0, 0); line-height: 1.5;">Hello&nbsp;</span><span style="line-height: 18px;">{!Opportunity.ACDF_Fname__c}</span><span style="line-height: 1.5;">,</span></font></p><p style="color: rgb(0, 0, 0); line-height: 1.5; background-color: rgb(242, 242, 242);"><br></p><p style="color: rgb(0, 0, 0); line-height: 1.5; background-color: rgb(242, 242, 242);">
+
+
+
+
+
+
+
+</p><table cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td valign="top" class="td1">
+<p class="p1"><span class="s1">Congratulations! You have been chosen as one of {!Opportunity.Email_Templates_Market_City__c}'s 2016 Rising Star award winners! You will be featured in the {!Opportunity.Email_Templates_Month__c} issue of&nbsp;<i>{!Opportunity.Email_Templates_Magazine__c}.</i></span></p><p class="p1"><span class="s1"><i><br></i></span></p>
+<p class="p1"><span class="s1">You are part of a select group of&nbsp;up-and-coming real estate agents in&nbsp;{!Opportunity.Email_Templates_Market_City__c}&nbsp;that&nbsp;embody professional excellence and excel in client satisfaction.&nbsp;I want to help you use that powerful differentiation to your advantage!</span></p><p class="p1"><span class="s1"><br></span></p>
+<p class="p1"><span class="s1">I will be reaching out to you within the next few days, but in the meantime please feel free to <a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-039d-1602/Bct/l-tst/l-tst:d/ct3_0/1?sid=pVWHh2NFw"><span class="s2">request an appointment</span></a> or view the <span class="s2"><a href="{!Market__c.Guidebook__c}">award guide</a></span>.</span></p>
+</td>
+</tr>
+</tbody>
+</table>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<p style="line-height: 1.5; background-color: rgb(242, 242, 242);"><font face="Arial, sans-serif">Thank you,</font></p><p style="line-height: 1.5; background-color: rgb(242, 242, 242);"><font face="Arial, sans-serif"><br></font></p><p style="line-height: 1.5; background-color: rgb(242, 242, 242);"><font face="Arial, sans-serif"><b>{!Opportunity.OwnerFullName}<br>Account Manager</b></font></p><p style="line-height: 1.5; background-color: rgb(242, 242, 242);"><font face="Arial, sans-serif"><b><br>Five Star Professional</b></font></p><p style="line-height: 1.5; background-color: rgb(242, 242, 242);"><font face="Arial, sans-serif">{!Opportunity.OwnerPhone}<br>{!Opportunity.OwnerEmail}<br>www.fivestarprofessional.com</font></p>]]></td>
+</tr>
+</table>

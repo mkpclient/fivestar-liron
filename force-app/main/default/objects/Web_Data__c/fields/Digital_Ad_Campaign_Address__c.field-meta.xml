@@ -3,8 +3,8 @@
     <fullName>Digital_Ad_Campaign_Address__c</fullName>
     <externalId>false</externalId>
     <label>Digital Ad Campaign Address</label>
-    <length>500</length>
+    <length>3000</length>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>
-    <visibleLines>5</visibleLines>
+    <visibleLines>10</visibleLines>
 </CustomField>

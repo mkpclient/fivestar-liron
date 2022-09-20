@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailLinksClickedAggregate__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This is the total number of all the times any link was clicked in this email campaign.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the total number of all the times any link was clicked in this email campaign.</inlineHelpText>
+    <label>Links Clicked Aggregate</label>
+    <summarizedField>sbm__sbx_EmailLink__c.sbm__sbx_ClickCount__c</summarizedField>
+    <summaryForeignKey>sbm__sbx_EmailLink__c.sbm__sbx_Campaign__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <type>Summary</type>
+</CustomField>

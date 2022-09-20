@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>TT: Generic FS</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>TT: Generic FS</name>
+    <style>none</style>
+    <subject>You are a candidate for the {!Opportunity.Email_Templates_Publication_Year__c} Five Star Investment Professionals Award!</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+You have been identified as a candidate for the {!Opportunity.Email_Templates_Publication_Year__c} Five Star Investment Professionals award! An exclusive group of professionals (including CPAs, estate planning attorneys, insurance professionals and financial planners) will receive the {!Opportunity.Email_Templates_Publication_Year__c} award and be featured in a special {!Opportunity.Email_Templates_Month__c} {!Opportunity.Email_Templates_Issue_s__c} of {!Opportunity.Email_Templates_Magazine__c}.
+
+As a candidate, we need additional information in order to evaluate you based on our 10 objective criteria and move you forward in the research process. The deadline for submission is end of day {!Opportunity.ACDF_Deadline__c}.
+
+To submit your information, please go to the secure, online link below and complete the form questionnaire.  This only takes a few minutes of your time to complete.
+
+Please click here to complete your candidate form.
+
+Evaluation Process: Candidates will be evaluated on 10 criteria aligned with providing quality service to clients. Only those candidates who differentiate themselves based on the criteria will be named a {!Opportunity.Email_Templates_Publication_Year__c} Five Star Investment Professionals. Our 10 evaluative criteria include client retention rates, education and professional designations, a consumer complaint history review, industry board certifications and six other important criteria.
+
+Award winners are scheduled to be notified 4-6 weeks after the deadline date posted above.
+
+{!User.Name}
+Research Representative
+
+Five Star Professional
+2900 Lone Oak Parkway
+Suite 120
+Eagan, MN  55121
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+http://www.fivestarprofessional.com
+
+We exist to define and promote professional excellence.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Research_Stage__c</fullName>
+    <externalId>false</externalId>
+    <label>Research Call Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Call Received</fullName>
+                <default>false</default>
+                <label>Call Received</label>
+            </value>
+            <value>
+                <fullName>Call Back</fullName>
+                <default>false</default>
+                <label>Call Back</label>
+            </value>
+            <value>
+                <fullName>FollowUp Call</fullName>
+                <default>false</default>
+                <label>FollowUp Call</label>
+            </value>
+            <value>
+                <fullName>New Market</fullName>
+                <default>false</default>
+                <label>New Market</label>
+            </value>
+            <value>
+                <fullName>2nd Call</fullName>
+                <default>false</default>
+                <label>2nd Call</label>
+            </value>
+            <value>
+                <fullName>3rd Call</fullName>
+                <default>false</default>
+                <label>3rd Call</label>
+            </value>
+            <value>
+                <fullName>4th Call</fullName>
+                <default>false</default>
+                <label>4th Call</label>
+            </value>
+            <value>
+                <fullName>5th Call</fullName>
+                <default>false</default>
+                <label>5th Call</label>
+            </value>
+            <value>
+                <fullName>6th Call</fullName>
+                <default>false</default>
+                <label>6th Call</label>
+            </value>
+            <value>
+                <fullName>7th Call</fullName>
+                <default>false</default>
+                <label>7th Call</label>
+            </value>
+            <value>
+                <fullName>8th Call</fullName>
+                <default>false</default>
+                <label>8th Call</label>
+            </value>
+            <value>
+                <fullName>9th Call</fullName>
+                <default>false</default>
+                <label>9th Call</label>
+            </value>
+            <value>
+                <fullName>10th Call</fullName>
+                <default>false</default>
+                <label>10th Call</label>
+            </value>
+            <value>
+                <fullName>Final Call Made</fullName>
+                <default>false</default>
+                <label>Final Call Made</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

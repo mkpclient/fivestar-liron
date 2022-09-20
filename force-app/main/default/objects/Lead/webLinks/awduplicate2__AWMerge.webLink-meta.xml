@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>awduplicate2__AWMerge</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>AW Merge</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>var selRecords = {!GETRECORDIDS($ObjectType.Lead)};
+var url = &apos;/apex/awduplicate2__AWDuplicateMerge?object=Lead&amp;ids=&apos; + selRecords;
+window.location = url;</url>
+</WebLink>

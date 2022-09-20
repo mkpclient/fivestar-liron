@@ -1,0 +1,14 @@
+Hi,
+
+{!Order_Form__c.user_entering__c} has requested more information on order form {!Order_Form__c.Name}. Please connect with 
+{!Order_Form__c.user_entering__c}  and see what information is needed, then update the form accordingly. 
+
+When done, set the status of the Order form to "Responded".
+
+Comments:
+
+{!Order_Form__c.more_info_comments__c}
+
+Order form:
+
+https://na14.salesforce.com/{!Order_Form__c.Id}

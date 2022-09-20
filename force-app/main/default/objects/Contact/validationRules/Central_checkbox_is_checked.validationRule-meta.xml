@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Central_checkbox_is_checked</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+Central_Contact__c =True, 
+OR(ISBLANK( Central_Contact_Email__c ), 
+ISBLANK( Central_Contact_Name__c ), 
+ISBLANK( Central_Contact_Note__c ), 
+ISBLANK( Central_Contact_Phone__c )))</errorConditionFormula>
+    <errorMessage>Central Name, Email, Phone and Note is required.</errorMessage>
+</ValidationRule>

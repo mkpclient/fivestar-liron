@@ -870,6 +870,11 @@
             <field>Memo__c</field>
             <table>kugo2p__SalesOrder__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Alchemer_Web_Order_ID__c</field>
+            <table>kugo2p__SalesOrder__c</table>
+        </columns>
         <masterLabel>Orders</masterLabel>
     </sections>
     <sections>
@@ -1220,7 +1225,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>test__c</field>
+            <field>Contact_ID__c</field>
             <table>kugo2p__SalesOrder__c.kugo2p__Payments__r</table>
         </columns>
         <masterLabel>Payments</masterLabel>

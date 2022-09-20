@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto email when product is delivered</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>forcebrain__IME_Letterhead</letterhead>
+    <name>Order Fulfillment Send Product Delivered Link</name>
+    <style>freeForm</style>
+    <subject>Your Five Star Professional product is ready!</subject>
+    <textOnly>Hello {!Fulfillment__c.Display_Contact_First_Name__c},
+
+Your {!Fulfillment__c.Product_Name__c} is ready!
+
+You can view your {!Fulfillment__c.Product_Name__c} by copy/pasting the link below into a web browser:
+
+{!Fulfillment__c.Product_Delivered_Link__c}
+
+Please feel free to reach out to me with any questions – my email address and phone number are below.
+
+Thank you,
+
+{!Fulfillment__c.Fulfillment_Owner__c}
+Client Success Representative
+Five Star Professional
+{!Fulfillment__c.Fulfillment_Owner_Email__c}
+{!Fulfillment__c.Fulfillment_Owner_Phone__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

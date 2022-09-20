@@ -1,0 +1,64 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<table cellspacing="0" cellpadding="0" class="t1">
+<tbody>
+<tr>
+<td valign="top" class="td1">
+<p class="p1"><span class="s1"><a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-03e8-1603/Bct/l-tst/l-tst:4/ct1_0/1?sid=ucgnVJeak"><b>RESEARCH</b></a></span><span class="s2"><b> &nbsp;| &nbsp;</b><span class="s3"><b><a href="{!Opportunity.Email_Templates_Award_Guide__c}">AWARD GUIDE</a></b></span><b>&nbsp; | &nbsp;</b><a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-03e8-1603/Bct/l-tst/l-tst:4/ct2_0/1?sid=ucgnVJeak"><span class="s3"><b>FIVESTARPROFESSIONAL.COM</b></span></a></span></p>
+</td>
+</tr>
+<tr>
+<td valign="top" class="td1">
+<p class="p2"><span class="s4"><br></span></p><p class="p2"><span class="s4">Hello, {!Contact.ACDF_FName__c}!</span></p><p class="p2"><span class="s4"><br></span></p>
+<table cellspacing="0" cellpadding="0" class="t1">
+<tbody>
+<tr>
+<td valign="middle" class="td2">
+<p class="p3">
+
+
+
+
+
+
+
+</p><table cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td valign="top" class="td1">
+<table cellspacing="0" cellpadding="0" class="t1">
+<tbody>
+<tr>
+<td valign="middle" class="td2">
+<p class="p1"><span class="s1">It was great speaking with you today! To follow-up on our conversation, I would like to offer you our Preferred Package which includes:</span></p>
+<ul class="ul1">
+<li class="li1"><span class="s1">Quarter-page profile</span></li>
+<li class="li1"><span class="s1">Award emblem</span></li>
+<li class="li1"><span class="s1">100 two-page reprints of your magazine profile appearance</span></li>
+</ul>
+<p class="p1"><span class="s1">For a limited time, I can offer this package to you for 10% off!&nbsp;</span></p><p class="p1"><span class="s1"><br></span></p>
+</td>
+<td valign="middle" class="td3">
+<p class="p2"><span class="s1"></span><br></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="p1"><span class="s1">As we've discussed, this package is our tried-and-true, go-to combo to successfully leverage the Five Star award.</span></p>
+<ul class="ul1">
+<li class="li1"><span class="s1">The <b>quarter-page profile</b> gives you fantastic exposure in&nbsp;<i>{!Opportunity.Email_Templates_Magazine__c}</i>&nbsp;and boosts your brand by associating your business with both the Five Star award and your local media.</span></li>
+<li class="li1"><span class="s1">Use the <b>award emblem</b>&nbsp;digitally and in print as a mark of differentiation.&nbsp;</span></li>
+<li class="li1"><b></b><span class="s1"><b>Reprints</b> are the no. 1 way to make your appearance in the magazine work for you. Include them in client handouts, direct-mail pieces, or at open houses.</span></li>
+</ul>
+<p class="p1"><span class="s1">Ready to get started? <a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-03ec-1603/Bct/l-tst/l-tst:4/ct5_0/1?sid=ucgnVJeak"><span class="s2">Click here</span></a> to schedule an appointment to place your order.&nbsp;</span></p>
+</td>
+</tr>
+</tbody>
+</table></td><td valign="middle" class="td3"><br></td></tr></tbody></table><p class="p3"><span class="s4"><br></span></p><p class="p3"><span class="s4">{!Opportunity.OwnerFullName}</span></p><p class="p3"><span class="s4">Account Manager</span></p><p class="p3"><span class="s4">Five Star Professional</span></p><p class="p3"><span class="s4">{!Opportunity.OwnerPhone}</span></p><p class="p3"><span class="s4">{!Opportunity.OwnerEmail}</span></p><p class="p3"><span class="s4"><br></span></p>
+</td>
+</tr>
+</tbody>
+</table>]]></td>
+</tr>
+</table>

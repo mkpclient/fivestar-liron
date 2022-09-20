@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__Only_One_Type_Selected</fullName>
+    <active>true</active>
+    <errorConditionFormula>(forcebrain__IsPersonalAccount__c &amp;&amp; forcebrain__IsProvider__c)</errorConditionFormula>
+    <errorMessage>An Account can be one of the following type: &quot;Personal Account&quot;, &quot;Provider&quot; or &quot;Customer&quot;.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Web_Account_Url__c</fullName>
+    <description>Hyperlink to this Contact&apos;s account on the website.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Hyperlink to this Contact&apos;s account on the website.</inlineHelpText>
+    <label>Web Account Url</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

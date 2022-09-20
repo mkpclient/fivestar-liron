@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Follow up to final call/vm</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>03: Schedule Cert - 4th/5th/6th/7th Call</name>
+    <style>freeForm</style>
+    <subject>Final Step in the Process - Complete Five Star Award Certification</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+This is a friendly reminder that your Five Star award status is still considered incomplete. I would hate for you to miss out on being named a Five Star winner this year. You were brought forward for the award because you provide exceptional service to your clients! The final step is to schedule and complete your Five Star Award certification appointment. Please click on the calendar link below and schedule an award certification appointment for a time that works well for you:
+
+
+*If you are unable to click the button above, please Click Here
+
+The award certification is a 30-minute phone appointment and you will need access to a computer during the call. Without completing your certification appointment, you will not receive the Five Star award.
+
+Please let me know if you have any questions. I am happy to help!
+
+Thank you,
+
+{!User.User_Full_Name__c}
+Business Development Representative
+Five Star Professional
+{!User.Phone}
+{!User.Phone}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

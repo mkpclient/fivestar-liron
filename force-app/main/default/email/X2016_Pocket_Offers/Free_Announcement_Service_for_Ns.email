@@ -1,0 +1,54 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<table cellspacing="0" cellpadding="0" class="t1">
+<tbody>
+<tr>
+<td valign="top" class="td1">
+<p class="p1"><span class="s1"><a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-03e8-1603/Bct/l-tst/l-tst:4/ct1_0/1?sid=ucgnVJeak"><b>RESEARCH</b></a></span><span class="s2"><b> &nbsp;| &nbsp;</b><span class="s3"><b><a href="{!Opportunity.Email_Templates_Award_Guide__c}">AWARD GUIDE</a></b></span><b>&nbsp; | &nbsp;</b><a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-03e8-1603/Bct/l-tst/l-tst:4/ct2_0/1?sid=ucgnVJeak"><span class="s3"><b>FIVESTARPROFESSIONAL.COM</b></span></a></span></p>
+</td>
+</tr>
+<tr>
+<td valign="top" class="td1">
+<p class="p2"><span class="s4"><br></span></p><p class="p2"><span class="s4"><font face="Arial, sans-serif">Hello, {!Contact.ACDF_FName__c}!</font></span></p><p class="p2"><span class="s4"><font face="Arial, sans-serif"><br></font></span></p>
+<table cellspacing="0" cellpadding="0" class="t1">
+<tbody>
+<tr>
+<td valign="middle" class="td2">
+<p class="p3">
+
+
+
+
+
+
+
+</p><table cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td valign="top" class="td1">
+<table cellspacing="0" cellpadding="0" class="t1">
+<tbody>
+<tr>
+<td valign="middle" class="td2">
+<p class="p1">
+
+
+
+
+
+
+
+</p><p class="p1"><font face="Arial, sans-serif"><span class="s1">I’ve got some exciting news to share with you about your Five Star award! For a limited time, I’m able to offer my first-year winners a special Welcome Package I’ve put together to optimize your social media buzz around the award. The service normally sells for $129, but I want to welcome you as a Five Star winner by giving it to you free of charge.</span><span class="s2"><br>
+<br>
+</span><span class="s1">Below are a few details about the service:</span><span class="s2"><br></span></font></p><ul><li><font face="Arial, sans-serif">Our announcement service is a convenient email and social media tool with a handy feedback loop for getting the word out on your business and achievements. It’s also a tool to help generate testimonials and referrals.&nbsp;</font></li><li><font face="Arial, sans-serif">Benefit from a third-party announcement of your award through email and social media</font></li><li><font face="Arial, sans-serif">Employ a simple and direct means for clients to provide feedback, testimonials and referrals</font></li><li><font face="Arial, sans-serif">Receive a presentation-ready report of testimonials, comments and referrals</font></li><li><font face="Arial, sans-serif">See the effectiveness of your campaign with detailed response metrics including open rates and social interactions</font></li></ul><p></p></td><td valign="middle" class="td3"></td></tr></tbody></table><p class="p1"><span class="s1"><font face="Arial, sans-serif">To claim this Welcome Package, give me a call or click&nbsp;<a href="http://fivestarprofessional.actonsoftware.com/acton/ct/9965/e-03eb-1603/Bct/l-tst/l-tst:4/ct5_0/1?sid=ucgnVJeak"><span class="s2">here</span></a> to schedule an appointment. I'll set you up!&nbsp;</font></span></p>
+</td>
+</tr>
+</tbody>
+</table></td><td valign="middle" class="td3"><font face="Arial, sans-serif"><br></font></td></tr></tbody></table><p class="p3"><span class="s4"><font face="Arial, sans-serif"><br></font></span></p><p class="p3"><span class="s4"><font face="Arial, sans-serif">{!Opportunity.OwnerFullName}</font></span></p><p class="p3"><span class="s4"><font face="Arial, sans-serif">Account Manager</font></span></p><p class="p3"><span class="s4"><font face="Arial, sans-serif">Five Star Professional</font></span></p><p class="p3"><span class="s4"><font face="Arial, sans-serif">{!Opportunity.OwnerPhone}</font></span></p><p class="p3"><span class="s4"><font face="Arial, sans-serif">{!Opportunity.OwnerEmail}</font></span></p><p class="p3"><span class="s4"><br></span></p>
+</td>
+</tr>
+</tbody>
+</table>]]></td>
+</tr>
+</table>

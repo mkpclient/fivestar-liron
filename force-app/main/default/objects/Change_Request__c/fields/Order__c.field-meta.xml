@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Order__c</fullName>
-    <deleteConstraint>Restrict</deleteConstraint>
+    <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <inlineHelpText>Order this Change Request is For</inlineHelpText>
     <label>Order</label>
     <referenceTo>kugo2p__SalesOrder__c</referenceTo>
     <relationshipLabel>Change Requests</relationshipLabel>
     <relationshipName>Change_Requests</relationshipName>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Kugamon Internal Order Approved Email Template</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Kugamon Internal Order Approved Email Template</name>
+    <style>none</style>
+    <subject>[INTERNAL ALERT]  {!kugo2p__SalesOrder__c.Name} for {!kugo2p__SalesOrder__c.kugo2p__Account__c} has been Approved</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

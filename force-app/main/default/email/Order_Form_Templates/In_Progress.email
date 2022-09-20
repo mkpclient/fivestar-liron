@@ -1,0 +1,3 @@
+Hello,
+
+Your order form is now being worked on by {!Order_Form__c.user_entering__c}.

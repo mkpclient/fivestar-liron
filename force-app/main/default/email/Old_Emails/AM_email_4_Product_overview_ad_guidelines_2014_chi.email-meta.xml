@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>CHIRO14 04 – Product overview &amp; ad guidelines</name>
+    <style>freeForm</style>
+    <subject>Product overview and ad guidelines</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+Here is an overview of our products and our ad guidelines. I’d be happy to go over the products with you and answer any questions you might have.
+
+I know that you’ve put a lot of thought into your business and your career, which has culminated in your selection as a Five Star {!Opportunity.Email_Templates_Profession__c}. You’ve also put a lot of thought into how your award can help meet your goals. Let me know if there’s anything more I can do to help you finalize your decision. I look forward to talking with you soon.
+
+Product overview and ad guidelines: {!Market__c.Product_Overview_Ad_Guidelines__c}
+
+Please note: Only Five Star Professional can name you a Five Star award winner. Five Star Professional is the only approved provider of official plaques and other products related to your award. Trophy companies and other online vendors do not comply with industry regulatory requirements or firm compliance requirements and may be violating trademarks or copyrights.
+
+
+{!User.Name}
+Account Manager
+
+Five Star Professional
+2117 Cliff Drive
+Eagan, MN 55122
+Direct: {!User.Phone}
+Main: 1-888-438-5782
+Fax: 651-259-1940
+{!User.Email}
+www.fivestarprofessional.com
+
+Award candidates and award winners: Please tell us
+about your experience with Five Star Professional.
+http://fivestar.98d1e644fe2e.sgizmo.com/s3/</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

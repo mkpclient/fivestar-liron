@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Reprints_must_be_entered</fullName>
+    <active>false</active>
+    <description>This rule ensures that if a SAM selects &quot;Postcards&quot; as a product, they must also enter a number in the &quot;Number of Postcards&quot; field.</description>
+    <errorConditionFormula>AND(OR(INCLUDES( Products__c , &quot;Profile reprints&quot;),INCLUDES( Products__c , &quot;4 page reprints&quot;)),ISBLANK( Number_of_Reprints__c ))</errorConditionFormula>
+    <errorMessage>You must enter the number of reprints</errorMessage>
+</ValidationRule>

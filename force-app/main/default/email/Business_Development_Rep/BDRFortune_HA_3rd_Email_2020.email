@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black;background:white">Hello&nbsp;{!Contact.FirstName},</span><o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style=""><font face="Arial, sans-serif">Don't miss out on the opportunity to appear in Fortune Market Leaders - The list that will be published in the February/March issue of Fortune magazine. The list will be limited to a small number of Insurance Agents across 35 metro areas.&nbsp; Packages start at $699, please <a href="https://www.fivestarprofessional.com/AGO/fortune22/KCHA21">click here</a> for more information.</font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style=""><font face="Arial, sans-serif">I look forward to hearing from you!</font></p><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="Arial, sans-serif">Thank you,</font></p><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div>
+
+<div style="font-size: medium;"><div style="background-color: rgb(255, 255, 255);">{!User.User_Full_Name__c}</div><div style="background-color: rgb(255, 255, 255);"><span style="font-family: arial, helvetica, sans-serif;">{!User.Title}</span></div><div style="background-color: rgb(255, 255, 255);">Five Star Professional</div><div style="background-color: rgb(255, 255, 255);">{!User.Phone}</div><div style="background-color: rgb(255, 255, 255);">{!User.Email}</div><div style="background-color: rgb(255, 255, 255);">www.fivestarprofessional.com</div></div>]]></td>
+</tr>
+</table>

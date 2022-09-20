@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div>Hello, <br></div><div><br></div><div>You have a new testimonial post published by Five Star Professional. Click here to see the post and publish it directly to your social media page: <a href="{!Testimonial__c.Landing_Page__c}">{!Testimonial__c.Landing_Page__c}</a><br></div><div><br></div><div>Your might need your Five Star Professional account page login:<br></div><div><br></div><div>Username: {!Testimonial__c.Web_Username__c}<br></div><div>Passcode: {!Testimonial__c.Client_Login_Code__c}</div><div><br></div><div>Your Testimonial:</div><div><br></div><div><i>{!Testimonial__c.Text__c}</i><br></div><div><br></div><div>Congratulations on another excellent testimonial. Keep up the great work!</div><div><br></div><div>Essential Engine</div><div>Client Success Team<br></div><div><br></div>]]></td>
+</tr>
+</table>

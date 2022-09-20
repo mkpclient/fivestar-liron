@@ -1,3 +1,11 @@
 <template>
-    test 
+    <lightning-datatable
+        key-field="id"
+        data={missedAddonData}
+        columns={missedAddonCol}
+        hide-checkbox-column="true"
+        sorted-direction={sortDirection}
+        sorted-by={sortedBy}
+        onsort={handleSort}
+        ></lightning-datatable>
 </template>

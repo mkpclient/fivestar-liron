@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Profile_Plus_Link__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+$User.Salesforce_ID__c &lt;&gt; &quot;0050W000006qj5vQAA&quot;,
+&quot;http://fivestarprofessional.force.com/SelfScheduling/forcebrain__LeadRegistration?ProcessId=a2Z0W000001hknrUAA&amp;ContactID=&quot;+ Id +&quot;&amp;PID=&quot;+ Owner.Primary_Traffic__r.Provider_ID__c,
+&quot;CEP: https://fivestarprofessional-experience.force.com/s/onlinescheduler?processId=a5F0W000001iS72UAE&amp;clientId=&quot;+Id+&quot;&amp;whoId=&quot;+ OwnerId +&quot; &quot; +br()+br()+
+&quot;v5: http://fivestarprofessional.force.com/SelfScheduling/forcebrain__LeadRegistration?ProcessId=a2Z0W000001hknrUAA&amp;ContactID=&quot;+ Id +&quot;&amp;PID=&quot;+  Owner.Primary_Traffic__r.Provider_ID__c )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CSR Appt. Link</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,17 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black;background:white">Hello&nbsp;{!Contact.FirstName},</span><o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">You have an exclusive opportunity to appear in one of the most respected media brands in the nation -- Fortune magazine! In the February/March 2022 issue of Fortune magazine we will be highlighting a list of real estate market leaders across 35 metro areas. Each region will have a limited availability, so don't miss out!</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">There are many benefits to participating:</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">1) You receive national exposure. You are able to leverage your personal brand with one of the most-respected media and financial brands in the nation. Your friends, family and clients alike, throughout the entire country, will be able to see you in Fortune magazine!</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">2) A Fortune Headliner/Banner for your email, websites, marketing material and more! This will allow you to leverage the brand power and name recognition of Fortune year-round!</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">3) An Announcement Video social post. Share this social post to your Facebook or LinkedIn connections for expanded exposure of your Fortune magazine appearance.</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">4) 100 physical reprints and a cover wrapped magazine issue to use at listing presentations and open houses -- and of course with your current and past clients to gain referrals!</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">If you'd like to participate, call me as soon as possible to reserve your place!</font></p><p class="MsoNormal"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif">Thank you,</font></p><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;
+color:black"><o:p>&nbsp;</o:p></span></p>
+
+<div style="font-size: medium;"><div>{!User.User_Full_Name__c}</div><div><span style="font-family: arial, helvetica, sans-serif; background-color: rgb(255, 255, 255);">{!User.Title}</span></div><div>Five Star Professional</div><div>{!User.Phone}</div><div>{!User.Email}</div><div>www.fivestarprofessional.com</div></div><br>]]></td>
+</tr>
+</table>

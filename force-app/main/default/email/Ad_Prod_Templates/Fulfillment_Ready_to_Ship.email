@@ -1,0 +1,3 @@
+Hello {!Fulfillment__c.PrimaryRecipient__c},
+
+We just wanted to let you know that your {!Fulfillment__c.Product_Name__c} is complete and ready to ship, we'll send you the tracking information once we ship it!

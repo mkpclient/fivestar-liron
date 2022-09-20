@@ -1,0 +1,29 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div><font face="arial" style="font-size: 12pt;"><span style="font-size: 12pt;">Hi&nbsp;</span></font><span style="font-size: 12pt; background-color: rgb(255, 255, 255);">{!Event.sumoapp__OrganizerFullName__c},</span></div><div style="">
+    <br>
+    <div style="">
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="background-color: rgb(255, 255, 255);">IMPORTANT: The following appointment has been updated.</span></div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <br>
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>Appointment:</b> {!Event.Subject}</div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>Location:</b> {!CASE(Event.sumoapp__LocationType__c, "VID_CONFERENCE", "Video Conference", "PHONE", "Phone", "IN_PERSON", Event.Location, "IN_HOUSE", Event.Location, "OUR_LOCATION", Event.Location, "PHONE_INBOUND", "Phone - You will call us", "")}</div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>Date/Time:</b> {!Event.sumoapp__StartDateTimeTimezone__c}</div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>Duration:&nbsp;</b>{!Event.DurationInMinutes} min</div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <br>
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&lt;%description%&gt;</div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&lt;%addToCalendarLinks%&gt;</div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">
+            <br>
+        </div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Thank you,</div>
+        <div style=""><font face="arial">{!Event.sumoapp__OrganizerFullName__c}</font></div>
+        <div style=""><font face="arial">{!Event.sumoapp__OrganizerTitle__c}</font></div>
+        <div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">{!Organization.Name}</span></div>
+    </div>
+</div>]]></td>
+</tr>
+</table>

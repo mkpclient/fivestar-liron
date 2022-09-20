@@ -1,0 +1,77 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><span style="color: rgb(0, 0, 0);">Hi&nbsp;<font size="3"><o:p></o:p></font></span><font>{!Opportunity.Email_Templates_Informalname__c},</font></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif"><br>It was a pleasure speaking with you.</font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><o:p><font face="Arial, sans-serif">&nbsp;</font></o:p></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Based on our conversation, I feel that the Five Star Award Winner
+Brochure would be a great fit for you. This versatile piece highlights you as
+an award winner and positions you as part
+of an exclusive group of professionals. It includes your photo, contact
+information and an article on the award and research methodology.&nbsp;<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif"><img src="https://c.na14.content.force.com/servlet/servlet.ImageServer?id=015d00000061OS0&amp;oid=00Dd0000000gsfl" border="0" align="left" alt=""><br></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">&nbsp;<br>When you share the news of your award, it
+validates your credibility and makes you more referable. Here are just a
+few examples of how you can make the Award Winner Brochure work for you:</font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><o:p><font face="Arial, sans-serif">&nbsp;<br><br><br></font></o:p></p><ul style="margin-top: 0in;" type="disc">
+ <li class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Incorporate
+     in client and prospect presentations, brochures and informational binders<o:p></o:p></font></li>
+ <li class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Hand out
+     when starting the home buying/selling process, after the close and/or
+     during client appreciation events<o:p></o:p></font></li>
+ <li class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Provide
+     five to each client and ask them to distribute to family and friends when
+     referring you<o:p></o:p></font></li>
+ <li class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Send to
+     your past and current clients with a note thanking them for their loyalty,
+     support and referrals; your achievements and success wouldn’t be possible
+     without them<o:p></o:p></font></li>
+ <li class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Have
+     copies available at open houses<o:p></o:p></font></li>
+ <li class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Mail as
+     part of a follow-up to warm prospects or as a first touch to prospective
+     households in key lead generation areas<o:p></o:p></font></li>
+ <li class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Hand out
+     or mail to colleagues in your professional network as a way to share the
+     news and ask for cross-professional referrals<o:p></o:p></font></li>
+</ul><p class="MsoNormal" style="margin: 0in 0in 0.0001pt 0.5in;"><o:p><font face="Arial, sans-serif">&nbsp;</font></o:p></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">If you have any questions, please do not hesitate to contact me.</font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><o:p><font face="Arial, sans-serif">&nbsp;</font></o:p></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif">Thank you.</font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><font face="Arial, sans-serif"><br></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">&nbsp;</font></p>
+
+<p class="MsoNormal" style="background-color: white;"></p><p class="MsoNormal"><b><font face="Arial, sans-serif">{!User.Name}<o:p></o:p></font></b></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif"><b>Account Manager</b><o:p></o:p></font></p>
+
+<p class="MsoNormal"><b><font face="Arial, sans-serif">Five Star Professional</font></b></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Direct:<span class="apple-converted-space">&nbsp;</span>{!User.Phone}<o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Main:<span class="apple-converted-space">&nbsp;</span><a href="tel:1-888-438-5782" target="_blank" value="+18884385782">1-888-438-5782</a><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">Fax:<span class="apple-converted-space">&nbsp;</span><a href="tel:651-259-1940" target="_blank" value="+16512591940">651-259-1940</a><o:p></o:p></font></p>
+
+<p class="MsoNormal"><font face="Arial, sans-serif">{!User.Email}<o:p></o:p></font></p>
+
+<p class="MsoNormal"><br></p><p style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"></p><p style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"></p><p style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"></p>]]></td>
+</tr>
+</table>

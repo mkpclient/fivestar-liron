@@ -2173,7 +2173,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>test__c</field>
+            <field>Contact_ID__c</field>
             <table>kugo2p__PaymentX__c</table>
         </columns>
         <masterLabel>Payments</masterLabel>

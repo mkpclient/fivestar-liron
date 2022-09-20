@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbm__sbx_EmailSocialSharing__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Controls the display of social sharing links within the body of the email.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls the display of social sharing links within the body of the email. Checking this box will include the social sharing links in the email.</inlineHelpText>
+    <label>Social Sharing</label>
+    <type>Checkbox</type>
+</CustomField>

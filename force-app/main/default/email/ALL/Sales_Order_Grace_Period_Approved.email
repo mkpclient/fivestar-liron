@@ -1,0 +1,1 @@
+Your request for a grace period profile sale for {!SalesOrder__c.ContactBuying__c} was approved by {!ApprovalRequest.Process_Approver}.  You may proceed with order: {!SalesOrder__c.OrderName__c} {!SalesOrder__c.Link} .

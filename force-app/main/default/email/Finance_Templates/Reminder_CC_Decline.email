@@ -1,0 +1,42 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;">Dear {!kugo2p__SalesOrder__c.kugo2p__ContactBuying__c},<o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;">Thank you for your recent
+business.&nbsp; We look forward to a continued business relationship.<o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="margin-left: 0.5in;"><span style="font-size: 12pt;">Our records show that your
+recent credit card payment was declined.&nbsp; Your payment plan has been
+suspended until we can charge a valid credit card.&nbsp; We understand credit
+cards are lost or compromised and subsequently need to be cancelled.&nbsp;
+Often automatic pay</span>m<span style="font-size: 12pt;">ents are overlooked, which is certainly understandable.<o:p></o:p></span></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;">Please call us at your earliest
+convenience to provide us with your new credit card information and we will
+re-establish your credit card payment plan.<o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;">Kind regards,<o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;">Accounts Receivable <o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="font-size: 12pt; margin-left: 0.5in;">Five Star Professional <o:p></o:p></p>
+
+<p class="MsoNoSpacing" style="margin-left: 0.5in;"><span style="font-family: Arial, sans-serif;">Phone: (888) 608-7161</span><span style="font-size: 9pt; font-family: Arial, sans-serif;"> </span><span style="font-size: 12pt;">|
+Email: </span><a href="mailto:billing@fivestarprofessional.com" style="font-size: 12pt;">billing@fivestarprofessional.com</a><span style="font-size: 12pt;"><o:p></o:p></span></p>]]></td>
+</tr>
+</table>

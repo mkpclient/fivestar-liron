@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>RS Email 1 - Overview</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>RS Email 1 No Price</name>
+    <style>formalLetter</style>
+    <subject>Congratulations! You&apos;ve been named one of {!Opportunity.Email_Templates_Market_City__c}&apos;s Rising Stars in Real Estate</subject>
+    <textOnly>Hello {!Opportunity.ACDF_Fname__c},
+
+
+
+
+Congratulations! You have been chosen as one of {!Opportunity.Email_Templates_Market_City__c}&apos;s 2016 Rising Star award winners! You will be featured in the {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c}.
+
+
+
+You are part of a select group of up-and-coming real estate agents in {!Opportunity.Email_Templates_Market_City__c} that embody professional excellence and excel in client satisfaction. I want to help you use that powerful differentiation to your advantage!
+
+
+
+I will be reaching out to you within the next few days, but in the meantime please feel free to request an appointment or view the award guide.
+Thank you,
+
+
+
+{!Opportunity.OwnerFullName}
+Account Manager
+
+
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+{!Opportunity.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

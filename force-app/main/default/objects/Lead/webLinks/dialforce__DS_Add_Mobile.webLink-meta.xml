@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dialforce__DS_Add_Mobile</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>DS Add Mobile</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/apex.js&quot;)} 
+var uid = &quot;{!$User.Id}&quot;; 
+var oid = &quot;{!Lead.Id}&quot;; 
+var phn = &quot;{!Lead.MobilePhone}&quot;;
+if (phn == null || phn == &quot;&quot;)
+{ 
+	alert(&quot;Phone number not found&quot;); 
+}
+else
+{
+var result = sforce.apex.execute(&quot;dialforce.DSPriorityQueue&quot;,&quot;ButtonSubmitCallBack&quot;, 
+{sfdcUserId:uid, sfdcObjectId:oid, callBackNumber:phn, isGlobal:false}); 
+window.alert(&quot;Lead was Queued for DS Call.&quot;);
+}</url>
+</WebLink>

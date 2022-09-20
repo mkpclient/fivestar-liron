@@ -1,0 +1,24 @@
+Hello {!Contact.FirstName}, <p>
+Thank you for taking the time to complete your candidate evaluation form for the <b>{!Market__c.Publication_Year__c} {!Market__c.Program_Name__c}</b> Award. Award winners will be announced in the following 4-6 weeks upon completion of the evaluation process, we do have your completed information and will be moving your information forward for consideration for the {!Market__c.Publication_Year__c} award and there is no further action needed from you at this time. If you feel that there are any changes that you need to make regarding your candidate information at this time, contact your <b>Research Assistant, {!User.Name}</b><b>
+<a href=mailto:inquiry@fivestarprofessional.com>{!User.Email}</a></b>.<p>
+<b><u>To Nominate a Professional please visit:</u></b><br><b><a href="www.fivestarprofessional.com/nominations"> www.fivestarprofessional.com/nominations</a></b><p>
+
+Thank you for your time, 
+
+<p><b>Debbie Noll</b><br>
+<i>Research Manager </i></p>
+
+<p><b>Five Star Professional</b><br>
+2900 Lone Oak Parkway<br>
+Suite 120<br>
+Eagan, MN  55121<br>
+Direct: 651-259-1108<br>
+Main: 1-888-438-5782<br>
+Fax: 651-259-1940<br>
+Email: <b><a href= debbie.noll@fivestarprofessional.com">Debbie.noll@fivestarprofessional.com</a></b><br>
+<a href= www.fivestarprofessional.com">www.fivestarprofessional.com</a><p>
+We exist to define and promote professional excellence.<br><br>
+
+<font size="2"><p>Reminder: Third party firms may have contacted you suggesting you are an award winner and offering you wall plaques or other products.  These firms are in no way affiliated with Five Star Professional.<br><br>
+
+Only Five Star Professional can name you a Five Star award winner and provide official award-related products and services. Marketing organizations not affiliated with Five Star Professional do not comply with industry regulatory requirements and may be violating trademarks or copyrights.</p></font>

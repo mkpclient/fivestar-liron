@@ -11,7 +11,7 @@ global with sharing class ECommerceAPI {
   // static final Id ECOMMERCE_PRICEBOOKID = Test.isRunningTest() ? Test.getStandardPricebookId() : '01s6T0000015dLrQAI';
   static final Id ECOMMERCE_PRICEBOOKID = Test.isRunningTest()
     ? Test.getStandardPricebookId()
-    : '01s6T0000015dLrQAI';
+    : '01s6T000001Ywcp';
 
   @HttpPost
   global static void postMethod() {
@@ -314,8 +314,6 @@ global with sharing class ECommerceAPI {
       zealynxCreditCardResource.expiryMonth = '' + creditCard.ExpirationMonth;
       zealynxCreditCardResource.expiryYear = '' + creditCard.ExpirationYear;
       zealynxCreditCardResource.cvv = creditCard.CVC;
-      zealynxCreditCardResource.avsStreet = existingContact.MailingStreet;
-      zealynxCreditCardResource.avsZip = existingContact.MailingPostalCode;
       zealynxCreditCardResource.REPLACE_number = creditCard.CardNumber;
       zealynxCreditCardResource.name =
         existingContact.FirstName +
@@ -407,16 +405,16 @@ global with sharing class ECommerceAPI {
     public eCommerceRequestResource mock() {
       OpportunitiesProducts = new List<OpportunityProductResource>();
       OpportunitiesProducts.add(
-        new OpportunityProductResource().mock('0066T000015FDavQAG')
+        new OpportunityProductResource().mock('0068F000002qK9C')
       );
       OpportunitiesProducts.add(
-        new OpportunityProductResource().mock('0066T000015FDavQAG')
+        new OpportunityProductResource().mock('0068F000002qK9C')
       );
       OpportunitiesProducts[1].ProductLines[0].ProductId = '01t6T000006BZPwQAO';
       OpportunitiesProducts[1].ProductLines[0].Quantity = 3;
       OpportunitiesProducts[1].ProductLines[0].TotalAmount = 207;
-      ShippingAddress = new AddressResource().mock('0036T000044HGItQAO');
-      BillingAddress = new AddressResource().mock('0036T000044HGItQAO');
+      ShippingAddress = new AddressResource().mock('0038F000007RlXD');
+      BillingAddress = new AddressResource().mock('0038F000007RlXD');
       CreditCard = new CreditCardResource().mock();
       return this;
     }

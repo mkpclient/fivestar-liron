@@ -4,29 +4,28 @@
     <description>Field to track the status/health of a marketing service or product</description>
     <externalId>false</externalId>
     <inlineHelpText>Status for tracking the health of a marketing service product</inlineHelpText>
-    <label>Product Engagement Status</label>
+    <label>Subscription Health</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
-        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Engaged</fullName>
+                <fullName>Green</fullName>
                 <default>false</default>
-                <label>Engaged</label>
+                <label>Green</label>
             </value>
             <value>
-                <fullName>Passive</fullName>
+                <fullName>Yellow</fullName>
                 <default>false</default>
-                <label>Passive</label>
+                <label>Yellow</label>
             </value>
             <value>
-                <fullName>Not Active</fullName>
+                <fullName>Red</fullName>
                 <default>false</default>
-                <label>Not Active</label>
+                <label>Red</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -3,7 +3,7 @@
     <fullName>Sales_Order__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Sales Order</label>
+    <label>Boom Order Number</label>
     <referenceTo>SalesOrder__c</referenceTo>
     <relationshipLabel>Change Requests</relationshipLabel>
     <relationshipName>Change_Requests</relationshipName>

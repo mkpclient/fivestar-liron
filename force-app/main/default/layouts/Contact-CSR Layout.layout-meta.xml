@@ -162,6 +162,22 @@
                 <behavior>Edit</behavior>
                 <field>Profession__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Do_Not_Call_for_NAMS_F_U__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>ELM_referral_form__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>ELM_referral_share_page__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Essential_Engine_Friend_Capture__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -565,6 +581,7 @@
     </relatedContent>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Boom_Order__c</fields>
         <fields>Market__c</fields>
         <fields>Status__c</fields>
         <fields>Next_Action__c</fields>
@@ -572,7 +589,7 @@
         <fields>Subscription__c</fields>
         <fields>Fulfillment_Owner__c</fields>
         <fields>Official_Order_Date__c</fields>
-        <fields>Posting_Number__c</fields>
+        <fields>Renewal_Date__c</fields>
         <relatedList>Fulfillment__c.PrimaryRecipient__c</relatedList>
         <sortField>Official_Order_Date__c</sortField>
         <sortOrder>Desc</sortOrder>
@@ -628,6 +645,15 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Complaint_Description__c</fields>
+        <fields>Date_Opened__c</fields>
+        <fields>Internal_notes__c</fields>
+        <fields>LAST_ACTIVITY</fields>
+        <fields>Next_Action_Date__c</fields>
+        <fields>Original_Order__c</fields>
+        <fields>OWNER.ALIAS</fields>
+        <fields>Resolution_Description__c</fields>
+        <fields>Resolved_Date__c</fields>
         <relatedList>Complaint__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -638,26 +664,31 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>kugo2p__Type__c</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>kugo2p__Payment_Method__c.kugo2p__Contact__c</relatedList>
+        <fields>Card_Type__c</fields>
+        <fields>Expiration_Date__c</fields>
+        <fields>Last_4_Digits_of_Card__c</fields>
+        <relatedList>Payment_Method__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>Boom_Order__c</fields>
         <fields>NAME</fields>
         <fields>OrderLine__c</fields>
         <fields>PrimaryRecipient__c</fields>
         <fields>Status__c</fields>
+        <fields>Official_Order_Date__c</fields>
         <relatedList>Fulfillment__c.Contact__c</relatedList>
+        <sortField>Official_Order_Date__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Card_Type__c</fields>
-        <fields>Last_4_Digits_of_Card__c</fields>
-        <fields>Expiration_Date__c</fields>
-        <relatedList>Payment_Method__c.Contact__c</relatedList>
+        <fields>Base_Product__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>Status__c</fields>
+        <relatedList>Subscription__c.Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

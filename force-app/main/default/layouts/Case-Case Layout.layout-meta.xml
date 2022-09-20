@@ -40,10 +40,6 @@
                 <behavior>Edit</behavior>
                 <field>Walk_Up_Case__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Type_of_Request__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -1,0 +1,7 @@
+Hello {!Change_Request__c.CreatedBy},
+
+You recently filed a change request on order {!Change_Request__c.Order__c}, you can view it here:
+
+https://na14.salesforce.com/{!Change_Request__c.Id}
+
+Thank you!

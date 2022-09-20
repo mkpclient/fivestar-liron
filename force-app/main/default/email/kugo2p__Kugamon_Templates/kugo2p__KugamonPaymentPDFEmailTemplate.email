@@ -1,0 +1,20 @@
+<messaging:emailTemplate subject="Your {!relatedTo.kugo2p__Transaction_Type__c} Receipt" RecipientType="Contact" relatedToType="kugo2p__PaymentX__c">
+
+    <messaging:plainTextEmailBody >
+        Dear  {!relatedTo.Contact__r.Name},                
+        
+        Thank you for your {!relatedTo.kugo2p__Transaction_Type__c}. Please review the attached document for your records.
+        
+        Feel free to contact me if you have any questions.
+        
+        Regards,
+        
+        {!$User.FirstName} {!$User.LastName}
+    </messaging:plainTextEmailBody>
+    
+    <messaging:attachment renderAs="pdf" filename="{!relatedTo.Name}">    
+        <c:PaymentPDF paymentId="{!relatedTo.Id}" />
+    </messaging:attachment>
+    
+
+</messaging:emailTemplate>

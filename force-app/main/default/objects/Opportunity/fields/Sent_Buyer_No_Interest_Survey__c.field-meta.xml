@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sent_Buyer_No_Interest_Survey__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is checked automatically when the client is sent an email alert to complete the Buyer No Interest Survey. It is used to ensure a client receives the No Interest survey only once.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is checked automatically when the client is sent an email alert to complete the Buyer No Interest Survey. It is used to ensure a client receives the No Interest survey only once.</inlineHelpText>
+    <label>Sent Buyer No Interest Survey</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

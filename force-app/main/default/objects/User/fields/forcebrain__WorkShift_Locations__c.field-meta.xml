@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>forcebrain__WorkShift_Locations__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field is used to remember Locations in workshift-calendar.</description>
+    <externalId>false</externalId>
+    <label>WorkShift Locations</label>
+    <length>131072</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AM_WIW_SS_Follow_Up_Link__c</fullName>
+    <description>GT changed API name to match field name on 5/19/21.  Original API name was AM_   I document, therefor I am.</description>
+    <externalId>false</externalId>
+    <formula>&quot;http://fivestarprofessional.force.com/SelfScheduling/forcebrain__LeadRegistration?ProcessId=a2Z6T000006G1TxUAK&amp;PId=&quot;+ Owner.Provider_ID__c +&quot;&amp;ContactID=&quot;+Id</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>AM WIW SS Follow Up Link</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -19,8 +19,6 @@ public without sharing class BoomOrderInvoiceWithAttachment {
     }
     if (MINUTES != null && !System.isBatch()) {
       todayDate = todayDate.addMinutes(Integer.valueOf(MINUTES));
-    } else {
-      todayDate = todayDate.addSeconds(15);
     }
 
     system.debug('listofSalesOrderIds==' + listofSalesOrderIds);

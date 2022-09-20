@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DialSource__DS_InstaQueue</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>DS InstaQueue</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot;)}
+var sid = &quot;{!JSENCODE($Api.Session_ID)}&quot;; 
+var loc = &quot;{!JSENCODE($Api.Partner_Server_URL_80)}&quot;; 
+var aid = &quot;{!JSENCODE($Organization.Id)}&quot;; 
+var uid = &quot;{!JSENCODE($User.Id)}&quot;; 
+var phone = &quot;{!JSENCODE(Contact.Phone)}&quot;; 
+var name = &quot;{!JSENCODE(Contact.Name)}&quot;; 
+var oid = &quot;{!JSENCODE(Contact.Id)}&quot;; 
+
+if({!$User.DialSource__DialSource_Development_Mode__c} == true) { 
+var url = &apos;https://in.dialsource.com/addToQueue?aid=&apos;+aid+&apos;&amp;uid=&apos;+uid+&apos;&amp;object_id=&apos;+oid; 
+
+} 
+else { 
+
+var url = &apos;https://in.dialsource.com/addToQueue?aid=&apos;+aid+&apos;&amp;uid=&apos;+uid+&apos;&amp;object_id=&apos;+oid; 
+} 
+console.log(url); 
+
+var result = sforce.apex.execute(&quot;DialSource.addToQueue&quot;,&quot;httpPOSTrecord&quot;, 
+{urlParams : url, phone : phone, name: name}); 
+
+//window.alert(&apos;Record successfully queued&apos;);</url>
+</WebLink>

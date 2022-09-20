@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template sent out when a DAK or EReprint is Closed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Completed Dak or E Reprint</name>
+    <style>freeForm</style>
+    <subject>Subject: Your Five Star Professional {!Fulfillment__c.Product_Name__c} is Ready</subject>
+    <textOnly>Hello {!Fulfillment__c.PrimaryRecipient__c},
+
+Your {!Fulfillment__c.Product_Name__c} is ready! To access it, log in to your account on our website.
+
+To log on, go to fivestarprofessional.com/login
+
+Username: {!Fulfillment__c.Web_Username__c}
+Password: {!Contact.Login_Code__c}
+
+NOTE: if you&apos;ve already set your password, use that rather than this login code
+
+
+Check the My Orders section on the right hand-side of the page for the Digital Announcement Kit
+
+If you don&apos;t see the {!Fulfillment__c.Product_Name__c} on the first page, click the grey bar at the bottom where it says &quot;To view your complete list of orders click here&quot;
+
+
+Please feel free to reach out to me with any questions – my email address and phone number are below.
+
+Thank you,
+
+{!Fulfillment__c.Fulfillment_Owner__c}
+Client Services Coordinator
+Five Star Professional
+{!Fulfillment__c.CSR_Phone_Number__c}
+{!Fulfillment__c.CSR_Email__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

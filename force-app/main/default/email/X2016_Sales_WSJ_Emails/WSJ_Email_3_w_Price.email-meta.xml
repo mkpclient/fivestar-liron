@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>WSJ Email 5 - Only a few spots left</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>WSJ Email 5 w/ Price</name>
+    <style>formalLetter</style>
+    <subject>Only a few spots are left!</subject>
+    <textOnly>Hello {!Opportunity.ACDF_Fname__c},
+
+
+There are only a few spots remaining in our section recognizing award-winning wealth managers in The Wall Street Journal. Don&apos;t miss out on your chance to be one of only a select few showcased in front of a targeted audience in your region!
+
+Please call me right away to learn more about this opportunity, or feel free to schedule an appointment.
+
+If you&apos;d like to review the offer details prior to speaking with me, please click here: {!Opportunity.Market_Guidebook_with_Price__c}
+
+
+Thank you,
+
+{!Opportunity.OwnerFullName}
+Account Manager
+
+Five Star Professional
+{!Opportunity.OwnerPhone}
+{!Opportunity.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Postcards_must_be_entered</fullName>
+    <active>false</active>
+    <description>This rule ensures that if a SAM selects &quot;Postcards&quot; as a product, they must also enter a number in the &quot;Number of Postcards&quot; field.</description>
+    <errorConditionFormula>AND(
+INCLUDES( Products__c , &quot;Postcards&quot;),
+ISBLANK( Number_of_Postcards__c )
+)</errorConditionFormula>
+    <errorMessage>You must enter the number of postcards!</errorMessage>
+</ValidationRule>

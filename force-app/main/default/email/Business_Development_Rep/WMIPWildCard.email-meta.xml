@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>07: WMIP WildCard Cert Link</name>
+    <style>freeForm</style>
+    <subject>Incomplete Five Star Award Status - Please Call to Resolve</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Just following up on my call to you just now! We look forward to speaking with you about the Five Star award! Please use the tool below to schedule a 30-minute meeting:
+
+
+*If you are unable to click the button above, please Click Here
+
+You will need access to a computer for this meeting. In the meeting, we will review the award selection process, award criteria, marketing usage guidelines, and confirm your eligibility. Without this 30-minute phone meeting, your award winner form will remain incomplete and we will NOT be able to name you as a 2021 winner.
+
+If you have any questions, please contact me at any time.
+
+Thank you,
+
+{!User.Name}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

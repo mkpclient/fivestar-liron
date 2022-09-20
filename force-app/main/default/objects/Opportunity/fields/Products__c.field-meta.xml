@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Products__c</fullName>
+    <description>Products purchased by this target.  This is entered by accounting after the sale is closed.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Products purchased by this target.  This is entered by accounting after the sale is closed.</inlineHelpText>
+    <label>Products</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2 page</fullName>
+                <default>false</default>
+                <label>2 page</label>
+            </value>
+            <value>
+                <fullName>Full page</fullName>
+                <default>false</default>
+                <label>Full page</label>
+            </value>
+            <value>
+                <fullName>1/2 page</fullName>
+                <default>false</default>
+                <label>1/2 page</label>
+            </value>
+            <value>
+                <fullName>1/4 page</fullName>
+                <default>false</default>
+                <label>1/4 page</label>
+            </value>
+            <value>
+                <fullName>1/9 page</fullName>
+                <default>false</default>
+                <label>1/9 page</label>
+            </value>
+            <value>
+                <fullName>1/14 page</fullName>
+                <default>false</default>
+                <label>1/14 page</label>
+            </value>
+            <value>
+                <fullName>1/18 page</fullName>
+                <default>false</default>
+                <label>1/18 page</label>
+            </value>
+            <value>
+                <fullName>Profile reprints</fullName>
+                <default>false</default>
+                <label>Profile reprints</label>
+            </value>
+            <value>
+                <fullName>4 page reprints</fullName>
+                <default>false</default>
+                <label>4 page reprints</label>
+            </value>
+            <value>
+                <fullName>Electronic reprints</fullName>
+                <default>false</default>
+                <label>Electronic reprints</label>
+            </value>
+            <value>
+                <fullName>Postcards</fullName>
+                <default>false</default>
+                <label>Postcards</label>
+            </value>
+            <value>
+                <fullName>Client satisfaction reporting</fullName>
+                <default>false</default>
+                <label>Client satisfaction reporting</label>
+            </value>
+            <value>
+                <fullName>Yard sign</fullName>
+                <default>false</default>
+                <label>Yard sign</label>
+            </value>
+            <value>
+                <fullName>Wall plaque – single</fullName>
+                <default>false</default>
+                <label>Wall plaque – single</label>
+            </value>
+            <value>
+                <fullName>Wall plaque – double</fullName>
+                <default>false</default>
+                <label>Wall plaque – double</label>
+            </value>
+            <value>
+                <fullName>Desk award</fullName>
+                <default>false</default>
+                <label>Desk award</label>
+            </value>
+            <value>
+                <fullName>Online profile</fullName>
+                <default>false</default>
+                <label>Online profile</label>
+            </value>
+            <value>
+                <fullName>Video profile</fullName>
+                <default>false</default>
+                <label>Video profile</label>
+            </value>
+            <value>
+                <fullName>Magazine copies</fullName>
+                <default>false</default>
+                <label>Magazine copies</label>
+            </value>
+            <value>
+                <fullName>Emblem license</fullName>
+                <default>false</default>
+                <label>Emblem license</label>
+            </value>
+            <value>
+                <fullName>Personalized emblem license</fullName>
+                <default>false</default>
+                <label>Personalized emblem license</label>
+            </value>
+            <value>
+                <fullName>Profile re-use license</fullName>
+                <default>false</default>
+                <label>Profile re-use license</label>
+            </value>
+            <value>
+                <fullName>Press Release</fullName>
+                <default>false</default>
+                <label>Press Release</label>
+            </value>
+            <value>
+                <fullName>Interactive Photo Emblem</fullName>
+                <default>false</default>
+                <label>Interactive Photo Emblem</label>
+            </value>
+            <value>
+                <fullName>Mailing Service</fullName>
+                <default>false</default>
+                <label>Mailing Service</label>
+            </value>
+            <value>
+                <fullName>Social Media Presence Package</fullName>
+                <default>false</default>
+                <label>Social Media Presence Package</label>
+            </value>
+            <value>
+                <fullName>Brochures</fullName>
+                <default>false</default>
+                <label>Brochures</label>
+            </value>
+            <value>
+                <fullName>WSJ Digital Ad</fullName>
+                <default>false</default>
+                <label>WSJ Digital Ad</label>
+            </value>
+            <value>
+                <fullName>Photo Emblem</fullName>
+                <default>false</default>
+                <label>Photo Emblem</label>
+            </value>
+            <value>
+                <fullName>WSJ Spotlight</fullName>
+                <default>false</default>
+                <label>WSJ Spotlight</label>
+            </value>
+            <value>
+                <fullName>MLB Spotlight</fullName>
+                <default>false</default>
+                <label>MLB Spotlight</label>
+            </value>
+            <value>
+                <fullName>Announcement Service</fullName>
+                <default>false</default>
+                <label>Announcement Service</label>
+            </value>
+            <value>
+                <fullName>Platinum Package</fullName>
+                <default>false</default>
+                <label>Platinum Package</label>
+            </value>
+            <value>
+                <fullName>Premium Package</fullName>
+                <default>false</default>
+                <label>Premium Package</label>
+            </value>
+            <value>
+                <fullName>Plus Package</fullName>
+                <default>false</default>
+                <label>Plus Package</label>
+            </value>
+            <value>
+                <fullName>Basic Package</fullName>
+                <default>false</default>
+                <label>Basic Package</label>
+            </value>
+            <value>
+                <fullName>WIW Spotlight Package</fullName>
+                <default>false</default>
+                <label>WIW Spotlight Package</label>
+            </value>
+            <value>
+                <fullName>Spotlight</fullName>
+                <default>false</default>
+                <label>Spotlight</label>
+            </value>
+            <value>
+                <fullName>Spotlight Reprint</fullName>
+                <default>false</default>
+                <label>Spotlight Reprint</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

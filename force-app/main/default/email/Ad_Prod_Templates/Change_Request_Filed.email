@@ -1,0 +1,14 @@
+Hello Traffic,
+
+Order {!kugo2p__SalesOrder__c.Name} has had a change request added, please review the order here: 
+
+https://na14.salesforce.com/{!kugo2p__SalesOrder__c.Id}
+
+Cancel/Modify any fulfillments accordingly.
+
+Change request reason:
+
+{!kugo2p__SalesOrder__c.Change_Request_Reason__c}
+
+Thank you!
+- System

@@ -1,0 +1,23 @@
+<p>Hello {!Opportunity.Email_Templates_Informalname__c},</p>
+
+<p><b>Deadline day has been extended to Friday, June 11, 2021 to complete your candidate form for the 2021 Super Real Estate Agent™ award.</b> </p>
+
+<p>To be considered this year, you must submit additional information about your business practice. Candidates must meet minimum experience and production criteria. <b>Your response is required by, Friday, June 11, 2021</b> to ensure you are considered for this year’s recognition.</p><p>
+
+<p><b>To access and complete your evaluation form, click on this link:</b> {!Opportunity.Research_Form_URL__c}  
+<b>, and enter your code: {!Opportunity.Research_Stage__c}</b> (The code is key sensitive) <i>If the link to the survey does not work, simply copy and paste the link into a web URL and click "enter"</i></P>
+
+<p>If selected as an award winner, you will receive information on how you can leverage this honor through an expanded profile. Again, congratulations on being identified as a candidate for the 2021 Super Real Estate Agent™ award.</p>
+
+<p><b>Please contact us at 651-259-1865, if you have questions or need help.</b></p>
+
+Kind regards,
+<p>{!User.Name}<br>
+
+<p><b>Crescendo Business Services</b><br>
+2117 Cliff Dr<br>
+Eagan, MN  55122<br>
+Direct: 651-259-1865<br>
+debbie.noll@fivestarprofessional.com<br>
+
+<font size="2"><p><a href="https://cl.s11.exct.net/subscription_center.aspx?me=fe3511717164057d7d1370&p=true#UnsubAll"> unsubscribe from this list </p>

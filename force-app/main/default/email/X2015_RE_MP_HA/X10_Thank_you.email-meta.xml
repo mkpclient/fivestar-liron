@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>10 – Thank you</name>
+    <style>freeForm</style>
+    <subject>What you should expect</subject>
+    <textOnly>Hi {!Opportunity.Email_Templates_Informalname__c},
+
+
+It has been a pleasure working with you! I am happy we were able to determine the best way to maximize your Five Star award.
+
+Here is what you should expect within the next couple weeks:
+
+Invoice: Within one business day, you will receive a copy of your invoice for the item(s) purchased.
+Magazine Profile Creation: The template for creating your magazine profile will be sent within the next few days by your personal Advertising Project Manager. General instructions are included on the template. If you have immediate questions regarding the creation of your profile or need assistance, please contact our graphics department directly at graphics@fivestarprofessional.com or call 651-414-6508.
+Marketing Tools: Please note that marketing tools are delivered by the 15th of the magazine publication month.
+
+
+The best part of my job is working with people like you, and I’m excited to see the results of our efforts. Please let me know of the successes that you receive!
+
+I am here to help you throughout the year, and to assist in maximizing the impact of your award and sharing your elite status with clients, prospects and peers. Feel free to reach out to me at any point o this process if you have any questions!
+
+
+
+Thank you,
+
+
+{!User.Name}
+
+Account Manager
+
+
+Five Star Professional
+
+2900 Lone Oak Parkway
+
+Suite 120
+
+Eagan, MN 55121
+
+Direct: {!User.Phone}
+
+Main: 1-888-438-5782
+
+Fax: 651-259-1940
+
+{!User.Email}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

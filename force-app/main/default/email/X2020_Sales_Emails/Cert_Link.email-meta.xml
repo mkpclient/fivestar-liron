@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>00: Cert Presentation Link</name>
+    <style>freeForm</style>
+    <subject>Five Star Certification Link</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+Here is a link to the presentation for our appointment: {!Opportunity.Cert_Deck_Url__c}
+
+{!User.User_Full_Name__c}
+
+{!User.User_Full_Name__c}
+{!User.Title}
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

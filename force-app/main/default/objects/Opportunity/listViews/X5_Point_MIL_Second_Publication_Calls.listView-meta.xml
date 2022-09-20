@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X5_Point_MIL_Second_Publication_Calls</fullName>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>Client_Type__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Last_Call_Date__c</columns>
+    <columns>Next_call_date__c</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Mobile_Formula__c</columns>
+    <columns>Primary_Phone__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Opportunity_Owner_Full_Name__c</field>
+        <operation>equals</operation>
+        <value>Paul Barlament</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.NAME</field>
+        <operation>contains</operation>
+        <value>5 Point Second Publication</value>
+    </filters>
+    <label>5 Point MIL Second Publication Calls</label>
+    <sharedTo></sharedTo>
+</ListView>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllProfileProducts</fullName>
+    <columns>PRODUCT2.NAME</columns>
+    <columns>Intacct_Sku__c</columns>
+    <columns>Discount_SKU__c</columns>
+    <columns>PRODUCT2.FAMILY</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>PRODUCT2.NAME</field>
+        <operation>contains</operation>
+        <value>profile</value>
+    </filters>
+    <filters>
+        <field>PRODUCT2.NAME</field>
+        <operation>notContain</operation>
+        <value>extra,online,reprints</value>
+    </filters>
+    <label>All Profile Products</label>
+</ListView>

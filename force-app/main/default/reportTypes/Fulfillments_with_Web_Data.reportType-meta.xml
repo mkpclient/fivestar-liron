@@ -1002,7 +1002,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Mail_Service_Purchased__c</field>
+            <field>Has_Contact_List__c</field>
             <table>Fulfillment__c</table>
         </columns>
         <columns>
@@ -1078,6 +1078,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>OrderLine__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OrderProductLine__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OrderServiceLine__c</field>
             <table>Fulfillment__c</table>
         </columns>
         <columns>
@@ -1417,7 +1427,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Testimonial_Display_Count__c</field>
+            <field>Contact_List_Count__c</field>
             <table>Fulfillment__c</table>
         </columns>
         <columns>
@@ -1667,6 +1677,46 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Number_Testimonial_Posts__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_Testimonial_Date__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>First_Testimonial__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EL_Boxed_Copies__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AM_Email__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AM_Phone__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Front_Cover_Inside_Ad__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Front_Cover_Ad__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Boom_Order__c</field>
             <table>Fulfillment__c</table>
         </columns>
@@ -1677,17 +1727,97 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Legacy_Order_Id__c</field>
+            <field>Reason_for_not_providing_a_list__c</field>
             <table>Fulfillment__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Legacy_Product_Line_Id__c</field>
+            <field>Contact_List_Updated__c</field>
             <table>Fulfillment__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Kugamon_Order_Product_Id__c</field>
+            <field>Content_Renewal__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Set_Up_Subscription__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Subscription_Addon__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Subscription_Product__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_Contact_List__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contact_List_Source__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contact_List_Source_Other__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Upload_Your_Photo__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Upload_Your_Contacts__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_Contact_List_EE__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>List_Retrieval_Date__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>List_Source__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>List_Source_Other__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Calendar_Marked__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Has_Testimonial_Photo__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Has_Testimonial_Logo__c</field>
+            <table>Fulfillment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Testimonial_Contact_Count__c</field>
             <table>Fulfillment__c</table>
         </columns>
         <masterLabel>Fulfillments</masterLabel>
@@ -3056,6 +3186,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Order_Fulfillment__c</field>
+            <table>Fulfillment__c.Web_Data__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ENL_Disclosure__c</field>
             <table>Fulfillment__c.Web_Data__r</table>
         </columns>
         <masterLabel>Web Data</masterLabel>

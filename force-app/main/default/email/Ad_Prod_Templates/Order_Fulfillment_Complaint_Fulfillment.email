@@ -1,0 +1,5 @@
+Hello,
+
+You are assigned to complaint fulfillment {!Order_Fulfillment__c.Name}, please view the fulfillment here and act accordingly:
+
+{!Order_Fulfillment__c.Link}

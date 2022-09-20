@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Following up on open fulfillments</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>10: Open Fulfillment Follow-up Reminder</name>
+    <style>freeForm</style>
+    <subject>We need to connect regarding your Five Star products that you ordered!</subject>
+    <textOnly>Hello {!Fulfillment__c.PrimaryRecipient__c},
+
+I&apos;ve been trying to connect with you regarding your &lt;Wall Plaque/ Postcards/Brochures/Desk Award&gt; as we need to collect some information from you in order to produce a proof for you to review and approve before we deliver it to you.
+
+If you would like to connect with me to complete your remaining tools, please feel free to contact me directly or you can schedule an appointment with me using the following:
+
+{!Fulfillment__c.CSR_Sumo_Link__c}
+
+You can also access your Five Star account at any time by going to: fivestarprofessional.com/login.
+Username: {!Fulfillment__c.Web_Username__c}
+Passcode*: {!Fulfillment__c.Login_Code__c}
+
+*If you have already set a new password, please use that to log into your account page.
+
+Please let me know if you have any questions or if you would like to connect me with. I am here to help!
+
+Thank you,
+
+{!User.Name}
+Client Success Representative
+Five Star Professional
+{!User.Phone}
+{!User.Email}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

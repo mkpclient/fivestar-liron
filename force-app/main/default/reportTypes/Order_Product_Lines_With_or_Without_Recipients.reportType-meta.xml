@@ -795,6 +795,11 @@
             <field>Display_Name_for_Invoice__c</field>
             <table>kugo2p__SalesOrderProductLine__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Alchemer_Web_Order_ID__c</field>
+            <table>kugo2p__SalesOrderProductLine__c</table>
+        </columns>
         <masterLabel>Order Product Lines</masterLabel>
     </sections>
     <sections>
@@ -981,6 +986,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Split_Discount_Amount__c</field>
+            <table>kugo2p__SalesOrderProductLine__c.Order_Line_Recipients__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Full_ID__c</field>
             <table>kugo2p__SalesOrderProductLine__c.Order_Line_Recipients__r</table>
         </columns>
         <masterLabel>Line Recipients</masterLabel>

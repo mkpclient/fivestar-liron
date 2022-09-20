@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DS_Add_to_Queue</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>DS Add to Queue</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/apex.js&quot;)} 
+var uid = &quot;{! $User.Id }&quot;; 
+var oid = &quot;{!Lead.Id}&quot;; 
+var phn = &quot;{!Lead.Phone}&quot;; 
+var result = sforce.apex.execute(&quot;DSPriorityQueue&quot;,&quot;ButtonSubmitCallBack&quot;, 
+{sfdcUserId:uid, sfdcObjectId:oid, callBackNumber:phn, isGlobal:false}); 
+window.alert(&quot;Lead was Queued for DS Call.&quot;);</url>
+</WebLink>

@@ -2248,6 +2248,36 @@
             <field>EL_Boxed_Copies__c</field>
             <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Back_Cover_Updated__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Back_Cover_Inside_Updated__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Custom_Front_Cover_Inside_Ad_Updated__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_Block__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_Block_Updated__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cover_1_choice__c</field>
+            <table>Order_Fulfillment__c.Essential_Living_Issues__r</table>
+        </columns>
         <masterLabel>Essential Living Issues</masterLabel>
     </sections>
 </ReportType>

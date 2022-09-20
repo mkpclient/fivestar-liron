@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Must_Have_Reason_for_Credit_Risk</fullName>
+    <active>true</active>
+    <errorConditionFormula>Credit_Risk__c  = TRUE &amp;&amp; Credit_Risk_Reason__c = NULL</errorConditionFormula>
+    <errorMessage>Please Record a Credit Risk Reason in the &quot;Credit Risk Reason&quot; Field</errorMessage>
+</ValidationRule>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>test</letterhead>
+    <name>End of Market Push - Are you participating?</name>
+    <style>freeForm</style>
+    <subject>Five Star {!Contact.Core_Profession__c} award - are you participating? - {!Contact.Core_Magazine_name__c}?</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+
+We&apos;ve not been able to finalize the 2020 Five Star {!Contact.Core_Profession__c} award with you for the upcoming Five Star section in {!Contact.Core_Magazine_name__c}. We&apos;ve attempted to connect with you to complete it, but have been unsuccessful as yet in doing so. The deadline is fast approaching.
+
+
+At this point you will neither be named a 2020 recipient, nor listed in the Five Star section that appears in {!Contact.Core_Magazine_name__c} this year. Were you intending to participate? We need 20+ minutes to finalize this year&apos;s award and walk through the options that are available to you. Please give me a call at the number below!
+
+
+Best wishes,
+
+{!Contact.OwnerFullName}
+Account Manager
+Five Star Professional
+{!Contact.OwnerPhone}
+{!Contact.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

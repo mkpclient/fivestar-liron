@@ -1,0 +1,33 @@
+<table border="0" cellpadding="5" width="725" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<p style="background-color: rgb(242, 242, 242);"><font size="2" face="Verdana, Helvetica, sans-serif"><font><font style="color: rgb(0, 0, 0);"><span style="line-height: 1.5;">Hello&nbsp;</span></font><span style="line-height: 24px;">{!User.FirstName}</span><span style="color: rgb(0, 0, 0);"><span style="line-height: 24px;">,<br></span></span></font>Just a quick reminder to submit your
+nominations for the Five Star Professional Employee Recognition Program. It’s an awesome
+way to recognize the great work your colleagues are doing. During the quarterly
+meetings, one winner will be drawn from all of the nominations
+received for that quarter.&nbsp;</font></p><p class="MsoNormal"><font size="2" face="Verdana, Helvetica, sans-serif">Enter in your nomination <a href="{!User.Employee_Recognition_Survey_Link__c}">HERE</a></font></p><p class="MsoNormal"><font size="2" face="Verdana, Helvetica, sans-serif">Program Details:</font></p><p class="MsoNormal"><font size="2" face="Verdana, Helvetica, sans-serif">• Any FSP employee may nominate any other FSP employee –
+cross-departmental nominations are encouraged!</font></p><p style="background-color: rgb(242, 242, 242);">
+
+
+
+<font size="2" face="Verdana, Helvetica, sans-serif">•
+To submit a nomination, use the nomination form here:&nbsp;</font></p><p class="MsoNormal"><font size="2" face="Verdana, Helvetica, sans-serif">• Prize winners will be chosen from all nominees during the
+quarter and announced at the company-wide quarterly meeting.</font></p><p class="MsoNormal"><font size="2" face="Verdana, Helvetica, sans-serif">For a refresher on how to submit the nominations through your Salesforce user page, watch this quick video <a href="https://recordings.join.me/JWMhv7_H0U2kJETKFfld6g">HERE</a>.</font></p><p class="MsoNormal"><span style="font-family: Verdana, Helvetica, sans-serif; font-size: small;">There are a lot of great things going on around here so
+let’s recognize each other’s efforts!</span></p><p class="MsoNormal"><font size="2" face="Verdana, Helvetica, sans-serif">As always, if you have any questions, don’t hesitate to stop
+by or drop me a line.</font></p><p class="MsoNormal"><font size="2" face="Verdana, Helvetica, sans-serif">Thanks,</font></p><p class="MsoNormal">
+
+
+
+
+
+</p><p class="MsoNormal"><font size="2" face="Verdana, Helvetica, sans-serif">Lynn</font></p>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#F2F2F2; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<p style="background-color: rgb(242, 242, 242);"></p><br>]]></td>
+</tr>
+</table>

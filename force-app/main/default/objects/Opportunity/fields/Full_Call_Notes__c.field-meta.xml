@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Full_Call_Notes__c</fullName>
+    <description>Longer version of the Open Call Notes field</description>
+    <externalId>false</externalId>
+    <inlineHelpText>New Sales log a call to allow 30,000 characters, and detect record types of core-new business, post host, extended sales and display active stage picklists. Also removed business objectives.</inlineHelpText>
+    <label>Call Comments</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Use for 40 Under 40 Fortune Magazine Opportunity</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Five_Star_Professional</letterhead>
+    <name>Special Section: WM Under 40 - Fortune Email 1</name>
+    <style>freeForm</style>
+    <subject>Your appearance in the under 40 special section of Fortune magazine</subject>
+    <textOnly>Hello {!Contact.FirstName},
+
+
+I am following up on the voicemail I left you regarding your appearance in the under 40 special section that will be appearing in the February/March 2023 issue of Fortune magazine.
+
+
+
+Millennials’ assets are projected to grow from $1.4 trillion in 2015 to $11.3 trillion in 2030. As a Five Star award winner you are among the best at what you do, and as someone who is part of the younger generation, you are uniquely positioned to connect with this growing, affluent group. Given your unique position, we have an exclusive opportunity to highlight you and your business in our Wealth Managers Under 40 section in Fortune magazine.
+
+
+
+Fortune is one of the most widely recognized and respected media brands in the nation. Being featured in Fortune can help you grow your business and build deeper relationships with clients.
+
+
+
+Click HERE to learn more or please call as soon as possible.
+
+
+
+This is an exclusive offer. Please call my direct line today or you can use the link below to schedule a short 15-minute conversation with me. The section is limited to wealth managers under 40.
+
+
+
+{!Contact.AM_Follow_Up_Link__c}
+
+
+
+I look forward to hearing from you!
+
+
+Regards,
+
+
+{!Contact.OwnerFullName}
+
+Account Manager
+
+Five Star Professional
+
+{!Contact.OwnerPhone}
+
+{!Contact.OwnerEmail}
+
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

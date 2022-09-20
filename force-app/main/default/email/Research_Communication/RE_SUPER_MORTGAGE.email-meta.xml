@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>MSPRE21 SUPER MORTGAGE PROFESSIONAL AWARD</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>MP SUPER MORTGAGE</name>
+    <style>none</style>
+    <subject>You have been identified for the Super Mortgage Professional Award MSP/TCB magazine</subject>
+    <textOnly>Hello {!Opportunity.Email_Templates_Informalname__c},
+
+You’ve been identified as a candidate for the 2021 Super Mortgage Professional™ award. That means that your clients and peers have identified you as a professional who demonstrates exceptional ability and service. Unlike other distinctions, this is not determined by highest sales volume – it celebrates your service to clients and the respect from peers in the industry.
+
+How is the research conducted? This is the 12th year Mpls.St.Paul Magazine and Twin Cities Business have assembled the most authoritative list of great mortgage professionals in the Twin Cities. To ensure fair and rigorous research methodology, we contract with an independent research company, Crescendo Business Services, to administer the Super Mortgage Professional™ evaluation process. Recent homebuyers and sellers, industry peers and subscribers to Mpls.St.Paul Magazine and Twin Cities Business are asked to submit evaluations to identify the Twin Cities’ exceptional mortgage professionals. Professionals are given a score based on the evaluations received by Crescendo Business Services. You have qualified to be considered as a candidate for this year’s award.
+
+To be considered this year, you must submit additional information about your business practice. Candidates must meet minimum experience and production criteria. Your response is required by Thursday, June 10, 2021 to ensure you are considered for this year’s recognition.
+
+
+To access and complete your evaluation form, click on this link: {!Opportunity.Research_Form_URL__c} , and enter your code: {!Opportunity.Research_Stage__c} (The code is key sensitive) If the link to the survey does not work, simply copy and paste the link into a web URL and click &quot;enter&quot;
+
+If selected as an award winner, you will receive information on how you can leverage this honor through an expanded profile. Again, congratulations on being identified as a candidate for the 2021 Super Mortgage Professional™ award.
+
+Please contact us at 651-259-1865, if you have questions or need help.
+
+Kind regards,
+
+{!User.Name}
+
+Crescendo Business Services
+2117 Cliff Dr
+Eagan, MN  55122
+Direct: 651-259-1865
+debbie.noll@fivestarprofessional.com
+
+unsubscribe from this list</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

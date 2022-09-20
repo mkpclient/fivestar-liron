@@ -26,10 +26,6 @@
                 <behavior>Readonly</behavior>
                 <field>Image_Download_Link__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Full_ID__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

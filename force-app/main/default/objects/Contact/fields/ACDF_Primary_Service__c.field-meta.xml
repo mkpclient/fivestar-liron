@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACDF_Primary_Service__c</fullName>
+    <externalId>false</externalId>
+    <label>ACDF Primary Service</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Financial Planning</fullName>
+                <default>false</default>
+                <label>Financial Planning</label>
+            </value>
+            <value>
+                <fullName>Investments</fullName>
+                <default>false</default>
+                <label>Investments</label>
+            </value>
+            <value>
+                <fullName>Taxation</fullName>
+                <default>false</default>
+                <label>Taxation</label>
+            </value>
+            <value>
+                <fullName>Estate Planning</fullName>
+                <default>false</default>
+                <label>Estate Planning</label>
+            </value>
+            <value>
+                <fullName>Business Planning</fullName>
+                <default>false</default>
+                <label>Business Planning</label>
+            </value>
+            <value>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+                <label>Insurance</label>
+            </value>
+            <value>
+                <fullName>Trust Services</fullName>
+                <default>false</default>
+                <label>Trust Services</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

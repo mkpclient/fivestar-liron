@@ -14,4 +14,18 @@
         </criteriaItems>
         <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
     </sharingGuestRules>
+    <sharingGuestRules>
+        <fullName>SUMO_V5</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>SUMO V5</label>
+        <sharedTo>
+            <guestUser>SelfScheduling</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>Active_Recognition_Survey__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
 </SharingRules>

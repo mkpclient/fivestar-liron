@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Barron_s__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>On Barron&apos;s list</description>
+    <externalId>false</externalId>
+    <label>Barron&apos;s (Forbes)</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

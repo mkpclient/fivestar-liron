@@ -11,7 +11,7 @@ global with sharing class SendOrderInvoiceWithAttachmentAfter1Hour implements Sc
             system.debug('inside batch2');   
         }
         
-    }
+    }    
  
     public static void SendEmail(List<id> listofSalesOrderIds) {
         List<kugo2p__SalesOrder__c> lstOrders = [select id,kugo2p__ContactBilling__c, kugo2p__RecordStatus__c, kugo2p__ContactBuying__r.Email, Initial_Invoice_Sent__c, Email_To_Send__c, kugo2p__NetAmount__c  from kugo2p__SalesOrder__c where Id in:listofSalesOrderIds];

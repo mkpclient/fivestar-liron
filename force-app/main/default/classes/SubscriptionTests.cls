@@ -72,6 +72,7 @@ public with sharing class SubscriptionTests {
     
     @isTest
     public static void testAddonsAndQtyChange() {
+      Test.setMock(HttpCalloutMock.class, new ZealynxHttpMockGenerator());
       SalesOrder__c so1 = [SELECT Id, Account__c, ContactBilling__c FROM SalesOrder__c LIMIT 1];
       Payment_Method__c pm = [SELECT Id FROM Payment_Method__c LIMIT 1];
       Test.startTest();

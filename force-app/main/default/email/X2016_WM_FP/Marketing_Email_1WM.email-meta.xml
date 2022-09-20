@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email 1 of standard campaign (Congratulations)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>New_FSP</letterhead>
+    <name>Marketing Email 1</name>
+    <style>formalLetter</style>
+    <subject>Congratulations! You&apos;ve won the Five Star award!</subject>
+    <textOnly>Hello {!Contact.ACDF_FName__c},
+
+
+
+Congratulations! You have been chosen as a 2016 Five Star {!Opportunity.Email_Templates_Profession__c} award winner! All award winners will be listed, at  no cost, in the {!Opportunity.Email_Templates_Month__c} issue of {!Opportunity.Email_Templates_Magazine__c}.
+
+
+
+Marketing the Five Star {!Opportunity.Email_Templates_Profession__c} award can help you stand out from the competition, retain clients and generate referrals. I can help you put together a plan to integrate the award into your marketing campaigns.
+
+
+
+I will be reaching out to you within the next few days, but in the meantime please feel free to request an appointment or view the award guide.
+Thank you,
+
+{!Opportunity.OwnerFullName}
+Account Manager
+Five Star Professional
+
+{!Opportunity.OwnerPhone}
+{!Opportunity.OwnerEmail}
+www.fivestarprofessional.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
