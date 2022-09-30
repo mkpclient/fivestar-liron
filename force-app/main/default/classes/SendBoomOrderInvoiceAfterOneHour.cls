@@ -258,6 +258,8 @@ global without sharing class SendBoomOrderInvoiceAfterOneHour implements Schedul
 
       if(pmt.Sales_Order__r.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && allowEssentialEmails) {
         bizType = 'Essential';
+      } else if (pmt.Sales_Order__r.Price_Book__r.Business_Unit__c == ESSENTIAL_ENG && !allowEssentialEmails) {
+        continue;
       }
 
       Id templateId = PMT_EMAIL_TEMP_MAP.get(bizType).Id;
